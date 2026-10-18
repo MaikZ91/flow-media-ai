@@ -2,7 +2,7 @@
 
 Stand: 18.10.2026 · Kanal neu, 0 Follower · Takt: 3 Reels pro Woche (Di, Do, So)
 
-Grundregeln: siehe `../CLAUDE.md` (Tonalität, keine erfundenen Ergebnisse) und Teil F des Creative-Director-Skills im Repo `the-tribe-bot`.
+Grundregeln: siehe `../CLAUDE.md` (Tonalität, keine erfundenen Ergebnisse) und den Creative-Director-Skill `../.claude/skills/creative-director/SKILL.md`.
 Jede Idee baut auf einem echten Projekt auf. Was Maik dafür liefern muss, steht dabei.
 
 ---

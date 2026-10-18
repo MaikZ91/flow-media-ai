@@ -10,6 +10,15 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - Alle Texte, Posts und Angebote richten sich nach diesem Profil, insbesondere nach Abschnitt 9 (Tonalität) und 10 (Content-Regel).
 - Nichts erfinden: keine Kunden, Umsätze, Ergebnisse, Testimonials oder Erfahrungen, die nicht tatsächlich existieren. Fehlt eine Angabe, nachfragen oder als Platzhalter markieren.
 - Sprache für Inhalte: natürliches, modernes Deutsch.
+- Für alles rund um Instagram (@flow.media.ai) zuerst den Skill `creative-director` laden (`.claude/skills/creative-director/SKILL.md`).
+- Dieses Repo ist nur für Flow Media AI. THE TRIBE, Dating-Fotos und Arbeitgeber-Projekte gehören nicht hierher.
+
+## Aufbau
+
+- `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
+- `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
+- `content/01_startplan.md` – Startplan der ersten zwei Wochen
+- `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 
 ---
 
