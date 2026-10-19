@@ -20,6 +20,28 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 
+## Dropbox-Spiegel (Pflicht, Maik 19.10.2026)
+
+Maiks Dropbox `/Flow Media AI` wird immer auf Stand gehalten – **vor allem `07_KI`**. Das Repo ist die Quelle; die Dropbox ist die Kopie, mit der Maik arbeitet.
+
+**Nach jeder Änderung an einer dieser Dateien im selben Lauf die Dropbox aktualisieren** (über den Dropbox-Connector):
+
+| Repo | Dropbox |
+|---|---|
+| `CLAUDE.md` | `/Flow Media AI/07_KI/CLAUDE.md` |
+| `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `/Flow Media AI/07_KI/skills/<name>/…` |
+| `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `/Flow Media AI/01_Marketing/Brand_Identity_Flow_Media_AI.md` |
+| `content/01_startplan.md` | `/Flow Media AI/01_Marketing/Startplan_Instagram.md` |
+| `content/learnings.md` | `/Flow Media AI/01_Marketing/Learnings_Instagram.md` |
+| `content/reels/<ID>-<name>/README.md` | `/Flow Media AI/01_Marketing/Reels/<ID>_<Name>_Caption.md` |
+
+- **Aktualisieren = ersetzen:** Der Connector kann bestehende Dateien nicht überschreiben. Darum alte Datei löschen (landet im Dropbox-Papierkorb, wiederherstellbar) und mit dem neuen Inhalt neu anlegen. Neue Ordner vorher anlegen.
+- Gelöschte oder umbenannte Dateien im Repo auch in der Dropbox löschen bzw. umbenennen.
+- Videos, Bilder und andere Binärdateien kann der Connector nicht hochladen – Maik in der Antwort sagen, welche Datei er selbst ablegen muss und wohin.
+- Ändert Maik etwas direkt in der Dropbox, vor der nächsten Änderung dort nachsehen und ins Repo übernehmen, statt es zu überschreiben.
+- Ist der Dropbox-Connector in einer Session nicht verfügbar: Maik am Ende sagen, welche Dateien noch nicht gespiegelt sind.
+- In der Antwort an Maik kurz nennen, was in der Dropbox aktualisiert wurde.
+
 ---
 
 # FLOW MEDIA AI – Brand Identity & Positionierungsprofil
