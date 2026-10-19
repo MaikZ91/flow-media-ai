@@ -960,6 +960,11 @@ function statusChip(t) {
   if (t.kind !== "in") return "";
   return t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`;
 }
+// receipt chip opens the attached file (stored like card attachments, linked by the booking id)
+function receiptChip(t) {
+  const f = files.find(x => x.taskId === t.id && x.kind === "asset");
+  return f ? `<a class="chipbtn" href="${esc(blobUrl(f))}" target="_blank" rel="noopener" title="${esc(f.name)}" style="text-decoration:none">✓ Beleg öffnen</a>` : `<span class="chipbtn" title="Beleg vorhanden">✓ Beleg</span>`;
+}
 function finBusiness() {
   const y = String(finUi.year), txs = yearTxs();
   const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
@@ -970,7 +975,7 @@ function finBusiness() {
       <td style="white-space:nowrap">${deDate(t.date)}</td>
       <td>${esc(t.title)}<small>${esc([t.party, t.note].filter(Boolean).join(" · "))}</small></td><td>${esc(t.category || "")}</td>
       <td>${statusChip(t)}</td>
-      <td>${t.receipt ? `<span class="chipbtn" title="Beleg vorhanden">✓ Beleg</span>` : `<button type="button" class="chipbtn miss" data-fin-receipt="${t.id}" title="Beleg als vorhanden markieren">fehlt</button>`}</td>
+      <td>${t.receipt ? receiptChip(t) : `<button type="button" class="chipbtn miss" data-fin-receipt="${t.id}" title="Beleg als vorhanden markieren">fehlt</button>`}</td>
       <td class="num">${t.vat ? `${t.vat} %` : ""}</td>
       <td class="num ${t.kind === "in" ? "pos" : "neg"}">${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
       <td><div class="ract">${t.inv ? `<button type="button" class="mini" data-inv-view="${t.id}">Rechnung</button>` : ""}${delBtn(t.id)}</div></td></tr>`).join("");
