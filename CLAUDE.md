@@ -7,7 +7,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working in this
 Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Positionierung, Content (Social-Media-Posts, Texte, Workshops), Angebote und eigene Projekte.
 
 **Für Claude gilt:**
-- **Regel Nummer 1 (Maik 19.10.2026): Skill `pruefer-agent` (`.claude/skills/pruefer-agent/SKILL.md`) gilt immer; zu Beginn jeder Aufgabe ihn und `regeln-aus-korrekturen.md` lesen.** Gilt nicht für Prüf- und Recherche-Subagenten selbst. Kein Ergebnis ohne Prüfung durch einen separaten Agenten ohne Vorwissen; größere Projekte mit Blindspot-Pass und Interview (AskUserQuestion, eine Frage nach der anderen, mit Hypothese); Korrekturen als dauerhafte Regel in `.claude/skills/pruefer-agent/regeln-aus-korrekturen.md` (vor jeder Arbeit lesen); große Recherchen verteilt auf Haiku (Fleißarbeit), Sonnet (Texte), Opus (Zusammenführen).
 - Alle Texte, Posts und Angebote richten sich nach diesem Profil, insbesondere nach Abschnitt 9 (Tonalität) und 10 (Content-Regel).
 - Nichts erfinden: keine Kunden, Umsätze, Ergebnisse, Testimonials oder Erfahrungen, die nicht tatsächlich existieren. Fehlt eine Angabe, nachfragen oder als Platzhalter markieren.
 - Sprache für Inhalte: natürliches, modernes Deutsch.
@@ -21,7 +20,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
 - `.claude/skills/blindspot-analyse/` – Blindspot-Pass vor neuen Projekten
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
-- `.claude/skills/pruefer-agent/` – Regel Nummer 1: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
+- `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 

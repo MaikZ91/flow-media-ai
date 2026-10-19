@@ -1,11 +1,13 @@
 ---
 name: pruefer-agent
-description: Maiks Regel Nummer 1 für jede Arbeit in Flow Media AI. Gilt immer, bevor ein fertiges Ergebnis geliefert wird (Code, Seite, Text, Analyse, Board-Änderung), bei jedem größeren Projekt, bei jeder Korrektur durch Maik und bei großen Recherchen. Ein separater Prüfagent ohne Vorwissen prüft das Ergebnis gegen Maiks Anforderungen und Regeln; größere Projekte starten mit Blindspot-Pass und Interview; Korrekturen werden dauerhafte Regeln; Recherchen laufen verteilt auf Haiku, Sonnet und Opus.
+description: Optionaler Arbeitsmodus für Flow Media AI, NUR laden, wenn Maik ihn ausdrücklich einschaltet (/pruefer-agent, „Prüferagent an“, „mit Prüfagent“, „Prüferagent-Regel“). Nicht von selbst laden. Eingeschaltet: Ein separater Prüfagent ohne Vorwissen prüft jedes Ergebnis vor der Lieferung; größere Projekte starten mit Blindspot-Pass und Interview; Korrekturen werden dauerhafte Regeln; Recherchen laufen verteilt auf Haiku, Sonnet und Opus.
 ---
 
-# Prüferagent-Regel (Nummer 1, Maik 19.10.2026)
+# Prüferagent-Regel (optional, Maik 19.10.2026)
 
-Vier Regeln, die bei jeder Arbeit für Flow Media AI gelten. Zu Beginn jeder Aufgabe diese Datei und `regeln-aus-korrekturen.md` lesen. Maiks Anweisung im Moment geht vor.
+**Nur aktiv, wenn Maik den Modus einschaltet** (z. B. `/pruefer-agent` oder „Prüferagent an“). Dann gelten die vier Regeln für den Rest der Session, bis Maik „Prüferagent aus“ sagt. Ohne Einschalten wird nichts davon angewendet.
+
+Beim Einschalten diese Datei und `regeln-aus-korrekturen.md` lesen. Maiks Anweisung im Moment geht vor.
 
 **Gilt nicht für Prüf- und Recherche-Subagenten selbst:** Sie liefern an den Hauptagenten, nicht an Maik, und starten keine weiteren Prüfungen.
 
