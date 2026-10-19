@@ -14,7 +14,7 @@ const json = (body: unknown, status = 200) =>
 
 const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const BUCKET = "flow-board";
-const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files" };
+const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files", finance: "flow_board_finance" };
 
 async function sha256(s: string) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
@@ -120,13 +120,14 @@ Deno.serve(async (req) => {
   try {
     switch (action) {
       case "load": {
-        const [t, f, m] = await Promise.all([
+        const [t, f, m, fin] = await Promise.all([
           db.from("flow_board_tasks").select("id,data").eq("board_id", board),
           db.from("flow_board_files").select("id,data").eq("board_id", board),
           db.from("flow_board_meta").select("data").eq("board_id", board).maybeSingle(),
+          db.from("flow_board_finance").select("id,data").eq("board_id", board),
         ]);
-        if (t.error || f.error) throw t.error || f.error;
-        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null });
+        if (t.error || f.error || fin.error) throw t.error || f.error || fin.error;
+        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data });
       }
       case "upsert": {
         const table = TABLES[body.table];

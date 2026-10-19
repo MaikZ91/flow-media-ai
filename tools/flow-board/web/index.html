@@ -21,6 +21,7 @@
   --scrim: rgba(9, 14, 20, .55);
   --modal: #f7f8f9;
   --red: #c9372c; --red-soft: #ffd5d2;
+  --c-in: #2f5bff; --c-out: #d97706;
   --l1: #f87168; --l2: #fea362; --l3: #e2b203; --l4: #8590a2;
   --la: #6cc3e0; --lb: #94c748; --lc: #9f8fef; --ld: #e774bb; --le: #579dff; --lf: #4bce97; --lg: #b38600;
   --shadow: 0 1px 1px rgba(9,30,66,.25), 0 0 1px rgba(9,30,66,.31);
@@ -29,11 +30,11 @@
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
+  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a; --c-in: #5b7cf5; --c-out: #c98118;
   --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark } }
 :root[data-theme="dark"] {
   --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
+  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a; --c-in: #5b7cf5; --c-out: #c98118;
   --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark }
 
 * { box-sizing: border-box }
@@ -129,6 +130,35 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
 .pill.done { opacity: .5; text-decoration: line-through }
 .ptime { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
+.kpis.five { grid-template-columns: repeat(5, minmax(0, 1fr)) }
+.kpi.neg b { color: var(--red) } .kpi.accent b { color: var(--accent) }
+.fin-tools { display: flex; gap: 8px; align-items: center }
+.fin-tools select { border: 0; background: transparent; font-weight: 600 }
+.fin-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
+.fin-form input, .fin-form select { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; min-width: 0 }
+.fin-form input[name="title"] { flex: 1 1 200px }
+.fin-form input[name="amount"] { width: 110px }
+.tbl { overflow-x: auto }
+.tbl table { width: 100%; border-collapse: collapse; font-size: 13px }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--line) }
+.tbl td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: middle }
+.tbl td small { display: block; color: var(--faint) }
+.tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap }
+.tbl .pos { color: var(--ink) } .tbl .neg { color: var(--muted) }
+.chipbtn { border: 0; border-radius: 99px; padding: 2px 8px; font-size: 12px; background: var(--hover); color: var(--muted) }
+.chipbtn.open { background: #f5cd47; color: #172b4d; cursor: pointer; font-weight: 600 }
+.meter-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px }
+.mr-head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; gap: 8px }
+.mr-n { font-variant-numeric: tabular-nums; color: var(--muted) }
+.mbar { height: 10px; background: var(--hover); border-radius: 5px; overflow: hidden } .mbar i { display: block; height: 100%; background: var(--accent) } .mbar.warn i { background: #e2b203 }
+.legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted) } .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px }
+.enlbar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px }
+.enl-E { background: var(--c-in) } .enl-N { background: var(--c-out) } .enl-L { background: var(--l4) }
+span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5px; font: 600 11px var(--f-mono) }
+.finnote { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
+.finnote ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px }
+.finnote > p { grid-column: 1 / -1 }
+@media (max-width: 900px) { .kpis.five { grid-template-columns: repeat(2, minmax(0, 1fr)) } .finnote { grid-template-columns: minmax(0, 1fr) } [style*="span 2"] { grid-column: auto !important } }
 .stats { flex: 1; align-self: stretch; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 0 }
 .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px }
 .kpi { background: var(--card); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px; min-width: 0 }
@@ -273,6 +303,7 @@ body.is-dragging .card-del { display: none }
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
   <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
+  <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
   <span class="sep hide-sm"></span>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
 </header>
@@ -439,8 +470,8 @@ function applyBackground() {
 
 /* ---------- persistence ---------- */
 const LS = DEMO ? "flow-board-demo" : "flow-board-v2";
-function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
-function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, meta })) } catch {} }
+function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; fin = d.fin || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
+function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, fin, meta })) } catch {} }
 function writeErr(e) {
   if (e?.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen.") }
   else if (e?.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Karten.");
@@ -587,7 +618,7 @@ function render() {
   const main = $("#main"), sx = main.scrollLeft;
   const draft = $("#compose-text")?.value || "";
   const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : renderCal();
   main.scrollLeft = sx;
   main.querySelectorAll(".cards").forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
   renderBar();
@@ -776,6 +807,176 @@ function renderCardFiles(taskId) {
   const el = $("#m-att"); if (!el) return;
   el.innerHTML = filesFor(taskId).map(f => fileRow(f, { inCard: true })).join("") || `<p class="sub" style="margin:0;color:var(--muted);font-size:13px">Noch keine Anhänge.</p>`;
 }
+
+/* ---------- finances: business ledger, private budget (E/N/L), backup and reach ---------- */
+// entry types: tx (business income/expense), budget (monthly private item), backup (asset that could bridge a gap)
+let fin = [], finCol = null;
+const finUi = { tab: "business", year: new Date().getFullYear() };
+const FIN_CATS = ["Kundenprojekt", "Workshop", "Tools & Software", "Hardware", "Werbung", "Weiterbildung", "Büro & Sonstiges"];
+const BACKUP_GROUPS = ["Erspartes", "Sachwerte", "Sozialleistungen"];
+const ENL = { E: "Essentiell", N: "Nice-to-have", L: "Luxus" };
+const eur = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+const eur2 = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
+const parseEur = v => { const t = String(v).trim().replace(/[€\s]/g, ""); const n = Number(/,\d{1,2}$/.test(t) ? t.replace(/\./g, "").replace(",", ".") : t.replace(/,/g, "")); return isFinite(n) ? Math.round(n * 100) / 100 : NaN };
+async function saveFin(e) {
+  const i = fin.findIndex(x => x.id === e.id); if (i >= 0) fin[i] = e; else fin.push(e);
+  render();
+  if (!finCol) return lsSave();
+  const { id, ...body } = e;
+  try { await finCol.doc(id).set(body) } catch (err) { writeErr(err) }
+}
+async function removeFin(id) {
+  const e = fin.find(x => x.id === id); fin = fin.filter(x => x.id !== id); render();
+  if (finCol) { try { await finCol.doc(id).delete() } catch (err) { writeErr(err) } } else lsSave();
+  if (e) toast(`„${e.title}“ gelöscht`, { label: "Rückgängig", fn: () => saveFin(e) });
+}
+function finKpi(label, value, sub = "", cls = "") { return `<div class="kpi ${cls}"><span class="kl">${label}</span><b>${value}</b>${sub ? `<span class="kd">${sub}</span>` : ""}</div>` }
+function meter(label, value, limit, note) {
+  const pct = Math.min(100, value / limit * 100), warn = pct >= 80;
+  return `<div class="meter-row"><div class="mr-head"><span>${label}</span><span class="mr-n">${eur(value)} von ${eur(limit)}</span></div>
+    <div class="mbar ${warn ? "warn" : ""}"><i style="width:${pct.toFixed(1)}%"></i></div><span class="kd">${note}</span></div>`;
+}
+function monthChart(txs) {
+  const m = [...Array(12)].map(() => ({ i: 0, o: 0 }));
+  txs.forEach(t => { const k = Number(t.date.slice(5, 7)) - 1; if (t.kind === "in") m[k].i += t.amount; else m[k].o += t.amount });
+  const W = 1240, H = 150, padL = 60, padB = 24, padT = 10, max = Math.max(100, ...m.map(x => Math.max(x.i, x.o)));
+  const mag = 10 ** Math.floor(Math.log10(max / 4)), step = Math.ceil(max / 4 / mag) * mag, top = step * 4, gw = (W - padL) / 12, bw = Math.min(28, gw / 2 - 6);
+  const y = v => padT + (H - padT - padB) * (1 - v / top);
+  const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 8}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${(i * step).toLocaleString("de-DE")} €</text>`).join("");
+  const MS = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+  const bars = m.map((v, k) => { const cx = padL + k * gw + gw / 2;
+    return `<g class="bar" data-tip="${MS[k]}: Einnahmen ${eur(v.i)} · Ausgaben ${eur(v.o)} · Saldo ${eur(v.i - v.o)}"><rect class="hit" x="${padL + k * gw}" y="${padT}" width="${gw}" height="${H - padT - padB}"/>
+      ${v.i ? `<rect x="${cx - bw - 1}" y="${y(v.i)}" width="${bw}" height="${y(0) - y(v.i)}" rx="3" style="fill:var(--c-in)"/>` : ""}
+      ${v.o ? `<rect x="${cx + 1}" y="${y(v.o)}" width="${bw}" height="${y(0) - y(v.o)}" rx="3" style="fill:var(--c-out)"/>` : ""}
+      <text x="${cx}" y="${H - 6}" class="ax" text-anchor="middle">${MS[k]}</text></g>` }).join("");
+  return `<div class="legend"><span><i style="background:var(--c-in)"></i>Einnahmen</span><span><i style="background:var(--c-out)"></i>Ausgaben</span></div>
+    <div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Einnahmen und Ausgaben pro Monat">${grid}${bars}</svg><div class="tip" hidden></div></div>`;
+}
+function finBusiness() {
+  const y = String(finUi.year), txs = fin.filter(e => e.type === "tx" && (e.date || "").startsWith(y));
+  const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
+  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0);
+  const income = sum(inc), spend = sum(out), profit = income - spend, open = sum(inc.filter(t => t.status === "open"));
+  const years = [...new Set([new Date().getFullYear(), ...fin.filter(e => e.type === "tx" && e.date).map(e => Number(e.date.slice(0, 4)))])].sort((a, b) => b - a);
+  const rows = txs.slice().sort((a, b) => b.date.localeCompare(a.date)).map(t => `<tr>
+      <td style="white-space:nowrap">${t.date.split("-").reverse().join(".")}</td><td>${esc(t.title)}${t.note ? `<small>${esc(t.note)}</small>` : ""}</td><td>${esc(t.category || "")}</td>
+      <td>${t.kind === "in" ? (t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`) : ""}</td>
+      <td class="num ${t.kind === "in" ? "pos" : "neg"}">${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
+      <td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${t.id}" aria-label="Eintrag löschen">${icon.trash}</button>`}</td></tr>`).join("");
+  return `<div class="fin-tools"><label class="mini">Jahr <select data-fin-year>${years.map(v => `<option ${v === finUi.year ? "selected" : ""}>${v}</option>`).join("")}</select></label>
+      ${WEB ? `<button type="button" class="mini" data-fin-csv>CSV für Steuerberater</button>` : ""}</div>
+    <div class="kpis five">
+      ${finKpi("Einnahmen", eur(income), `${inc.length} Buchungen`)}
+      ${finKpi("Ausgaben", eur(spend), `${out.length} Buchungen`)}
+      ${finKpi("Gewinn", eur(profit), "Einnahmen − Ausgaben", profit < 0 ? "neg" : "")}
+      ${finKpi("25 % zurücklegen", eur(Math.max(0, income * .25)), "für Steuern, KV & Fixkosten")}
+      ${finKpi("Offene Rechnungen", eur(open), `${inc.filter(t => t.status === "open").length} offen`)}
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel wide"><h3>Pro Monat ${y}</h3>${monthChart(txs)}</div>
+      <div class="panel spanel"><h3>Grenzen im Blick</h3>
+        ${meter("Kleinunternehmer (Umsatz)", income, 25000, "Bis 25.000 € im Vorjahr und 100.000 € im laufenden Jahr keine Umsatzsteuer.")}
+        ${meter("Gewerbesteuer-Freibetrag (Gewinn)", Math.max(0, profit), 24500, "Nur bei Gewerbe relevant – darüber fällt Gewerbesteuer an.")}
+      </div>
+      <div class="panel spanel" style="grid-column: span 2"><h3>Buchung erfassen</h3>${readOnly ? "" : `
+        <form class="fin-form" data-fin-form="tx">
+          <input type="date" name="date" value="${ymd(new Date())}" required aria-label="Datum">
+          <select name="kind" aria-label="Art"><option value="in">Einnahme</option><option value="out">Ausgabe</option></select>
+          <input name="amount" inputmode="decimal" placeholder="Betrag €" required aria-label="Betrag">
+          <input name="title" placeholder="Beschreibung, z. B. Rechnung 001 Website" required maxlength="120" aria-label="Beschreibung">
+          <select name="category" aria-label="Kategorie">${FIN_CATS.map(c => `<option>${c}</option>`).join("")}</select>
+          <select name="status" aria-label="Status"><option value="paid">bezahlt</option><option value="open">offen</option></select>
+          <button class="btn" type="submit">Hinzufügen</button>
+        </form>`}</div>
+      <div class="panel spanel wide"><h3>Buchungen ${y}</h3>${rows ? `<div class="tbl"><table><thead><tr><th>Datum</th><th>Beschreibung</th><th>Kategorie</th><th>Status</th><th class="num">Betrag</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p class="sub">Noch keine Buchungen für ${y}. Trag oben deine erste Einnahme oder Ausgabe ein.</p>`}</div>
+    </div>`;
+}
+function finPrivate() {
+  const bud = fin.filter(e => e.type === "budget"), bak = fin.filter(e => e.type === "backup");
+  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0);
+  const inc = sum(bud.filter(b => b.kind === "in")), out = bud.filter(b => b.kind === "out");
+  const need = sum(out), essential = sum(out.filter(b => b.enl === "E")), fixed = sum(out.filter(b => b.fixed));
+  const backup = sum(bak), reach = need ? backup / need : 0, reachE = essential ? backup / essential : 0;
+  const months = n => n ? `${n.toLocaleString("de-DE", { maximumFractionDigits: 1 })} Monate` : "–";
+  const enlBar = ["E", "N", "L"].map(k => { const v = sum(out.filter(b => b.enl === k)); return v ? `<i class="enl-${k}" style="flex:${v}" title="${ENL[k]}: ${eur(v)}"></i>` : "" }).join("");
+  const budRows = bud.slice().sort((a, b) => (a.kind > b.kind ? -1 : 1) || (b.amount - a.amount)).map(b => `<tr><td>${esc(b.title)}</td>
+      <td>${b.kind === "in" ? "Einnahme" : `<span class="enl enl-${b.enl}">${b.enl}</span> ${ENL[b.enl] || ""}`}</td><td>${b.fixed ? "Fixkosten" : ""}</td>
+      <td class="num ${b.kind === "in" ? "pos" : "neg"}">${eur2(b.amount)}</td><td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${b.id}" aria-label="Löschen">${icon.trash}</button>`}</td></tr>`).join("");
+  const bakRows = bak.slice().sort((a, b) => b.amount - a.amount).map(b => `<tr><td>${esc(b.title)}</td><td>${esc(b.group)}</td><td class="num">${eur2(b.amount)}</td>
+      <td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${b.id}" aria-label="Löschen">${icon.trash}</button>`}</td></tr>`).join("");
+  return `<div class="kpis five">
+      ${finKpi("Einnahmen / Monat", eur(inc))}
+      ${finKpi("Monatlicher Bedarf", eur(need), `davon Fixkosten ${eur(fixed)}`)}
+      ${finKpi("Minimalbedarf (nur E)", eur(essential), "nur essentielle Ausgaben")}
+      ${finKpi("Backup gesamt", eur(backup), `${bak.length} Posten`)}
+      ${finKpi("Reichweite", months(reach), `nur mit E-Ausgaben: ${months(reachE)}`, "accent")}
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel" style="grid-column: span 2"><h3>Bestandsaufnahme: Einnahmen & Ausgaben pro Monat</h3>
+        ${need ? `<div class="enlbar">${enlBar}</div><div class="legend"><span><i class="enl-E"></i>Essentiell</span><span><i class="enl-N"></i>Nice-to-have</span><span><i class="enl-L"></i>Luxus</span></div>` : ""}
+        ${readOnly ? "" : `<form class="fin-form" data-fin-form="budget">
+          <input name="title" placeholder="z. B. Miete, Krankenversicherung, Gehalt" required maxlength="80" aria-label="Bezeichnung">
+          <input name="amount" inputmode="decimal" placeholder="€ / Monat" required aria-label="Betrag pro Monat">
+          <select name="kind" aria-label="Art"><option value="out">Ausgabe</option><option value="in">Einnahme</option></select>
+          <select name="enl" aria-label="Einordnung"><option value="E">E – Essentiell</option><option value="N">N – Nice-to-have</option><option value="L">L – Luxus</option></select>
+          <label class="mini"><input type="checkbox" name="fixed"> Fixkosten</label>
+          <button class="btn" type="submit">Hinzufügen</button></form>`}
+        ${budRows ? `<div class="tbl"><table><tbody>${budRows}</tbody></table></div>` : `<p class="sub">Trag deine monatlichen Einnahmen und Ausgaben ein und ordne jede Ausgabe als E, N oder L ein.</p>`}
+      </div>
+      <div class="panel spanel"><h3>Backup</h3>
+        ${readOnly ? "" : `<form class="fin-form" data-fin-form="backup">
+          <input name="title" placeholder="z. B. Tagesgeld, altes Fahrrad" required maxlength="80" aria-label="Bezeichnung">
+          <input name="amount" inputmode="decimal" placeholder="Wert €" required aria-label="Wert">
+          <select name="group" aria-label="Art">${BACKUP_GROUPS.map(g => `<option>${g}</option>`).join("")}</select>
+          <button class="btn" type="submit">Hinzufügen</button></form>`}
+        ${bakRows ? `<div class="tbl"><table><tbody>${bakRows}</tbody></table></div>` : `<p class="sub">Was hättest du im Notfall? Erspartes, Sachwerte (auch Kleinigkeiten), mögliche Sozialleistungen.</p>`}
+        ${need ? `<p class="sub" style="margin:0">Mit deinem Backup überbrückst du <b>${months(reach)}</b>, wenn du nur Essentielles zahlst <b>${months(reachE)}</b>.</p>` : ""}
+      </div>
+    </div>`;
+}
+function finNote() {
+  return `<div class="finnote">
+    <div class="panel spanel"><h3>Deine 3 Finanz-Hebel</h3><ul><li>Umsatz deines eigenen Businesses</li><li>Anderes finanzielles Standbein / Basiseinkommen sichern</li><li>Ausgaben reduzieren</li></ul></div>
+    <div class="panel spanel"><h3>Bestandsaufnahme</h3><ul><li>Monatliche Einnahmen / Ausgaben / Fixkosten erfassen</li><li>Ausgaben einordnen: <b>E</b>ssentiell, <b>N</b>ice-to-have, <b>L</b>uxus</li><li>Backup identifizieren: Erspartes (Bausparer, Sparpläne, Fonds), Schmuck, Kleidung, Technik usw., Sozialleistungen</li></ul></div>
+    <div class="panel spanel"><h3>25 % der zukünftigen Einnahmen zur Seite legen</h3><ul><li>Krankenversicherung und andere Fixkosten</li><li>Einkommensteuer (Grundfreibetrag ändert sich regelmäßig)</li><li>Umsatzsteuer</li><li>Später Gewerbesteuer (3,5 % × lokaler Hebesatz)</li><li>Ggf. Rentenversicherungsbeiträge</li><li><b>Cash is King:</b> fehlende Liquidität ist Insolvenzgrund Nr. 1</li><li>Das Finanzamt fackelt nicht lange – Stundungen sind aber möglich</li></ul></div>
+    <div class="panel spanel"><h3>Getrennte Kontoführung</h3><ul><li>Privates Konto, z. B. DKB</li><li>Geschäftskonto, z. B. Holvi, N26, Kontist</li></ul></div>
+    <div class="panel spanel"><h3>Notfallüberbrückung – nur bei vorübergehendem Engpass</h3><ul><li>Familie und Freunde</li><li>Ggf. Hausbank</li><li>Spezialanbieter, z. B. Auxmoney</li></ul></div>
+    <div class="panel spanel"><h3>To-dos</h3><ul><li>Finanzielle Bestandsaufnahme (E/N/L) → Reiter „Privat & Backup“</li><li>Monatlichen Bedarf berechnen</li><li>Reichweite des Backups errechnen: Was ist vorhanden (auch Kleinigkeiten wie alte Fahrräder)? Wie viel Geld stünde im Notfall zur Verfügung? Wie lange könnte ich damit überbrücken?</li><li>Download-Dokumente in den Unterlagen ablegen (Dropbox 05_Finanzen)</li></ul></div>
+    <p class="sub">Notizen aus dem Gründerkurs, Modul Finanzen. Erfahrungswerte, keine Steuerberatung.</p>
+  </div>`;
+}
+function renderFin() {
+  const tabs = [["business", "Business"], ["private", "Privat & Backup"], ["note", "Notiz"]];
+  return `<section class="panel stats"><div class="cal-head"><h2 style="margin:0">Finanzen</h2>
+      <span class="cal-mode" role="group" aria-label="Bereich">${tabs.map(([k, l]) => `<button type="button" data-fin-tab="${k}" aria-pressed="${finUi.tab === k}">${l}</button>`).join("")}</span></div>
+    ${finUi.tab === "business" ? finBusiness() : finUi.tab === "private" ? finPrivate() : finNote()}</section>`;
+}
+function finCsv() {
+  const y = String(finUi.year), rows = fin.filter(e => e.type === "tx" && e.date.startsWith(y)).sort((a, b) => a.date.localeCompare(b.date));
+  const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const csv = ["Datum;Art;Beschreibung;Kategorie;Status;Betrag"].concat(rows.map(t => [t.date.split("-").reverse().join("."), t.kind === "in" ? "Einnahme" : "Ausgabe", q(t.title), q(t.category), t.kind === "in" ? (t.status === "open" ? "offen" : "bezahlt") : "", (t.kind === "in" ? 1 : -1) * t.amount].join(";").replace(/(-?\d+)\.(\d+)$/, "$1,$2"))).join("\n");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = `flow-media-ai-buchungen-${y}.csv`; a.click();
+}
+document.addEventListener("submit", e => {
+  const f = e.target.closest("[data-fin-form]"); if (!f) return;
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(f)), amount = parseEur(d.amount);
+  if (!(amount > 0)) { toast("Bitte einen Betrag größer als 0 eingeben, z. B. 1.250,00"); return }
+  const base = { id: newId(), title: d.title.trim(), amount, createdAt: Date.now() };
+  const type = f.dataset.finForm;
+  const entry = type === "tx" ? { ...base, type, date: d.date, kind: d.kind, category: d.category, status: d.kind === "in" ? d.status : "paid" }
+    : type === "budget" ? { ...base, type, kind: d.kind, enl: d.kind === "out" ? d.enl : "", fixed: !!d.fixed }
+    : { ...base, type, group: d.group };
+  saveFin(entry); toast("Gespeichert");
+});
+document.addEventListener("click", e => {
+  const t = e.target;
+  const tab = t.closest("[data-fin-tab]"); if (tab) { finUi.tab = tab.dataset.finTab; render(); return }
+  const del = t.closest("[data-fin-del]"); if (del) { removeFin(del.dataset.finDel); return }
+  const paid = t.closest("[data-fin-paid]"); if (paid) { const x = fin.find(v => v.id === paid.dataset.finPaid); if (x) saveFin({ ...x, status: "paid" }); return }
+  if (t.closest("[data-fin-csv]")) finCsv();
+});
+document.addEventListener("change", e => { if (e.target.matches?.("[data-fin-year]")) { finUi.year = Number(e.target.value); render() } });
 
 /* ---------- landing page analytics (PostHog via the gateway) ---------- */
 const stats = { data: null, loading: false, days: 30, error: "" };
@@ -1155,7 +1356,7 @@ function dropOn(z, id, clientY) {
 
 if (DEMO) $("#demo-pill").hidden = false;
 document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
-try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats"].includes(v)) view = v } catch {}
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
 function seedDemo() {
@@ -1234,7 +1435,7 @@ async function loadCalendly() {
 }
 async function reloadBoard() {
   const j = await api("load");
-  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask);
+  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask); fin = (j.finance || []).map(rowToTask);
   if (j.meta) meta = { ...meta, ...j.meta };
   loaded = true; applyBackground();
   if (!$("#layer").innerHTML) render(); else { renderBar(); const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
@@ -1255,7 +1456,7 @@ async function startBoard() {
     set: data => api("upsert", { table: name, id, data }).then(ping),
     delete: () => api("delete", { table: name, id }).then(ping),
   }) });
-  tasksCol = table("tasks"); filesCol = table("files");
+  tasksCol = table("tasks"); filesCol = table("files"); finCol = table("finance");
   metaDoc = { set: data => api("meta", { data }).then(ping) };
   assetsApi = {
     upload: async (f, { type }) => {
@@ -1304,6 +1505,8 @@ document.addEventListener("click", async e => {
   tasksCol = db.collection("tasks");
   metaDoc = db.doc("board/meta");
   metaDoc.onSnapshot(s => { if (s.exists) { meta = { ...meta, ...s.data() }; applyBackground(); renderBar() } }, () => {});
+  finCol = db.collection("finance");
+  finCol.onSnapshot(s => { fin = s.docs.map(d => ({ id: d.id, ...d.data() })); if (view === "fin" && !$("#layer").innerHTML) render() }, () => {});
   filesCol = db.collection("files");
   filesCol.onSnapshot(s => {
     files = s.docs.map(d => ({ id: d.id, ...d.data() }));
