@@ -201,6 +201,7 @@ a.fname:hover { text-decoration: underline }
   <button class="bbtn plain hide-sm" id="btn-star" aria-label="Board markieren"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
   <span class="bbtn hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
   <span class="avatars" id="board-people"></span>
+  <span class="bbtn" id="demo-pill" hidden>Demo · Änderungen bleiben bei dir</span>
   <span class="spacer"></span>
   <button class="bbtn" data-view="matrix" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span class="hide-sm">Prioritäten</span></button>
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
@@ -213,6 +214,8 @@ a.fname:hover { text-decoration: underline }
 <div class="toast" id="toast" hidden></div>
 
 <script>
+// DEMO = true builds the shareable example board: sample cards, kept per visitor in their own browser, no shared data, no files, no Dropbox.
+const DEMO = false;
 const AREAS = ["Marketing", "Sales", "Produkt", "Coachings", "Finanzen", "Organisatorisch", "KI"];
 const AREA_COLOR = { Marketing: "--la", Sales: "--lb", Produkt: "--lc", Coachings: "--ld", Finanzen: "--lg", Organisatorisch: "--le", KI: "--lf" };
 const COLS = [
@@ -244,7 +247,7 @@ const BGS = {
 };
 
 let tasks = [];
-let meta = { name: "FLOW MEDIA AI #general", bg: "meer", starred: false };
+let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "meer", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let tasksCol = null, metaDoc = null;
@@ -347,7 +350,7 @@ function applyBackground() {
 }
 
 /* ---------- persistence ---------- */
-const LS = "flow-board-v2";
+const LS = DEMO ? "flow-board-demo" : "flow-board-v2";
 function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
 function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, meta })) } catch {} }
 function writeErr(e) {
@@ -493,7 +496,7 @@ function renderFiles() {
       <h2>${icon.clip} Board-Ablage</h2>
       <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox.</p>
       ${meter}
-      ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude.</div>` : "")}
+      ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">${DEMO ? "In der Demo ist die Dateiablage ausgeschaltet." : "Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude."}</div>` : "")}
       ${board.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Dateien. Tipp: Zieh eine Datei direkt auf eine Karte, dann hängt sie dort an.</p>`}
     </section>
     <section class="panel fpanel">
@@ -504,6 +507,7 @@ function renderFiles() {
   </div>`;
 }
 function dbxHtml(mode) {
+  if (!mcpApi && DEMO) return `<div class="note">In der Demo ist die Dropbox-Anbindung ausgeschaltet. In der echten Version siehst du hier deine Dropbox-Ordner.</div>`;
   if (!mcpApi) return `<div class="note">Dropbox ist in dieser Ansicht nicht erreichbar. Öffne das Board in Claude, dort fragt es einmal nach Zugriff auf deine Dropbox.</div>`;
   if (dbx.error) return `<div class="note">${esc(dbx.error)}${dbx.retry ? `<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">Erneut versuchen</button>` : ""}</div>`;
   if (!dbx.entries && !dbx.loading) return `<div class="note">Zeigt die Ordner und Dateien aus deiner Dropbox. Beim ersten Mal fragt Claude, ob das Board darauf zugreifen darf.<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">${icon.box} Dropbox anzeigen</button></div>`;
@@ -686,7 +690,8 @@ function openMenu(btn) {
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
-    <div class="stat">${tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
+    <div class="stat">${DEMO ? "Demo: Deine Änderungen bleiben nur in deinem Browser. Andere sehen sie nicht." : tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
+    ${DEMO ? `<button type="button" class="ghost" id="demo-reset">Beispiel zurücksetzen</button>` : ""}
   </div>`;
 }
 
@@ -801,13 +806,36 @@ document.addEventListener("drop", e => {
   if (kind === "due") patchTask(id, { due: val || "" });
 });
 
+if (DEMO) $("#demo-pill").hidden = false;
+document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
 try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
+function seedDemo() {
+  const day = n => { const d = new Date(); d.setDate(d.getDate() + n); return ymd(d) };
+  const now = Date.now();
+  const c = (title, status, important, urgent, area, due, notes = "", extra = {}) =>
+    ({ id: newId() + Math.random().toString(36).slice(2, 5), title, status, important, urgent, area, due, notes, members: ["Alex"], comments: [], order: 0, createdAt: now, updatedAt: now, doneAt: status === "done" ? now : null, ...extra });
+  tasks = [
+    c("Neue Fotos und Videos für Social Media drehen", "backlog", true, false, "Marketing", "", "Beispielkarte: Klick drauf und probier alles aus."),
+    c("Podcast-Idee ausarbeiten", "backlog", false, false, "Produkt", ""),
+    c("Steuerunterlagen sortieren", "backlog", false, true, "Finanzen", day(9)),
+    c("Angebot für ein Erstgespräch vorbereiten", "todo", true, true, "Sales", day(1), "", { comments: [{ text: "Beispiel-Kommentar: Preisrahmen noch klären.", at: now }] }),
+    c("Newsletter für nächsten Monat planen", "todo", true, false, "Marketing", day(5)),
+    c("Workshop-Folien überarbeiten", "progress", true, false, "Coachings", day(3), "Kapitel 2 kürzen, Übung am Ende ergänzen."),
+    c("Website-Texte aktualisieren", "progress", true, true, "Marketing", day(-1)),
+    c("Insta-Nachrichten beantworten", "ongoing", false, true, "Marketing", ""),
+    c("Content-Ideen sammeln", "ongoing", true, false, "Marketing", ""),
+    c("Rückmeldung zum Logo-Entwurf abwarten", "pending", false, false, "Marketing", day(4)),
+    c("Ordnerstruktur in der Cloud aufräumen", "done", false, false, "Organisatorisch", day(-2)),
+  ];
+  lsSave();
+}
+
 /* ---------- boot: shared store if available, else this browser ---------- */
 (async () => {
-  const db = window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
-  if (!db) { lsLoad(); loaded = true; applyBackground(); render(); return }
+  const db = !DEMO && window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
+  if (DEMO || !db) { lsLoad(); if (DEMO && !tasks.length) seedDemo(); loaded = true; applyBackground(); render(); return }
   tasksCol = db.collection("tasks");
   metaDoc = db.doc("board/meta");
   metaDoc.onSnapshot(s => { if (s.exists) { meta = { ...meta, ...s.data() }; applyBackground(); renderBar() } }, () => {});
