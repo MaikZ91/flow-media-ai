@@ -1,0 +1,482 @@
+<title>Flow Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky toolbar, one working surface below it (board columns / 2x2 matrix / month grid), editor as a side sheet. */
+:root {
+  --bg: #eceeea;
+  --surface: #f8f9f6;
+  --raised: #ffffff;
+  --ink: #18201c;
+  --muted: #5d6862;
+  --line: #d5dad4;
+  --accent: #2f5bff;
+  --accent-soft: #e3e9ff;
+  --p1: #c8372d; --p1-soft: #fbe4e1;
+  --p2: #2f5bff; --p2-soft: #e3e9ff;
+  --p3: #b07a00; --p3-soft: #fbf0d4;
+  --p4: #6f7a74; --p4-soft: #e7eae6;
+  --ok: #24804f;
+  --shadow: 0 1px 2px rgba(24,32,28,.08), 0 2px 8px rgba(24,32,28,.05);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #131715; --surface: #1a1f1c; --raised: #222825; --ink: #e8ece8; --muted: #9aa59f; --line: #2f3632;
+  --accent: #7d97ff; --accent-soft: #232c4d;
+  --p1: #ff7b6e; --p1-soft: #3a211e; --p2: #7d97ff; --p2-soft: #232c4d; --p3: #e4b23f; --p3-soft: #3a3019; --p4: #9aa59f; --p4-soft: #262c29;
+  --ok: #5cc38a; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #131715; --surface: #1a1f1c; --raised: #222825; --ink: #e8ece8; --muted: #9aa59f; --line: #2f3632;
+  --accent: #7d97ff; --accent-soft: #232c4d;
+  --p1: #ff7b6e; --p1-soft: #3a211e; --p2: #7d97ff; --p2-soft: #232c4d; --p3: #e4b23f; --p3-soft: #3a3019; --p4: #9aa59f; --p4-soft: #262c29;
+  --ok: #5cc38a; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 15px/1.45 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface) }
+button, input, select, textarea { font: inherit; color: inherit }
+button { cursor: pointer }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line);
+  padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px }
+.brand { display: flex; align-items: baseline; gap: 8px; margin-right: auto }
+.brand h1 { font: 800 22px/1 var(--f-display); letter-spacing: -.01em; margin: 0 }
+.brand small { color: var(--muted); font: 500 12px var(--f-mono) }
+.tabs { display: flex; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 3px }
+.tabs button { border: 0; background: none; padding: 6px 12px; border-radius: 7px; font-weight: 600; color: var(--muted) }
+.tabs button[aria-pressed="true"] { background: var(--raised); color: var(--ink); box-shadow: var(--shadow) }
+.tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.tools select { border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 6px 8px }
+.btn-primary { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 7px 14px; font-weight: 600 }
+.btn-ghost { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-weight: 500 }
+
+.status { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 8px 0; color: var(--muted); font-size: 13px; min-height: 28px }
+main { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px 40px }
+
+/* Board */
+.board { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: start }
+.col { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-width: 0 }
+.col-head { display: flex; align-items: baseline; justify-content: space-between; padding: 12px 14px 8px }
+.col-head h2 { font: 600 16px var(--f-display); margin: 0 }
+.count { font: 500 12px var(--f-mono); color: var(--muted) }
+.drop { display: flex; flex-direction: column; gap: 8px; padding: 4px 10px 12px; min-height: 64px; border-radius: 10px }
+.drop.over { background: var(--accent-soft); outline: 2px dashed var(--accent); outline-offset: -4px }
+.add-inline { margin: 0 10px 12px; border: 1px dashed var(--line); background: none; border-radius: 8px; padding: 6px; color: var(--muted); text-align: left }
+
+.card { background: var(--raised); border: 1px solid var(--line); border-left: 4px solid var(--pc, var(--p4)); border-radius: 9px; padding: 9px 11px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 6px; text-align: left; width: 100%; min-width: 0 }
+.card[draggable="true"] { cursor: grab }
+.card.dragging { opacity: .45 }
+.card .t { font-weight: 600; overflow-wrap: anywhere }
+.card.done .t { text-decoration: line-through; color: var(--muted) }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
+.chip { font: 500 11.5px/1 var(--f-body); padding: 4px 7px; border-radius: 99px; background: var(--p4-soft); color: var(--muted); white-space: nowrap }
+.chip.p { font-family: var(--f-mono); font-weight: 500 }
+.chip.p1 { background: var(--p1-soft); color: var(--p1) } .chip.p2 { background: var(--p2-soft); color: var(--p2) }
+.chip.p3 { background: var(--p3-soft); color: var(--p3) } .chip.p4 { background: var(--p4-soft); color: var(--p4) }
+.chip.due { font-family: var(--f-mono) }
+.chip.late { background: var(--p1-soft); color: var(--p1) }
+.chip.today { background: var(--accent-soft); color: var(--accent) }
+
+/* Matrix */
+.matrix { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr); grid-template-rows: auto minmax(0,1fr) minmax(0,1fr); gap: 10px }
+.axis { font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; display: flex; align-items: center; justify-content: center }
+.axis.y { writing-mode: vertical-rl; transform: rotate(180deg) }
+.quad { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--qc); border-radius: 12px; min-width: 0; display: flex; flex-direction: column }
+.quad header { padding: 12px 14px 6px }
+.quad h2 { font: 600 16px var(--f-display); margin: 0 }
+.quad p { margin: 2px 0 0; color: var(--muted); font-size: 13px }
+
+/* Calendar */
+.cal-wrap { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 14px; align-items: start }
+.cal-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap }
+.cal-head h2 { font: 800 22px var(--f-display); margin: 0; min-width: 190px }
+.cal-scroll { overflow-x: auto }
+.cal { display: grid; grid-template-columns: 44px repeat(7, minmax(92px, 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--line); gap: 1px; min-width: 700px }
+.cal .dow { background: var(--surface); padding: 6px 8px; font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase }
+.cal .kw { background: var(--surface); font: 500 11px var(--f-mono); color: var(--muted); padding: 8px 4px; text-align: center }
+.day { background: var(--raised); min-height: 104px; padding: 6px; display: flex; flex-direction: column; gap: 4px; min-width: 0 }
+.day.out { background: var(--surface); color: var(--muted) }
+.day.over { background: var(--accent-soft) }
+.day-n { display: flex; justify-content: space-between; align-items: center; font: 500 12.5px var(--f-mono) }
+.day.is-today .day-n span { background: var(--accent); color: #fff; border-radius: 99px; padding: 1px 7px }
+.day-add { border: 0; background: none; color: var(--muted); padding: 0 4px; border-radius: 4px; opacity: .55 }
+.day:hover .day-add { opacity: 1 }
+.pill { border: 0; text-align: left; background: var(--pcs, var(--p4-soft)); color: var(--ink); border-left: 3px solid var(--pc, var(--p4)); border-radius: 5px; padding: 3px 6px; font-size: 12.5px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100% }
+.pill.done { text-decoration: line-through; opacity: .6 }
+.side { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0 }
+.side h3 { font: 600 15px var(--f-display); margin: 0 }
+.side p { margin: 0; color: var(--muted); font-size: 13px }
+
+.empty { border: 1px dashed var(--line); border-radius: 12px; padding: 28px; text-align: center; color: var(--muted); background: var(--surface) }
+.empty strong { display: block; color: var(--ink); font: 600 17px var(--f-display); margin-bottom: 4px }
+
+/* Editor sheet */
+.scrim { position: fixed; inset: 0; background: rgba(10,14,12,.38); z-index: 20 }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: var(--surface); z-index: 21; border-left: 1px solid var(--line);
+  padding: calc(16px + env(safe-area-inset-top, 0px)) max(18px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) 18px;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 14px }
+.sheet h2 { font: 800 20px var(--f-display); margin: 0 }
+.field { display: flex; flex-direction: column; gap: 5px }
+.field label, .lbl { font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em }
+.field input, .field select, .field textarea { border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 8px 10px; width: 100% }
+.field textarea { min-height: 96px; resize: vertical }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.toggle { display: flex; gap: 8px; align-items: center; border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 8px 10px }
+.prio-preview { font-size: 13px; color: var(--muted) }
+.sheet-actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap }
+.sheet-actions .spacer { flex: 1 }
+.btn-danger { background: none; border: 1px solid var(--p1); color: var(--p1); border-radius: 8px; padding: 6px 12px; font-weight: 500 }
+
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 9px 14px; border-radius: 9px; z-index: 30; font-size: 14px; max-width: calc(100% - 32px) }
+
+@media (max-width: 1280px) {
+  .board { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+}
+@media (max-width: 900px) {
+  .board { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .cal-wrap { grid-template-columns: minmax(0,1fr) }
+}
+@media (max-width: 560px) {
+  .board { grid-template-columns: minmax(0, 1fr) }
+  .matrix { grid-template-columns: minmax(0,1fr); grid-template-rows: none }
+  .axis { display: none }
+  .brand h1 { font-size: 20px }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card, .pill { transition: transform .12s ease, box-shadow .12s ease }
+  .card:hover { transform: translateY(-1px) }
+}
+</style>
+
+<div class="bar">
+  <div class="brand"><h1>Flow Board</h1><small id="today-label"></small></div>
+  <div class="tabs" role="group" aria-label="Ansicht">
+    <button id="tab-board" data-view="board" aria-pressed="true">Board</button>
+    <button id="tab-matrix" data-view="matrix" aria-pressed="false">Prioritäten</button>
+    <button id="tab-cal" data-view="cal" aria-pressed="false">Kalender</button>
+  </div>
+  <div class="tools">
+    <select id="filter-area" aria-label="Bereich filtern"></select>
+    <button class="btn-primary" id="btn-new">+ Aufgabe</button>
+  </div>
+</div>
+<div class="status" id="status">Aufgaben werden geladen …</div>
+<main id="main"></main>
+<div id="sheet-root"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const AREAS = ["Marketing", "Sales", "Produkt", "Coachings", "Finanzen", "Organisatorisch", "KI"];
+const COLS = [
+  { id: "backlog", name: "Backlog" },
+  { id: "todo", name: "To Do" },
+  { id: "progress", name: "In Progress" },
+  { id: "ongoing", name: "Ongoing Task" },
+  { id: "pending", name: "Pending" },
+  { id: "done", name: "Done" },
+];
+// Eisenhower quadrants: priority follows from "wichtig" and "dringend".
+const QUADS = [
+  { p: 1, imp: true, urg: true, name: "Sofort erledigen", hint: "wichtig und dringend" },
+  { p: 2, imp: true, urg: false, name: "Einplanen", hint: "wichtig, nicht dringend – hier entsteht Fortschritt" },
+  { p: 3, imp: false, urg: true, name: "Schnell abhaken", hint: "dringend, nicht wichtig – kurz halten" },
+  { p: 4, imp: false, urg: false, name: "Später oder streichen", hint: "weder wichtig noch dringend" },
+];
+const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+
+let tasks = [];
+let view = "board";
+let areaFilter = "";
+let calCursor = firstOfMonth(new Date());
+let store = null;      // db collection or null
+let readOnly = false;
+let loaded = false;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function pad(n) { return String(n).padStart(2, "0") }
+function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) }
+function firstOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1) }
+function parseYmd(s) { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d) }
+function isoWeek(d) {
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day);
+  const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+  return Math.ceil(((t - y0) / 864e5 + 1) / 7);
+}
+function prio(t) { return t.important ? (t.urgent ? 1 : 2) : (t.urgent ? 3 : 4) }
+function fmtDue(s) {
+  const d = parseYmd(s), today = parseYmd(ymd(new Date()));
+  const diff = Math.round((d - today) / 864e5);
+  if (diff === 0) return "heute";
+  if (diff === 1) return "morgen";
+  if (diff === -1) return "gestern";
+  return DOW[(d.getDay() + 6) % 7] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + ".";
+}
+function dueClass(t) {
+  if (!t.due || t.status === "done") return "";
+  const today = ymd(new Date());
+  return t.due < today ? "late" : t.due === today ? "today" : "";
+}
+function sortTasks(list) {
+  return list.slice().sort((a, b) => prio(a) - prio(b) || (a.due || "9999").localeCompare(b.due || "9999") || (a.createdAt || 0) - (b.createdAt || 0));
+}
+function visible() { return tasks.filter(t => !areaFilter || t.area === areaFilter) }
+
+function toast(msg) {
+  const el = $("#toast"); el.textContent = msg; el.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => { el.hidden = true }, 2600);
+}
+function setStatus() {
+  const open = tasks.filter(t => t.status !== "done");
+  const late = open.filter(t => dueClass(t) === "late").length;
+  const p1 = open.filter(t => prio(t) === 1).length;
+  let s = loaded ? `${open.length} offen · ${p1} sofort · ${late} überfällig` : "Aufgaben werden geladen …";
+  if (!store && loaded) s += " · nur in diesem Browser gespeichert";
+  if (readOnly) s += " · nur Ansicht";
+  $("#status").textContent = s;
+}
+
+/* ---------- persistence ---------- */
+const LS_KEY = "flow-board-tasks";
+function lsLoad() { try { return JSON.parse(localStorage.getItem(LS_KEY) || "[]") } catch { return [] } }
+function lsSave() { try { localStorage.setItem(LS_KEY, JSON.stringify(tasks)) } catch {} }
+
+async function save(task) {
+  const { id, ...body } = task;
+  const i = tasks.findIndex(t => t.id === id);
+  if (i >= 0) tasks[i] = task; else tasks.push(task);
+  render();
+  if (!store) { lsSave(); return }
+  try { await store.doc(id).set(body) }
+  catch (e) { handleWriteError(e) }
+}
+async function remove(id) {
+  tasks = tasks.filter(t => t.id !== id); render();
+  if (!store) { lsSave(); return }
+  try { await store.doc(id).delete() } catch (e) { handleWriteError(e) }
+}
+function patch(id, changes) {
+  const t = tasks.find(x => x.id === id); if (!t) return;
+  const next = { ...t, ...changes, updatedAt: Date.now() };
+  if (changes.status === "done" && t.status !== "done") next.doneAt = Date.now();
+  if (changes.status && changes.status !== "done") next.doneAt = null;
+  save(next);
+}
+function handleWriteError(e) {
+  if (e && e.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen."); }
+  else if (e && e.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Aufgaben.");
+  else toast("Speichern hat nicht geklappt. Versuch es gleich noch mal.");
+  setStatus();
+}
+function newId() { return "t" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) }
+
+/* ---------- rendering ---------- */
+function cardHtml(t, opts = {}) {
+  const p = prio(t), dc = dueClass(t);
+  return `<button class="card ${t.status === "done" ? "done" : ""}" style="--pc:var(--p${p})" draggable="${!readOnly}" data-id="${t.id}">
+    <span class="t">${esc(t.title)}</span>
+    <span class="meta">
+      <span class="chip p p${p}">P${p}</span>
+      ${t.due ? `<span class="chip due ${dc}">${dc === "late" ? "überfällig · " : ""}${fmtDue(t.due)}</span>` : ""}
+      ${t.area ? `<span class="chip">${esc(t.area)}</span>` : ""}
+      ${opts.showStatus ? `<span class="chip">${COLS.find(c => c.id === t.status)?.name || ""}</span>` : ""}
+    </span></button>`;
+}
+function emptyState() {
+  return `<div class="empty"><strong>Noch keine Aufgaben</strong>Leg mit „+ Aufgabe“ die erste an. Markier sie als wichtig und/oder dringend, dann sortiert das Board sie selbst.</div>`;
+}
+function renderBoard() {
+  const list = visible();
+  if (loaded && !tasks.length) return emptyState();
+  return `<div class="board">${COLS.map(c => {
+    const items = sortTasks(list.filter(t => t.status === c.id));
+    return `<section class="col"><div class="col-head"><h2>${c.name}</h2><span class="count">${items.length}</span></div>
+      <div class="drop" data-drop="status:${c.id}">${items.map(t => cardHtml(t)).join("")}</div>
+      ${c.id !== "done" && !readOnly ? `<button class="add-inline" data-new-status="${c.id}">+ Aufgabe</button>` : ""}</section>`;
+  }).join("")}</div>`;
+}
+function renderMatrix() {
+  const list = visible().filter(t => t.status !== "done");
+  if (loaded && !tasks.length) return emptyState();
+  const q = (x) => {
+    const items = sortTasks(list.filter(t => prio(t) === x.p));
+    return `<section class="quad" style="--qc:var(--p${x.p})"><header><h2>${x.name} <span class="count">${items.length}</span></h2><p>${x.hint}</p></header>
+      <div class="drop" data-drop="quad:${x.p}">${items.map(t => cardHtml(t, { showStatus: true })).join("")}</div></section>`;
+  };
+  return `<div class="matrix">
+    <div></div><div class="axis">dringend</div><div class="axis">nicht dringend</div>
+    <div class="axis y">wichtig</div>${q(QUADS[0])}${q(QUADS[1])}
+    <div class="axis y">nicht wichtig</div>${q(QUADS[2])}${q(QUADS[3])}
+  </div>`;
+}
+function renderCal() {
+  const list = visible();
+  const first = calCursor, y = first.getFullYear(), m = first.getMonth();
+  const start = new Date(y, m, 1 - ((first.getDay() + 6) % 7));
+  const today = ymd(new Date());
+  let cells = DOW.map(d => `<div class="dow">${d}</div>`).join("");
+  cells = `<div class="dow">KW</div>` + cells;
+  const d = new Date(start);
+  for (let w = 0; w < 6; w++) {
+    if (w > 0 && d.getMonth() !== m) break;
+    cells += `<div class="kw">${isoWeek(d)}</div>`;
+    for (let i = 0; i < 7; i++) {
+      const key = ymd(d);
+      const items = sortTasks(list.filter(t => t.due === key));
+      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "is-today" : ""}" data-drop="due:${key}">
+        <div class="day-n"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="day-add" data-new-due="${key}" aria-label="Aufgabe am ${pad(d.getDate())}.${pad(d.getMonth() + 1)}. anlegen">+</button>`}</div>
+        ${items.map(t => `<button class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(--p${prio(t)});--pcs:var(--p${prio(t)}-soft)" draggable="${!readOnly}" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</button>`).join("")}
+      </div>`;
+      d.setDate(d.getDate() + 1);
+    }
+  }
+  const undated = sortTasks(list.filter(t => !t.due && t.status !== "done"));
+  return `<div class="cal-wrap"><div style="min-width:0">
+      <div class="cal-head">
+        <button class="btn-ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button>
+        <h2>${MONTHS[m]} ${y}</h2>
+        <button class="btn-ghost" id="cal-next" aria-label="Nächster Monat">→</button>
+        <button class="btn-ghost" id="cal-today">Heute</button>
+      </div>
+      <div class="cal-scroll"><div class="cal">${cells}</div></div>
+    </div>
+    <aside class="side"><h3>Ohne Termin <span class="count">${undated.length}</span></h3>
+      <p>Zieh eine Aufgabe auf einen Tag, um sie einzuplanen.</p>
+      <div class="drop" data-drop="due:" style="padding:0">${undated.map(t => cardHtml(t)).join("") || `<p>Alles eingeplant.</p>`}</div>
+    </aside></div>`;
+}
+function render() {
+  $("#main").innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : renderCal();
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+  $("#btn-new").hidden = readOnly;
+  setStatus();
+}
+
+/* ---------- editor ---------- */
+function openEditor(task) {
+  const isNew = !tasks.some(t => t.id === task.id);
+  const root = $("#sheet-root");
+  root.innerHTML = `<div class="scrim" data-close></div>
+  <form class="sheet" id="editor" role="dialog" aria-modal="true" aria-labelledby="ed-h">
+    <h2 id="ed-h">${isNew ? "Neue Aufgabe" : "Aufgabe bearbeiten"}</h2>
+    <div class="field"><label for="ed-title">Titel</label><input id="ed-title" required maxlength="160" value="${esc(task.title)}" ${readOnly ? "disabled" : ""}></div>
+    <div class="toggles">
+      <label class="toggle"><input type="checkbox" id="ed-imp" ${task.important ? "checked" : ""} ${readOnly ? "disabled" : ""}> Wichtig</label>
+      <label class="toggle"><input type="checkbox" id="ed-urg" ${task.urgent ? "checked" : ""} ${readOnly ? "disabled" : ""}> Dringend</label>
+    </div>
+    <div class="prio-preview" id="ed-prio"></div>
+    <div class="row2">
+      <div class="field"><label for="ed-status">Spalte</label><select id="ed-status" ${readOnly ? "disabled" : ""}>${COLS.map(c => `<option value="${c.id}" ${c.id === task.status ? "selected" : ""}>${c.name}</option>`).join("")}</select></div>
+      <div class="field"><label for="ed-due">Fällig am</label><input type="date" id="ed-due" value="${task.due || ""}" ${readOnly ? "disabled" : ""}></div>
+    </div>
+    <div class="field"><label for="ed-area">Bereich</label><select id="ed-area" ${readOnly ? "disabled" : ""}><option value="">–</option>${AREAS.map(a => `<option ${a === task.area ? "selected" : ""}>${a}</option>`).join("")}</select></div>
+    <div class="field"><label for="ed-notes">Notizen</label><textarea id="ed-notes" maxlength="4000" ${readOnly ? "disabled" : ""}>${esc(task.notes)}</textarea></div>
+    <div class="sheet-actions">
+      ${!isNew && !readOnly ? `<button type="button" class="btn-danger" id="ed-del">Löschen</button>` : ""}
+      <span class="spacer"></span>
+      <button type="button" class="btn-ghost" data-close>${readOnly ? "Schließen" : "Abbrechen"}</button>
+      ${readOnly ? "" : `<button type="submit" class="btn-primary">${isNew ? "Anlegen" : "Speichern"}</button>`}
+    </div>
+  </form>`;
+  const upd = () => {
+    const p = prio({ important: $("#ed-imp").checked, urgent: $("#ed-urg").checked });
+    const q = QUADS.find(x => x.p === p);
+    $("#ed-prio").innerHTML = `<span class="chip p p${p}">P${p}</span> ${q.name} – ${q.hint}`;
+  };
+  $("#ed-imp").onchange = upd; $("#ed-urg").onchange = upd; upd();
+  $("#ed-title").focus();
+  let confirmDel = false;
+  const del = $("#ed-del");
+  if (del) del.onclick = () => {
+    if (!confirmDel) { confirmDel = true; del.textContent = "Wirklich löschen?"; return }
+    remove(task.id); closeEditor(); toast("Aufgabe gelöscht");
+  };
+  root.querySelectorAll("[data-close]").forEach(el => el.onclick = closeEditor);
+  $("#editor").onsubmit = e => {
+    e.preventDefault();
+    const title = $("#ed-title").value.trim(); if (!title) return;
+    const status = $("#ed-status").value;
+    const next = { ...task, title, important: $("#ed-imp").checked, urgent: $("#ed-urg").checked, status,
+      due: $("#ed-due").value || "", area: $("#ed-area").value, notes: $("#ed-notes").value.trim(), updatedAt: Date.now() };
+    if (status === "done" && task.status !== "done") next.doneAt = Date.now();
+    if (status !== "done") next.doneAt = null;
+    save(next); closeEditor(); toast(isNew ? "Aufgabe angelegt" : "Gespeichert");
+  };
+}
+function closeEditor() { $("#sheet-root").innerHTML = "" }
+function blankTask(extra = {}) {
+  return { id: newId(), title: "", notes: "", important: false, urgent: false, status: "backlog", due: "", area: areaFilter || "", createdAt: Date.now(), updatedAt: Date.now(), doneAt: null, ...extra };
+}
+
+/* ---------- interactions ---------- */
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".tabs button");
+  if (tab) { view = tab.dataset.view; try { localStorage.setItem("flow-board-view", view) } catch {} render(); return }
+  const card = e.target.closest("[data-id]");
+  if (card && !e.target.closest("#sheet-root")) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openEditor(t); return }
+  const ns = e.target.closest("[data-new-status]"); if (ns) { openEditor(blankTask({ status: ns.dataset.newStatus })); return }
+  const nd = e.target.closest("[data-new-due]"); if (nd) { openEditor(blankTask({ due: nd.dataset.newDue, status: "todo" })); return }
+  if (e.target.id === "btn-new") openEditor(blankTask());
+  if (e.target.id === "cal-prev") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() - 1, 1); render() }
+  if (e.target.id === "cal-next") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + 1, 1); render() }
+  if (e.target.id === "cal-today") { calCursor = firstOfMonth(new Date()); render() }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#editor")) closeEditor() });
+
+let dragId = null;
+document.addEventListener("dragstart", e => {
+  const el = e.target.closest("[data-id]"); if (!el || readOnly) return;
+  dragId = el.dataset.id; el.classList.add("dragging");
+  e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", dragId);
+});
+document.addEventListener("dragend", e => { e.target.closest?.("[data-id]")?.classList.remove("dragging"); clearOver() });
+function clearOver() { document.querySelectorAll(".over").forEach(x => x.classList.remove("over")) }
+document.addEventListener("dragover", e => {
+  const z = e.target.closest("[data-drop]"); if (!z || !dragId) return;
+  e.preventDefault(); e.dataTransfer.dropEffect = "move";
+  if (!z.classList.contains("over")) { clearOver(); z.classList.add("over") }
+});
+document.addEventListener("drop", e => {
+  const z = e.target.closest("[data-drop]"); if (!z || !dragId) return;
+  e.preventDefault(); clearOver();
+  const [kind, val] = z.dataset.drop.split(":");
+  const id = dragId; dragId = null;
+  if (kind === "status") patch(id, { status: val });
+  if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patch(id, { important: q.imp, urgent: q.urg }) }
+  if (kind === "due") patch(id, { due: val || "" });
+});
+
+$("#filter-area").innerHTML = `<option value="">Alle Bereiche</option>` + AREAS.map(a => `<option>${a}</option>`).join("");
+$("#filter-area").onchange = e => { areaFilter = e.target.value; render() };
+{
+  const n = new Date();
+  $("#today-label").textContent = `${DOW[(n.getDay() + 6) % 7]} ${pad(n.getDate())}.${pad(n.getMonth() + 1)}. · KW ${isoWeek(n)}`;
+}
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal"].includes(v)) view = v } catch {}
+render();
+
+/* ---------- boot: shared store if available, browser storage otherwise ---------- */
+(async () => {
+  const db = window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
+  if (!db) { tasks = lsLoad(); loaded = true; render(); return }
+  store = db.collection("tasks");
+  store.onSnapshot(snap => {
+    tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    loaded = true; render();
+  }, err => {
+    if (err.code === "revoked") { store = null; readOnly = true }
+    toast("Verbindung zum Speicher unterbrochen. Lade die Seite neu.");
+    setStatus();
+  });
+})();
+</script>
