@@ -54,14 +54,20 @@ Maik (als HeyGen-Avatar mit seiner eigenen Stimme) erzählt, was das Flow Board 
 - Keine Schlüssel, Links mit `#k=` oder Mailadressen im Bild.
 - Test-Variable: `opener = avatar` (Mensch im ersten Frame, als KI-Avatar mit eigener Stimme) – Vergleich mit R001 (`screen-montage`).
 
-## Caption (Vorschlag)
-Ich hab mir heute mein eigenes Firmen-Tool gebaut. An einem Tag, mit KI.
+## Caption (final, 19.10.2026)
+Ich hab mir heute mein eigenes Firmen-Tool gebaut. Mit KI, an einem Tag.
 
-Aufgaben, Kalender, Buchhaltung, Rechnungen, Landingpage und die Zahlen dazu. Alles an einem Ort, genau so, wie ich arbeite.
+Aufgaben, Kalender, Buchhaltung, Rechnungen und meine Landingpage samt Besucherzahlen. Alles an einem Ort und genau so, wie ich arbeite.
 
-Kein Entwicklerteam, kein Abo-Zoo. Nicht perfekt, aber es läuft, und ich nutz es ab jetzt jeden Tag.
+Kein Entwicklerteam, keine Agentur, keine fünf verschiedenen Apps mehr. Ich hatte eine Idee, hab sie mit KI umgesetzt und nutze das Ding ab jetzt jeden Tag. Perfekt ist es noch nicht, aber es läuft.
 
-Was würdest du in so ein Tool als Erstes einbauen?
+Das Spannende daran: So etwas geht auch für deinen Betrieb. Zugeschnitten auf deine Abläufe, statt dass du dich an ein fertiges Tool anpasst.
+
+Wenn ich dir so ein Tool bauen soll oder du wissen willst, wie man so was selbst umsetzt: Schreib mir einfach eine Nachricht.
+
+#KI #Automatisierung #BuildInPublic #Selbstständigkeit #FlowMediaAI
+
+(CTA als Direktnachricht, kein „Kommentiere X“, weil es noch keine Auto-DM gibt; siehe Creative Director, Teil A §5.)
 
 ## B-Roll und Lizenzen
 - Stock nur mit **Mixkit Stock Video Free License** (kommerziell und Firmen-Social-Media erlaubt, ohne Namensnennung): `1808` close-up-shot-of-a-person-typing-on-a-laptop · `1746` a-person-typing-in-a-laptop-at-a-coffee-shop · `4827` hands-of-a-man-typing-on-a-laptop (je https://mixkit.co/free-stock-video/<name>-<id>/, Download `assets.mixkit.co/videos/<id>/<id>-1080.mp4`). Nur Hände, keine Gesichter, damit niemand für Maik gehalten wird; nicht unverändert (9:16-Ausschnitt, dunkler, kühler, Vignette, Korn).
