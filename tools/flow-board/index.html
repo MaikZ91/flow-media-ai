@@ -2,481 +2,827 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: sticky toolbar, one working surface below it (board columns / 2x2 matrix / month grid), editor as a side sheet. */
+/* Layout: full-bleed generated photo background; translucent top bar; lists side by side in a horizontal scroller (Trello-style); card detail as a centered modal. */
 :root {
-  --bg: #eceeea;
-  --surface: #f8f9f6;
-  --raised: #ffffff;
-  --ink: #18201c;
-  --muted: #5d6862;
-  --line: #d5dad4;
+  --list: #f1f2f4;
+  --card: #ffffff;
+  --ink: #172b4d;
+  --muted: #44546f;
+  --faint: #626f86;
+  --line: #dcdfe4;
+  --hover: #e4e6ea;
   --accent: #2f5bff;
-  --accent-soft: #e3e9ff;
-  --p1: #c8372d; --p1-soft: #fbe4e1;
-  --p2: #2f5bff; --p2-soft: #e3e9ff;
-  --p3: #b07a00; --p3-soft: #fbf0d4;
-  --p4: #6f7a74; --p4-soft: #e7eae6;
-  --ok: #24804f;
-  --shadow: 0 1px 2px rgba(24,32,28,.08), 0 2px 8px rgba(24,32,28,.05);
-  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --bar: rgba(16, 24, 32, .42);
+  --bar-ink: #ffffff;
+  --scrim: rgba(9, 14, 20, .55);
+  --modal: #f7f8f9;
+  --red: #c9372c; --red-soft: #ffd5d2;
+  --l1: #f87168; --l2: #fea362; --l3: #e2b203; --l4: #8590a2;
+  --la: #6cc3e0; --lb: #94c748; --lc: #9f8fef; --ld: #e774bb; --le: #579dff; --lf: #4bce97; --lg: #b38600;
+  --shadow: 0 1px 1px rgba(9,30,66,.25), 0 0 1px rgba(9,30,66,.31);
+  --f-body: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #131715; --surface: #1a1f1c; --raised: #222825; --ink: #e8ece8; --muted: #9aa59f; --line: #2f3632;
-  --accent: #7d97ff; --accent-soft: #232c4d;
-  --p1: #ff7b6e; --p1-soft: #3a211e; --p2: #7d97ff; --p2-soft: #232c4d; --p3: #e4b23f; --p3-soft: #3a3019; --p4: #9aa59f; --p4-soft: #262c29;
-  --ok: #5cc38a; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark } }
+  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
+  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
+  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #131715; --surface: #1a1f1c; --raised: #222825; --ink: #e8ece8; --muted: #9aa59f; --line: #2f3632;
-  --accent: #7d97ff; --accent-soft: #232c4d;
-  --p1: #ff7b6e; --p1-soft: #3a211e; --p2: #7d97ff; --p2-soft: #232c4d; --p3: #e4b23f; --p3-soft: #3a3019; --p4: #9aa59f; --p4-soft: #262c29;
-  --ok: #5cc38a; --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark }
+  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
+  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
+  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark }
 
 * { box-sizing: border-box }
-body { background: var(--bg); color: var(--ink); font: 15px/1.45 var(--f-body); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface) }
+html, body { height: 100% }
+body { margin: 0; background: #2a6f74; color: var(--ink); font: 14px/1.4 var(--f-body); display: flex; flex-direction: column; overflow: hidden }
+#bg { position: fixed; inset: 0; z-index: -1; background: #2a6f74 center/cover no-repeat }
 button, input, select, textarea { font: inherit; color: inherit }
 button { cursor: pointer }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
 
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line);
-  padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px }
-.brand { display: flex; align-items: baseline; gap: 8px; margin-right: auto }
-.brand h1 { font: 800 22px/1 var(--f-display); letter-spacing: -.01em; margin: 0 }
-.brand small { color: var(--muted); font: 500 12px var(--f-mono) }
-.tabs { display: flex; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 3px }
-.tabs button { border: 0; background: none; padding: 6px 12px; border-radius: 7px; font-weight: 600; color: var(--muted) }
-.tabs button[aria-pressed="true"] { background: var(--raised); color: var(--ink); box-shadow: var(--shadow) }
-.tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
-.tools select { border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 6px 8px }
-.btn-primary { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 7px 14px; font-weight: 600 }
-.btn-ghost { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-weight: 500 }
+/* top bar */
+.bar { background: var(--bar); backdrop-filter: blur(6px); color: var(--bar-ink); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding-block: 8px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)) }
+.bbtn { background: rgba(255,255,255,.16); border: 0; color: inherit; border-radius: 6px; padding: 6px 10px; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; white-space: nowrap }
+.bbtn:hover { background: rgba(255,255,255,.28) }
+.bbtn[aria-pressed="true"] { background: rgba(255,255,255,.9); color: #172b4d }
+.bbtn.plain { background: none }
+.bbtn.plain:hover { background: rgba(255,255,255,.2) }
+.title { font-weight: 700; font-size: 18px; padding: 4px 8px; border-radius: 6px; border: 0; background: none; color: inherit; max-width: 60vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.title:hover { background: rgba(255,255,255,.2) }
+.title-input { font-weight: 700; font-size: 18px; padding: 3px 7px; border-radius: 6px; border: 0; color: #172b4d; width: min(320px, 60vw) }
+.avatars { display: flex; padding-left: 6px }
+.av { width: 28px; height: 28px; border-radius: 50%; display: inline-grid; place-items: center; font: 600 11px var(--f-body); color: #fff; border: 2px solid rgba(255,255,255,.85); margin-left: -6px; flex: none }
+.spacer { flex: 1 }
+.sep { width: 1px; height: 20px; background: rgba(255,255,255,.3) }
 
-.status { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 8px 0; color: var(--muted); font-size: 13px; min-height: 28px }
-main { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px 40px }
+/* board */
+.surface { flex: 1; min-height: 0; overflow-x: auto; overflow-y: hidden; display: flex; align-items: flex-start; gap: 12px;
+  padding-block: 12px 16px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px));
+  scroll-snap-type: x proximity; scroll-padding-inline: 12px }
+.list { flex: 0 0 272px; max-height: 100%; background: var(--list); border-radius: 12px; display: flex; flex-direction: column; box-shadow: var(--shadow); scroll-snap-align: start }
+.list-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 8px 6px 14px; gap: 6px }
+.list-head h2 { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink) }
+.list-head .n { font: 500 12px var(--f-mono); color: var(--faint) }
+.dots { border: 0; background: none; color: var(--muted); border-radius: 6px; padding: 2px 8px; font-weight: 700; letter-spacing: 1px }
+.dots:hover { background: var(--hover) }
+.cards { overflow-y: auto; padding: 2px 8px 2px; display: flex; flex-direction: column; gap: 8px; min-height: 8px }
+.cards.over { background: rgba(47,91,255,.12); border-radius: 8px }
+.list-foot { padding: 6px 8px 8px }
+.add { width: 100%; border: 0; background: none; color: var(--muted); text-align: left; border-radius: 8px; padding: 7px 8px; display: flex; gap: 6px; align-items: center; font-weight: 500 }
+.add:hover { background: var(--hover); color: var(--ink) }
+.composer textarea { width: 100%; border: 0; border-radius: 8px; padding: 8px 10px; background: var(--card); box-shadow: var(--shadow); resize: none; min-height: 60px }
+.composer .row { display: flex; gap: 6px; margin-top: 6px; align-items: center }
+.btn { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 6px 12px; font-weight: 600 }
+.btn-x { border: 0; background: none; color: var(--muted); font-size: 20px; line-height: 1; padding: 2px 8px; border-radius: 6px }
+.btn-x:hover { background: var(--hover) }
 
-/* Board */
-.board { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: start }
-.col { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-width: 0 }
-.col-head { display: flex; align-items: baseline; justify-content: space-between; padding: 12px 14px 8px }
-.col-head h2 { font: 600 16px var(--f-display); margin: 0 }
-.count { font: 500 12px var(--f-mono); color: var(--muted) }
-.drop { display: flex; flex-direction: column; gap: 8px; padding: 4px 10px 12px; min-height: 64px; border-radius: 10px }
-.drop.over { background: var(--accent-soft); outline: 2px dashed var(--accent); outline-offset: -4px }
-.add-inline { margin: 0 10px 12px; border: 1px dashed var(--line); background: none; border-radius: 8px; padding: 6px; color: var(--muted); text-align: left }
+.card { background: var(--card); border-radius: 8px; box-shadow: var(--shadow); padding: 8px 10px 6px; display: flex; flex-direction: column; gap: 6px; text-align: left; border: 0; width: 100%; color: var(--ink) }
+.card:hover { outline: 2px solid var(--accent); outline-offset: -2px }
+.card.dragging { opacity: .4; transform: rotate(2deg) }
+.card .t { overflow-wrap: anywhere; font-size: 14px }
+.card.done .t { color: var(--faint) }
+.labels { display: flex; gap: 4px; flex-wrap: wrap }
+.lab { height: 8px; min-width: 40px; border-radius: 4px; background: var(--lc, var(--l4)) }
+.labels.wide .lab { height: auto; min-width: 0; padding: 2px 8px; font: 600 11.5px/1.4 var(--f-body); color: #172b4d }
+.foot { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; color: var(--muted); font-size: 12.5px }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px; border-radius: 4px }
+.badge.late { background: var(--red); color: #fff }
+.badge.soon { background: #f5cd47; color: #172b4d }
+.badge.done { background: #1f845a; color: #fff }
+.foot .people { margin-left: auto; display: flex; padding-left: 6px }
+.foot .av { width: 26px; height: 26px; border-color: var(--card); font-size: 10.5px }
 
-.card { background: var(--raised); border: 1px solid var(--line); border-left: 4px solid var(--pc, var(--p4)); border-radius: 9px; padding: 9px 11px; box-shadow: var(--shadow);
-  display: flex; flex-direction: column; gap: 6px; text-align: left; width: 100%; min-width: 0 }
-.card[draggable="true"] { cursor: grab }
-.card.dragging { opacity: .45 }
-.card .t { font-weight: 600; overflow-wrap: anywhere }
-.card.done .t { text-decoration: line-through; color: var(--muted) }
-.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
-.chip { font: 500 11.5px/1 var(--f-body); padding: 4px 7px; border-radius: 99px; background: var(--p4-soft); color: var(--muted); white-space: nowrap }
-.chip.p { font-family: var(--f-mono); font-weight: 500 }
-.chip.p1 { background: var(--p1-soft); color: var(--p1) } .chip.p2 { background: var(--p2-soft); color: var(--p2) }
-.chip.p3 { background: var(--p3-soft); color: var(--p3) } .chip.p4 { background: var(--p4-soft); color: var(--p4) }
-.chip.due { font-family: var(--f-mono) }
-.chip.late { background: var(--p1-soft); color: var(--p1) }
-.chip.today { background: var(--accent-soft); color: var(--accent) }
-
-/* Matrix */
-.matrix { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr); grid-template-rows: auto minmax(0,1fr) minmax(0,1fr); gap: 10px }
-.axis { font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; display: flex; align-items: center; justify-content: center }
-.axis.y { writing-mode: vertical-rl; transform: rotate(180deg) }
-.quad { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--qc); border-radius: 12px; min-width: 0; display: flex; flex-direction: column }
-.quad header { padding: 12px 14px 6px }
-.quad h2 { font: 600 16px var(--f-display); margin: 0 }
-.quad p { margin: 2px 0 0; color: var(--muted); font-size: 13px }
-
-/* Calendar */
-.cal-wrap { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 14px; align-items: start }
-.cal-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap }
-.cal-head h2 { font: 800 22px var(--f-display); margin: 0; min-width: 190px }
+/* matrix + calendar sit on the same background, as panels */
+.panel { background: var(--list); border-radius: 12px; box-shadow: var(--shadow); padding: 12px; min-width: 0 }
+.matrix { flex: 1; display: grid; grid-template-columns: repeat(2, minmax(260px, 1fr)); gap: 12px; align-self: stretch; overflow-y: auto }
+.quad { display: flex; flex-direction: column; gap: 8px; border-top: 5px solid var(--qc) }
+.quad h2 { margin: 0; font-size: 15px }
+.quad p { margin: 0; color: var(--muted); font-size: 12.5px }
+.cal-panel { flex: 1; align-self: stretch; overflow: auto; display: flex; flex-direction: column; gap: 10px }
+.cal-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
+.cal-head h2 { margin: 0 6px; font-size: 18px; min-width: 170px }
+.ghost { border: 1px solid var(--line); background: var(--card); border-radius: 6px; padding: 5px 10px; font-weight: 500 }
+.cal-body { display: grid; grid-template-columns: minmax(0,1fr) 240px; gap: 12px; min-height: 0 }
 .cal-scroll { overflow-x: auto }
-.cal { display: grid; grid-template-columns: 44px repeat(7, minmax(92px, 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--line); gap: 1px; min-width: 700px }
-.cal .dow { background: var(--surface); padding: 6px 8px; font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase }
-.cal .kw { background: var(--surface); font: 500 11px var(--f-mono); color: var(--muted); padding: 8px 4px; text-align: center }
-.day { background: var(--raised); min-height: 104px; padding: 6px; display: flex; flex-direction: column; gap: 4px; min-width: 0 }
-.day.out { background: var(--surface); color: var(--muted) }
-.day.over { background: var(--accent-soft) }
-.day-n { display: flex; justify-content: space-between; align-items: center; font: 500 12.5px var(--f-mono) }
-.day.is-today .day-n span { background: var(--accent); color: #fff; border-radius: 99px; padding: 1px 7px }
-.day-add { border: 0; background: none; color: var(--muted); padding: 0 4px; border-radius: 4px; opacity: .55 }
-.day:hover .day-add { opacity: 1 }
-.pill { border: 0; text-align: left; background: var(--pcs, var(--p4-soft)); color: var(--ink); border-left: 3px solid var(--pc, var(--p4)); border-radius: 5px; padding: 3px 6px; font-size: 12.5px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100% }
-.pill.done { text-decoration: line-through; opacity: .6 }
-.side { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0 }
-.side h3 { font: 600 15px var(--f-display); margin: 0 }
-.side p { margin: 0; color: var(--muted); font-size: 13px }
+.cal { display: grid; grid-template-columns: 40px repeat(7, minmax(96px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 720px }
+.cal .h { background: var(--list); padding: 6px; font: 500 11.5px var(--f-mono); color: var(--faint); text-transform: uppercase }
+.cal .kw { background: var(--list); padding: 8px 2px; text-align: center; font: 500 11px var(--f-mono); color: var(--faint) }
+.day { background: var(--card); min-height: 100px; padding: 5px; display: flex; flex-direction: column; gap: 3px; min-width: 0 }
+.day.out { opacity: .55 }
+.day.over { background: var(--hover) }
+.dn { display: flex; justify-content: space-between; font: 500 12px var(--f-mono); color: var(--muted) }
+.day.today .dn span { background: var(--accent); color: #fff; border-radius: 99px; padding: 0 7px }
+.dadd { border: 0; background: none; color: var(--faint); border-radius: 4px; padding: 0 5px }
+.dadd:hover { background: var(--hover) }
+.pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
+.pill.done { opacity: .5; text-decoration: line-through }
+.undated { display: flex; flex-direction: column; gap: 8px }
+.undated h3 { margin: 0; font-size: 14px }
+.undated p { margin: 0; color: var(--muted); font-size: 12.5px }
 
-.empty { border: 1px dashed var(--line); border-radius: 12px; padding: 28px; text-align: center; color: var(--muted); background: var(--surface) }
-.empty strong { display: block; color: var(--ink); font: 600 17px var(--f-display); margin-bottom: 4px }
+.empty-note { color: var(--faint); font-size: 13px; padding: 4px 4px 8px }
 
-/* Editor sheet */
-.scrim { position: fixed; inset: 0; background: rgba(10,14,12,.38); z-index: 20 }
-.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: var(--surface); z-index: 21; border-left: 1px solid var(--line);
-  padding: calc(16px + env(safe-area-inset-top, 0px)) max(18px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) 18px;
-  overflow-y: auto; display: flex; flex-direction: column; gap: 14px }
-.sheet h2 { font: 800 20px var(--f-display); margin: 0 }
-.field { display: flex; flex-direction: column; gap: 5px }
-.field label, .lbl { font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em }
-.field input, .field select, .field textarea { border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 8px 10px; width: 100% }
-.field textarea { min-height: 96px; resize: vertical }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
-.toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
-.toggle { display: flex; gap: 8px; align-items: center; border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 8px 10px }
-.prio-preview { font-size: 13px; color: var(--muted) }
-.sheet-actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap }
-.sheet-actions .spacer { flex: 1 }
-.btn-danger { background: none; border: 1px solid var(--p1); color: var(--p1); border-radius: 8px; padding: 6px 12px; font-weight: 500 }
+/* modal */
+.scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 20; display: flex; justify-content: center; align-items: flex-start; overflow-y: auto;
+  padding: calc(48px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)) }
+.modal { background: var(--modal); color: var(--ink); border-radius: 12px; width: min(720px, 100%); padding: 18px 20px 20px; display: grid; grid-template-columns: minmax(0,1fr) 180px; gap: 18px; position: relative }
+.modal .close { position: absolute; top: 8px; right: 8px }
+.mtitle { width: 100%; font-size: 20px; font-weight: 600; border: 0; background: transparent; border-radius: 6px; padding: 4px 6px; margin-left: -6px }
+.mtitle:focus { background: var(--card); box-shadow: inset 0 0 0 2px var(--accent) }
+.in-list { color: var(--muted); font-size: 13px; margin: 2px 0 12px }
+.sec { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px }
+.sec h3 { margin: 0; font-size: 14px; display: flex; align-items: center; gap: 8px }
+.sec textarea, .sec input, .side select, .side input { width: 100%; border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 7px 9px }
+.sec textarea { min-height: 90px; resize: vertical }
+.comment { background: var(--card); border-radius: 8px; padding: 7px 10px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px }
+.comment small { color: var(--faint); font-size: 11.5px }
+.comment .ct { white-space: pre-wrap; overflow-wrap: anywhere }
+.side { display: flex; flex-direction: column; gap: 10px }
+.side .lbl { font-size: 12px; font-weight: 600; color: var(--muted) }
+.chk { display: flex; gap: 8px; align-items: center; background: var(--hover); border-radius: 6px; padding: 7px 9px; font-weight: 500 }
+.danger { border: 0; background: var(--red-soft); color: var(--red); border-radius: 6px; padding: 7px 10px; font-weight: 600; text-align: left }
+.mfoot { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px }
+.menu { position: fixed; z-index: 15; background: var(--modal); color: var(--ink); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.25); padding: 12px; width: 260px; display: flex; flex-direction: column; gap: 8px }
+.menu h3 { margin: 0; font-size: 13px; color: var(--muted) }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px }
+.sw { aspect-ratio: 16/10; border-radius: 6px; border: 2px solid transparent; background: center/cover; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: flex-end; padding: 3px 5px; text-shadow: 0 1px 2px rgba(0,0,0,.6); max-width: 100% }
+.sw[aria-pressed="true"] { border-color: var(--accent) }
+.stat { font-size: 12.5px; color: var(--muted) }
 
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 9px 14px; border-radius: 9px; z-index: 30; font-size: 14px; max-width: calc(100% - 32px) }
+/* files */
+.files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; min-height: 0 }
+.fpanel { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0 }
+.fpanel h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px }
+.fpanel .sub { margin: 0; color: var(--muted); font-size: 12.5px }
+.dropzone { border: 2px dashed var(--line); border-radius: 10px; padding: 14px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 8px; align-items: center }
+.dropzone.over { border-color: var(--accent); background: rgba(47,91,255,.08) }
+.frow { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 10px; align-items: center; background: var(--card); border-radius: 8px; padding: 6px 8px; box-shadow: var(--shadow) }
+.ficon { width: 40px; height: 40px; border-radius: 6px; background: var(--hover); display: grid; place-items: center; overflow: hidden; color: var(--muted); font: 600 10px var(--f-mono); text-transform: uppercase }
+.ficon img { width: 100%; height: 100%; object-fit: cover }
+.fname { font-weight: 500; color: var(--ink); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block }
+a.fname:hover { text-decoration: underline }
+.fmeta { font-size: 12px; color: var(--faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.fact { display: flex; gap: 4px }
+.mini { border: 1px solid var(--line); background: var(--card); border-radius: 6px; padding: 3px 8px; font-size: 12.5px; font-weight: 500; color: var(--ink); text-decoration: none; white-space: nowrap }
+.mini:hover { background: var(--hover) }
+.mini.warn { color: var(--red); border-color: var(--red) }
+.crumbs { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: 13px }
+.crumbs button { border: 0; background: none; color: var(--accent); padding: 2px 4px; border-radius: 4px; font-weight: 500 }
+.crumbs button:hover { background: var(--hover) }
+.note { font-size: 13px; color: var(--muted); background: var(--hover); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start }
+.meter { height: 6px; border-radius: 3px; background: var(--hover); overflow: hidden }
+.meter span { display: block; height: 100%; background: var(--accent) }
+.uprow { display: flex; gap: 6px; flex-wrap: wrap }
+.vis-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0) }
+.card.filedrop { outline: 2px dashed var(--accent); outline-offset: -2px }
 
-@media (max-width: 1280px) {
-  .board { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: #172b4d; color: #fff; padding: 9px 14px; border-radius: 8px; z-index: 30; max-width: calc(100% - 32px) }
+
+@media (max-width: 700px) {
+  .modal { grid-template-columns: minmax(0,1fr) }
+  .cal-body { grid-template-columns: minmax(0,1fr) }
+  .matrix { grid-template-columns: minmax(0,1fr) }
+  .files-view { grid-template-columns: minmax(0,1fr); overflow-y: auto }
+  .fpanel { overflow: visible }
+  .hide-sm { display: none }
+  .surface { scroll-snap-type: x mandatory }
 }
-@media (max-width: 900px) {
-  .board { grid-template-columns: repeat(2, minmax(0, 1fr)) }
-  .cal-wrap { grid-template-columns: minmax(0,1fr) }
-}
-@media (max-width: 560px) {
-  .board { grid-template-columns: minmax(0, 1fr) }
-  .matrix { grid-template-columns: minmax(0,1fr); grid-template-rows: none }
-  .axis { display: none }
-  .brand h1 { font-size: 20px }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .card, .pill { transition: transform .12s ease, box-shadow .12s ease }
-  .card:hover { transform: translateY(-1px) }
-}
+@media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
 </style>
 
-<div class="bar">
-  <div class="brand"><h1>Flow Board</h1><small id="today-label"></small></div>
-  <div class="tabs" role="group" aria-label="Ansicht">
-    <button id="tab-board" data-view="board" aria-pressed="true">Board</button>
-    <button id="tab-matrix" data-view="matrix" aria-pressed="false">Prioritäten</button>
-    <button id="tab-cal" data-view="cal" aria-pressed="false">Kalender</button>
-  </div>
-  <div class="tools">
-    <select id="filter-area" aria-label="Bereich filtern"></select>
-    <button class="btn-primary" id="btn-new">+ Aufgabe</button>
-  </div>
-</div>
-<div class="status" id="status">Aufgaben werden geladen …</div>
-<main id="main"></main>
-<div id="sheet-root"></div>
+<div id="bg"></div>
+<header class="bar">
+  <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg>Board</button>
+  <span id="title-slot"><button class="title" id="board-title" title="Board umbenennen">FLOW MEDIA AI #general</button></span>
+  <button class="bbtn plain hide-sm" id="btn-star" aria-label="Board markieren"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
+  <span class="bbtn hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
+  <span class="avatars" id="board-people"></span>
+  <span class="spacer"></span>
+  <button class="bbtn" data-view="matrix" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span class="hide-sm">Prioritäten</span></button>
+  <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
+  <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
+  <span class="sep hide-sm"></span>
+  <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
+</header>
+<main class="surface" id="main"></main>
+<div id="layer"></div>
 <div class="toast" id="toast" hidden></div>
 
 <script>
 const AREAS = ["Marketing", "Sales", "Produkt", "Coachings", "Finanzen", "Organisatorisch", "KI"];
+const AREA_COLOR = { Marketing: "--la", Sales: "--lb", Produkt: "--lc", Coachings: "--ld", Finanzen: "--lg", Organisatorisch: "--le", KI: "--lf" };
 const COLS = [
   { id: "backlog", name: "Backlog" },
   { id: "todo", name: "To Do" },
   { id: "progress", name: "In Progress" },
-  { id: "ongoing", name: "Ongoing Task" },
+  { id: "ongoing", name: "Ongoing task" },
   { id: "pending", name: "Pending" },
   { id: "done", name: "Done" },
 ];
-// Eisenhower quadrants: priority follows from "wichtig" and "dringend".
+// Eisenhower: priority follows from "wichtig" and "dringend".
 const QUADS = [
   { p: 1, imp: true, urg: true, name: "Sofort erledigen", hint: "wichtig und dringend" },
-  { p: 2, imp: true, urg: false, name: "Einplanen", hint: "wichtig, nicht dringend – hier entsteht Fortschritt" },
-  { p: 3, imp: false, urg: true, name: "Schnell abhaken", hint: "dringend, nicht wichtig – kurz halten" },
+  { p: 2, imp: true, urg: false, name: "Einplanen", hint: "wichtig, nicht dringend" },
+  { p: 3, imp: false, urg: true, name: "Schnell abhaken", hint: "dringend, nicht wichtig" },
   { p: 4, imp: false, urg: false, name: "Später oder streichen", hint: "weder wichtig noch dringend" },
 ];
+const PCOL = { 1: "--l1", 2: "--l2", 3: "--l3", 4: "--l4" };
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const MON_S = ["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+const BGS = {
+  meer:  { name: "Meer",  stops: [[0, "#0d3f4a"], [.35, "#1d6f78"], [.55, "#3c9a98"], [.7, "#7fbfb0"], [.82, "#c7b48f"], [1, "#8a6a4a"]] },
+  fels:  { name: "Fels",  stops: [[0, "#3a3430"], [.4, "#6b5d52"], [.65, "#a38d77"], [.85, "#cdbca5"], [1, "#efe6d8"]] },
+  wald:  { name: "Wald",  stops: [[0, "#13261c"], [.4, "#2c4a32"], [.65, "#4f7a4c"], [.85, "#9cb27a"], [1, "#d8d6a6"]] },
+  abend: { name: "Abend", stops: [[0, "#1d1840"], [.35, "#4a2d6b"], [.6, "#a4507a"], [.8, "#e98d6b"], [1, "#f6d29a"]] },
+  nacht: { name: "Nacht", stops: [[0, "#05070d"], [.4, "#111a2e"], [.7, "#253c5e"], [1, "#4f6f93"]] },
+  sand:  { name: "Sand",  stops: [[0, "#8c6b45"], [.4, "#c49a6c"], [.7, "#e3c9a3"], [1, "#f6ecdc"]] },
+};
 
 let tasks = [];
+let meta = { name: "FLOW MEDIA AI #general", bg: "meer", starred: false };
 let view = "board";
-let areaFilter = "";
-let calCursor = firstOfMonth(new Date());
-let store = null;      // db collection or null
-let readOnly = false;
-let loaded = false;
+let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let tasksCol = null, metaDoc = null;
+let readOnly = false, loaded = false;
+let composerFor = null;
+// files: board uploads (kind "asset") and Dropbox links (kind "dropbox"), optionally attached to a card via taskId
+let files = [], filesCol = null, assetsApi = null, mcpApi = null, usage = null;
+const DBX_ROOT = "/Flow Media AI";
+const dbx = { path: DBX_ROOT, entries: null, loading: false, error: null, retry: false };
+const MAX_BYTES = 20 * 1024 * 1024;
+const EXT_TYPE = { csv: "text/csv", md: "text/markdown", json: "application/json", txt: "text/plain", pdf: "application/pdf", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif", webp: "image/webp", svg: "image/svg+xml", mp4: "video/mp4", webm: "video/webm" };
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-function pad(n) { return String(n).padStart(2, "0") }
-function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) }
-function firstOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1) }
-function parseYmd(s) { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d) }
+const pad = n => String(n).padStart(2, "0");
+const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+const parseYmd = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d) };
+const prio = t => t.important ? (t.urgent ? 1 : 2) : (t.urgent ? 3 : 4);
 function isoWeek(d) {
   const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
   const day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day);
-  const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
-  return Math.ceil(((t - y0) / 864e5 + 1) / 7);
+  return Math.ceil(((t - new Date(Date.UTC(t.getUTCFullYear(), 0, 1))) / 864e5 + 1) / 7);
 }
-function prio(t) { return t.important ? (t.urgent ? 1 : 2) : (t.urgent ? 3 : 4) }
-function fmtDue(s) {
-  const d = parseYmd(s), today = parseYmd(ymd(new Date()));
+function dueInfo(t) {
+  if (!t.due) return null;
+  const d = parseYmd(t.due), today = parseYmd(ymd(new Date()));
   const diff = Math.round((d - today) / 864e5);
-  if (diff === 0) return "heute";
-  if (diff === 1) return "morgen";
-  if (diff === -1) return "gestern";
-  return DOW[(d.getDay() + 6) % 7] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + ".";
-}
-function dueClass(t) {
-  if (!t.due || t.status === "done") return "";
-  const today = ymd(new Date());
-  return t.due < today ? "late" : t.due === today ? "today" : "";
+  const label = d.getDate() + ". " + MON_S[d.getMonth()];
+  if (t.status === "done") return { label, cls: "done" };
+  return { label, cls: diff < 0 ? "late" : diff <= 1 ? "soon" : "" };
 }
 function sortTasks(list) {
-  return list.slice().sort((a, b) => prio(a) - prio(b) || (a.due || "9999").localeCompare(b.due || "9999") || (a.createdAt || 0) - (b.createdAt || 0));
+  return list.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0) || prio(a) - prio(b) || (a.createdAt || 0) - (b.createdAt || 0));
 }
-function visible() { return tasks.filter(t => !areaFilter || t.area === areaFilter) }
+function sortByPrio(list) {
+  return list.slice().sort((a, b) => prio(a) - prio(b) || (a.due || "9999").localeCompare(b.due || "9999"));
+}
+function initials(name) { return name.trim().split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase() }
+function avColor(name) { let h = 0; for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h} 45% 42%)` }
+function avatar(name) { return `<span class="av" style="background:${avColor(name)}" title="${esc(name)}">${esc(initials(name))}</span>` }
+function toast(msg) { const el = $("#toast"); el.textContent = msg; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600) }
+const icon = {
+  eye: '<svg class="i" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  desc: '<svg class="i" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
+  com: '<svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg>',
+  clock: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  plus: '<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+  clip: '<svg class="i" viewBox="0 0 24 24"><path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></svg>',
+  folder: '<svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+  box: '<svg class="i" viewBox="0 0 24 24"><path d="m7 3-5 3.5L7 10l5-3.5zM17 3l-5 3.5 5 3.5 5-3.5zM2 13.5 7 17l5-3.5L7 10zM17 10l-5 3.5 5 3.5 5-3.5zM7 18.5l5 3.5 5-3.5"/></svg>',
+};
+const fmtSize = b => b == null ? "" : b < 1024 ? b + " B" : b < 1048576 ? (b / 1024).toFixed(0) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB";
+const fmtDate = ms => new Date(ms).toLocaleDateString("de-DE", { day: "numeric", month: "short", year: "numeric" });
+const extOf = n => (n.split(".").pop() || "").toLowerCase();
+const encPath = p => p.split("/").map(encodeURIComponent).join("/");
+function dbxWebUrl(path, isFolder) {
+  if (isFolder) return "https://www.dropbox.com/home" + encPath(path);
+  const i = path.lastIndexOf("/");
+  return "https://www.dropbox.com/home" + encPath(path.slice(0, i)) + "?preview=" + encodeURIComponent(path.slice(i + 1));
+}
+const filesFor = id => files.filter(f => f.taskId === id).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
 
-function toast(msg) {
-  const el = $("#toast"); el.textContent = msg; el.hidden = false;
-  clearTimeout(toast.t); toast.t = setTimeout(() => { el.hidden = true }, 2600);
+/* ---------- background: generated photo-like texture per preset ---------- */
+function makeBackground(key) {
+  const p = BGS[key] || BGS.meer;
+  const W = 320, H = 200, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const ctx = c.getContext("2d"), img = ctx.createImageData(W, H);
+  let seed = 0; for (const ch of key) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const rnd = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const G = 64, grid = Array.from({ length: (G + 1) * (G + 1) }, rnd);
+  const at = (x, y) => grid[(y % G) * (G + 1) + (x % G)];
+  const noise = (x, y) => {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    const a = at(xi, yi), b = at(xi + 1, yi), cc = at(xi, yi + 1), d = at(xi + 1, yi + 1);
+    return a + (b - a) * u + (cc - a) * v + (a - b - cc + d) * u * v;
+  };
+  const ramp = t => {
+    const s = p.stops; let i = 0; while (i < s.length - 2 && t > s[i + 1][0]) i++;
+    const [t0, c0] = s[i], [t1, c1] = s[i + 1], k = Math.min(1, Math.max(0, (t - t0) / (t1 - t0)));
+    const h = x => [1, 3, 5].map(j => parseInt(x.slice(j, j + 2), 16));
+    const A = h(c0), B = h(c1); return A.map((v, j) => v + (B[j] - v) * k);
+  };
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    let f = 0, amp = .5, fr = 1 / 48;
+    for (let o = 0; o < 5; o++) { f += amp * noise(x * fr + o * 7.3, y * fr * 1.6 + o * 3.1); amp *= .5; fr *= 2.1 }
+    const t = Math.min(1, Math.max(0, f * 1.15 - .08 + (y / H) * .25));
+    const [r, g, b] = ramp(t), i = (y * W + x) * 4;
+    img.data[i] = r; img.data[i + 1] = g; img.data[i + 2] = b; img.data[i + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  return c.toDataURL("image/jpeg", .85);
 }
-function setStatus() {
-  const open = tasks.filter(t => t.status !== "done");
-  const late = open.filter(t => dueClass(t) === "late").length;
-  const p1 = open.filter(t => prio(t) === 1).length;
-  let s = loaded ? `${open.length} offen · ${p1} sofort · ${late} überfällig` : "Aufgaben werden geladen …";
-  if (!store && loaded) s += " · nur in diesem Browser gespeichert";
-  if (readOnly) s += " · nur Ansicht";
-  $("#status").textContent = s;
+const bgCache = {};
+function applyBackground() {
+  const key = BGS[meta.bg] ? meta.bg : "meer";
+  bgCache[key] = bgCache[key] || makeBackground(key);
+  $("#bg").style.backgroundImage = `url(${bgCache[key]})`;
+  $("#bg").style.filter = "blur(.6px) saturate(1.05)";
 }
 
 /* ---------- persistence ---------- */
-const LS_KEY = "flow-board-tasks";
-function lsLoad() { try { return JSON.parse(localStorage.getItem(LS_KEY) || "[]") } catch { return [] } }
-function lsSave() { try { localStorage.setItem(LS_KEY, JSON.stringify(tasks)) } catch {} }
-
-async function save(task) {
-  const { id, ...body } = task;
-  const i = tasks.findIndex(t => t.id === id);
-  if (i >= 0) tasks[i] = task; else tasks.push(task);
-  render();
-  if (!store) { lsSave(); return }
-  try { await store.doc(id).set(body) }
-  catch (e) { handleWriteError(e) }
-}
-async function remove(id) {
-  tasks = tasks.filter(t => t.id !== id); render();
-  if (!store) { lsSave(); return }
-  try { await store.doc(id).delete() } catch (e) { handleWriteError(e) }
-}
-function patch(id, changes) {
-  const t = tasks.find(x => x.id === id); if (!t) return;
-  const next = { ...t, ...changes, updatedAt: Date.now() };
-  if (changes.status === "done" && t.status !== "done") next.doneAt = Date.now();
-  if (changes.status && changes.status !== "done") next.doneAt = null;
-  save(next);
-}
-function handleWriteError(e) {
-  if (e && e.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen."); }
-  else if (e && e.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Aufgaben.");
+const LS = "flow-board-v2";
+function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
+function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, meta })) } catch {} }
+function writeErr(e) {
+  if (e?.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen.") }
+  else if (e?.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Karten.");
   else toast("Speichern hat nicht geklappt. Versuch es gleich noch mal.");
-  setStatus();
+  render();
 }
-function newId() { return "t" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) }
+async function saveTask(t) {
+  const i = tasks.findIndex(x => x.id === t.id); if (i >= 0) tasks[i] = t; else tasks.push(t);
+  render();
+  if (!tasksCol) return lsSave();
+  const { id, ...body } = t;
+  try { await tasksCol.doc(id).set(body) } catch (e) { writeErr(e) }
+}
+async function removeTask(id) {
+  tasks = tasks.filter(t => t.id !== id); render();
+  if (!tasksCol) return lsSave();
+  try { await tasksCol.doc(id).delete() } catch (e) { writeErr(e) }
+}
+function patchTask(id, ch) {
+  const t = tasks.find(x => x.id === id); if (!t) return;
+  const n = { ...t, ...ch, updatedAt: Date.now() };
+  if (ch.status === "done" && t.status !== "done") n.doneAt = Date.now();
+  if (ch.status && ch.status !== "done") n.doneAt = null;
+  saveTask(n);
+}
+async function saveMeta(ch) {
+  meta = { ...meta, ...ch }; applyBackground(); renderBar();
+  if (!metaDoc) return lsSave();
+  try { await metaDoc.set(meta) } catch (e) { writeErr(e) }
+}
+const newId = () => "t" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+function nextOrder(status) { const xs = tasks.filter(t => t.status === status).map(t => t.order ?? 0); return xs.length ? Math.max(...xs) + 1 : 0 }
 
 /* ---------- rendering ---------- */
-function cardHtml(t, opts = {}) {
-  const p = prio(t), dc = dueClass(t);
-  return `<button class="card ${t.status === "done" ? "done" : ""}" style="--pc:var(--p${p})" draggable="${!readOnly}" data-id="${t.id}">
+function cardHtml(t) {
+  const p = prio(t), d = dueInfo(t), people = t.members || [];
+  const nc = (t.comments || []).length;
+  return `<button class="card ${t.status === "done" ? "done" : ""}" draggable="${!readOnly}" data-id="${t.id}">
+    <span class="labels"><span class="lab" style="--lc:var(${PCOL[p]})" title="P${p}"></span>${t.area ? `<span class="lab" style="--lc:var(${AREA_COLOR[t.area] || "--l4"})" title="${esc(t.area)}"></span>` : ""}</span>
     <span class="t">${esc(t.title)}</span>
-    <span class="meta">
-      <span class="chip p p${p}">P${p}</span>
-      ${t.due ? `<span class="chip due ${dc}">${dc === "late" ? "überfällig · " : ""}${fmtDue(t.due)}</span>` : ""}
-      ${t.area ? `<span class="chip">${esc(t.area)}</span>` : ""}
-      ${opts.showStatus ? `<span class="chip">${COLS.find(c => c.id === t.status)?.name || ""}</span>` : ""}
+    <span class="foot">
+      ${d ? `<span class="badge ${d.cls}">${icon.clock}${d.label}</span>` : ""}
+      <span class="badge">${icon.eye}</span>
+      ${t.notes ? `<span class="badge" title="Hat eine Beschreibung">${icon.desc}</span>` : ""}
+      ${nc ? `<span class="badge">${icon.com}${nc}</span>` : ""}
+      ${filesFor(t.id).length ? `<span class="badge" title="Anhänge">${icon.clip}${filesFor(t.id).length}</span>` : ""}
+      ${people.length ? `<span class="people">${people.map(avatar).join("")}</span>` : ""}
     </span></button>`;
 }
-function emptyState() {
-  return `<div class="empty"><strong>Noch keine Aufgaben</strong>Leg mit „+ Aufgabe“ die erste an. Markier sie als wichtig und/oder dringend, dann sortiert das Board sie selbst.</div>`;
-}
 function renderBoard() {
-  const list = visible();
-  if (loaded && !tasks.length) return emptyState();
-  return `<div class="board">${COLS.map(c => {
-    const items = sortTasks(list.filter(t => t.status === c.id));
-    return `<section class="col"><div class="col-head"><h2>${c.name}</h2><span class="count">${items.length}</span></div>
-      <div class="drop" data-drop="status:${c.id}">${items.map(t => cardHtml(t)).join("")}</div>
-      ${c.id !== "done" && !readOnly ? `<button class="add-inline" data-new-status="${c.id}">+ Aufgabe</button>` : ""}</section>`;
-  }).join("")}</div>`;
+  return COLS.map(c => {
+    const items = sortTasks(tasks.filter(t => t.status === c.id));
+    const comp = composerFor === c.id;
+    return `<section class="list" aria-label="${c.name}">
+      <div class="list-head"><h2>${c.name}</h2><span><span class="n">${items.length}</span> <button class="dots" data-sort="${c.id}" title="Nach Priorität sortieren" aria-label="${c.name} nach Priorität sortieren">···</button></span></div>
+      <div class="cards" data-drop="status:${c.id}">${items.map(cardHtml).join("")}${!items.length && loaded ? `<div class="empty-note">Keine Karten</div>` : ""}</div>
+      <div class="list-foot">${readOnly ? "" : comp
+        ? `<form class="composer" data-compose="${c.id}"><textarea id="compose-text" placeholder="Titel für diese Karte eingeben …" maxlength="160"></textarea>
+            <div class="row"><button class="btn" type="submit">Karte hinzufügen</button><button class="btn-x" type="button" data-cancel-compose aria-label="Abbrechen">×</button></div></form>`
+        : `<button class="add" data-compose-open="${c.id}">${icon.plus}Eine weitere Karte hinzufügen</button>`}</div>
+    </section>`;
+  }).join("");
 }
 function renderMatrix() {
-  const list = visible().filter(t => t.status !== "done");
-  if (loaded && !tasks.length) return emptyState();
-  const q = (x) => {
-    const items = sortTasks(list.filter(t => prio(t) === x.p));
-    return `<section class="quad" style="--qc:var(--p${x.p})"><header><h2>${x.name} <span class="count">${items.length}</span></h2><p>${x.hint}</p></header>
-      <div class="drop" data-drop="quad:${x.p}">${items.map(t => cardHtml(t, { showStatus: true })).join("")}</div></section>`;
-  };
-  return `<div class="matrix">
-    <div></div><div class="axis">dringend</div><div class="axis">nicht dringend</div>
-    <div class="axis y">wichtig</div>${q(QUADS[0])}${q(QUADS[1])}
-    <div class="axis y">nicht wichtig</div>${q(QUADS[2])}${q(QUADS[3])}
-  </div>`;
+  const open = tasks.filter(t => t.status !== "done");
+  return `<div class="matrix">${QUADS.map(q => {
+    const items = sortByPrio(open.filter(t => prio(t) === q.p));
+    return `<section class="panel quad" style="--qc:var(${PCOL[q.p]})"><h2>${q.name} · ${items.length}</h2><p>${q.hint}</p>
+      <div class="cards" data-drop="quad:${q.p}" style="padding:0">${items.map(cardHtml).join("") || `<div class="empty-note">Nichts hier</div>`}</div></section>`;
+  }).join("")}</div>`;
 }
 function renderCal() {
-  const list = visible();
-  const first = calCursor, y = first.getFullYear(), m = first.getMonth();
-  const start = new Date(y, m, 1 - ((first.getDay() + 6) % 7));
+  const y = calCursor.getFullYear(), m = calCursor.getMonth();
+  const start = new Date(y, m, 1 - ((calCursor.getDay() + 6) % 7));
   const today = ymd(new Date());
-  let cells = DOW.map(d => `<div class="dow">${d}</div>`).join("");
-  cells = `<div class="dow">KW</div>` + cells;
+  let cells = `<div class="h">KW</div>` + DOW.map(d => `<div class="h">${d}</div>`).join("");
   const d = new Date(start);
   for (let w = 0; w < 6; w++) {
     if (w > 0 && d.getMonth() !== m) break;
     cells += `<div class="kw">${isoWeek(d)}</div>`;
     for (let i = 0; i < 7; i++) {
-      const key = ymd(d);
-      const items = sortTasks(list.filter(t => t.due === key));
-      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "is-today" : ""}" data-drop="due:${key}">
-        <div class="day-n"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="day-add" data-new-due="${key}" aria-label="Aufgabe am ${pad(d.getDate())}.${pad(d.getMonth() + 1)}. anlegen">+</button>`}</div>
-        ${items.map(t => `<button class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(--p${prio(t)});--pcs:var(--p${prio(t)}-soft)" draggable="${!readOnly}" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</button>`).join("")}
-      </div>`;
+      const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key));
+      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""}" data-drop="due:${key}">
+        <div class="dn"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="dadd" data-new-due="${key}" aria-label="Karte am ${d.getDate()}. ${MONTHS[d.getMonth()]} anlegen">+</button>`}</div>
+        ${items.map(t => `<button class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" draggable="${!readOnly}" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</button>`).join("")}</div>`;
       d.setDate(d.getDate() + 1);
     }
   }
-  const undated = sortTasks(list.filter(t => !t.due && t.status !== "done"));
-  return `<div class="cal-wrap"><div style="min-width:0">
-      <div class="cal-head">
-        <button class="btn-ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button>
-        <h2>${MONTHS[m]} ${y}</h2>
-        <button class="btn-ghost" id="cal-next" aria-label="Nächster Monat">→</button>
-        <button class="btn-ghost" id="cal-today">Heute</button>
-      </div>
-      <div class="cal-scroll"><div class="cal">${cells}</div></div>
-    </div>
-    <aside class="side"><h3>Ohne Termin <span class="count">${undated.length}</span></h3>
-      <p>Zieh eine Aufgabe auf einen Tag, um sie einzuplanen.</p>
-      <div class="drop" data-drop="due:" style="padding:0">${undated.map(t => cardHtml(t)).join("") || `<p>Alles eingeplant.</p>`}</div>
-    </aside></div>`;
+  const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
+  return `<section class="panel cal-panel">
+    <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button><h2>${MONTHS[m]} ${y}</h2>
+      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button></div>
+    <div class="cal-body"><div class="cal-scroll"><div class="cal">${cells}</div></div>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen.</p>
+        <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
+  </section>`;
+}
+function renderBar() {
+  const slot = $("#title-slot");
+  if (!slot.querySelector("input")) $("#board-title").textContent = meta.name;
+  $("#btn-star").style.color = meta.starred ? "#f5cd47" : "";
+  const people = [...new Set(tasks.flatMap(t => t.members || []))];
+  $("#board-people").innerHTML = people.slice(0, 5).map(avatar).join("");
+  document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
 }
 function render() {
-  $("#main").innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : renderCal();
-  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
-  $("#btn-new").hidden = readOnly;
-  setStatus();
+  const main = $("#main"), sx = main.scrollLeft;
+  const draft = $("#compose-text")?.value || "";
+  const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : renderCal();
+  main.scrollLeft = sx;
+  main.querySelectorAll(".cards").forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
+  renderBar();
+  const ta = $("#compose-text"); if (ta) { ta.value = draft; ta.focus() }
 }
 
-/* ---------- editor ---------- */
-function openEditor(task) {
-  const isNew = !tasks.some(t => t.id === task.id);
-  const root = $("#sheet-root");
-  root.innerHTML = `<div class="scrim" data-close></div>
-  <form class="sheet" id="editor" role="dialog" aria-modal="true" aria-labelledby="ed-h">
-    <h2 id="ed-h">${isNew ? "Neue Aufgabe" : "Aufgabe bearbeiten"}</h2>
-    <div class="field"><label for="ed-title">Titel</label><input id="ed-title" required maxlength="160" value="${esc(task.title)}" ${readOnly ? "disabled" : ""}></div>
-    <div class="toggles">
-      <label class="toggle"><input type="checkbox" id="ed-imp" ${task.important ? "checked" : ""} ${readOnly ? "disabled" : ""}> Wichtig</label>
-      <label class="toggle"><input type="checkbox" id="ed-urg" ${task.urgent ? "checked" : ""} ${readOnly ? "disabled" : ""}> Dringend</label>
+/* ---------- files: board storage + Dropbox ---------- */
+function fileRow(f, opts = {}) {
+  const card = f.taskId ? tasks.find(t => t.id === f.taskId) : null;
+  const isImg = f.kind === "asset" && (f.type || "").startsWith("image/");
+  const href = f.kind === "asset" ? "/_blob/" + f.assetId : dbxWebUrl(f.path, false);
+  const thumb = isImg ? `<img src="/_blob/${esc(f.assetId)}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : esc(extOf(f.name).slice(0, 4) || "datei");
+  const meta = [f.kind === "dropbox" ? "Dropbox" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
+  return `<div class="frow"><span class="ficon">${thumb}</span>
+    <span style="min-width:0"><a class="fname" href="${esc(href)}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">${esc(meta)}</span></span>
+    <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "dropbox" ? "Lösen" : "Löschen"}</button>`}</span></div>`;
+}
+function uploadControls(taskId) {
+  if (readOnly || !filesCol) return "";
+  if (!assetsApi) return `<p class="sub">Hochladen ist in dieser Ansicht nicht möglich (nur Bearbeiter des Boards).</p>`;
+  const id = "up-" + (taskId || "board");
+  return `<div class="uprow"><label class="mini" for="${id}" style="cursor:pointer">${icon.clip} Datei hochladen</label>
+    <input type="file" id="${id}" class="vis-hidden" multiple data-upload="${taskId || ""}"></div>`;
+}
+function renderFiles() {
+  const board = files.filter(f => f.kind === "asset").sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  const meter = usage ? `<div class="meter" title="${fmtSize(usage.bytes)} von ${fmtSize(usage.maxBytes)}"><span style="width:${Math.min(100, usage.bytes / usage.maxBytes * 100).toFixed(1)}%"></span></div>
+    <p class="sub">${fmtSize(usage.bytes)} von ${fmtSize(usage.maxBytes)} belegt · ${usage.files} Dateien</p>` : "";
+  return `<div class="files-view">
+    <section class="panel fpanel">
+      <h2>${icon.clip} Board-Ablage</h2>
+      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox.</p>
+      ${meter}
+      ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude.</div>` : "")}
+      ${board.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Dateien. Tipp: Zieh eine Datei direkt auf eine Karte, dann hängt sie dort an.</p>`}
+    </section>
+    <section class="panel fpanel">
+      <h2>${icon.box} Dropbox</h2>
+      <p class="sub">Dein Ordner ${esc(DBX_ROOT)}. Öffnen geht direkt in Dropbox; an Karten verknüpfst du Dateien im Kartenfenster.</p>
+      <div id="dbx-browse">${dbxHtml("browse")}</div>
+    </section>
+  </div>`;
+}
+function dbxHtml(mode) {
+  if (!mcpApi) return `<div class="note">Dropbox ist in dieser Ansicht nicht erreichbar. Öffne das Board in Claude, dort fragt es einmal nach Zugriff auf deine Dropbox.</div>`;
+  if (dbx.error) return `<div class="note">${esc(dbx.error)}${dbx.retry ? `<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">Erneut versuchen</button>` : ""}</div>`;
+  if (!dbx.entries && !dbx.loading) return `<div class="note">Zeigt die Ordner und Dateien aus deiner Dropbox. Beim ersten Mal fragt Claude, ob das Board darauf zugreifen darf.<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">${icon.box} Dropbox anzeigen</button></div>`;
+  const parts = dbx.path.slice(DBX_ROOT.length).split("/").filter(Boolean);
+  let acc = DBX_ROOT;
+  const crumbs = [`<button type="button" data-dbx-go="${esc(DBX_ROOT)}">Flow Media AI</button>`].concat(parts.map(p => { acc += "/" + p; return `<span>›</span><button type="button" data-dbx-go="${esc(acc)}">${esc(p)}</button>` })).join("");
+  if (dbx.loading) return `<div class="crumbs">${crumbs}</div><p class="sub">Lade …</p>`;
+  const entries = dbx.entries.slice().sort((a, b) => (a.object_type === "file") - (b.object_type === "file") || a.name.localeCompare(b.name, "de"));
+  const rows = entries.map(e => {
+    const p = e.path_display || e.path, folder = e.object_type !== "file";
+    const linked = mode === "pick" && files.some(f => f.kind === "dropbox" && f.path === p && f.taskId === dbx.pickFor);
+    const action = folder
+      ? `<button type="button" class="mini" data-dbx-go="${esc(p)}">Öffnen</button>`
+      : mode === "pick"
+        ? (linked ? `<span class="mini">Verknüpft</span>` : `<button type="button" class="mini" data-dbx-link="${esc(p)}" data-dbx-name="${esc(e.name)}" data-dbx-size="${e.file?.size ?? ""}">Verknüpfen</button>`)
+        : `<a class="mini" href="${esc(dbxWebUrl(p, false))}" target="_blank" rel="noopener">In Dropbox</a>`;
+    return `<div class="frow"><span class="ficon">${folder ? icon.folder : esc(extOf(e.name).slice(0, 4))}</span>
+      <span style="min-width:0">${folder ? `<button type="button" class="fname" style="border:0;background:none;padding:0;text-align:left;width:100%" data-dbx-go="${esc(p)}">${esc(e.name)}</button>` : `<a class="fname" href="${esc(dbxWebUrl(p, false))}" target="_blank" rel="noopener">${esc(e.name)}</a>`}
+      <span class="fmeta">${folder ? "Ordner" : [fmtSize(e.file?.size), e.modified_time ? fmtDate(Date.parse(e.modified_time)) : ""].filter(Boolean).join(" · ")}</span></span>
+      <span class="fact">${action}</span></div>`;
+  }).join("");
+  return `<div class="crumbs">${crumbs}<span style="flex:1"></span><a class="mini" href="${esc(dbxWebUrl(dbx.path, true))}" target="_blank" rel="noopener">In Dropbox öffnen</a></div>
+    ${rows || `<p class="sub">Dieser Ordner ist leer.</p>`}${dbx.more ? `<p class="sub">Weitere Einträge vorhanden – öffne den Ordner in Dropbox.</p>` : ""}`;
+}
+function refreshDbx() {
+  const a = $("#dbx-browse"); if (a) a.innerHTML = dbxHtml("browse");
+  const b = $("#m-dbx"); if (b && !b.hidden) b.innerHTML = dbxHtml("pick");
+}
+async function dbxGo(path) {
+  if (!mcpApi) return;
+  dbx.path = path; dbx.loading = true; dbx.error = null; refreshDbx();
+  try {
+    const r = await mcpApi.callTool("Dropbox", "list_folder", { path, recursive: false, max_results: 300 });
+    const p = r.payload || {};
+    dbx.entries = Array.isArray(p.entries) ? p.entries : []; dbx.more = !!p.has_more; dbx.retry = false;
+  } catch (e) {
+    dbx.entries = null; dbx.retry = true;
+    const m = {
+      server_not_connected: "Dropbox ist in claude.ai nicht verbunden. Füge Dropbox unter Einstellungen → Connectors hinzu.",
+      needs_reauth: "Die Dropbox-Verbindung ist abgelaufen. Verbinde Dropbox in claude.ai unter Einstellungen → Connectors neu.",
+      selection_required: "Du hast mehrere Dropbox-Verbindungen. Wähle in claude.ai aus, welche das Board nutzen soll.",
+      not_in_manifest: "Der Zugriff auf Dropbox ist für dieses Board ausgeschaltet. Erlaube ihn im Berechtigungen-Menü des Boards.",
+      approval_required: "Das Board braucht deine Erlaubnis für Dropbox.",
+      blocked_by_policy: "Dropbox ist für dein Konto gesperrt.",
+      server_unavailable: "Dropbox antwortet gerade nicht.",
+      tool_error: "Dropbox konnte diesen Ordner nicht anzeigen: " + (e.message || ""),
+    }[e?.code];
+    dbx.error = m || "Dropbox ist gerade nicht erreichbar.";
+    if (["needs_reauth", "server_not_connected", "blocked_by_policy"].includes(e?.code)) dbx.retry = false;
+  }
+  dbx.loading = false; refreshDbx();
+}
+async function linkDropbox(path, name, size, taskId) {
+  if (!filesCol) return;
+  try { await filesCol.doc(newId()).set({ kind: "dropbox", path, name, size: size ? Number(size) : null, taskId, createdAt: Date.now() }); toast("Mit der Karte verknüpft") }
+  catch (e) { writeErr(e) }
+}
+async function uploadFiles(list, taskId) {
+  if (!assetsApi || !filesCol || readOnly) { toast("Hochladen ist hier nicht möglich."); return }
+  for (const f of list) {
+    if (f.size > MAX_BYTES) { toast(`${f.name} ist größer als 20 MB.`); continue }
+    const ext = extOf(f.name), type = EXT_TYPE[ext] && (!f.type || f.type !== EXT_TYPE[ext]) ? EXT_TYPE[ext] : f.type;
+    if (!type || !Object.values(EXT_TYPE).includes(type)) { toast(`${f.name}: dieses Format geht nur über Dropbox.`); continue }
+    toast(`Lade ${f.name} hoch …`);
+    try {
+      const r = await assetsApi.upload(f, { type });
+      await filesCol.doc(newId()).set({ kind: "asset", assetId: r.id, name: f.name, size: r.sizeBytes, type: r.contentType, taskId: taskId || "", createdAt: Date.now() });
+      toast(`${f.name} hochgeladen`);
+    } catch (e) {
+      const m = { too_large: "ist zu groß (max. 20 MB)", unsupported_type: "hat ein Format, das die Ablage nicht kennt – leg es in die Dropbox", quota_or_state: "passt nicht mehr in den Speicher", rate_limited: "– zu viele Uploads auf einmal, kurz warten" }[e?.code];
+      toast(`${f.name} ${m || "konnte nicht hochgeladen werden"}`);
+      if (e?.code === "rate_limited") break;
+    }
+  }
+  refreshUsage();
+}
+async function deleteFile(id) {
+  const f = files.find(x => x.id === id); if (!f) return;
+  try {
+    if (f.kind === "asset" && assetsApi) await assetsApi.delete(f.assetId);
+    await filesCol.doc(id).delete();
+    toast(f.kind === "asset" ? "Datei gelöscht" : "Verknüpfung gelöst");
+    refreshUsage();
+  } catch (e) { toast(e?.code === "not_uploader" ? "Diese Datei kann nur die Person löschen, die sie hochgeladen hat." : "Löschen hat nicht geklappt.") }
+}
+async function refreshUsage() {
+  if (!assetsApi) return;
+  try { usage = (await assetsApi.list()).usage; if (view === "files" && !$("#layer").innerHTML) render() } catch {}
+}
+function renderCardFiles(taskId) {
+  const el = $("#m-att"); if (!el) return;
+  el.innerHTML = filesFor(taskId).map(f => fileRow(f, { inCard: true })).join("") || `<p class="sub" style="margin:0;color:var(--muted);font-size:13px">Noch keine Anhänge.</p>`;
+}
+
+/* ---------- card detail ---------- */
+function openCard(t, isNew = false) {
+  const col = COLS.find(c => c.id === t.status);
+  const dis = readOnly ? "disabled" : "";
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+  <form class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+    <div style="min-width:0">
+      <input class="mtitle" id="m-title" value="${esc(t.title)}" maxlength="160" required ${dis} aria-label="Titel">
+      <p class="in-list">in Liste <strong>${col?.name || ""}</strong></p>
+      <div class="sec"><h3>Labels</h3><div class="labels wide" id="m-labels"></div></div>
+      <div class="sec"><h3>${icon.desc} Beschreibung</h3><textarea id="m-notes" maxlength="4000" placeholder="Fügen Sie eine ausführlichere Beschreibung hinzu …" ${dis}>${esc(t.notes)}</textarea></div>
+      <div class="sec"><h3>${icon.clip} Anhänge</h3>
+        ${isNew ? `<p style="margin:0;color:var(--muted);font-size:13px">Leg die Karte zuerst an, dann kannst du Dateien anhängen.</p>` : `
+        <div id="m-att" style="display:flex;flex-direction:column;gap:6px"></div>
+        ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} Aus Dropbox verknüpfen</button>` : ""}</div>
+        <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>`}`}
+      </div>
+      <div class="sec"><h3>${icon.com} Aktivität</h3>
+        ${readOnly ? "" : `<textarea id="m-comment" placeholder="Kommentar schreiben …" style="min-height:56px" maxlength="2000"></textarea>`}
+        <div id="m-comments" style="display:flex;flex-direction:column;gap:6px">${(t.comments || []).slice().reverse().map(c => `<div class="comment"><small>${new Date(c.at).toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short" })}</small><span class="ct">${esc(c.text)}</span></div>`).join("")}</div>
+      </div>
     </div>
-    <div class="prio-preview" id="ed-prio"></div>
-    <div class="row2">
-      <div class="field"><label for="ed-status">Spalte</label><select id="ed-status" ${readOnly ? "disabled" : ""}>${COLS.map(c => `<option value="${c.id}" ${c.id === task.status ? "selected" : ""}>${c.name}</option>`).join("")}</select></div>
-      <div class="field"><label for="ed-due">Fällig am</label><input type="date" id="ed-due" value="${task.due || ""}" ${readOnly ? "disabled" : ""}></div>
+    <div class="side">
+      <span class="lbl">Priorität</span>
+      <label class="chk"><input type="checkbox" id="m-imp" ${t.important ? "checked" : ""} ${dis}> Wichtig</label>
+      <label class="chk"><input type="checkbox" id="m-urg" ${t.urgent ? "checked" : ""} ${dis}> Dringend</label>
+      <label class="lbl" for="m-status">Liste</label>
+      <select id="m-status" ${dis}>${COLS.map(c => `<option value="${c.id}" ${c.id === t.status ? "selected" : ""}>${c.name}</option>`).join("")}</select>
+      <label class="lbl" for="m-due">Fälligkeitsdatum</label>
+      <input type="date" id="m-due" value="${t.due || ""}" ${dis}>
+      <label class="lbl" for="m-area">Bereich</label>
+      <select id="m-area" ${dis}><option value="">–</option>${AREAS.map(a => `<option ${a === t.area ? "selected" : ""}>${a}</option>`).join("")}</select>
+      <label class="lbl" for="m-members">Mitglieder</label>
+      <input id="m-members" value="${esc((t.members || []).join(", "))}" placeholder="Namen, mit Komma getrennt" ${dis}>
+      ${!isNew && !readOnly ? `<button type="button" class="danger" id="m-del">Karte löschen</button>` : ""}
     </div>
-    <div class="field"><label for="ed-area">Bereich</label><select id="ed-area" ${readOnly ? "disabled" : ""}><option value="">–</option>${AREAS.map(a => `<option ${a === task.area ? "selected" : ""}>${a}</option>`).join("")}</select></div>
-    <div class="field"><label for="ed-notes">Notizen</label><textarea id="ed-notes" maxlength="4000" ${readOnly ? "disabled" : ""}>${esc(task.notes)}</textarea></div>
-    <div class="sheet-actions">
-      ${!isNew && !readOnly ? `<button type="button" class="btn-danger" id="ed-del">Löschen</button>` : ""}
-      <span class="spacer"></span>
-      <button type="button" class="btn-ghost" data-close>${readOnly ? "Schließen" : "Abbrechen"}</button>
-      ${readOnly ? "" : `<button type="submit" class="btn-primary">${isNew ? "Anlegen" : "Speichern"}</button>`}
-    </div>
-  </form>`;
-  const upd = () => {
-    const p = prio({ important: $("#ed-imp").checked, urgent: $("#ed-urg").checked });
-    const q = QUADS.find(x => x.p === p);
-    $("#ed-prio").innerHTML = `<span class="chip p p${p}">P${p}</span> ${q.name} – ${q.hint}`;
+    <div class="mfoot">${readOnly ? `<button type="button" class="ghost" data-close-btn>Schließen</button>` : `<button type="button" class="ghost" data-close-btn>Abbrechen</button><button class="btn" type="submit">${isNew ? "Karte anlegen" : "Speichern"}</button>`}</div>
+  </form></div>`;
+  const labelsEl = $("#m-labels");
+  const updLabels = () => {
+    const p = prio({ important: $("#m-imp").checked, urgent: $("#m-urg").checked }), q = QUADS.find(x => x.p === p), a = $("#m-area").value;
+    labelsEl.innerHTML = `<span class="lab" style="--lc:var(${PCOL[p]})">P${p} · ${q.name}</span>${a ? `<span class="lab" style="--lc:var(${AREA_COLOR[a]})">${esc(a)}</span>` : ""}`;
   };
-  $("#ed-imp").onchange = upd; $("#ed-urg").onchange = upd; upd();
-  $("#ed-title").focus();
-  let confirmDel = false;
-  const del = $("#ed-del");
-  if (del) del.onclick = () => {
-    if (!confirmDel) { confirmDel = true; del.textContent = "Wirklich löschen?"; return }
-    remove(task.id); closeEditor(); toast("Aufgabe gelöscht");
+  ["#m-imp", "#m-urg", "#m-area"].forEach(s => $(s).addEventListener("change", updLabels)); updLabels();
+  $("#modal").dataset.task = t.id;
+  if (!isNew) renderCardFiles(t.id);
+  const dbxBtn = $("#m-dbx-open");
+  if (dbxBtn) dbxBtn.onclick = () => {
+    const box = $("#m-dbx"); box.hidden = !box.hidden; dbx.pickFor = t.id;
+    if (!box.hidden) { box.innerHTML = dbxHtml("pick"); if (mcpApi && !dbx.entries && !dbx.loading) dbxGo(dbx.path) }
   };
-  root.querySelectorAll("[data-close]").forEach(el => el.onclick = closeEditor);
-  $("#editor").onsubmit = e => {
+  if (isNew) $("#m-title").focus();
+  let armed = false;
+  const del = $("#m-del");
+  if (del) del.onclick = () => { if (!armed) { armed = true; del.textContent = "Wirklich löschen?"; return } removeTask(t.id); closeModal(); toast("Karte gelöscht") };
+  $("#modal").onsubmit = e => {
     e.preventDefault();
-    const title = $("#ed-title").value.trim(); if (!title) return;
-    const status = $("#ed-status").value;
-    const next = { ...task, title, important: $("#ed-imp").checked, urgent: $("#ed-urg").checked, status,
-      due: $("#ed-due").value || "", area: $("#ed-area").value, notes: $("#ed-notes").value.trim(), updatedAt: Date.now() };
-    if (status === "done" && task.status !== "done") next.doneAt = Date.now();
-    if (status !== "done") next.doneAt = null;
-    save(next); closeEditor(); toast(isNew ? "Aufgabe angelegt" : "Gespeichert");
+    const title = $("#m-title").value.trim(); if (!title) return;
+    const status = $("#m-status").value;
+    const comments = (t.comments || []).slice();
+    const ct = $("#m-comment")?.value.trim(); if (ct) comments.push({ text: ct, at: Date.now() });
+    const n = { ...t, title, notes: $("#m-notes").value.trim(), important: $("#m-imp").checked, urgent: $("#m-urg").checked, status,
+      due: $("#m-due").value || "", area: $("#m-area").value, comments, updatedAt: Date.now(),
+      members: $("#m-members").value.split(",").map(s => s.trim()).filter(Boolean).slice(0, 8) };
+    if (status !== t.status) n.order = nextOrder(status);
+    if (status === "done" && t.status !== "done") n.doneAt = Date.now();
+    if (status !== "done") n.doneAt = null;
+    saveTask(n); closeModal(); toast(isNew ? "Karte angelegt" : "Gespeichert");
   };
 }
-function closeEditor() { $("#sheet-root").innerHTML = "" }
-function blankTask(extra = {}) {
-  return { id: newId(), title: "", notes: "", important: false, urgent: false, status: "backlog", due: "", area: areaFilter || "", createdAt: Date.now(), updatedAt: Date.now(), doneAt: null, ...extra };
+function closeModal() { $("#layer").innerHTML = "" }
+function blank(extra = {}) {
+  return { id: newId(), title: "", notes: "", important: false, urgent: false, status: "backlog", due: "", area: "", members: [], comments: [],
+    order: 0, createdAt: Date.now(), updatedAt: Date.now(), doneAt: null, ...extra };
+}
+
+/* ---------- menu (background, stats) ---------- */
+function openMenu(btn) {
+  const r = btn.getBoundingClientRect();
+  const open = tasks.filter(t => t.status !== "done");
+  const late = open.filter(t => dueInfo(t)?.cls === "late").length;
+  $("#layer").innerHTML = `<div style="position:fixed;inset:0;z-index:14" data-close-menu></div>
+  <div class="menu" style="top:${r.bottom + 6}px;right:max(12px, env(safe-area-inset-right, 0px))">
+    <h3>Hintergrund</h3>
+    <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
+    <h3>Überblick</h3>
+    <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
+    <div class="stat">${tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
+  </div>`;
 }
 
 /* ---------- interactions ---------- */
 document.addEventListener("click", e => {
-  const tab = e.target.closest(".tabs button");
-  if (tab) { view = tab.dataset.view; try { localStorage.setItem("flow-board-view", view) } catch {} render(); return }
-  const card = e.target.closest("[data-id]");
-  if (card && !e.target.closest("#sheet-root")) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openEditor(t); return }
-  const ns = e.target.closest("[data-new-status]"); if (ns) { openEditor(blankTask({ status: ns.dataset.newStatus })); return }
-  const nd = e.target.closest("[data-new-due]"); if (nd) { openEditor(blankTask({ due: nd.dataset.newDue, status: "todo" })); return }
-  if (e.target.id === "btn-new") openEditor(blankTask());
-  if (e.target.id === "cal-prev") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() - 1, 1); render() }
-  if (e.target.id === "cal-next") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + 1, 1); render() }
-  if (e.target.id === "cal-today") { calCursor = firstOfMonth(new Date()); render() }
+  const tgt = e.target;
+  const go = tgt.closest("[data-dbx-go]"); if (go) { dbxGo(go.dataset.dbxGo); return }
+  const lk = tgt.closest("[data-dbx-link]");
+  if (lk) { lk.disabled = true; linkDropbox(lk.dataset.dbxLink, lk.dataset.dbxName, lk.dataset.dbxSize, dbx.pickFor); return }
+  const fd = tgt.closest("[data-file-del]");
+  if (fd) {
+    if (fd.dataset.armed) deleteFile(fd.dataset.fileDel);
+    else { const orig = fd.textContent; fd.dataset.armed = "1"; fd.textContent = "Sicher?"; setTimeout(() => { if (fd.isConnected) { delete fd.dataset.armed; fd.textContent = orig } }, 3000) }
+    return;
+  }
+  if (tgt.closest("[data-close-menu]")) { closeModal(); return }
+  const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
+  if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
+  if (tgt.closest("#layer")) return;
+  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); return }
+  if (tgt.closest("#btn-menu")) { openMenu(tgt.closest("#btn-menu")); return }
+  if (tgt.closest("#btn-star")) { if (!readOnly) saveMeta({ starred: !meta.starred }); return }
+  if (tgt.closest("#board-title") && !readOnly) {
+    $("#title-slot").innerHTML = `<input class="title-input" id="title-input" value="${esc(meta.name)}" maxlength="60" aria-label="Board-Name">`;
+    const inp = $("#title-input"); inp.focus(); inp.select();
+    const done = () => { const v = inp.value.trim() || meta.name; $("#title-slot").innerHTML = `<button class="title" id="board-title" title="Board umbenennen"></button>`; saveMeta({ name: v }) };
+    inp.addEventListener("blur", done, { once: true });
+    inp.addEventListener("keydown", ev => { if (ev.key === "Enter") inp.blur(); if (ev.key === "Escape") { inp.value = meta.name; inp.blur() } });
+    return;
+  }
+  const co = tgt.closest("[data-compose-open]"); if (co) { composerFor = co.dataset.composeOpen; render(); return }
+  if (tgt.closest("[data-cancel-compose]")) { composerFor = null; render(); return }
+  const so = tgt.closest("[data-sort]");
+  if (so && !readOnly) {
+    sortByPrio(tasks.filter(t => t.status === so.dataset.sort)).forEach((t, i) => { if ((t.order ?? 0) !== i) patchTask(t.id, { order: i }) });
+    toast("Nach Priorität sortiert"); return;
+  }
+  const nd = tgt.closest("[data-new-due]"); if (nd) { openCard(blank({ due: nd.dataset.newDue, status: "todo", order: nextOrder("todo") }), true); return }
+  const card = tgt.closest("[data-id]"); if (card) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openCard(t) ; return }
+  if (tgt.id === "cal-prev") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() - 1, 1); render() }
+  if (tgt.id === "cal-next") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + 1, 1); render() }
+  if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); render() }
 });
-document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#editor")) closeEditor() });
+document.addEventListener("submit", e => {
+  const f = e.target.closest("[data-compose]"); if (!f) return;
+  e.preventDefault();
+  const ta = $("#compose-text"), title = ta.value.trim(); if (!title) return;
+  const status = f.dataset.compose;
+  saveTask(blank({ title, status, order: nextOrder(status) }));
+  setTimeout(() => { const t = $("#compose-text"); if (t) { t.value = ""; t.focus() } });
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") { if ($("#layer").innerHTML) closeModal(); else if (composerFor) { composerFor = null; render() } }
+  if (e.key === "Enter" && !e.shiftKey && e.target.id === "compose-text") { e.preventDefault(); e.target.form.requestSubmit() }
+});
+
+document.addEventListener("change", e => {
+  const inp = e.target.closest?.("[data-upload]"); if (!inp || !inp.files?.length) return;
+  const list = [...inp.files], taskId = inp.dataset.upload;
+  inp.value = "";
+  uploadFiles(list, taskId);
+});
+// Files dragged in from the computer: onto a card attaches them, onto the drop zone stores them on the board.
+const isFileDrag = e => [...(e.dataTransfer?.types || [])].includes("Files");
+document.addEventListener("dragover", e => {
+  if (!isFileDrag(e)) return;
+  e.preventDefault();
+  const zone = e.target.closest?.("[data-filezone]") || e.target.closest?.(".card[data-id]");
+  document.querySelectorAll(".filedrop, .dropzone.over").forEach(x => x.classList.remove("filedrop", "over"));
+  if (zone && !readOnly && assetsApi) zone.classList.add(zone.matches(".card") ? "filedrop" : "over");
+  e.dataTransfer.dropEffect = zone && assetsApi ? "copy" : "none";
+});
+document.addEventListener("drop", e => {
+  if (!isFileDrag(e)) return;
+  e.preventDefault();
+  document.querySelectorAll(".filedrop, .dropzone.over").forEach(x => x.classList.remove("filedrop", "over"));
+  const card = e.target.closest?.(".card[data-id]"), zone = e.target.closest?.("[data-filezone]");
+  if (!card && !zone) return;
+  const list = [...e.dataTransfer.files]; if (!list.length) return;
+  uploadFiles(list, card ? card.dataset.id : "");
+}, true);
 
 let dragId = null;
 document.addEventListener("dragstart", e => {
-  const el = e.target.closest("[data-id]"); if (!el || readOnly) return;
-  dragId = el.dataset.id; el.classList.add("dragging");
-  e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", dragId);
+  const el = e.target.closest?.("[data-id]"); if (!el || readOnly) return;
+  dragId = el.dataset.id; el.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", dragId);
 });
-document.addEventListener("dragend", e => { e.target.closest?.("[data-id]")?.classList.remove("dragging"); clearOver() });
-function clearOver() { document.querySelectorAll(".over").forEach(x => x.classList.remove("over")) }
+document.addEventListener("dragend", e => { e.target.closest?.("[data-id]")?.classList.remove("dragging"); clearOver(); dragId = null });
+const clearOver = () => document.querySelectorAll(".over").forEach(x => x.classList.remove("over"));
 document.addEventListener("dragover", e => {
-  const z = e.target.closest("[data-drop]"); if (!z || !dragId) return;
-  e.preventDefault(); e.dataTransfer.dropEffect = "move";
-  if (!z.classList.contains("over")) { clearOver(); z.classList.add("over") }
+  const z = e.target.closest?.("[data-drop]"); if (!z || !dragId) return;
+  e.preventDefault(); if (!z.classList.contains("over")) { clearOver(); z.classList.add("over") }
 });
 document.addEventListener("drop", e => {
-  const z = e.target.closest("[data-drop]"); if (!z || !dragId) return;
+  const z = e.target.closest?.("[data-drop]"); if (!z || !dragId) return;
   e.preventDefault(); clearOver();
-  const [kind, val] = z.dataset.drop.split(":");
   const id = dragId; dragId = null;
-  if (kind === "status") patch(id, { status: val });
-  if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patch(id, { important: q.imp, urgent: q.urg }) }
-  if (kind === "due") patch(id, { due: val || "" });
+  const [kind, val] = z.dataset.drop.split(":");
+  if (kind === "status") {
+    // place relative to the card under the pointer
+    const cards = [...z.querySelectorAll("[data-id]")].filter(c => c.dataset.id !== id);
+    const before = cards.find(c => e.clientY < c.getBoundingClientRect().top + c.offsetHeight / 2);
+    const list = sortTasks(tasks.filter(t => t.status === val && t.id !== id));
+    const idx = before ? list.findIndex(t => t.id === before.dataset.id) : list.length;
+    list.splice(idx, 0, tasks.find(t => t.id === id));
+    list.forEach((t, i) => {
+      if (t.id === id) patchTask(id, { status: val, order: i });
+      else if ((t.order ?? 0) !== i) patchTask(t.id, { order: i });
+    });
+  }
+  if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patchTask(id, { important: q.imp, urgent: q.urg }) }
+  if (kind === "due") patchTask(id, { due: val || "" });
 });
 
-$("#filter-area").innerHTML = `<option value="">Alle Bereiche</option>` + AREAS.map(a => `<option>${a}</option>`).join("");
-$("#filter-area").onchange = e => { areaFilter = e.target.value; render() };
-{
-  const n = new Date();
-  $("#today-label").textContent = `${DOW[(n.getDay() + 6) % 7]} ${pad(n.getDate())}.${pad(n.getMonth() + 1)}. · KW ${isoWeek(n)}`;
-}
-try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal"].includes(v)) view = v } catch {}
-render();
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files"].includes(v)) view = v } catch {}
+applyBackground(); render();
 
-/* ---------- boot: shared store if available, browser storage otherwise ---------- */
+/* ---------- boot: shared store if available, else this browser ---------- */
 (async () => {
   const db = window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
-  if (!db) { tasks = lsLoad(); loaded = true; render(); return }
-  store = db.collection("tasks");
-  store.onSnapshot(snap => {
-    tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    loaded = true; render();
-  }, err => {
-    if (err.code === "revoked") { store = null; readOnly = true }
-    toast("Verbindung zum Speicher unterbrochen. Lade die Seite neu.");
-    setStatus();
-  });
+  if (!db) { lsLoad(); loaded = true; applyBackground(); render(); return }
+  tasksCol = db.collection("tasks");
+  metaDoc = db.doc("board/meta");
+  metaDoc.onSnapshot(s => { if (s.exists) { meta = { ...meta, ...s.data() }; applyBackground(); renderBar() } }, () => {});
+  filesCol = db.collection("files");
+  filesCol.onSnapshot(s => {
+    files = s.docs.map(d => ({ id: d.id, ...d.data() }));
+    const m = $("#modal"); if (m?.dataset.task) { renderCardFiles(m.dataset.task); refreshDbx() }
+    if (!$("#layer").innerHTML) render();
+  }, () => {});
+  claude.use("assets").then(a => { assetsApi = a; if (view === "files") refreshUsage(); if (!$("#layer").innerHTML) render() }).catch(() => {});
+  claude.use("mcp").then(m => { mcpApi = m; refreshDbx() }).catch(() => {});
+  tasksCol.onSnapshot(s => {
+    tasks = s.docs.map(d => ({ id: d.id, ...d.data() }));
+    loaded = true;
+    if (!$("#layer").innerHTML) render(); else renderBar();
+  }, err => { if (err.code === "revoked") readOnly = true; toast("Verbindung zum Speicher unterbrochen. Lade die Seite neu."); });
 })();
 </script>
