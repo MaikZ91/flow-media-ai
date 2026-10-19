@@ -63,7 +63,7 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 .surface { flex: 1; min-height: 0; overflow-x: auto; overflow-y: hidden; display: flex; align-items: flex-start; gap: 12px;
   padding-block: 12px 16px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px));
   scroll-snap-type: x proximity; scroll-padding-inline: 12px }
-.list { flex: 0 0 272px; max-height: 100%; background: var(--list); border-radius: 12px; display: flex; flex-direction: column; box-shadow: var(--shadow); scroll-snap-align: start }
+.list { flex: 1 1 0; min-width: 0; max-height: 100%; background: var(--list); border-radius: 12px; display: flex; flex-direction: column; box-shadow: var(--shadow); scroll-snap-align: start }
 .list-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 8px 6px 14px; gap: 6px }
 .list-head h2 { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink) }
 .list-head .n { font: 500 12px var(--f-mono); color: var(--faint) }
@@ -80,10 +80,13 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 .btn-x { border: 0; background: none; color: var(--muted); font-size: 20px; line-height: 1; padding: 2px 8px; border-radius: 6px }
 .btn-x:hover { background: var(--hover) }
 
-.card { background: var(--card); border-radius: 8px; box-shadow: var(--shadow); padding: 8px 10px 6px; display: flex; flex-direction: column; gap: 6px; text-align: left; border: 0; width: 100%; color: var(--ink) }
+.card { background: var(--card); border-radius: 8px; box-shadow: var(--shadow); padding: 7px 9px 5px; display: flex; flex-direction: column; gap: 5px; text-align: left; border: 0; width: 100%; color: var(--ink); cursor: grab; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; flex: none }
+[hidden] { display: none !important }
+.drag-ghost { position: fixed; z-index: 40; pointer-events: none; transform: rotate(3deg); box-shadow: 0 12px 24px rgba(9,30,66,.3); opacity: .95; margin: 0 }
+body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .card:hover { outline: 2px solid var(--accent); outline-offset: -2px }
 .card.dragging { opacity: .4; transform: rotate(2deg) }
-.card .t { overflow-wrap: anywhere; font-size: 14px }
+.card .t { overflow-wrap: anywhere; font-size: 13.5px; line-height: 1.3 }
 .card.done .t { color: var(--faint) }
 .labels { display: flex; gap: 4px; flex-wrap: wrap }
 .lab { height: 8px; min-width: 40px; border-radius: 4px; background: var(--lc, var(--l4)) }
@@ -98,20 +101,23 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 
 /* matrix + calendar sit on the same background, as panels */
 .panel { background: var(--list); border-radius: 12px; box-shadow: var(--shadow); padding: 12px; min-width: 0 }
-.matrix { flex: 1; display: grid; grid-template-columns: repeat(2, minmax(260px, 1fr)); gap: 12px; align-self: stretch; overflow-y: auto }
-.quad { display: flex; flex-direction: column; gap: 8px; border-top: 5px solid var(--qc) }
+.matrix { flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 12px; align-self: stretch; min-height: 0 }
+.quad { display: flex; flex-direction: column; gap: 6px; border-top: 5px solid var(--qc); min-height: 0 }
+.quad .cards { flex: 1; min-height: 0 }
 .quad h2 { margin: 0; font-size: 15px }
 .quad p { margin: 0; color: var(--muted); font-size: 12.5px }
-.cal-panel { flex: 1; align-self: stretch; overflow: auto; display: flex; flex-direction: column; gap: 10px }
+.cal-panel { flex: 1; align-self: stretch; overflow: hidden; display: flex; flex-direction: column; gap: 8px; min-height: 0 }
 .cal-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
 .cal-head h2 { margin: 0 6px; font-size: 18px; min-width: 170px }
 .ghost { border: 1px solid var(--line); background: var(--card); border-radius: 6px; padding: 5px 10px; font-weight: 500 }
-.cal-body { display: grid; grid-template-columns: minmax(0,1fr) 240px; gap: 12px; min-height: 0 }
-.cal-scroll { overflow-x: auto }
-.cal { display: grid; grid-template-columns: 40px repeat(7, minmax(96px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 720px }
+.cal-body { flex: 1; display: grid; grid-template-columns: minmax(0,1fr) 230px; gap: 12px; min-height: 0 }
+.cal-scroll { overflow-x: auto; min-height: 0; display: flex }
+.undated { min-height: 0; overflow: hidden }
+.undated .cards { flex: 1; min-height: 0; overflow-y: auto }
+.cal { flex: 1; display: grid; grid-template-columns: 34px repeat(7, minmax(0, 1fr)); grid-template-rows: auto; grid-auto-rows: minmax(0, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0 }
 .cal .h { background: var(--list); padding: 6px; font: 500 11.5px var(--f-mono); color: var(--faint); text-transform: uppercase }
 .cal .kw { background: var(--list); padding: 8px 2px; text-align: center; font: 500 11px var(--f-mono); color: var(--faint) }
-.day { background: var(--card); min-height: 100px; padding: 5px; display: flex; flex-direction: column; gap: 3px; min-width: 0 }
+.day { background: var(--card); min-height: 0; padding: 4px; display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-y: auto }
 .day.out { opacity: .55 }
 .day.over { background: var(--hover) }
 .dn { display: flex; justify-content: space-between; font: 500 12px var(--f-mono); color: var(--muted) }
@@ -120,7 +126,7 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 .dadd:hover { background: var(--hover) }
 .pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
 .pill.done { opacity: .5; text-decoration: line-through }
-.undated { display: flex; flex-direction: column; gap: 8px }
+.undated { display: flex; flex-direction: column; gap: 6px }
 .undated h3 { margin: 0; font-size: 14px }
 .undated p { margin: 0; color: var(--muted); font-size: 12.5px }
 
@@ -155,6 +161,7 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 
 /* files */
 .files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; min-height: 0 }
+@media (max-width: 1000px) { .list { flex: 0 0 248px } .cal { min-width: 640px } }
 .fpanel { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0 }
 .fpanel h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px }
 .fpanel .sub { margin: 0; color: var(--muted); font-size: 12.5px }
@@ -185,7 +192,9 @@ a.fname:hover { text-decoration: underline }
 @media (max-width: 700px) {
   .modal { grid-template-columns: minmax(0,1fr) }
   .cal-body { grid-template-columns: minmax(0,1fr) }
-  .matrix { grid-template-columns: minmax(0,1fr) }
+  .matrix { grid-template-columns: minmax(0,1fr); grid-template-rows: none; overflow-y: auto }
+  .quad .cards { flex: none }
+  .cal-panel { overflow: auto }
   .files-view { grid-template-columns: minmax(0,1fr); overflow-y: auto }
   .fpanel { overflow: visible }
   .hide-sm { display: none }
@@ -390,7 +399,7 @@ function nextOrder(status) { const xs = tasks.filter(t => t.status === status).m
 function cardHtml(t) {
   const p = prio(t), d = dueInfo(t), people = t.members || [];
   const nc = (t.comments || []).length;
-  return `<button class="card ${t.status === "done" ? "done" : ""}" draggable="${!readOnly}" data-id="${t.id}">
+  return `<div class="card ${t.status === "done" ? "done" : ""}" role="button" tabindex="0" data-id="${t.id}">
     <span class="labels"><span class="lab" style="--lc:var(${PCOL[p]})" title="P${p}"></span>${t.area ? `<span class="lab" style="--lc:var(${AREA_COLOR[t.area] || "--l4"})" title="${esc(t.area)}"></span>` : ""}</span>
     <span class="t">${esc(t.title)}</span>
     <span class="foot">
@@ -400,7 +409,7 @@ function cardHtml(t) {
       ${nc ? `<span class="badge">${icon.com}${nc}</span>` : ""}
       ${filesFor(t.id).length ? `<span class="badge" title="Anhänge">${icon.clip}${filesFor(t.id).length}</span>` : ""}
       ${people.length ? `<span class="people">${people.map(avatar).join("")}</span>` : ""}
-    </span></button>`;
+    </span></div>`;
 }
 function renderBoard() {
   return COLS.map(c => {
@@ -437,7 +446,7 @@ function renderCal() {
       const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key));
       cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""}" data-drop="due:${key}">
         <div class="dn"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="dadd" data-new-due="${key}" aria-label="Karte am ${d.getDate()}. ${MONTHS[d.getMonth()]} anlegen">+</button>`}</div>
-        ${items.map(t => `<button class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" draggable="${!readOnly}" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</button>`).join("")}</div>`;
+        ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>`;
       d.setDate(d.getDate() + 1);
     }
   }
@@ -459,6 +468,7 @@ function renderBar() {
   document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
 }
 function render() {
+  if (drag.active) { renderQueued = true; return }
   const main = $("#main"), sx = main.scrollLeft;
   const draft = $("#compose-text")?.value || "";
   const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
@@ -774,26 +784,73 @@ document.addEventListener("drop", e => {
   uploadFiles(list, card ? card.dataset.id : "");
 }, true);
 
-let dragId = null;
-document.addEventListener("dragstart", e => {
-  const el = e.target.closest?.("[data-id]"); if (!el || readOnly) return;
-  dragId = el.dataset.id; el.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", dragId);
-});
-document.addEventListener("dragend", e => { e.target.closest?.("[data-id]")?.classList.remove("dragging"); clearOver(); dragId = null });
+// Card drag & drop with pointer events: works with mouse, pen and touch (long press), in every browser.
+const drag = { el: null, id: null, ghost: null, sx: 0, sy: 0, ox: 0, oy: 0, active: false, pending: false, timer: null, lastZone: null, x: 0, y: 0, raf: 0 };
+let suppressClick = false, renderQueued = false;
 const clearOver = () => document.querySelectorAll(".over").forEach(x => x.classList.remove("over"));
-document.addEventListener("dragover", e => {
-  const z = e.target.closest?.("[data-drop]"); if (!z || !dragId) return;
-  e.preventDefault(); if (!z.classList.contains("over")) { clearOver(); z.classList.add("over") }
+function zoneAt(x, y) { const el = document.elementFromPoint(x, y); return el?.closest?.("[data-drop]") || null }
+function startDrag() {
+  const r = drag.el.getBoundingClientRect();
+  drag.ox = drag.sx - r.left; drag.oy = drag.sy - r.top;
+  const g = drag.el.cloneNode(true);
+  g.classList.add("drag-ghost"); g.style.width = r.width + "px"; g.style.left = r.left + "px"; g.style.top = r.top + "px";
+  document.body.appendChild(g); drag.ghost = g;
+  drag.el.classList.add("dragging"); drag.active = true; document.body.classList.add("is-dragging");
+}
+function autoScroll() {
+  if (!drag.active) return;
+  const main = $("#main"), m = main.getBoundingClientRect(), edge = 60;
+  if (drag.x < m.left + edge) main.scrollLeft -= 14; else if (drag.x > m.right - edge) main.scrollLeft += 14;
+  const z = zoneAt(drag.x, drag.y);
+  if (z) { const zr = z.getBoundingClientRect(); if (drag.y < zr.top + 30) z.scrollTop -= 10; else if (drag.y > zr.bottom - 30) z.scrollTop += 10 }
+  drag.raf = requestAnimationFrame(autoScroll);
+}
+document.addEventListener("pointerdown", e => {
+  if (readOnly || e.button > 0) return;
+  const el = e.target.closest?.("#main [data-id]"); if (!el) return;
+  Object.assign(drag, { el, id: el.dataset.id, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, pending: true, active: false });
+  if (e.pointerType === "touch") drag.timer = setTimeout(() => { if (drag.pending) { startDrag(); autoScroll(); navigator.vibrate?.(15) } }, 280);
 });
-document.addEventListener("drop", e => {
-  const z = e.target.closest?.("[data-drop]"); if (!z || !dragId) return;
-  e.preventDefault(); clearOver();
-  const id = dragId; dragId = null;
+document.addEventListener("pointermove", e => {
+  if (!drag.pending) return;
+  drag.x = e.clientX; drag.y = e.clientY;
+  if (!drag.active) {
+    const moved = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy);
+    if (e.pointerType === "touch") { if (moved > 10) { clearTimeout(drag.timer); drag.pending = false } return }
+    if (moved < 5) return;
+    startDrag(); autoScroll();
+  }
+  drag.ghost.style.left = (e.clientX - drag.ox) + "px"; drag.ghost.style.top = (e.clientY - drag.oy) + "px";
+  const z = zoneAt(e.clientX, e.clientY);
+  if (z !== drag.lastZone) { clearOver(); z?.classList.add("over"); drag.lastZone = z }
+});
+document.addEventListener("touchmove", e => { if (drag.active) e.preventDefault() }, { passive: false });
+function endDrag(e, cancel) {
+  clearTimeout(drag.timer); cancelAnimationFrame(drag.raf);
+  const wasActive = drag.active, id = drag.id;
+  drag.ghost?.remove(); drag.el?.classList.remove("dragging"); document.body.classList.remove("is-dragging");
+  clearOver();
+  Object.assign(drag, { el: null, ghost: null, active: false, pending: false, lastZone: null });
+  if (!wasActive) return;
+  suppressClick = true; setTimeout(() => suppressClick = false, 0);
+  if (!cancel) dropOn(zoneAt(e.clientX, e.clientY), id, e.clientY);
+  if (renderQueued) { renderQueued = false; render() }
+}
+document.addEventListener("pointerup", e => endDrag(e, false));
+document.addEventListener("pointercancel", e => endDrag(e, true));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && drag.active) endDrag(e, true) });
+document.addEventListener("click", e => { if (suppressClick) { e.stopPropagation(); e.preventDefault() } }, true);
+document.addEventListener("keydown", e => {
+  const el = e.target.closest?.("#main [data-id]");
+  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); el.click() }
+});
+function dropOn(z, id, clientY) {
+  if (!z) return;
   const [kind, val] = z.dataset.drop.split(":");
   if (kind === "status") {
     // place relative to the card under the pointer
     const cards = [...z.querySelectorAll("[data-id]")].filter(c => c.dataset.id !== id);
-    const before = cards.find(c => e.clientY < c.getBoundingClientRect().top + c.offsetHeight / 2);
+    const before = cards.find(c => clientY < c.getBoundingClientRect().top + c.offsetHeight / 2);
     const list = sortTasks(tasks.filter(t => t.status === val && t.id !== id));
     const idx = before ? list.findIndex(t => t.id === before.dataset.id) : list.length;
     list.splice(idx, 0, tasks.find(t => t.id === id));
@@ -804,7 +861,7 @@ document.addEventListener("drop", e => {
   }
   if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patchTask(id, { important: q.imp, urgent: q.urg }) }
   if (kind === "due") patchTask(id, { due: val || "" });
-});
+}
 
 if (DEMO) $("#demo-pill").hidden = false;
 document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
