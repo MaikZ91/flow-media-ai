@@ -13,7 +13,6 @@ Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 
 `web/index.html` wird aus `index.html` erzeugt – nie von Hand ändern. (`demo.html` nicht mehr neu erzeugen.)
 
-    sed -e 's/const DEMO = false;/const DEMO = true;/' -e 's#<title>Flow Board</title>#<title>Flow Board Demo</title>#' index.html > demo.html
 
     { printf '<!doctype html>\n<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"></head><body>\n'; sed 's/const WEB = false;/const WEB = true;/' index.html; printf '\n</body></html>\n'; } > web/index.html
 
