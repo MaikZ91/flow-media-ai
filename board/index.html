@@ -4,38 +4,46 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
-/* Layout: full-bleed generated photo background; translucent top bar; lists side by side in a horizontal scroller (Trello-style); card detail as a centered modal. */
+/* Onyx: black-first. Lists and panels as quiet graphite planes on a near-black ground, brass as the single accent,
+   Instrument Serif for names and big numbers, Geist for the interface, Geist Mono for counts and times. */
 :root {
-  --list: #f1f2f4;
-  --card: #ffffff;
-  --ink: #172b4d;
-  --muted: #44546f;
-  --faint: #626f86;
-  --line: #dcdfe4;
-  --hover: #e4e6ea;
-  --accent: #2f5bff;
-  --bar: rgba(16, 24, 32, .42);
-  --bar-ink: #ffffff;
-  --scrim: rgba(9, 14, 20, .55);
-  --modal: #f7f8f9;
-  --red: #c9372c; --red-soft: #ffd5d2;
-  --c-in: #2f5bff; --c-out: #d97706;
+  --bg: #0b0b0c; --list: #131315; --card: #1b1b1e; --modal: #151517; --hover: #252428; --line: #2b2a2e;
+  --ink: #ecebe8; --muted: #a8a59e; --faint: #7a7771;
+  --accent: #c9a66b; --accent-ink: #15120c;
+  --bar: rgba(9, 9, 10, .74); --bar-ink: #ecebe8; --bar-press: #0b0b0c; --scrim: rgba(0, 0, 0, .68);
+  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #141210; --label-ink: #141210;
+  --toast-bg: #ecebe8; --toast-ink: #141414; --toast-act: #7a5a22;
+  --c-in: #5b7cf5; --c-out: #c98118;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .45); --lift: 0 24px 60px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .05);
+  color-scheme: dark;
   --l1: #f87168; --l2: #fea362; --l3: #e2b203; --l4: #8590a2;
   --la: #6cc3e0; --lb: #94c748; --lc: #9f8fef; --ld: #e774bb; --le: #579dff; --lf: #4bce97; --lg: #b38600;
-  --shadow: 0 1px 1px rgba(9,30,66,.25), 0 0 1px rgba(9,30,66,.31);
-  --f-body: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --f-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body: "Geist", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, Menlo, monospace;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a; --c-in: #5b7cf5; --c-out: #c98118;
-  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark } }
-:root[data-theme="dark"] {
-  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a; --c-in: #5b7cf5; --c-out: #c98118;
-  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --bg: #e9e8e5; --list: #f6f6f4; --card: #ffffff; --modal: #fbfbfa; --hover: #edece8; --line: #dedcd7;
+  --ink: #18171a; --muted: #57545c; --faint: #7f7b84;
+  --accent: #8a672b; --accent-ink: #ffffff;
+  --bar: rgba(12, 12, 14, .8); --bar-ink: #f4f3f0; --bar-press: #0b0b0c; --scrim: rgba(12, 12, 14, .5);
+  --red: #b4382c; --red-soft: #fbe1dd; --ok: #2e7d57; --warn: #e2b203; --on-status: #ffffff; --label-ink: #18171a;
+  --toast-bg: #18171a; --toast-ink: #f4f3f0; --toast-act: #d8b67c;
+  --c-in: #2f5bff; --c-out: #d97706;
+  --shadow: 0 1px 2px rgba(20, 18, 14, .08); --lift: 0 24px 60px rgba(20, 18, 14, .22), 0 0 0 1px rgba(20, 18, 14, .06);
+  color-scheme: light } }
+:root[data-theme="light"] {
+  --bg: #e9e8e5; --list: #f6f6f4; --card: #ffffff; --modal: #fbfbfa; --hover: #edece8; --line: #dedcd7;
+  --ink: #18171a; --muted: #57545c; --faint: #7f7b84;
+  --accent: #8a672b; --accent-ink: #ffffff;
+  --bar: rgba(12, 12, 14, .8); --bar-ink: #f4f3f0; --bar-press: #0b0b0c; --scrim: rgba(12, 12, 14, .5);
+  --red: #b4382c; --red-soft: #fbe1dd; --ok: #2e7d57; --warn: #e2b203; --on-status: #ffffff; --label-ink: #18171a;
+  --toast-bg: #18171a; --toast-ink: #f4f3f0; --toast-act: #d8b67c;
+  --c-in: #2f5bff; --c-out: #d97706;
+  --shadow: 0 1px 2px rgba(20, 18, 14, .08); --lift: 0 24px 60px rgba(20, 18, 14, .22), 0 0 0 1px rgba(20, 18, 14, .06);
+  color-scheme: light }
 
 * { box-sizing: border-box }
 html, body { height: 100% }
@@ -300,6 +308,78 @@ body.is-dragging .card-del { display: none }
   .surface { scroll-snap-type: x mandatory }
 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
+
+/* ---------- Onyx style layer (overrides the base rules above) ---------- */
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent }
+body { background: var(--bg); font: 13.5px/1.45 var(--f-body); -webkit-font-smoothing: antialiased }
+#bg { background-color: var(--bg) }
+.bar { backdrop-filter: blur(14px) saturate(1.15); border-bottom: 1px solid color-mix(in srgb, var(--bar-ink) 9%, transparent); padding-block: 9px }
+.bbtn { background: transparent; border: 1px solid color-mix(in srgb, var(--bar-ink) 16%, transparent); border-radius: 999px; padding: 5px 13px; font-size: 13px }
+.bbtn:hover { background: color-mix(in srgb, var(--bar-ink) 9%, transparent) }
+.bbtn[aria-pressed="true"] { background: var(--bar-ink); border-color: var(--bar-ink); color: var(--bar-press) }
+.bbtn.plain { border-color: transparent }
+.title { font: 400 25px/1.1 var(--f-display); letter-spacing: .005em }
+.title:hover { background: color-mix(in srgb, var(--bar-ink) 9%, transparent) }
+.title-input { font: 400 22px var(--f-display); color: var(--ink); background: var(--card) }
+.sep { background: color-mix(in srgb, var(--bar-ink) 16%, transparent) }
+.av { border-color: color-mix(in srgb, var(--bar-ink) 70%, transparent); color: #fff }
+
+.surface { gap: 14px; padding-block: 16px 18px }
+.list { background: color-mix(in srgb, var(--list) 90%, transparent); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 16px; box-shadow: none }
+.list-head { padding: 12px 10px 8px 16px }
+.list-head h2 { font: 600 11px/1.2 var(--f-body); text-transform: uppercase; letter-spacing: .1em; color: var(--muted) }
+.cards { padding: 2px 10px; gap: 7px }
+.cards.over { background: color-mix(in srgb, var(--accent) 10%, transparent); border-radius: 10px }
+.card { border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 9px 11px 7px }
+.card:hover { outline: 0; border-color: color-mix(in srgb, var(--accent) 60%, var(--line)) }
+.card .t { font-size: 13.5px; line-height: 1.35 }
+.drag-ghost { box-shadow: var(--lift) }
+.lab { height: 6px; border-radius: 3px }
+.labels.wide .lab, .pill, .badge.soon, .chipbtn.open { color: var(--label-ink) }
+.badge.late { color: var(--on-status) } .badge.done { background: var(--ok); color: var(--on-status) } .badge.soon { background: var(--warn) }
+.composer textarea { border: 1px solid var(--line); box-shadow: none }
+.btn { background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 6px 15px }
+.btn:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink)) }
+.ghost, .mini { border-radius: 999px; background: transparent }
+.ghost:hover { background: var(--hover) }
+.fin-form input, .fin-form select, .fl input, .fl select, .sec textarea, .sec input, .side select, .side input, .inv-item input, .composer textarea { border-radius: 8px }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent) }
+
+.panel { background: color-mix(in srgb, var(--list) 93%, transparent); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 16px; box-shadow: none; padding: 16px }
+.cal-head h2, .fpanel h2, .stats h2, .quad h2 { font: 400 28px/1.1 var(--f-display); letter-spacing: .003em }
+.fpanel h2 { font-size: 24px }
+.quad { border-top-width: 3px }
+.spanel h3, .undated h3, .sec h3, .menu h3 { font: 600 11px/1.3 var(--f-body); text-transform: uppercase; letter-spacing: .09em; color: var(--muted) }
+.kpis { gap: 12px }
+.kpi { border: 1px solid var(--line); box-shadow: none; border-radius: 12px; padding: 14px 16px 12px; gap: 4px }
+.kpi .kl { font: 600 10.5px/1.3 var(--f-body); text-transform: uppercase; letter-spacing: .09em; color: var(--faint) }
+.kpi b { font: 400 36px/1.05 var(--f-display); letter-spacing: -.005em; font-variant-numeric: lining-nums }
+.kd.up { color: var(--ok) }
+.mbar { height: 6px; border-radius: 3px } .mbar.warn i { background: var(--warn) }
+.chart .tip { background: var(--ink); color: var(--bg); border-radius: 8px }
+span.enl { color: var(--bg) }
+.cal-mode { border-radius: 999px; padding: 2px; gap: 2px; background: var(--card) }
+.cal-mode button { background: transparent; border-radius: 999px; padding: 4px 13px }
+.cal-mode button[aria-pressed="true"] { background: var(--ink); color: var(--bg) }
+.cal { border-radius: 12px }
+.day.today .dn span { background: var(--accent); color: var(--accent-ink) }
+.wk-head .today { color: var(--accent) }
+.wcol.today { background-color: color-mix(in srgb, var(--accent) 6%, transparent) }
+.week { border-radius: 12px }
+
+.scrim { backdrop-filter: blur(3px) }
+.modal { border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 18px }
+.mtitle { font: 400 27px/1.15 var(--f-display) }
+.menu { border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 16px; width: 290px; padding: 14px; gap: 10px }
+.menu .cal-mode { margin-left: 0; align-self: flex-start }
+.sw { border-radius: 8px }
+.frow { border: 1px solid var(--line); box-shadow: none; border-radius: 10px }
+.dropzone { border-width: 1px; border-radius: 12px }
+.dropzone.over { background: color-mix(in srgb, var(--accent) 8%, transparent) }
+.note { background: color-mix(in srgb, var(--hover) 70%, transparent); border: 1px solid var(--line) }
+.toast { background: var(--toast-bg); color: var(--toast-ink); border-radius: 999px; padding: 9px 18px; box-shadow: var(--lift) }
+.toast-act { color: var(--toast-act) }
+.toast-act:hover { background: color-mix(in srgb, var(--toast-ink) 10%, transparent) }
 </style>
 
 <div id="bg"></div>
@@ -352,6 +432,7 @@ const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August",
 const MON_S = ["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
 const BGS = {
+  onyx:  { name: "Onyx",  stops: [[0, "#050506"], [.45, "#0b0b0d"], [.72, "#141317"], [.88, "#1d1a16"], [1, "#2b241a"]] },
   meer:  { name: "Meer",  stops: [[0, "#0d3f4a"], [.35, "#1d6f78"], [.55, "#3c9a98"], [.7, "#7fbfb0"], [.82, "#c7b48f"], [1, "#8a6a4a"]] },
   fels:  { name: "Fels",  stops: [[0, "#3a3430"], [.4, "#6b5d52"], [.65, "#a38d77"], [.85, "#cdbca5"], [1, "#efe6d8"]] },
   wald:  { name: "Wald",  stops: [[0, "#13261c"], [.4, "#2c4a32"], [.65, "#4f7a4c"], [.85, "#9cb27a"], [1, "#d8d6a6"]] },
@@ -361,7 +442,11 @@ const BGS = {
 };
 
 let tasks = [];
-let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "meer", starred: false };
+const THEME_KEY = "flow-board-theme";
+const themePref = () => { try { return localStorage.getItem(THEME_KEY) || "dark" } catch { return "dark" } };
+function applyTheme(p = themePref()) { if (p === "system") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = p }
+applyTheme();
+let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "onyx", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let calMode = "week";  // "week" (hour grid) or "month"
@@ -443,7 +528,7 @@ const filesFor = id => files.filter(f => f.taskId === id).sort((a, b) => (a.crea
 
 /* ---------- background: generated photo-like texture per preset ---------- */
 function makeBackground(key) {
-  const p = BGS[key] || BGS.meer;
+  const p = BGS[key] || BGS.onyx;
   const W = 320, H = 200, c = document.createElement("canvas"); c.width = W; c.height = H;
   const ctx = c.getContext("2d"), img = ctx.createImageData(W, H);
   let seed = 0; for (const ch of key) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
@@ -474,7 +559,7 @@ function makeBackground(key) {
 }
 const bgCache = {};
 function applyBackground() {
-  const key = BGS[meta.bg] ? meta.bg : "meer";
+  const key = BGS[meta.bg] ? meta.bg : "onyx";
   bgCache[key] = bgCache[key] || makeBackground(key);
   $("#bg").style.backgroundImage = `url(${bgCache[key]})`;
   $("#bg").style.filter = "blur(.6px) saturate(1.05)";
@@ -1058,8 +1143,8 @@ function showInvoice(t) {
       <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
       <h2 style="margin:0;font-size:18px">Rechnung ${esc(t.inv.no)}</h2>
       <iframe id="inv-frame" title="Rechnung ${esc(t.inv.no)}" class="inv-frame"></iframe>
-      <p class="sub" style="margin:0">Gelb markiert = fehlt noch. „Drucken“ öffnet den Druckdialog, dort „Als PDF speichern“ wählen. Ablage: Dropbox <b>05_Finanzen/Steuern/Rechnungen Debitoren</b>.</p>
-      <div class="mfoot">${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}<button type="button" class="btn" data-inv-print>Drucken / PDF</button></div>
+      <p class="sub" style="margin:0">Gelb markiert = fehlt noch. ${WEB ? "„Drucken“ öffnet den Druckdialog, dort „Als PDF speichern“ wählen." : "Drucken geht in der Web-Version des Boards."} Ablage: Dropbox <b>05_Finanzen/Steuern/Rechnungen Debitoren</b>.</p>
+      <div class="mfoot">${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}${WEB ? `<button type="button" class="btn" data-inv-print>Drucken / PDF</button>` : ""}</div>
     </div></div>`;
   $("#inv-frame").srcdoc = invoiceDoc(t);
 }
@@ -1209,6 +1294,12 @@ document.addEventListener("click", e => {
   if (t.closest("[data-inv-print]")) { try { $("#inv-frame").contentWindow.print() } catch { toast("Drucken geht hier nicht. Öffne das Board im Browser.") } return }
   if (t.closest("[data-fin-csv]")) finCsv();
   if (t.closest("[data-fin-xlsx]")) finXlsx();
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-theme-set]"); if (!b) return;
+  try { localStorage.setItem(THEME_KEY, b.dataset.themeSet) } catch {}
+  applyTheme(b.dataset.themeSet);
+  b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
 });
 document.addEventListener("change", e => { if (e.target.matches?.("[data-fin-year]")) { finUi.year = Number(e.target.value); render() } });
 
@@ -1383,6 +1474,8 @@ function openMenu(btn) {
   const late = open.filter(t => dueInfo(t)?.cls === "late").length;
   $("#layer").innerHTML = `<div style="position:fixed;inset:0;z-index:14" data-close-menu></div>
   <div class="menu" style="top:${r.bottom + 6}px;right:max(12px, env(safe-area-inset-right, 0px))">
+    <h3>Darstellung</h3>
+    <div class="cal-mode" role="group" aria-label="Darstellung">${[["dark", "Schwarz"], ["light", "Hell"], ["system", "System"]].map(([k, l]) => `<button type="button" data-theme-set="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
     <h3>Hintergrund</h3>
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
@@ -1589,7 +1682,7 @@ function dropOn(z, id, clientY) {
 }
 
 if (DEMO) $("#demo-pill").hidden = false;
-document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
+document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "onyx" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
 try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
