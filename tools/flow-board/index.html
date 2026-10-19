@@ -805,14 +805,27 @@ function renderBar() {
   $("#board-people").innerHTML = people.slice(0, 5).map(avatar).join("");
   document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
 }
+// a redraw keeps scroll positions and anything typed into the page's forms
+const KEEP_SCROLL = ".cards, .stats, .fpanel, .files-view, .matrix, .cal-scroll";
+const fieldKey = f => (f.form?.dataset.finForm || (f.form?.hasAttribute("data-inv-profile") ? "profile" : "")) + "|" + f.name;
+function editingMain() { const a = document.activeElement; return !!a && $("#main").contains(a) && a.matches("input, select, textarea") }
+let deferredRender = false;
+document.addEventListener("focusout", () => setTimeout(() => {
+  if (deferredRender && !editingMain() && !$("#layer").innerHTML && !drag.active) { deferredRender = false; render() }
+}, 0));
 function render() {
   if (drag.active) { renderQueued = true; return }
   const main = $("#main"), sx = main.scrollLeft;
   const draft = $("#compose-text")?.value || "";
-  const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
+  const same = main.dataset.shown === view;
+  const scrolls = same ? [...main.querySelectorAll(KEEP_SCROLL)].map(c => c.scrollTop) : [];
+  const fields = !same ? [] : [...main.querySelectorAll("form[data-fin-form] [name], form[data-inv-profile] [name]")].map(f => [fieldKey(f), f.type === "checkbox" ? f.checked : f.value]);
   main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : renderCal();
+  main.dataset.shown = view;
   main.scrollLeft = sx;
-  main.querySelectorAll(".cards").forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
+  main.querySelectorAll(KEEP_SCROLL).forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
+  if (fields.length) { const now = new Map([...main.querySelectorAll("form[data-fin-form] [name], form[data-inv-profile] [name]")].map(f => [fieldKey(f), f]));
+    fields.forEach(([k, v]) => { const f = now.get(k); if (f) f.type === "checkbox" ? f.checked = v : f.value = v }) }
   renderBar();
   const ta = $("#compose-text"); if (ta) { ta.value = draft; ta.focus() }
 }
@@ -1383,7 +1396,7 @@ document.addEventListener("submit", e => {
   const entry = type === "tx" ? { ...base, type, date: d.date, kind: d.kind, vat: Number(d.vat) || 0, party: (d.party || "").trim(), note: (d.note || "").trim(), receipt: !!d.receipt, category: d.category, status: d.kind === "in" ? d.status : "paid" }
     : type === "budget" ? { ...base, type, kind: d.kind, enl: d.kind === "out" ? d.enl : "", fixed: !!d.fixed }
     : { ...base, type, group: d.group };
-  saveFin(entry); toast("Gespeichert");
+  f.reset(); saveFin(entry); toast("Gespeichert");
 });
 document.addEventListener("click", e => {
   const t = e.target;
@@ -1906,7 +1919,8 @@ async function reloadBoard() {
   tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask); fin = (j.finance || []).map(rowToTask);
   if (j.meta) meta = { ...meta, ...j.meta };
   loaded = true; applyBackground();
-  if (!$("#layer").innerHTML) render(); else { renderBar(); const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
+  if (editingMain()) { deferredRender = true; renderBar() }
+  else if (!$("#layer").innerHTML) render(); else { renderBar(); const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
   refreshSigned();
 }
 let reloadTimer = 0;
