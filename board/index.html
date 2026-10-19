@@ -140,7 +140,8 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .ptime { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
 .kpis.five { grid-template-columns: repeat(5, minmax(0, 1fr)) }
 .kpi.neg b { color: var(--red) } .kpi.accent b { color: var(--accent) }
-.fin-tools { display: flex; gap: 8px; align-items: center }
+.fin-tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.fin-tools .kd { white-space: nowrap }
 .fin-tools select { border: 0; background: transparent; font-weight: 600 }
 .fin-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
 .fin-form input, .fin-form select { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; min-width: 0 }
@@ -306,7 +307,29 @@ body.is-dragging .card-del { display: none }
   .fpanel { overflow: visible }
   .hide-sm { display: none }
   .surface { scroll-snap-type: x mandatory }
+  /* phones: panels take their content height and the view scrolls, instead of squeezing every panel to the screen */
+  .matrix, .files-view { grid-auto-rows: max-content; align-content: start }
+  .quad, .fpanel { min-height: auto }
+  .quad .cards { overflow: visible }
+  .list { flex: 0 0 calc(100vw - 52px) }
+  .cal-mode { max-width: 100%; overflow-x: auto; flex-wrap: nowrap }
+  .cal-mode button { flex: none; white-space: nowrap }
+  .cal-head h2 { min-width: 0; font-size: 21px }
+  .modal { width: 100%; max-height: 100%; border-radius: 0 }
+  input, select, textarea { font-size: 16px }  /* below 16px iOS zooms into the field */
 }
+.agenda { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0; padding-bottom: 8px }
+.ag-day { background: var(--card); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px }
+.ag-day.today { box-shadow: inset 3px 0 0 var(--accent) }
+.ag-day h3 { margin: 0; font-size: 14px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap }
+.ag-day.today h3 { color: var(--accent) }
+.ag-motto { font: 500 11.5px var(--f-mono); color: var(--faint) }
+.ag-item { display: flex; gap: 10px; align-items: baseline; text-align: left; width: 100%; border: 0; border-left: 3px solid var(--pc, var(--accent)); background: var(--list); border-radius: 6px; padding: 8px 10px; color: var(--ink); text-decoration: none; font: inherit }
+.ag-item.done .ag-title { color: var(--faint); text-decoration: line-through }
+.ag-time { flex: none; min-width: 84px; font: 500 12px var(--f-mono); color: var(--muted) }
+.ag-title { min-width: 0; overflow-wrap: anywhere; font-size: 14.5px }
+.ag-empty { color: var(--faint); font-size: 13px }
+.ag-add { align-self: flex-start; border: 0; background: none; color: var(--muted); font-size: 13px; padding: 2px 0 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
 
 /* day mottos */
@@ -481,8 +504,8 @@ applyTheme();
 let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "flow", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-let calMode = "week";  // "week" (hour grid) or "month"
-try { if (localStorage.getItem("flow-board-calmode") === "month") calMode = "month" } catch {}
+let calMode = "week";  // "week" (hour grid), "month" or "list" (day-by-day agenda, default on phones)
+try { const m = localStorage.getItem("flow-board-calmode"); if (["week", "month", "list"].includes(m)) calMode = m; else if (matchMedia("(max-width: 700px)").matches) calMode = "list" } catch {}
 const mondayOf = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x };
 let weekStart = mondayOf(new Date());
 const H0 = 7, H1 = 22;  // visible hours in the week grid
@@ -677,7 +700,7 @@ function renderMatrix() {
       <div class="cards" data-drop="quad:${q.p}" style="padding:0">${items.map(cardHtml).join("") || `<div class="empty-note">Nichts hier</div>`}</div></section>`;
   }).join("")}</div>`;
 }
-const calModeToggle = () => `<span class="cal-mode" role="group" aria-label="Kalenderansicht"><button type="button" data-calmode="week" aria-pressed="${calMode === "week"}">Woche</button><button type="button" data-calmode="month" aria-pressed="${calMode === "month"}">Monat</button></span>`;
+const calModeToggle = () => `<span class="cal-mode" role="group" aria-label="Kalenderansicht"><button type="button" data-calmode="week" aria-pressed="${calMode === "week"}">Woche</button><button type="button" data-calmode="month" aria-pressed="${calMode === "month"}">Monat</button><button type="button" data-calmode="list" aria-pressed="${calMode === "list"}">Liste</button></span>`;
 const toMin = t => { const [h, m] = (t || "0:0").split(":").map(Number); return h * 60 + m };
 const fromMin = n => pad(Math.floor(n / 60)) + ":" + pad(n % 60);
 /* Outlook-style editing: click selects, double click opens, Ctrl+C/X/V copies, Delete removes; slot = target for paste */
@@ -781,7 +804,28 @@ function renderWeek() {
         <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
   </section>`;
 }
+// agenda: the week as a readable day-by-day list (phones); a tap opens the card
+function renderAgenda() {
+  const today = ymd(new Date()), days = [...Array(7)].map((_, i) => { const d = new Date(weekStart); d.setDate(d.getDate() + i); return d });
+  const e = days[6], title = `KW ${isoWeek(weekStart)} · ${weekStart.getDate()}.${weekStart.getMonth() !== e.getMonth() ? " " + MON_S[weekStart.getMonth()] : ""} – ${e.getDate()}. ${MON_S[e.getMonth()]}`;
+  const rows = days.map(d => { const key = ymd(d), i = (d.getDay() + 6) % 7;
+    const items = [
+      ...sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => ({ m: -1, html: `<button type="button" class="ag-item ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" data-id="${t.id}"><span class="ag-time">ganztags</span><span class="ag-title">${esc(t.title)}</span></button>` })),
+      ...tasks.filter(t => t.due === key && t.time).map(t => ({ m: toMin(t.time), html: `<button type="button" class="ag-item ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" data-id="${t.id}"><span class="ag-time">${t.time}${t.endTime ? "–" + t.endTime : ""}</span><span class="ag-title">${esc(t.title)}</span></button>` })),
+      ...calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes();
+        return { m: s0, html: `<a class="ag-item appt" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener"><span class="ag-time">${fromMin(s0)}–${fromMin(en.getHours() * 60 + en.getMinutes())}</span><span class="ag-title">${esc(ev.invitee || ev.name)} · Calendly</span></a>` } }),
+    ].sort((a, b) => a.m - b.m);
+    return `<div class="ag-day ${key === today ? "today" : ""}"><h3>${DOW[i]} ${d.getDate()}. ${MON_S[d.getMonth()]}${motto(i) ? ` <span class="ag-motto">${esc(motto(i))}</span>` : ""}</h3>
+      ${items.map(x => x.html).join("") || `<div class="ag-empty">Nichts geplant</div>`}${readOnly ? "" : `<button type="button" class="ag-add" data-new-due="${key}">+ Termin</button>`}</div>`;
+  }).join("");
+  return `<section class="panel cal-panel">
+    <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorherige Woche">←</button><h2>${title}</h2>
+      <button class="ghost" id="cal-next" aria-label="Nächste Woche">→</button><button class="ghost" id="cal-today">Heute</button>${calModeToggle()}</div>
+    <div class="agenda">${rows}</div>
+  </section>`;
+}
 function renderCal() {
+  if (calMode === "list") return renderAgenda();
   if (calMode === "week") return renderWeek();
   const y = calCursor.getFullYear(), m = calCursor.getMonth();
   const start = new Date(y, m, 1 - ((calCursor.getDay() + 6) % 7));
@@ -1692,8 +1736,8 @@ document.addEventListener("click", e => {
   const sd = tgt.closest("[data-days]"); if (sd) { stats.days = Number(sd.dataset.days); stats.data = null; loadStats(); return }
   if (tgt.closest("[data-stats-reload]")) { loadStats(); return }
   const cm = tgt.closest("[data-calmode]");
-  if (cm) { calMode = cm.dataset.calmode; try { localStorage.setItem("flow-board-calmode", calMode) } catch {} ; if (calMode === "week") weekStart = mondayOf(calCursor.getMonth() === new Date().getMonth() ? new Date() : calCursor); else calCursor = new Date(weekStart.getFullYear(), weekStart.getMonth(), 1); render(); return }
-  const step = d => { if (calMode === "week") { weekStart = new Date(weekStart); weekStart.setDate(weekStart.getDate() + 7 * d) } else calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + d, 1); render() };
+  if (cm) { calMode = cm.dataset.calmode; try { localStorage.setItem("flow-board-calmode", calMode) } catch {} ; if (calMode !== "month") weekStart = mondayOf(calCursor.getMonth() === new Date().getMonth() ? new Date() : calCursor); else calCursor = new Date(weekStart.getFullYear(), weekStart.getMonth(), 1); render(); return }
+  const step = d => { if (calMode !== "month") { weekStart = new Date(weekStart); weekStart.setDate(weekStart.getDate() + 7 * d) } else calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + d, 1); render() };
   if (tgt.id === "cal-prev") step(-1);
   if (tgt.id === "cal-next") step(1);
   if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); weekStart = mondayOf(new Date()); render() }
