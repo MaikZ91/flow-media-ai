@@ -1656,10 +1656,21 @@ document.addEventListener("click", e => {
   const wc = tgt.closest(".wcol");
   if (wc && tgt === wc && !readOnly) {
     const r = wc.getBoundingClientRect(), m = Math.max(H0 * 60, Math.min(H1 * 60 - 30, Math.floor((H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN) / 30) * 30));
-    calSlot = { day: wc.dataset.day, m }; calSel = null; render(); return;
+    // the first click re-renders the grid, so a double click on an empty slot is detected here
+    const key = "slot:" + wc.dataset.day + ":" + m, now = Date.now(), dbl = lastCalClick.id === key && now - lastCalClick.t < 450;
+    lastCalClick = { id: key, t: dbl ? 0 : now };
+    calSlot = { day: wc.dataset.day, m }; calSel = null;
+    if (dbl) { calAction("new"); return }
+    render(); return;
   }
   const dc = view === "cal" && !readOnly && tgt.closest(".cal .day");
-  if (dc && !tgt.closest("button, a")) { calSlot = { day: dc.dataset.day, m: null }; calSel = null; render() }
+  if (dc && !tgt.closest("button, a")) {
+    const key = "day:" + dc.dataset.day, now = Date.now(), dbl = lastCalClick.id === key && now - lastCalClick.t < 450;
+    lastCalClick = { id: key, t: dbl ? 0 : now };
+    calSlot = { day: dc.dataset.day, m: null }; calSel = null;
+    if (dbl) { calAction("new"); return }
+    render();
+  }
 });
 document.addEventListener("submit", e => {
   const f = e.target.closest("[data-compose]"); if (!f) return;
