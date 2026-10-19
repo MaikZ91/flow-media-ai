@@ -971,7 +971,9 @@ function finBusiness() {
   const y = String(finUi.year), txs = yearTxs();
   const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
   const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0), sumNet = a => a.reduce((n, t) => n + netOf(t), 0);
-  const income = sum(inc), spend = sum(out), profit = sumNet(inc) - sumNet(out), open = sum(inc.filter(t => t.status === "open"));
+  // Kleinunternehmer cannot reclaim input VAT, so expenses count gross
+  const small = invProfile().small !== false;
+  const income = sum(inc), spend = sum(out), profit = sumNet(inc) - (small ? spend : sumNet(out)), open = sum(inc.filter(t => t.status === "open"));
   const missing = txs.filter(t => !t.receipt).length;
   const rows = txs.slice().sort((a, b) => b.date.localeCompare(a.date)).map(t => `<tr>
       <td style="white-space:nowrap">${deDate(t.date)}</td>
@@ -987,7 +989,7 @@ function finBusiness() {
     <div class="kpis five">
       ${finKpi("Einnahmen (brutto)", eur(income), `${inc.length} Buchungen`)}
       ${finKpi("Ausgaben (brutto)", eur(spend), `${out.length} Buchungen`)}
-      ${finKpi("Gewinn (netto)", eur(profit), "Einnahmen − Ausgaben ohne USt", profit < 0 ? "neg" : "")}
+      ${finKpi("Gewinn", eur(profit), small ? "Kleinunternehmer: Ausgaben inkl. USt" : "Einnahmen − Ausgaben ohne USt", profit < 0 ? "neg" : "")}
       ${finKpi("25 % zurücklegen", eur(Math.max(0, income * .25)), "für Steuern, KV & Fixkosten")}
       ${finKpi("Offene Rechnungen", eur(open), `${inc.filter(t => t.status === "open").length} offen`)}
     </div>
