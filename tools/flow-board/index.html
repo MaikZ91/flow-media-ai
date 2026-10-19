@@ -307,6 +307,21 @@ body.is-dragging .card-del { display: none }
 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
 
+/* calendar editing */
+.wev { cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none }
+.pill { user-select: none; -webkit-user-select: none }
+.wev.sel, .pill.sel { box-shadow: 0 0 0 2px var(--accent); z-index: 3 }
+.wev-rs { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; cursor: ns-resize }
+.wev-rs::after { content: ""; position: absolute; left: 50%; bottom: 2px; width: 18px; height: 3px; margin-left: -9px; border-radius: 2px; background: currentColor; opacity: 0 }
+.wev:hover .wev-rs::after, .wev.sel .wev-rs::after { opacity: .4 }
+body.is-resizing, body.is-resizing * { cursor: ns-resize !important; user-select: none }
+.slot { position: absolute; left: 2px; right: 2px; background: var(--soft); border: 1px dashed var(--accent); border-radius: 4px; pointer-events: none }
+.day.slot-sel { box-shadow: inset 0 0 0 2px var(--accent) }
+.drag-ghost.wev-ghost { position: fixed; transform: none; opacity: .9 }
+.drag-ghost.copying::after { content: "+"; position: absolute; top: -8px; right: -8px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 13px/18px var(--f-body); text-align: center }
+.selbar { display: inline-flex; gap: 4px; flex-wrap: wrap }
+.selbar .mini:disabled { opacity: .4 }
+
 /* ---------- Flow Media AI brand layer (overrides the base rules above) ---------- */
 * { scrollbar-width: thin; scrollbar-color: var(--line) transparent }
 body { background: var(--bg); font: 14px/1.45 var(--f-body); -webkit-font-smoothing: antialiased }
@@ -652,32 +667,104 @@ function renderMatrix() {
 const calModeToggle = () => `<span class="cal-mode" role="group" aria-label="Kalenderansicht"><button type="button" data-calmode="week" aria-pressed="${calMode === "week"}">Woche</button><button type="button" data-calmode="month" aria-pressed="${calMode === "month"}">Monat</button></span>`;
 const toMin = t => { const [h, m] = (t || "0:0").split(":").map(Number); return h * 60 + m };
 const fromMin = n => pad(Math.floor(n / 60)) + ":" + pad(n % 60);
+/* Outlook-style editing: click selects, double click opens, Ctrl+C/X/V copies, Delete removes; slot = target for paste */
+let calSel = null, calSlot = null, calClip = null, lastCalClick = { id: null, t: 0 };
+const H_SPAN = (H1 - H0) * 60, pctOf = m => (m - H0 * 60) / H_SPAN * 100;
+const snap15 = m => Math.round(m / 15) * 15;
+function calToolbar() {
+  if (readOnly || (!calSel && !calClip && !calSlot)) return "";
+  const b = (act, label, on = true) => `<button type="button" class="mini" data-calact="${act}" ${on ? "" : "disabled"}>${label}</button>`;
+  return `<span class="selbar" role="toolbar" aria-label="Termin bearbeiten">${calSel ? b("open", "Öffnen") + b("copy", "Kopieren") + b("cut", "Ausschneiden") + b("del", "Löschen") : ""}${calClip ? b("paste", calSlot ? "Hier einfügen" : "Einfügen") : ""}${calSlot && !calSel ? b("new", "Neuer Termin") : ""}</span>`;
+}
+function cloneTask(t, patch = {}) {
+  const now = Date.now(), status = t.status === "done" ? "todo" : t.status;
+  const c = { ...t, ...patch, id: newId(), status, order: nextOrder(status), comments: [], createdAt: now, updatedAt: now, doneAt: null };
+  saveTask(c); return c;
+}
+function slotPatch(t, slot) {
+  if (!slot) return {};
+  if (slot.m == null) return { due: slot.day };
+  const dur = t.time && t.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+  return { due: slot.day, time: fromMin(slot.m), endTime: fromMin(Math.min(slot.m + dur, 24 * 60 - 1)) };
+}
+function calAction(act) {
+  const t = tasks.find(x => x.id === calSel);
+  if (act === "open" && t) { openCard(t); return }
+  if ((act === "copy" || act === "cut") && t) { calClip = { ...t }; if (act === "cut") { calSel = null; removeTask(t.id); toast("Ausgeschnitten. Feld wählen und einfügen.") } else { toast("Kopiert. Feld wählen und einfügen."); render() } return }
+  if (act === "paste" && calClip) { const c = cloneTask(calClip, slotPatch(calClip, calSlot)); calSel = c.id; calSlot = null; render(); toast("Eingefügt"); return }
+  if (act === "del" && t) { calSel = null; removeTask(t.id); toast(`„${t.title.length > 40 ? t.title.slice(0, 40) + "…" : t.title}“ gelöscht`, { label: "Rückgängig", fn: () => saveTask({ ...t, updatedAt: Date.now() }) }); return }
+  if (act === "new" && calSlot) { const m = calSlot.m; openCard(blank({ due: calSlot.day, ...(m != null ? { time: fromMin(m), endTime: fromMin(Math.min(m + 60, 24 * 60 - 1)) } : {}), status: "todo", order: nextOrder("todo") }), true) }
+}
+document.addEventListener("click", e => { const a = e.target.closest?.("[data-calact]"); if (a) calAction(a.dataset.calact) });
+document.addEventListener("keydown", e => {
+  if (view !== "cal" || readOnly || $("#layer").innerHTML || e.target.closest?.("input, textarea, select, [contenteditable]")) return;
+  const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase();
+  if (mod && k === "c" && calSel) { e.preventDefault(); calAction("copy") }
+  else if (mod && k === "x" && calSel) { e.preventDefault(); calAction("cut") }
+  else if (mod && k === "v" && calClip) { e.preventDefault(); calAction("paste") }
+  else if ((e.key === "Delete" || e.key === "Backspace") && calSel) { e.preventDefault(); calAction("del") }
+  else if (e.key === "Escape" && (calSel || calSlot)) { calSel = null; calSlot = null; render() }
+});
+document.addEventListener("dblclick", e => {
+  if (view !== "cal") return;
+  const ev = e.target.closest?.(".week [data-id], .cal [data-id]");
+  if (ev) { const t = tasks.find(x => x.id === ev.dataset.id); if (t) openCard(t); return }
+  const wc = e.target.closest?.(".wcol");
+  if (wc && !readOnly && !e.target.closest(".wev")) {
+    const r = wc.getBoundingClientRect(), m = Math.max(H0 * 60, Math.min(H1 * 60 - 30, Math.floor((H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN) / 30) * 30));
+    calSlot = { day: wc.dataset.day, m }; calAction("new");
+  }
+});
+// resize: drag the lower edge of an appointment, snaps to 15 minutes
+const rs = { el: null, id: null, col: null, s0: 0, m: null };
+document.addEventListener("pointerdown", e => {
+  const h = e.target.closest?.(".wev-rs"); if (!h || readOnly) return;
+  e.preventDefault(); e.stopImmediatePropagation();
+  const el = h.closest(".wev"), t = tasks.find(x => x.id === el.dataset.id); if (!t) return;
+  Object.assign(rs, { el, id: t.id, col: el.parentElement, s0: toMin(t.time), m: null });
+  document.body.classList.add("is-resizing");
+}, true);
+document.addEventListener("pointermove", e => {
+  if (!rs.el) return;
+  const r = rs.col.getBoundingClientRect();
+  const m = Math.max(rs.s0 + 15, Math.min(H1 * 60, snap15(H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN)));
+  if (m === rs.m) return;
+  rs.m = m; rs.el.style.height = (pctOf(m) - pctOf(rs.s0)) + "%";
+  rs.el.querySelector("b").textContent = fromMin(rs.s0) + "–" + fromMin(m);
+});
+document.addEventListener("pointerup", () => {
+  if (!rs.el) return;
+  const { id, m } = rs; Object.assign(rs, { el: null, col: null }); document.body.classList.remove("is-resizing");
+  suppressClick = true; setTimeout(() => suppressClick = false, 0);
+  if (m != null) { calSel = id; patchTask(id, { endTime: fromMin(Math.min(m, 24 * 60 - 1)) }) }
+});
 function renderWeek() {
   const today = ymd(new Date()), days = [...Array(7)].map((_, i) => { const d = new Date(weekStart); d.setDate(d.getDate() + i); return d });
   const span = (H1 - H0) * 60, pct = m => Math.max(0, Math.min(100, (m - H0 * 60) / span * 100));
   const e = days[6], title = `KW ${isoWeek(weekStart)} · ${weekStart.getDate()}.${weekStart.getMonth() !== e.getMonth() ? " " + MON_S[weekStart.getMonth()] : ""} – ${e.getDate()}. ${MON_S[e.getMonth()]} ${e.getFullYear()}`;
   const head = `<div></div>` + days.map(d => `<div class="${ymd(d) === today ? "today" : ""}">${DOW[(d.getDay() + 6) % 7]} ${d.getDate()}.</div>`).join("");
   const allday = `<div class="wk-lbl">ganztags</div>` + days.map(d => { const key = ymd(d);
-    return `<div data-drop="allday:${key}">${sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => `<div class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>` }).join("");
+    return `<div data-drop="allday:${key}">${sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>` }).join("");
   const hours = [...Array(H1 - H0)].map((_, i) => `<div>${pad(H0 + i)}:00</div>`).join("");
   const now = new Date(), nowMin = now.getHours() * 60 + now.getMinutes();
   const cols = days.map(d => { const key = ymd(d);
     const items = tasks.filter(t => t.due === key && t.time).map(t => { const s0 = toMin(t.time), e0 = t.endTime ? Math.max(toMin(t.endTime), s0 + 15) : s0 + 45;
-      return `<div class="wev ${t.status === "done" ? "done" : ""}" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%;--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(`${t.time}${t.endTime ? "–" + t.endTime : ""} · ${t.title}`)}"><b>${t.time}</b> ${esc(t.title)}</div>` });
+      return `<div class="wev ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%;--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(`${t.time}${t.endTime ? "–" + t.endTime : ""} · ${t.title}`)}"><b>${t.time}${t.endTime ? "–" + t.endTime : ""}</b> ${esc(t.title)}${readOnly ? "" : `<span class="wev-rs" aria-hidden="true"></span>`}</div>` });
     const appts = calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes(), e0 = en.getHours() * 60 + en.getMinutes(), tm = fromMin(s0);
       return `<a class="wev appt" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm}–${fromMin(e0)} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}`)}"><b>${tm}</b> ${esc(ev.invitee || ev.name)}</a>` });
     const nowLine = key === today && nowMin >= H0 * 60 && nowMin <= H1 * 60 ? `<span class="now" style="top:${pct(nowMin)}%"></span>` : "";
-    return `<div class="wcol ${key === today ? "today" : ""}" data-drop="wday:${key}" data-day="${key}">${appts.join("")}${items.join("")}${nowLine}</div>` }).join("");
+    const slot = calSlot && calSlot.day === key && calSlot.m != null ? `<span class="slot" style="top:${pct(calSlot.m)}%;height:${pct(calSlot.m + 30) - pct(calSlot.m)}%"></span>` : "";
+    return `<div class="wcol ${key === today ? "today" : ""}" data-drop="wday:${key}" data-day="${key}">${slot}${appts.join("")}${items.join("")}${nowLine}</div>` }).join("");
   const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
   return `<section class="panel cal-panel">
     <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorherige Woche">←</button><h2>${title}</h2>
-      <button class="ghost" id="cal-next" aria-label="Nächste Woche">→</button><button class="ghost" id="cal-today">Heute</button>${calModeToggle()}</div>
+      <button class="ghost" id="cal-next" aria-label="Nächste Woche">→</button><button class="ghost" id="cal-today">Heute</button>${calToolbar()}${calModeToggle()}</div>
     <div class="cal-body"><div class="week">
         <div class="wk-row wk-head">${head}</div>
         <div class="wk-row wk-allday">${allday}</div>
         <div class="wk-row wk-body"><div class="wk-hours">${hours}</div>${cols}</div>
       </div>
-      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte in die Woche ziehen: oben ganztags, im Raster mit Uhrzeit. Klick ins Raster legt eine Karte an.</p>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Termin ziehen verschiebt ihn, unteren Rand ziehen ändert die Dauer. Klick wählt aus, Doppelklick öffnet. Strg+C / Strg+V kopiert, mit gedrückter Strg-Taste ziehen legt eine Kopie an. Karten von hier in die Woche ziehen plant sie ein.</p>
         <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
   </section>`;
 }
@@ -693,20 +780,20 @@ function renderCal() {
     cells += `<div class="kw">${isoWeek(d)}</div>`;
     for (let i = 0; i < 7; i++) {
       const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key)).sort((a, b) => (a.time || "99") .localeCompare(b.time || "99"));
-      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""}" data-drop="due:${key}">
+      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""} ${calSlot && calSlot.day === key && calSlot.m == null ? "slot-sel" : ""}" data-drop="due:${key}" data-day="${key}">
         <div class="dn"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="dadd" data-new-due="${key}" aria-label="Karte am ${d.getDate()}. ${MONTHS[d.getMonth()]} anlegen">+</button>`}</div>
         ${calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), tm = st.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
           return `<a class="appt ${new Date(ev.end) < new Date() ? "past" : ""}" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}${ev.location ? " · " + ev.location : ""}`)}"><b>${tm}</b>${esc(ev.invitee || ev.name)}</a>` }).join("")}
-        ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc((t.time ? t.time + (t.endTime ? "–" + t.endTime : "") + " · " : "") + t.title)}">${t.time ? `<b class="ptime">${t.time}</b>` : ""}${esc(t.title)}</div>`).join("")}</div>`;
+        ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc((t.time ? t.time + (t.endTime ? "–" + t.endTime : "") + " · " : "") + t.title)}">${t.time ? `<b class="ptime">${t.time}</b>` : ""}${esc(t.title)}</div>`).join("")}</div>`;
       d.setDate(d.getDate() + 1);
     }
   }
   const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
   return `<section class="panel cal-panel">
     <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button><h2>${MONTHS[m]} ${y}</h2>
-      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button>${calModeToggle()}</div>
+      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button>${calToolbar()}${calModeToggle()}</div>
     <div class="cal-body"><div class="cal-scroll"><div class="cal">${cells}</div></div>
-      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen.</p>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen. Klick wählt aus, Doppelklick öffnet, Strg+C / Strg+V kopiert.</p>
         <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
   </section>`;
 }
@@ -1547,6 +1634,14 @@ document.addEventListener("click", e => {
     toast("Nach Priorität sortiert"); return;
   }
   const nd = tgt.closest("[data-new-due]"); if (nd) { openCard(blank({ due: nd.dataset.newDue, status: "todo", order: nextOrder("todo") }), true); return }
+  const calItem = view === "cal" && tgt.closest(".week [data-id], .cal [data-id]");
+  if (calItem) {
+    // the first click re-renders the grid, so the browser never sees a double click: detect it here
+    const id = calItem.dataset.id, now = Date.now(), dbl = lastCalClick.id === id && now - lastCalClick.t < 450;
+    lastCalClick = { id, t: dbl ? 0 : now };
+    if (dbl) { const t = tasks.find(x => x.id === id); if (t) openCard(t); return }
+    calSel = id; calSlot = null; render(); return;
+  }
   const card = tgt.closest("[data-id]"); if (card) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openCard(t) ; return }
   const sd = tgt.closest("[data-days]"); if (sd) { stats.days = Number(sd.dataset.days); stats.data = null; loadStats(); return }
   if (tgt.closest("[data-stats-reload]")) { loadStats(); return }
@@ -1558,9 +1653,11 @@ document.addEventListener("click", e => {
   if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); weekStart = mondayOf(new Date()); render() }
   const wc = tgt.closest(".wcol");
   if (wc && tgt === wc && !readOnly) {
-    const r = wc.getBoundingClientRect(), m = Math.round((H0 * 60 + (e.clientY - r.top) / r.height * (H1 - H0) * 60) / 30) * 30;
-    openCard(blank({ due: wc.dataset.day, time: fromMin(m), endTime: fromMin(Math.min(m + 60, 24 * 60 - 1)), status: "todo", order: nextOrder("todo") }), true);
+    const r = wc.getBoundingClientRect(), m = Math.max(H0 * 60, Math.min(H1 * 60 - 30, Math.floor((H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN) / 30) * 30));
+    calSlot = { day: wc.dataset.day, m }; calSel = null; render(); return;
   }
+  const dc = view === "cal" && !readOnly && tgt.closest(".cal .day");
+  if (dc && !tgt.closest("button, a")) { calSlot = { day: dc.dataset.day, m: null }; calSel = null; render() }
 });
 document.addEventListener("submit", e => {
   const f = e.target.closest("[data-compose]"); if (!f) return;
@@ -1603,7 +1700,7 @@ document.addEventListener("drop", e => {
 }, true);
 
 // Card drag & drop with pointer events: works with mouse, pen and touch (long press), in every browser.
-const drag = { el: null, id: null, ghost: null, sx: 0, sy: 0, ox: 0, oy: 0, active: false, pending: false, timer: null, lastZone: null, x: 0, y: 0, raf: 0 };
+const drag = { el: null, id: null, ghost: null, sx: 0, sy: 0, ox: 0, oy: 0, active: false, pending: false, timer: null, lastZone: null, x: 0, y: 0, raf: 0, snapM: null, isWev: false };
 let suppressClick = false, renderQueued = false;
 const clearOver = () => document.querySelectorAll(".over").forEach(x => x.classList.remove("over"));
 function zoneAt(x, y) { const el = document.elementFromPoint(x, y); return el?.closest?.("[data-drop]") || null }
@@ -1611,7 +1708,8 @@ function startDrag() {
   const r = drag.el.getBoundingClientRect();
   drag.ox = drag.sx - r.left; drag.oy = drag.sy - r.top;
   const g = drag.el.cloneNode(true);
-  g.classList.add("drag-ghost"); g.style.width = r.width + "px"; g.style.left = r.left + "px"; g.style.top = r.top + "px";
+  g.classList.add("drag-ghost"); g.style.width = r.width + "px"; g.style.height = r.height + "px"; g.style.left = r.left + "px"; g.style.top = r.top + "px";
+  drag.isWev = drag.el.classList.contains("wev"); if (drag.isWev) g.classList.add("wev-ghost");
   document.body.appendChild(g); drag.ghost = g;
   drag.el.classList.add("dragging"); drag.active = true; document.body.classList.add("is-dragging");
 }
@@ -1639,20 +1737,32 @@ document.addEventListener("pointermove", e => {
     if (moved < 5) return;
     startDrag(); autoScroll();
   }
-  drag.ghost.style.left = (e.clientX - drag.ox) + "px"; drag.ghost.style.top = (e.clientY - drag.oy) + "px";
   const z = zoneAt(e.clientX, e.clientY);
+  drag.ghost.classList.toggle("copying", !!(e.ctrlKey || e.altKey || e.metaKey));
+  if (drag.isWev && z?.dataset.drop.startsWith("wday:")) {
+    // snap the preview into the day column on a 15-minute grid, keeping where the appointment was grabbed
+    const r = z.getBoundingClientRect(), t = tasks.find(x => x.id === drag.id);
+    const dur = t?.time && t?.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+    const m = Math.max(H0 * 60, Math.min(H1 * 60 - 15, snap15(H0 * 60 + (e.clientY - drag.oy - r.top) / r.height * H_SPAN)));
+    drag.snapM = m;
+    Object.assign(drag.ghost.style, { left: r.left + 2 + "px", width: r.width - 4 + "px", top: r.top + pctOf(m) / 100 * r.height + "px" });
+    drag.ghost.querySelector("b").textContent = fromMin(m) + "–" + fromMin(Math.min(m + dur, 24 * 60 - 1));
+  } else {
+    drag.snapM = null;
+    drag.ghost.style.left = (e.clientX - drag.ox) + "px"; drag.ghost.style.top = (e.clientY - drag.oy) + "px";
+  }
   if (z !== drag.lastZone) { clearOver(); z?.classList.add("over"); drag.lastZone = z }
 });
 document.addEventListener("touchmove", e => { if (drag.active) e.preventDefault() }, { passive: false });
 function endDrag(e, cancel) {
   clearTimeout(drag.timer); cancelAnimationFrame(drag.raf);
-  const wasActive = drag.active, id = drag.id;
+  const wasActive = drag.active, id = drag.id, snapM = drag.snapM, copy = !!(e.ctrlKey || e.altKey || e.metaKey);
   drag.ghost?.remove(); drag.el?.classList.remove("dragging"); document.body.classList.remove("is-dragging");
   clearOver();
-  Object.assign(drag, { el: null, ghost: null, active: false, pending: false, lastZone: null });
+  Object.assign(drag, { el: null, ghost: null, active: false, pending: false, lastZone: null, snapM: null, isWev: false });
   if (!wasActive) return;
   suppressClick = true; setTimeout(() => suppressClick = false, 0);
-  if (!cancel) dropOn(zoneAt(e.clientX, e.clientY), id, e.clientY);
+  if (!cancel) dropOn(zoneAt(e.clientX, e.clientY), id, e.clientY, { snapM, copy });
   if (renderQueued) { renderQueued = false; render() }
 }
 document.addEventListener("pointerup", e => endDrag(e, false));
@@ -1668,9 +1778,9 @@ document.addEventListener("click", e => {
 document.addEventListener("click", e => { if (suppressClick) { e.stopPropagation(); e.preventDefault() } }, true);
 document.addEventListener("keydown", e => {
   const el = e.target.closest?.("#main [data-id]");
-  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); el.click() }
+  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); const t = el.closest(".week, .cal") && tasks.find(x => x.id === el.dataset.id); t ? openCard(t) : el.click() }
 });
-function dropOn(z, id, clientY) {
+function dropOn(z, id, clientY, opts = {}) {
   if (!z) return;
   const [kind, val] = z.dataset.drop.split(":");
   if (kind === "status") {
@@ -1686,13 +1796,16 @@ function dropOn(z, id, clientY) {
     });
   }
   if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patchTask(id, { important: q.imp, urgent: q.urg }) }
-  if (kind === "due") patchTask(id, { due: val || "" });
-  if (kind === "allday") patchTask(id, { due: val, time: "", endTime: "" });
+  if (kind === "due") { if (opts.copy && val) { const t = tasks.find(x => x.id === id); if (t) { const c = cloneTask(t, { due: val }); calSel = c.id; render(); toast("Kopie angelegt") } } else patchTask(id, { due: val || "" }) }
+  // calendar drops move the appointment; with Ctrl/Alt/Cmd held they place a copy (like Outlook)
+  const place = patch => { const t = tasks.find(x => x.id === id); if (!t) return;
+    if (opts.copy) { const c = cloneTask(t, patch); calSel = c.id; render(); toast("Kopie angelegt") } else { calSel = id; patchTask(id, patch) } };
+  if (kind === "allday") place({ due: val, time: "", endTime: "" });
   if (kind === "wday") {
     const t = tasks.find(x => x.id === id), r = z.getBoundingClientRect();
-    const m = Math.max(H0 * 60, Math.min(H1 * 60 - 15, Math.round((H0 * 60 + (clientY - r.top) / r.height * (H1 - H0) * 60) / 15) * 15));
+    const m = opts.snapM ?? Math.max(H0 * 60, Math.min(H1 * 60 - 15, snap15(H0 * 60 + (clientY - r.top) / r.height * H_SPAN)));
     const dur = t?.time && t?.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
-    patchTask(id, { due: val, time: fromMin(m), endTime: fromMin(Math.min(m + dur, 24 * 60 - 1)) });
+    place({ due: val, time: fromMin(m), endTime: fromMin(Math.min(m + dur, 24 * 60 - 1)) });
   }
 }
 
