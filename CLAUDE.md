@@ -11,12 +11,14 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - Nichts erfinden: keine Kunden, Umsätze, Ergebnisse, Testimonials oder Erfahrungen, die nicht tatsächlich existieren. Fehlt eine Angabe, nachfragen oder als Platzhalter markieren.
 - Sprache für Inhalte: natürliches, modernes Deutsch.
 - Für alles rund um Instagram (@flow.media.ai) zuerst den Skill `creative-director` laden (`.claude/skills/creative-director/SKILL.md`).
+- Will Maik ein Projekt in einem für ihn neuen Bereich umsetzen, zuerst den Skill `blindspot-analyse` laden (`.claude/skills/blindspot-analyse/SKILL.md`): Unknown Unknowns finden, nichts umsetzen, verbesserten Auftrag mit Plan-Stopp schreiben.
 - Dieses Repo ist nur für Flow Media AI. THE TRIBE, Dating-Fotos und Arbeitgeber-Projekte gehören nicht hierher.
 
 ## Aufbau
 
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
+- `.claude/skills/blindspot-analyse/` – Blindspot-Pass vor neuen Projekten, Auswertungen in `auswertungen/`
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 
@@ -30,6 +32,7 @@ Maiks Dropbox `/Flow Media AI` wird immer auf Stand gehalten – **vor allem `07
 |---|---|
 | `CLAUDE.md` | `/Flow Media AI/07_KI/CLAUDE.md` |
 | `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `/Flow Media AI/07_KI/skills/<name>/…` |
+| `.claude/skills/blindspot-analyse/…` (Ausnahme, Maik 19.10.2026) | `/Flow Media AI/07_KI/Blindspot Analyse Skill/…` |
 | `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `/Flow Media AI/01_Marketing/Brand_Identity_Flow_Media_AI.md` |
 | `content/01_startplan.md` | `/Flow Media AI/01_Marketing/Startplan_Instagram.md` |
 | `content/learnings.md` | `/Flow Media AI/01_Marketing/Learnings_Instagram.md` |
