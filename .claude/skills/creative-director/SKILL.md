@@ -30,6 +30,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate · C = Virale Reels · D 
 
 ## 4. Stil
 - Look noch offen – Maik entscheidet (hier eintragen, sobald festgelegt). Bis dahin: ruhig, hell oder neutral, viel Raum, gut lesbare Schrift.
+- **Logo & Profilbild (Maik, 19.10.2026):** Dateien in `marketing/brand/` (Regeln im README dort). Das Profilbild ist KI-generiert → **nur sehr klein** einsetzen (Profilbild, kleiner Kreis, Abspann-Signatur), nie groß im Reel. Der Schriftzug „Flow Media AI“ wird noch entwickelt; bis dahin Wortmarke wie auf der Landingpage. Wellen-Zeichen = Entwurf (Ähnlichkeit zum Tailwind-CSS-Logo vor finaler Nutzung klären).
 - **Nicht** der schwarze Kupfer-Flyer-Look von THE TRIBE und nicht der Dating-Look – die Marken bleiben getrennt.
 - Eigenes Material zuerst: Selfie-Videos, Bildschirmaufnahmen, Fotos von Maik beim Bauen. Stock-Clips nur als Nebenmotiv und nie unverändert.
 - Musik nur mit freier Lizenz (z. B. Mixkit); Quelle notieren.
