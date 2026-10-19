@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working in this
 Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Positionierung, Content (Social-Media-Posts, Texte, Workshops), Angebote und eigene Projekte.
 
 **Für Claude gilt:**
+- **Regel Nummer 1 (Maik 19.10.2026): Skill `pruefer-agent` (`.claude/skills/pruefer-agent/SKILL.md`) gilt immer; zu Beginn jeder Aufgabe ihn und `regeln-aus-korrekturen.md` lesen.** Gilt nicht für Prüf- und Recherche-Subagenten selbst. Kein Ergebnis ohne Prüfung durch einen separaten Agenten ohne Vorwissen; größere Projekte mit Blindspot-Pass und Interview (AskUserQuestion, eine Frage nach der anderen, mit Hypothese); Korrekturen als dauerhafte Regel in `.claude/skills/pruefer-agent/regeln-aus-korrekturen.md` (vor jeder Arbeit lesen); große Recherchen verteilt auf Haiku (Fleißarbeit), Sonnet (Texte), Opus (Zusammenführen).
 - Alle Texte, Posts und Angebote richten sich nach diesem Profil, insbesondere nach Abschnitt 9 (Tonalität) und 10 (Content-Regel).
 - Nichts erfinden: keine Kunden, Umsätze, Ergebnisse, Testimonials oder Erfahrungen, die nicht tatsächlich existieren. Fehlt eine Angabe, nachfragen oder als Platzhalter markieren.
 - Sprache für Inhalte: natürliches, modernes Deutsch.
@@ -18,7 +19,9 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
-- `.claude/skills/blindspot-analyse/` – Blindspot-Pass vor neuen Projekten, Auswertungen in `auswertungen/`
+- `.claude/skills/blindspot-analyse/` – Blindspot-Pass vor neuen Projekten
+- `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
+- `.claude/skills/pruefer-agent/` – Regel Nummer 1: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 
@@ -32,7 +35,7 @@ Maiks Dropbox `/Flow Media AI` wird immer auf Stand gehalten – **vor allem `07
 |---|---|
 | `CLAUDE.md` | `/Flow Media AI/07_KI/CLAUDE.md` |
 | `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `/Flow Media AI/07_KI/skills/<name>/…` |
-| `.claude/skills/blindspot-analyse/…` (Ausnahme, Maik 19.10.2026) | `/Flow Media AI/07_KI/Blindspot Analyse Skill/…` |
+| `auswertungen/…` | `/Flow Media AI/07_KI/auswertungen/…` |
 | `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `/Flow Media AI/01_Marketing/Brand_Identity_Flow_Media_AI.md` |
 | `content/01_startplan.md` | `/Flow Media AI/01_Marketing/Startplan_Instagram.md` |
 | `content/learnings.md` | `/Flow Media AI/01_Marketing/Learnings_Instagram.md` |

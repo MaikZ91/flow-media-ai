@@ -23,7 +23,7 @@ Wenn Maik ein Projekt in einem für ihn neuen Bereich umsetzen will, **zuerst** 
    - **Warum würde es dich erwischen?** (konkret für dieses Projekt, mit dem Moment, in dem es wehtut)
    - **Satz für deinen Auftrag:** ein fertiger Satz, den Maik in seinen Prompt kopieren kann
 4. **Priorisieren.** Oben, was teuer, rechtlich riskant oder schwer rückgängig zu machen ist. Kurz bleiben: lieber 8 echte Punkte als 25 allgemeine.
-5. **Verbesserten Auftrag bauen.** Alle Sätze zu einem Prompt zusammenführen:
+5. **Verbesserten Auftrag bauen.** Bei größeren Projekten erst nach dem Interview aus dem Skill `pruefer-agent` (Regel 2). Alle Sätze zu einem Prompt zusammenführen:
    - Ziel und Rahmen
    - die Muss-Sätze aus Schritt 3
    - **Reihenfolge** der Umsetzung (nummeriert, weil die Reihenfolge zählt)
@@ -34,7 +34,7 @@ Wenn Maik ein Projekt in einem für ihn neuen Bereich umsetzen will, **zuerst** 
 ## Ausgabe
 
 - Antwort an Maik: die priorisierte Liste, offene Fragen, der verbesserte Auftrag.
-- Auswertung als Markdown ablegen: im Repo unter `.claude/skills/blindspot-analyse/auswertungen/<datum>-<projekt>.md` und gespiegelt in die Dropbox `/Flow Media AI/07_KI/Blindspot Analyse Skill/` (siehe Dropbox-Spiegel in `CLAUDE.md`).
+- Auswertung als Markdown ablegen: im Repo unter `auswertungen/<datum>-blindspot-<projekt>.md`, gespiegelt in die Dropbox `/Flow Media AI/07_KI/auswertungen/` (siehe Dropbox-Spiegel in `CLAUDE.md`).
 
 ## Regeln
 
