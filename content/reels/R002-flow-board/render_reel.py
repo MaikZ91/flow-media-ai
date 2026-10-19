@@ -144,8 +144,8 @@ def avatar(fr, i, cx, cy, d):
     ring = ImageDraw.Draw(fr); ring.ellipse((cx - r - 10, cy - r - 10, cx + r + 10, cy + r + 10), fill=(255, 255, 255))
     src = avatar_frame(i)
     if src:
-        s = min(src.size); sx = (src.width - s) // 2; sy = max(0, (src.height - s) // 4)
-        face = src.crop((sx, sy, sx + s, sy + s)).resize((d, d), Image.BILINEAR)
+        x0, y0, x1, y1 = AV_CROP if src.size == (720, 1280) else ((src.width - min(src.size)) // 2, 0, (src.width + min(src.size)) // 2, min(src.size))
+        face = src.crop((x0, y0, x1, y1)).resize((d, d), Image.LANCZOS)
     else:
         face = Image.new('RGB', (d, d), BLUE); fd = ImageDraw.Draw(face); f = ImageFont.truetype(F_SEMI, max(26, d // 9))
         for k, l in enumerate(['Dein', 'Avatar']):
@@ -153,54 +153,55 @@ def avatar(fr, i, cx, cy, d):
     m = Image.new('L', (d, d), 0); ImageDraw.Draw(m).ellipse((0, 0, d, d), fill=255)
     fr.paste(face, (cx - r, cy - r), m)
 
-# avatar positions: big in hook and outro, small bubble lower left during the demo
+AV_CROP = (180, 440, 560, 820)  # face and shoulders in the 720x1280 HeyGen export
+# avatar positions: big in hook, "Zukunft" and outro, small bubble lower left during the demo
 BIG, SMALL = (540, 1290, 470), (205, 1395, 290)
 def av_pos(scene, t):
     if scene == 'hook': a = BIG if t < 0.8 else tuple(lerp(b, s, ease((t - 0.8) / 0.2)) for b, s in zip(BIG, SMALL))
-    elif scene == 'outro': a = tuple(lerp(s, b, ease(min(1, t / 0.2))) for s, b in zip(SMALL, BIG))
+    elif scene in ('outro', 'talk'): a = tuple(lerp(s, b, ease(min(1, t / 0.2))) for s, b in zip(SMALL, BIG))
     else: a = SMALL
     return a
 
 FLICK = [('board', (0, 0, 1500)), ('cal', (60, 180, 1350)), ('fin', (0, 60, 1714)), ('invoice', (700, 180, 1500)), ('stats', (0, 60, 1500))]
 DRAG = sorted(os.path.basename(p)[:-4] for p in glob.glob(f'{WD}/shots/drag_*.png'))
-# scene: (name, seconds, view(t), headline lines, chip, tag) – timing follows the voice-over script in README.md
+# scene: (name, start s, view(t), headline lines, chip, tag); starts follow the word timestamps of Maik's edited
+# voice track (avatar_edit.mp4, 39.67 s); each scene ends where the next starts
+END = 39.67
 SCENES = [
-    ('hook', 3.0, lambda t: crop_view(*FLICK[int(t * 3.0 / 0.3) % len(FLICK)], FLICK[int(t * 3.0 / 0.3) % len(FLICK)][1], 0),
-     ['Mein komplettes', 'Firmen-Tool.'], 'An einem Tag gebaut. Mit KI.', None),
-    ('broll', 0.8, stock_view(1808, 6.0, 0.8, 760), ['Alle Aufgaben.'], None, None),
-    ('board', 2.6, lambda t: crop_view('board', (0, 0, 1500), (1380, 0, 1500), t) if t < 0.7 else crop_view('matrix', (0, 0, 1700), (100, 0, 1600), (t - 0.7) / 0.3),
-     ['Alle Aufgaben.', 'Nach Priorität.'], None, None),
-    ('broll', 1.0, lambda t: tilt_view('cal_dark', t, 1), ['Mein Kalender.'], None, None),
-    ('cal', 3.4, lambda t: crop_view('cal', (0, 150, 1500), (60, 180, 1350), t / 0.3) if t < 0.3 else
-        (crop_view(DRAG[min(len(DRAG) - 1, int((t - 0.3) / 0.45 * len(DRAG)))], (60, 180, 1350), (60, 180, 1350), 0) if t < 0.75 else crop_view('cal_after', (60, 180, 1350), (60, 180, 1350), 0)),
-     ['Termine ziehen', 'wie in Outlook.'], None, None),
-    ('broll', 0.8, stock_view(1746, 3.0, 0.8, 800), ['Buchhaltung.'], None, None),
-    ('fin', 4.2, lambda t: crop_view('fin', (0, 60, 1714), (500, 60, 1300), t),
-     ['Buchhaltung', 'gleich mit drin.'], None, 'Beispieldaten'),
-    ('invoice', 2.5, lambda t: crop_view('invoice', (700, 180, 1500), (760, 560, 1100), t),
-     ['Rechnung?', 'Ein Klick. PDF.'], None, 'Beispieldaten'),
-    ('broll', 0.8, stock_view(4827, 3.0, 0.8, 920), ['Landingpage.'], None, None),
-    ('landing', 2.6, lambda t: tall_view('landing', 0, 2400, t),
-     ['Meine neue', 'Landingpage.'], None, None),
-    ('stats', 2.4, lambda t: crop_view('stats', (0, 60, 1500), (0, 60, 1300), t),
-     ['Besucher live', 'im Board.'], None, None),
-    ('broll', 1.0, lambda t: tilt_view('board_dark', t, -1), ['Ein Tool.'], None, None),
-    ('grid', 1.4, grid_view, ['Ein Tool', 'statt fünf Apps.'], None, None),
-    ('outro', 3.0, lambda t: grid_view(1) if t < 0.9 else crop_view(*FLICK[0], FLICK[0][1], 0),
-     ['Schick das jemandem,', 'der Rechnungen', 'noch in Word schreibt.'], None, None),
+    ('hook', 0.00, lambda t: crop_view(*FLICK[int(t * 4.08 / 0.3) % len(FLICK)], FLICK[int(t * 4.08 / 0.3) % len(FLICK)][1], 0),
+     ['Mein eigenes', 'Firmen-Tool.'], 'Heute gebaut. Mit KI.', None),
+    ('broll', 4.08, stock_view(1808, 6.0, 1.82, 760), ['Ehrlich gesagt:'], None, None),
+    ('broll', 5.90, lambda t: tilt_view('board_dark', t, 1), ['Ziemlich geil, was', 'heute möglich ist.'], None, None),
+    ('board', 8.42, lambda t: crop_view('board', (0, 0, 1500), (900, 0, 1500), t), ['Mein eigenes', 'Dashboard.'], None, None),
+    ('fin', 10.18, lambda t: crop_view('fin', (0, 60, 1714), (300, 60, 1450), t), ['Buchhaltung.'], None, 'Beispieldaten'),
+    ('cal', 12.14, lambda t: crop_view('cal', (0, 150, 1500), (60, 180, 1350), t), ['Kalender.'], None, None),
+    ('landing', 13.70, lambda t: tall_view('landing', 0, 1800, t), ['Landingpage', 'im Blick.'], None, None),
+    ('stats', 15.64, lambda t: crop_view('stats', (0, 60, 1500), (0, 60, 1300), t), ['Tracken, was auf der', 'Website passiert.'], None, None),
+    ('grid', 18.20, grid_view, ['Alles an', 'einem Ort.'], 'Auf mich zugeschnitten.', None),
+    ('broll', 21.80, stock_view(1746, 3.0, 1.56, 800), ['Das Verrückte', 'daran:'], None, None),
+    ('broll', 23.36, lambda t: tilt_view('cal_dark', t, -1), ['Nicht monatelang', 'entwickeln.'], None, None),
+    ('broll', 26.00, stock_view(4827, 3.0, 1.24, 920), ['Keine Agentur.'], None, None),
+    ('cal', 27.24, lambda t: crop_view(DRAG[min(len(DRAG) - 1, int(t / 0.8 * len(DRAG)))], (60, 180, 1350), (60, 180, 1350), 0) if t < 0.8 else crop_view('cal_after', (60, 180, 1350), (60, 180, 1350), 0),
+     ['Idee genommen.'], None, None),
+    ('invoice', 29.04, lambda t: crop_view('invoice', (700, 180, 1500), (760, 560, 1100), t), ['Mit KI', 'umgesetzt.'], None, 'Beispieldaten'),
+    ('talk', 31.18, lambda t: tilt_view('fin_dark', t, 1), ['Das ist für mich', 'die Zukunft.'], None, None),
+    ('broll', 33.18, stock_view(1781, 3.0, 1.48, 960), ['Nicht nur', 'KI benutzen.'], None, None),
+    ('broll', 34.66, lambda t: tilt_view('board_dark', t, -1), ['Ideen in echte', 'Produkte verwandeln.'], None, None),
+    ('outro', 38.20, lambda t: grid_view(1) if t < 0.85 else crop_view(*FLICK[0], FLICK[0][1], 0),
+     ['Und das ist erst', 'der Anfang.'], None, None),
 ]
 
-
-total = sum(s[1] for s in SCENES)
+total = END
 raw = OUT + '.video.mp4'
 enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                         '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-preset', 'medium', raw], stdin=subprocess.PIPE)
 i = 0
-for name, dur, view, lines, chip, tag in SCENES:
-    n = int(round(dur * FPS))
+for j, (name, start, view, lines, chip, tag) in enumerate(SCENES):
+    stop = SCENES[j + 1][1] if j + 1 < len(SCENES) else END
+    n = int(round(stop * FPS)) - int(round(start * FPS))
     for k in range(n):
         t = k / max(1, n - 1)
-        if name == 'broll':
+        if name in ('broll', 'talk'):
             fr = view(t)
             scrim = Image.new('L', (W, H), 0); ImageDraw.Draw(scrim).rectangle((0, 0, W, 520), fill=120)
             fr.paste((0, 0, 0), (0, 0), scrim.filter(ImageFilter.GaussianBlur(80)))
@@ -216,7 +217,7 @@ enc.stdin.close(); enc.wait()
 # audio: voice from the avatar video (if any) over ducked music; music alone otherwise
 if AVATAR:
     cmd = ['ffmpeg', '-v', 'error', '-y', '-i', raw, '-i', AVATAR, '-ss', '11.5', '-i', MUSIC, '-filter_complex',
-           f'[2:a]volume=0.12,afade=t=out:st={total - 1.2}:d=1.2[m];[1:a][m]amix=inputs=2:duration=first:normalize=0[a]',
+           f'[1:a]loudnorm=I=-15:TP=-1.5[v];[2:a]volume=0.10,afade=t=out:st={total - 1.2}:d=1.2[m];[v][m]amix=inputs=2:duration=first:normalize=0[a]',
            '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', str(total), OUT]
 else:
     cmd = ['ffmpeg', '-v', 'error', '-y', '-i', raw, '-ss', '11.5', '-i', MUSIC, '-filter_complex',

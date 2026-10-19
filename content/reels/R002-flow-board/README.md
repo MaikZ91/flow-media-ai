@@ -1,11 +1,22 @@
 # R002 · „Mein komplettes Firmen-Tool. An einem Tag gebaut.“
 
-Stand: 19.10.2026 · Format: Reel 1080×1920, 29,5 s · Vorschau (Platzhalter statt Avatar): `flow_reel_board_vorschau.mp4`
+Stand: 19.10.2026 · Format: Reel 1080×1920, 39,7 s · Fertig: `flow_reel_board.mp4` (mit Maiks HeyGen-Avatar)
+
+## Fertige Fassung
+Maik hat einen eigenen Text eingesprochen (HeyGen-Export 43,7 s, 720×1280 mit weißen Rändern). Geschnitten wurde:
+- **„innerhalb von einer Stunde“ entfernt** (0,67–2,06 s im Original): stimmt nicht, gebaut wurde über den Tag (git log 10:08–14:08 plus Landingpage). Der Satz lautet jetzt „Ich habe heute mein eigenes Unternehmenstool gebaut mit KI …“.
+- Pausen über 0,4 s auf ca. 0,25 s gekürzt → 39,7 s.
+- Szenen und Text im Bild folgen den Wort-Zeitstempeln der geschnittenen Tonspur (faster-whisper, Modell „small“).
+
+Gesprochener Text (nach Schnitt):
+> Ich habe heute mein eigenes Unternehmenstool gebaut mit KI, und ich finde es ehrlich gesagt ziemlich geil, was mittlerweile möglich ist. Ich habe jetzt mein eigenes Dashboard, kann meine Buchhaltung organisieren, meinen Kalender verwalten, meine Landingpages im Blick behalten und tracken, was auf meiner Website passiert – alles an einem Ort, auf meine eigenen Bedürfnisse zugeschnitten. Und das Verrückte daran: Ich musste dafür nicht monatelang entwickeln oder eine Agentur beauftragen. Ich habe einfach meine Idee genommen und sie mit KI umgesetzt. Genau das ist für mich die Zukunft. Nicht nur KI benutzen, sondern damit seine eigenen Ideen in echte Produkte verwandeln. Und das ist erst der Anfang.
+
+Ton: Stimme auf -15 LUFS normalisiert, Musik leise darunter; Gesamt -16 LUFS.
 
 ## Konzept
 Maik (als HeyGen-Avatar mit seiner eigenen Stimme) erzählt, was das Flow Board kann; daneben laufen echte Bildschirmaufnahmen. Avatar groß im Hook und am Ende, dazwischen als runde Blase unten links. Zwischen den Bildschirm-Szenen kurze B-Roll-Schnitte (0,8–1 s): dunkel gegradete Stock-Clips tippender Hände und Maiks Board im Dunkelmodus schräg auf dunkler Bühne mit Blau-Violett-Licht.
 
-## Vertonungsskript (für HeyGen, ca. 28 s)
+## Ursprünglicher Skriptvorschlag (nicht verwendet, ca. 28 s)
 
 | Zeit | Gesprochen | Bild / Text im Bild |
 |---|---|---|
@@ -63,4 +74,5 @@ Was würdest du in so ein Tool als Erstes einbauen?
 ## Neu rendern
 1. `node shoot.js <ordner>/shots <board-key-datei>` (Playwright; Board mit Beispielkarten hell und dunkel, Landingpage, Auswertung); Stock-Clips (IDs oben) als `<ordner>/broll/<id>.mp4`
 2. Schriften (Bricolage Grotesque ExtraBold, IBM Plex Sans SemiBold, WOFF von Google Fonts) nach `<ordner>/fonts/` als `bri800.woff`, `plex600.woff`
-3. `python3 render_reel.py <ordner> R002.mp4 [avatar.mp4]`
+3. Avatar schneiden (Schnittliste im Kommentar oben) → `avatar_edit.mp4`
+4. `python3 render_reel.py <ordner> R002.mp4 avatar_edit.mp4` (Szenenstarts in `SCENES` = Wort-Zeitstempel)
