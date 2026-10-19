@@ -155,6 +155,18 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .enlbar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px }
 .enl-E { background: var(--c-in) } .enl-N { background: var(--c-out) } .enl-L { background: var(--l4) }
 span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5px; font: 600 11px var(--f-mono) }
+.chipbtn.miss { background: var(--red-soft); color: var(--red); cursor: pointer; font-weight: 600 }
+.fl { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--muted); font-weight: 600; min-width: 0 }
+.fl input, .fl select { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; color: var(--ink); font-weight: 400; width: 100% }
+.inv-prof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px }
+.inv-prof .mini, .inv-prof .btn { grid-column: 1 / -1; justify-self: start }
+.modal.inv-modal { grid-template-columns: minmax(0, 1fr); width: min(820px, 100%); gap: 14px }
+.inv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px }
+.inv-item { display: flex; gap: 6px; margin-bottom: 6px }
+.inv-item input { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; min-width: 0 }
+.inv-item input[name="desc"] { flex: 1 }
+.inv-frame { width: 100%; height: min(72vh, 900px); border: 1px solid var(--line); border-radius: 8px; background: #fff }
+.ract { display: flex; gap: 4px; justify-content: flex-end; align-items: center }
 .finnote { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
 .finnote ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px }
 .finnote > p { grid-column: 1 / -1 }
@@ -808,16 +820,21 @@ function renderCardFiles(taskId) {
   el.innerHTML = filesFor(taskId).map(f => fileRow(f, { inCard: true })).join("") || `<p class="sub" style="margin:0;color:var(--muted);font-size:13px">Noch keine Anhänge.</p>`;
 }
 
-/* ---------- finances: business ledger, private budget (E/N/L), backup and reach ---------- */
-// entry types: tx (business income/expense), budget (monthly private item), backup (asset that could bridge a gap)
+/* ---------- finances: business ledger (EÜR), invoices, private budget (E/N/L), backup and reach ---------- */
+// entry types: tx (business income/expense; an invoice is a tx with an `inv` block), budget (monthly private item), backup (asset that could bridge a gap)
 let fin = [], finCol = null;
 const finUi = { tab: "business", year: new Date().getFullYear() };
 const FIN_CATS = ["Kundenprojekt", "Workshop", "Tools & Software", "Hardware", "Werbung", "Weiterbildung", "Büro & Sonstiges"];
 const BACKUP_GROUPS = ["Erspartes", "Sachwerte", "Sozialleistungen"];
 const ENL = { E: "Essentiell", N: "Nice-to-have", L: "Luxus" };
+const FIN_TEMPLATES = "fin-vorlagen";   // pseudo card id: course templates live in the board storage under it
+const INV_INTRO = "Ich danke Dir von Herzen für Dein Vertrauen. Hiermit stelle ich folgende Positionen in Rechnung:";
 const eur = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const eur2 = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
 const parseEur = v => { const t = String(v).trim().replace(/[€\s]/g, ""); const n = Number(/,\d{1,2}$/.test(t) ? t.replace(/\./g, "").replace(",", ".") : t.replace(/,/g, "")); return isFinite(n) ? Math.round(n * 100) / 100 : NaN };
+const netOf = t => Math.round((Number(t.amount) || 0) / (1 + (Number(t.vat) || 0) / 100) * 100) / 100;
+const deDate = d => d ? d.split("-").reverse().join(".") : "";
+const delBtn = id => readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${id}" aria-label="Löschen">${icon.trash}</button>`;
 async function saveFin(e) {
   const i = fin.findIndex(x => x.id === e.id); if (i >= 0) fin[i] = e; else fin.push(e);
   render();
@@ -843,72 +860,228 @@ function monthChart(txs) {
   const mag = 10 ** Math.floor(Math.log10(max / 4)), step = Math.ceil(max / 4 / mag) * mag, top = step * 4, gw = (W - padL) / 12, bw = Math.min(28, gw / 2 - 6);
   const y = v => padT + (H - padT - padB) * (1 - v / top);
   const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 8}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${(i * step).toLocaleString("de-DE")} €</text>`).join("");
-  const MS = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
   const bars = m.map((v, k) => { const cx = padL + k * gw + gw / 2;
-    return `<g class="bar" data-tip="${MS[k]}: Einnahmen ${eur(v.i)} · Ausgaben ${eur(v.o)} · Saldo ${eur(v.i - v.o)}"><rect class="hit" x="${padL + k * gw}" y="${padT}" width="${gw}" height="${H - padT - padB}"/>
+    return `<g class="bar" data-tip="${MONTHS[k]}: Einnahmen ${eur(v.i)} · Ausgaben ${eur(v.o)} · Saldo ${eur(v.i - v.o)}"><rect class="hit" x="${padL + k * gw}" y="${padT}" width="${gw}" height="${H - padT - padB}"/>
       ${v.i ? `<rect x="${cx - bw - 1}" y="${y(v.i)}" width="${bw}" height="${y(0) - y(v.i)}" rx="3" style="fill:var(--c-in)"/>` : ""}
       ${v.o ? `<rect x="${cx + 1}" y="${y(v.o)}" width="${bw}" height="${y(0) - y(v.o)}" rx="3" style="fill:var(--c-out)"/>` : ""}
-      <text x="${cx}" y="${H - 6}" class="ax" text-anchor="middle">${MS[k]}</text></g>` }).join("");
+      <text x="${cx}" y="${H - 6}" class="ax" text-anchor="middle">${MONTHS[k].slice(0, 3)}</text></g>` }).join("");
   return `<div class="legend"><span><i style="background:var(--c-in)"></i>Einnahmen</span><span><i style="background:var(--c-out)"></i>Ausgaben</span></div>
     <div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Einnahmen und Ausgaben pro Monat">${grid}${bars}</svg><div class="tip" hidden></div></div>`;
 }
-function finBusiness() {
-  const y = String(finUi.year), txs = fin.filter(e => e.type === "tx" && (e.date || "").startsWith(y));
-  const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
-  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0);
-  const income = sum(inc), spend = sum(out), profit = income - spend, open = sum(inc.filter(t => t.status === "open"));
+const yearTxs = () => fin.filter(e => e.type === "tx" && (e.date || "").startsWith(String(finUi.year)));
+const yearSelect = () => {
   const years = [...new Set([new Date().getFullYear(), ...fin.filter(e => e.type === "tx" && e.date).map(e => Number(e.date.slice(0, 4)))])].sort((a, b) => b - a);
+  return `<label class="mini">Jahr <select data-fin-year>${years.map(v => `<option ${v === finUi.year ? "selected" : ""}>${v}</option>`).join("")}</select></label>`;
+};
+function statusChip(t) {
+  if (t.kind !== "in") return "";
+  return t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`;
+}
+function finBusiness() {
+  const y = String(finUi.year), txs = yearTxs();
+  const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
+  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0), sumNet = a => a.reduce((n, t) => n + netOf(t), 0);
+  const income = sum(inc), spend = sum(out), profit = sumNet(inc) - sumNet(out), open = sum(inc.filter(t => t.status === "open"));
+  const missing = txs.filter(t => !t.receipt).length;
   const rows = txs.slice().sort((a, b) => b.date.localeCompare(a.date)).map(t => `<tr>
-      <td style="white-space:nowrap">${t.date.split("-").reverse().join(".")}</td><td>${esc(t.title)}${t.note ? `<small>${esc(t.note)}</small>` : ""}</td><td>${esc(t.category || "")}</td>
-      <td>${t.kind === "in" ? (t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`) : ""}</td>
+      <td style="white-space:nowrap">${deDate(t.date)}</td>
+      <td>${esc(t.title)}<small>${esc([t.party, t.note].filter(Boolean).join(" · "))}</small></td><td>${esc(t.category || "")}</td>
+      <td>${statusChip(t)}</td>
+      <td>${t.receipt ? `<span class="chipbtn" title="Beleg vorhanden">✓ Beleg</span>` : `<button type="button" class="chipbtn miss" data-fin-receipt="${t.id}" title="Beleg als vorhanden markieren">fehlt</button>`}</td>
+      <td class="num">${t.vat ? `${t.vat} %` : ""}</td>
       <td class="num ${t.kind === "in" ? "pos" : "neg"}">${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
-      <td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${t.id}" aria-label="Eintrag löschen">${icon.trash}</button>`}</td></tr>`).join("");
-  return `<div class="fin-tools"><label class="mini">Jahr <select data-fin-year>${years.map(v => `<option ${v === finUi.year ? "selected" : ""}>${v}</option>`).join("")}</select></label>
-      ${WEB ? `<button type="button" class="mini" data-fin-csv>CSV für Steuerberater</button>` : ""}</div>
+      <td><div class="ract">${t.inv ? `<button type="button" class="mini" data-inv-view="${t.id}">Rechnung</button>` : ""}${delBtn(t.id)}</div></td></tr>`).join("");
+  return `<div class="fin-tools">${yearSelect()}
+      ${WEB ? `<button type="button" class="mini" data-fin-xlsx>EÜR-Tabelle (Excel)</button><button type="button" class="mini" data-fin-csv>CSV</button>` : ""}
+      ${missing ? `<span class="kd">${missing} ${missing === 1 ? "Beleg fehlt" : "Belege fehlen"}</span>` : ""}</div>
     <div class="kpis five">
-      ${finKpi("Einnahmen", eur(income), `${inc.length} Buchungen`)}
-      ${finKpi("Ausgaben", eur(spend), `${out.length} Buchungen`)}
-      ${finKpi("Gewinn", eur(profit), "Einnahmen − Ausgaben", profit < 0 ? "neg" : "")}
+      ${finKpi("Einnahmen (brutto)", eur(income), `${inc.length} Buchungen`)}
+      ${finKpi("Ausgaben (brutto)", eur(spend), `${out.length} Buchungen`)}
+      ${finKpi("Gewinn (netto)", eur(profit), "Einnahmen − Ausgaben ohne USt", profit < 0 ? "neg" : "")}
       ${finKpi("25 % zurücklegen", eur(Math.max(0, income * .25)), "für Steuern, KV & Fixkosten")}
       ${finKpi("Offene Rechnungen", eur(open), `${inc.filter(t => t.status === "open").length} offen`)}
     </div>
     <div class="sgrid">
       <div class="panel spanel wide"><h3>Pro Monat ${y}</h3>${monthChart(txs)}</div>
       <div class="panel spanel"><h3>Grenzen im Blick</h3>
-        ${meter("Kleinunternehmer (Umsatz)", income, 25000, "Bis 25.000 € im Vorjahr und 100.000 € im laufenden Jahr keine Umsatzsteuer.")}
+        ${meter("Kleinunternehmer (Umsatz)", sumNet(inc), 25000, "Bis 25.000 € im Vorjahr und 100.000 € im laufenden Jahr keine Umsatzsteuer.")}
         ${meter("Gewerbesteuer-Freibetrag (Gewinn)", Math.max(0, profit), 24500, "Nur bei Gewerbe relevant – darüber fällt Gewerbesteuer an.")}
       </div>
       <div class="panel spanel" style="grid-column: span 2"><h3>Buchung erfassen</h3>${readOnly ? "" : `
         <form class="fin-form" data-fin-form="tx">
-          <input type="date" name="date" value="${ymd(new Date())}" required aria-label="Datum">
-          <select name="kind" aria-label="Art"><option value="in">Einnahme</option><option value="out">Ausgabe</option></select>
-          <input name="amount" inputmode="decimal" placeholder="Betrag €" required aria-label="Betrag">
-          <input name="title" placeholder="Beschreibung, z. B. Rechnung 001 Website" required maxlength="120" aria-label="Beschreibung">
+          <input type="date" name="date" value="${ymd(new Date())}" required aria-label="Buchungsdatum">
+          <select name="kind" aria-label="Einnahme oder Ausgabe"><option value="in">Einnahme</option><option value="out">Ausgabe</option></select>
+          <input name="amount" inputmode="decimal" placeholder="Brutto €" required aria-label="Betrag brutto">
+          <select name="vat" aria-label="Umsatzsteuer"><option value="0">0 % USt</option><option value="19">19 % USt</option><option value="7">7 % USt</option></select>
+          <input name="title" placeholder="Beschreibung, z. B. Website Relaunch" required maxlength="120" aria-label="Beschreibung">
+          <input name="party" placeholder="Kunde / Lieferant" maxlength="80" aria-label="Quelle oder Empfänger">
           <select name="category" aria-label="Kategorie">${FIN_CATS.map(c => `<option>${c}</option>`).join("")}</select>
           <select name="status" aria-label="Status"><option value="paid">bezahlt</option><option value="open">offen</option></select>
+          <input name="note" placeholder="Info" maxlength="120" aria-label="Info">
+          <label class="mini"><input type="checkbox" name="receipt"> Beleg vorhanden</label>
           <button class="btn" type="submit">Hinzufügen</button>
         </form>`}</div>
-      <div class="panel spanel wide"><h3>Buchungen ${y}</h3>${rows ? `<div class="tbl"><table><thead><tr><th>Datum</th><th>Beschreibung</th><th>Kategorie</th><th>Status</th><th class="num">Betrag</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p class="sub">Noch keine Buchungen für ${y}. Trag oben deine erste Einnahme oder Ausgabe ein.</p>`}</div>
+      <div class="panel spanel wide"><h3>Buchungen ${y}</h3>${rows ? `<div class="tbl"><table><thead><tr><th>Datum</th><th>Beschreibung</th><th>Kategorie</th><th>Status</th><th>Beleg</th><th class="num">USt</th><th class="num">Brutto</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p class="sub">Noch keine Buchungen für ${y}. Trag oben deine erste Einnahme oder Ausgabe ein.</p>`}</div>
     </div>`;
 }
+
+/* invoices: built from the course templates (with USt / without USt per § 19 UStG) */
+const invProfile = () => meta.invoice || {};
+const invNet = inv => (inv.items || []).reduce((n, it) => n + (Number(it.qty) || 0) * (Number(it.price) || 0), 0);
+function nextInvNo(year) {
+  const ns = fin.filter(e => e.inv && String(e.inv.no || "").startsWith(year + "-")).map(e => Number(String(e.inv.no).split("-")[1]) || 0);
+  return `${year}-${String((ns.length ? Math.max(...ns) : 0) + 1).padStart(3, "0")}`;
+}
+function invoiceDoc(t) {
+  const p = invProfile(), inv = t.inv, c = inv.customer || {};
+  const need = (v, label) => v ? esc(v) : `<mark>${label}</mark>`;
+  const net = invNet(inv), vat = Number(inv.vat) || 0, tax = Math.round(net * vat) / 100, total = net + tax;
+  const items = inv.items.map((it, i) => `<tr><td>${i + 1}.</td><td>${esc(it.desc)}</td><td class="r">${String(it.qty).replace(".", ",")}</td><td class="r">${eur2(it.price)}</td><td class="r">${eur2(it.qty * it.price)}</td></tr>`).join("");
+  const due = new Date(inv.date); due.setDate(due.getDate() + (Number(inv.terms) || 14));
+  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Rechnung ${esc(inv.no)}</title><style>
+    @page { size: A4; margin: 16mm 18mm 14mm }
+    * { box-sizing: border-box }
+    body { margin: 0; font: 10pt/1.45 "Open Sans", "Helvetica Neue", Arial, sans-serif; color: #16181d; background: #fff }
+    .page { max-width: 176mm; margin: 0 auto; padding: 8mm 0 }
+    .brand { display: flex; justify-content: flex-end; font: 800 17pt/1 "Helvetica Neue", Arial, sans-serif; letter-spacing: .04em; margin-bottom: 14mm; gap: .28em }
+    .brand span { color: #2f5bff }
+    .head { display: flex; justify-content: space-between; gap: 10mm; align-items: flex-end }
+    .sender { font-size: 7pt; color: #666; text-decoration: underline; margin-bottom: 3mm }
+    .meta td { padding: 0 0 1mm 6mm } .meta td:first-child { color: #555; padding-left: 0 } .meta td:last-child { text-align: right }
+    h1 { font-size: 15pt; margin: 16mm 0 5mm }
+    table.items { width: 100%; border-collapse: collapse; margin-top: 6mm }
+    .items th { text-align: left; font-weight: 600; border-bottom: .8pt solid #16181d; padding: 2mm 1.5mm }
+    .items td { padding: 2mm 1.5mm; border-bottom: .4pt solid #ddd; vertical-align: top }
+    .r, .items th.r { text-align: right; white-space: nowrap }
+    .sum td { border: 0; padding-top: 1.5mm } .total td { font-weight: 700; font-size: 11pt; border-top: .8pt solid #16181d; padding-top: 2.5mm }
+    .note { margin-top: 6mm } footer { margin-top: 16mm; border-top: .5pt solid #aaa; padding-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; font-size: 7.5pt; color: #555 }
+    mark { background: #fff3b0; padding: 0 2px }
+  </style></head><body><div class="page">
+    <div class="brand">${p.company ? esc(p.company).replace(/ AI$/, " <span>AI</span>") : `<mark>Unternehmensname</mark>`}</div>
+    <div class="head"><div>
+        <div class="sender">${[p.company, p.street, p.city].filter(Boolean).map(esc).join(" – ") || `<mark>Absender fehlt</mark>`}</div>
+        ${need(c.name, "Kunde")}<br>${c.street ? esc(c.street) + "<br>" : ""}${c.city ? esc(c.city) + "<br>" : ""}${c.country ? esc(c.country) : ""}
+      </div>
+      <table class="meta"><tr><td>Kunden-Nr.</td><td>${esc(inv.customerNo || "–")}</td></tr><tr><td>Rechnungs-Nr.</td><td>${esc(inv.no)}</td></tr>
+        <tr><td>Rechnungsdatum</td><td>${deDate(inv.date)}</td></tr><tr><td>Leistungsdatum</td><td>${need(inv.service, "Leistungszeitraum")}</td></tr></table></div>
+    <h1>Rechnung Nr. ${esc(inv.no)}</h1>
+    <p>${esc(inv.intro || INV_INTRO)}</p>
+    <table class="items"><thead><tr><th>Pos.</th><th>Bezeichnung</th><th class="r">Menge</th><th class="r">Einzelpreis</th><th class="r">Gesamtpreis</th></tr></thead><tbody>${items}
+      <tr class="sum"><td></td><td colspan="3">Summe Positionen</td><td class="r">${eur2(net)}</td></tr>
+      ${vat ? `<tr class="sum"><td></td><td colspan="3">zzgl. Umsatzsteuer ${vat} %</td><td class="r">${eur2(tax)}</td></tr>` : ""}
+      <tr class="total"><td></td><td colspan="3">Rechnungsbetrag</td><td class="r">${eur2(total)}</td></tr></tbody></table>
+    ${vat ? "" : `<p class="note">Im ausgewiesenen Betrag ist gemäß § 19 UStG keine Umsatzsteuer enthalten.</p>`}
+    <p class="note"><b>Zahlungsbedingung:</b><br>Zahlung bis ${due.toLocaleDateString("de-DE")} (${Number(inv.terms) || 14} Tage ab Rechnungseingang) ohne Abzüge.</p>
+    <p>Herzliche Grüße<br>${need(p.name, "Dein Name")}</p>
+    <footer>
+      <div>${need(p.name, "Name")}<br>${need(p.street, "Straße")}<br>${need(p.city, "PLZ Ort")}${p.phone ? `<br>Tel.: ${esc(p.phone)}` : ""}${p.email ? `<br>${esc(p.email)}` : ""}</div>
+      <div>${need(p.company, "Unternehmensname")}<br>IBAN ${need(p.iban, "IBAN")}${p.bic ? `<br>BIC ${esc(p.bic)}` : ""}${p.paypal ? `<br>Alternativ: PayPal ${esc(p.paypal)}` : ""}</div>
+      <div>${p.taxId ? esc(p.taxId) : `<mark>Steuernummer oder USt-IdNr.</mark>`}${p.name ? `<br>Inhaber: ${esc(p.name)}` : ""}${p.web ? `<br>${esc(p.web)}` : ""}</div>
+    </footer></div></body></html>`;
+}
+function finInvoices() {
+  const p = invProfile(), invs = fin.filter(e => e.inv).sort((a, b) => (b.inv.no || "").localeCompare(a.inv.no || ""));
+  const missing = ["company", "name", "street", "city", "iban", "taxId"].filter(k => !p[k]).length;
+  const rows = invs.map(t => `<tr><td class="num" style="text-align:left">${esc(t.inv.no)}</td><td>${esc(t.inv.customer?.name || "")}<small>${esc(t.inv.items.map(i => i.desc).join(", "))}</small></td>
+      <td>${deDate(t.inv.date)}</td><td>${statusChip(t)}</td><td class="num">${eur2(t.amount)}</td>
+      <td><div class="ract"><button type="button" class="mini" data-inv-view="${t.id}">Ansehen & drucken</button>${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}${delBtn(t.id)}</div></td></tr>`).join("");
+  const f = (k, label, ph = "", attrs = "") => `<label class="fl"><span>${label}</span><input name="${k}" value="${esc(p[k] || "")}" placeholder="${esc(ph)}" ${attrs}></label>`;
+  return `<div class="sgrid">
+    <div class="panel spanel" style="grid-column: span 2"><div class="fin-tools"><h3 style="flex:1">Rechnungen</h3>${readOnly ? "" : `<button type="button" class="btn" data-inv-new>Neue Rechnung</button>`}</div>
+      ${missing ? `<div class="note" style="flex-direction:row">Trag rechts einmal deine Absenderdaten ein. Ohne Adresse, IBAN und Steuernummer ist eine Rechnung nicht vollständig.</div>` : ""}
+      ${rows ? `<div class="tbl"><table><thead><tr><th>Nr.</th><th>Kunde</th><th>Datum</th><th>Status</th><th class="num">Betrag</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`
+        : `<p class="sub">Noch keine Rechnungen. Eine neue Rechnung landet automatisch als offene Einnahme in deinen Buchungen. Sobald das Geld da ist, klickst du dort auf „offen“.</p>`}
+    </div>
+    <div class="panel spanel"><h3>Absender auf jeder Rechnung</h3>
+      <form class="fin-form inv-prof" data-inv-profile>
+        ${f("company", "Unternehmen", "Flow Media AI")}${f("name", "Inhaber", "Vorname Nachname")}
+        ${f("street", "Straße", "Straße Hausnummer")}${f("city", "PLZ Ort", "12345 Stadt")}
+        ${f("phone", "Telefon")}${f("email", "E-Mail", "", 'type="email"')}${f("web", "Website")}
+        ${f("iban", "IBAN")}${f("bic", "BIC")}${f("paypal", "PayPal (optional)")}
+        ${f("taxId", "Steuernummer / USt-IdNr.", "z. B. Steuernummer 123/456/78901")}
+        <label class="mini"><input type="checkbox" name="small" ${p.small !== false ? "checked" : ""}> Kleinunternehmer (§ 19 UStG)</label>
+        ${readOnly ? "" : `<button class="btn" type="submit">Speichern</button>`}
+      </form></div>
+  </div>`;
+}
+function openInvoiceForm(t) {
+  const p = invProfile(), today = ymd(new Date()), inv = t?.inv || {
+    no: nextInvNo(today.slice(0, 4)), date: today, service: MONTHS[new Date().getMonth()] + " " + today.slice(0, 4),
+    vat: p.small === false ? 19 : 0, terms: 14, intro: INV_INTRO, customer: { country: "Deutschland" }, items: [{ desc: "", qty: 1, price: "" }] };
+  const c = inv.customer || {};
+  const itemRow = it => `<div class="inv-item"><input name="desc" value="${esc(it.desc)}" placeholder="Bezeichnung, z. B. Landingpage inkl. Texte" required aria-label="Bezeichnung">
+      <input name="qty" value="${esc(String(it.qty ?? 1).replace(".", ","))}" inputmode="decimal" aria-label="Menge" style="width:64px">
+      <input name="price" value="${it.price === "" ? "" : esc(String(it.price).replace(".", ","))}" inputmode="decimal" placeholder="Einzelpreis €" required aria-label="Einzelpreis" style="width:120px">
+      <button type="button" class="btn-x" data-inv-rmitem aria-label="Position entfernen">×</button></div>`;
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+    <form class="modal inv-modal" id="inv-form" data-id="${t ? t.id : ""}" role="dialog" aria-modal="true" aria-labelledby="inv-h">
+      <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+      <h2 id="inv-h" style="margin:0;font-size:18px">${t ? "Rechnung bearbeiten" : "Neue Rechnung"}</h2>
+      <div class="inv-grid">
+        <label class="fl"><span>Kunde</span><input name="cname" value="${esc(c.name || "")}" required placeholder="Vorname Nachname oder Firma"></label>
+        <label class="fl"><span>Kunden-Nr.</span><input name="customerNo" value="${esc(inv.customerNo || "")}" placeholder="optional"></label>
+        <label class="fl"><span>Straße</span><input name="cstreet" value="${esc(c.street || "")}"></label>
+        <label class="fl"><span>PLZ Ort</span><input name="ccity" value="${esc(c.city || "")}"></label>
+        <label class="fl"><span>Land</span><input name="ccountry" value="${esc(c.country || "")}"></label>
+        <label class="fl"><span>Rechnungs-Nr.</span><input name="no" value="${esc(inv.no)}" required></label>
+        <label class="fl"><span>Rechnungsdatum</span><input type="date" name="date" value="${inv.date}" required></label>
+        <label class="fl"><span>Leistungsdatum / -zeitraum</span><input name="service" value="${esc(inv.service || "")}" required></label>
+      </div>
+      <div class="sec" style="margin:0"><h3>Positionen</h3><div id="inv-items">${inv.items.map(itemRow).join("")}</div>
+        <button type="button" class="mini" data-inv-additem style="align-self:flex-start">+ Position</button></div>
+      <div class="inv-grid">
+        <label class="fl"><span>Umsatzsteuer</span><select name="vat">
+          <option value="0" ${!inv.vat ? "selected" : ""}>ohne USt (Kleinunternehmer, § 19 UStG)</option>
+          <option value="19" ${inv.vat == 19 ? "selected" : ""}>zzgl. 19 % USt</option><option value="7" ${inv.vat == 7 ? "selected" : ""}>zzgl. 7 % USt</option></select></label>
+        <label class="fl"><span>Zahlungsziel (Tage)</span><input name="terms" type="number" min="0" max="90" value="${inv.terms ?? 14}"></label>
+        <label class="fl" style="grid-column:1/-1"><span>Einleitung</span><input name="intro" value="${esc(inv.intro || INV_INTRO)}" maxlength="240"></label>
+      </div>
+      <p class="sub" id="inv-total" style="margin:0"></p>
+      <div class="mfoot"><button type="button" class="mini" data-close-btn>Abbrechen</button><button class="btn" type="submit">Speichern & ansehen</button></div>
+    </form></div>`;
+  const form = $("#inv-form"), add = () => { $("#inv-items").insertAdjacentHTML("beforeend", itemRow({ desc: "", qty: 1, price: "" })); invTotal() };
+  form.querySelector("[data-inv-additem]").onclick = add;
+  form.addEventListener("input", invTotal); invTotal();
+  form.querySelector("[name=cname]").focus();
+}
+function readInvItems() {
+  return [...document.querySelectorAll("#inv-items .inv-item")].map(r => ({ desc: r.querySelector("[name=desc]").value.trim(), qty: parseEur(r.querySelector("[name=qty]").value), price: parseEur(r.querySelector("[name=price]").value) }));
+}
+function invTotal() {
+  const el = $("#inv-total"); if (!el) return;
+  const net = invNet({ items: readInvItems().filter(i => i.qty > 0 && i.price >= 0) }), vat = Number($("#inv-form [name=vat]").value);
+  el.textContent = `Summe ${eur2(net)}${vat ? ` + ${vat} % USt ${eur2(net * vat / 100)} = ${eur2(net * (1 + vat / 100))}` : " · ohne Umsatzsteuer"}`;
+}
+function showInvoice(t) {
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+    <div class="modal inv-modal" role="dialog" aria-modal="true" aria-label="Rechnung ${esc(t.inv.no)}">
+      <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+      <h2 style="margin:0;font-size:18px">Rechnung ${esc(t.inv.no)}</h2>
+      <iframe id="inv-frame" title="Rechnung ${esc(t.inv.no)}" class="inv-frame"></iframe>
+      <p class="sub" style="margin:0">Gelb markiert = fehlt noch. „Drucken“ öffnet den Druckdialog, dort „Als PDF speichern“ wählen. Ablage: Dropbox <b>05_Finanzen/Steuern/Rechnungen Debitoren</b>.</p>
+      <div class="mfoot">${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}<button type="button" class="btn" data-inv-print>Drucken / PDF</button></div>
+    </div></div>`;
+  $("#inv-frame").srcdoc = invoiceDoc(t);
+}
+
 function finPrivate() {
   const bud = fin.filter(e => e.type === "budget"), bak = fin.filter(e => e.type === "backup");
   const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0);
   const inc = sum(bud.filter(b => b.kind === "in")), out = bud.filter(b => b.kind === "out");
-  const need = sum(out), essential = sum(out.filter(b => b.enl === "E")), fixed = sum(out.filter(b => b.fixed));
+  const need = sum(out), essential = sum(out.filter(b => b.enl === "E")), nice = sum(out.filter(b => b.enl === "N")), lux = sum(out.filter(b => b.enl === "L")), fixed = sum(out.filter(b => b.fixed));
   const backup = sum(bak), reach = need ? backup / need : 0, reachE = essential ? backup / essential : 0;
   const months = n => n ? `${n.toLocaleString("de-DE", { maximumFractionDigits: 1 })} Monate` : "–";
   const enlBar = ["E", "N", "L"].map(k => { const v = sum(out.filter(b => b.enl === k)); return v ? `<i class="enl-${k}" style="flex:${v}" title="${ENL[k]}: ${eur(v)}"></i>` : "" }).join("");
   const budRows = bud.slice().sort((a, b) => (a.kind > b.kind ? -1 : 1) || (b.amount - a.amount)).map(b => `<tr><td>${esc(b.title)}</td>
       <td>${b.kind === "in" ? "Einnahme" : `<span class="enl enl-${b.enl}">${b.enl}</span> ${ENL[b.enl] || ""}`}</td><td>${b.fixed ? "Fixkosten" : ""}</td>
-      <td class="num ${b.kind === "in" ? "pos" : "neg"}">${eur2(b.amount)}</td><td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${b.id}" aria-label="Löschen">${icon.trash}</button>`}</td></tr>`).join("");
-  const bakRows = bak.slice().sort((a, b) => b.amount - a.amount).map(b => `<tr><td>${esc(b.title)}</td><td>${esc(b.group)}</td><td class="num">${eur2(b.amount)}</td>
-      <td>${readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${b.id}" aria-label="Löschen">${icon.trash}</button>`}</td></tr>`).join("");
-  return `<div class="kpis five">
-      ${finKpi("Einnahmen / Monat", eur(inc))}
-      ${finKpi("Monatlicher Bedarf", eur(need), `davon Fixkosten ${eur(fixed)}`)}
-      ${finKpi("Minimalbedarf (nur E)", eur(essential), "nur essentielle Ausgaben")}
-      ${finKpi("Backup gesamt", eur(backup), `${bak.length} Posten`)}
+      <td class="num ${b.kind === "in" ? "pos" : "neg"}">${eur2(b.amount)}</td><td>${delBtn(b.id)}</td></tr>`).join("");
+  const bakRows = bak.slice().sort((a, b) => b.amount - a.amount).map(b => `<tr><td>${esc(b.title)}</td><td>${esc(b.group)}</td><td class="num">${eur2(b.amount)}</td><td>${delBtn(b.id)}</td></tr>`).join("");
+  return `<p class="sub" style="margin:0">Die vier Fragen aus dem Arbeitsblatt „Finanzielle Bestandsaufnahme“ rechnet das Board aus deinen Einträgen unten.</p>
+    <div class="kpis five">
+      ${finKpi("Wie viel bleibt pro Monat übrig?", eur(inc - need), `${eur(inc)} Einnahmen − ${eur(need)} Ausgaben`, inc - need < 0 ? "neg" : "")}
+      ${finKpi("Ohne Luxus übrig", eur(inc - need + lux), `Luxus: ${eur(lux)} / Monat`, inc - need + lux < 0 ? "neg" : "")}
+      ${finKpi("Ohne Luxus + Nice-to-have zusätzlich", eur(lux + nice), `Minimalbedarf ${eur(essential)} · Fixkosten ${eur(fixed)}`)}
+      ${finKpi("Erspartes inkl. Verkaufbarem", eur(backup), `${bak.length} Posten`)}
       ${finKpi("Reichweite", months(reach), `nur mit E-Ausgaben: ${months(reachE)}`, "accent")}
     </div>
     <div class="sgrid">
@@ -921,7 +1094,7 @@ function finPrivate() {
           <select name="enl" aria-label="Einordnung"><option value="E">E – Essentiell</option><option value="N">N – Nice-to-have</option><option value="L">L – Luxus</option></select>
           <label class="mini"><input type="checkbox" name="fixed"> Fixkosten</label>
           <button class="btn" type="submit">Hinzufügen</button></form>`}
-        ${budRows ? `<div class="tbl"><table><tbody>${budRows}</tbody></table></div>` : `<p class="sub">Trag deine monatlichen Einnahmen und Ausgaben ein und ordne jede Ausgabe als E, N oder L ein.</p>`}
+        ${budRows ? `<div class="tbl"><table><tbody>${budRows}</tbody></table></div>` : `<p class="sub">Trag deine monatlichen Einnahmen und Ausgaben ein und ordne jede Ausgabe als E, N oder L ein. Das Gröbste reicht, nicht jeder Cent.</p>`}
       </div>
       <div class="panel spanel"><h3>Backup</h3>
         ${readOnly ? "" : `<form class="fin-form" data-fin-form="backup">
@@ -934,6 +1107,13 @@ function finPrivate() {
       </div>
     </div>`;
 }
+function finTemplates() {
+  const list = files.filter(f => f.taskId === FIN_TEMPLATES).sort((a, b) => a.name.localeCompare(b.name, "de"));
+  return `<div class="panel spanel" style="grid-column:1/-1"><h3>Vorlagen aus dem Kurs</h3>
+    ${list.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Vorlagen abgelegt.</p>`}
+    ${uploadControls(FIN_TEMPLATES)}
+    <p class="sub" style="margin:0">Die Rechnungsvorlagen stecken im Reiter „Rechnungen“, die Einnahmen-Ausgaben-Tabelle in den Buchungen (Export „EÜR-Tabelle“), die Bestandsaufnahme unter „Privat & Backup“.</p></div>`;
+}
 function finNote() {
   return `<div class="finnote">
     <div class="panel spanel"><h3>Deine 3 Finanz-Hebel</h3><ul><li>Umsatz deines eigenen Businesses</li><li>Anderes finanzielles Standbein / Basiseinkommen sichern</li><li>Ausgaben reduzieren</li></ul></div>
@@ -942,29 +1122,76 @@ function finNote() {
     <div class="panel spanel"><h3>Getrennte Kontoführung</h3><ul><li>Privates Konto, z. B. DKB</li><li>Geschäftskonto, z. B. Holvi, N26, Kontist</li></ul></div>
     <div class="panel spanel"><h3>Notfallüberbrückung – nur bei vorübergehendem Engpass</h3><ul><li>Familie und Freunde</li><li>Ggf. Hausbank</li><li>Spezialanbieter, z. B. Auxmoney</li></ul></div>
     <div class="panel spanel"><h3>To-dos</h3><ul><li>Finanzielle Bestandsaufnahme (E/N/L) → Reiter „Privat & Backup“</li><li>Monatlichen Bedarf berechnen</li><li>Reichweite des Backups errechnen: Was ist vorhanden (auch Kleinigkeiten wie alte Fahrräder)? Wie viel Geld stünde im Notfall zur Verfügung? Wie lange könnte ich damit überbrücken?</li><li>Download-Dokumente in den Unterlagen ablegen (Dropbox 05_Finanzen)</li></ul></div>
+    ${finTemplates()}
     <p class="sub">Notizen aus dem Gründerkurs, Modul Finanzen. Erfahrungswerte, keine Steuerberatung.</p>
   </div>`;
 }
 function renderFin() {
-  const tabs = [["business", "Business"], ["private", "Privat & Backup"], ["note", "Notiz"]];
+  const tabs = [["business", "Buchungen"], ["invoices", "Rechnungen"], ["private", "Privat & Backup"], ["note", "Notiz & Vorlagen"]];
+  const body = { business: finBusiness, invoices: finInvoices, private: finPrivate, note: finNote }[finUi.tab] || finBusiness;
   return `<section class="panel stats"><div class="cal-head"><h2 style="margin:0">Finanzen</h2>
       <span class="cal-mode" role="group" aria-label="Bereich">${tabs.map(([k, l]) => `<button type="button" data-fin-tab="${k}" aria-pressed="${finUi.tab === k}">${l}</button>`).join("")}</span></div>
-    ${finUi.tab === "business" ? finBusiness() : finUi.tab === "private" ? finPrivate() : finNote()}</section>`;
+    ${body()}</section>`;
 }
+
+/* exports (web only: the artifact viewer cannot hand out files) */
+function saveBlob(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000) }
 function finCsv() {
-  const y = String(finUi.year), rows = fin.filter(e => e.type === "tx" && e.date.startsWith(y)).sort((a, b) => a.date.localeCompare(b.date));
-  const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const csv = ["Datum;Art;Beschreibung;Kategorie;Status;Betrag"].concat(rows.map(t => [t.date.split("-").reverse().join("."), t.kind === "in" ? "Einnahme" : "Ausgabe", q(t.title), q(t.category), t.kind === "in" ? (t.status === "open" ? "offen" : "bezahlt") : "", (t.kind === "in" ? 1 : -1) * t.amount].join(";").replace(/(-?\d+)\.(\d+)$/, "$1,$2"))).join("\n");
-  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = `flow-media-ai-buchungen-${y}.csv`; a.click();
+  const y = String(finUi.year), rows = yearTxs().sort((a, b) => a.date.localeCompare(b.date));
+  const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`, num = n => String(n).replace(".", ",");
+  const csv = ["Buchungsdatum;Einnahme/Ausgabe;Beschreibung;Kunde/Lieferant;Kategorie;Status;USt %;Brutto;Netto;Beleg vorhanden;Info"].concat(rows.map(t => [deDate(t.date), t.kind === "in" ? "Einnahme" : "Ausgabe", q(t.title), q(t.party), q(t.category),
+    t.kind === "in" ? (t.status === "open" ? "offen" : "bezahlt") : "", t.vat || 0, num((t.kind === "in" ? 1 : -1) * t.amount), num((t.kind === "in" ? 1 : -1) * netOf(t)), t.receipt ? "ja" : "nein", q(t.note)].join(";"))).join("\n");
+  saveBlob(new Blob(["﻿" + csv], { type: "text/csv" }), `flow-media-ai-buchungen-${y}.csv`);
 }
+let xlsxLib = null;
+const loadXlsx = () => xlsxLib || (xlsxLib = new Promise((ok, fail) => { const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"; s.onload = () => ok(window.XLSX); s.onerror = () => { xlsxLib = null; fail() }; document.head.appendChild(s) }));
+// same layout as the course's EÜR template: summary sheet + one sheet per month (expenses negative so the month sums give the result)
+async function finXlsx() {
+  let X; try { X = await loadXlsx() } catch { toast("Excel-Export konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
+  const y = finUi.year, txs = yearTxs(), me = invProfile().company || "Flow Media AI", wb = X.utils.book_new();
+  const sign = t => t.kind === "in" ? 1 : -1, sums = [];
+  const sheets = MONTHS.map((name, k) => {
+    const rows = txs.filter(t => Number(t.date.slice(5, 7)) === k + 1).sort((a, b) => a.date.localeCompare(b.date)).map(t => [
+      t.kind === "in" ? "Einnahme" : "Ausgabe", t.kind === "in" ? t.party || "" : me, t.kind === "in" ? me : t.party || "",
+      new Date(t.date + "T12:00:00"), sign(t) * t.amount, sign(t) * netOf(t), "Geschäftlich", [t.title, t.note].filter(Boolean).join(" – "), t.receipt ? "ja" : "nein"]);
+    const brutto = rows.reduce((n, r) => n + r[4], 0), netto = rows.reduce((n, r) => n + r[5], 0); sums.push([brutto, netto]);
+    const ws = X.utils.aoa_to_sheet([[`Einnahmen, Ausgaben ${name} ${y}`], [], ["Einnahme, Ausgabe", "Quelle", "Empfänger", "Buchungsdatum", "Umsatz brutto", "Umsatz netto", "Privat, Geschäftlich", "Info", "Beleg vorhanden"], ...rows, [], ["Summe", "", "", "", brutto, netto]], { cellDates: true, dateNF: "dd\\.mm\\.yyyy" });
+    ws["!cols"] = [14, 22, 22, 14, 14, 14, 18, 40, 15].map(wch => ({ wch }));
+    return [`${y}_${String(k + 1).padStart(2, "0")}`, ws];
+  });
+  const sum = X.utils.aoa_to_sheet([[`Zusammenfassung ${y}`], [], ["Monat", "Total brutto", "Total netto"], ...MONTHS.map((m, k) => [m, sums[k][0], sums[k][1]]), [], [`Total ${y}`, sums.reduce((n, s) => n + s[0], 0), sums.reduce((n, s) => n + s[1], 0)]]);
+  sum["!cols"] = [{ wch: 16 }, { wch: 14 }, { wch: 14 }];
+  X.utils.book_append_sheet(wb, sum, "Zusammenfassung");
+  sheets.forEach(([n, ws]) => X.utils.book_append_sheet(wb, ws, n));
+  X.writeFile(wb, `Einnahmen_Ausgaben_${y}.xlsx`);
+}
+
 document.addEventListener("submit", e => {
+  const prof = e.target.closest("[data-inv-profile]");
+  if (prof) {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(prof)); Object.keys(d).forEach(k => d[k] = String(d[k]).trim());
+    saveMeta({ invoice: { ...d, small: !!d.small } }); render(); toast("Absender gespeichert"); return;
+  }
+  if (e.target.id === "inv-form") {
+    e.preventDefault();
+    const f = e.target, d = Object.fromEntries(new FormData(f)), items = readInvItems();
+    if (items.some(i => !(i.qty > 0) || !(i.price >= 0))) { toast("Bitte Menge und Einzelpreis jeder Position prüfen, z. B. 1 und 450,00"); return }
+    const vat = Number(d.vat), net = invNet({ items }), old = fin.find(x => x.id === f.dataset.id);
+    const inv = { no: d.no.trim(), customerNo: d.customerNo.trim(), date: d.date, service: d.service.trim(), vat, terms: Number(d.terms) || 14, intro: d.intro.trim(),
+      customer: { name: d.cname.trim(), street: d.cstreet.trim(), city: d.ccity.trim(), country: d.ccountry.trim() }, items };
+    if (fin.some(x => x.inv && x.inv.no === inv.no && x.id !== old?.id)) { toast(`Rechnungsnummer ${inv.no} gibt es schon.`); return }
+    const t = { ...(old || { id: newId(), type: "tx", kind: "in", status: "open", category: "Kundenprojekt", receipt: true, createdAt: Date.now() }),
+      title: `Rechnung ${inv.no}`, party: inv.customer.name, date: inv.date, amount: Math.round(net * (1 + vat / 100) * 100) / 100, vat, inv };
+    saveFin(t); showInvoice(t); return;
+  }
   const f = e.target.closest("[data-fin-form]"); if (!f) return;
   e.preventDefault();
   const d = Object.fromEntries(new FormData(f)), amount = parseEur(d.amount);
   if (!(amount > 0)) { toast("Bitte einen Betrag größer als 0 eingeben, z. B. 1.250,00"); return }
   const base = { id: newId(), title: d.title.trim(), amount, createdAt: Date.now() };
   const type = f.dataset.finForm;
-  const entry = type === "tx" ? { ...base, type, date: d.date, kind: d.kind, category: d.category, status: d.kind === "in" ? d.status : "paid" }
+  const entry = type === "tx" ? { ...base, type, date: d.date, kind: d.kind, vat: Number(d.vat) || 0, party: (d.party || "").trim(), note: (d.note || "").trim(), receipt: !!d.receipt, category: d.category, status: d.kind === "in" ? d.status : "paid" }
     : type === "budget" ? { ...base, type, kind: d.kind, enl: d.kind === "out" ? d.enl : "", fixed: !!d.fixed }
     : { ...base, type, group: d.group };
   saveFin(entry); toast("Gespeichert");
@@ -974,7 +1201,14 @@ document.addEventListener("click", e => {
   const tab = t.closest("[data-fin-tab]"); if (tab) { finUi.tab = tab.dataset.finTab; render(); return }
   const del = t.closest("[data-fin-del]"); if (del) { removeFin(del.dataset.finDel); return }
   const paid = t.closest("[data-fin-paid]"); if (paid) { const x = fin.find(v => v.id === paid.dataset.finPaid); if (x) saveFin({ ...x, status: "paid" }); return }
+  const rec = t.closest("[data-fin-receipt]"); if (rec) { const x = fin.find(v => v.id === rec.dataset.finReceipt); if (x) saveFin({ ...x, receipt: true }); return }
+  if (t.closest("[data-inv-new]")) { openInvoiceForm(null); return }
+  const ed = t.closest("[data-inv-edit]"); if (ed) { const x = fin.find(v => v.id === ed.dataset.invEdit); if (x) openInvoiceForm(x); return }
+  const vw = t.closest("[data-inv-view]"); if (vw) { const x = fin.find(v => v.id === vw.dataset.invView); if (x) showInvoice(x); return }
+  const rm = t.closest("[data-inv-rmitem]"); if (rm) { if (document.querySelectorAll("#inv-items .inv-item").length > 1) { rm.parentElement.remove(); invTotal() } return }
+  if (t.closest("[data-inv-print]")) { try { $("#inv-frame").contentWindow.print() } catch { toast("Drucken geht hier nicht. Öffne das Board im Browser.") } return }
   if (t.closest("[data-fin-csv]")) finCsv();
+  if (t.closest("[data-fin-xlsx]")) finXlsx();
 });
 document.addEventListener("change", e => { if (e.target.matches?.("[data-fin-year]")) { finUi.year = Number(e.target.value); render() } });
 
