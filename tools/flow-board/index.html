@@ -127,6 +127,28 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
 .pill.done { opacity: .5; text-decoration: line-through }
 .ptime { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
+.cal-mode { display: inline-flex; margin-left: auto; border: 1px solid var(--line); border-radius: 6px; overflow: hidden }
+.cal-mode button { border: 0; background: var(--card); padding: 5px 12px; font-weight: 500; color: var(--muted) }
+.cal-mode button[aria-pressed="true"] { background: var(--accent); color: #fff }
+.week { display: grid; grid-template-rows: auto auto minmax(0, 1fr); min-height: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card) }
+.wk-row { display: grid; grid-template-columns: 46px repeat(7, minmax(0, 1fr)) }
+.wk-head > div { padding: 6px 8px; font: 500 12px var(--f-mono); color: var(--faint); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.wk-head > div:first-child { border-left: 0 }
+.wk-head .today { color: var(--accent); font-weight: 700 }
+.wk-allday > div { min-height: 30px; max-height: 70px; overflow-y: auto; padding: 3px; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.wk-allday > .wk-lbl { border-left: 0; font: 500 10px var(--f-mono); color: var(--faint); justify-content: center; align-items: center }
+.wk-allday > div.over, .wcol.over { background-color: var(--hover) }
+.wk-body { min-height: 0 }
+.wk-hours { display: grid; grid-template-rows: repeat(15, minmax(0, 1fr)); font: 500 10.5px var(--f-mono); color: var(--faint) }
+.wk-hours > div { padding: 1px 6px 0 0; text-align: right; transform: translateY(-6px) }
+.wk-hours > div:first-child { transform: none }
+.wcol { position: relative; border-left: 1px solid var(--line); background-image: linear-gradient(to bottom, var(--line) 1px, transparent 1px); background-size: 100% calc(100% / 15); cursor: cell; min-height: 0 }
+.wcol.today { background-color: rgba(47, 91, 255, .05) }
+.wev { position: absolute; left: 2px; right: 2px; border-radius: 4px; padding: 2px 5px; font-size: 11.5px; line-height: 1.2; overflow: hidden; background: color-mix(in srgb, var(--pc) 32%, var(--card)); border-left: 3px solid var(--pc); color: var(--ink); cursor: grab; z-index: 1; text-decoration: none }
+.wev b { font-family: var(--f-mono); font-weight: 500 }
+.wev.done { opacity: .5; text-decoration: line-through }
+.wev.appt { background: var(--ink); color: var(--card); border-left-color: var(--ink); cursor: pointer }
+.wcol .now { position: absolute; left: 0; right: 0; height: 2px; background: var(--red); z-index: 2; pointer-events: none }
 .appt { display: block; border-radius: 4px; padding: 3px 6px; font-size: 12px; line-height: 1.25; background: var(--ink); color: var(--card); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none }
 .appt b { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
 .appt.past { opacity: .5 }
@@ -275,6 +297,11 @@ let tasks = [];
 let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "meer", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let calMode = "week";  // "week" (hour grid) or "month"
+try { if (localStorage.getItem("flow-board-calmode") === "month") calMode = "month" } catch {}
+const mondayOf = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x };
+let weekStart = mondayOf(new Date());
+const H0 = 7, H1 = 22;  // visible hours in the week grid
 let tasksCol = null, metaDoc = null;
 let readOnly = false, loaded = false;
 let composerFor = null;
@@ -462,7 +489,40 @@ function renderMatrix() {
       <div class="cards" data-drop="quad:${q.p}" style="padding:0">${items.map(cardHtml).join("") || `<div class="empty-note">Nichts hier</div>`}</div></section>`;
   }).join("")}</div>`;
 }
+const calModeToggle = () => `<span class="cal-mode" role="group" aria-label="Kalenderansicht"><button type="button" data-calmode="week" aria-pressed="${calMode === "week"}">Woche</button><button type="button" data-calmode="month" aria-pressed="${calMode === "month"}">Monat</button></span>`;
+const toMin = t => { const [h, m] = (t || "0:0").split(":").map(Number); return h * 60 + m };
+const fromMin = n => pad(Math.floor(n / 60)) + ":" + pad(n % 60);
+function renderWeek() {
+  const today = ymd(new Date()), days = [...Array(7)].map((_, i) => { const d = new Date(weekStart); d.setDate(d.getDate() + i); return d });
+  const span = (H1 - H0) * 60, pct = m => Math.max(0, Math.min(100, (m - H0 * 60) / span * 100));
+  const e = days[6], title = `KW ${isoWeek(weekStart)} · ${weekStart.getDate()}.${weekStart.getMonth() !== e.getMonth() ? " " + MON_S[weekStart.getMonth()] : ""} – ${e.getDate()}. ${MON_S[e.getMonth()]} ${e.getFullYear()}`;
+  const head = `<div></div>` + days.map(d => `<div class="${ymd(d) === today ? "today" : ""}">${DOW[(d.getDay() + 6) % 7]} ${d.getDate()}.</div>`).join("");
+  const allday = `<div class="wk-lbl">ganztags</div>` + days.map(d => { const key = ymd(d);
+    return `<div data-drop="allday:${key}">${sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => `<div class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>` }).join("");
+  const hours = [...Array(H1 - H0)].map((_, i) => `<div>${pad(H0 + i)}:00</div>`).join("");
+  const now = new Date(), nowMin = now.getHours() * 60 + now.getMinutes();
+  const cols = days.map(d => { const key = ymd(d);
+    const items = tasks.filter(t => t.due === key && t.time).map(t => { const s0 = toMin(t.time), e0 = t.endTime ? Math.max(toMin(t.endTime), s0 + 15) : s0 + 45;
+      return `<div class="wev ${t.status === "done" ? "done" : ""}" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%;--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(`${t.time}${t.endTime ? "–" + t.endTime : ""} · ${t.title}`)}"><b>${t.time}</b> ${esc(t.title)}</div>` });
+    const appts = calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes(), e0 = en.getHours() * 60 + en.getMinutes(), tm = fromMin(s0);
+      return `<a class="wev appt" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm}–${fromMin(e0)} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}`)}"><b>${tm}</b> ${esc(ev.invitee || ev.name)}</a>` });
+    const nowLine = key === today && nowMin >= H0 * 60 && nowMin <= H1 * 60 ? `<span class="now" style="top:${pct(nowMin)}%"></span>` : "";
+    return `<div class="wcol ${key === today ? "today" : ""}" data-drop="wday:${key}" data-day="${key}">${appts.join("")}${items.join("")}${nowLine}</div>` }).join("");
+  const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
+  return `<section class="panel cal-panel">
+    <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorherige Woche">←</button><h2>${title}</h2>
+      <button class="ghost" id="cal-next" aria-label="Nächste Woche">→</button><button class="ghost" id="cal-today">Heute</button>${calModeToggle()}</div>
+    <div class="cal-body"><div class="week">
+        <div class="wk-row wk-head">${head}</div>
+        <div class="wk-row wk-allday">${allday}</div>
+        <div class="wk-row wk-body"><div class="wk-hours">${hours}</div>${cols}</div>
+      </div>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte in die Woche ziehen: oben ganztags, im Raster mit Uhrzeit. Klick ins Raster legt eine Karte an.</p>
+        <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
+  </section>`;
+}
 function renderCal() {
+  if (calMode === "week") return renderWeek();
   const y = calCursor.getFullYear(), m = calCursor.getMonth();
   const start = new Date(y, m, 1 - ((calCursor.getDay() + 6) % 7));
   const today = ymd(new Date());
@@ -484,7 +544,7 @@ function renderCal() {
   const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
   return `<section class="panel cal-panel">
     <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button><h2>${MONTHS[m]} ${y}</h2>
-      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button></div>
+      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button>${calModeToggle()}</div>
     <div class="cal-body"><div class="cal-scroll"><div class="cal">${cells}</div></div>
       <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen.</p>
         <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
@@ -845,9 +905,17 @@ document.addEventListener("click", e => {
   }
   const nd = tgt.closest("[data-new-due]"); if (nd) { openCard(blank({ due: nd.dataset.newDue, status: "todo", order: nextOrder("todo") }), true); return }
   const card = tgt.closest("[data-id]"); if (card) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openCard(t) ; return }
-  if (tgt.id === "cal-prev") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() - 1, 1); render() }
-  if (tgt.id === "cal-next") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + 1, 1); render() }
-  if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); render() }
+  const cm = tgt.closest("[data-calmode]");
+  if (cm) { calMode = cm.dataset.calmode; try { localStorage.setItem("flow-board-calmode", calMode) } catch {} ; if (calMode === "week") weekStart = mondayOf(calCursor.getMonth() === new Date().getMonth() ? new Date() : calCursor); else calCursor = new Date(weekStart.getFullYear(), weekStart.getMonth(), 1); render(); return }
+  const step = d => { if (calMode === "week") { weekStart = new Date(weekStart); weekStart.setDate(weekStart.getDate() + 7 * d) } else calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + d, 1); render() };
+  if (tgt.id === "cal-prev") step(-1);
+  if (tgt.id === "cal-next") step(1);
+  if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); weekStart = mondayOf(new Date()); render() }
+  const wc = tgt.closest(".wcol");
+  if (wc && tgt === wc && !readOnly) {
+    const r = wc.getBoundingClientRect(), m = Math.round((H0 * 60 + (e.clientY - r.top) / r.height * (H1 - H0) * 60) / 30) * 30;
+    openCard(blank({ due: wc.dataset.day, time: fromMin(m), endTime: fromMin(Math.min(m + 60, 24 * 60 - 1)), status: "todo", order: nextOrder("todo") }), true);
+  }
 });
 document.addEventListener("submit", e => {
   const f = e.target.closest("[data-compose]"); if (!f) return;
@@ -974,6 +1042,13 @@ function dropOn(z, id, clientY) {
   }
   if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patchTask(id, { important: q.imp, urgent: q.urg }) }
   if (kind === "due") patchTask(id, { due: val || "" });
+  if (kind === "allday") patchTask(id, { due: val, time: "", endTime: "" });
+  if (kind === "wday") {
+    const t = tasks.find(x => x.id === id), r = z.getBoundingClientRect();
+    const m = Math.max(H0 * 60, Math.min(H1 * 60 - 15, Math.round((H0 * 60 + (clientY - r.top) / r.height * (H1 - H0) * 60) / 15) * 15));
+    const dur = t?.time && t?.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+    patchTask(id, { due: val, time: fromMin(m), endTime: fromMin(Math.min(m + dur, 24 * 60 - 1)) });
+  }
 }
 
 if (DEMO) $("#demo-pill").hidden = false;
