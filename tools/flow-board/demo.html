@@ -225,6 +225,10 @@ a.fname:hover { text-decoration: underline }
 <script>
 // DEMO = true builds the shareable example board: sample cards, kept per visitor in their own browser, no shared data, no files, no Dropbox.
 const DEMO = true;
+// WEB = true builds the standalone GitHub Pages version: data, login and files in Supabase (project "Liebefeld", tables flow_board_*).
+const WEB = false;
+const SB_URL = "https://ykleosfvtqcmqxqihnod.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbGVvc2Z2dHFjbXF4cWlobm9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA5MzQ0NjIsImV4cCI6MjA1NjUxMDQ2Mn0.70wsZ-c7poYFnbTyXbKrG0b6YPSe-BonMN6kjZ2a2Wo";
 const AREAS = ["Marketing", "Sales", "Produkt", "Coachings", "Finanzen", "Organisatorisch", "KI"];
 const AREA_COLOR = { Marketing: "--la", Sales: "--lb", Produkt: "--lc", Coachings: "--ld", Finanzen: "--lg", Organisatorisch: "--le", KI: "--lf" };
 const COLS = [
@@ -266,7 +270,9 @@ let composerFor = null;
 let files = [], filesCol = null, assetsApi = null, mcpApi = null, usage = null;
 const DBX_ROOT = "/Flow Media AI";
 const dbx = { path: DBX_ROOT, entries: null, loading: false, error: null, retry: false };
-const MAX_BYTES = 20 * 1024 * 1024;
+const MAX_BYTES = (WEB ? 50 : 20) * 1024 * 1024;
+const signed = {};  // WEB: storage path -> signed URL
+const blobUrl = f => WEB ? (signed[f.assetId] || "#") : "/_blob/" + f.assetId;
 const EXT_TYPE = { csv: "text/csv", md: "text/markdown", json: "application/json", txt: "text/plain", pdf: "application/pdf", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif", webp: "image/webp", svg: "image/svg+xml", mp4: "video/mp4", webm: "video/webm" };
 
 const $ = s => document.querySelector(s);
@@ -483,12 +489,12 @@ function render() {
 function fileRow(f, opts = {}) {
   const card = f.taskId ? tasks.find(t => t.id === f.taskId) : null;
   const isImg = f.kind === "asset" && (f.type || "").startsWith("image/");
-  const href = f.kind === "asset" ? "/_blob/" + f.assetId : dbxWebUrl(f.path, false);
-  const thumb = isImg ? `<img src="/_blob/${esc(f.assetId)}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : esc(extOf(f.name).slice(0, 4) || "datei");
-  const meta = [f.kind === "dropbox" ? "Dropbox" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
+  const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" ? f.url : dbxWebUrl(f.path, false);
+  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
+  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
   return `<div class="frow"><span class="ficon">${thumb}</span>
     <span style="min-width:0"><a class="fname" href="${esc(href)}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">${esc(meta)}</span></span>
-    <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "dropbox" ? "Lösen" : "Löschen"}</button>`}</span></div>`;
+    <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "asset" ? "Löschen" : "Lösen"}</button>`}</span></div>`;
 }
 function uploadControls(taskId) {
   if (readOnly || !filesCol) return "";
@@ -517,6 +523,13 @@ function renderFiles() {
   </div>`;
 }
 function dbxHtml(mode) {
+  if (WEB) return mode === "pick"
+    ? `<div class="note" style="width:100%">Link einfügen, z. B. einen Dropbox-Freigabelink.
+        <input id="lnk-url" type="url" placeholder="https://www.dropbox.com/…" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)">
+        <input id="lnk-name" placeholder="Name (optional)" maxlength="120" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)">
+        <button type="button" class="mini" data-link-add>Anhängen</button></div>`
+    : `<div class="note">Die Web-Version liest deine Dropbox nicht direkt. Öffne den Ordner in Dropbox und häng Dateien als Link an eine Karte.
+        <a class="mini" href="${esc(dbxWebUrl(DBX_ROOT, true))}" target="_blank" rel="noopener">${icon.box} Ordner ${esc(DBX_ROOT)} öffnen</a></div>`;
   if (!mcpApi && DEMO) return `<div class="note">In der Demo ist die Dropbox-Anbindung ausgeschaltet. In der echten Version siehst du hier deine Dropbox-Ordner.</div>`;
   if (!mcpApi) return `<div class="note">Dropbox ist in dieser Ansicht nicht erreichbar. Öffne das Board in Claude, dort fragt es einmal nach Zugriff auf deine Dropbox.</div>`;
   if (dbx.error) return `<div class="note">${esc(dbx.error)}${dbx.retry ? `<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">Erneut versuchen</button>` : ""}</div>`;
@@ -578,9 +591,10 @@ async function linkDropbox(path, name, size, taskId) {
 async function uploadFiles(list, taskId) {
   if (!assetsApi || !filesCol || readOnly) { toast("Hochladen ist hier nicht möglich."); return }
   for (const f of list) {
-    if (f.size > MAX_BYTES) { toast(`${f.name} ist größer als 20 MB.`); continue }
-    const ext = extOf(f.name), type = EXT_TYPE[ext] && (!f.type || f.type !== EXT_TYPE[ext]) ? EXT_TYPE[ext] : f.type;
-    if (!type || !Object.values(EXT_TYPE).includes(type)) { toast(`${f.name}: dieses Format geht nur über Dropbox.`); continue }
+    if (f.size > MAX_BYTES) { toast(`${f.name} ist größer als ${MAX_BYTES / 1048576} MB.`); continue }
+    const ext = extOf(f.name);
+    const type = WEB ? (f.type || EXT_TYPE[ext] || "application/octet-stream") : EXT_TYPE[ext] && (!f.type || f.type !== EXT_TYPE[ext]) ? EXT_TYPE[ext] : f.type;
+    if (!WEB && (!type || !Object.values(EXT_TYPE).includes(type))) { toast(`${f.name}: dieses Format geht nur über Dropbox.`); continue }
     toast(`Lade ${f.name} hoch …`);
     try {
       const r = await assetsApi.upload(f, { type });
@@ -627,7 +641,7 @@ function openCard(t, isNew = false) {
       <div class="sec"><h3>${icon.clip} Anhänge</h3>
         ${isNew ? `<p style="margin:0;color:var(--muted);font-size:13px">Leg die Karte zuerst an, dann kannst du Dateien anhängen.</p>` : `
         <div id="m-att" style="display:flex;flex-direction:column;gap:6px"></div>
-        ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} Aus Dropbox verknüpfen</button>` : ""}</div>
+        ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} ${WEB ? "Link anhängen" : "Aus Dropbox verknüpfen"}</button>` : ""}</div>
         <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>`}`}
       </div>
       <div class="sec"><h3>${icon.com} Aktivität</h3>
@@ -700,7 +714,8 @@ function openMenu(btn) {
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
-    <div class="stat">${DEMO ? "Demo: Deine Änderungen bleiben nur in deinem Browser. Andere sehen sie nicht." : tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
+    ${WEB && webUser ? `<div class="stat">Angemeldet als ${esc(webUser.email || "")}</div><button type="button" class="ghost" id="web-logout">Abmelden</button>` : ""}
+    <div class="stat">${WEB ? "Gespeichert in deiner Datenbank, auf allen Geräten." : DEMO ? "Demo: Deine Änderungen bleiben nur in deinem Browser. Andere sehen sie nicht." : tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
     ${DEMO ? `<button type="button" class="ghost" id="demo-reset">Beispiel zurücksetzen</button>` : ""}
   </div>`;
 }
@@ -889,8 +904,95 @@ function seedDemo() {
   lsSave();
 }
 
+/* ---------- WEB: Supabase backend (login, tables, storage, realtime) ---------- */
+function loadScript(src) { return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s) }) }
+function authScreen(msg = "", mode = "login") {
+  let el = $("#auth"); if (!el) { el = document.createElement("div"); el.id = "auth"; document.body.appendChild(el) }
+  el.innerHTML = `<div class="scrim" style="align-items:center"><form class="modal" id="auth-form" style="grid-template-columns:minmax(0,1fr);width:min(380px,100%)">
+    <h2 style="margin:0;font-size:20px">Flow Board</h2>
+    <p class="sub" style="margin:0;color:var(--muted)">${mode === "signup" ? "Konto anlegen. Danach kommt eine Bestätigungs-Mail." : "Melde dich an, um dein Board zu öffnen."}</p>
+    <div class="sec" style="margin:0"><label class="lbl" for="au-mail" style="font-size:12px;font-weight:600;color:var(--muted)">E-Mail</label><input id="au-mail" type="email" autocomplete="email" required></div>
+    <div class="sec" style="margin:0"><label class="lbl" for="au-pw" style="font-size:12px;font-weight:600;color:var(--muted)">Passwort</label><input id="au-pw" type="password" autocomplete="${mode === "signup" ? "new-password" : "current-password"}" minlength="8" required></div>
+    ${msg ? `<div class="note">${esc(msg)}</div>` : ""}
+    <div class="mfoot" style="justify-content:space-between"><button type="button" class="ghost" id="au-switch">${mode === "signup" ? "Ich habe ein Konto" : "Konto anlegen"}</button><button class="btn" type="submit">${mode === "signup" ? "Konto anlegen" : "Anmelden"}</button></div>
+  </form></div>`;
+  $("#au-switch").onclick = () => authScreen("", mode === "signup" ? "login" : "signup");
+  $("#auth-form").onsubmit = async e => {
+    e.preventDefault();
+    const email = $("#au-mail").value.trim(), password = $("#au-pw").value;
+    const r = mode === "signup" ? await sb.auth.signUp({ email, password, options: { emailRedirectTo: location.href.split("#")[0] } }) : await sb.auth.signInWithPassword({ email, password });
+    if (r.error) return authScreen(r.error.message === "Invalid login credentials" ? "E-Mail oder Passwort stimmt nicht – oder die E-Mail ist noch nicht bestätigt." : r.error.message, mode);
+    if (mode === "signup" && !r.data.session) return authScreen("Fast geschafft: Bestätige den Link in deiner E-Mail und melde dich dann hier an.", "login");
+  };
+}
+let sb = null;
+const chk = r => { if (r.error) throw { code: "web", message: r.error.message }; return r };
+function rowToTask(r) { return { id: r.id, ...r.data } }
+async function refreshSigned() {
+  const paths = files.filter(f => f.kind === "asset" && !signed[f.assetId]).map(f => f.assetId);
+  if (!paths.length) return;
+  const r = await sb.storage.from("flow-board").createSignedUrls(paths, 60 * 60 * 12);
+  (r.data || []).forEach(x => { if (x.signedUrl) signed[x.path] = x.signedUrl });
+  if (!$("#layer").innerHTML) render(); else { const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
+}
+async function startWebData(user) {
+  webUser = user; $("#auth")?.remove();
+  const uid = user.id;
+  const table = name => ({ doc: id => ({
+    set: body => sb.from(name).upsert({ id, owner: uid, data: body, updated_at: new Date().toISOString() }).then(chk),
+    delete: () => sb.from(name).delete().eq("id", id).then(chk),
+  }) });
+  tasksCol = table("flow_board_tasks"); filesCol = table("flow_board_files");
+  metaDoc = { set: data => sb.from("flow_board_meta").upsert({ owner: uid, data, updated_at: new Date().toISOString() }).then(chk) };
+  assetsApi = {
+    upload: async (f, { type }) => {
+      const path = uid + "/" + newId() + "-" + f.name.replace(/[^\w.\-]+/g, "_").slice(-80);
+      const r = await sb.storage.from("flow-board").upload(path, f, { contentType: type, upsert: false });
+      if (r.error) throw { code: /size|large/i.test(r.error.message) ? "too_large" : /quota/i.test(r.error.message) ? "quota_or_state" : "upstream_error", message: r.error.message };
+      return { id: path, url: "", sizeBytes: f.size, contentType: type };
+    },
+    delete: async id => { const r = await sb.storage.from("flow-board").remove([id]); if (r.error) throw { code: "upstream_error" } },
+    list: async () => { const a = files.filter(f => f.kind === "asset"); return { usage: { files: a.length, bytes: a.reduce((n, f) => n + (f.size || 0), 0), maxBytes: 1024 * 1048576, maxFiles: 10000 } } },
+  };
+  const [t, f, m] = await Promise.all([
+    sb.from("flow_board_tasks").select("id,data"), sb.from("flow_board_files").select("id,data"), sb.from("flow_board_meta").select("data").maybeSingle(),
+  ]);
+  if (t.error) { toast("Laden hat nicht geklappt: " + t.error.message); return }
+  tasks = t.data.map(rowToTask); files = (f.data || []).map(rowToTask);
+  if (m.data?.data) meta = { ...meta, ...m.data.data };
+  loaded = true; applyBackground(); render(); refreshSigned();
+  const apply = (list, p) => p.eventType === "DELETE" ? list.filter(x => x.id !== p.old.id) : [...list.filter(x => x.id !== p.new.id), rowToTask(p.new)];
+  sb.channel("flow-board-" + uid)
+    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_tasks" }, p => { tasks = apply(tasks, p); if (!$("#layer").innerHTML) render(); else renderBar() })
+    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_files" }, p => { files = apply(files, p); refreshSigned(); const md = $("#modal"); if (md?.dataset.task) renderCardFiles(md.dataset.task); if (!$("#layer").innerHTML) render() })
+    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_meta" }, p => { if (p.new?.data) { meta = { ...meta, ...p.new.data }; applyBackground(); renderBar() } })
+    .subscribe();
+}
+async function bootWeb() {
+  try { await loadScript("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js") }
+  catch { toast("Die Datenbank-Bibliothek konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
+  sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, detectSessionInUrl: true } });
+  const { data } = await sb.auth.getSession();
+  sb.auth.onAuthStateChange((ev, session) => {
+    if (session?.user && !webUser) startWebData(session.user);
+    if (ev === "SIGNED_OUT") location.reload();
+  });
+  if (data.session?.user) startWebData(data.session.user); else authScreen();
+}
+document.addEventListener("click", async e => {
+  if (e.target.id === "web-logout") { await sb?.auth.signOut(); location.reload() }
+  if (e.target.closest?.("[data-link-add]")) {
+    const url = $("#lnk-url").value.trim(), name = $("#lnk-name").value.trim();
+    if (!/^https:\/\//i.test(url)) { toast("Bitte einen Link mit https:// einfügen."); return }
+    try { await filesCol.doc(newId()).set({ kind: "link", url, name: name || url.replace(/^https:\/\/(www\.)?/, "").slice(0, 60), taskId: dbx.pickFor, createdAt: Date.now() }); toast("Link angehängt"); $("#lnk-url").value = ""; $("#lnk-name").value = "" }
+    catch (err) { writeErr(err) }
+  }
+});
+
 /* ---------- boot: shared store if available, else this browser ---------- */
+let webUser = null;
 (async () => {
+  if (WEB) return bootWeb();
   const db = !DEMO && window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
   if (DEMO || !db) { lsLoad(); if (DEMO && !tasks.length) seedDemo(); loaded = true; applyBackground(); render(); return }
   tasksCol = db.collection("tasks");

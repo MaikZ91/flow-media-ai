@@ -7,8 +7,14 @@ Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 - `demo.html` – teilbare Demo: https://claude.ai/artifact/NiGiVFXGQKNzzaWTWyEc8u
   Beispielkarten, jede Änderung bleibt im Browser des Besuchers. Keine Dateien, kein Dropbox.
 
-`demo.html` wird aus `index.html` erzeugt – nie von Hand ändern:
+- `web/index.html` – eigenständige Web-Version (GitHub Pages). Login, Daten und Dateien in Supabase
+  (Projekt „Liebefeld“, Tabellen `flow_board_tasks/_files/_meta`, Bucket `flow-board`, alles per RLS nur für den eigenen Account).
+  Dropbox: nur Links (keine direkte Anbindung ohne eigene Dropbox-App).
+
+`demo.html` und `web/index.html` werden aus `index.html` erzeugt – nie von Hand ändern:
 
     sed -e 's/const DEMO = false;/const DEMO = true;/' -e 's#<title>Flow Board</title>#<title>Flow Board Demo</title>#' index.html > demo.html
 
-Danach beide Seiten neu veröffentlichen.
+    { printf '<!doctype html>\n<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"></head><body>\n'; sed 's/const WEB = false;/const WEB = true;/' index.html; printf '\n</body></html>\n'; } > web/index.html
+
+Danach die Artifacts neu veröffentlichen und `web/` deployen.
