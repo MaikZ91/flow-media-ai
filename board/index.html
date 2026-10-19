@@ -309,6 +309,11 @@ body.is-dragging .card-del { display: none }
 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
 
+/* day mottos */
+.motto { display: block; margin-top: 2px; font: 600 11px/1.2 var(--f-body); color: var(--accent); text-transform: none; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.mottos { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 8px; align-items: center; font: 500 12px var(--f-mono); color: var(--muted) }
+.mottos input { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 4px 8px; font: 13px var(--f-body); min-width: 0 }
+
 /* calendar editing */
 .wev { cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none }
 .pill { user-select: none; -webkit-user-select: none }
@@ -455,6 +460,9 @@ const PCOL = { 1: "--l1", 2: "--l2", 3: "--l3", 4: "--l4" };
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 const MON_S = ["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+// day mottos (Mo = 0 … So = 6), stored in the board meta so every device shows them
+const motto = i => String(meta.mottos?.[i] || "").trim();
+const mottoTag = i => motto(i) ? `<span class="motto" title="Tagesmotto: ${esc(motto(i))}">${esc(motto(i))}</span>` : "";
 const BGS = {
   flow:  { name: "Flow",  plain: true },
   meer:  { name: "Meer",  stops: [[0, "#0d3f4a"], [.35, "#1d6f78"], [.55, "#3c9a98"], [.7, "#7fbfb0"], [.82, "#c7b48f"], [1, "#8a6a4a"]] },
@@ -744,7 +752,7 @@ function renderWeek() {
   const today = ymd(new Date()), days = [...Array(7)].map((_, i) => { const d = new Date(weekStart); d.setDate(d.getDate() + i); return d });
   const span = (H1 - H0) * 60, pct = m => Math.max(0, Math.min(100, (m - H0 * 60) / span * 100));
   const e = days[6], title = `KW ${isoWeek(weekStart)} · ${weekStart.getDate()}.${weekStart.getMonth() !== e.getMonth() ? " " + MON_S[weekStart.getMonth()] : ""} – ${e.getDate()}. ${MON_S[e.getMonth()]} ${e.getFullYear()}`;
-  const head = `<div></div>` + days.map(d => `<div class="${ymd(d) === today ? "today" : ""}">${DOW[(d.getDay() + 6) % 7]} ${d.getDate()}.</div>`).join("");
+  const head = `<div></div>` + days.map(d => `<div class="${ymd(d) === today ? "today" : ""}">${DOW[(d.getDay() + 6) % 7]} ${d.getDate()}.${mottoTag((d.getDay() + 6) % 7)}</div>`).join("");
   const allday = `<div class="wk-lbl">ganztags</div>` + days.map(d => { const key = ymd(d);
     return `<div data-drop="allday:${key}">${sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>` }).join("");
   const hours = [...Array(H1 - H0)].map((_, i) => `<div>${pad(H0 + i)}:00</div>`).join("");
@@ -775,7 +783,7 @@ function renderCal() {
   const y = calCursor.getFullYear(), m = calCursor.getMonth();
   const start = new Date(y, m, 1 - ((calCursor.getDay() + 6) % 7));
   const today = ymd(new Date());
-  let cells = `<div class="h">KW</div>` + DOW.map(d => `<div class="h">${d}</div>`).join("");
+  let cells = `<div class="h">KW</div>` + DOW.map((d, i) => `<div class="h">${d}${mottoTag(i)}</div>`).join("");
   const d = new Date(start);
   for (let w = 0; w < 6; w++) {
     if (w > 0 && d.getMonth() !== m) break;
@@ -1420,6 +1428,10 @@ document.addEventListener("click", e => {
   applyTheme(b.dataset.themeSet);
   b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
 });
+document.addEventListener("change", e => {
+  const m = e.target.closest?.("[data-motto]"); if (!m || readOnly) return;
+  saveMeta({ mottos: { ...(meta.mottos || {}), [m.dataset.motto]: m.value.trim() } }); if (view === "cal") render();
+});
 document.addEventListener("change", e => { if (e.target.matches?.("[data-fin-year]")) { finUi.year = Number(e.target.value); render() } });
 
 /* ---------- landing page analytics (PostHog via the gateway) ---------- */
@@ -1595,6 +1607,8 @@ function openMenu(btn) {
   <div class="menu" style="top:${r.bottom + 6}px;right:max(12px, env(safe-area-inset-right, 0px))">
     <h3>Darstellung</h3>
     <div class="cal-mode" role="group" aria-label="Darstellung">${[["light", "Hell"], ["dark", "Dunkel"], ["system", "System"]].map(([k, l]) => `<button type="button" data-theme-set="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
+    <h3>Tagesmotto</h3>
+    <div class="mottos">${DOW.map((d, i) => `<label for="motto-${i}">${d}</label><input id="motto-${i}" data-motto="${i}" value="${esc(motto(i))}" maxlength="40" placeholder="kein Motto" ${readOnly ? "disabled" : ""}>`).join("")}</div>
     <h3>Hintergrund</h3>
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => b.plain ? `<button class="sw plain" data-bg="${k}" aria-pressed="${meta.bg === k}">${b.name}</button>` : `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
