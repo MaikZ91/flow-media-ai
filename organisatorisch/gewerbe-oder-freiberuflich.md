@@ -54,6 +54,19 @@ Gibt es **nur aus der Arbeitslosigkeit** heraus – nicht neben einem laufenden 
 - **Achtung bei Eigenkündigung:** Wer selbst kündigt, bekommt meist eine Sperrzeit (12 Wochen) und einen kürzeren ALG-I-Anspruch – dann können die 150 Tage knapp werden. Vorher mit der Arbeitsagentur sprechen.
 - **Folge für mich:** Solange ich angestellt bin, ist der Gründungszuschuss kein Thema. Relevant wird er nur, wenn ich den Job beende und aus der Arbeitslosigkeit gründe.
 
+## Ergänzungen aus dem Kurs (Isle of Mind Academy, Modul 2 „Formale Rahmenbedingungen“)
+Erfahrungswerte der Kursleitung, keine Rechtsberatung. Abgleich mit der Recherche oben:
+
+- **Freiberuflich ist Ermessenssache des Finanzamts** und kann später anders eingestuft werden → Einstufung schriftlich festhalten, Tätigkeitsbeschreibung sorgfältig wählen.
+- **Hebesätze** liegen je nach Gemeinde etwa zwischen 200 % und 900 %.
+- **Gewerbeanmeldung:** beim örtlichen Gewerbeamt, Kosten ca. 50 € (je nach Stadt). Kurs: „spätestens mit dem ersten Umsatz/der ersten Rechnung“. Gesetzlich gilt: **mit Beginn der Tätigkeit** anmelden (§ 14 GewO) – also lieber vor dem ersten Auftrag.
+- **Gewerbe als Einzelunternehmen ist flexibel:** wenig Formalitäten, Einnahmen-Überschuss-Rechnung reicht, Privateinlagen und -entnahmen jederzeit möglich.
+- **Neben- vs. Hauptgewerbe:** Kurs nennt ca. 15 Std./Woche als Grenze, die Krankenkassen-Faustregel liegt bei 20 Std. – entscheidend ist das Gesamtbild aus Zeit und Einkommen. Nebengewerbe: Abstimmung mit dem Arbeitgeber, KV läuft über den Job, **kein Gründungszuschuss**. Hauptgewerbe: KV selbst tragen (freie Wahl der Kasse), Gründungszuschuss möglich.
+- **Kleinunternehmer:** Kurs sagt „1. Jahr bis 25.000 €, 2. Jahr bis 100.000 €“. Genauer: Umsatz im **Vorjahr** ≤ 25.000 € **und** im **laufenden Jahr** ≤ 100.000 € (netto). Im Gründungsjahr zählt nur die 25.000-€-Grenze für das laufende Jahr – Gründungsjahr mit Finanzamt/Steuerberater klären.
+- **Gründungszuschuss – Unterlagen:** Antrag, Businessplan, Tragfähigkeitsbescheinigung, Lebenslauf, Gewerbeanmeldung bzw. steuerliche Anmeldung, Steuernummer, ggf. Nachweis eines Existenzgründungsseminars. Kein Verwendungsnachweis, keine Rückzahlung. Tipp aus dem Kurs: gutes Verhältnis zur Sachbearbeitung. Offizielle Infos: https://www.arbeitsagentur.de/arbeitslosengeld/existenzgruendung-gruendungszuschuss
+- **Haftung/Versicherung:** Berufs- bzw. Betriebshaftpflicht prüfen (Kurs nennt den Spezialversicherer Hiscox). Bei Websites/Automatisierungen für Kunden besonders relevant (Fehler, Datenschutz).
+- **AGB / Verträge:** Für Coachings und Workshops gibt es im Kurs eine Coaching-Vertragsvorlage zum Download – bei Bedarf anwaltlich prüfen lassen. Laut Kurs nicht zuerst priorisieren; Branding, Positionierung und Konzept gehen vor.
+
 ## Nächste Schritte
 1. Leistungsangebot festlegen (was mache ich am Anfang wirklich?).
 2. Mit Steuerberater klären: freiberuflich, Gewerbe oder beides getrennt.
@@ -61,7 +74,8 @@ Gibt es **nur aus der Arbeitslosigkeit** heraus – nicht neben einem laufenden 
 4. Fragebogen zur steuerlichen Erfassung (ELSTER) ausfüllen, ggf. Gewerbe anmelden.
 5. Arbeitgeber über Nebentätigkeit informieren (Arbeitsvertrag prüfen).
 6. Krankenkasse fragen, ob die Tätigkeit als nebenberuflich gilt.
-7. Gründungszuschuss nur prüfen, falls ich den Job beende – dann **vor** Kündigung/Start mit der Arbeitsagentur sprechen.
+7. Berufs-/Betriebshaftpflicht prüfen (Angebote vergleichen).
+8. Gründungszuschuss nur prüfen, falls ich den Job beende – dann **vor** Kündigung/Start mit der Arbeitsagentur sprechen.
 
 ## Quellen
 - https://www.hs-niederrhein.de/fileadmin/bilder/hll/existenzgruendung/Downloads/Designberufe-rufen_Gewerbe_vs_Freiberufler_Heereman.pdf
@@ -79,3 +93,5 @@ Gibt es **nur aus der Arbeitslosigkeit** heraus – nicht neben einem laufenden 
 - https://www.ihk.de/limburg/starthilfe/finanzierung/gruendungszuschuss-und-einstiegsgeld-5970848
 - https://www.betanet.de/gruendungszuschuss.html
 - https://www.lexware.de/wissen/gruendung/gruendungszuschuss-arbeitsamt/
+- https://www.arbeitsagentur.de/arbeitslosengeld/existenzgruendung-gruendungszuschuss
+- Isle of Mind Academy, CREATION, Modul 2 „Formale Rahmenbedingungen“ (Kursnotizen, Erfahrungswerte)
