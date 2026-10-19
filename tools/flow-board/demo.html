@@ -2,37 +2,46 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: full-bleed generated photo background; translucent top bar; lists side by side in a horizontal scroller (Trello-style); card detail as a centered modal. */
+/* Flow Media AI brand, same system as the landing page: calm off-white ground, Flow blue as the only accent,
+   Bricolage Grotesque for the wordmark, titles and big numbers, IBM Plex Sans for the interface, Plex Mono for labels and times.
+   Layout: white header with logo and view tabs; lists as soft columns with white cards; views as white panels. */
 :root {
-  --list: #f1f2f4;
-  --card: #ffffff;
-  --ink: #172b4d;
-  --muted: #44546f;
-  --faint: #626f86;
-  --line: #dcdfe4;
-  --hover: #e4e6ea;
-  --accent: #2f5bff;
-  --bar: rgba(16, 24, 32, .42);
-  --bar-ink: #ffffff;
-  --scrim: rgba(9, 14, 20, .55);
-  --modal: #f7f8f9;
-  --red: #c9372c; --red-soft: #ffd5d2;
+  --bg: #f6f6f2; --list: #ecede7; --card: #ffffff; --modal: #ffffff; --hover: #eef0ea; --line: #dfe1db;
+  --ink: #121512; --muted: #5b625c; --faint: #7c837d;
+  --accent: #2f5bff; --accent-ink: #ffffff; --soft: #e8ecff;
+  --bar: #ffffff; --bar-ink: #121512; --scrim: rgba(18, 21, 18, .45);
+  --red: #c9372c; --red-soft: #ffe2df; --ok: #1f845a; --warn: #e2b203; --on-status: #ffffff; --label-ink: #121512;
+  --toast-bg: #121512; --toast-ink: #f6f6f2; --toast-act: #9db0ff;
+  --c-in: #2f5bff; --c-out: #d97706;
+  --shadow: 0 1px 2px rgba(18, 21, 18, .06); --lift: 0 24px 48px -12px rgba(18, 21, 18, .28), 0 0 0 1px rgba(18, 21, 18, .06);
   --l1: #f87168; --l2: #fea362; --l3: #e2b203; --l4: #8590a2;
   --la: #6cc3e0; --lb: #94c748; --lc: #9f8fef; --ld: #e774bb; --le: #579dff; --lf: #4bce97; --lg: #b38600;
-  --shadow: 0 1px 1px rgba(9,30,66,.25), 0 0 1px rgba(9,30,66,.31);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
-  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark } }
+  --bg: #0f1210; --list: #151916; --card: #1b201c; --modal: #171b18; --hover: #232924; --line: #2a302b;
+  --ink: #ecefea; --muted: #a3aba4; --faint: #7d857e;
+  --accent: #7d97ff; --accent-ink: #0f1210; --soft: #1d2440;
+  --bar: #131714; --bar-ink: #ecefea; --scrim: rgba(0, 0, 0, .6);
+  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #0f1210; --label-ink: #121512;
+  --toast-bg: #ecefea; --toast-ink: #0f1210; --toast-act: #2f5bff;
+  --c-in: #5b7cf5; --c-out: #c98118;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --lift: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .05);
+  color-scheme: dark } }
 :root[data-theme="dark"] {
-  --list: #101204; --card: #22272b; --ink: #b6c2cf; --muted: #9fadbc; --faint: #8c9bab; --line: #38414a; --hover: #2c333a;
-  --accent: #7d97ff; --bar: rgba(0, 0, 0, .5); --modal: #1d2125; --red: #fd9891; --red-soft: #5d1f1a;
-  --shadow: 0 1px 1px rgba(3,4,4,.5), 0 0 1px rgba(3,4,4,.5); color-scheme: dark }
+  --bg: #0f1210; --list: #151916; --card: #1b201c; --modal: #171b18; --hover: #232924; --line: #2a302b;
+  --ink: #ecefea; --muted: #a3aba4; --faint: #7d857e;
+  --accent: #7d97ff; --accent-ink: #0f1210; --soft: #1d2440;
+  --bar: #131714; --bar-ink: #ecefea; --scrim: rgba(0, 0, 0, .6);
+  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #0f1210; --label-ink: #121512;
+  --toast-bg: #ecefea; --toast-ink: #0f1210; --toast-act: #2f5bff;
+  --c-in: #5b7cf5; --c-out: #c98118;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --lift: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .05);
+  color-scheme: dark }
 
 * { box-sizing: border-box }
 html, body { height: 100% }
@@ -126,6 +135,91 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .dadd:hover { background: var(--hover) }
 .pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
 .pill.done { opacity: .5; text-decoration: line-through }
+.ptime { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
+.kpis.five { grid-template-columns: repeat(5, minmax(0, 1fr)) }
+.kpi.neg b { color: var(--red) } .kpi.accent b { color: var(--accent) }
+.fin-tools { display: flex; gap: 8px; align-items: center }
+.fin-tools select { border: 0; background: transparent; font-weight: 600 }
+.fin-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
+.fin-form input, .fin-form select { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; min-width: 0 }
+.fin-form input[name="title"] { flex: 1 1 200px }
+.fin-form input[name="amount"] { width: 110px }
+.tbl { overflow-x: auto }
+.tbl table { width: 100%; border-collapse: collapse; font-size: 13px }
+.tbl th { text-align: left; font-weight: 600; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--line) }
+.tbl td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: middle }
+.tbl td small { display: block; color: var(--faint) }
+.tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap }
+.tbl .pos { color: var(--ink) } .tbl .neg { color: var(--muted) }
+.chipbtn { border: 0; border-radius: 99px; padding: 2px 8px; font-size: 12px; background: var(--hover); color: var(--muted) }
+.chipbtn.open { background: #f5cd47; color: #172b4d; cursor: pointer; font-weight: 600 }
+.meter-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px }
+.mr-head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; gap: 8px }
+.mr-n { font-variant-numeric: tabular-nums; color: var(--muted) }
+.mbar { height: 10px; background: var(--hover); border-radius: 5px; overflow: hidden } .mbar i { display: block; height: 100%; background: var(--accent) } .mbar.warn i { background: #e2b203 }
+.legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted) } .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px }
+.enlbar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px }
+.enl-E { background: var(--c-in) } .enl-N { background: var(--c-out) } .enl-L { background: var(--l4) }
+span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5px; font: 600 11px var(--f-mono) }
+.chipbtn.miss { background: var(--red-soft); color: var(--red); cursor: pointer; font-weight: 600 }
+.fl { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--muted); font-weight: 600; min-width: 0 }
+.fl input, .fl select { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; color: var(--ink); font-weight: 400; width: 100% }
+.inv-prof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px }
+.inv-prof .mini, .inv-prof .btn { grid-column: 1 / -1; justify-self: start }
+.modal.inv-modal { grid-template-columns: minmax(0, 1fr); width: min(820px, 100%); gap: 14px }
+.inv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px }
+.inv-item { display: flex; gap: 6px; margin-bottom: 6px }
+.inv-item input { border: 1px solid var(--line); border-radius: 6px; background: var(--card); padding: 6px 8px; min-width: 0 }
+.inv-item input[name="desc"] { flex: 1 }
+.inv-frame { width: 100%; height: min(72vh, 900px); border: 1px solid var(--line); border-radius: 8px; background: #fff }
+.ract { display: flex; gap: 4px; justify-content: flex-end; align-items: center }
+.finnote { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
+.finnote ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px }
+.finnote > p { grid-column: 1 / -1 }
+@media (max-width: 900px) { .kpis.five { grid-template-columns: repeat(2, minmax(0, 1fr)) } .finnote { grid-template-columns: minmax(0, 1fr) } [style*="span 2"] { grid-column: auto !important } }
+.stats { flex: 1; align-self: stretch; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 0 }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px }
+.kpi { background: var(--card); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.kpi .kl { font-size: 12.5px; color: var(--muted); font-weight: 500 }
+.kpi b { font: 600 28px/1.15 var(--f-body); font-variant-numeric: tabular-nums }
+.kd { font-size: 12px; color: var(--faint) } .kd.up { color: #1f845a } .kd.down { color: var(--red) }
+.sgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
+.spanel { background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0 }
+.spanel.wide { grid-column: 1 / -1 }
+.spanel h3 { margin: 0; font-size: 14px }
+.chart { position: relative }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible }
+.chart .gl { stroke: var(--line); stroke-width: 1 } .chart .ax { fill: var(--faint); font: 500 10px var(--f-mono) }
+.chart .m { fill: var(--accent) } .chart .hit { fill: transparent } .chart .bar:hover .m { fill: color-mix(in srgb, var(--accent) 75%, var(--ink)) }
+.chart .tip { position: absolute; top: -6px; transform: translate(-50%, -100%); background: var(--ink); color: var(--card); font-size: 12px; padding: 5px 8px; border-radius: 6px; white-space: nowrap; pointer-events: none }
+.blist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px }
+.blist li { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13px }
+.bl-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.bl-bar { height: 8px; background: var(--hover); border-radius: 4px; overflow: hidden } .bl-bar i { display: block; height: 100%; background: var(--accent); border-radius: 4px }
+.bl-n { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 28px; text-align: right }
+@media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) } .sgrid { grid-template-columns: minmax(0, 1fr) } }
+.cal-mode { display: inline-flex; margin-left: auto; border: 1px solid var(--line); border-radius: 6px; overflow: hidden }
+.cal-mode button { border: 0; background: var(--card); padding: 5px 12px; font-weight: 500; color: var(--muted) }
+.cal-mode button[aria-pressed="true"] { background: var(--accent); color: #fff }
+.week { display: grid; grid-template-rows: auto auto minmax(0, 1fr); min-height: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card) }
+.wk-row { display: grid; grid-template-columns: 46px repeat(7, minmax(0, 1fr)) }
+.wk-head > div { padding: 6px 8px; font: 500 12px var(--f-mono); color: var(--faint); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.wk-head > div:first-child { border-left: 0 }
+.wk-head .today { color: var(--accent); font-weight: 700 }
+.wk-allday > div { min-height: 30px; max-height: 70px; overflow-y: auto; padding: 3px; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.wk-allday > .wk-lbl { border-left: 0; font: 500 10px var(--f-mono); color: var(--faint); justify-content: center; align-items: center }
+.wk-allday > div.over, .wcol.over { background-color: var(--hover) }
+.wk-body { min-height: 0 }
+.wk-hours { display: grid; grid-template-rows: repeat(15, minmax(0, 1fr)); font: 500 10.5px var(--f-mono); color: var(--faint) }
+.wk-hours > div { padding: 1px 6px 0 0; text-align: right; transform: translateY(-6px) }
+.wk-hours > div:first-child { transform: none }
+.wcol { position: relative; border-left: 1px solid var(--line); background-image: linear-gradient(to bottom, var(--line) 1px, transparent 1px); background-size: 100% calc(100% / 15); cursor: cell; min-height: 0 }
+.wcol.today { background-color: rgba(47, 91, 255, .05) }
+.wev { position: absolute; left: 2px; right: 2px; border-radius: 4px; padding: 2px 5px; font-size: 11.5px; line-height: 1.2; overflow: hidden; background: color-mix(in srgb, var(--pc) 32%, var(--card)); border-left: 3px solid var(--pc); color: var(--ink); cursor: grab; z-index: 1; text-decoration: none }
+.wev b { font-family: var(--f-mono); font-weight: 500 }
+.wev.done { opacity: .5; text-decoration: line-through }
+.wev.appt { background: var(--ink); color: var(--card); border-left-color: var(--ink); cursor: pointer }
+.wcol .now { position: absolute; left: 0; right: 0; height: 2px; background: var(--red); z-index: 2; pointer-events: none }
 .appt { display: block; border-radius: 4px; padding: 3px 6px; font-size: 12px; line-height: 1.25; background: var(--ink); color: var(--card); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none }
 .appt b { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
 .appt.past { opacity: .5 }
@@ -163,7 +257,7 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .stat { font-size: 12.5px; color: var(--muted) }
 
 /* files */
-.files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; min-height: 0 }
+.files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; min-height: 0 }
 @media (max-width: 1000px) { .list { flex: 0 0 248px } .cal { min-width: 640px } }
 .fpanel { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0 }
 .fpanel h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px }
@@ -212,21 +306,119 @@ body.is-dragging .card-del { display: none }
   .surface { scroll-snap-type: x mandatory }
 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
+
+/* calendar editing */
+.wev { cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none }
+.pill { user-select: none; -webkit-user-select: none }
+.wev.sel, .pill.sel { box-shadow: 0 0 0 2px var(--accent); z-index: 3 }
+.wev-rs { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; cursor: ns-resize }
+.wev-rs::after { content: ""; position: absolute; left: 50%; bottom: 2px; width: 18px; height: 3px; margin-left: -9px; border-radius: 2px; background: currentColor; opacity: 0 }
+.wev:hover .wev-rs::after, .wev.sel .wev-rs::after { opacity: .4 }
+body.is-resizing, body.is-resizing * { cursor: ns-resize !important; user-select: none }
+.slot { position: absolute; left: 2px; right: 2px; background: var(--soft); border: 1px dashed var(--accent); border-radius: 4px; pointer-events: none }
+.day.slot-sel { box-shadow: inset 0 0 0 2px var(--accent) }
+.drag-ghost.wev-ghost { position: fixed; transform: none; opacity: .9 }
+.drag-ghost.copying::after { content: "+"; position: absolute; top: -8px; right: -8px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 13px/18px var(--f-body); text-align: center }
+.selbar { display: inline-flex; gap: 4px; flex-wrap: wrap }
+.selbar .mini:disabled { opacity: .4 }
+
+/* ---------- Flow Media AI brand layer (overrides the base rules above) ---------- */
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent }
+body { background: var(--bg); font: 14px/1.45 var(--f-body); -webkit-font-smoothing: antialiased }
+#bg { background-color: var(--bg) }
+header.bar { background: var(--bar); color: var(--bar-ink); backdrop-filter: none; border-bottom: 1px solid var(--line); gap: 10px; padding-block: 10px }
+.logo { font: 800 20px/1 var(--f-display); letter-spacing: -.02em; white-space: nowrap; padding-inline: 4px 2px }
+.logo span { color: var(--accent) }
+.sep { background: var(--line); height: 22px }
+.title { font: 600 14px/1.2 var(--f-body); color: var(--muted); padding: 6px 8px; max-width: 40vw }
+.title:hover { background: var(--hover); color: var(--ink) }
+.title-input { font: 600 14px var(--f-body); color: var(--ink); background: var(--card); border: 1px solid var(--accent) }
+.bbtn { background: transparent; border: 0; color: var(--muted); border-radius: 999px; padding: 7px 12px; font-size: 13.5px }
+.bbtn:hover { background: var(--hover); color: var(--ink) }
+.bbtn[aria-pressed="true"] { background: var(--soft); color: var(--accent); font-weight: 600 }
+.bbtn.plain:hover { background: var(--hover) }
+.chip-priv { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font: 500 12px var(--f-body); color: var(--muted) }
+.chip-priv svg.i { width: 13px; height: 13px }
+.tabs { display: flex; gap: 2px; align-items: center; overflow-x: auto; scrollbar-width: none; min-width: 0 }
+.av { border-color: var(--bar); color: #fff }
+
+.surface { gap: 14px; padding-block: 18px 20px }
+.list { background: var(--list); border-radius: 14px; box-shadow: none }
+.list-head { padding: 12px 10px 8px 14px }
+.list-head h2 { font: 700 15px/1.2 var(--f-display); letter-spacing: -.01em }
+.list-head .n { font: 500 11.5px var(--f-mono); color: var(--muted); background: var(--card); border-radius: 999px; padding: 1px 8px }
+.cards.over { background: var(--soft); border-radius: 10px }
+.card { border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 9px 11px 7px }
+.card:hover { outline: 0; border-color: var(--accent) }
+.card .t { font-size: 13.5px; line-height: 1.35 }
+.drag-ghost { box-shadow: var(--lift) }
+.lab { height: 6px; border-radius: 3px }
+.labels.wide .lab, .pill, .badge.soon, .chipbtn.open { color: var(--label-ink) }
+.badge.late { color: var(--on-status) } .badge.done { background: var(--ok); color: var(--on-status) } .badge.soon { background: var(--warn) }
+.add:hover { background: color-mix(in srgb, var(--card) 70%, transparent) }
+.composer textarea { border: 1px solid var(--line); box-shadow: none }
+.btn { background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 7px 16px; font-weight: 600 }
+.btn:hover { background: color-mix(in srgb, var(--accent) 88%, var(--ink)) }
+.ghost, .mini { border-radius: 999px; background: var(--card) }
+.ghost:hover { background: var(--hover) }
+.fin-form input, .fin-form select, .fl input, .fl select, .sec textarea, .sec input, .side select, .side input, .inv-item input, .composer textarea { border-radius: 8px }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent) }
+
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 18px }
+.panel .panel { box-shadow: none; padding: 14px 16px }
+.cal-head h2, .fpanel h2, .stats h2, .quad h2 { font: 700 26px/1.1 var(--f-display); letter-spacing: -.02em }
+.fpanel h2, .quad h2 { font-size: 20px }
+.quad { border-top-width: 3px }
+.spanel h3, .undated h3, .sec h3, .menu h3 { font: 500 11.5px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+.kpi { background: var(--bg); border: 1px solid var(--line); box-shadow: none; border-radius: 12px; padding: 14px 16px 12px; gap: 4px }
+.kpi .kl { font: 500 11px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--muted) }
+.kpi b { font: 700 30px/1.1 var(--f-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums }
+.kd.up { color: var(--ok) }
+.mbar { height: 6px; border-radius: 3px } .mbar.warn i { background: var(--warn) }
+.chart .tip { background: var(--ink); color: var(--bg); border-radius: 8px }
+.cal-mode { border: 1px solid var(--line); border-radius: 999px; padding: 2px; gap: 2px; background: var(--bg) }
+.cal-mode button { background: transparent; border-radius: 999px; padding: 4px 13px }
+.cal-mode button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); font-weight: 600 }
+.cal, .week { border-radius: 12px }
+.day.today .dn span { background: var(--accent); color: var(--accent-ink) }
+.wk-head .today { color: var(--accent) }
+.wcol.today { background-color: color-mix(in srgb, var(--accent) 5%, transparent) }
+
+.modal { background: var(--modal); border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 18px }
+.mtitle { font: 700 24px/1.2 var(--f-display); letter-spacing: -.02em }
+.menu { border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 16px; width: 290px; padding: 14px; gap: 10px }
+.menu .cal-mode { margin-left: 0; align-self: flex-start }
+.sw { border-radius: 8px }
+.sw.plain { background: var(--bg); color: var(--ink); text-shadow: none; border-color: var(--line) }
+.sw.plain[aria-pressed="true"] { border-color: var(--accent) }
+.frow { border: 1px solid var(--line); box-shadow: none; border-radius: 10px }
+.dropzone { border-width: 1px; border-radius: 12px }
+.dropzone.over { background: var(--soft) }
+.note { background: var(--bg); border: 1px solid var(--line) }
+.toast { background: var(--toast-bg); color: var(--toast-ink); border-radius: 999px; padding: 9px 18px; box-shadow: var(--lift) }
+.toast-act { color: var(--toast-act) }
+.toast-act:hover { background: color-mix(in srgb, var(--toast-ink) 12%, transparent) }
+@media (max-width: 700px) { header.bar { gap: 6px } .chip-priv { display: none } .logo { font-size: 18px } .title { max-width: 46vw } .tabs { order: 5; flex: 1 1 100%; justify-content: space-between } }
 </style>
 
 <div id="bg"></div>
 <header class="bar">
-  <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg>Board</button>
+  <span class="logo" role="img" aria-label="Flow Media AI">Flow Media <span>AI</span></span>
+  <span class="sep"></span>
   <span id="title-slot"><button class="title" id="board-title" title="Board umbenennen">FLOW MEDIA AI #general</button></span>
   <button class="bbtn plain hide-sm" id="btn-star" aria-label="Board markieren"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
-  <span class="bbtn hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
+  <span class="chip-priv hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
   <span class="avatars" id="board-people"></span>
-  <span class="bbtn" id="demo-pill" hidden>Demo · Änderungen bleiben bei dir</span>
+  <span class="chip-priv" id="demo-pill" hidden title="Demo: Deine Änderungen bleiben in deinem Browser">Demo</span>
   <span class="spacer"></span>
+  <nav class="tabs" aria-label="Ansichten">
+  <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg><span class="hide-sm">Board</span></button>
   <button class="bbtn" data-view="matrix" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span class="hide-sm">Prioritäten</span></button>
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
-  <span class="sep hide-sm"></span>
+  <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
+  <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
+  </nav>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
 </header>
 <main class="surface" id="main"></main>
@@ -262,6 +454,7 @@ const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August",
 const MON_S = ["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
 const BGS = {
+  flow:  { name: "Flow",  plain: true },
   meer:  { name: "Meer",  stops: [[0, "#0d3f4a"], [.35, "#1d6f78"], [.55, "#3c9a98"], [.7, "#7fbfb0"], [.82, "#c7b48f"], [1, "#8a6a4a"]] },
   fels:  { name: "Fels",  stops: [[0, "#3a3430"], [.4, "#6b5d52"], [.65, "#a38d77"], [.85, "#cdbca5"], [1, "#efe6d8"]] },
   wald:  { name: "Wald",  stops: [[0, "#13261c"], [.4, "#2c4a32"], [.65, "#4f7a4c"], [.85, "#9cb27a"], [1, "#d8d6a6"]] },
@@ -271,9 +464,18 @@ const BGS = {
 };
 
 let tasks = [];
-let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "meer", starred: false };
+const THEME_KEY = "flow-board-theme";
+const themePref = () => { try { return localStorage.getItem(THEME_KEY) || "system" } catch { return "system" } };
+function applyTheme(p = themePref()) { if (p === "system") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = p }
+applyTheme();
+let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "flow", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let calMode = "week";  // "week" (hour grid) or "month"
+try { if (localStorage.getItem("flow-board-calmode") === "month") calMode = "month" } catch {}
+const mondayOf = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x };
+let weekStart = mondayOf(new Date());
+const H0 = 7, H1 = 22;  // visible hours in the week grid
 let tasksCol = null, metaDoc = null;
 let readOnly = false, loaded = false;
 let composerFor = null;
@@ -302,7 +504,7 @@ function dueInfo(t) {
   if (!t.due) return null;
   const d = parseYmd(t.due), today = parseYmd(ymd(new Date()));
   const diff = Math.round((d - today) / 864e5);
-  const label = d.getDate() + ". " + MON_S[d.getMonth()];
+  const label = d.getDate() + ". " + MON_S[d.getMonth()] + (t.time ? ", " + t.time + (t.endTime ? "–" + t.endTime : "") : "");
   if (t.status === "done") return { label, cls: "done" };
   return { label, cls: diff < 0 ? "late" : diff <= 1 ? "soon" : "" };
 }
@@ -329,6 +531,7 @@ const icon = {
   com: '<svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg>',
   clock: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   plus: '<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+  gh: '<svg class="i" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6 2.8 5.6 3.1 5.6 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg>',
   trash: '<svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg>',
   clip: '<svg class="i" viewBox="0 0 24 24"><path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></svg>',
   folder: '<svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
@@ -347,7 +550,7 @@ const filesFor = id => files.filter(f => f.taskId === id).sort((a, b) => (a.crea
 
 /* ---------- background: generated photo-like texture per preset ---------- */
 function makeBackground(key) {
-  const p = BGS[key] || BGS.meer;
+  const p = BGS[key]?.stops ? BGS[key] : BGS.meer;
   const W = 320, H = 200, c = document.createElement("canvas"); c.width = W; c.height = H;
   const ctx = c.getContext("2d"), img = ctx.createImageData(W, H);
   let seed = 0; for (const ch of key) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
@@ -378,7 +581,8 @@ function makeBackground(key) {
 }
 const bgCache = {};
 function applyBackground() {
-  const key = BGS[meta.bg] ? meta.bg : "meer";
+  const key = BGS[meta.bg] ? meta.bg : "flow";
+  if (BGS[key].plain) { $("#bg").style.backgroundImage = "none"; return }
   bgCache[key] = bgCache[key] || makeBackground(key);
   $("#bg").style.backgroundImage = `url(${bgCache[key]})`;
   $("#bg").style.filter = "blur(.6px) saturate(1.05)";
@@ -386,8 +590,8 @@ function applyBackground() {
 
 /* ---------- persistence ---------- */
 const LS = DEMO ? "flow-board-demo" : "flow-board-v2";
-function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
-function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, meta })) } catch {} }
+function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; fin = d.fin || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
+function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, fin, meta })) } catch {} }
 function writeErr(e) {
   if (e?.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen.") }
   else if (e?.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Karten.");
@@ -460,7 +664,112 @@ function renderMatrix() {
       <div class="cards" data-drop="quad:${q.p}" style="padding:0">${items.map(cardHtml).join("") || `<div class="empty-note">Nichts hier</div>`}</div></section>`;
   }).join("")}</div>`;
 }
+const calModeToggle = () => `<span class="cal-mode" role="group" aria-label="Kalenderansicht"><button type="button" data-calmode="week" aria-pressed="${calMode === "week"}">Woche</button><button type="button" data-calmode="month" aria-pressed="${calMode === "month"}">Monat</button></span>`;
+const toMin = t => { const [h, m] = (t || "0:0").split(":").map(Number); return h * 60 + m };
+const fromMin = n => pad(Math.floor(n / 60)) + ":" + pad(n % 60);
+/* Outlook-style editing: click selects, double click opens, Ctrl+C/X/V copies, Delete removes; slot = target for paste */
+let calSel = null, calSlot = null, calClip = null, lastCalClick = { id: null, t: 0 };
+const H_SPAN = (H1 - H0) * 60, pctOf = m => (m - H0 * 60) / H_SPAN * 100;
+const snap15 = m => Math.round(m / 15) * 15;
+function calToolbar() {
+  if (readOnly || (!calSel && !calClip && !calSlot)) return "";
+  const b = (act, label, on = true) => `<button type="button" class="mini" data-calact="${act}" ${on ? "" : "disabled"}>${label}</button>`;
+  return `<span class="selbar" role="toolbar" aria-label="Termin bearbeiten">${calSel ? b("open", "Öffnen") + b("copy", "Kopieren") + b("cut", "Ausschneiden") + b("del", "Löschen") : ""}${calClip ? b("paste", calSlot ? "Hier einfügen" : "Einfügen") : ""}${calSlot && !calSel ? b("new", "Neuer Termin") : ""}</span>`;
+}
+function cloneTask(t, patch = {}) {
+  const now = Date.now(), status = t.status === "done" ? "todo" : t.status;
+  const c = { ...t, ...patch, id: newId(), status, order: nextOrder(status), comments: [], createdAt: now, updatedAt: now, doneAt: null };
+  saveTask(c); return c;
+}
+function slotPatch(t, slot) {
+  if (!slot) return {};
+  if (slot.m == null) return { due: slot.day };
+  const dur = t.time && t.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+  return { due: slot.day, time: fromMin(slot.m), endTime: fromMin(Math.min(slot.m + dur, 24 * 60 - 1)) };
+}
+function calAction(act) {
+  const t = tasks.find(x => x.id === calSel);
+  if (act === "open" && t) { openCard(t); return }
+  if ((act === "copy" || act === "cut") && t) { calClip = { ...t }; if (act === "cut") { calSel = null; removeTask(t.id); toast("Ausgeschnitten. Feld wählen und einfügen.") } else { toast("Kopiert. Feld wählen und einfügen."); render() } return }
+  if (act === "paste" && calClip) { const c = cloneTask(calClip, slotPatch(calClip, calSlot)); calSel = c.id; calSlot = null; render(); toast("Eingefügt"); return }
+  if (act === "del" && t) { calSel = null; removeTask(t.id); toast(`„${t.title.length > 40 ? t.title.slice(0, 40) + "…" : t.title}“ gelöscht`, { label: "Rückgängig", fn: () => saveTask({ ...t, updatedAt: Date.now() }) }); return }
+  if (act === "new" && calSlot) { const m = calSlot.m; openCard(blank({ due: calSlot.day, ...(m != null ? { time: fromMin(m), endTime: fromMin(Math.min(m + 60, 24 * 60 - 1)) } : {}), status: "todo", order: nextOrder("todo") }), true) }
+}
+document.addEventListener("click", e => { const a = e.target.closest?.("[data-calact]"); if (a) calAction(a.dataset.calact) });
+document.addEventListener("keydown", e => {
+  if (view !== "cal" || readOnly || $("#layer").innerHTML || e.target.closest?.("input, textarea, select, [contenteditable]")) return;
+  const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase();
+  if (mod && k === "c" && calSel) { e.preventDefault(); calAction("copy") }
+  else if (mod && k === "x" && calSel) { e.preventDefault(); calAction("cut") }
+  else if (mod && k === "v" && calClip) { e.preventDefault(); calAction("paste") }
+  else if ((e.key === "Delete" || e.key === "Backspace") && calSel) { e.preventDefault(); calAction("del") }
+  else if (e.key === "Escape" && (calSel || calSlot)) { calSel = null; calSlot = null; render() }
+});
+document.addEventListener("dblclick", e => {
+  if (view !== "cal") return;
+  const ev = e.target.closest?.(".week [data-id], .cal [data-id]");
+  if (ev) { const t = tasks.find(x => x.id === ev.dataset.id); if (t) openCard(t); return }
+  const wc = e.target.closest?.(".wcol");
+  if (wc && !readOnly && !e.target.closest(".wev")) {
+    const r = wc.getBoundingClientRect(), m = Math.max(H0 * 60, Math.min(H1 * 60 - 30, Math.floor((H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN) / 30) * 30));
+    calSlot = { day: wc.dataset.day, m }; calAction("new");
+  }
+});
+// resize: drag the lower edge of an appointment, snaps to 15 minutes
+const rs = { el: null, id: null, col: null, s0: 0, m: null };
+document.addEventListener("pointerdown", e => {
+  const h = e.target.closest?.(".wev-rs"); if (!h || readOnly) return;
+  e.preventDefault(); e.stopImmediatePropagation();
+  const el = h.closest(".wev"), t = tasks.find(x => x.id === el.dataset.id); if (!t) return;
+  Object.assign(rs, { el, id: t.id, col: el.parentElement, s0: toMin(t.time), m: null });
+  document.body.classList.add("is-resizing");
+}, true);
+document.addEventListener("pointermove", e => {
+  if (!rs.el) return;
+  const r = rs.col.getBoundingClientRect();
+  const m = Math.max(rs.s0 + 15, Math.min(H1 * 60, snap15(H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN)));
+  if (m === rs.m) return;
+  rs.m = m; rs.el.style.height = (pctOf(m) - pctOf(rs.s0)) + "%";
+  rs.el.querySelector("b").textContent = fromMin(rs.s0) + "–" + fromMin(m);
+});
+document.addEventListener("pointerup", () => {
+  if (!rs.el) return;
+  const { id, m } = rs; Object.assign(rs, { el: null, col: null }); document.body.classList.remove("is-resizing");
+  suppressClick = true; setTimeout(() => suppressClick = false, 0);
+  if (m != null) { calSel = id; patchTask(id, { endTime: fromMin(Math.min(m, 24 * 60 - 1)) }) }
+});
+function renderWeek() {
+  const today = ymd(new Date()), days = [...Array(7)].map((_, i) => { const d = new Date(weekStart); d.setDate(d.getDate() + i); return d });
+  const span = (H1 - H0) * 60, pct = m => Math.max(0, Math.min(100, (m - H0 * 60) / span * 100));
+  const e = days[6], title = `KW ${isoWeek(weekStart)} · ${weekStart.getDate()}.${weekStart.getMonth() !== e.getMonth() ? " " + MON_S[weekStart.getMonth()] : ""} – ${e.getDate()}. ${MON_S[e.getMonth()]} ${e.getFullYear()}`;
+  const head = `<div></div>` + days.map(d => `<div class="${ymd(d) === today ? "today" : ""}">${DOW[(d.getDay() + 6) % 7]} ${d.getDate()}.</div>`).join("");
+  const allday = `<div class="wk-lbl">ganztags</div>` + days.map(d => { const key = ymd(d);
+    return `<div data-drop="allday:${key}">${sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>` }).join("");
+  const hours = [...Array(H1 - H0)].map((_, i) => `<div>${pad(H0 + i)}:00</div>`).join("");
+  const now = new Date(), nowMin = now.getHours() * 60 + now.getMinutes();
+  const cols = days.map(d => { const key = ymd(d);
+    const items = tasks.filter(t => t.due === key && t.time).map(t => { const s0 = toMin(t.time), e0 = t.endTime ? Math.max(toMin(t.endTime), s0 + 15) : s0 + 45;
+      return `<div class="wev ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%;--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(`${t.time}${t.endTime ? "–" + t.endTime : ""} · ${t.title}`)}"><b>${t.time}${t.endTime ? "–" + t.endTime : ""}</b> ${esc(t.title)}${readOnly ? "" : `<span class="wev-rs" aria-hidden="true"></span>`}</div>` });
+    const appts = calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes(), e0 = en.getHours() * 60 + en.getMinutes(), tm = fromMin(s0);
+      return `<a class="wev appt" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm}–${fromMin(e0)} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}`)}"><b>${tm}</b> ${esc(ev.invitee || ev.name)}</a>` });
+    const nowLine = key === today && nowMin >= H0 * 60 && nowMin <= H1 * 60 ? `<span class="now" style="top:${pct(nowMin)}%"></span>` : "";
+    const slot = calSlot && calSlot.day === key && calSlot.m != null ? `<span class="slot" style="top:${pct(calSlot.m)}%;height:${pct(calSlot.m + 30) - pct(calSlot.m)}%"></span>` : "";
+    return `<div class="wcol ${key === today ? "today" : ""}" data-drop="wday:${key}" data-day="${key}">${slot}${appts.join("")}${items.join("")}${nowLine}</div>` }).join("");
+  const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
+  return `<section class="panel cal-panel">
+    <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorherige Woche">←</button><h2>${title}</h2>
+      <button class="ghost" id="cal-next" aria-label="Nächste Woche">→</button><button class="ghost" id="cal-today">Heute</button>${calToolbar()}${calModeToggle()}</div>
+    <div class="cal-body"><div class="week">
+        <div class="wk-row wk-head">${head}</div>
+        <div class="wk-row wk-allday">${allday}</div>
+        <div class="wk-row wk-body"><div class="wk-hours">${hours}</div>${cols}</div>
+      </div>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Termin ziehen verschiebt ihn, unteren Rand ziehen ändert die Dauer. Klick wählt aus, Doppelklick öffnet. Strg+C / Strg+V kopiert, mit gedrückter Strg-Taste ziehen legt eine Kopie an. Karten von hier in die Woche ziehen plant sie ein.</p>
+        <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
+  </section>`;
+}
 function renderCal() {
+  if (calMode === "week") return renderWeek();
   const y = calCursor.getFullYear(), m = calCursor.getMonth();
   const start = new Date(y, m, 1 - ((calCursor.getDay() + 6) % 7));
   const today = ymd(new Date());
@@ -470,21 +779,21 @@ function renderCal() {
     if (w > 0 && d.getMonth() !== m) break;
     cells += `<div class="kw">${isoWeek(d)}</div>`;
     for (let i = 0; i < 7; i++) {
-      const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key));
-      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""}" data-drop="due:${key}">
+      const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key)).sort((a, b) => (a.time || "99") .localeCompare(b.time || "99"));
+      cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""} ${calSlot && calSlot.day === key && calSlot.m == null ? "slot-sel" : ""}" data-drop="due:${key}" data-day="${key}">
         <div class="dn"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="dadd" data-new-due="${key}" aria-label="Karte am ${d.getDate()}. ${MONTHS[d.getMonth()]} anlegen">+</button>`}</div>
         ${calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), tm = st.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
           return `<a class="appt ${new Date(ev.end) < new Date() ? "past" : ""}" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}${ev.location ? " · " + ev.location : ""}`)}"><b>${tm}</b>${esc(ev.invitee || ev.name)}</a>` }).join("")}
-        ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(t.title)}">${esc(t.title)}</div>`).join("")}</div>`;
+        ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc((t.time ? t.time + (t.endTime ? "–" + t.endTime : "") + " · " : "") + t.title)}">${t.time ? `<b class="ptime">${t.time}</b>` : ""}${esc(t.title)}</div>`).join("")}</div>`;
       d.setDate(d.getDate() + 1);
     }
   }
   const undated = sortByPrio(tasks.filter(t => !t.due && t.status !== "done"));
   return `<section class="panel cal-panel">
     <div class="cal-head"><button class="ghost" id="cal-prev" aria-label="Vorheriger Monat">←</button><h2>${MONTHS[m]} ${y}</h2>
-      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button></div>
+      <button class="ghost" id="cal-next" aria-label="Nächster Monat">→</button><button class="ghost" id="cal-today">Heute</button>${calToolbar()}${calModeToggle()}</div>
     <div class="cal-body"><div class="cal-scroll"><div class="cal">${cells}</div></div>
-      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen.</p>
+      <div class="undated"><h3>Ohne Termin · ${undated.length}</h3><p>Karte auf einen Tag ziehen, um sie einzuplanen. Klick wählt aus, Doppelklick öffnet, Strg+C / Strg+V kopiert.</p>
         <div class="cards" data-drop="due:" style="padding:0">${undated.map(cardHtml).join("") || `<div class="empty-note">Alles eingeplant</div>`}</div></div></div>
   </section>`;
 }
@@ -501,7 +810,7 @@ function render() {
   const main = $("#main"), sx = main.scrollLeft;
   const draft = $("#compose-text")?.value || "";
   const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : renderCal();
   main.scrollLeft = sx;
   main.querySelectorAll(".cards").forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
   renderBar();
@@ -512,9 +821,9 @@ function render() {
 function fileRow(f, opts = {}) {
   const card = f.taskId ? tasks.find(t => t.id === f.taskId) : null;
   const isImg = f.kind === "asset" && (f.type || "").startsWith("image/");
-  const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" ? f.url : dbxWebUrl(f.path, false);
-  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
-  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
+  const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" || f.kind === "github" ? f.url : dbxWebUrl(f.path, false);
+  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "github" ? icon.gh : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
+  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "github" ? "GitHub · " + (f.repo || "") : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
   return `<div class="frow"><span class="ficon">${thumb}</span>
     <span style="min-width:0"><a class="fname" href="${esc(href)}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">${esc(meta)}</span></span>
     <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "asset" ? "Löschen" : "Lösen"}</button>`}</span></div>`;
@@ -533,7 +842,7 @@ function renderFiles() {
   return `<div class="files-view">
     <section class="panel fpanel">
       <h2>${icon.clip} Board-Ablage</h2>
-      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox.</p>
+      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. ${WEB ? "Alle Formate, auch Word, Excel und ZIP · bis 50 MB pro Datei." : "Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox."}</p>
       ${meter}
       ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">${DEMO ? "In der Demo ist die Dateiablage ausgeschaltet." : "Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude."}</div>` : "")}
       ${board.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Dateien. Tipp: Zieh eine Datei direkt auf eine Karte, dann hängt sie dort an.</p>`}
@@ -542,6 +851,11 @@ function renderFiles() {
       <h2>${icon.box} Dropbox</h2>
       <p class="sub">Dein Ordner ${esc(DBX_ROOT)}. Öffnen geht direkt in Dropbox; an Karten verknüpfst du Dateien im Kartenfenster.</p>
       <div id="dbx-browse">${dbxHtml("browse")}</div>
+    </section>
+    <section class="panel fpanel">
+      <h2>${icon.gh} GitHub</h2>
+      <p class="sub">Dateien aus deinen Repos. Öffnen geht direkt auf GitHub; an Karten verknüpfst du sie im Kartenfenster.</p>
+      <div id="gh-browse">${ghHtml("browse")}</div>
     </section>
   </div>`;
 }
@@ -577,6 +891,43 @@ function dbxHtml(mode) {
   }).join("");
   return `<div class="crumbs">${crumbs}<span style="flex:1"></span><a class="mini" href="${esc(dbxWebUrl(dbx.path, true))}" target="_blank" rel="noopener">In Dropbox öffnen</a></div>
     ${rows || `<p class="sub">Dieser Ordner ist leer.</p>`}${dbx.more ? `<p class="sub">Weitere Einträge vorhanden – öffne den Ordner in Dropbox.</p>` : ""}`;
+}
+// GitHub: listing goes through the flow-board gateway (token for private repos stays in Supabase)
+const gh = { repo: "", repos: [], path: "", entries: null, loading: false, error: null, pickFor: null };
+function ghHtml(mode) {
+  if (!WEB) return `<div class="note">GitHub ist in der Web-Version deines Boards verfügbar.</div>`;
+  if (gh.error) return `<div class="note">${esc(gh.error)}<button type="button" class="mini" data-gh-go="${esc(gh.path)}">Erneut versuchen</button></div>`;
+  if (!gh.entries && !gh.loading) return `<div class="note">Zeigt Ordner und Dateien aus deinem GitHub-Repo.<button type="button" class="mini" data-gh-go="">${icon.gh} GitHub anzeigen</button></div>`;
+  const parts = gh.path.split("/").filter(Boolean); let acc = "";
+  const repoSel = gh.repos.length > 1 ? `<select class="mini" data-gh-repo aria-label="Repo wählen">${gh.repos.map(r => `<option ${r === gh.repo ? "selected" : ""}>${esc(r)}</option>`).join("")}</select>` : `<strong>${esc(gh.repo)}</strong>`;
+  const crumbs = repoSel + `<button type="button" data-gh-go="">/</button>` + parts.map(p => { acc += (acc ? "/" : "") + p; return `<span>›</span><button type="button" data-gh-go="${esc(acc)}">${esc(p)}</button>` }).join("");
+  if (gh.loading) return `<div class="crumbs">${crumbs}</div><p class="sub">Lade …</p>`;
+  const rows = gh.entries.slice().sort((a, b) => (a.type === "file") - (b.type === "file") || a.name.localeCompare(b.name, "de")).map(e => {
+    const folder = e.type === "dir";
+    const linked = mode === "pick" && files.some(f => f.kind === "github" && f.url === e.html_url && f.taskId === gh.pickFor);
+    const action = folder ? `<button type="button" class="mini" data-gh-go="${esc(e.path)}">Öffnen</button>`
+      : mode === "pick" ? (linked ? `<span class="mini">Verknüpft</span>` : `<button type="button" class="mini" data-gh-link="${esc(e.html_url)}" data-gh-name="${esc(e.name)}" data-gh-path="${esc(e.path)}">Verknüpfen</button>`)
+      : `<a class="mini" href="${esc(e.html_url)}" target="_blank" rel="noopener">Auf GitHub</a>`;
+    return `<div class="frow"><span class="ficon">${folder ? icon.folder : esc(extOf(e.name).slice(0, 4))}</span>
+      <span style="min-width:0">${folder ? `<button type="button" class="fname" style="border:0;background:none;padding:0;text-align:left;width:100%" data-gh-go="${esc(e.path)}">${esc(e.name)}</button>` : `<a class="fname" href="${esc(e.html_url)}" target="_blank" rel="noopener">${esc(e.name)}</a>`}
+      <span class="fmeta">${folder ? "Ordner" : fmtSize(e.size)}</span></span><span class="fact">${action}</span></div>`;
+  }).join("");
+  return `<div class="crumbs">${crumbs}</div>${rows || `<p class="sub">Dieser Ordner ist leer.</p>`}`;
+}
+function refreshGh() {
+  const a = $("#gh-browse"); if (a) a.innerHTML = ghHtml("browse");
+  const b = $("#m-gh"); if (b && !b.hidden) b.innerHTML = ghHtml("pick");
+}
+async function ghGo(path, repo) {
+  gh.path = path; gh.loading = true; gh.error = null; refreshGh();
+  try {
+    const j = await api("gh_list", { path, repo: repo || gh.repo || undefined });
+    gh.entries = j.entries; gh.repo = j.repo; gh.repos = j.repos || [j.repo];
+  } catch (e) {
+    gh.entries = null;
+    gh.error = { not_found: "Diesen Ordner gibt es nicht – oder das Repo ist privat und der GitHub-Schlüssel fehlt in Supabase.", rate_limited: "GitHub begrenzt Abfragen ohne Schlüssel auf 60 pro Stunde. Später nochmal versuchen – oder einen GitHub-Schlüssel in Supabase hinterlegen." }[e.message] || "GitHub ist gerade nicht erreichbar.";
+  }
+  gh.loading = false; refreshGh();
 }
 function refreshDbx() {
   const a = $("#dbx-browse"); if (a) a.innerHTML = dbxHtml("browse");
@@ -649,6 +1000,489 @@ function renderCardFiles(taskId) {
   el.innerHTML = filesFor(taskId).map(f => fileRow(f, { inCard: true })).join("") || `<p class="sub" style="margin:0;color:var(--muted);font-size:13px">Noch keine Anhänge.</p>`;
 }
 
+/* ---------- finances: business ledger (EÜR), invoices, private budget (E/N/L), backup and reach ---------- */
+// entry types: tx (business income/expense; an invoice is a tx with an `inv` block), budget (monthly private item), backup (asset that could bridge a gap)
+let fin = [], finCol = null;
+const finUi = { tab: "business", year: new Date().getFullYear() };
+const FIN_CATS = ["Kundenprojekt", "Workshop", "Tools & Software", "Hardware", "Werbung", "Weiterbildung", "Büro & Sonstiges"];
+const BACKUP_GROUPS = ["Erspartes", "Sachwerte", "Sozialleistungen"];
+const ENL = { E: "Essentiell", N: "Nice-to-have", L: "Luxus" };
+const FIN_TEMPLATES = "fin-vorlagen";   // pseudo card id: course templates live in the board storage under it
+const INV_INTRO = "Ich danke Dir von Herzen für Dein Vertrauen. Hiermit stelle ich folgende Positionen in Rechnung:";
+const eur = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+const eur2 = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
+const parseEur = v => { const t = String(v).trim().replace(/[€\s]/g, ""); const n = Number(/,\d{1,2}$/.test(t) ? t.replace(/\./g, "").replace(",", ".") : t.replace(/,/g, "")); return isFinite(n) ? Math.round(n * 100) / 100 : NaN };
+const netOf = t => Math.round((Number(t.amount) || 0) / (1 + (Number(t.vat) || 0) / 100) * 100) / 100;
+const deDate = d => d ? d.split("-").reverse().join(".") : "";
+const delBtn = id => readOnly ? "" : `<button type="button" class="card-del" style="position:static;opacity:1" data-fin-del="${id}" aria-label="Löschen">${icon.trash}</button>`;
+async function saveFin(e) {
+  const i = fin.findIndex(x => x.id === e.id); if (i >= 0) fin[i] = e; else fin.push(e);
+  render();
+  if (!finCol) return lsSave();
+  const { id, ...body } = e;
+  try { await finCol.doc(id).set(body) } catch (err) { writeErr(err) }
+}
+async function removeFin(id) {
+  const e = fin.find(x => x.id === id); fin = fin.filter(x => x.id !== id); render();
+  if (finCol) { try { await finCol.doc(id).delete() } catch (err) { writeErr(err) } } else lsSave();
+  if (e) toast(`„${e.title}“ gelöscht`, { label: "Rückgängig", fn: () => saveFin(e) });
+}
+function finKpi(label, value, sub = "", cls = "") { return `<div class="kpi ${cls}"><span class="kl">${label}</span><b>${value}</b>${sub ? `<span class="kd">${sub}</span>` : ""}</div>` }
+function meter(label, value, limit, note) {
+  const pct = Math.min(100, value / limit * 100), warn = pct >= 80;
+  return `<div class="meter-row"><div class="mr-head"><span>${label}</span><span class="mr-n">${eur(value)} von ${eur(limit)}</span></div>
+    <div class="mbar ${warn ? "warn" : ""}"><i style="width:${pct.toFixed(1)}%"></i></div><span class="kd">${note}</span></div>`;
+}
+function monthChart(txs) {
+  const m = [...Array(12)].map(() => ({ i: 0, o: 0 }));
+  txs.forEach(t => { const k = Number(t.date.slice(5, 7)) - 1; if (t.kind === "in") m[k].i += t.amount; else m[k].o += t.amount });
+  const W = 1240, H = 150, padL = 60, padB = 24, padT = 10, max = Math.max(100, ...m.map(x => Math.max(x.i, x.o)));
+  const mag = 10 ** Math.floor(Math.log10(max / 4)), step = Math.ceil(max / 4 / mag) * mag, top = step * 4, gw = (W - padL) / 12, bw = Math.min(28, gw / 2 - 6);
+  const y = v => padT + (H - padT - padB) * (1 - v / top);
+  const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 8}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${(i * step).toLocaleString("de-DE")} €</text>`).join("");
+  const bars = m.map((v, k) => { const cx = padL + k * gw + gw / 2;
+    return `<g class="bar" data-tip="${MONTHS[k]}: Einnahmen ${eur(v.i)} · Ausgaben ${eur(v.o)} · Saldo ${eur(v.i - v.o)}"><rect class="hit" x="${padL + k * gw}" y="${padT}" width="${gw}" height="${H - padT - padB}"/>
+      ${v.i ? `<rect x="${cx - bw - 1}" y="${y(v.i)}" width="${bw}" height="${y(0) - y(v.i)}" rx="3" style="fill:var(--c-in)"/>` : ""}
+      ${v.o ? `<rect x="${cx + 1}" y="${y(v.o)}" width="${bw}" height="${y(0) - y(v.o)}" rx="3" style="fill:var(--c-out)"/>` : ""}
+      <text x="${cx}" y="${H - 6}" class="ax" text-anchor="middle">${MONTHS[k].slice(0, 3)}</text></g>` }).join("");
+  return `<div class="legend"><span><i style="background:var(--c-in)"></i>Einnahmen</span><span><i style="background:var(--c-out)"></i>Ausgaben</span></div>
+    <div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Einnahmen und Ausgaben pro Monat">${grid}${bars}</svg><div class="tip" hidden></div></div>`;
+}
+const yearTxs = () => fin.filter(e => e.type === "tx" && (e.date || "").startsWith(String(finUi.year)));
+const yearSelect = () => {
+  const years = [...new Set([new Date().getFullYear(), ...fin.filter(e => e.type === "tx" && e.date).map(e => Number(e.date.slice(0, 4)))])].sort((a, b) => b - a);
+  return `<label class="mini">Jahr <select data-fin-year>${years.map(v => `<option ${v === finUi.year ? "selected" : ""}>${v}</option>`).join("")}</select></label>`;
+};
+function statusChip(t) {
+  if (t.kind !== "in") return "";
+  return t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`;
+}
+// receipt chip opens the attached file (stored like card attachments, linked by the booking id)
+function receiptChip(t) {
+  const f = files.find(x => x.taskId === t.id && x.kind === "asset");
+  return f ? `<a class="chipbtn" href="${esc(blobUrl(f))}" target="_blank" rel="noopener" title="${esc(f.name)}" style="text-decoration:none">✓ Beleg öffnen</a>` : `<span class="chipbtn" title="Beleg vorhanden">✓ Beleg</span>`;
+}
+function finBusiness() {
+  const y = String(finUi.year), txs = yearTxs();
+  const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
+  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0), sumNet = a => a.reduce((n, t) => n + netOf(t), 0);
+  // Kleinunternehmer cannot reclaim input VAT, so expenses count gross
+  const small = invProfile().small !== false;
+  const income = sum(inc), spend = sum(out), profit = sumNet(inc) - (small ? spend : sumNet(out)), open = sum(inc.filter(t => t.status === "open"));
+  const missing = txs.filter(t => !t.receipt).length;
+  const rows = txs.slice().sort((a, b) => b.date.localeCompare(a.date)).map(t => `<tr>
+      <td style="white-space:nowrap">${deDate(t.date)}</td>
+      <td>${esc(t.title)}<small>${esc([t.party, t.note].filter(Boolean).join(" · "))}</small></td><td>${esc(t.category || "")}</td>
+      <td>${statusChip(t)}</td>
+      <td>${t.receipt ? receiptChip(t) : `<button type="button" class="chipbtn miss" data-fin-receipt="${t.id}" title="Beleg als vorhanden markieren">fehlt</button>`}</td>
+      <td class="num">${t.vat ? `${t.vat} %` : ""}</td>
+      <td class="num ${t.kind === "in" ? "pos" : "neg"}">${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
+      <td><div class="ract">${t.inv ? `<button type="button" class="mini" data-inv-view="${t.id}">Rechnung</button>` : ""}${delBtn(t.id)}</div></td></tr>`).join("");
+  return `<div class="fin-tools">${yearSelect()}
+      ${WEB ? `<button type="button" class="mini" data-fin-xlsx>EÜR-Tabelle (Excel)</button><button type="button" class="mini" data-fin-csv>CSV</button>` : ""}
+      ${missing ? `<span class="kd">${missing} ${missing === 1 ? "Beleg fehlt" : "Belege fehlen"}</span>` : ""}</div>
+    <div class="kpis five">
+      ${finKpi("Einnahmen (brutto)", eur(income), `${inc.length} Buchungen`)}
+      ${finKpi("Ausgaben (brutto)", eur(spend), `${out.length} Buchungen`)}
+      ${finKpi("Gewinn", eur(profit), small ? "Kleinunternehmer: Ausgaben inkl. USt" : "Einnahmen − Ausgaben ohne USt", profit < 0 ? "neg" : "")}
+      ${finKpi("25 % zurücklegen", eur(Math.max(0, income * .25)), "für Steuern, KV & Fixkosten")}
+      ${finKpi("Offene Rechnungen", eur(open), `${inc.filter(t => t.status === "open").length} offen`)}
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel wide"><h3>Pro Monat ${y}</h3>${monthChart(txs)}</div>
+      <div class="panel spanel"><h3>Grenzen im Blick</h3>
+        ${meter("Kleinunternehmer (Umsatz)", sumNet(inc), 25000, "Bis 25.000 € im Vorjahr und 100.000 € im laufenden Jahr keine Umsatzsteuer.")}
+        ${meter("Gewerbesteuer-Freibetrag (Gewinn)", Math.max(0, profit), 24500, "Nur bei Gewerbe relevant – darüber fällt Gewerbesteuer an.")}
+      </div>
+      <div class="panel spanel" style="grid-column: span 2"><h3>Buchung erfassen</h3>${readOnly ? "" : `
+        <form class="fin-form" data-fin-form="tx">
+          <input type="date" name="date" value="${ymd(new Date())}" required aria-label="Buchungsdatum">
+          <select name="kind" aria-label="Einnahme oder Ausgabe"><option value="in">Einnahme</option><option value="out">Ausgabe</option></select>
+          <input name="amount" inputmode="decimal" placeholder="Brutto €" required aria-label="Betrag brutto">
+          <select name="vat" aria-label="Umsatzsteuer"><option value="0">0 % USt</option><option value="19">19 % USt</option><option value="7">7 % USt</option></select>
+          <input name="title" placeholder="Beschreibung, z. B. Website Relaunch" required maxlength="120" aria-label="Beschreibung">
+          <input name="party" placeholder="Kunde / Lieferant" maxlength="80" aria-label="Quelle oder Empfänger">
+          <select name="category" aria-label="Kategorie">${FIN_CATS.map(c => `<option>${c}</option>`).join("")}</select>
+          <select name="status" aria-label="Status"><option value="paid">bezahlt</option><option value="open">offen</option></select>
+          <input name="note" placeholder="Info" maxlength="120" aria-label="Info">
+          <label class="mini"><input type="checkbox" name="receipt"> Beleg vorhanden</label>
+          <button class="btn" type="submit">Hinzufügen</button>
+        </form>`}</div>
+      <div class="panel spanel wide"><h3>Buchungen ${y}</h3>${rows ? `<div class="tbl"><table><thead><tr><th>Datum</th><th>Beschreibung</th><th>Kategorie</th><th>Status</th><th>Beleg</th><th class="num">USt</th><th class="num">Brutto</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p class="sub">Noch keine Buchungen für ${y}. Trag oben deine erste Einnahme oder Ausgabe ein.</p>`}</div>
+    </div>`;
+}
+
+/* invoices: built from the course templates (with USt / without USt per § 19 UStG) */
+const invProfile = () => meta.invoice || {};
+const invNet = inv => (inv.items || []).reduce((n, it) => n + (Number(it.qty) || 0) * (Number(it.price) || 0), 0);
+function nextInvNo(year) {
+  const ns = fin.filter(e => e.inv && String(e.inv.no || "").startsWith(year + "-")).map(e => Number(String(e.inv.no).split("-")[1]) || 0);
+  return `${year}-${String((ns.length ? Math.max(...ns) : 0) + 1).padStart(3, "0")}`;
+}
+function invoiceDoc(t) {
+  const p = invProfile(), inv = t.inv, c = inv.customer || {};
+  const need = (v, label) => v ? esc(v) : `<mark>${label}</mark>`;
+  const net = invNet(inv), vat = Number(inv.vat) || 0, tax = Math.round(net * vat) / 100, total = net + tax;
+  const items = inv.items.map((it, i) => `<tr><td>${i + 1}.</td><td>${esc(it.desc)}</td><td class="r">${String(it.qty).replace(".", ",")}</td><td class="r">${eur2(it.price)}</td><td class="r">${eur2(it.qty * it.price)}</td></tr>`).join("");
+  const due = new Date(inv.date); due.setDate(due.getDate() + (Number(inv.terms) || 14));
+  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Rechnung ${esc(inv.no)}</title><style>
+    @page { size: A4; margin: 16mm 18mm 14mm }
+    * { box-sizing: border-box }
+    body { margin: 0; font: 10pt/1.45 "Open Sans", "Helvetica Neue", Arial, sans-serif; color: #16181d; background: #fff }
+    .page { max-width: 176mm; margin: 0 auto; padding: 8mm 0 }
+    .brand { display: flex; justify-content: flex-end; font: 800 17pt/1 "Helvetica Neue", Arial, sans-serif; letter-spacing: .04em; margin-bottom: 14mm; gap: .28em }
+    .brand span { color: #2f5bff }
+    .head { display: flex; justify-content: space-between; gap: 10mm; align-items: flex-end }
+    .sender { font-size: 7pt; color: #666; text-decoration: underline; margin-bottom: 3mm }
+    .meta td { padding: 0 0 1mm 6mm } .meta td:first-child { color: #555; padding-left: 0 } .meta td:last-child { text-align: right }
+    h1 { font-size: 15pt; margin: 16mm 0 5mm }
+    table.items { width: 100%; border-collapse: collapse; margin-top: 6mm }
+    .items th { text-align: left; font-weight: 600; border-bottom: .8pt solid #16181d; padding: 2mm 1.5mm }
+    .items td { padding: 2mm 1.5mm; border-bottom: .4pt solid #ddd; vertical-align: top }
+    .r, .items th.r { text-align: right; white-space: nowrap }
+    .sum td { border: 0; padding-top: 1.5mm } .total td { font-weight: 700; font-size: 11pt; border-top: .8pt solid #16181d; padding-top: 2.5mm }
+    .note { margin-top: 6mm } footer { margin-top: 16mm; border-top: .5pt solid #aaa; padding-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; font-size: 7.5pt; color: #555 }
+    mark { background: #fff3b0; padding: 0 2px }
+  </style></head><body><div class="page">
+    <div class="brand">${p.company ? esc(p.company).replace(/ AI$/, " <span>AI</span>") : `<mark>Unternehmensname</mark>`}</div>
+    <div class="head"><div>
+        <div class="sender">${[p.company, p.street, p.city].filter(Boolean).map(esc).join(" – ") || `<mark>Absender fehlt</mark>`}</div>
+        ${need(c.name, "Kunde")}<br>${c.street ? esc(c.street) + "<br>" : ""}${c.city ? esc(c.city) + "<br>" : ""}${c.country ? esc(c.country) : ""}
+      </div>
+      <table class="meta"><tr><td>Kunden-Nr.</td><td>${esc(inv.customerNo || "–")}</td></tr><tr><td>Rechnungs-Nr.</td><td>${esc(inv.no)}</td></tr>
+        <tr><td>Rechnungsdatum</td><td>${deDate(inv.date)}</td></tr><tr><td>Leistungsdatum</td><td>${need(inv.service, "Leistungszeitraum")}</td></tr></table></div>
+    <h1>Rechnung Nr. ${esc(inv.no)}</h1>
+    <p>${esc(inv.intro || INV_INTRO)}</p>
+    <table class="items"><thead><tr><th>Pos.</th><th>Bezeichnung</th><th class="r">Menge</th><th class="r">Einzelpreis</th><th class="r">Gesamtpreis</th></tr></thead><tbody>${items}
+      <tr class="sum"><td></td><td colspan="3">Summe Positionen</td><td class="r">${eur2(net)}</td></tr>
+      ${vat ? `<tr class="sum"><td></td><td colspan="3">zzgl. Umsatzsteuer ${vat} %</td><td class="r">${eur2(tax)}</td></tr>` : ""}
+      <tr class="total"><td></td><td colspan="3">Rechnungsbetrag</td><td class="r">${eur2(total)}</td></tr></tbody></table>
+    ${vat ? "" : `<p class="note">Im ausgewiesenen Betrag ist gemäß § 19 UStG keine Umsatzsteuer enthalten.</p>`}
+    <p class="note"><b>Zahlungsbedingung:</b><br>Zahlung bis ${due.toLocaleDateString("de-DE")} (${Number(inv.terms) || 14} Tage ab Rechnungseingang) ohne Abzüge.</p>
+    <p>Herzliche Grüße<br>${need(p.name, "Dein Name")}</p>
+    <footer>
+      <div>${need(p.name, "Name")}<br>${need(p.street, "Straße")}<br>${need(p.city, "PLZ Ort")}${p.phone ? `<br>Tel.: ${esc(p.phone)}` : ""}${p.email ? `<br>${esc(p.email)}` : ""}</div>
+      <div>${need(p.company, "Unternehmensname")}<br>IBAN ${need(p.iban, "IBAN")}${p.bic ? `<br>BIC ${esc(p.bic)}` : ""}${p.paypal ? `<br>Alternativ: PayPal ${esc(p.paypal)}` : ""}</div>
+      <div>${p.taxId ? esc(p.taxId) : `<mark>Steuernummer oder USt-IdNr.</mark>`}${p.name ? `<br>Inhaber: ${esc(p.name)}` : ""}${p.web ? `<br>${esc(p.web)}` : ""}</div>
+    </footer></div></body></html>`;
+}
+function finInvoices() {
+  const p = invProfile(), invs = fin.filter(e => e.inv).sort((a, b) => (b.inv.no || "").localeCompare(a.inv.no || ""));
+  const missing = ["company", "name", "street", "city", "iban", "taxId"].filter(k => !p[k]).length;
+  const rows = invs.map(t => `<tr><td class="num" style="text-align:left">${esc(t.inv.no)}</td><td>${esc(t.inv.customer?.name || "")}<small>${esc(t.inv.items.map(i => i.desc).join(", "))}</small></td>
+      <td>${deDate(t.inv.date)}</td><td>${statusChip(t)}</td><td class="num">${eur2(t.amount)}</td>
+      <td><div class="ract"><button type="button" class="mini" data-inv-view="${t.id}">Ansehen & drucken</button>${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}${delBtn(t.id)}</div></td></tr>`).join("");
+  const f = (k, label, ph = "", attrs = "") => `<label class="fl"><span>${label}</span><input name="${k}" value="${esc(p[k] || "")}" placeholder="${esc(ph)}" ${attrs}></label>`;
+  return `<div class="sgrid">
+    <div class="panel spanel" style="grid-column: span 2"><div class="fin-tools"><h3 style="flex:1">Rechnungen</h3>${readOnly ? "" : `<button type="button" class="btn" data-inv-new>Neue Rechnung</button>`}</div>
+      ${missing ? `<div class="note" style="flex-direction:row">Trag rechts einmal deine Absenderdaten ein. Ohne Adresse, IBAN und Steuernummer ist eine Rechnung nicht vollständig.</div>` : ""}
+      ${rows ? `<div class="tbl"><table><thead><tr><th>Nr.</th><th>Kunde</th><th>Datum</th><th>Status</th><th class="num">Betrag</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`
+        : `<p class="sub">Noch keine Rechnungen. Eine neue Rechnung landet automatisch als offene Einnahme in deinen Buchungen. Sobald das Geld da ist, klickst du dort auf „offen“.</p>`}
+    </div>
+    <div class="panel spanel"><h3>Absender auf jeder Rechnung</h3>
+      <form class="fin-form inv-prof" data-inv-profile>
+        ${f("company", "Unternehmen", "Flow Media AI")}${f("name", "Inhaber", "Vorname Nachname")}
+        ${f("street", "Straße", "Straße Hausnummer")}${f("city", "PLZ Ort", "12345 Stadt")}
+        ${f("phone", "Telefon")}${f("email", "E-Mail", "", 'type="email"')}${f("web", "Website")}
+        ${f("iban", "IBAN")}${f("bic", "BIC")}${f("paypal", "PayPal (optional)")}
+        ${f("taxId", "Steuernummer / USt-IdNr.", "z. B. Steuernummer 123/456/78901")}
+        <label class="mini"><input type="checkbox" name="small" ${p.small !== false ? "checked" : ""}> Kleinunternehmer (§ 19 UStG)</label>
+        ${readOnly ? "" : `<button class="btn" type="submit">Speichern</button>`}
+      </form></div>
+  </div>`;
+}
+function openInvoiceForm(t) {
+  const p = invProfile(), today = ymd(new Date()), inv = t?.inv || {
+    no: nextInvNo(today.slice(0, 4)), date: today, service: MONTHS[new Date().getMonth()] + " " + today.slice(0, 4),
+    vat: p.small === false ? 19 : 0, terms: 14, intro: INV_INTRO, customer: { country: "Deutschland" }, items: [{ desc: "", qty: 1, price: "" }] };
+  const c = inv.customer || {};
+  const itemRow = it => `<div class="inv-item"><input name="desc" value="${esc(it.desc)}" placeholder="Bezeichnung, z. B. Landingpage inkl. Texte" required aria-label="Bezeichnung">
+      <input name="qty" value="${esc(String(it.qty ?? 1).replace(".", ","))}" inputmode="decimal" aria-label="Menge" style="width:64px">
+      <input name="price" value="${it.price === "" ? "" : esc(String(it.price).replace(".", ","))}" inputmode="decimal" placeholder="Einzelpreis €" required aria-label="Einzelpreis" style="width:120px">
+      <button type="button" class="btn-x" data-inv-rmitem aria-label="Position entfernen">×</button></div>`;
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+    <form class="modal inv-modal" id="inv-form" data-id="${t ? t.id : ""}" role="dialog" aria-modal="true" aria-labelledby="inv-h">
+      <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+      <h2 id="inv-h" style="margin:0;font-size:18px">${t ? "Rechnung bearbeiten" : "Neue Rechnung"}</h2>
+      <div class="inv-grid">
+        <label class="fl"><span>Kunde</span><input name="cname" value="${esc(c.name || "")}" required placeholder="Vorname Nachname oder Firma"></label>
+        <label class="fl"><span>Kunden-Nr.</span><input name="customerNo" value="${esc(inv.customerNo || "")}" placeholder="optional"></label>
+        <label class="fl"><span>Straße</span><input name="cstreet" value="${esc(c.street || "")}"></label>
+        <label class="fl"><span>PLZ Ort</span><input name="ccity" value="${esc(c.city || "")}"></label>
+        <label class="fl"><span>Land</span><input name="ccountry" value="${esc(c.country || "")}"></label>
+        <label class="fl"><span>Rechnungs-Nr.</span><input name="no" value="${esc(inv.no)}" required></label>
+        <label class="fl"><span>Rechnungsdatum</span><input type="date" name="date" value="${inv.date}" required></label>
+        <label class="fl"><span>Leistungsdatum / -zeitraum</span><input name="service" value="${esc(inv.service || "")}" required></label>
+      </div>
+      <div class="sec" style="margin:0"><h3>Positionen</h3><div id="inv-items">${inv.items.map(itemRow).join("")}</div>
+        <button type="button" class="mini" data-inv-additem style="align-self:flex-start">+ Position</button></div>
+      <div class="inv-grid">
+        <label class="fl"><span>Umsatzsteuer</span><select name="vat">
+          <option value="0" ${!inv.vat ? "selected" : ""}>ohne USt (Kleinunternehmer, § 19 UStG)</option>
+          <option value="19" ${inv.vat == 19 ? "selected" : ""}>zzgl. 19 % USt</option><option value="7" ${inv.vat == 7 ? "selected" : ""}>zzgl. 7 % USt</option></select></label>
+        <label class="fl"><span>Zahlungsziel (Tage)</span><input name="terms" type="number" min="0" max="90" value="${inv.terms ?? 14}"></label>
+        <label class="fl" style="grid-column:1/-1"><span>Einleitung</span><input name="intro" value="${esc(inv.intro || INV_INTRO)}" maxlength="240"></label>
+      </div>
+      <p class="sub" id="inv-total" style="margin:0"></p>
+      <div class="mfoot"><button type="button" class="mini" data-close-btn>Abbrechen</button><button class="btn" type="submit">Speichern & ansehen</button></div>
+    </form></div>`;
+  const form = $("#inv-form"), add = () => { $("#inv-items").insertAdjacentHTML("beforeend", itemRow({ desc: "", qty: 1, price: "" })); invTotal() };
+  form.querySelector("[data-inv-additem]").onclick = add;
+  form.addEventListener("input", invTotal); invTotal();
+  form.querySelector("[name=cname]").focus();
+}
+function readInvItems() {
+  return [...document.querySelectorAll("#inv-items .inv-item")].map(r => ({ desc: r.querySelector("[name=desc]").value.trim(), qty: parseEur(r.querySelector("[name=qty]").value), price: parseEur(r.querySelector("[name=price]").value) }));
+}
+function invTotal() {
+  const el = $("#inv-total"); if (!el) return;
+  const net = invNet({ items: readInvItems().filter(i => i.qty > 0 && i.price >= 0) }), vat = Number($("#inv-form [name=vat]").value);
+  el.textContent = `Summe ${eur2(net)}${vat ? ` + ${vat} % USt ${eur2(net * vat / 100)} = ${eur2(net * (1 + vat / 100))}` : " · ohne Umsatzsteuer"}`;
+}
+function showInvoice(t) {
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+    <div class="modal inv-modal" role="dialog" aria-modal="true" aria-label="Rechnung ${esc(t.inv.no)}">
+      <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+      <h2 style="margin:0;font-size:18px">Rechnung ${esc(t.inv.no)}</h2>
+      <iframe id="inv-frame" title="Rechnung ${esc(t.inv.no)}" class="inv-frame"></iframe>
+      <p class="sub" style="margin:0">Gelb markiert = fehlt noch. ${WEB ? "„Drucken“ öffnet den Druckdialog, dort „Als PDF speichern“ wählen." : "Drucken geht in der Web-Version des Boards."} Ablage: Dropbox <b>05_Finanzen/Steuern/Rechnungen Debitoren</b>.</p>
+      <div class="mfoot">${readOnly ? "" : `<button type="button" class="mini" data-inv-edit="${t.id}">Bearbeiten</button>`}${WEB ? `<button type="button" class="btn" data-inv-print>Drucken / PDF</button>` : ""}</div>
+    </div></div>`;
+  $("#inv-frame").srcdoc = invoiceDoc(t);
+}
+
+function finPrivate() {
+  const bud = fin.filter(e => e.type === "budget"), bak = fin.filter(e => e.type === "backup");
+  const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0);
+  const inc = sum(bud.filter(b => b.kind === "in")), out = bud.filter(b => b.kind === "out");
+  const need = sum(out), essential = sum(out.filter(b => b.enl === "E")), nice = sum(out.filter(b => b.enl === "N")), lux = sum(out.filter(b => b.enl === "L")), fixed = sum(out.filter(b => b.fixed));
+  const backup = sum(bak), reach = need ? backup / need : 0, reachE = essential ? backup / essential : 0;
+  const months = n => n ? `${n.toLocaleString("de-DE", { maximumFractionDigits: 1 })} Monate` : "–";
+  const enlBar = ["E", "N", "L"].map(k => { const v = sum(out.filter(b => b.enl === k)); return v ? `<i class="enl-${k}" style="flex:${v}" title="${ENL[k]}: ${eur(v)}"></i>` : "" }).join("");
+  const budRows = bud.slice().sort((a, b) => (a.kind > b.kind ? -1 : 1) || (b.amount - a.amount)).map(b => `<tr><td>${esc(b.title)}</td>
+      <td>${b.kind === "in" ? "Einnahme" : `<span class="enl enl-${b.enl}">${b.enl}</span> ${ENL[b.enl] || ""}`}</td><td>${b.fixed ? "Fixkosten" : ""}</td>
+      <td class="num ${b.kind === "in" ? "pos" : "neg"}">${eur2(b.amount)}</td><td>${delBtn(b.id)}</td></tr>`).join("");
+  const bakRows = bak.slice().sort((a, b) => b.amount - a.amount).map(b => `<tr><td>${esc(b.title)}</td><td>${esc(b.group)}</td><td class="num">${eur2(b.amount)}</td><td>${delBtn(b.id)}</td></tr>`).join("");
+  return `<p class="sub" style="margin:0">Die vier Fragen aus dem Arbeitsblatt „Finanzielle Bestandsaufnahme“ rechnet das Board aus deinen Einträgen unten.</p>
+    <div class="kpis five">
+      ${finKpi("Wie viel bleibt pro Monat übrig?", eur(inc - need), `${eur(inc)} Einnahmen − ${eur(need)} Ausgaben`, inc - need < 0 ? "neg" : "")}
+      ${finKpi("Ohne Luxus übrig", eur(inc - need + lux), `Luxus: ${eur(lux)} / Monat`, inc - need + lux < 0 ? "neg" : "")}
+      ${finKpi("Ohne Luxus + Nice-to-have zusätzlich", eur(lux + nice), `Minimalbedarf ${eur(essential)} · Fixkosten ${eur(fixed)}`)}
+      ${finKpi("Erspartes inkl. Verkaufbarem", eur(backup), `${bak.length} Posten`)}
+      ${finKpi("Reichweite", months(reach), `nur mit E-Ausgaben: ${months(reachE)}`, "accent")}
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel" style="grid-column: span 2"><h3>Bestandsaufnahme: Einnahmen & Ausgaben pro Monat</h3>
+        ${need ? `<div class="enlbar">${enlBar}</div><div class="legend"><span><i class="enl-E"></i>Essentiell</span><span><i class="enl-N"></i>Nice-to-have</span><span><i class="enl-L"></i>Luxus</span></div>` : ""}
+        ${readOnly ? "" : `<form class="fin-form" data-fin-form="budget">
+          <input name="title" placeholder="z. B. Miete, Krankenversicherung, Gehalt" required maxlength="80" aria-label="Bezeichnung">
+          <input name="amount" inputmode="decimal" placeholder="€ / Monat" required aria-label="Betrag pro Monat">
+          <select name="kind" aria-label="Art"><option value="out">Ausgabe</option><option value="in">Einnahme</option></select>
+          <select name="enl" aria-label="Einordnung"><option value="E">E – Essentiell</option><option value="N">N – Nice-to-have</option><option value="L">L – Luxus</option></select>
+          <label class="mini"><input type="checkbox" name="fixed"> Fixkosten</label>
+          <button class="btn" type="submit">Hinzufügen</button></form>`}
+        ${budRows ? `<div class="tbl"><table><tbody>${budRows}</tbody></table></div>` : `<p class="sub">Trag deine monatlichen Einnahmen und Ausgaben ein und ordne jede Ausgabe als E, N oder L ein. Das Gröbste reicht, nicht jeder Cent.</p>`}
+      </div>
+      <div class="panel spanel"><h3>Backup</h3>
+        ${readOnly ? "" : `<form class="fin-form" data-fin-form="backup">
+          <input name="title" placeholder="z. B. Tagesgeld, altes Fahrrad" required maxlength="80" aria-label="Bezeichnung">
+          <input name="amount" inputmode="decimal" placeholder="Wert €" required aria-label="Wert">
+          <select name="group" aria-label="Art">${BACKUP_GROUPS.map(g => `<option>${g}</option>`).join("")}</select>
+          <button class="btn" type="submit">Hinzufügen</button></form>`}
+        ${bakRows ? `<div class="tbl"><table><tbody>${bakRows}</tbody></table></div>` : `<p class="sub">Was hättest du im Notfall? Erspartes, Sachwerte (auch Kleinigkeiten), mögliche Sozialleistungen.</p>`}
+        ${need ? `<p class="sub" style="margin:0">Mit deinem Backup überbrückst du <b>${months(reach)}</b>, wenn du nur Essentielles zahlst <b>${months(reachE)}</b>.</p>` : ""}
+      </div>
+    </div>`;
+}
+function finTemplates() {
+  const list = files.filter(f => f.taskId === FIN_TEMPLATES).sort((a, b) => a.name.localeCompare(b.name, "de"));
+  return `<div class="panel spanel" style="grid-column:1/-1"><h3>Vorlagen aus dem Kurs</h3>
+    ${list.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Vorlagen abgelegt.</p>`}
+    ${uploadControls(FIN_TEMPLATES)}
+    <p class="sub" style="margin:0">Die Rechnungsvorlagen stecken im Reiter „Rechnungen“, die Einnahmen-Ausgaben-Tabelle in den Buchungen (Export „EÜR-Tabelle“), die Bestandsaufnahme unter „Privat & Backup“.</p></div>`;
+}
+function finNote() {
+  return `<div class="finnote">
+    <div class="panel spanel"><h3>Deine 3 Finanz-Hebel</h3><ul><li>Umsatz deines eigenen Businesses</li><li>Anderes finanzielles Standbein / Basiseinkommen sichern</li><li>Ausgaben reduzieren</li></ul></div>
+    <div class="panel spanel"><h3>Bestandsaufnahme</h3><ul><li>Monatliche Einnahmen / Ausgaben / Fixkosten erfassen</li><li>Ausgaben einordnen: <b>E</b>ssentiell, <b>N</b>ice-to-have, <b>L</b>uxus</li><li>Backup identifizieren: Erspartes (Bausparer, Sparpläne, Fonds), Schmuck, Kleidung, Technik usw., Sozialleistungen</li></ul></div>
+    <div class="panel spanel"><h3>25 % der zukünftigen Einnahmen zur Seite legen</h3><ul><li>Krankenversicherung und andere Fixkosten</li><li>Einkommensteuer (Grundfreibetrag ändert sich regelmäßig)</li><li>Umsatzsteuer</li><li>Später Gewerbesteuer (3,5 % × lokaler Hebesatz)</li><li>Ggf. Rentenversicherungsbeiträge</li><li><b>Cash is King:</b> fehlende Liquidität ist Insolvenzgrund Nr. 1</li><li>Das Finanzamt fackelt nicht lange – Stundungen sind aber möglich</li></ul></div>
+    <div class="panel spanel"><h3>Getrennte Kontoführung</h3><ul><li>Privates Konto, z. B. DKB</li><li>Geschäftskonto, z. B. Holvi, N26, Kontist</li></ul></div>
+    <div class="panel spanel"><h3>Notfallüberbrückung – nur bei vorübergehendem Engpass</h3><ul><li>Familie und Freunde</li><li>Ggf. Hausbank</li><li>Spezialanbieter, z. B. Auxmoney</li></ul></div>
+    <div class="panel spanel"><h3>To-dos</h3><ul><li>Finanzielle Bestandsaufnahme (E/N/L) → Reiter „Privat & Backup“</li><li>Monatlichen Bedarf berechnen</li><li>Reichweite des Backups errechnen: Was ist vorhanden (auch Kleinigkeiten wie alte Fahrräder)? Wie viel Geld stünde im Notfall zur Verfügung? Wie lange könnte ich damit überbrücken?</li><li>Download-Dokumente in den Unterlagen ablegen (Dropbox 05_Finanzen)</li></ul></div>
+    ${finTemplates()}
+    <p class="sub">Notizen aus dem Gründerkurs, Modul Finanzen. Erfahrungswerte, keine Steuerberatung.</p>
+  </div>`;
+}
+function renderFin() {
+  // course notes and templates are private, so the shareable demo leaves that tab out
+  const tabs = [["business", "Buchungen"], ["invoices", "Rechnungen"], ["private", "Privat & Backup"], ...(DEMO ? [] : [["note", "Notiz & Vorlagen"]])];
+  if (DEMO && finUi.tab === "note") finUi.tab = "business";
+  const body = { business: finBusiness, invoices: finInvoices, private: finPrivate, note: finNote }[finUi.tab] || finBusiness;
+  return `<section class="panel stats"><div class="cal-head"><h2 style="margin:0">Finanzen</h2>
+      <span class="cal-mode" role="group" aria-label="Bereich">${tabs.map(([k, l]) => `<button type="button" data-fin-tab="${k}" aria-pressed="${finUi.tab === k}">${l}</button>`).join("")}</span></div>
+    ${body()}</section>`;
+}
+
+/* exports (web only: the artifact viewer cannot hand out files) */
+function saveBlob(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000) }
+function finCsv() {
+  const y = String(finUi.year), rows = yearTxs().sort((a, b) => a.date.localeCompare(b.date));
+  const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`, num = n => String(n).replace(".", ",");
+  const csv = ["Buchungsdatum;Einnahme/Ausgabe;Beschreibung;Kunde/Lieferant;Kategorie;Status;USt %;Brutto;Netto;Beleg vorhanden;Info"].concat(rows.map(t => [deDate(t.date), t.kind === "in" ? "Einnahme" : "Ausgabe", q(t.title), q(t.party), q(t.category),
+    t.kind === "in" ? (t.status === "open" ? "offen" : "bezahlt") : "", t.vat || 0, num((t.kind === "in" ? 1 : -1) * t.amount), num((t.kind === "in" ? 1 : -1) * netOf(t)), t.receipt ? "ja" : "nein", q(t.note)].join(";"))).join("\n");
+  saveBlob(new Blob(["﻿" + csv], { type: "text/csv" }), `flow-media-ai-buchungen-${y}.csv`);
+}
+let xlsxLib = null;
+const loadXlsx = () => xlsxLib || (xlsxLib = new Promise((ok, fail) => { const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"; s.onload = () => ok(window.XLSX); s.onerror = () => { xlsxLib = null; fail() }; document.head.appendChild(s) }));
+// same layout as the course's EÜR template: summary sheet + one sheet per month (expenses negative so the month sums give the result)
+async function finXlsx() {
+  let X; try { X = await loadXlsx() } catch { toast("Excel-Export konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
+  const y = finUi.year, txs = yearTxs(), me = invProfile().company || "Flow Media AI", wb = X.utils.book_new();
+  const sign = t => t.kind === "in" ? 1 : -1, sums = [];
+  const sheets = MONTHS.map((name, k) => {
+    const rows = txs.filter(t => Number(t.date.slice(5, 7)) === k + 1).sort((a, b) => a.date.localeCompare(b.date)).map(t => [
+      t.kind === "in" ? "Einnahme" : "Ausgabe", t.kind === "in" ? t.party || "" : me, t.kind === "in" ? me : t.party || "",
+      new Date(t.date + "T12:00:00"), sign(t) * t.amount, sign(t) * netOf(t), "Geschäftlich", [t.title, t.note].filter(Boolean).join(" – "), t.receipt ? "ja" : "nein"]);
+    const brutto = rows.reduce((n, r) => n + r[4], 0), netto = rows.reduce((n, r) => n + r[5], 0); sums.push([brutto, netto]);
+    const ws = X.utils.aoa_to_sheet([[`Einnahmen, Ausgaben ${name} ${y}`], [], ["Einnahme, Ausgabe", "Quelle", "Empfänger", "Buchungsdatum", "Umsatz brutto", "Umsatz netto", "Privat, Geschäftlich", "Info", "Beleg vorhanden"], ...rows, [], ["Summe", "", "", "", brutto, netto]], { cellDates: true, dateNF: "dd\\.mm\\.yyyy" });
+    ws["!cols"] = [14, 22, 22, 14, 14, 14, 18, 40, 15].map(wch => ({ wch }));
+    return [`${y}_${String(k + 1).padStart(2, "0")}`, ws];
+  });
+  const sum = X.utils.aoa_to_sheet([[`Zusammenfassung ${y}`], [], ["Monat", "Total brutto", "Total netto"], ...MONTHS.map((m, k) => [m, sums[k][0], sums[k][1]]), [], [`Total ${y}`, sums.reduce((n, s) => n + s[0], 0), sums.reduce((n, s) => n + s[1], 0)]]);
+  sum["!cols"] = [{ wch: 16 }, { wch: 14 }, { wch: 14 }];
+  X.utils.book_append_sheet(wb, sum, "Zusammenfassung");
+  sheets.forEach(([n, ws]) => X.utils.book_append_sheet(wb, ws, n));
+  X.writeFile(wb, `Einnahmen_Ausgaben_${y}.xlsx`);
+}
+
+document.addEventListener("submit", e => {
+  const prof = e.target.closest("[data-inv-profile]");
+  if (prof) {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(prof)); Object.keys(d).forEach(k => d[k] = String(d[k]).trim());
+    saveMeta({ invoice: { ...d, small: !!d.small } }); render(); toast("Absender gespeichert"); return;
+  }
+  if (e.target.id === "inv-form") {
+    e.preventDefault();
+    const f = e.target, d = Object.fromEntries(new FormData(f)), items = readInvItems();
+    if (items.some(i => !(i.qty > 0) || !(i.price >= 0))) { toast("Bitte Menge und Einzelpreis jeder Position prüfen, z. B. 1 und 450,00"); return }
+    const vat = Number(d.vat), net = invNet({ items }), old = fin.find(x => x.id === f.dataset.id);
+    const inv = { no: d.no.trim(), customerNo: d.customerNo.trim(), date: d.date, service: d.service.trim(), vat, terms: Number(d.terms) || 14, intro: d.intro.trim(),
+      customer: { name: d.cname.trim(), street: d.cstreet.trim(), city: d.ccity.trim(), country: d.ccountry.trim() }, items };
+    if (fin.some(x => x.inv && x.inv.no === inv.no && x.id !== old?.id)) { toast(`Rechnungsnummer ${inv.no} gibt es schon.`); return }
+    const t = { ...(old || { id: newId(), type: "tx", kind: "in", status: "open", category: "Kundenprojekt", receipt: true, createdAt: Date.now() }),
+      title: `Rechnung ${inv.no}`, party: inv.customer.name, date: inv.date, amount: Math.round(net * (1 + vat / 100) * 100) / 100, vat, inv };
+    saveFin(t); showInvoice(t); return;
+  }
+  const f = e.target.closest("[data-fin-form]"); if (!f) return;
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(f)), amount = parseEur(d.amount);
+  if (!(amount > 0)) { toast("Bitte einen Betrag größer als 0 eingeben, z. B. 1.250,00"); return }
+  const base = { id: newId(), title: d.title.trim(), amount, createdAt: Date.now() };
+  const type = f.dataset.finForm;
+  const entry = type === "tx" ? { ...base, type, date: d.date, kind: d.kind, vat: Number(d.vat) || 0, party: (d.party || "").trim(), note: (d.note || "").trim(), receipt: !!d.receipt, category: d.category, status: d.kind === "in" ? d.status : "paid" }
+    : type === "budget" ? { ...base, type, kind: d.kind, enl: d.kind === "out" ? d.enl : "", fixed: !!d.fixed }
+    : { ...base, type, group: d.group };
+  saveFin(entry); toast("Gespeichert");
+});
+document.addEventListener("click", e => {
+  const t = e.target;
+  const tab = t.closest("[data-fin-tab]"); if (tab) { finUi.tab = tab.dataset.finTab; render(); return }
+  const del = t.closest("[data-fin-del]"); if (del) { removeFin(del.dataset.finDel); return }
+  const paid = t.closest("[data-fin-paid]"); if (paid) { const x = fin.find(v => v.id === paid.dataset.finPaid); if (x) saveFin({ ...x, status: "paid" }); return }
+  const rec = t.closest("[data-fin-receipt]"); if (rec) { const x = fin.find(v => v.id === rec.dataset.finReceipt); if (x) saveFin({ ...x, receipt: true }); return }
+  if (t.closest("[data-inv-new]")) { openInvoiceForm(null); return }
+  const ed = t.closest("[data-inv-edit]"); if (ed) { const x = fin.find(v => v.id === ed.dataset.invEdit); if (x) openInvoiceForm(x); return }
+  const vw = t.closest("[data-inv-view]"); if (vw) { const x = fin.find(v => v.id === vw.dataset.invView); if (x) showInvoice(x); return }
+  const rm = t.closest("[data-inv-rmitem]"); if (rm) { if (document.querySelectorAll("#inv-items .inv-item").length > 1) { rm.parentElement.remove(); invTotal() } return }
+  if (t.closest("[data-inv-print]")) { try { $("#inv-frame").contentWindow.print() } catch { toast("Drucken geht hier nicht. Öffne das Board im Browser.") } return }
+  if (t.closest("[data-fin-csv]")) finCsv();
+  if (t.closest("[data-fin-xlsx]")) finXlsx();
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-theme-set]"); if (!b) return;
+  try { localStorage.setItem(THEME_KEY, b.dataset.themeSet) } catch {}
+  applyTheme(b.dataset.themeSet);
+  b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+});
+document.addEventListener("change", e => { if (e.target.matches?.("[data-fin-year]")) { finUi.year = Number(e.target.value); render() } });
+
+/* ---------- landing page analytics (PostHog via the gateway) ---------- */
+const stats = { data: null, loading: false, days: 30, error: "" };
+const CTA_NAMES = { hero_calendly: "Kennenlernen (oben)", nav_calendly: "Navigation: 15 Min reden", final_calendly: "Termin aussuchen (unten)", hero_projects: "Was ich gebaut habe", final_instagram: "Instagram (unten)", footer_instagram: "Instagram (Fußzeile)", log_instagram: "Instagram (Projekte)" };
+const DEVICE_NAMES = { Desktop: "Laptop / PC", Mobile: "Handy", Tablet: "Tablet" };
+const LANDING_URL = "https://maikz91.github.io/flow-media-ai/";
+async function loadStats() {
+  if (!WEB) return;
+  stats.loading = true; stats.error = ""; if (view === "stats") render();
+  try { const j = await api("analytics", { days: stats.days }); stats.data = j; if (j.status === "error") stats.error = "PostHog hat nicht geantwortet." }
+  catch { stats.error = "Die Auswertung konnte nicht geladen werden." }
+  stats.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
+}
+const fmtN = n => Number(n || 0).toLocaleString("de-DE");
+function delta(cur, prev) {
+  if (!prev) return cur ? `<span class="kd">neu</span>` : `<span class="kd">–</span>`;
+  const d = Math.round((cur - prev) / prev * 100);
+  return `<span class="kd ${d > 0 ? "up" : d < 0 ? "down" : ""}">${d > 0 ? "+" : ""}${d} % ggü. Vorzeitraum</span>`;
+}
+function barList(rows, nameMap = {}) {
+  if (!rows?.length) return `<p class="sub">Noch keine Daten.</p>`;
+  const max = Math.max(...rows.map(r => Number(r[1]) || 0), 1);
+  return `<ul class="blist">${rows.map(([name, n]) => { const label = nameMap[name] || (name === "$direct" ? "Direkt / unbekannt" : name || "–");
+    return `<li title="${esc(label)}: ${fmtN(n)}"><span class="bl-name">${esc(label)}</span><span class="bl-bar"><i style="width:${(n / max * 100).toFixed(1)}%"></i></span><span class="bl-n">${fmtN(n)}</span></li>` }).join("")}</ul>`;
+}
+function dailyChart(rows, days) {
+  const map = Object.fromEntries((rows || []).map(r => [r[0], r]));
+  const pts = [...Array(days)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - (days - 1 - i)); const k = ymd(d); const r = map[k]; return { k, d, pv: r ? Number(r[1]) : 0, visits: r ? Number(r[2]) : 0, cta: r ? Number(r[3]) : 0 } });
+  const W = 1240, H = 230, padL = 36, padB = 24, padT = 10, max = Math.max(4, ...pts.map(p => p.visits));
+  const step = Math.ceil(max / 4), top = step * 4, bw = (W - padL) / pts.length;
+  const y = v => padT + (H - padT - padB) * (1 - v / top);
+  const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 6}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${i * step}</text>`).join("");
+  const bars = pts.map((p, i) => { const x = padL + i * bw + 1, h = y(0) - y(p.visits);
+    const lab = `${p.d.getDate()}.${p.d.getMonth() + 1}.`;
+    return `<g class="bar" data-tip="${esc(`${DOW[(p.d.getDay() + 6) % 7]} ${lab} · ${fmtN(p.visits)} Besuche · ${fmtN(p.pv)} Aufrufe · ${fmtN(p.cta)} Klicks`)}"><rect class="hit" x="${padL + i * bw}" y="${padT}" width="${bw}" height="${H - padT - padB}"/>${p.visits ? `<rect class="m" x="${x}" y="${y(p.visits)}" width="${Math.max(bw - 2, 1)}" height="${h}" rx="${Math.min(3, bw / 3)}"/>` : ""}</g>` }).join("");
+  const every = days <= 7 ? 1 : days <= 30 ? 5 : 15;
+  const labels = pts.map((p, i) => i % every === 0 || i === pts.length - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${p.d.getDate()}.${p.d.getMonth() + 1}.</text>` : "").join("");
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Besuche pro Tag, letzte ${days} Tage">${grid}${bars}${labels}</svg><div class="tip" hidden></div></div>`;
+}
+function renderStats() {
+  const head = `<div class="cal-head"><h2 style="margin:0">Landingpage</h2>
+    <a class="mini" href="${LANDING_URL}" target="_blank" rel="noopener">Seite öffnen</a>
+    ${stats.data?.link ? `<a class="mini" href="${esc(stats.data.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}
+    <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(d => `<button type="button" data-days="${d}" aria-pressed="${stats.days === d}">${d} Tage</button>`).join("")}</span></div>`;
+  let body;
+  if (!WEB) body = `<div class="note">Die Auswertung gibt es in der Web-Version deines Boards.</div>`;
+  else if (stats.loading && !stats.data) body = `<p class="sub">Lade Zahlen aus PostHog …</p>`;
+  else if (stats.error) body = `<div class="note">${esc(stats.error)}<button type="button" class="mini" data-stats-reload>Erneut laden</button></div>`;
+  else if (stats.data?.status === "no_token") body = `<div class="note">Noch nicht verbunden: Lege in Supabase das Secret <b>POSTHOG_API_KEY</b> an (persönlicher PostHog-Schlüssel mit Leserecht für Abfragen). Dann erscheinen hier deine Zahlen.</div>`;
+  else if (stats.data?.status === "ok") {
+    const k = stats.data.kpi, p = stats.data.prev, rate = k.visits ? (k.cal / k.visits * 100) : 0, prate = p.visits ? (p.cal / p.visits * 100) : 0;
+    body = `<div class="kpis">
+        <div class="kpi"><span class="kl">Besuche</span><b>${fmtN(k.visits)}</b>${delta(k.visits, p.visits)}</div>
+        <div class="kpi"><span class="kl">Seitenaufrufe</span><b>${fmtN(k.pv)}</b>${delta(k.pv, p.pv)}</div>
+        <div class="kpi"><span class="kl">Klicks auf „Termin“</span><b>${fmtN(k.cal)}</b>${delta(k.cal, p.cal)}</div>
+        <div class="kpi"><span class="kl">Termin-Quote</span><b>${rate.toLocaleString("de-DE", { maximumFractionDigits: 1 })} %</b><span class="kd">Klicks auf Termin je Besuch${p.visits ? ` · vorher ${prate.toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div>
+      </div>
+      <div class="sgrid">
+        <div class="panel spanel wide"><h3>Besuche pro Tag</h3>${dailyChart(stats.data.daily, stats.data.days)}</div>
+        <div class="panel spanel"><h3>Woher kommen die Besuche?</h3>${barList(stats.data.refs)}</div>
+        <div class="panel spanel"><h3>Welche Buttons werden geklickt?</h3>${barList(stats.data.ctas, CTA_NAMES)}</div>
+        <div class="panel spanel"><h3>Geräte</h3>${barList(stats.data.devices, DEVICE_NAMES)}</div>
+      </div>
+      <p class="sub" style="margin:0">Gezählt wird ohne Cookies: ein „Besuch“ ist ein Seitenbesuch, wiederkehrende Personen werden nicht wiedererkannt.</p>`;
+  } else body = `<p class="sub">Lade …</p>`;
+  return `<section class="panel stats">${head}${body}</section>`;
+}
+document.addEventListener("mouseover", e => {
+  const g = e.target.closest?.(".chart .bar"), c = e.target.closest?.(".chart"); if (!c) return;
+  const tip = c.querySelector(".tip");
+  if (!g) { tip.hidden = true; return }
+  tip.textContent = g.dataset.tip; tip.hidden = false;
+  const r = c.getBoundingClientRect(), b = g.getBoundingClientRect();
+  tip.style.left = Math.min(Math.max(b.left - r.left + b.width / 2, 80), r.width - 80) + "px";
+});
+document.addEventListener("mouseleave", e => { if (e.target.classList?.contains("chart")) e.target.querySelector(".tip").hidden = true }, true);
+
 /* ---------- card detail ---------- */
 function openCard(t, isNew = false) {
   const col = COLS.find(c => c.id === t.status);
@@ -665,7 +1499,8 @@ function openCard(t, isNew = false) {
         ${isNew ? `<p style="margin:0;color:var(--muted);font-size:13px">Leg die Karte zuerst an, dann kannst du Dateien anhängen.</p>` : `
         <div id="m-att" style="display:flex;flex-direction:column;gap:6px"></div>
         ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} ${WEB ? "Link anhängen" : "Aus Dropbox verknüpfen"}</button>` : ""}</div>
-        <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>`}`}
+        <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>
+        ${WEB && filesCol ? `<div class="uprow"><button type="button" class="mini" id="m-gh-open">${icon.gh} Aus GitHub verknüpfen</button></div><div id="m-gh" hidden style="display:flex;flex-direction:column;gap:6px"></div>` : ""}`}`}
       </div>
       <div class="sec"><h3>${icon.com} Aktivität</h3>
         ${readOnly ? "" : `<textarea id="m-comment" placeholder="Kommentar schreiben …" style="min-height:56px" maxlength="2000"></textarea>`}
@@ -680,6 +1515,11 @@ function openCard(t, isNew = false) {
       <select id="m-status" ${dis}>${COLS.map(c => `<option value="${c.id}" ${c.id === t.status ? "selected" : ""}>${c.name}</option>`).join("")}</select>
       <label class="lbl" for="m-due">Fälligkeitsdatum</label>
       <input type="date" id="m-due" value="${t.due || ""}" ${dis}>
+      <span class="lbl">Uhrzeit (optional)</span>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center">
+        <input type="time" id="m-time" value="${t.time || ""}" aria-label="Beginn" ${dis}><span style="color:var(--faint)">–</span>
+        <input type="time" id="m-end" value="${t.endTime || ""}" aria-label="Ende" ${dis}>
+      </div>
       <label class="lbl" for="m-area">Bereich</label>
       <select id="m-area" ${dis}><option value="">–</option>${AREAS.map(a => `<option ${a === t.area ? "selected" : ""}>${a}</option>`).join("")}</select>
       <label class="lbl" for="m-members">Mitglieder</label>
@@ -696,6 +1536,11 @@ function openCard(t, isNew = false) {
   ["#m-imp", "#m-urg", "#m-area"].forEach(s => $(s).addEventListener("change", updLabels)); updLabels();
   $("#modal").dataset.task = t.id;
   if (!isNew) renderCardFiles(t.id);
+  const ghBtn = $("#m-gh-open");
+  if (ghBtn) ghBtn.onclick = () => {
+    const box = $("#m-gh"); box.hidden = !box.hidden; gh.pickFor = t.id;
+    if (!box.hidden) { box.innerHTML = ghHtml("pick"); if (!gh.entries && !gh.loading) ghGo(gh.path) }
+  };
   const dbxBtn = $("#m-dbx-open");
   if (dbxBtn) dbxBtn.onclick = () => {
     const box = $("#m-dbx"); box.hidden = !box.hidden; dbx.pickFor = t.id;
@@ -712,7 +1557,7 @@ function openCard(t, isNew = false) {
     const comments = (t.comments || []).slice();
     const ct = $("#m-comment")?.value.trim(); if (ct) comments.push({ text: ct, at: Date.now() });
     const n = { ...t, title, notes: $("#m-notes").value.trim(), important: $("#m-imp").checked, urgent: $("#m-urg").checked, status,
-      due: $("#m-due").value || "", area: $("#m-area").value, comments, updatedAt: Date.now(),
+      due: $("#m-due").value || "", time: $("#m-due").value ? $("#m-time").value || "" : "", endTime: $("#m-due").value && $("#m-time").value ? $("#m-end").value || "" : "", area: $("#m-area").value, comments, updatedAt: Date.now(),
       members: $("#m-members").value.split(",").map(s => s.trim()).filter(Boolean).slice(0, 8) };
     if (status !== t.status) n.order = nextOrder(status);
     if (status === "done" && t.status !== "done") n.doneAt = Date.now();
@@ -733,8 +1578,10 @@ function openMenu(btn) {
   const late = open.filter(t => dueInfo(t)?.cls === "late").length;
   $("#layer").innerHTML = `<div style="position:fixed;inset:0;z-index:14" data-close-menu></div>
   <div class="menu" style="top:${r.bottom + 6}px;right:max(12px, env(safe-area-inset-right, 0px))">
+    <h3>Darstellung</h3>
+    <div class="cal-mode" role="group" aria-label="Darstellung">${[["light", "Hell"], ["dark", "Dunkel"], ["system", "System"]].map(([k, l]) => `<button type="button" data-theme-set="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
     <h3>Hintergrund</h3>
-    <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
+    <div class="swatches">${Object.entries(BGS).map(([k, b]) => b.plain ? `<button class="sw plain" data-bg="${k}" aria-pressed="${meta.bg === k}">${b.name}</button>` : `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
     ${WEB ? `<h3>Calendly</h3><div class="stat">${calStatus === "ok" ? `Verbunden · ${calEvents.length} Termine im Kalender (letzte 30 Tage und nächste 90 Tage)` : calStatus === "no_token" ? "Noch nicht verbunden: Calendly-Schlüssel fehlt in Supabase." : calStatus === "error" ? "Calendly ist gerade nicht erreichbar." : "Wird geladen …"}</div>` : ""}
@@ -750,6 +1597,14 @@ function openMenu(btn) {
 document.addEventListener("click", e => {
   const tgt = e.target;
   const go = tgt.closest("[data-dbx-go]"); if (go) { dbxGo(go.dataset.dbxGo); return }
+  const gg = tgt.closest("[data-gh-go]"); if (gg) { ghGo(gg.dataset.ghGo); return }
+  const gl = tgt.closest("[data-gh-link]");
+  if (gl) {
+    gl.disabled = true;
+    filesCol.doc(newId()).set({ kind: "github", url: gl.dataset.ghLink, name: gl.dataset.ghName, path: gl.dataset.ghPath, repo: gh.repo, taskId: gh.pickFor, createdAt: Date.now() })
+      .then(() => { toast("Mit der Karte verknüpft"); if (WEB) scheduleReload(0) }, writeErr);
+    return;
+  }
   const lk = tgt.closest("[data-dbx-link]");
   if (lk) { lk.disabled = true; linkDropbox(lk.dataset.dbxLink, lk.dataset.dbxName, lk.dataset.dbxSize, dbx.pickFor); return }
   const fd = tgt.closest("[data-file-del]");
@@ -762,7 +1617,7 @@ document.addEventListener("click", e => {
   const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
   if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
   if (tgt.closest("#layer")) return;
-  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); return }
+  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); return }
   if (tgt.closest("#btn-menu")) { openMenu(tgt.closest("#btn-menu")); return }
   if (tgt.closest("#btn-star")) { if (!readOnly) saveMeta({ starred: !meta.starred }); return }
   if (tgt.closest("#board-title") && !readOnly) {
@@ -781,10 +1636,30 @@ document.addEventListener("click", e => {
     toast("Nach Priorität sortiert"); return;
   }
   const nd = tgt.closest("[data-new-due]"); if (nd) { openCard(blank({ due: nd.dataset.newDue, status: "todo", order: nextOrder("todo") }), true); return }
+  const calItem = view === "cal" && tgt.closest(".week [data-id], .cal [data-id]");
+  if (calItem) {
+    // the first click re-renders the grid, so the browser never sees a double click: detect it here
+    const id = calItem.dataset.id, now = Date.now(), dbl = lastCalClick.id === id && now - lastCalClick.t < 450;
+    lastCalClick = { id, t: dbl ? 0 : now };
+    if (dbl) { const t = tasks.find(x => x.id === id); if (t) openCard(t); return }
+    calSel = id; calSlot = null; render(); return;
+  }
   const card = tgt.closest("[data-id]"); if (card) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openCard(t) ; return }
-  if (tgt.id === "cal-prev") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() - 1, 1); render() }
-  if (tgt.id === "cal-next") { calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + 1, 1); render() }
-  if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); render() }
+  const sd = tgt.closest("[data-days]"); if (sd) { stats.days = Number(sd.dataset.days); stats.data = null; loadStats(); return }
+  if (tgt.closest("[data-stats-reload]")) { loadStats(); return }
+  const cm = tgt.closest("[data-calmode]");
+  if (cm) { calMode = cm.dataset.calmode; try { localStorage.setItem("flow-board-calmode", calMode) } catch {} ; if (calMode === "week") weekStart = mondayOf(calCursor.getMonth() === new Date().getMonth() ? new Date() : calCursor); else calCursor = new Date(weekStart.getFullYear(), weekStart.getMonth(), 1); render(); return }
+  const step = d => { if (calMode === "week") { weekStart = new Date(weekStart); weekStart.setDate(weekStart.getDate() + 7 * d) } else calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + d, 1); render() };
+  if (tgt.id === "cal-prev") step(-1);
+  if (tgt.id === "cal-next") step(1);
+  if (tgt.id === "cal-today") { calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1); weekStart = mondayOf(new Date()); render() }
+  const wc = tgt.closest(".wcol");
+  if (wc && tgt === wc && !readOnly) {
+    const r = wc.getBoundingClientRect(), m = Math.max(H0 * 60, Math.min(H1 * 60 - 30, Math.floor((H0 * 60 + (e.clientY - r.top) / r.height * H_SPAN) / 30) * 30));
+    calSlot = { day: wc.dataset.day, m }; calSel = null; render(); return;
+  }
+  const dc = view === "cal" && !readOnly && tgt.closest(".cal .day");
+  if (dc && !tgt.closest("button, a")) { calSlot = { day: dc.dataset.day, m: null }; calSel = null; render() }
 });
 document.addEventListener("submit", e => {
   const f = e.target.closest("[data-compose]"); if (!f) return;
@@ -800,6 +1675,7 @@ document.addEventListener("keydown", e => {
 });
 
 document.addEventListener("change", e => {
+  if (e.target.matches?.("[data-gh-repo]")) { gh.repo = e.target.value; ghGo("", e.target.value); return }
   const inp = e.target.closest?.("[data-upload]"); if (!inp || !inp.files?.length) return;
   const list = [...inp.files], taskId = inp.dataset.upload;
   inp.value = "";
@@ -826,7 +1702,7 @@ document.addEventListener("drop", e => {
 }, true);
 
 // Card drag & drop with pointer events: works with mouse, pen and touch (long press), in every browser.
-const drag = { el: null, id: null, ghost: null, sx: 0, sy: 0, ox: 0, oy: 0, active: false, pending: false, timer: null, lastZone: null, x: 0, y: 0, raf: 0 };
+const drag = { el: null, id: null, ghost: null, sx: 0, sy: 0, ox: 0, oy: 0, active: false, pending: false, timer: null, lastZone: null, x: 0, y: 0, raf: 0, snapM: null, isWev: false };
 let suppressClick = false, renderQueued = false;
 const clearOver = () => document.querySelectorAll(".over").forEach(x => x.classList.remove("over"));
 function zoneAt(x, y) { const el = document.elementFromPoint(x, y); return el?.closest?.("[data-drop]") || null }
@@ -834,7 +1710,8 @@ function startDrag() {
   const r = drag.el.getBoundingClientRect();
   drag.ox = drag.sx - r.left; drag.oy = drag.sy - r.top;
   const g = drag.el.cloneNode(true);
-  g.classList.add("drag-ghost"); g.style.width = r.width + "px"; g.style.left = r.left + "px"; g.style.top = r.top + "px";
+  g.classList.add("drag-ghost"); g.style.width = r.width + "px"; g.style.height = r.height + "px"; g.style.left = r.left + "px"; g.style.top = r.top + "px";
+  drag.isWev = drag.el.classList.contains("wev"); if (drag.isWev) g.classList.add("wev-ghost");
   document.body.appendChild(g); drag.ghost = g;
   drag.el.classList.add("dragging"); drag.active = true; document.body.classList.add("is-dragging");
 }
@@ -862,20 +1739,32 @@ document.addEventListener("pointermove", e => {
     if (moved < 5) return;
     startDrag(); autoScroll();
   }
-  drag.ghost.style.left = (e.clientX - drag.ox) + "px"; drag.ghost.style.top = (e.clientY - drag.oy) + "px";
   const z = zoneAt(e.clientX, e.clientY);
+  drag.ghost.classList.toggle("copying", !!(e.ctrlKey || e.altKey || e.metaKey));
+  if (drag.isWev && z?.dataset.drop.startsWith("wday:")) {
+    // snap the preview into the day column on a 15-minute grid, keeping where the appointment was grabbed
+    const r = z.getBoundingClientRect(), t = tasks.find(x => x.id === drag.id);
+    const dur = t?.time && t?.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+    const m = Math.max(H0 * 60, Math.min(H1 * 60 - 15, snap15(H0 * 60 + (e.clientY - drag.oy - r.top) / r.height * H_SPAN)));
+    drag.snapM = m;
+    Object.assign(drag.ghost.style, { left: r.left + 2 + "px", width: r.width - 4 + "px", top: r.top + pctOf(m) / 100 * r.height + "px" });
+    drag.ghost.querySelector("b").textContent = fromMin(m) + "–" + fromMin(Math.min(m + dur, 24 * 60 - 1));
+  } else {
+    drag.snapM = null;
+    drag.ghost.style.left = (e.clientX - drag.ox) + "px"; drag.ghost.style.top = (e.clientY - drag.oy) + "px";
+  }
   if (z !== drag.lastZone) { clearOver(); z?.classList.add("over"); drag.lastZone = z }
 });
 document.addEventListener("touchmove", e => { if (drag.active) e.preventDefault() }, { passive: false });
 function endDrag(e, cancel) {
   clearTimeout(drag.timer); cancelAnimationFrame(drag.raf);
-  const wasActive = drag.active, id = drag.id;
+  const wasActive = drag.active, id = drag.id, snapM = drag.snapM, copy = !!(e.ctrlKey || e.altKey || e.metaKey);
   drag.ghost?.remove(); drag.el?.classList.remove("dragging"); document.body.classList.remove("is-dragging");
   clearOver();
-  Object.assign(drag, { el: null, ghost: null, active: false, pending: false, lastZone: null });
+  Object.assign(drag, { el: null, ghost: null, active: false, pending: false, lastZone: null, snapM: null, isWev: false });
   if (!wasActive) return;
   suppressClick = true; setTimeout(() => suppressClick = false, 0);
-  if (!cancel) dropOn(zoneAt(e.clientX, e.clientY), id, e.clientY);
+  if (!cancel) dropOn(zoneAt(e.clientX, e.clientY), id, e.clientY, { snapM, copy });
   if (renderQueued) { renderQueued = false; render() }
 }
 document.addEventListener("pointerup", e => endDrag(e, false));
@@ -891,9 +1780,9 @@ document.addEventListener("click", e => {
 document.addEventListener("click", e => { if (suppressClick) { e.stopPropagation(); e.preventDefault() } }, true);
 document.addEventListener("keydown", e => {
   const el = e.target.closest?.("#main [data-id]");
-  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); el.click() }
+  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); const t = el.closest(".week, .cal") && tasks.find(x => x.id === el.dataset.id); t ? openCard(t) : el.click() }
 });
-function dropOn(z, id, clientY) {
+function dropOn(z, id, clientY, opts = {}) {
   if (!z) return;
   const [kind, val] = z.dataset.drop.split(":");
   if (kind === "status") {
@@ -909,12 +1798,22 @@ function dropOn(z, id, clientY) {
     });
   }
   if (kind === "quad") { const q = QUADS.find(x => x.p === Number(val)); patchTask(id, { important: q.imp, urgent: q.urg }) }
-  if (kind === "due") patchTask(id, { due: val || "" });
+  if (kind === "due") { if (opts.copy && val) { const t = tasks.find(x => x.id === id); if (t) { const c = cloneTask(t, { due: val }); calSel = c.id; render(); toast("Kopie angelegt") } } else patchTask(id, { due: val || "" }) }
+  // calendar drops move the appointment; with Ctrl/Alt/Cmd held they place a copy (like Outlook)
+  const place = patch => { const t = tasks.find(x => x.id === id); if (!t) return;
+    if (opts.copy) { const c = cloneTask(t, patch); calSel = c.id; render(); toast("Kopie angelegt") } else { calSel = id; patchTask(id, patch) } };
+  if (kind === "allday") place({ due: val, time: "", endTime: "" });
+  if (kind === "wday") {
+    const t = tasks.find(x => x.id === id), r = z.getBoundingClientRect();
+    const m = opts.snapM ?? Math.max(H0 * 60, Math.min(H1 * 60 - 15, snap15(H0 * 60 + (clientY - r.top) / r.height * H_SPAN)));
+    const dur = t?.time && t?.endTime ? toMin(t.endTime) - toMin(t.time) : 60;
+    place({ due: val, time: fromMin(m), endTime: fromMin(Math.min(m + dur, 24 * 60 - 1)) });
+  }
 }
 
 if (DEMO) $("#demo-pill").hidden = false;
-document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
-try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files"].includes(v)) view = v } catch {}
+document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "flow" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
 function seedDemo() {
@@ -993,7 +1892,7 @@ async function loadCalendly() {
 }
 async function reloadBoard() {
   const j = await api("load");
-  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask);
+  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask); fin = (j.finance || []).map(rowToTask);
   if (j.meta) meta = { ...meta, ...j.meta };
   loaded = true; applyBackground();
   if (!$("#layer").innerHTML) render(); else { renderBar(); const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
@@ -1014,7 +1913,7 @@ async function startBoard() {
     set: data => api("upsert", { table: name, id, data }).then(ping),
     delete: () => api("delete", { table: name, id }).then(ping),
   }) });
-  tasksCol = table("tasks"); filesCol = table("files");
+  tasksCol = table("tasks"); filesCol = table("files"); finCol = table("finance");
   metaDoc = { set: data => api("meta", { data }).then(ping) };
   assetsApi = {
     upload: async (f, { type }) => {
@@ -1063,6 +1962,8 @@ document.addEventListener("click", async e => {
   tasksCol = db.collection("tasks");
   metaDoc = db.doc("board/meta");
   metaDoc.onSnapshot(s => { if (s.exists) { meta = { ...meta, ...s.data() }; applyBackground(); renderBar() } }, () => {});
+  finCol = db.collection("finance");
+  finCol.onSnapshot(s => { fin = s.docs.map(d => ({ id: d.id, ...d.data() })); if (view === "fin" && !$("#layer").innerHTML) render() }, () => {});
   filesCol = db.collection("files");
   filesCol.onSnapshot(s => {
     files = s.docs.map(d => ({ id: d.id, ...d.data() }));

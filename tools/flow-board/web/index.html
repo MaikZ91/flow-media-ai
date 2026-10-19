@@ -411,7 +411,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; 
   <button class="bbtn plain hide-sm" id="btn-star" aria-label="Board markieren"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
   <span class="chip-priv hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
   <span class="avatars" id="board-people"></span>
-  <span class="bbtn" id="demo-pill" hidden>Demo · Änderungen bleiben bei dir</span>
+  <span class="chip-priv" id="demo-pill" hidden title="Demo: Deine Änderungen bleiben in deinem Browser">Demo</span>
   <span class="spacer"></span>
   <nav class="tabs" aria-label="Ansichten">
   <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg><span class="hide-sm">Board</span></button>
@@ -1316,7 +1316,9 @@ function finNote() {
   </div>`;
 }
 function renderFin() {
-  const tabs = [["business", "Buchungen"], ["invoices", "Rechnungen"], ["private", "Privat & Backup"], ["note", "Notiz & Vorlagen"]];
+  // course notes and templates are private, so the shareable demo leaves that tab out
+  const tabs = [["business", "Buchungen"], ["invoices", "Rechnungen"], ["private", "Privat & Backup"], ...(DEMO ? [] : [["note", "Notiz & Vorlagen"]])];
+  if (DEMO && finUi.tab === "note") finUi.tab = "business";
   const body = { business: finBusiness, invoices: finInvoices, private: finPrivate, note: finNote }[finUi.tab] || finBusiness;
   return `<section class="panel stats"><div class="cal-head"><h2 style="margin:0">Finanzen</h2>
       <span class="cal-mode" role="group" aria-label="Bereich">${tabs.map(([k, l]) => `<button type="button" data-fin-tab="${k}" aria-pressed="${finUi.tab === k}">${l}</button>`).join("")}</span></div>
