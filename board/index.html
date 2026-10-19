@@ -4,46 +4,46 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Onyx: black-first. Lists and panels as quiet graphite planes on a near-black ground, brass as the single accent,
-   Instrument Serif for names and big numbers, Geist for the interface, Geist Mono for counts and times. */
+/* Flow Media AI brand, same system as the landing page: calm off-white ground, Flow blue as the only accent,
+   Bricolage Grotesque for the wordmark, titles and big numbers, IBM Plex Sans for the interface, Plex Mono for labels and times.
+   Layout: white header with logo and view tabs; lists as soft columns with white cards; views as white panels. */
 :root {
-  --bg: #0b0b0c; --list: #131315; --card: #1b1b1e; --modal: #151517; --hover: #252428; --line: #2b2a2e;
-  --ink: #ecebe8; --muted: #a8a59e; --faint: #7a7771;
-  --accent: #c9a66b; --accent-ink: #15120c;
-  --bar: rgba(9, 9, 10, .74); --bar-ink: #ecebe8; --bar-press: #0b0b0c; --scrim: rgba(0, 0, 0, .68);
-  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #141210; --label-ink: #141210;
-  --toast-bg: #ecebe8; --toast-ink: #141414; --toast-act: #7a5a22;
-  --c-in: #5b7cf5; --c-out: #c98118;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .45); --lift: 0 24px 60px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .05);
-  color-scheme: dark;
+  --bg: #f6f6f2; --list: #ecede7; --card: #ffffff; --modal: #ffffff; --hover: #eef0ea; --line: #dfe1db;
+  --ink: #121512; --muted: #5b625c; --faint: #7c837d;
+  --accent: #2f5bff; --accent-ink: #ffffff; --soft: #e8ecff;
+  --bar: #ffffff; --bar-ink: #121512; --scrim: rgba(18, 21, 18, .45);
+  --red: #c9372c; --red-soft: #ffe2df; --ok: #1f845a; --warn: #e2b203; --on-status: #ffffff; --label-ink: #121512;
+  --toast-bg: #121512; --toast-ink: #f6f6f2; --toast-act: #9db0ff;
+  --c-in: #2f5bff; --c-out: #d97706;
+  --shadow: 0 1px 2px rgba(18, 21, 18, .06); --lift: 0 24px 48px -12px rgba(18, 21, 18, .28), 0 0 0 1px rgba(18, 21, 18, .06);
   --l1: #f87168; --l2: #fea362; --l3: #e2b203; --l4: #8590a2;
   --la: #6cc3e0; --lb: #94c748; --lc: #9f8fef; --ld: #e774bb; --le: #579dff; --lf: #4bce97; --lg: #b38600;
-  --f-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --f-body: "Geist", -apple-system, "Segoe UI", system-ui, sans-serif;
-  --f-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
-  --bg: #e9e8e5; --list: #f6f6f4; --card: #ffffff; --modal: #fbfbfa; --hover: #edece8; --line: #dedcd7;
-  --ink: #18171a; --muted: #57545c; --faint: #7f7b84;
-  --accent: #8a672b; --accent-ink: #ffffff;
-  --bar: rgba(12, 12, 14, .8); --bar-ink: #f4f3f0; --bar-press: #0b0b0c; --scrim: rgba(12, 12, 14, .5);
-  --red: #b4382c; --red-soft: #fbe1dd; --ok: #2e7d57; --warn: #e2b203; --on-status: #ffffff; --label-ink: #18171a;
-  --toast-bg: #18171a; --toast-ink: #f4f3f0; --toast-act: #d8b67c;
-  --c-in: #2f5bff; --c-out: #d97706;
-  --shadow: 0 1px 2px rgba(20, 18, 14, .08); --lift: 0 24px 60px rgba(20, 18, 14, .22), 0 0 0 1px rgba(20, 18, 14, .06);
-  color-scheme: light } }
-:root[data-theme="light"] {
-  --bg: #e9e8e5; --list: #f6f6f4; --card: #ffffff; --modal: #fbfbfa; --hover: #edece8; --line: #dedcd7;
-  --ink: #18171a; --muted: #57545c; --faint: #7f7b84;
-  --accent: #8a672b; --accent-ink: #ffffff;
-  --bar: rgba(12, 12, 14, .8); --bar-ink: #f4f3f0; --bar-press: #0b0b0c; --scrim: rgba(12, 12, 14, .5);
-  --red: #b4382c; --red-soft: #fbe1dd; --ok: #2e7d57; --warn: #e2b203; --on-status: #ffffff; --label-ink: #18171a;
-  --toast-bg: #18171a; --toast-ink: #f4f3f0; --toast-act: #d8b67c;
-  --c-in: #2f5bff; --c-out: #d97706;
-  --shadow: 0 1px 2px rgba(20, 18, 14, .08); --lift: 0 24px 60px rgba(20, 18, 14, .22), 0 0 0 1px rgba(20, 18, 14, .06);
-  color-scheme: light }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1210; --list: #151916; --card: #1b201c; --modal: #171b18; --hover: #232924; --line: #2a302b;
+  --ink: #ecefea; --muted: #a3aba4; --faint: #7d857e;
+  --accent: #7d97ff; --accent-ink: #0f1210; --soft: #1d2440;
+  --bar: #131714; --bar-ink: #ecefea; --scrim: rgba(0, 0, 0, .6);
+  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #0f1210; --label-ink: #121512;
+  --toast-bg: #ecefea; --toast-ink: #0f1210; --toast-act: #2f5bff;
+  --c-in: #5b7cf5; --c-out: #c98118;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --lift: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .05);
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1210; --list: #151916; --card: #1b201c; --modal: #171b18; --hover: #232924; --line: #2a302b;
+  --ink: #ecefea; --muted: #a3aba4; --faint: #7d857e;
+  --accent: #7d97ff; --accent-ink: #0f1210; --soft: #1d2440;
+  --bar: #131714; --bar-ink: #ecefea; --scrim: rgba(0, 0, 0, .6);
+  --red: #f0897d; --red-soft: #3b1d1a; --ok: #6cc59a; --warn: #e2b85a; --on-status: #0f1210; --label-ink: #121512;
+  --toast-bg: #ecefea; --toast-ink: #0f1210; --toast-act: #2f5bff;
+  --c-in: #5b7cf5; --c-out: #c98118;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --lift: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .05);
+  color-scheme: dark }
 
 * { box-sizing: border-box }
 html, body { height: 100% }
@@ -309,94 +309,103 @@ body.is-dragging .card-del { display: none }
 }
 @media (prefers-reduced-motion: no-preference) { .card { transition: transform .1s ease } }
 
-/* ---------- Onyx style layer (overrides the base rules above) ---------- */
+/* ---------- Flow Media AI brand layer (overrides the base rules above) ---------- */
 * { scrollbar-width: thin; scrollbar-color: var(--line) transparent }
-body { background: var(--bg); font: 13.5px/1.45 var(--f-body); -webkit-font-smoothing: antialiased }
+body { background: var(--bg); font: 14px/1.45 var(--f-body); -webkit-font-smoothing: antialiased }
 #bg { background-color: var(--bg) }
-.bar { backdrop-filter: blur(14px) saturate(1.15); border-bottom: 1px solid color-mix(in srgb, var(--bar-ink) 9%, transparent); padding-block: 9px }
-.bbtn { background: transparent; border: 1px solid color-mix(in srgb, var(--bar-ink) 16%, transparent); border-radius: 999px; padding: 5px 13px; font-size: 13px }
-.bbtn:hover { background: color-mix(in srgb, var(--bar-ink) 9%, transparent) }
-.bbtn[aria-pressed="true"] { background: var(--bar-ink); border-color: var(--bar-ink); color: var(--bar-press) }
-.bbtn.plain { border-color: transparent }
-.title { font: 400 25px/1.1 var(--f-display); letter-spacing: .005em }
-.title:hover { background: color-mix(in srgb, var(--bar-ink) 9%, transparent) }
-.title-input { font: 400 22px var(--f-display); color: var(--ink); background: var(--card) }
-.sep { background: color-mix(in srgb, var(--bar-ink) 16%, transparent) }
-.av { border-color: color-mix(in srgb, var(--bar-ink) 70%, transparent); color: #fff }
+header.bar { background: var(--bar); color: var(--bar-ink); backdrop-filter: none; border-bottom: 1px solid var(--line); gap: 10px; padding-block: 10px }
+.logo { font: 800 20px/1 var(--f-display); letter-spacing: -.02em; white-space: nowrap; padding-inline: 4px 2px }
+.logo span { color: var(--accent) }
+.sep { background: var(--line); height: 22px }
+.title { font: 600 14px/1.2 var(--f-body); color: var(--muted); padding: 6px 8px; max-width: 40vw }
+.title:hover { background: var(--hover); color: var(--ink) }
+.title-input { font: 600 14px var(--f-body); color: var(--ink); background: var(--card); border: 1px solid var(--accent) }
+.bbtn { background: transparent; border: 0; color: var(--muted); border-radius: 999px; padding: 7px 12px; font-size: 13.5px }
+.bbtn:hover { background: var(--hover); color: var(--ink) }
+.bbtn[aria-pressed="true"] { background: var(--soft); color: var(--accent); font-weight: 600 }
+.bbtn.plain:hover { background: var(--hover) }
+.chip-priv { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font: 500 12px var(--f-body); color: var(--muted) }
+.chip-priv svg.i { width: 13px; height: 13px }
+.tabs { display: flex; gap: 2px; align-items: center; overflow-x: auto; scrollbar-width: none; min-width: 0 }
+.av { border-color: var(--bar); color: #fff }
 
-.surface { gap: 14px; padding-block: 16px 18px }
-.list { background: color-mix(in srgb, var(--list) 90%, transparent); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 16px; box-shadow: none }
-.list-head { padding: 12px 10px 8px 16px }
-.list-head h2 { font: 600 11px/1.2 var(--f-body); text-transform: uppercase; letter-spacing: .1em; color: var(--muted) }
-.cards { padding: 2px 10px; gap: 7px }
-.cards.over { background: color-mix(in srgb, var(--accent) 10%, transparent); border-radius: 10px }
+.surface { gap: 14px; padding-block: 18px 20px }
+.list { background: var(--list); border-radius: 14px; box-shadow: none }
+.list-head { padding: 12px 10px 8px 14px }
+.list-head h2 { font: 700 15px/1.2 var(--f-display); letter-spacing: -.01em }
+.list-head .n { font: 500 11.5px var(--f-mono); color: var(--muted); background: var(--card); border-radius: 999px; padding: 1px 8px }
+.cards.over { background: var(--soft); border-radius: 10px }
 .card { border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 9px 11px 7px }
-.card:hover { outline: 0; border-color: color-mix(in srgb, var(--accent) 60%, var(--line)) }
+.card:hover { outline: 0; border-color: var(--accent) }
 .card .t { font-size: 13.5px; line-height: 1.35 }
 .drag-ghost { box-shadow: var(--lift) }
 .lab { height: 6px; border-radius: 3px }
 .labels.wide .lab, .pill, .badge.soon, .chipbtn.open { color: var(--label-ink) }
 .badge.late { color: var(--on-status) } .badge.done { background: var(--ok); color: var(--on-status) } .badge.soon { background: var(--warn) }
+.add:hover { background: color-mix(in srgb, var(--card) 70%, transparent) }
 .composer textarea { border: 1px solid var(--line); box-shadow: none }
-.btn { background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 6px 15px }
-.btn:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink)) }
-.ghost, .mini { border-radius: 999px; background: transparent }
+.btn { background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 7px 16px; font-weight: 600 }
+.btn:hover { background: color-mix(in srgb, var(--accent) 88%, var(--ink)) }
+.ghost, .mini { border-radius: 999px; background: var(--card) }
 .ghost:hover { background: var(--hover) }
 .fin-form input, .fin-form select, .fl input, .fl select, .sec textarea, .sec input, .side select, .side input, .inv-item input, .composer textarea { border-radius: 8px }
-input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent) }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent) }
 
-.panel { background: color-mix(in srgb, var(--list) 93%, transparent); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 16px; box-shadow: none; padding: 16px }
-.cal-head h2, .fpanel h2, .stats h2, .quad h2 { font: 400 28px/1.1 var(--f-display); letter-spacing: .003em }
-.fpanel h2 { font-size: 24px }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 18px }
+.panel .panel { box-shadow: none; padding: 14px 16px }
+.cal-head h2, .fpanel h2, .stats h2, .quad h2 { font: 700 26px/1.1 var(--f-display); letter-spacing: -.02em }
+.fpanel h2, .quad h2 { font-size: 20px }
 .quad { border-top-width: 3px }
-.spanel h3, .undated h3, .sec h3, .menu h3 { font: 600 11px/1.3 var(--f-body); text-transform: uppercase; letter-spacing: .09em; color: var(--muted) }
-.kpis { gap: 12px }
-.kpi { border: 1px solid var(--line); box-shadow: none; border-radius: 12px; padding: 14px 16px 12px; gap: 4px }
-.kpi .kl { font: 600 10.5px/1.3 var(--f-body); text-transform: uppercase; letter-spacing: .09em; color: var(--faint) }
-.kpi b { font: 400 36px/1.05 var(--f-display); letter-spacing: -.005em; font-variant-numeric: lining-nums }
+.spanel h3, .undated h3, .sec h3, .menu h3 { font: 500 11.5px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+.kpi { background: var(--bg); border: 1px solid var(--line); box-shadow: none; border-radius: 12px; padding: 14px 16px 12px; gap: 4px }
+.kpi .kl { font: 500 11px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--muted) }
+.kpi b { font: 700 30px/1.1 var(--f-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums }
 .kd.up { color: var(--ok) }
 .mbar { height: 6px; border-radius: 3px } .mbar.warn i { background: var(--warn) }
 .chart .tip { background: var(--ink); color: var(--bg); border-radius: 8px }
-span.enl { color: var(--bg) }
-.cal-mode { border-radius: 999px; padding: 2px; gap: 2px; background: var(--card) }
+.cal-mode { border: 1px solid var(--line); border-radius: 999px; padding: 2px; gap: 2px; background: var(--bg) }
 .cal-mode button { background: transparent; border-radius: 999px; padding: 4px 13px }
-.cal-mode button[aria-pressed="true"] { background: var(--ink); color: var(--bg) }
-.cal { border-radius: 12px }
+.cal-mode button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); font-weight: 600 }
+.cal, .week { border-radius: 12px }
 .day.today .dn span { background: var(--accent); color: var(--accent-ink) }
 .wk-head .today { color: var(--accent) }
-.wcol.today { background-color: color-mix(in srgb, var(--accent) 6%, transparent) }
-.week { border-radius: 12px }
+.wcol.today { background-color: color-mix(in srgb, var(--accent) 5%, transparent) }
 
-.scrim { backdrop-filter: blur(3px) }
-.modal { border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 18px }
-.mtitle { font: 400 27px/1.15 var(--f-display) }
+.modal { background: var(--modal); border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 18px }
+.mtitle { font: 700 24px/1.2 var(--f-display); letter-spacing: -.02em }
 .menu { border: 1px solid var(--line); box-shadow: var(--lift); border-radius: 16px; width: 290px; padding: 14px; gap: 10px }
 .menu .cal-mode { margin-left: 0; align-self: flex-start }
 .sw { border-radius: 8px }
+.sw.plain { background: var(--bg); color: var(--ink); text-shadow: none; border-color: var(--line) }
+.sw.plain[aria-pressed="true"] { border-color: var(--accent) }
 .frow { border: 1px solid var(--line); box-shadow: none; border-radius: 10px }
 .dropzone { border-width: 1px; border-radius: 12px }
-.dropzone.over { background: color-mix(in srgb, var(--accent) 8%, transparent) }
-.note { background: color-mix(in srgb, var(--hover) 70%, transparent); border: 1px solid var(--line) }
+.dropzone.over { background: var(--soft) }
+.note { background: var(--bg); border: 1px solid var(--line) }
 .toast { background: var(--toast-bg); color: var(--toast-ink); border-radius: 999px; padding: 9px 18px; box-shadow: var(--lift) }
 .toast-act { color: var(--toast-act) }
-.toast-act:hover { background: color-mix(in srgb, var(--toast-ink) 10%, transparent) }
+.toast-act:hover { background: color-mix(in srgb, var(--toast-ink) 12%, transparent) }
+@media (max-width: 700px) { header.bar { gap: 6px } .chip-priv { display: none } .logo { font-size: 18px } .title { max-width: 46vw } .tabs { order: 5; flex: 1 1 100%; justify-content: space-between } }
 </style>
 
 <div id="bg"></div>
 <header class="bar">
-  <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg>Board</button>
+  <span class="logo" role="img" aria-label="Flow Media AI">Flow Media <span>AI</span></span>
+  <span class="sep"></span>
   <span id="title-slot"><button class="title" id="board-title" title="Board umbenennen">FLOW MEDIA AI #general</button></span>
   <button class="bbtn plain hide-sm" id="btn-star" aria-label="Board markieren"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
-  <span class="bbtn hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
+  <span class="chip-priv hide-sm"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privat</span>
   <span class="avatars" id="board-people"></span>
   <span class="bbtn" id="demo-pill" hidden>Demo · Änderungen bleiben bei dir</span>
   <span class="spacer"></span>
+  <nav class="tabs" aria-label="Ansichten">
+  <button class="bbtn" id="btn-board" aria-pressed="false" data-view="board"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg><span class="hide-sm">Board</span></button>
   <button class="bbtn" data-view="matrix" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span class="hide-sm">Prioritäten</span></button>
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
   <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
   <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
-  <span class="sep hide-sm"></span>
+  </nav>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
 </header>
 <main class="surface" id="main"></main>
@@ -432,7 +441,7 @@ const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August",
 const MON_S = ["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."];
 const DOW = ["Mo","Di","Mi","Do","Fr","Sa","So"];
 const BGS = {
-  onyx:  { name: "Onyx",  stops: [[0, "#050506"], [.45, "#0b0b0d"], [.72, "#141317"], [.88, "#1d1a16"], [1, "#2b241a"]] },
+  flow:  { name: "Flow",  plain: true },
   meer:  { name: "Meer",  stops: [[0, "#0d3f4a"], [.35, "#1d6f78"], [.55, "#3c9a98"], [.7, "#7fbfb0"], [.82, "#c7b48f"], [1, "#8a6a4a"]] },
   fels:  { name: "Fels",  stops: [[0, "#3a3430"], [.4, "#6b5d52"], [.65, "#a38d77"], [.85, "#cdbca5"], [1, "#efe6d8"]] },
   wald:  { name: "Wald",  stops: [[0, "#13261c"], [.4, "#2c4a32"], [.65, "#4f7a4c"], [.85, "#9cb27a"], [1, "#d8d6a6"]] },
@@ -443,10 +452,10 @@ const BGS = {
 
 let tasks = [];
 const THEME_KEY = "flow-board-theme";
-const themePref = () => { try { return localStorage.getItem(THEME_KEY) || "dark" } catch { return "dark" } };
+const themePref = () => { try { return localStorage.getItem(THEME_KEY) || "system" } catch { return "system" } };
 function applyTheme(p = themePref()) { if (p === "system") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = p }
 applyTheme();
-let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "onyx", starred: false };
+let meta = { name: DEMO ? "Beispiel-Board" : "FLOW MEDIA AI #general", bg: "flow", starred: false };
 let view = "board";
 let calCursor = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let calMode = "week";  // "week" (hour grid) or "month"
@@ -528,7 +537,7 @@ const filesFor = id => files.filter(f => f.taskId === id).sort((a, b) => (a.crea
 
 /* ---------- background: generated photo-like texture per preset ---------- */
 function makeBackground(key) {
-  const p = BGS[key] || BGS.onyx;
+  const p = BGS[key]?.stops ? BGS[key] : BGS.meer;
   const W = 320, H = 200, c = document.createElement("canvas"); c.width = W; c.height = H;
   const ctx = c.getContext("2d"), img = ctx.createImageData(W, H);
   let seed = 0; for (const ch of key) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
@@ -559,7 +568,8 @@ function makeBackground(key) {
 }
 const bgCache = {};
 function applyBackground() {
-  const key = BGS[meta.bg] ? meta.bg : "onyx";
+  const key = BGS[meta.bg] ? meta.bg : "flow";
+  if (BGS[key].plain) { $("#bg").style.backgroundImage = "none"; return }
   bgCache[key] = bgCache[key] || makeBackground(key);
   $("#bg").style.backgroundImage = `url(${bgCache[key]})`;
   $("#bg").style.filter = "blur(.6px) saturate(1.05)";
@@ -1482,9 +1492,9 @@ function openMenu(btn) {
   $("#layer").innerHTML = `<div style="position:fixed;inset:0;z-index:14" data-close-menu></div>
   <div class="menu" style="top:${r.bottom + 6}px;right:max(12px, env(safe-area-inset-right, 0px))">
     <h3>Darstellung</h3>
-    <div class="cal-mode" role="group" aria-label="Darstellung">${[["dark", "Schwarz"], ["light", "Hell"], ["system", "System"]].map(([k, l]) => `<button type="button" data-theme-set="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
+    <div class="cal-mode" role="group" aria-label="Darstellung">${[["light", "Hell"], ["dark", "Dunkel"], ["system", "System"]].map(([k, l]) => `<button type="button" data-theme-set="${k}" aria-pressed="${themePref() === k}">${l}</button>`).join("")}</div>
     <h3>Hintergrund</h3>
-    <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
+    <div class="swatches">${Object.entries(BGS).map(([k, b]) => b.plain ? `<button class="sw plain" data-bg="${k}" aria-pressed="${meta.bg === k}">${b.name}</button>` : `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
     ${WEB ? `<h3>Calendly</h3><div class="stat">${calStatus === "ok" ? `Verbunden · ${calEvents.length} Termine im Kalender (letzte 30 Tage und nächste 90 Tage)` : calStatus === "no_token" ? "Noch nicht verbunden: Calendly-Schlüssel fehlt in Supabase." : calStatus === "error" ? "Calendly ist gerade nicht erreichbar." : "Wird geladen …"}</div>` : ""}
@@ -1689,7 +1699,7 @@ function dropOn(z, id, clientY) {
 }
 
 if (DEMO) $("#demo-pill").hidden = false;
-document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "onyx" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
+document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "flow" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
 try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
