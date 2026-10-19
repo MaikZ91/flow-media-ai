@@ -19,3 +19,7 @@ Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
     cp web/index.html ../../board/index.html
 
 Danach die Artifacts neu veröffentlichen. Live (GitHub Pages, Branch `main`, Ordner `/`): https://maikz91.github.io/flow-media-ai/board/
+
+## Server (Supabase Edge Function `flow-board`)
+Quelle: `supabase/flow-board/index.ts` – nach Änderungen per Supabase-MCP (`deploy_edge_function`) neu deployen.
+Secrets in Supabase → Edge Functions → Secrets: Calendly-Token (Name beginnt mit `CALENDLY`), optional `GITHUB_TOKEN` (für private Repos) und `GITHUB_REPOS` (z. B. `MaikZ91/flow-media-ai,MaikZ91/flow-media-ai-private`).

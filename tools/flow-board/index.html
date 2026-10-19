@@ -164,7 +164,7 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .stat { font-size: 12.5px; color: var(--muted) }
 
 /* files */
-.files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; min-height: 0 }
+.files-view { flex: 1; align-self: stretch; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; min-height: 0 }
 @media (max-width: 1000px) { .list { flex: 0 0 248px } .cal { min-width: 640px } }
 .fpanel { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 0 }
 .fpanel h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px }
@@ -330,6 +330,7 @@ const icon = {
   com: '<svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg>',
   clock: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   plus: '<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+  gh: '<svg class="i" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6 2.8 5.6 3.1 5.6 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg>',
   trash: '<svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg>',
   clip: '<svg class="i" viewBox="0 0 24 24"><path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></svg>',
   folder: '<svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
@@ -513,9 +514,9 @@ function render() {
 function fileRow(f, opts = {}) {
   const card = f.taskId ? tasks.find(t => t.id === f.taskId) : null;
   const isImg = f.kind === "asset" && (f.type || "").startsWith("image/");
-  const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" ? f.url : dbxWebUrl(f.path, false);
-  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
-  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
+  const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" || f.kind === "github" ? f.url : dbxWebUrl(f.path, false);
+  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "github" ? icon.gh : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
+  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "github" ? "GitHub · " + (f.repo || "") : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
   return `<div class="frow"><span class="ficon">${thumb}</span>
     <span style="min-width:0"><a class="fname" href="${esc(href)}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">${esc(meta)}</span></span>
     <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "asset" ? "Löschen" : "Lösen"}</button>`}</span></div>`;
@@ -534,7 +535,7 @@ function renderFiles() {
   return `<div class="files-view">
     <section class="panel fpanel">
       <h2>${icon.clip} Board-Ablage</h2>
-      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox.</p>
+      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. ${WEB ? "Alle Formate, auch Word, Excel und ZIP · bis 50 MB pro Datei." : "Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox."}</p>
       ${meter}
       ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">${DEMO ? "In der Demo ist die Dateiablage ausgeschaltet." : "Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude."}</div>` : "")}
       ${board.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Dateien. Tipp: Zieh eine Datei direkt auf eine Karte, dann hängt sie dort an.</p>`}
@@ -543,6 +544,11 @@ function renderFiles() {
       <h2>${icon.box} Dropbox</h2>
       <p class="sub">Dein Ordner ${esc(DBX_ROOT)}. Öffnen geht direkt in Dropbox; an Karten verknüpfst du Dateien im Kartenfenster.</p>
       <div id="dbx-browse">${dbxHtml("browse")}</div>
+    </section>
+    <section class="panel fpanel">
+      <h2>${icon.gh} GitHub</h2>
+      <p class="sub">Dateien aus deinen Repos. Öffnen geht direkt auf GitHub; an Karten verknüpfst du sie im Kartenfenster.</p>
+      <div id="gh-browse">${ghHtml("browse")}</div>
     </section>
   </div>`;
 }
@@ -578,6 +584,43 @@ function dbxHtml(mode) {
   }).join("");
   return `<div class="crumbs">${crumbs}<span style="flex:1"></span><a class="mini" href="${esc(dbxWebUrl(dbx.path, true))}" target="_blank" rel="noopener">In Dropbox öffnen</a></div>
     ${rows || `<p class="sub">Dieser Ordner ist leer.</p>`}${dbx.more ? `<p class="sub">Weitere Einträge vorhanden – öffne den Ordner in Dropbox.</p>` : ""}`;
+}
+// GitHub: listing goes through the flow-board gateway (token for private repos stays in Supabase)
+const gh = { repo: "", repos: [], path: "", entries: null, loading: false, error: null, pickFor: null };
+function ghHtml(mode) {
+  if (!WEB) return `<div class="note">GitHub ist in der Web-Version deines Boards verfügbar.</div>`;
+  if (gh.error) return `<div class="note">${esc(gh.error)}<button type="button" class="mini" data-gh-go="${esc(gh.path)}">Erneut versuchen</button></div>`;
+  if (!gh.entries && !gh.loading) return `<div class="note">Zeigt Ordner und Dateien aus deinem GitHub-Repo.<button type="button" class="mini" data-gh-go="">${icon.gh} GitHub anzeigen</button></div>`;
+  const parts = gh.path.split("/").filter(Boolean); let acc = "";
+  const repoSel = gh.repos.length > 1 ? `<select class="mini" data-gh-repo aria-label="Repo wählen">${gh.repos.map(r => `<option ${r === gh.repo ? "selected" : ""}>${esc(r)}</option>`).join("")}</select>` : `<strong>${esc(gh.repo)}</strong>`;
+  const crumbs = repoSel + `<button type="button" data-gh-go="">/</button>` + parts.map(p => { acc += (acc ? "/" : "") + p; return `<span>›</span><button type="button" data-gh-go="${esc(acc)}">${esc(p)}</button>` }).join("");
+  if (gh.loading) return `<div class="crumbs">${crumbs}</div><p class="sub">Lade …</p>`;
+  const rows = gh.entries.slice().sort((a, b) => (a.type === "file") - (b.type === "file") || a.name.localeCompare(b.name, "de")).map(e => {
+    const folder = e.type === "dir";
+    const linked = mode === "pick" && files.some(f => f.kind === "github" && f.url === e.html_url && f.taskId === gh.pickFor);
+    const action = folder ? `<button type="button" class="mini" data-gh-go="${esc(e.path)}">Öffnen</button>`
+      : mode === "pick" ? (linked ? `<span class="mini">Verknüpft</span>` : `<button type="button" class="mini" data-gh-link="${esc(e.html_url)}" data-gh-name="${esc(e.name)}" data-gh-path="${esc(e.path)}">Verknüpfen</button>`)
+      : `<a class="mini" href="${esc(e.html_url)}" target="_blank" rel="noopener">Auf GitHub</a>`;
+    return `<div class="frow"><span class="ficon">${folder ? icon.folder : esc(extOf(e.name).slice(0, 4))}</span>
+      <span style="min-width:0">${folder ? `<button type="button" class="fname" style="border:0;background:none;padding:0;text-align:left;width:100%" data-gh-go="${esc(e.path)}">${esc(e.name)}</button>` : `<a class="fname" href="${esc(e.html_url)}" target="_blank" rel="noopener">${esc(e.name)}</a>`}
+      <span class="fmeta">${folder ? "Ordner" : fmtSize(e.size)}</span></span><span class="fact">${action}</span></div>`;
+  }).join("");
+  return `<div class="crumbs">${crumbs}</div>${rows || `<p class="sub">Dieser Ordner ist leer.</p>`}`;
+}
+function refreshGh() {
+  const a = $("#gh-browse"); if (a) a.innerHTML = ghHtml("browse");
+  const b = $("#m-gh"); if (b && !b.hidden) b.innerHTML = ghHtml("pick");
+}
+async function ghGo(path, repo) {
+  gh.path = path; gh.loading = true; gh.error = null; refreshGh();
+  try {
+    const j = await api("gh_list", { path, repo: repo || gh.repo || undefined });
+    gh.entries = j.entries; gh.repo = j.repo; gh.repos = j.repos || [j.repo];
+  } catch (e) {
+    gh.entries = null;
+    gh.error = { not_found: "Diesen Ordner gibt es nicht – oder das Repo ist privat und der GitHub-Schlüssel fehlt in Supabase.", rate_limited: "GitHub begrenzt Abfragen ohne Schlüssel auf 60 pro Stunde. Später nochmal versuchen – oder einen GitHub-Schlüssel in Supabase hinterlegen." }[e.message] || "GitHub ist gerade nicht erreichbar.";
+  }
+  gh.loading = false; refreshGh();
 }
 function refreshDbx() {
   const a = $("#dbx-browse"); if (a) a.innerHTML = dbxHtml("browse");
@@ -666,7 +709,8 @@ function openCard(t, isNew = false) {
         ${isNew ? `<p style="margin:0;color:var(--muted);font-size:13px">Leg die Karte zuerst an, dann kannst du Dateien anhängen.</p>` : `
         <div id="m-att" style="display:flex;flex-direction:column;gap:6px"></div>
         ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} ${WEB ? "Link anhängen" : "Aus Dropbox verknüpfen"}</button>` : ""}</div>
-        <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>`}`}
+        <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>
+        ${WEB && filesCol ? `<div class="uprow"><button type="button" class="mini" id="m-gh-open">${icon.gh} Aus GitHub verknüpfen</button></div><div id="m-gh" hidden style="display:flex;flex-direction:column;gap:6px"></div>` : ""}`}`}
       </div>
       <div class="sec"><h3>${icon.com} Aktivität</h3>
         ${readOnly ? "" : `<textarea id="m-comment" placeholder="Kommentar schreiben …" style="min-height:56px" maxlength="2000"></textarea>`}
@@ -702,6 +746,11 @@ function openCard(t, isNew = false) {
   ["#m-imp", "#m-urg", "#m-area"].forEach(s => $(s).addEventListener("change", updLabels)); updLabels();
   $("#modal").dataset.task = t.id;
   if (!isNew) renderCardFiles(t.id);
+  const ghBtn = $("#m-gh-open");
+  if (ghBtn) ghBtn.onclick = () => {
+    const box = $("#m-gh"); box.hidden = !box.hidden; gh.pickFor = t.id;
+    if (!box.hidden) { box.innerHTML = ghHtml("pick"); if (!gh.entries && !gh.loading) ghGo(gh.path) }
+  };
   const dbxBtn = $("#m-dbx-open");
   if (dbxBtn) dbxBtn.onclick = () => {
     const box = $("#m-dbx"); box.hidden = !box.hidden; dbx.pickFor = t.id;
@@ -756,6 +805,14 @@ function openMenu(btn) {
 document.addEventListener("click", e => {
   const tgt = e.target;
   const go = tgt.closest("[data-dbx-go]"); if (go) { dbxGo(go.dataset.dbxGo); return }
+  const gg = tgt.closest("[data-gh-go]"); if (gg) { ghGo(gg.dataset.ghGo); return }
+  const gl = tgt.closest("[data-gh-link]");
+  if (gl) {
+    gl.disabled = true;
+    filesCol.doc(newId()).set({ kind: "github", url: gl.dataset.ghLink, name: gl.dataset.ghName, path: gl.dataset.ghPath, repo: gh.repo, taskId: gh.pickFor, createdAt: Date.now() })
+      .then(() => { toast("Mit der Karte verknüpft"); if (WEB) scheduleReload(0) }, writeErr);
+    return;
+  }
   const lk = tgt.closest("[data-dbx-link]");
   if (lk) { lk.disabled = true; linkDropbox(lk.dataset.dbxLink, lk.dataset.dbxName, lk.dataset.dbxSize, dbx.pickFor); return }
   const fd = tgt.closest("[data-file-del]");
@@ -806,6 +863,7 @@ document.addEventListener("keydown", e => {
 });
 
 document.addEventListener("change", e => {
+  if (e.target.matches?.("[data-gh-repo]")) { gh.repo = e.target.value; ghGo("", e.target.value); return }
   const inp = e.target.closest?.("[data-upload]"); if (!inp || !inp.files?.length) return;
   const list = [...inp.files], taskId = inp.dataset.upload;
   inp.value = "";
