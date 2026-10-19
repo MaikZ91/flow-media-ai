@@ -216,12 +216,16 @@ enc.stdin.close(); enc.wait()
 
 # audio: voice from the avatar video (if any) over ducked music; music alone otherwise
 if AVATAR:
-    cmd = ['ffmpeg', '-v', 'error', '-y', '-i', raw, '-i', AVATAR, '-ss', '11.5', '-i', MUSIC, '-filter_complex',
-           f'[1:a]loudnorm=I=-15:TP=-1.5[v];[2:a]volume=0.10,afade=t=out:st={total - 1.2}:d=1.2[m];[v][m]amix=inputs=2:duration=first:normalize=0[a]',
+    # normalise the voice in its own pass: loudnorm buffers ~3 s, inside the mix that cut off the last sentence
+    voice = OUT + '.voice.wav'
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', AVATAR, '-vn', '-af', 'loudnorm=I=-15:TP=-1.5', '-ar', '48000', voice], check=True)
+    cmd = ['ffmpeg', '-v', 'error', '-y', '-i', raw, '-i', voice, '-ss', '11.5', '-i', MUSIC, '-filter_complex',
+           f'[1:a]apad[v];[2:a]volume=0.10,afade=t=out:st={total - 1.2}:d=1.2[m];[v][m]amix=inputs=2:duration=longest:normalize=0[a]',
            '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', str(total), OUT]
 else:
     cmd = ['ffmpeg', '-v', 'error', '-y', '-i', raw, '-ss', '11.5', '-i', MUSIC, '-filter_complex',
            f'[1:a]volume=0.8,afade=t=in:d=0.3,afade=t=out:st={total - 1.2}:d=1.2[a]',
            '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', str(total), OUT]
 subprocess.run(cmd, check=True); os.remove(raw)
+if AVATAR: os.remove(voice)
 print(OUT, f'{total:.1f}s', i, 'frames')
