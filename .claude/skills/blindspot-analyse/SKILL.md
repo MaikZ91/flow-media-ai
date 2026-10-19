@@ -1,11 +1,11 @@
 ---
 name: blindspot-analyse
-description: Blindspot-Pass vor neuen Projekten von Maik (Flow Media AI). Nutzen, wenn Maik ein Projekt in einem Bereich umsetzen will, mit dem er sich noch nie beschäftigt hat, oder „Blindspot“, „Unknown Unknowns“, „was übersehe ich“ sagt. Findet zuerst die Unknown Unknowns, setzt nichts um, schreibt am Ende einen verbesserten Auftrag mit Reihenfolge und Plan-Stopp; bei visuellen Projekten folgen vier Designs zur Auswahl.
+description: Optionaler Blindspot-Pass vor Projekten von Maik (Flow Media AI). NUR laden, wenn Maik ihn ausdrücklich einschaltet (/blindspot-analyse, „Blindspot-Analyse“, „Blindspot-Pass“, „Unknown Unknowns“, „was übersehe ich“) oder der eingeschaltete Skill pruefer-agent ihn verlangt. Nicht von selbst vorschlagen oder starten. Findet zuerst die Unknown Unknowns, setzt nichts um, schreibt am Ende einen verbesserten Auftrag mit Reihenfolge und Plan-Stopp; bei visuellen Projekten folgen vier Designs zur Auswahl.
 ---
 
 # Blindspot-Analyse (Stand 19.10.2026, Vorgabe von Maik)
 
-Wenn Maik ein Projekt in einem für ihn neuen Bereich umsetzen will, **zuerst** dieser Pass. **Noch nichts umsetzen**, keine Dateien bauen, nichts deployen.
+**Optional:** Nur wenn Maik den Pass ausdrücklich verlangt (oder der eingeschaltete Skill `pruefer-agent` ihn vorsieht). Dann **zuerst** dieser Pass. **Noch nichts umsetzen**, keine Dateien bauen, nichts deployen.
 
 ## Ablauf
 

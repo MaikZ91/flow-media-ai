@@ -11,14 +11,13 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - Nichts erfinden: keine Kunden, Umsätze, Ergebnisse, Testimonials oder Erfahrungen, die nicht tatsächlich existieren. Fehlt eine Angabe, nachfragen oder als Platzhalter markieren.
 - Sprache für Inhalte: natürliches, modernes Deutsch.
 - Für alles rund um Instagram (@flow.media.ai) zuerst den Skill `creative-director` laden (`.claude/skills/creative-director/SKILL.md`).
-- Will Maik ein Projekt in einem für ihn neuen Bereich umsetzen, zuerst den Skill `blindspot-analyse` laden (`.claude/skills/blindspot-analyse/SKILL.md`): Unknown Unknowns finden, nichts umsetzen, verbesserten Auftrag mit Plan-Stopp schreiben.
 - Dieses Repo ist nur für Flow Media AI. THE TRIBE, Dating-Fotos und Arbeitgeber-Projekte gehören nicht hierher.
 
 ## Aufbau
 
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
-- `.claude/skills/blindspot-analyse/` – Blindspot-Pass vor neuen Projekten
+- `.claude/skills/blindspot-analyse/` – optional, nur wenn Maik ihn einschaltet: Blindspot-Pass vor neuen Projekten
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
