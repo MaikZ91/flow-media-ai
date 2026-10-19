@@ -35,9 +35,9 @@ Im Flow Board unter **Finanzen → Notiz**. Die Bestandsaufnahme und das Backup 
 - [ ] Finanzielle Bestandsaufnahme (E/N/L)
 - [ ] Monatlichen Bedarf berechnen
 - [ ] Reichweite des Backups errechnen: Was ist vorhanden (auch Kleinigkeiten wie alte Fahrräder)? Wie viel Geld stünde im Notfall zur Verfügung? Wie lange könnte ich damit überbrücken?
-- [ ] Download-Dokumente in den Unterlagen ablegen (Dropbox `05_Finanzen`)
+- [ ] Download-Dokumente in den Unterlagen ablegen (Google Drive `05_Finanzen`)
 
-## Ablage in der Dropbox
+## Ablage in Google Drive
 - `05_Finanzen/Steuern/Rechnungen Debitoren`: Ausgangsrechnungen (an Kunden)
 - `05_Finanzen/Steuern/Rechnungen Kreditoren`: Eingangsrechnungen (von Lieferanten, Tools, Abos)
 - `05_Finanzen/Steuern/Kontoauszüge`

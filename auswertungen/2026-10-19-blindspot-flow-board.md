@@ -26,7 +26,7 @@ Kurzfassung: Für Aufgaben ist das Setup gut. Für Geld, Steuern und Kundendaten
 ## 4. Kein Backup, und das Projekt teilt sich die Datenbank mit THE TRIBE
 - **Was ist es?** Alle Board-Daten liegen in einem einzigen kostenlosen Supabase-Projekt, zusammen mit THE TRIBE. Ob und wie lange es dort Backups gibt, hängt vom Tarif ab. *In der Supabase-Doku prüfen.*
 - **Warum würde es dich erwischen?** Ein Fehler in der Tribe-App, ein pausiertes Projekt oder ein versehentliches Löschen trifft auch deine Buchhaltung. Belege musst du jahrelang aufbewahren.
-- **Satz für deinen Auftrag:** „Flow-Daten in einem eigenen Projekt; jede Woche ein automatisches Backup (Buchungen + Belege) an einen zweiten Ort, z. B. Dropbox 05_Finanzen.“
+- **Satz für deinen Auftrag:** „Flow-Daten in einem eigenen Projekt; jede Woche ein automatisches Backup (Buchungen + Belege) an einen zweiten Ort, z. B. Google Drive 05_Finanzen.“
 
 ## 5. Der Board-Link ist der einzige Schlüssel
 - **Was ist es?** Wer deinen Link mit `#b=…&k=…` hat, kann alles sehen, ändern und löschen, auch Finanzen und Belege. Es gibt keinen zweiten Faktor und kein Protokoll, wer zugegriffen hat.
@@ -76,7 +76,7 @@ Kurzfassung: Für Aufgaben ist das Setup gut. Für Geld, Steuern und Kundendaten
 > - Eine Rechnung wird beim Verschicken festgeschrieben; Korrekturen nur über eine Stornorechnung mit eigener Nummer. Rechnungen können später auch als E-Rechnung (ZUGFeRD) erzeugt werden.
 > - Jede Buchung ist geschäftlich oder privat; nur geschäftliche gehen in den Steuer-Export. Kategorien entsprechen den Zeilen der Anlage EÜR.
 > - Finanzdaten nur nach Login mit zweitem Faktor; der Board-Link allein öffnet höchstens die Aufgaben.
-> - Flow-Daten in einem eigenen Supabase-Projekt, getrennt von THE TRIBE; jede Woche ein automatisches Backup von Buchungen und Belegen in die Dropbox 05_Finanzen.
+> - Flow-Daten in einem eigenen Supabase-Projekt, getrennt von THE TRIBE; jede Woche ein automatisches Backup von Buchungen und Belegen nach Google Drive 05_Finanzen.
 > - Liste alle Dienste, die Personendaten verarbeiten, für Datenschutzerklärung und Auftragsverarbeitungsverträge.
 > - Vor Ausgaben über 1.000 € erinnert mich das Board an die Frage Kleinunternehmer oder Regelbesteuerung.
 > - Vor jedem Live-Gang laufen automatische Tests für Buchen, Rechnung, Beleg und Kalender.
@@ -87,7 +87,7 @@ Kurzfassung: Für Aufgaben ist das Setup gut. Für Geld, Steuern und Kundendaten
 > 3. Buchungen unveränderbar machen (Versionen statt Überschreiben), geschäftlich/privat trennen
 > 4. Rechnungen festschreiben, Storno, lückenlose Nummern
 > 5. Kategorien nach Anlage EÜR, Jahresexport
-> 6. Wöchentliches Backup in die Dropbox
+> 6. Wöchentliches Backup nach Google Drive
 > 7. Automatische Tests
 > 8. Später: E-Rechnung (ZUGFeRD)
 >

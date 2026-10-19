@@ -13,7 +13,7 @@ Beim Einschalten diese Datei und `regeln-aus-korrekturen.md` lesen. Maiks Anweis
 
 ## 1. Kein Ergebnis ohne unabhängige Prüfung
 
-Bevor ein fertiges Ergebnis an Maik geht (Code live, Seite veröffentlicht, Text, Analyse, Datei in Dropbox), prüft es ein **separater Prüfagent ohne Vorwissen**.
+Bevor ein fertiges Ergebnis an Maik geht (Code live, Seite veröffentlicht, Text, Analyse, Datei in Google Drive), prüft es ein **separater Prüfagent ohne Vorwissen**.
 
 So geht's:
 1. Anforderungen sammeln: Maiks Auftrag **wörtlich**, alle Korrekturen aus dem Gespräch, die passenden Regeln aus `CLAUDE.md`, `regeln-aus-korrekturen.md` und betroffenen Skills.
@@ -39,7 +39,7 @@ Größer heißt: ein für Maik neuer Bereich, Arbeit über mehrere Tage oder vie
 Wenn Maik dich korrigiert („nein, so nicht“, „das soll anders“, „nicht mehr …“):
 1. Korrektur umsetzen.
 2. Im selben Lauf als Regel in `regeln-aus-korrekturen.md` (dieser Ordner) eintragen: Datum, Regel in einem Satz, Anlass (Maiks Worte, wenn möglich wörtlich). Gilt sie nur für ein Projekt, auch dort festhalten (z. B. README des Projekts).
-3. Dropbox-Spiegel aktualisieren (siehe `CLAUDE.md`).
+3. Google-Drive-Spiegel aktualisieren (siehe `CLAUDE.md`).
 4. Maik in einem Satz sagen, welche Regel du aufgeschrieben hast.
 
 Vor jeder Arbeit `regeln-aus-korrekturen.md` lesen.

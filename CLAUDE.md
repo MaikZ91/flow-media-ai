@@ -23,28 +23,33 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 
-## Dropbox-Spiegel (Pflicht, Maik 19.10.2026)
+## Google-Drive-Spiegel (Pflicht, Maik 19.10.2026)
 
-Maiks Dropbox `/Flow Media AI` wird immer auf Stand gehalten – **vor allem `07_KI`**. Das Repo ist die Quelle; die Dropbox ist die Kopie, mit der Maik arbeitet.
+Maiks Google Drive `Flow Media AI` (Ordner-ID `1b0BfA5Y56OwA3-RBMhKXakpJ4dKOBRiU`) wird immer auf Stand gehalten – **vor allem `07_KI`**. Das Repo ist die Quelle; Drive ist die Ablage, mit der Maik arbeitet. Dropbox wird nicht mehr genutzt (seit 19.10.2026).
 
-**Nach jeder Änderung an einer dieser Dateien im selben Lauf die Dropbox aktualisieren** (über den Dropbox-Connector):
+**Nach jeder Änderung an einer dieser Dateien im selben Lauf Drive aktualisieren** (über den Google-Drive-Connector). Markdown wird als Google Doc angelegt (`contentMimeType: text/markdown`, Titel ohne `.md`):
 
-| Repo | Dropbox |
+| Repo | Drive (`Flow Media AI/…`) |
 |---|---|
-| `CLAUDE.md` | `/Flow Media AI/07_KI/CLAUDE.md` |
-| `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `/Flow Media AI/07_KI/skills/<name>/…` |
-| `auswertungen/…` | `/Flow Media AI/07_KI/auswertungen/…` |
-| `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `/Flow Media AI/01_Marketing/Brand_Identity_Flow_Media_AI.md` |
-| `content/01_startplan.md` | `/Flow Media AI/01_Marketing/Startplan_Instagram.md` |
-| `content/learnings.md` | `/Flow Media AI/01_Marketing/Learnings_Instagram.md` |
-| `content/reels/<ID>-<name>/README.md` | `/Flow Media AI/01_Marketing/Reels/<ID>_<Name>_Caption.md` |
+| `CLAUDE.md` bis zur Linie `---` (Claude-Kopf; für Abschnitte 1–10 ein Verweis auf die Brand Identity) | `07_KI/CLAUDE` |
+| `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `07_KI/skills/<name>/…` |
+| `auswertungen/…` | `07_KI/auswertungen/…` |
+| `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `01_Marketing/Brand_Identity_Flow_Media_AI` |
+| `content/01_startplan.md` | `01_Marketing/Startplan_Instagram` |
+| `content/learnings.md` | `01_Marketing/Learnings_Instagram` |
+| `content/reels/<ID>-<name>/README.md` | `01_Marketing/Reels/<ID>_<Name>_Caption` |
+| `marketing/brand/…` | `01_Marketing/Brand/…` |
+| `organisatorisch/…`, `finanzen/…` | `06_Organisatorisch/…`, `05_Finanzen/…` |
 
-- **Aktualisieren = ersetzen:** Der Connector kann bestehende Dateien nicht überschreiben. Darum alte Datei löschen (landet im Dropbox-Papierkorb, wiederherstellbar) und mit dem neuen Inhalt neu anlegen. Neue Ordner vorher anlegen.
-- Gelöschte oder umbenannte Dateien im Repo auch in der Dropbox löschen bzw. umbenennen.
-- Videos, Bilder und andere Binärdateien kann der Connector nicht hochladen – Maik in der Antwort sagen, welche Datei er selbst ablegen muss und wohin.
-- Ändert Maik etwas direkt in der Dropbox, vor der nächsten Änderung dort nachsehen und ins Repo übernehmen, statt es zu überschreiben.
-- Ist der Dropbox-Connector in einer Session nicht verfügbar: Maik am Ende sagen, welche Dateien noch nicht gespiegelt sind.
-- In der Antwort an Maik kurz nennen, was in der Dropbox aktualisiert wurde.
+Ordner-IDs (für `parentId`): 01_Marketing `1dE9gJaTmDR0yIFP6rQBiMXr4m29L4vZh` · Reels `1zKIB3-yuIU6WztZSCa0fSOQticuFop8_` · Brand `1Uo0TsUUVeM7JdP6bd8z1X88SI0nQiRpd` · 02_Sales `1GX1UZHT8ekuAxa092GTfSZpQdXt6kRVj` · 03_Produkt `17FWXK648mnTtJaYaraj9A0q3MygRd441` · 04_Coachings `1fJZyU7NHzPUXTkOpBLtIUdN94CUkcx2o` · 05_Finanzen `1q_i8soVlfHsLp4NtEnqBrqXdKaY5lhlB` · Steuern `1r44DkyTilqd6Fm3sRsU7gdatz75P5m9N` (Rechnungen Debitoren `1mknCxYXfBCPY6CQoJcDo5lP8Sz5dMisM`, Rechnungen Kreditoren `1q-qhGmQPtcB0N4b84cfPCi4R8NLgWl-9`, Kontoauszüge `1ND1pSmTKFAIlS0SJpiL6GN599J_LErnV`) · Vorlagen IOF `1nXVwE5-oyOb1ibWbpP5wK0rrb4EcYUDU` · 06_Organisatorisch `1mhm_BW2sqDZZe2XfnbdLJKj257_XxTr7` · 07_KI `1LIw5RIjPsS0pYNPJSKRN9AxYBlvjueDi` · skills `1-iZidnDBICbcPJjf4r3B-Kv8V7IcbpNH` · auswertungen `1CGUnlkzDWw6C5nOFmWvEHKosDqUMHMwe`. Neue Ordner anlegen und hier nachtragen.
+
+- **Kundenunterlagen** (Angebote, Briefings, Kundenkarten) und Belege liegen **nur in Drive**, nie im Repo (öffentlich). Pro Kunde ein Ordner unter `04_Coachings/<Datum>_<Name>_<Thema>`.
+- **Aktualisieren = ersetzen:** Der Connector kann Inhalte nicht überschreiben. Darum die alte Datei in den Papierkorb (`trash_file`, wiederherstellbar) und neu anlegen. Vorher per `search_files` (`parentId = '<ordner>'`) die Datei-ID suchen.
+- **Binärdateien** (PDF, Bilder, Videos, Excel) gehen nur über `base64Content`, und den Inhalt muss Claude dabei Zeichen für Zeichen mitschicken – ab ein paar KB unzuverlässig (Test 19.10.2026: 67-KB-PDF kam kaputt an). Darum: Dokumente wie Angebote und Rechnungen als **Google Doc** anlegen (`contentMimeType: text/html` mit Inline-Styles oder `text/markdown`); Maik exportiert bei Bedarf selbst als PDF (Datei → Herunterladen → PDF). Fertige PDFs, Bilder und Videos legt Maik selbst ab – in der Antwort sagen, welche Datei wohin.
+- Gelöschte oder umbenannte Dateien im Repo auch in Drive löschen bzw. umbenennen.
+- Ändert Maik etwas direkt in Drive (z. B. im Google Doc), vor der nächsten Änderung dort nachsehen (`read_file_content`) und ins Repo übernehmen, statt es zu überschreiben.
+- Ist der Drive-Connector in einer Session nicht verfügbar: Maik am Ende sagen, welche Dateien noch nicht gespiegelt sind.
+- In der Antwort an Maik kurz nennen, was in Drive aktualisiert wurde.
 
 ---
 

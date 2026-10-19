@@ -3,13 +3,13 @@
 Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 
 - `index.html` – Quelle für die Web-Version. Die Claude-Version (https://claude.ai/artifact/99KBM42Garnuq9ZtV3MfgN) ist **eingefroren seit 19.10.2026, nicht mehr veröffentlichen – Maik**. Maßgeblich ist nur noch die Web-Version.
-  Speichert Karten und Dateien im Online-Speicher des Boards, liest Dropbox `/Flow Media AI`.
+  Speichert Karten und Dateien im Online-Speicher des Boards. (Die eingefrorene Claude-Version liest noch Dropbox; nicht mehr genutzt.)
 - `demo.html` – teilbare Demo (**eingefroren – zuletzt auf Maiks Wunsch einmalig aktualisiert am 19.10.2026 mit neuem Design und Outlook-Kalender, danach nicht mehr aktualisieren**): https://claude.ai/artifact/NiGiVFXGQKNzzaWTWyEc8u
   Beispielkarten, jede Änderung bleibt im Browser des Besuchers. Keine Dateien, kein Dropbox.
 
 - `web/index.html` – eigenständige Web-Version (GitHub Pages). Login, Daten und Dateien in Supabase
   (Projekt „Liebefeld“, Tabellen `flow_board_tasks/_files/_meta`, Bucket `flow-board`, alles per RLS nur für den eigenen Account).
-  Dropbox: nur Links (keine direkte Anbindung ohne eigene Dropbox-App).
+  Ablage: **Google Drive** `Flow Media AI` (seit 19.10.2026, Dropbox nicht mehr). Der Bereich „Google Drive“ unter Dateien zeigt die Ordner aus `meta.drive` (`{root, folders:[{name,id}]}`, im Board-Datensatz, nicht im Code); an Karten hängen Drive-Links (`kind: "link"`, Drive-Symbol).
 
 `web/index.html` wird aus `index.html` erzeugt – nie von Hand ändern. (`demo.html` nicht mehr neu erzeugen. Falls Maik es ausdrücklich will: `sed 's/const DEMO = false;/const DEMO = true;/; 1s#<title>Flow Board</title>#<title>Flow Board Demo</title>#' index.html > demo.html`)
 

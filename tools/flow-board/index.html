@@ -487,7 +487,7 @@ const H0 = 7, H1 = 22;  // visible hours in the week grid
 let tasksCol = null, metaDoc = null;
 let readOnly = false, loaded = false;
 let composerFor = null;
-// files: board uploads (kind "asset") and Dropbox links (kind "dropbox"), optionally attached to a card via taskId
+// files: board uploads (kind "asset"), links (kind "link", Google Drive in the web version) and legacy Dropbox links (kind "dropbox"), optionally attached to a card via taskId
 let files = [], filesCol = null, assetsApi = null, mcpApi = null, usage = null;
 let calEvents = [], calStatus = "";  // WEB: booked Calendly meetings, read through the flow-board gateway
 const DBX_ROOT = "/Flow Media AI";
@@ -543,12 +543,15 @@ const icon = {
   trash: '<svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg>',
   clip: '<svg class="i" viewBox="0 0 24 24"><path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></svg>',
   folder: '<svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+  drive: '<svg class="i" viewBox="0 0 24 24"><path d="M8.5 3h7l6 10.5-3.5 6H5.5L2 13.5zM8.5 3l6.5 11.5M15.5 3 9 14.5M2 13.5h13M9 14.5l-3.5 5M15 14.5l3.5 5"/></svg>',
   box: '<svg class="i" viewBox="0 0 24 24"><path d="m7 3-5 3.5L7 10l5-3.5zM17 3l-5 3.5 5 3.5 5-3.5zM2 13.5 7 17l5-3.5L7 10zM17 10l-5 3.5 5 3.5 5-3.5zM7 18.5l5 3.5 5-3.5"/></svg>',
 };
 const fmtSize = b => b == null ? "" : b < 1024 ? b + " B" : b < 1048576 ? (b / 1024).toFixed(0) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB";
 const fmtDate = ms => new Date(ms).toLocaleDateString("de-DE", { day: "numeric", month: "short", year: "numeric" });
 const extOf = n => (n.split(".").pop() || "").toLowerCase();
 const encPath = p => p.split("/").map(encodeURIComponent).join("/");
+const isDrive = u => /^https:\/\/(drive|docs)\.google\.com\//.test(u || "");
+const driveUrl = id => "https://drive.google.com/drive/folders/" + encodeURIComponent(id);
 function dbxWebUrl(path, isFolder) {
   if (isFolder) return "https://www.dropbox.com/home" + encPath(path);
   const i = path.lastIndexOf("/");
@@ -843,8 +846,8 @@ function fileRow(f, opts = {}) {
   const card = f.taskId ? tasks.find(t => t.id === f.taskId) : null;
   const isImg = f.kind === "asset" && (f.type || "").startsWith("image/");
   const href = f.kind === "asset" ? blobUrl(f) : f.kind === "link" || f.kind === "github" ? f.url : dbxWebUrl(f.path, false);
-  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "github" ? icon.gh : f.kind === "link" ? "link" : esc(extOf(f.name).slice(0, 4) || "datei");
-  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "github" ? "GitHub · " + (f.repo || "") : f.kind === "link" ? "Link" : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
+  const thumb = isImg && blobUrl(f) !== "#" ? `<img src="${esc(blobUrl(f))}" alt="" loading="lazy" onerror="this.remove()">` : f.kind === "dropbox" ? icon.box : f.kind === "github" ? icon.gh : f.kind === "link" ? (isDrive(f.url) ? icon.drive : "link") : esc(extOf(f.name).slice(0, 4) || "datei");
+  const meta = [f.kind === "dropbox" ? "Dropbox" : f.kind === "github" ? "GitHub · " + (f.repo || "") : f.kind === "link" ? (isDrive(f.url) ? "Google Drive" : "Link") : fmtSize(f.size), f.createdAt ? fmtDate(f.createdAt) : "", !opts.inCard && card ? "Karte: " + card.title : ""].filter(Boolean).join(" · ");
   return `<div class="frow"><span class="ficon">${thumb}</span>
     <span style="min-width:0"><a class="fname" href="${esc(href)}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">${esc(meta)}</span></span>
     <span class="fact">${readOnly ? "" : `<button type="button" class="mini warn" data-file-del="${f.id}">${f.kind === "asset" ? "Löschen" : "Lösen"}</button>`}</span></div>`;
@@ -863,16 +866,20 @@ function renderFiles() {
   return `<div class="files-view">
     <section class="panel fpanel">
       <h2>${icon.clip} Board-Ablage</h2>
-      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. ${WEB ? "Alle Formate, auch Word, Excel und ZIP · bis 50 MB pro Datei." : "Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox."}</p>
+      <p class="sub">Dateien liegen beim Board und sind auf allen deinen Geräten da. ${WEB ? "Alle Formate, auch Word, Excel und ZIP · bis 50 MB pro Datei. Originale von Belegen und Kundenunterlagen gehören nach Google Drive." : "Bilder, Videos, PDF, Text, CSV, Markdown, JSON · bis 20 MB pro Datei. Word, Excel und ZIP gehören in die Dropbox."}</p>
       ${meter}
       ${filesCol && assetsApi && !readOnly ? `<div class="dropzone" data-filezone="">Dateien hierher ziehen oder ${uploadControls("")}</div>` : uploadControls("") || (!filesCol ? `<div class="note">${DEMO ? "In der Demo ist die Dateiablage ausgeschaltet." : "Die Ablage braucht den Online-Speicher des Boards. Öffne das Board in Claude."}</div>` : "")}
       ${board.map(f => fileRow(f)).join("") || `<p class="sub">Noch keine Dateien. Tipp: Zieh eine Datei direkt auf eine Karte, dann hängt sie dort an.</p>`}
     </section>
-    <section class="panel fpanel">
+    ${WEB ? `<section class="panel fpanel">
+      <h2>${icon.drive} Google Drive</h2>
+      <p class="sub">Dein Ordner Flow Media AI. Öffnen geht direkt in Google Drive; an Karten hängst du Drive-Links im Kartenfenster an.</p>
+      <div id="dbx-browse">${driveHtml()}</div>
+    </section>` : `<section class="panel fpanel">
       <h2>${icon.box} Dropbox</h2>
       <p class="sub">Dein Ordner ${esc(DBX_ROOT)}. Öffnen geht direkt in Dropbox; an Karten verknüpfst du Dateien im Kartenfenster.</p>
       <div id="dbx-browse">${dbxHtml("browse")}</div>
-    </section>
+    </section>`}
     <section class="panel fpanel">
       <h2>${icon.gh} GitHub</h2>
       <p class="sub">Dateien aus deinen Repos. Öffnen geht direkt auf GitHub; an Karten verknüpfst du sie im Kartenfenster.</p>
@@ -880,14 +887,22 @@ function renderFiles() {
     </section>
   </div>`;
 }
+// WEB: Google Drive is the document store; folder ids live in meta.drive (set once), not in the code
+function driveHtml() {
+  const d = meta.drive || {};
+  const rows = (d.folders || []).map(f => `<div class="frow"><span class="ficon">${icon.folder}</span>
+      <span style="min-width:0"><a class="fname" href="${esc(driveUrl(f.id))}" target="_blank" rel="noopener">${esc(f.name)}</a><span class="fmeta">Ordner</span></span>
+      <span class="fact"><a class="mini" href="${esc(driveUrl(f.id))}" target="_blank" rel="noopener">Öffnen</a></span></div>`).join("");
+  return `<div class="note">Angebote, Rechnungen, Belege und Kundenordner liegen in Google Drive.
+      <a class="mini" href="${esc(d.root ? driveUrl(d.root) : "https://drive.google.com/")}" target="_blank" rel="noopener">${icon.drive} In Google Drive öffnen</a></div>${rows}`;
+}
 function dbxHtml(mode) {
   if (WEB) return mode === "pick"
-    ? `<div class="note" style="width:100%">Link einfügen, z. B. einen Dropbox-Freigabelink.
-        <input id="lnk-url" type="url" placeholder="https://www.dropbox.com/…" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)">
+    ? `<div class="note" style="width:100%">Link einfügen, z. B. aus Google Drive (Datei → Teilen → Link kopieren).
+        <input id="lnk-url" type="url" placeholder="https://drive.google.com/…" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)">
         <input id="lnk-name" placeholder="Name (optional)" maxlength="120" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)">
         <button type="button" class="mini" data-link-add>Anhängen</button></div>`
-    : `<div class="note">Die Web-Version liest deine Dropbox nicht direkt. Öffne den Ordner in Dropbox und häng Dateien als Link an eine Karte.
-        <a class="mini" href="${esc(dbxWebUrl(DBX_ROOT, true))}" target="_blank" rel="noopener">${icon.box} Ordner ${esc(DBX_ROOT)} öffnen</a></div>`;
+    : driveHtml();
   if (!mcpApi && DEMO) return `<div class="note">In der Demo ist die Dropbox-Anbindung ausgeschaltet. In der echten Version siehst du hier deine Dropbox-Ordner.</div>`;
   if (!mcpApi) return `<div class="note">Dropbox ist in dieser Ansicht nicht erreichbar. Öffne das Board in Claude, dort fragt es einmal nach Zugriff auf deine Dropbox.</div>`;
   if (dbx.error) return `<div class="note">${esc(dbx.error)}${dbx.retry ? `<button type="button" class="mini" data-dbx-go="${esc(dbx.path)}">Erneut versuchen</button>` : ""}</div>`;
@@ -1523,7 +1538,7 @@ function openCard(t, isNew = false) {
       <div class="sec"><h3>${icon.clip} Anhänge</h3>
         ${isNew ? `<p style="margin:0;color:var(--muted);font-size:13px">Leg die Karte zuerst an, dann kannst du Dateien anhängen.</p>` : `
         <div id="m-att" style="display:flex;flex-direction:column;gap:6px"></div>
-        ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${icon.box} ${WEB ? "Link anhängen" : "Aus Dropbox verknüpfen"}</button>` : ""}</div>
+        ${readOnly ? "" : `<div class="uprow">${uploadControls(t.id)}${filesCol ? `<button type="button" class="mini" id="m-dbx-open">${WEB ? icon.drive : icon.box} ${WEB ? "Drive-Link anhängen" : "Aus Dropbox verknüpfen"}</button>` : ""}</div>
         <div id="m-dbx" hidden style="display:flex;flex-direction:column;gap:6px"></div>
         ${WEB && filesCol ? `<div class="uprow"><button type="button" class="mini" id="m-gh-open">${icon.gh} Aus GitHub verknüpfen</button></div><div id="m-gh" hidden style="display:flex;flex-direction:column;gap:6px"></div>` : ""}`}`}
       </div>

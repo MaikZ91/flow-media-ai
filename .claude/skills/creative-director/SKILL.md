@@ -106,4 +106,4 @@ Quellen: later.com/blog/instagram-reels-algorithm · socialpilot.co (Reels Algor
 4. Checkliste (Teil C §5) durchgehen.
 5. Posten: bis es einen eigenen Zugang gibt, postet Maik selbst – Skript + Caption fertig übergeben.
 6. Nach 48 h: Views, Durchsehquote/Skip-Rate, Sends, Saves, Profilaufrufe in `content/learnings.md` (mit Datum, Zahl, Variable, Schluss daraus).
-7. Dropbox spiegeln (siehe `CLAUDE.md` → „Dropbox-Spiegel“): geänderte Pläne, Learnings, Reel-Texte und diesen Skill in `/Flow Media AI` aktualisieren; Reel-Videos legt Maik selbst in `01_Marketing/Reels/`.
+7. Google Drive spiegeln (siehe `CLAUDE.md` → „Google-Drive-Spiegel“): geänderte Pläne, Learnings, Reel-Texte und diesen Skill in `Flow Media AI` aktualisieren; Reel-Videos legt Maik selbst in `01_Marketing/Reels/`.

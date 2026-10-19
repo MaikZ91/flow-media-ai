@@ -9,7 +9,7 @@ description: Optionaler Blindspot-Pass vor Projekten von Maik (Flow Media AI). N
 
 ## Ablauf
 
-1. **Projekt kurz verstehen.** Was soll am Ende entstehen, für wen, wo läuft es, welche Daten fließen (Geld, Personen, Gesundheit, Kunden)? Was gibt es schon (Repo, Board, Dropbox)? Fehlende Angaben nicht erfinden, sondern als offene Frage notieren.
+1. **Projekt kurz verstehen.** Was soll am Ende entstehen, für wen, wo läuft es, welche Daten fließen (Geld, Personen, Gesundheit, Kunden)? Was gibt es schon (Repo, Board, Google Drive)? Fehlende Angaben nicht erfinden, sondern als offene Frage notieren.
 2. **Unknown Unknowns suchen.** Dinge, von denen Maik nicht mal weiß, dass er sie nicht weiß. Systematisch durch diese Felder gehen und nur aufnehmen, was für *dieses* Projekt wirklich zutrifft:
    - Recht & Pflichten: Steuern, GoBD, Rechnungsrecht, Impressum, DSGVO, Urheber-/Bildrechte, Branchenregeln
    - Sicherheit & Zugriff: wer kommt ran, was passiert bei geteiltem Link/verlorenem Gerät, Schlüssel, öffentliche Repos
@@ -34,7 +34,7 @@ description: Optionaler Blindspot-Pass vor Projekten von Maik (Flow Media AI). N
 ## Ausgabe
 
 - Antwort an Maik: die priorisierte Liste, offene Fragen, der verbesserte Auftrag.
-- Auswertung als Markdown ablegen: im Repo unter `auswertungen/<datum>-blindspot-<projekt>.md`, gespiegelt in die Dropbox `/Flow Media AI/07_KI/auswertungen/` (siehe Dropbox-Spiegel in `CLAUDE.md`).
+- Auswertung als Markdown ablegen: im Repo unter `auswertungen/<datum>-blindspot-<projekt>.md`, gespiegelt nach Google Drive `Flow Media AI/07_KI/auswertungen/` (siehe Google-Drive-Spiegel in `CLAUDE.md`).
 
 ## Regeln
 
