@@ -1,23 +1,23 @@
 # R002 · „Mein komplettes Firmen-Tool. An einem Tag gebaut.“
 
-Stand: 19.10.2026 · Format: Reel 1080×1920, 28 s · Vorschau (Platzhalter statt Avatar): `flow_reel_board_vorschau.mp4`
+Stand: 19.10.2026 · Format: Reel 1080×1920, 29,5 s · Vorschau (Platzhalter statt Avatar): `flow_reel_board_vorschau.mp4`
 
 ## Konzept
-Maik (als HeyGen-Avatar mit seiner eigenen Stimme) erzählt, was das Flow Board kann; daneben laufen echte Bildschirmaufnahmen. Avatar groß im Hook und am Ende, dazwischen als runde Blase unten links.
+Maik (als HeyGen-Avatar mit seiner eigenen Stimme) erzählt, was das Flow Board kann; daneben laufen echte Bildschirmaufnahmen. Avatar groß im Hook und am Ende, dazwischen als runde Blase unten links. Zwischen den Bildschirm-Szenen kurze B-Roll-Schnitte (0,8–1 s): dunkel gegradete Stock-Clips tippender Hände und Maiks Board im Dunkelmodus schräg auf dunkler Bühne mit Blau-Violett-Licht.
 
 ## Vertonungsskript (für HeyGen, ca. 28 s)
 
 | Zeit | Gesprochen | Bild / Text im Bild |
 |---|---|---|
 | 0–3 s | Mein komplettes Firmen-Tool. An einem Tag gebaut. Mit KI. | Avatar groß, Ansichten flackern · „Mein komplettes Firmen-Tool.“ + „An einem Tag gebaut. Mit KI.“ |
-| 3–6 s | Alle Aufgaben auf einem Board, sortiert nach Priorität. | Board → Prioritäten-Matrix · „Alle Aufgaben. Nach Priorität.“ |
-| 6–10 s | Mein Kalender: Termine schieb ich einfach mit der Maus rum, wie in Outlook. | Termin wird gezogen · „Termine ziehen wie in Outlook.“ |
-| 10–15 s | Buchhaltung ist gleich mit drin: Einnahmen, Ausgaben, Belege und was ich für Steuern zurücklegen muss. | Finanzen · „Buchhaltung gleich mit drin.“ · Beispieldaten |
-| 15–17,5 s | Rechnungen? Ein Klick, fertig als PDF. | Rechnung · „Rechnung? Ein Klick. PDF.“ · Beispieldaten |
-| 17,5–20,5 s | Dazu meine neue Landingpage … | Landingpage scrollt · „Meine neue Landingpage.“ |
-| 20,5–23 s | … und im Board seh ich direkt, wie viele vorbeischauen. | Auswertung · „Besucher live im Board.“ |
-| 23–25 s | Ein Tool statt fünf Apps. Genau so, wie ich arbeite. | Raster aller Ansichten · „Ein Tool statt fünf Apps.“ |
-| 25–28 s | Schick das jemandem, der seine Rechnungen noch in Word schreibt. | Avatar groß · Text wie gesprochen → Übergang in Bild 1 (Loop) |
+| 3–6,4 s | Alle Aufgaben auf einem Board, sortiert nach Priorität. | B-Roll Tastatur (0,8 s) → Board → Prioritäten-Matrix · „Alle Aufgaben. Nach Priorität.“ |
+| 6,4–10,8 s | Mein Kalender: Termine schieb ich einfach mit der Maus rum, wie in Outlook. | B-Roll Kalender schräg im Dunkeln (1 s) → Termin wird gezogen · „Termine ziehen wie in Outlook.“ |
+| 10,8–15,8 s | Buchhaltung ist gleich mit drin: Einnahmen, Ausgaben, Belege und was ich für Steuern zurücklegen muss. | B-Roll Laptop im Café (0,8 s) → Finanzen · „Buchhaltung gleich mit drin.“ · Beispieldaten |
+| 15,8–18,3 s | Rechnungen? Ein Klick, fertig als PDF. | Rechnung · „Rechnung? Ein Klick. PDF.“ · Beispieldaten |
+| 18,3–21,7 s | Dazu meine neue Landingpage … | B-Roll Hände (0,8 s) → Landingpage scrollt · „Meine neue Landingpage.“ |
+| 21,7–24,1 s | … und im Board seh ich direkt, wie viele vorbeischauen. | Auswertung · „Besucher live im Board.“ |
+| 24,1–26,5 s | Ein Tool statt fünf Apps. Genau so, wie ich arbeite. | B-Roll Board schräg im Dunkeln (1 s) → Raster aller Ansichten · „Ein Tool statt fünf Apps.“ |
+| 26,5–29,5 s | Schick das jemandem, der seine Rechnungen noch in Word schreibt. | Avatar groß · Text wie gesprochen → Übergang in Bild 1 (Loop) |
 
 **Zum Kopieren in HeyGen (ohne Zeiten):**
 
@@ -52,10 +52,15 @@ Kein Entwicklerteam, kein Abo-Zoo. Nicht perfekt, aber es läuft, und ich nutz e
 
 Was würdest du in so ein Tool als Erstes einbauen?
 
+## B-Roll und Lizenzen
+- Stock nur mit **Mixkit Stock Video Free License** (kommerziell und Firmen-Social-Media erlaubt, ohne Namensnennung): `1808` close-up-shot-of-a-person-typing-on-a-laptop · `1746` a-person-typing-in-a-laptop-at-a-coffee-shop · `4827` hands-of-a-man-typing-on-a-laptop (je https://mixkit.co/free-stock-video/<name>-<id>/, Download `assets.mixkit.co/videos/<id>/<id>-1080.mp4`). Nur Hände, keine Gesichter, damit niemand für Maik gehalten wird; nicht unverändert (9:16-Ausschnitt, dunkler, kühler, Vignette, Korn).
+- **Nicht verwenden:** Mixkit-Clips mit „Stock Video Restricted License“ (z. B. dunkle HUD-Dashboards 5396/5437, Laptop bei Nacht 17450). Die erlauben nur private Projekte, ausdrücklich keine „Company Social Media posts“ und keine Werbung.
+- Die Dashboard-Optik kommt stattdessen aus Maiks eigenem Board (Dunkelmodus, perspektivisch auf dunkler Bühne gerendert).
+
 ## Musik
 „Motivating Mornings“ (Mixkit Stock Music Free License, kommerziell ohne Namensnennung), ab 0:11,5; mit Avatar-Stimme leise darunter.
 
 ## Neu rendern
-1. `node shoot.js <ordner>/shots <board-key-datei>` (Playwright; Board mit Beispielkarten, Landingpage, Auswertung)
+1. `node shoot.js <ordner>/shots <board-key-datei>` (Playwright; Board mit Beispielkarten hell und dunkel, Landingpage, Auswertung); Stock-Clips (IDs oben) als `<ordner>/broll/<id>.mp4`
 2. Schriften (Bricolage Grotesque ExtraBold, IBM Plex Sans SemiBold, WOFF von Google Fonts) nach `<ordner>/fonts/` als `bri800.woff`, `plex600.woff`
 3. `python3 render_reel.py <ordner> R002.mp4 [avatar.mp4]`

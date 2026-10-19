@@ -3,11 +3,15 @@
 # Without an avatar video a placeholder circle is drawn and only music plays; with one, the avatar sits in the circle
 # and its audio (Maik's voice) leads, music ducked underneath.
 import os, subprocess, sys, glob
+import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 WD, OUT = sys.argv[1], sys.argv[2]
 AVATAR = sys.argv[3] if len(sys.argv) > 3 else None
 MUSIC = '/home/user/the-tribe-bot/instagram_autopilot/music/motivating-mornings.mp3'  # Mixkit Free License
+# B-roll: only clips under the Mixkit Stock Video Free License (company social media allowed); <work-dir>/broll/<id>.mp4
+STOCK = {1808: 'close-up-shot-of-a-person-typing-on-a-laptop', 1746: 'a-person-typing-in-a-laptop-at-a-coffee-shop',
+         4907: 'person-typing-on-a-computer-in-detail', 1781: 'typing-on-a-laptop-close-up', 4827: 'hands-of-a-man-typing-on-a-laptop'}
 W, H, FPS = 1080, 1920, 30
 BG, INK, MUTED, BLUE, LINE = (246, 246, 242), (18, 21, 18), (91, 98, 92), (47, 91, 255), (223, 225, 219)
 F_DISPLAY = f'{WD}/fonts/bri800.woff'
@@ -58,17 +62,70 @@ def card(fr, view, tag=None):
         d.rounded_rectangle((x + w - tw - 64, y + 24, x + w - 24, y + 76), 26, fill=(255, 255, 255), outline=LINE, width=2)
         d.text((x + w - tw - 44, y + 32), tag, font=f, fill=MUTED)
 
-def headline(fr, lines, chip=None, t=1.0):
+def headline(fr, lines, chip=None, t=1.0, ink=INK):
     """Big text above the card; pops in over the first frames of a scene."""
     a = min(1, t); off = int((1 - ease(a)) * 24)
     d = ImageDraw.Draw(fr, 'RGBA'); f = ImageFont.truetype(F_DISPLAY, 86); lh = 96
     top = 150 if chip else 190
     for i, l in enumerate(lines):
-        tw = d.textlength(l, font=f); d.text(((W - tw) / 2, top + off + i * lh), l, font=f, fill=INK + (int(255 * a),))
+        tw = d.textlength(l, font=f); d.text(((W - tw) / 2, top + off + i * lh), l, font=f, fill=ink + (int(255 * a),))
     if chip:
         fc = ImageFont.truetype(F_SEMI, 42); cw = d.textlength(chip, font=fc); cy = top + off + len(lines) * lh + 18
         d.rounded_rectangle(((W - cw) / 2 - 30, cy, (W + cw) / 2 + 30, cy + 74), 37, fill=BLUE + (int(255 * a),))
         d.text(((W - cw) / 2, cy + 12), chip, font=fc, fill=(255, 255, 255, int(255 * a)))
+
+def stock_frames(cid, start, dur, cx):
+    """Graded vertical cut of a stock clip: centre crop to 9:16, darker, cooler, vignette, light grain."""
+    d = f'{WD}/broll_frames/{cid}_{start}_{cx}'
+    if not glob.glob(f'{d}/*.png'):
+        os.makedirs(d, exist_ok=True)
+        vf = (f'crop=ih*9/16:ih:{cx}-ih*9/32:0,scale=1080:1920:flags=lanczos,eq=brightness=-0.09:contrast=1.18:saturation=0.72,'
+              'colorbalance=bs=0.16:bm=0.06:bh=-0.04,vignette=PI/4.2,noise=alls=5:allf=t,fps=30')
+        subprocess.run(['ffmpeg', '-v', 'error', '-ss', str(start), '-t', str(dur + 0.2), '-i', f'{WD}/broll/{cid}.mp4', '-vf', vf, f'{d}/%04d.png'], check=True)
+    return sorted(glob.glob(f'{d}/*.png'))
+
+def stock_view(cid, start, dur, cx=960):
+    """cx: horizontal centre of the 9:16 crop in the 1920-wide source (where the hands are)."""
+    files = []
+    def v(t):
+        nonlocal files
+        if not files: files = stock_frames(cid, start, dur, cx)
+        return Image.open(files[min(len(files) - 1, int(t * dur * FPS))]).convert('RGB')
+    return v
+
+_stage = None
+def stage():
+    """Dark stage with a blue and a violet glow, like a product shot."""
+    global _stage
+    if _stage is None:
+        yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+        img = np.zeros((H, W, 3), np.float32) + np.array([7, 9, 18], np.float32)
+        for (cx, cy, rad, col) in [(260, 700, 900, (47, 91, 255)), (880, 1450, 850, (122, 60, 255))]:
+            g = np.exp(-((xx - cx) ** 2 + (yy - cy) ** 2) / (2 * (rad / 2.2) ** 2))[..., None]
+            img += g * np.array(col, np.float32) * 0.55
+        _stage = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8))
+    return _stage.copy()
+
+def persp_coeffs(dst, src):
+    """Coefficients for Image.transform(PERSPECTIVE) mapping output quad dst onto source rect corners src."""
+    A, B = [], []
+    for (x, y), (u, v) in zip(dst, src):
+        A += [[x, y, 1, 0, 0, 0, -u * x, -u * y], [0, 0, 0, x, y, 1, -v * x, -v * y]]; B += [u, v]
+    return np.linalg.solve(np.array(A, float), np.array(B, float)).tolist()
+
+def tilt_view(n, t, swing=1):
+    """The board as a floating screen in perspective, slow push-in and turn."""
+    fr = stage(); im = shot(n); sw, sh = im.size
+    e = ease(t); s = lerp(0.84, 1.0, e); cx, cy = W / 2, H * 0.56
+    w, h = 1000 * s, 1000 * s * sh / sw; k = lerp(0.18, 0.10, e) * swing  # depth of the far edge
+    quad = [(cx - w / 2, cy - h / 2 + h * k * (swing < 0)), (cx + w / 2, cy - h / 2 + h * k * (swing > 0)),
+            (cx + w / 2, cy + h / 2 - h * k * (swing > 0)), (cx - w / 2, cy + h / 2 - h * k * (swing < 0))]
+    glow = Image.new('L', (W, H), 0); ImageDraw.Draw(glow).polygon(quad, fill=150)
+    fr.paste((70, 120, 255), (0, 0), glow.filter(ImageFilter.GaussianBlur(60)))
+    warped = im.transform((W, H), Image.PERSPECTIVE, persp_coeffs(quad, [(0, 0), (sw, 0), (sw, sh), (0, sh)]), Image.BILINEAR)
+    m = Image.new('L', (W, H), 0); ImageDraw.Draw(m).polygon(quad, fill=255)
+    fr.paste(warped, (0, 0), m)
+    return fr
 
 _av = None
 def avatar_frame(i):
@@ -110,23 +167,29 @@ DRAG = sorted(os.path.basename(p)[:-4] for p in glob.glob(f'{WD}/shots/drag_*.pn
 SCENES = [
     ('hook', 3.0, lambda t: crop_view(*FLICK[int(t * 3.0 / 0.3) % len(FLICK)], FLICK[int(t * 3.0 / 0.3) % len(FLICK)][1], 0),
      ['Mein komplettes', 'Firmen-Tool.'], 'An einem Tag gebaut. Mit KI.', None),
-    ('board', 3.0, lambda t: crop_view('board', (0, 0, 1500), (1380, 0, 1500), t) if t < 0.7 else crop_view('matrix', (0, 0, 1700), (100, 0, 1600), (t - 0.7) / 0.3),
+    ('broll', 0.8, stock_view(1808, 6.0, 0.8, 760), ['Alle Aufgaben.'], None, None),
+    ('board', 2.6, lambda t: crop_view('board', (0, 0, 1500), (1380, 0, 1500), t) if t < 0.7 else crop_view('matrix', (0, 0, 1700), (100, 0, 1600), (t - 0.7) / 0.3),
      ['Alle Aufgaben.', 'Nach Priorität.'], None, None),
-    ('cal', 4.0, lambda t: crop_view('cal', (0, 150, 1500), (60, 180, 1350), t / 0.35) if t < 0.35 else
-        (crop_view(DRAG[min(len(DRAG) - 1, int((t - 0.35) / 0.4 * len(DRAG)))], (60, 180, 1350), (60, 180, 1350), 0) if t < 0.75 else crop_view('cal_after', (60, 180, 1350), (60, 180, 1350), 0)),
+    ('broll', 1.0, lambda t: tilt_view('cal_dark', t, 1), ['Mein Kalender.'], None, None),
+    ('cal', 3.4, lambda t: crop_view('cal', (0, 150, 1500), (60, 180, 1350), t / 0.3) if t < 0.3 else
+        (crop_view(DRAG[min(len(DRAG) - 1, int((t - 0.3) / 0.45 * len(DRAG)))], (60, 180, 1350), (60, 180, 1350), 0) if t < 0.75 else crop_view('cal_after', (60, 180, 1350), (60, 180, 1350), 0)),
      ['Termine ziehen', 'wie in Outlook.'], None, None),
-    ('fin', 5.0, lambda t: crop_view('fin', (0, 60, 1714), (500, 60, 1300), t),
+    ('broll', 0.8, stock_view(1746, 3.0, 0.8, 800), ['Buchhaltung.'], None, None),
+    ('fin', 4.2, lambda t: crop_view('fin', (0, 60, 1714), (500, 60, 1300), t),
      ['Buchhaltung', 'gleich mit drin.'], None, 'Beispieldaten'),
     ('invoice', 2.5, lambda t: crop_view('invoice', (700, 180, 1500), (760, 560, 1100), t),
      ['Rechnung?', 'Ein Klick. PDF.'], None, 'Beispieldaten'),
-    ('landing', 3.0, lambda t: tall_view('landing', 0, 2600, t),
+    ('broll', 0.8, stock_view(4827, 3.0, 0.8, 920), ['Landingpage.'], None, None),
+    ('landing', 2.6, lambda t: tall_view('landing', 0, 2400, t),
      ['Meine neue', 'Landingpage.'], None, None),
-    ('stats', 2.5, lambda t: crop_view('stats', (0, 60, 1500), (0, 60, 1300), t),
+    ('stats', 2.4, lambda t: crop_view('stats', (0, 60, 1500), (0, 60, 1300), t),
      ['Besucher live', 'im Board.'], None, None),
-    ('grid', 2.0, grid_view, ['Ein Tool', 'statt fünf Apps.'], None, None),
+    ('broll', 1.0, lambda t: tilt_view('board_dark', t, -1), ['Ein Tool.'], None, None),
+    ('grid', 1.4, grid_view, ['Ein Tool', 'statt fünf Apps.'], None, None),
     ('outro', 3.0, lambda t: grid_view(1) if t < 0.9 else crop_view(*FLICK[0], FLICK[0][1], 0),
      ['Schick das jemandem,', 'der Rechnungen', 'noch in Word schreibt.'], None, None),
 ]
+
 
 total = sum(s[1] for s in SCENES)
 raw = OUT + '.video.mp4'
@@ -137,9 +200,15 @@ for name, dur, view, lines, chip, tag in SCENES:
     n = int(round(dur * FPS))
     for k in range(n):
         t = k / max(1, n - 1)
-        fr = Image.new('RGB', (W, H), BG)
-        card(fr, view(t), tag)
-        headline(fr, lines, chip, k / 6)
+        if name == 'broll':
+            fr = view(t)
+            scrim = Image.new('L', (W, H), 0); ImageDraw.Draw(scrim).rectangle((0, 0, W, 520), fill=120)
+            fr.paste((0, 0, 0), (0, 0), scrim.filter(ImageFilter.GaussianBlur(80)))
+            headline(fr, lines, chip, k / 4, ink=(255, 255, 255))
+        else:
+            fr = Image.new('RGB', (W, H), BG)
+            card(fr, view(t), tag)
+            headline(fr, lines, chip, k / 6)
         cx, cy, d = av_pos(name, t); avatar(fr, i, int(cx), int(cy), d)
         enc.stdin.write(fr.tobytes()); i += 1
 enc.stdin.close(); enc.wait()

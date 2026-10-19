@@ -44,7 +44,12 @@ const FB = 'file:///home/user/flow-media-ai/tools/flow-board/';
   await p.mouse.move(5, 5); await p.evaluate(() => { view = "fin"; finUi.tab = "business"; render() }); await shot('fin');
   await p.evaluate(() => { finUi.tab = "invoices"; render(); showInvoice(fin.find(x => x.inv)) }); await p.waitForTimeout(600); await shot('invoice');
   await p.evaluate(() => { closeModal(); finUi.tab = "private"; render() });
-  await p.evaluate(() => { view = "board"; render() });
+  // dark-mode screens for the cinematic B-roll (tilted board on a dark stage)
+  await p.mouse.move(5, 5);
+  await p.evaluate(() => { applyTheme('dark'); view = "board"; render() }); await shot('board_dark');
+  await p.evaluate(() => { view = "cal"; render() }); await shot('cal_dark');
+  await p.evaluate(() => { view = "fin"; finUi.tab = "business"; render() }); await shot('fin_dark');
+  await p.evaluate(() => { applyTheme('light'); view = "board"; render() });
   // landing page, phone format
   const m = await b.newContext({ viewport: { width: 390, height: 693 }, deviceScaleFactor: 2.77, isMobile: true, hasTouch: true });
   const lp = await m.newPage(); await lp.goto('file:///home/user/flow-media-ai/marketing/landing-page/index.html'); await lp.waitForTimeout(1500);
