@@ -129,6 +129,27 @@ body.is-dragging, body.is-dragging * { cursor: grabbing !important }
 .pill { border: 0; text-align: left; border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--pc); color: #172b4d; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100% }
 .pill.done { opacity: .5; text-decoration: line-through }
 .ptime { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
+.stats { flex: 1; align-self: stretch; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 0 }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px }
+.kpi { background: var(--card); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.kpi .kl { font-size: 12.5px; color: var(--muted); font-weight: 500 }
+.kpi b { font: 600 28px/1.15 var(--f-body); font-variant-numeric: tabular-nums }
+.kd { font-size: 12px; color: var(--faint) } .kd.up { color: #1f845a } .kd.down { color: var(--red) }
+.sgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
+.spanel { background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0 }
+.spanel.wide { grid-column: 1 / -1 }
+.spanel h3 { margin: 0; font-size: 14px }
+.chart { position: relative }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible }
+.chart .gl { stroke: var(--line); stroke-width: 1 } .chart .ax { fill: var(--faint); font: 500 10px var(--f-mono) }
+.chart .m { fill: var(--accent) } .chart .hit { fill: transparent } .chart .bar:hover .m { fill: color-mix(in srgb, var(--accent) 75%, var(--ink)) }
+.chart .tip { position: absolute; top: -6px; transform: translate(-50%, -100%); background: var(--ink); color: var(--card); font-size: 12px; padding: 5px 8px; border-radius: 6px; white-space: nowrap; pointer-events: none }
+.blist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px }
+.blist li { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13px }
+.bl-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.bl-bar { height: 8px; background: var(--hover); border-radius: 4px; overflow: hidden } .bl-bar i { display: block; height: 100%; background: var(--accent); border-radius: 4px }
+.bl-n { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 28px; text-align: right }
+@media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) } .sgrid { grid-template-columns: minmax(0, 1fr) } }
 .cal-mode { display: inline-flex; margin-left: auto; border: 1px solid var(--line); border-radius: 6px; overflow: hidden }
 .cal-mode button { border: 0; background: var(--card); padding: 5px 12px; font-weight: 500; color: var(--muted) }
 .cal-mode button[aria-pressed="true"] { background: var(--accent); color: #fff }
@@ -251,6 +272,7 @@ body.is-dragging .card-del { display: none }
   <button class="bbtn" data-view="matrix" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg><span class="hide-sm">Prioritäten</span></button>
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
+  <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
   <span class="sep hide-sm"></span>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
 </header>
@@ -565,7 +587,7 @@ function render() {
   const main = $("#main"), sx = main.scrollLeft;
   const draft = $("#compose-text")?.value || "";
   const scrolls = [...main.querySelectorAll(".cards")].map(c => c.scrollTop);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : renderCal();
   main.scrollLeft = sx;
   main.querySelectorAll(".cards").forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
   renderBar();
@@ -755,6 +777,82 @@ function renderCardFiles(taskId) {
   el.innerHTML = filesFor(taskId).map(f => fileRow(f, { inCard: true })).join("") || `<p class="sub" style="margin:0;color:var(--muted);font-size:13px">Noch keine Anhänge.</p>`;
 }
 
+/* ---------- landing page analytics (PostHog via the gateway) ---------- */
+const stats = { data: null, loading: false, days: 30, error: "" };
+const CTA_NAMES = { hero_calendly: "Kennenlernen (oben)", nav_calendly: "Navigation: 15 Min reden", final_calendly: "Termin aussuchen (unten)", hero_projects: "Was ich gebaut habe", final_instagram: "Instagram (unten)", footer_instagram: "Instagram (Fußzeile)", log_instagram: "Instagram (Projekte)" };
+const DEVICE_NAMES = { Desktop: "Laptop / PC", Mobile: "Handy", Tablet: "Tablet" };
+const LANDING_URL = "https://maikz91.github.io/flow-media-ai/";
+async function loadStats() {
+  if (!WEB) return;
+  stats.loading = true; stats.error = ""; if (view === "stats") render();
+  try { const j = await api("analytics", { days: stats.days }); stats.data = j; if (j.status === "error") stats.error = "PostHog hat nicht geantwortet." }
+  catch { stats.error = "Die Auswertung konnte nicht geladen werden." }
+  stats.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
+}
+const fmtN = n => Number(n || 0).toLocaleString("de-DE");
+function delta(cur, prev) {
+  if (!prev) return cur ? `<span class="kd">neu</span>` : `<span class="kd">–</span>`;
+  const d = Math.round((cur - prev) / prev * 100);
+  return `<span class="kd ${d > 0 ? "up" : d < 0 ? "down" : ""}">${d > 0 ? "+" : ""}${d} % ggü. Vorzeitraum</span>`;
+}
+function barList(rows, nameMap = {}) {
+  if (!rows?.length) return `<p class="sub">Noch keine Daten.</p>`;
+  const max = Math.max(...rows.map(r => Number(r[1]) || 0), 1);
+  return `<ul class="blist">${rows.map(([name, n]) => { const label = nameMap[name] || (name === "$direct" ? "Direkt / unbekannt" : name || "–");
+    return `<li title="${esc(label)}: ${fmtN(n)}"><span class="bl-name">${esc(label)}</span><span class="bl-bar"><i style="width:${(n / max * 100).toFixed(1)}%"></i></span><span class="bl-n">${fmtN(n)}</span></li>` }).join("")}</ul>`;
+}
+function dailyChart(rows, days) {
+  const map = Object.fromEntries((rows || []).map(r => [r[0], r]));
+  const pts = [...Array(days)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - (days - 1 - i)); const k = ymd(d); const r = map[k]; return { k, d, pv: r ? Number(r[1]) : 0, visits: r ? Number(r[2]) : 0, cta: r ? Number(r[3]) : 0 } });
+  const W = 1240, H = 230, padL = 36, padB = 24, padT = 10, max = Math.max(4, ...pts.map(p => p.visits));
+  const step = Math.ceil(max / 4), top = step * 4, bw = (W - padL) / pts.length;
+  const y = v => padT + (H - padT - padB) * (1 - v / top);
+  const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 6}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${i * step}</text>`).join("");
+  const bars = pts.map((p, i) => { const x = padL + i * bw + 1, h = y(0) - y(p.visits);
+    const lab = `${p.d.getDate()}.${p.d.getMonth() + 1}.`;
+    return `<g class="bar" data-tip="${esc(`${DOW[(p.d.getDay() + 6) % 7]} ${lab} · ${fmtN(p.visits)} Besuche · ${fmtN(p.pv)} Aufrufe · ${fmtN(p.cta)} Klicks`)}"><rect class="hit" x="${padL + i * bw}" y="${padT}" width="${bw}" height="${H - padT - padB}"/>${p.visits ? `<rect class="m" x="${x}" y="${y(p.visits)}" width="${Math.max(bw - 2, 1)}" height="${h}" rx="${Math.min(3, bw / 3)}"/>` : ""}</g>` }).join("");
+  const every = days <= 7 ? 1 : days <= 30 ? 5 : 15;
+  const labels = pts.map((p, i) => i % every === 0 || i === pts.length - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${p.d.getDate()}.${p.d.getMonth() + 1}.</text>` : "").join("");
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Besuche pro Tag, letzte ${days} Tage">${grid}${bars}${labels}</svg><div class="tip" hidden></div></div>`;
+}
+function renderStats() {
+  const head = `<div class="cal-head"><h2 style="margin:0">Landingpage</h2>
+    <a class="mini" href="${LANDING_URL}" target="_blank" rel="noopener">Seite öffnen</a>
+    ${stats.data?.link ? `<a class="mini" href="${esc(stats.data.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}
+    <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(d => `<button type="button" data-days="${d}" aria-pressed="${stats.days === d}">${d} Tage</button>`).join("")}</span></div>`;
+  let body;
+  if (!WEB) body = `<div class="note">Die Auswertung gibt es in der Web-Version deines Boards.</div>`;
+  else if (stats.loading && !stats.data) body = `<p class="sub">Lade Zahlen aus PostHog …</p>`;
+  else if (stats.error) body = `<div class="note">${esc(stats.error)}<button type="button" class="mini" data-stats-reload>Erneut laden</button></div>`;
+  else if (stats.data?.status === "no_token") body = `<div class="note">Noch nicht verbunden: Lege in Supabase das Secret <b>POSTHOG_API_KEY</b> an (persönlicher PostHog-Schlüssel mit Leserecht für Abfragen). Dann erscheinen hier deine Zahlen.</div>`;
+  else if (stats.data?.status === "ok") {
+    const k = stats.data.kpi, p = stats.data.prev, rate = k.visits ? (k.cal / k.visits * 100) : 0, prate = p.visits ? (p.cal / p.visits * 100) : 0;
+    body = `<div class="kpis">
+        <div class="kpi"><span class="kl">Besuche</span><b>${fmtN(k.visits)}</b>${delta(k.visits, p.visits)}</div>
+        <div class="kpi"><span class="kl">Seitenaufrufe</span><b>${fmtN(k.pv)}</b>${delta(k.pv, p.pv)}</div>
+        <div class="kpi"><span class="kl">Klicks auf „Termin“</span><b>${fmtN(k.cal)}</b>${delta(k.cal, p.cal)}</div>
+        <div class="kpi"><span class="kl">Termin-Quote</span><b>${rate.toLocaleString("de-DE", { maximumFractionDigits: 1 })} %</b><span class="kd">Klicks auf Termin je Besuch${p.visits ? ` · vorher ${prate.toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div>
+      </div>
+      <div class="sgrid">
+        <div class="panel spanel wide"><h3>Besuche pro Tag</h3>${dailyChart(stats.data.daily, stats.data.days)}</div>
+        <div class="panel spanel"><h3>Woher kommen die Besuche?</h3>${barList(stats.data.refs)}</div>
+        <div class="panel spanel"><h3>Welche Buttons werden geklickt?</h3>${barList(stats.data.ctas, CTA_NAMES)}</div>
+        <div class="panel spanel"><h3>Geräte</h3>${barList(stats.data.devices, DEVICE_NAMES)}</div>
+      </div>
+      <p class="sub" style="margin:0">Gezählt wird ohne Cookies: ein „Besuch“ ist ein Seitenbesuch, wiederkehrende Personen werden nicht wiedererkannt.</p>`;
+  } else body = `<p class="sub">Lade …</p>`;
+  return `<section class="panel stats">${head}${body}</section>`;
+}
+document.addEventListener("mouseover", e => {
+  const g = e.target.closest?.(".chart .bar"), c = e.target.closest?.(".chart"); if (!c) return;
+  const tip = c.querySelector(".tip");
+  if (!g) { tip.hidden = true; return }
+  tip.textContent = g.dataset.tip; tip.hidden = false;
+  const r = c.getBoundingClientRect(), b = g.getBoundingClientRect();
+  tip.style.left = Math.min(Math.max(b.left - r.left + b.width / 2, 80), r.width - 80) + "px";
+});
+document.addEventListener("mouseleave", e => { if (e.target.classList?.contains("chart")) e.target.querySelector(".tip").hidden = true }, true);
+
 /* ---------- card detail ---------- */
 function openCard(t, isNew = false) {
   const col = COLS.find(c => c.id === t.status);
@@ -887,7 +985,7 @@ document.addEventListener("click", e => {
   const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
   if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
   if (tgt.closest("#layer")) return;
-  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); return }
+  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); return }
   if (tgt.closest("#btn-menu")) { openMenu(tgt.closest("#btn-menu")); return }
   if (tgt.closest("#btn-star")) { if (!readOnly) saveMeta({ starred: !meta.starred }); return }
   if (tgt.closest("#board-title") && !readOnly) {
@@ -907,6 +1005,8 @@ document.addEventListener("click", e => {
   }
   const nd = tgt.closest("[data-new-due]"); if (nd) { openCard(blank({ due: nd.dataset.newDue, status: "todo", order: nextOrder("todo") }), true); return }
   const card = tgt.closest("[data-id]"); if (card) { const t = tasks.find(x => x.id === card.dataset.id); if (t) openCard(t) ; return }
+  const sd = tgt.closest("[data-days]"); if (sd) { stats.days = Number(sd.dataset.days); stats.data = null; loadStats(); return }
+  if (tgt.closest("[data-stats-reload]")) { loadStats(); return }
   const cm = tgt.closest("[data-calmode]");
   if (cm) { calMode = cm.dataset.calmode; try { localStorage.setItem("flow-board-calmode", calMode) } catch {} ; if (calMode === "week") weekStart = mondayOf(calCursor.getMonth() === new Date().getMonth() ? new Date() : calCursor); else calCursor = new Date(weekStart.getFullYear(), weekStart.getMonth(), 1); render(); return }
   const step = d => { if (calMode === "week") { weekStart = new Date(weekStart); weekStart.setDate(weekStart.getDate() + 7 * d) } else calCursor = new Date(calCursor.getFullYear(), calCursor.getMonth() + d, 1); render() };
@@ -1055,7 +1155,7 @@ function dropOn(z, id, clientY) {
 
 if (DEMO) $("#demo-pill").hidden = false;
 document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "meer" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
-try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files"].includes(v)) view = v } catch {}
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
 function seedDemo() {

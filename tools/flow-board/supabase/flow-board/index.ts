@@ -1,6 +1,6 @@
 // Flow Board gateway: every read/write of the board goes through here.
 // Access is granted by a secret board key (sent by the page, compared against a SHA-256 hash in flow_board_boards).
-// Secrets (Supabase → Edge Functions → Secrets): CALENDLY_TOKEN, optional GITHUB_TOKEN and GITHUB_REPOS ("owner/repo,owner/repo2").
+// Secrets (Supabase → Edge Functions → Secrets): CALENDLY_TOKEN, POSTHOG_API_KEY, optional GITHUB_TOKEN and GITHUB_REPOS ("owner/repo,owner/repo2").
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 
@@ -51,6 +51,39 @@ async function calendlyEvents() {
     return { start: e.start_time, end: e.end_time, name: e.name, invitee, location };
   }));
   return { status: "ok", events };
+}
+
+// Landing page analytics from PostHog (EU). Needs a personal API key with query:read as secret (name contains "POSTHOG").
+async function analytics(daysReq: unknown) {
+  const key = secret(["POSTHOG_API_KEY", "POSTHOG_KEY", "POSTHOG_PERSONAL_API_KEY"], /posthog/i);
+  if (!key) return { status: "no_token" };
+  const days = [7, 30, 90].includes(Number(daysReq)) ? Number(daysReq) : 30;
+  const host = Deno.env.get("POSTHOG_HOST") ?? "https://eu.posthog.com";
+  const project = Deno.env.get("POSTHOG_PROJECT") ?? "175210";
+  const site = "(properties.site = 'flow-media-ai' OR properties.$pathname LIKE '/flow-media-ai/marketing/%')";
+  const q = async (sql: string) => {
+    const r = await fetch(`${host}/api/projects/${project}/query/`, {
+      method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ query: { kind: "HogQLQuery", query: sql } }),
+    });
+    if (!r.ok) throw new Error(`posthog ${r.status}`);
+    return (await r.json()).results as unknown[][];
+  };
+  const win = (from: number, to: number) => `timestamp > now() - INTERVAL ${from} DAY AND timestamp <= now() - INTERVAL ${to} DAY`;
+  const kpiSql = (from: number, to: number) => `SELECT countIf(event = '$pageview'), uniqIf(properties.$session_id, event = '$pageview'),
+      countIf(event = 'cta_click'), countIf(event = 'cta_click' AND properties.cta LIKE '%calendly%')
+    FROM events WHERE ${site} AND ${win(from, to)}`;
+  const [cur, prev, daily, refs, ctas, devices] = await Promise.all([
+    q(kpiSql(days, 0)), q(kpiSql(days * 2, days)),
+    q(`SELECT toString(toDate(timestamp)) AS d, countIf(event = '$pageview'), uniqIf(properties.$session_id, event = '$pageview'), countIf(event = 'cta_click')
+       FROM events WHERE ${site} AND ${win(days, 0)} GROUP BY d ORDER BY d`),
+    q(`SELECT coalesce(nullIf(properties.utm_source, ''), nullIf(properties.$referring_domain, ''), '$direct') AS src, count()
+       FROM events WHERE event = '$pageview' AND ${site} AND ${win(days, 0)} GROUP BY src ORDER BY count() DESC LIMIT 8`),
+    q(`SELECT properties.cta, count() FROM events WHERE event = 'cta_click' AND ${site} AND ${win(days, 0)} GROUP BY properties.cta ORDER BY count() DESC LIMIT 8`),
+    q(`SELECT coalesce(properties.$device_type, 'Unbekannt'), count() FROM events WHERE event = '$pageview' AND ${site} AND ${win(days, 0)} GROUP BY 1 ORDER BY 2 DESC LIMIT 5`),
+  ]);
+  const k = (r: unknown[][]) => { const [pv, visits, cta, cal] = (r[0] ?? [0, 0, 0, 0]) as number[]; return { pv, visits, cta, cal }; };
+  return { status: "ok", days, kpi: k(cur), prev: k(prev), daily, refs, ctas, devices, link: `${host}/project/${project}/web` };
 }
 
 // Folder listing of an allowed GitHub repo (token optional for public repos, required for private ones).
@@ -139,6 +172,9 @@ Deno.serve(async (req) => {
       }
       case "calendly":
         return json(await calendlyEvents());
+      case "analytics": {
+        try { return json(await analytics(body.days)); } catch (e) { return json({ status: "error", message: String((e as any)?.message ?? e) }); }
+      }
       case "gh_list": {
         const r = await githubList(body.repo, body.path);
         return "error" in r ? json({ error: r.error }, r.status as number) : json(r);
