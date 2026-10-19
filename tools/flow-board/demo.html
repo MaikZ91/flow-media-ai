@@ -714,7 +714,9 @@ function openMenu(btn) {
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
-    ${WEB && webUser ? `<div class="stat">Angemeldet als ${esc(webUser.email || "")}</div><button type="button" class="ghost" id="web-logout">Abmelden</button>` : ""}
+    ${WEB && creds ? `<h3>Andere Geräte</h3><div class="stat">Öffne dein Board überall mit deinem persönlichen Link. Wer den Link hat, kann das Board bearbeiten – nicht weitergeben.</div>
+      <button type="button" class="ghost" id="web-copy">Board-Link kopieren</button><input id="web-link" hidden readonly value="${esc(shareLink())}" style="width:100%">
+      <button type="button" class="ghost" id="web-forget">Auf diesem Gerät abmelden</button>` : ""}
     <div class="stat">${WEB ? "Gespeichert in deiner Datenbank, auf allen Geräten." : DEMO ? "Demo: Deine Änderungen bleiben nur in deinem Browser. Andere sehen sie nicht." : tasksCol ? "Gespeichert für alle deine Geräte." : "Nur in diesem Browser gespeichert."}${readOnly ? " Nur Ansicht." : ""}</div>
     ${DEMO ? `<button type="button" class="ghost" id="demo-reset">Beispiel zurücksetzen</button>` : ""}
   </div>`;
@@ -904,93 +906,118 @@ function seedDemo() {
   lsSave();
 }
 
-/* ---------- WEB: Supabase backend (login, tables, storage, realtime) ---------- */
+/* ---------- WEB: Supabase backend, no login: a secret board link (#b=<board>&k=<key>) unlocks the board ---------- */
 function loadScript(src) { return new Promise((ok, fail) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s) }) }
-function authScreen(msg = "", mode = "login") {
+const BOARD_FN = SB_URL + "/functions/v1/flow-board";
+const CREDS_KEY = "flow-board-creds";
+let sb = null, creds = null, rtChannel = null;
+function readCreds() {
+  const h = new URLSearchParams(location.hash.slice(1));
+  if (h.get("b") && h.get("k")) {
+    creds = { board: h.get("b"), key: h.get("k") };
+    try { localStorage.setItem(CREDS_KEY, JSON.stringify(creds)) } catch {}
+    history.replaceState(null, "", location.pathname + location.search);
+    return creds;
+  }
+  try { creds = JSON.parse(localStorage.getItem(CREDS_KEY) || "null") } catch { creds = null }
+  return creds;
+}
+const shareLink = () => location.origin + location.pathname + "#b=" + encodeURIComponent(creds.board) + "&k=" + encodeURIComponent(creds.key);
+async function api(action, extra = {}) {
+  const r = await fetch(BOARD_FN, { method: "POST", headers: { "content-type": "application/json", apikey: SB_KEY, Authorization: "Bearer " + SB_KEY },
+    body: JSON.stringify({ board: creds.board, key: creds.key, action, ...extra }) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw { code: j.error === "denied" ? "denied" : "web", message: j.message || j.error || r.status };
+  return j;
+}
+function keyScreen(msg = "") {
   let el = $("#auth"); if (!el) { el = document.createElement("div"); el.id = "auth"; document.body.appendChild(el) }
-  el.innerHTML = `<div class="scrim" style="align-items:center"><form class="modal" id="auth-form" style="grid-template-columns:minmax(0,1fr);width:min(380px,100%)">
+  el.innerHTML = `<div class="scrim" style="align-items:center"><form class="modal" id="key-form" style="grid-template-columns:minmax(0,1fr);width:min(420px,100%)">
     <h2 style="margin:0;font-size:20px">Flow Board</h2>
-    <p class="sub" style="margin:0;color:var(--muted)">${mode === "signup" ? "Konto anlegen. Danach kommt eine Bestätigungs-Mail." : "Melde dich an, um dein Board zu öffnen."}</p>
-    <div class="sec" style="margin:0"><label class="lbl" for="au-mail" style="font-size:12px;font-weight:600;color:var(--muted)">E-Mail</label><input id="au-mail" type="email" autocomplete="email" required></div>
-    <div class="sec" style="margin:0"><label class="lbl" for="au-pw" style="font-size:12px;font-weight:600;color:var(--muted)">Passwort</label><input id="au-pw" type="password" autocomplete="${mode === "signup" ? "new-password" : "current-password"}" minlength="8" required></div>
+    <p style="margin:0;color:var(--muted)">Öffne dein Board über deinen persönlichen Link – oder füg ihn hier ein.</p>
+    <div class="sec" style="margin:0"><label for="key-in" style="font-size:12px;font-weight:600;color:var(--muted)">Board-Link</label><input id="key-in" required placeholder="https://…/board/#b=…&k=…"></div>
     ${msg ? `<div class="note">${esc(msg)}</div>` : ""}
-    <div class="mfoot" style="justify-content:space-between"><button type="button" class="ghost" id="au-switch">${mode === "signup" ? "Ich habe ein Konto" : "Konto anlegen"}</button><button class="btn" type="submit">${mode === "signup" ? "Konto anlegen" : "Anmelden"}</button></div>
-  </form></div>`;
-  $("#au-switch").onclick = () => authScreen("", mode === "signup" ? "login" : "signup");
-  $("#auth-form").onsubmit = async e => {
+    <div class="mfoot"><button class="btn" type="submit">Board öffnen</button></div></form></div>`;
+  $("#key-form").onsubmit = e => {
     e.preventDefault();
-    const email = $("#au-mail").value.trim(), password = $("#au-pw").value;
-    const r = mode === "signup" ? await sb.auth.signUp({ email, password, options: { emailRedirectTo: location.href.split("#")[0] } }) : await sb.auth.signInWithPassword({ email, password });
-    if (r.error) return authScreen(r.error.message === "Invalid login credentials" ? "E-Mail oder Passwort stimmt nicht – oder die E-Mail ist noch nicht bestätigt." : r.error.message, mode);
-    if (mode === "signup" && !r.data.session) return authScreen("Fast geschafft: Bestätige den Link in deiner E-Mail und melde dich dann hier an.", "login");
+    const v = $("#key-in").value.trim(), h = new URLSearchParams(v.includes("#") ? v.split("#")[1] : v);
+    if (!h.get("b") || !h.get("k")) return keyScreen("Das sieht nicht wie dein Board-Link aus. Er enthält „#b=“ und „&k=“.");
+    creds = { board: h.get("b"), key: h.get("k") };
+    try { localStorage.setItem(CREDS_KEY, JSON.stringify(creds)) } catch {}
+    startBoard();
   };
 }
-let sb = null;
-const chk = r => { if (r.error) throw { code: "web", message: r.error.message }; return r };
-function rowToTask(r) { return { id: r.id, ...r.data } }
 async function refreshSigned() {
   const paths = files.filter(f => f.kind === "asset" && !signed[f.assetId]).map(f => f.assetId);
   if (!paths.length) return;
-  const r = await sb.storage.from("flow-board").createSignedUrls(paths, 60 * 60 * 12);
-  (r.data || []).forEach(x => { if (x.signedUrl) signed[x.path] = x.signedUrl });
+  try { const j = await api("sign", { paths }); j.urls.forEach(x => { if (x.url) signed[x.path] = x.url }) } catch { return }
   if (!$("#layer").innerHTML) render(); else { const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
 }
-async function startWebData(user) {
-  webUser = user; $("#auth")?.remove();
-  const uid = user.id;
+const rowToTask = r => ({ id: r.id, ...r.data });
+async function reloadBoard() {
+  const j = await api("load");
+  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask);
+  if (j.meta) meta = { ...meta, ...j.meta };
+  loaded = true; applyBackground();
+  if (!$("#layer").innerHTML) render(); else { renderBar(); const m = $("#modal"); if (m?.dataset.task) renderCardFiles(m.dataset.task) }
+  refreshSigned();
+}
+let reloadTimer = 0;
+function scheduleReload(ms = 300) { clearTimeout(reloadTimer); reloadTimer = setTimeout(() => reloadBoard().catch(() => {}), ms) }
+const ping = r => { rtChannel?.send({ type: "broadcast", event: "changed", payload: {} }); return r };
+async function sha256hex(s) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("") }
+async function startBoard() {
+  try { await reloadBoard() }
+  catch (e) {
+    if (e.code === "denied") { try { localStorage.removeItem(CREDS_KEY) } catch {} ; return keyScreen("Dieser Link passt zu keinem Board.") }
+    toast("Das Board konnte nicht geladen werden. Prüfe die Internetverbindung."); return;
+  }
+  $("#auth")?.remove();
   const table = name => ({ doc: id => ({
-    set: body => sb.from(name).upsert({ id, owner: uid, data: body, updated_at: new Date().toISOString() }).then(chk),
-    delete: () => sb.from(name).delete().eq("id", id).then(chk),
+    set: data => api("upsert", { table: name, id, data }).then(ping),
+    delete: () => api("delete", { table: name, id }).then(ping),
   }) });
-  tasksCol = table("flow_board_tasks"); filesCol = table("flow_board_files");
-  metaDoc = { set: data => sb.from("flow_board_meta").upsert({ owner: uid, data, updated_at: new Date().toISOString() }).then(chk) };
+  tasksCol = table("tasks"); filesCol = table("files");
+  metaDoc = { set: data => api("meta", { data }).then(ping) };
   assetsApi = {
     upload: async (f, { type }) => {
-      const path = uid + "/" + newId() + "-" + f.name.replace(/[^\w.\-]+/g, "_").slice(-80);
-      const r = await sb.storage.from("flow-board").upload(path, f, { contentType: type, upsert: false });
-      if (r.error) throw { code: /size|large/i.test(r.error.message) ? "too_large" : /quota/i.test(r.error.message) ? "quota_or_state" : "upstream_error", message: r.error.message };
-      return { id: path, url: "", sizeBytes: f.size, contentType: type };
+      const { path, token } = await api("upload", { name: f.name });
+      const r = await sb.storage.from("flow-board").uploadToSignedUrl(path, token, f, { contentType: type });
+      if (r.error) throw { code: /size|large/i.test(r.error.message) ? "too_large" : "upstream_error", message: r.error.message };
+      ping(); return { id: path, url: "", sizeBytes: f.size, contentType: type };
     },
-    delete: async id => { const r = await sb.storage.from("flow-board").remove([id]); if (r.error) throw { code: "upstream_error" } },
+    delete: async path => { await api("remove", { path }) },
     list: async () => { const a = files.filter(f => f.kind === "asset"); return { usage: { files: a.length, bytes: a.reduce((n, f) => n + (f.size || 0), 0), maxBytes: 1024 * 1048576, maxFiles: 10000 } } },
   };
-  const [t, f, m] = await Promise.all([
-    sb.from("flow_board_tasks").select("id,data"), sb.from("flow_board_files").select("id,data"), sb.from("flow_board_meta").select("data").maybeSingle(),
-  ]);
-  if (t.error) { toast("Laden hat nicht geklappt: " + t.error.message); return }
-  tasks = t.data.map(rowToTask); files = (f.data || []).map(rowToTask);
-  if (m.data?.data) meta = { ...meta, ...m.data.data };
-  loaded = true; applyBackground(); render(); refreshSigned();
-  const apply = (list, p) => p.eventType === "DELETE" ? list.filter(x => x.id !== p.old.id) : [...list.filter(x => x.id !== p.new.id), rowToTask(p.new)];
-  sb.channel("flow-board-" + uid)
-    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_tasks" }, p => { tasks = apply(tasks, p); if (!$("#layer").innerHTML) render(); else renderBar() })
-    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_files" }, p => { files = apply(files, p); refreshSigned(); const md = $("#modal"); if (md?.dataset.task) renderCardFiles(md.dataset.task); if (!$("#layer").innerHTML) render() })
-    .on("postgres_changes", { event: "*", schema: "public", table: "flow_board_meta" }, p => { if (p.new?.data) { meta = { ...meta, ...p.new.data }; applyBackground(); renderBar() } })
-    .subscribe();
+  render();
+  // live updates: other devices announce changes on a channel only key holders can name; polling as fallback
+  rtChannel = sb.channel("fb-" + (await sha256hex(creds.key + "#rt")).slice(0, 32));
+  rtChannel.on("broadcast", { event: "changed" }, () => scheduleReload()).subscribe();
+  setInterval(() => { if (!document.hidden && !drag.active) scheduleReload(0) }, 30000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) scheduleReload(0) });
 }
 async function bootWeb() {
   try { await loadScript("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js") }
-  catch { toast("Die Datenbank-Bibliothek konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
-  sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, detectSessionInUrl: true } });
-  const { data } = await sb.auth.getSession();
-  sb.auth.onAuthStateChange((ev, session) => {
-    if (session?.user && !webUser) startWebData(session.user);
-    if (ev === "SIGNED_OUT") location.reload();
-  });
-  if (data.session?.user) startWebData(data.session.user); else authScreen();
+  catch { toast("Eine Bibliothek konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
+  sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: false } });
+  if (readCreds()) startBoard(); else keyScreen();
+  window.addEventListener("hashchange", () => { if (location.hash.includes("k=") && readCreds()) startBoard() });
 }
 document.addEventListener("click", async e => {
-  if (e.target.id === "web-logout") { await sb?.auth.signOut(); location.reload() }
+  if (e.target.id === "web-copy") {
+    try { await navigator.clipboard.writeText(shareLink()); toast("Link kopiert – auf dem anderen Gerät öffnen") }
+    catch { const i = $("#web-link"); if (i) { i.hidden = false; i.select() } }
+  }
+  if (e.target.id === "web-forget") { try { localStorage.removeItem(CREDS_KEY) } catch {} ; location.reload() }
   if (e.target.closest?.("[data-link-add]")) {
     const url = $("#lnk-url").value.trim(), name = $("#lnk-name").value.trim();
     if (!/^https:\/\//i.test(url)) { toast("Bitte einen Link mit https:// einfügen."); return }
-    try { await filesCol.doc(newId()).set({ kind: "link", url, name: name || url.replace(/^https:\/\/(www\.)?/, "").slice(0, 60), taskId: dbx.pickFor, createdAt: Date.now() }); toast("Link angehängt"); $("#lnk-url").value = ""; $("#lnk-name").value = "" }
+    try { await filesCol.doc(newId()).set({ kind: "link", url, name: name || url.replace(/^https:\/\/(www\.)?/, "").slice(0, 60), taskId: dbx.pickFor, createdAt: Date.now() }); toast("Link angehängt"); $("#lnk-url").value = ""; $("#lnk-name").value = ""; scheduleReload(0) }
     catch (err) { writeErr(err) }
   }
 });
 
 /* ---------- boot: shared store if available, else this browser ---------- */
-let webUser = null;
 (async () => {
   if (WEB) return bootWeb();
   const db = !DEMO && window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
