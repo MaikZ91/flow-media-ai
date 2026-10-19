@@ -17,4 +17,6 @@ Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 
     { printf '<!doctype html>\n<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"></head><body>\n'; sed 's/const WEB = false;/const WEB = true;/' index.html; printf '\n</body></html>\n'; } > web/index.html
 
-Danach die Artifacts neu veröffentlichen und `web/` deployen.
+    cp web/index.html ../../board/index.html
+
+Danach die Artifacts neu veröffentlichen. Live (GitHub Pages, Branch `main`, Ordner `/`): https://maikz91.github.io/flow-media-ai/board/
