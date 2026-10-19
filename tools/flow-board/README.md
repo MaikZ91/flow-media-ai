@@ -2,7 +2,7 @@
 
 Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 
-- `index.html` – Arbeitsversion (privat): https://claude.ai/artifact/99KBM42Garnuq9ZtV3MfgN
+- `index.html` – Quelle für die Web-Version. Die Claude-Version (https://claude.ai/artifact/99KBM42Garnuq9ZtV3MfgN) ist **eingefroren seit 19.10.2026, nicht mehr veröffentlichen – Maik**. Maßgeblich ist nur noch die Web-Version.
   Speichert Karten und Dateien im Online-Speicher des Boards, liest Dropbox `/Flow Media AI`.
 - `demo.html` – teilbare Demo (**eingefroren seit 19.10.2026, nicht mehr aktualisieren – Maik**): https://claude.ai/artifact/NiGiVFXGQKNzzaWTWyEc8u
   Beispielkarten, jede Änderung bleibt im Browser des Besuchers. Keine Dateien, kein Dropbox.
@@ -18,7 +18,7 @@ Trello-ähnliches Task-Board mit Prioritäten-Matrix, Kalender und Dateiablage.
 
     cp web/index.html ../../board/index.html
 
-Danach die Artifacts neu veröffentlichen. Live (GitHub Pages, Branch `main`, Ordner `/`): https://maikz91.github.io/flow-media-ai/board/
+Kein Artifact mehr neu veröffentlichen (Claude-Version und Demo sind eingefroren). Live (GitHub Pages, Branch `main`, Ordner `/`): https://maikz91.github.io/flow-media-ai/board/
 
 ## Server (Supabase Edge Function `flow-board`)
 Quelle: `supabase/flow-board/index.ts` – nach Änderungen per Supabase-MCP (`deploy_edge_function`) neu deployen.
