@@ -141,6 +141,12 @@ Dabei ist KI für mich kein Selbstzweck und kein magisches Versprechen. Sie ist 
 
 ## 7. Meine Werte
 
+**Stand 20.10.2026 – meine Werte gerade:**
+
+Macht · Mut · Pragmatismus · Risiko · Entwicklung · Erfolg · Flow · Fokus · Freiheit · Herausforderung · Innovation · Inspiration · Intuition · Kreativität · Selbstvertrauen · Sinnhaftigkeit · Spontaneität · Struktur · Tiefe · Unabhängigkeit · Verlässlichkeit · Visionen · Wachstum · Wahrheit · Weiterentwicklung · Zuverlässigkeit
+
+Bisherige Ausformulierung (18.10.2026):
+
 - **Freiheit:** Ich möchte selbst entscheiden, wie ich arbeite und was ich erschaffe.
 - **Kreativität:** Ich möchte Ideen nicht nur sammeln, sondern in die Realität bringen.
 - **Pragmatismus:** Lieber etwas Funktionierendes bauen und verbessern als endlos darüber reden.
