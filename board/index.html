@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"></head><body>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Flow Board"><meta name="theme-color" content="#f6f6f2"></head><body>
 <title>Flow Board</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2039,6 +2039,8 @@ async function bootWeb() {
   sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: false } });
   if (readCreds()) startBoard(); else keyScreen();
   window.addEventListener("hashchange", () => { if (location.hash.includes("k=") && readCreds()) startBoard() });
+  // installable as an app (manifest + sw.js live next to board/index.html)
+  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 }
 document.addEventListener("click", async e => {
   if (e.target.id === "web-copy") {

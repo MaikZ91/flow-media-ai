@@ -2037,6 +2037,8 @@ async function bootWeb() {
   sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: false } });
   if (readCreds()) startBoard(); else keyScreen();
   window.addEventListener("hashchange", () => { if (location.hash.includes("k=") && readCreds()) startBoard() });
+  // installable as an app (manifest + sw.js live next to board/index.html)
+  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 }
 document.addEventListener("click", async e => {
   if (e.target.id === "web-copy") {
