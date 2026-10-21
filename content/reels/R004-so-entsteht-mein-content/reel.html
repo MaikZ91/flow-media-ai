@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Bri";font-weight:800;src:url("fonts/bri800.woff")}
+@font-face{font-family:"Plex";font-weight:500;src:url("fonts/plex500.woff")}
+@font-face{font-family:"Plex";font-weight:600;src:url("fonts/plex600.woff")}
+:root{--bg:#f6f6f2;--ink:#121512;--muted:#5d625d;--line:#e2e2dc;--accent:#2F5BFF;--card:#fff}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Plex,sans-serif}
+.scene{position:absolute;inset:0;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:170px 80px 330px}
+.scene.on{opacity:1}
+.step{font:600 30px Plex;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+.head{font:800 84px/1.02 Bri;letter-spacing:-.02em;text-align:center;margin:0 0 54px}
+.head span{color:var(--accent)}
+.ph{width:900px;height:1180px;border-radius:44px;background:#1b1e1b;color:#cfd3cf;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;font:600 40px/1.3 Plex;padding:60px}
+.ph b{font:800 56px/1.1 Bri;color:#fff}
+.ph small{font:500 30px Plex;color:#9aa09a}
+.card{width:920px;background:var(--card);border-radius:36px;box-shadow:0 30px 80px rgba(18,21,18,.12);padding:56px 60px;font-size:40px;line-height:1.4}
+.bubble{align-self:flex-end;background:var(--accent);color:#fff;border-radius:40px 40px 10px 40px;padding:44px 52px;font:500 44px/1.38 Plex;max-width:880px;min-height:160px}
+.who{align-self:flex-end;font:500 28px Plex;color:var(--muted);margin:16px 10px 0}
+.caret{display:inline-block;width:4px;height:1.1em;background:currentColor;vertical-align:-.15em;margin-left:4px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.file{font:600 30px Plex;color:var(--muted);margin-bottom:26px;display:flex;gap:14px;align-items:center}
+.file i{width:22px;height:22px;border-radius:6px;background:var(--accent);display:inline-block}
+.rule{padding:18px 22px;border-radius:14px;margin:6px 0;}
+.rule.hl{background:#e8edff;color:#1b37b5}
+.big{font:800 50px/1.15 Bri;margin:0 0 30px}
+.pill{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:14px 30px;font:800 40px Bri;margin:10px 8px 0 0;opacity:0;transform:translateY(20px);}
+.pill.on{opacity:1;transform:none}
+table{width:100%;border-collapse:collapse;font-size:31px;line-height:1.3}
+td{border-top:2px solid var(--line);padding:16px 10px;vertical-align:top;opacity:0;}
+td.t{font:600 26px Plex;color:var(--accent);white-space:nowrap}
+tr.on td{opacity:1}
+.phone{width:620px;height:1100px;border-radius:70px;background:#121512;padding:22px;box-shadow:0 30px 80px rgba(18,21,18,.25)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:52px;display:block}
+.sig{margin-top:40px;font:800 46px Bri}.sig span{color:var(--accent)}
+.bar{position:absolute;left:80px;right:80px;top:80px;height:8px;border-radius:8px;background:var(--line)}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:8px}
+</style></head><body>
+<div class="bar"><i id="prog"></i></div>
+
+<section class="scene" id="s1">
+  <div class="head">So entsteht <span>gerade</span> mein Content.</div>
+  <div class="ph"><b>MAIK · Selfie</b>„So entsteht gerade mein Content.“<small>Platzhalter – hier kommt dein Clip (2,5 s)</small></div>
+</section>
+
+<section class="scene" id="s2">
+  <div class="step">1 · Ich sag, worum's geht</div>
+  <div class="head">Eine Idee.<br>Mehr nicht.</div>
+  <div class="bubble"><span id="typed"></span><span class="caret"></span></div>
+  <div class="who">Maik → Claude</div>
+</section>
+
+<section class="scene" id="s3">
+  <div class="step">2 · Mein Creative Director</div>
+  <div class="head">Er kennt <span>meine Regeln.</span></div>
+  <div class="card">
+    <div class="file"><i></i>.claude/skills/creative-director/SKILL.md</div>
+    <div class="big">Creative Director @flow.media.ai</div>
+    <div class="rule" data-r>Nichts erfinden – keine Kunden, keine Zahlen ohne Quelle.</div>
+    <div class="rule" data-r>Mensch + Bewegung im ersten Frame.</div>
+    <div class="rule" data-r>Hook in unter 1 Sekunde lesbar.</div>
+    <div class="rule" data-r>Jedes Reel braucht einen Grund, es weiterzuschicken.</div>
+    <div class="rule" data-r>Keine Computerstimme als Maik.</div>
+  </div>
+</section>
+
+<section class="scene" id="s4">
+  <div class="step">3 · Er liest meine Marke</div>
+  <div class="head">Was ich <span>wirklich</span> will.</div>
+  <div class="card">
+    <div class="file"><i></i>Google Drive · Essenz</div>
+    <div class="big">„Ich erschaffe neue Möglichkeiten und befähige andere, ihre Ideen zu verwirklichen.“</div>
+    <span class="pill" data-p>BUILD</span><span class="pill" data-p>SHARE</span><span class="pill" data-p>ENABLE</span>
+  </div>
+</section>
+
+<section class="scene" id="s5">
+  <div class="step">4 · Er schreibt Skript, Drehplan, Caption</div>
+  <div class="head">Reel R003:<br><span>Mein Warum.</span></div>
+  <div class="card" style="padding:40px 44px">
+    <table>
+      <tr data-row><td class="t">0–2,5 s</td><td>Warum bau ich mir neben meinem Job ein eigenes Business auf?</td></tr>
+      <tr data-row><td class="t">2,5–7 s</td><td>Mit KI wird aus einer Idee in ein paar Tagen etwas Echtes.</td></tr>
+      <tr data-row><td class="t">7–12 s</td><td>Ich will meine Zeit nicht absitzen.</td></tr>
+      <tr data-row><td class="t">12–17 s</td><td>Ich will selbst entscheiden: woran, mit wem und wo.</td></tr>
+      <tr data-row><td class="t">17–24 s</td><td>Du musst kein Technik-Profi sein.</td></tr>
+      <tr data-row><td class="t">24–30 s</td><td>Ich bau hier öffentlich. Kommst du mit?</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="scene" id="s6">
+  <div class="step">5 · Ich nehm nur noch auf</div>
+  <div class="head">Mein Part:<br><span>Gesicht und Stimme.</span></div>
+  <div class="ph" style="height:1000px"><b>MAIK · beim Aufnehmen</b>Handy aufstellen, Satz einsprechen<small>Platzhalter – hier kommt dein Clip (2,5 s)</small></div>
+</section>
+
+<section class="scene" id="s7">
+  <div class="step">6 · Er schneidet</div>
+  <div class="head">Texte, Musik, <span>Schnitt.</span></div>
+  <div class="phone"><video id="vid" src="r002clip.webm" muted playsinline preload="auto"></video></div>
+</section>
+
+<section class="scene" id="s8">
+  <div class="step">7 · Posten mach ich noch selbst</div>
+  <div class="head">Willst du so einen<br><span>Creative Director?</span></div>
+  <div class="ph" style="height:900px"><b>MAIK · Selfie</b>„Den bau ich dir auch. Schreib mir.“<small>Platzhalter – hier kommt dein Clip (3 s)</small></div>
+  <div class="sig">Flow Media <span>AI</span></div>
+</section>
+
+<script>
+const MSG = "Vielleicht machen wir heute mal einen persönlichen Post zu meinem Warum.";
+const SC = [["s1",2.5],["s2",3.6],["s3",3.6],["s4",3.2],["s5",4.2],["s6",2.6],["s7",3.4],["s8",3.4]];
+const TOTAL = SC.reduce((a,[,d])=>a+d,0); window.TOTAL = TOTAL;
+const cl = x => Math.max(0, Math.min(1, x));
+// deterministic: draw the frame for time t (seconds); returns a promise when the video frame is ready
+window.DRAW = async t => {
+  document.getElementById("prog").style.width = Math.min(100, t/TOTAL*100)+"%";
+  let acc = 0, idx = SC.length-1, local = t;
+  for (let i=0;i<SC.length;i++){ if (t < acc+SC[i][1]) { idx=i; local=t-acc; break } acc += SC[i][1] }
+  if (idx === SC.length-1) local = t - (TOTAL - SC[idx][1]);
+  document.querySelectorAll(".scene").forEach((s,i)=>{ s.style.opacity = i===idx ? cl(local/0.2) : 0 });
+  const id = SC[idx][0];
+  if (id==="s2") document.getElementById("typed").textContent = MSG.slice(0, Math.floor(Math.max(0,local-.3)*32));
+  document.querySelectorAll("[data-r]").forEach((r,i)=>r.classList.toggle("hl", id==="s3" && local > .4+i*.55 && (i===4 || local < 1.0+i*.55)));
+  document.querySelectorAll("[data-p]").forEach((p,i)=>{ const a = id==="s4" ? cl((local-(.8+i*.35))/.3) : 0; p.style.opacity=a; p.style.transform=`translateY(${(1-a)*20}px)` });
+  document.querySelectorAll("[data-row]").forEach((r,i)=>r.classList.toggle("on", id==="s5" && local > .3+i*.45));
+  if (id==="s7") { const v=document.getElementById("vid"); const want=Math.min(local, v.duration-0.05);
+    if (Math.abs(v.currentTime-want) > 0.001) await new Promise(res=>{ v.addEventListener("seeked", res, {once:true}); v.currentTime = want }) }
+};
+</script>
+</body></html>
