@@ -275,11 +275,16 @@ main { position: relative; isolation: isolate }
 .vals-stage canvas { position: absolute; inset: 0; width: 100%; height: 100% }
 @media (max-width: 860px) {
   .vals { height: 340vh }
-  .vals-grid { grid-template-columns: minmax(0, 1fr); gap: 4px; align-content: center }
-  .vals-stage { order: -1; aspect-ratio: auto; height: 38vh; max-height: none }
-  .vals-count { margin: 6px 0 8px } .vals-count b { font-size: 40px }
-  .vals-texts { min-height: 250px }
-  .vals-steps { margin-top: 8px }
+  .vals-pin { align-items: flex-start }
+  .vals-grid { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: calc(76px + 2vh) }
+  .vals-stage { order: -1; aspect-ratio: auto; height: 36vh; height: 36svh; max-height: 330px }
+  .vals-copy .label { display: none }
+  .vals-count { margin: 8px 0 4px } .vals-count b { font-size: 34px } .vals-count span { font-size: 16px }
+  .vt h3 { font-size: clamp(54px, 16vw, 84px) }
+  .vt p { margin-top: 14px; font-size: 16px }
+  .vals-texts { min-height: 200px }
+  .vals-steps { margin-top: 4px }
+  .vals-bgword span { font-size: 42vw }
 }
 
 @media (max-width: 1000px) {
@@ -707,26 +712,55 @@ tick();
   const glow = (c, b) => { ctx.shadowColor = c; ctx.shadowBlur = b };
   const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h) };
 
-  // BUILD: tiles fly in and assemble into an app interface
-  const tiles = [[0, 0, 12, 1], [0, 1, 3, 7], [3, 1, 3, 3, 1], [6, 1, 3, 3], [9, 1, 3, 3], [3, 4, 9, 1.4], [3, 5.4, 4.5, 2.6], [7.5, 5.4, 4.5, 2.6]];
+  // BUILD: ideas (code glyphs) fly together, a phone draws itself, the app assembles inside it
+  const GLYPHS = ["</>", "{ }", "✦", "AI", "( )", "#", "=>", "✦", "[ ]", "</>", "fn", "✦"];
+  const gStart = GLYPHS.map((_, i) => ({ a: i / GLYPHS.length * Math.PI * 2 + .4, d: .75 + (i % 3) * .12 }));
   function build(t, a) {
-    const S = Math.min(W, H) * .8, u = S / 12, ox = (W - S) / 2, oy = (H - u * 8) / 2;
-    tiles.forEach(([gx, gy, gw, gh, acc], i) => {
-      const k = ease((t * 1.25 - i * .09) / .35), x = ox + gx * u + 4, y = oy + gy * u + 4, w = gw * u - 8, h = gh * u - 8;
-      if (k <= 0) return;
-      ctx.save(); ctx.globalAlpha = a * k;
-      ctx.translate(x + w / 2, y + h / 2 + (1 - k) * 120); ctx.rotate((1 - k) * (i % 2 ? .35 : -.35)); ctx.scale(.7 + .3 * k, .7 + .3 * k);
-      rr(-w / 2, -h / 2, w, h, 8);
-      ctx.fillStyle = acc ? "rgba(47,91,255,.22)" : "rgba(255,255,255,.04)"; ctx.fill();
-      glow(acc ? "#2F5BFF" : "transparent", acc ? 24 : 0); ctx.strokeStyle = acc ? "#2F5BFF" : "rgba(255,255,255,.35)"; ctx.lineWidth = 1.2; ctx.stroke(); glow("transparent", 0);
-      // content lines inside the tiles
-      ctx.fillStyle = "rgba(255,255,255,.18)";
-      if (h > u * .8 && w > u * 2) for (let l = 0; l < Math.min(3, Math.floor(h / (u * .7))); l++) { rr(-w / 2 + 14, -h / 2 + 16 + l * 18, (w - 28) * (l ? .55 : .8), 6, 3); ctx.fill() }
-      ctx.restore();
+    const cx = W / 2, cy = H / 2, ph = Math.min(H * .86, W * 1.3), pw = ph * .5, px = cx - pw / 2, py = cy - ph / 2, R = pw * .14;
+    ctx.globalAlpha = a;
+    // faint dot grid
+    ctx.fillStyle = "rgba(255,255,255,.06)";
+    for (let x = (W % 28) / 2; x < W; x += 28) for (let y = (H % 28) / 2; y < H; y += 28) ctx.fillRect(x, y, 1.2, 1.2);
+    // glyphs converge into the phone
+    ctx.font = "500 15px ui-monospace, Menlo, monospace"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    GLYPHS.forEach((g, i) => {
+      const k = ease((t - i * .015) / .38); if (k >= 1) return;
+      const s0 = gStart[i], r = Math.max(W, H) * .5 * s0.d * (1 - k), x = cx + Math.cos(s0.a + time * .15) * r, y = cy + Math.sin(s0.a + time * .15) * r * .8;
+      ctx.globalAlpha = a * (1 - k) * Math.min(1, t * 8 + .25); ctx.fillStyle = i % 4 === 2 ? "#8aa4ff" : "rgba(255,255,255,.8)"; ctx.fillText(g, x, y);
     });
-    // blinking build cursor
-    const k = ease((t - .75) / .2);
-    if (k > 0) { ctx.globalAlpha = a * k * (Math.sin(time * 6) > 0 ? 1 : .2); ctx.fillStyle = "#2F5BFF"; ctx.fillRect(ox + 4.6 * u, oy + 2.1 * u, 3, u * .6); ctx.globalAlpha = 1 }
+    ctx.globalAlpha = a;
+    // phone outline draws itself
+    const k1 = ease((t - .12) / .4);
+    if (k1 > 0) {
+      ctx.save(); rr(px, py, pw, ph, R); const per = 2 * (pw + ph);
+      ctx.setLineDash([per * k1, per]); ctx.strokeStyle = "rgba(255,255,255,.75)"; ctx.lineWidth = 1.4; ctx.stroke(); ctx.restore();
+      ctx.globalAlpha = a * k1; ctx.fillStyle = "rgba(255,255,255,.35)"; rr(cx - pw * .12, py + 12, pw * .24, 5, 3); ctx.fill(); ctx.globalAlpha = a;
+    }
+    // app parts slide in, one after another
+    const ix = px + pw * .1, iw = pw * .8; let y = py + ph * .1;
+    const parts = [
+      [ph * .035, (x, y, w, h) => { ctx.fillStyle = "rgba(255,255,255,.55)"; rr(x, y, w * .32, h, 4); ctx.fill(); ctx.fillStyle = "rgba(255,255,255,.2)"; rr(x + w - h * 1.4, y, h * 1.4, h, h / 2); ctx.fill() }],
+      [ph * .26, (x, y, w, h) => { const g = ctx.createLinearGradient(x, y, x + w, y + h); g.addColorStop(0, "rgba(47,91,255,.55)"); g.addColorStop(1, "rgba(47,91,255,.08)"); ctx.fillStyle = g; rr(x, y, w, h, 12); ctx.fill(); ctx.strokeStyle = "rgba(47,91,255,.6)"; ctx.lineWidth = 1; ctx.stroke(); ctx.fillStyle = "rgba(255,255,255,.85)"; rr(x + 14, y + h - 40, w * .55, 9, 4); ctx.fill(); ctx.fillStyle = "rgba(255,255,255,.4)"; rr(x + 14, y + h - 24, w * .35, 7, 4); ctx.fill() }],
+      [ph * .028, (x, y, w, h) => { ctx.fillStyle = "rgba(255,255,255,.7)"; rr(x, y, w * .7, h, 4); ctx.fill() }],
+      [ph * .02, (x, y, w, h) => { ctx.fillStyle = "rgba(255,255,255,.3)"; rr(x, y, w * .9, h, 4); ctx.fill() }],
+      [ph * .14, (x, y, w, h) => { [0, 1].forEach(c => { const cw = (w - 10) / 2, xx = x + c * (cw + 10); ctx.fillStyle = "rgba(255,255,255,.05)"; rr(xx, y, cw, h, 10); ctx.fill(); ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.lineWidth = 1; ctx.stroke(); ctx.fillStyle = "rgba(255,255,255,.35)"; rr(xx + 10, y + h - 22, cw * .55, 6, 3); ctx.fill(); ctx.fillStyle = c ? "rgba(138,164,255,.5)" : "rgba(255,255,255,.18)"; ctx.beginPath(); ctx.arc(xx + 20, y + 22, 9, 0, 7); ctx.fill() }) }],
+      [ph * .065, (x, y, w, h) => { glow("#2F5BFF", 24); ctx.fillStyle = "#2F5BFF"; rr(x, y, w, h, h / 2); ctx.fill(); glow("transparent", 0); ctx.fillStyle = "rgba(255,255,255,.9)"; rr(x + w / 2 - w * .18, y + h / 2 - 4, w * .36, 8, 4); ctx.fill() }],
+    ];
+    parts.forEach(([h, fn], i) => {
+      const k = ease((t - .42 - i * .07) / .22);
+      if (k > 0) { ctx.save(); ctx.globalAlpha = a * k; ctx.translate(0, (1 - k) * 18); fn(ix, y, iw, h); ctx.restore() }
+      y += h + ph * .032;
+    });
+    // finished: button pulses, "live" badge
+    const k2 = ease((t - .9) / .1);
+    if (k2 > 0) {
+      const by = y - ph * .032 - ph * .065, q = (time * .8) % 1;
+      ctx.globalAlpha = a * k2 * (1 - q); ctx.strokeStyle = "#2F5BFF"; ctx.lineWidth = 1.5; rr(ix - q * 10, by - q * 10, iw + q * 20, ph * .065 + q * 20, ph * .04 + q * 10); ctx.stroke();
+      ctx.globalAlpha = a * k2; ctx.font = "600 11px Montserrat, sans-serif"; ctx.textAlign = "left";
+      const lx = px + pw + 18, ly = py + ph * .2; ctx.fillStyle = "#2F5BFF"; glow("#2F5BFF", 12); ctx.beginPath(); ctx.arc(lx + 4, ly, 4, 0, 7); ctx.fill(); glow("transparent", 0);
+      ctx.fillStyle = "rgba(255,255,255,.85)"; if (lx + 60 < W) ctx.fillText("LIVE", lx + 14, ly + 1);
+    }
+    ctx.globalAlpha = 1; ctx.textBaseline = "alphabetic";
   }
 
   // CONNECT: Maik in the middle, people around, lines connect and pulses travel
