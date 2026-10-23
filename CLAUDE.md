@@ -18,6 +18,8 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
 - `.claude/skills/flow-design/` – visuelles Design (schwarz-weiß, große Versal-Headlines, ein blauer Akzent) für alles Gestaltete
+- `.claude/skills/content-themen/` – Themenpool, Rotation und Verlauf für den täglichen Content
+- **Daily-Content-Routine:** jeden Morgen ein fertiger Post im Chat (Creative Director Teil E); Reels in `content/reels/`, Karussells/Einzelposts in `content/posts/`
 - `.claude/skills/blindspot-analyse/` – optional, nur wenn Maik ihn einschaltet: Blindspot-Pass vor neuen Projekten
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
@@ -39,10 +41,11 @@ Maiks Google Drive `Flow Media AI` (Ordner-ID `1b0BfA5Y56OwA3-RBMhKXakpJ4dKOBRiU
 | `content/01_startplan.md` | `01_Marketing/Startplan_Instagram` |
 | `content/learnings.md` | `01_Marketing/Learnings_Instagram` |
 | `content/reels/<ID>-<name>/README.md` | `01_Marketing/Reels/<ID>_<Name>_Caption` |
+| `content/posts/<ID>-<name>/README.md` | `01_Marketing/Posts/<ID>_<Name>_Caption` |
 | `marketing/brand/…` | `01_Marketing/Brand/…` |
 | `organisatorisch/…`, `finanzen/…` | `06_Organisatorisch/…`, `05_Finanzen/…` |
 
-Ordner-IDs (für `parentId`): 01_Marketing `1dE9gJaTmDR0yIFP6rQBiMXr4m29L4vZh` · Reels `1zKIB3-yuIU6WztZSCa0fSOQticuFop8_` · Brand `1Uo0TsUUVeM7JdP6bd8z1X88SI0nQiRpd` · 02_Sales `1GX1UZHT8ekuAxa092GTfSZpQdXt6kRVj` · 03_Produkt `17FWXK648mnTtJaYaraj9A0q3MygRd441` · 04_Coachings `1fJZyU7NHzPUXTkOpBLtIUdN94CUkcx2o` · 05_Finanzen `1q_i8soVlfHsLp4NtEnqBrqXdKaY5lhlB` · Steuern `1r44DkyTilqd6Fm3sRsU7gdatz75P5m9N` (Rechnungen Debitoren `1mknCxYXfBCPY6CQoJcDo5lP8Sz5dMisM`, Rechnungen Kreditoren `1q-qhGmQPtcB0N4b84cfPCi4R8NLgWl-9`, Kontoauszüge `1ND1pSmTKFAIlS0SJpiL6GN599J_LErnV`) · Vorlagen IOF `1nXVwE5-oyOb1ibWbpP5wK0rrb4EcYUDU` · 06_Organisatorisch `1mhm_BW2sqDZZe2XfnbdLJKj257_XxTr7` · 07_KI `1LIw5RIjPsS0pYNPJSKRN9AxYBlvjueDi` · skills `1-iZidnDBICbcPJjf4r3B-Kv8V7IcbpNH` · auswertungen `1CGUnlkzDWw6C5nOFmWvEHKosDqUMHMwe`. Neue Ordner anlegen und hier nachtragen.
+Ordner-IDs (für `parentId`): 01_Marketing `1dE9gJaTmDR0yIFP6rQBiMXr4m29L4vZh` · Reels `1zKIB3-yuIU6WztZSCa0fSOQticuFop8_` · Posts `1km5q-J_uGggM02g9GEGcuxY-0Y4kI_B0` · Brand `1Uo0TsUUVeM7JdP6bd8z1X88SI0nQiRpd` · 02_Sales `1GX1UZHT8ekuAxa092GTfSZpQdXt6kRVj` · 03_Produkt `17FWXK648mnTtJaYaraj9A0q3MygRd441` · 04_Coachings `1fJZyU7NHzPUXTkOpBLtIUdN94CUkcx2o` · 05_Finanzen `1q_i8soVlfHsLp4NtEnqBrqXdKaY5lhlB` · Steuern `1r44DkyTilqd6Fm3sRsU7gdatz75P5m9N` (Rechnungen Debitoren `1mknCxYXfBCPY6CQoJcDo5lP8Sz5dMisM`, Rechnungen Kreditoren `1q-qhGmQPtcB0N4b84cfPCi4R8NLgWl-9`, Kontoauszüge `1ND1pSmTKFAIlS0SJpiL6GN599J_LErnV`) · Vorlagen IOF `1nXVwE5-oyOb1ibWbpP5wK0rrb4EcYUDU` · 06_Organisatorisch `1mhm_BW2sqDZZe2XfnbdLJKj257_XxTr7` · 07_KI `1LIw5RIjPsS0pYNPJSKRN9AxYBlvjueDi` · skills `1-iZidnDBICbcPJjf4r3B-Kv8V7IcbpNH` · auswertungen `1CGUnlkzDWw6C5nOFmWvEHKosDqUMHMwe`. Neue Ordner anlegen und hier nachtragen.
 
 - **Kundenunterlagen** (Angebote, Briefings, Kundenkarten) und Belege liegen **nur in Drive**, nie im Repo (öffentlich). Pro Kunde ein Ordner unter `04_Coachings/<Datum>_<Name>_<Thema>`.
 - **Aktualisieren = ersetzen:** Der Connector kann Inhalte nicht überschreiben. Darum die alte Datei in den Papierkorb (`trash_file`, wiederherstellbar) und neu anlegen. Vorher per `search_files` (`parentId = '<ordner>'`) die Datei-ID suchen.

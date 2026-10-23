@@ -1,0 +1,57 @@
+---
+name: content-themen
+description: Themenpool für @flow.media.ai – woraus der tägliche Content gewählt wird (Websites, Tools, Social-Media-Automatisierung, Fotobearbeitung, Webdesign, Prozessautomatisierung, KI-Workflows, Build in public). Mit echtem Material je Thema, Ideenliste, Rotationsregeln und Verlauf. Laden zusammen mit `creative-director`, sobald ein Post-Thema gewählt wird, vor allem in der Daily-Content-Routine.
+---
+
+# Content-Themen @flow.media.ai (Stand 23.10.2026)
+
+Der Creative Director wählt hier das Thema, `creative-director` regelt Inhalt/Hook/Format, `flow-design` das Aussehen. Neue Themen oder Ideen von Maik **hier** eintragen (mit Datum).
+
+## 1. Themen-Säulen (Maik, 23.10.2026)
+
+| Kürzel | Säule | Worum es geht | Echtes Material, das es schon gibt |
+|---|---|---|---|
+| `web` | **Websites erstellen** | Seiten mit KI in Stunden statt Wochen, Vorher/Nachher als Technik-Demo | Flow-Landingpage, MZ.9-Konzeptseiten (nur mit OK des Betriebs oder Demo-Firma), R001 |
+| `tools` | **Tools erstellen** | eigene Werkzeuge statt Abo-Software | Flow Board (Kanban, Kalender, Finanzen, als App installierbar), R002 |
+| `social` | **Social-Media-Automatisierung** | Content-Systeme: Skills, Creative Director, Design-Regeln, Planung, Learnings | `creative-director`, `flow-design`, dieser Skill, Daily-Routine, Instagram-Autopilot von THE TRIBE (als Projekt), R004, R005 |
+| `foto` | **Fotobearbeitung mit KI** | Porträts, Looks, Freistellen, einheitliche Bildserien | Maiks KI-Porträt-Serie (flow-design §4), Plakate/Flyer |
+| `design` | **Webdesign & Gestaltung** | wiedererkennbarer Look, Design-Systeme, Plakate, Flyer | `flow-design`, Plakate „Flow Business Community“, „AI Masterclass“, Karussell 23.10. |
+| `prozess` | **Prozessautomatisierung** | wiederkehrende Arbeit abgeben: Angebote, Rechnungen, Ablage, Mails | Drive-Spiegel, Board ↔ Drive, Angebots-Vorlage (ohne Kundendaten), Kalender-/Kanban-Einträge per Chat |
+| `ki` | **KI-Werkzeuge & Workflows** | was ein Tool wirklich kann, selbst getestet; Claude Code, Skills, Agenten | eigene Tests, Skills in `.claude/skills/` |
+| `weg` | **Build in public / mein Weg** | Warum, Ziele, Fehler, Zahlen des Kanals | R003, `content/learnings.md`, Startplan |
+| `lernen` | **Selbst umsetzen (Workshops)** | „Das kannst du auch“ – Befähigung, Mini-Anleitungen | Workshop-Formate (ohne Kundennamen), Karussell-Anleitungen |
+
+Weitere Säulen nur nach Maiks OK ergänzen.
+
+## 2. Ideen je Säule (nur Ideen auf Basis echter Projekte)
+- `web`: „Website von 2014 → heute“ (Demo-Firma) · „Landingpage in einem Abend“ · „3 Dinge, die jede kleine Website braucht“
+- `tools`: „Ich hab mein Trello ersetzt“ (Flow Board) · „Board als App aufs iPhone – ohne App Store“ · „Kalender per Doppelklick wie Outlook, selbst gebaut“
+- `social`: „Dein KI-Content sieht jedes Mal anders aus?“ (R005) · „Jeden Tag ein Post – wie meine Routine läuft“ · „Mein Creative Director kennt meine Regeln“ · „Was mein Autopilot falsch gemacht hat (Token-Ausfall)“
+- `foto`: „Eine Porträtserie, die zusammenpasst“ · „Von einem Selfie zum Plakatmotiv“ (nur mit eigenen Fotos)
+- `design`: „Wie ich aus meinen Plakaten ein Design-System gemacht habe“ · „Warum Schwarz-Weiß + eine Farbe wirkt“
+- `prozess`: „Mein Angebot schreibt sich (fast) selbst“ · „Belege landen automatisch im richtigen Ordner“ · „Ein Satz im Chat → Termin + Aufgabe + Ordner“
+- `ki`: „Claude-Skills erklärt in 30 Sekunden“ · „Ein Tool, das kaum jemand kennt“ (selbst getestet)
+- `weg`: „Mein erster Business-Kanal: 59 Follower, 0 Anfragen“ · „Woche 1 von Flow Media AI“
+- `lernen`: „In 3 Schritten zu deinem eigenen Design-Skill“ · „Dein erstes Tool ohne Programmieren“
+
+Verbrauchte Ideen im Verlauf (§5) markieren; neue Ideen hier anhängen.
+
+## 3. Rotation
+- Nie dieselbe Säule zwei Tage hintereinander; jede Säule mindestens alle 10 Tage einmal.
+- Gewichtung am Anfang (bis Learnings etwas anderes zeigen): `social`, `tools`, `web` je ca. 20 %, Rest verteilt.
+- Format wechseln: Reel, Karussell, Einzelpost – nicht dreimal dasselbe Format am Stück.
+- Learnings schlagen Plan: Wenn eine Säule nach 48 h deutlich besser läuft (`content/learnings.md`), öfter wählen.
+- Fehlt für eine Idee echtes Material (Bildschirmaufnahme, Zahl, Freigabe), Idee zurückstellen statt erfinden – oder als Frage an Maik in die Tagesausgabe.
+
+## 4. Grenzen
+- Keine Arbeitgeber-Projekte (auch nicht beschrieben), keine Kundennamen ohne OK, keine erfundenen Zahlen.
+- THE TRIBE nur als Projekt (wie gebaut), nicht als Werbung. Dating (`shotwAIse`) gar nicht.
+
+## 5. Verlauf (neueste oben)
+| Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
+|---|---|---|---|---|---|
+| 23.10.2026 | R005 | `social` / `design` | Reel | „Dein KI-Content sieht jedes Mal anders aus?“ – Design-Skill aus eigenen Referenzen | `look = flow-design` (erstes Reel im neuen Look) |
+| 23.10.2026 | – | `ki` | Karussell (von Maik) | „WOW. ICH HAB'S GESCHAFFT.“ | `hook = wow` |
+| 23.10.2026 | R003/R004 | `weg` / `social` | Reel (Avatar, in Arbeit) | Mein Warum · So entsteht mein Content | – |
+| 19.10.2026 | R002 | `tools` | Reel | Flow Board | `opener = avatar` |
+| 18.10.2026 | R001 | `web` | Reel | Websites | – |
