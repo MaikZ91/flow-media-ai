@@ -50,6 +50,7 @@ Verbrauchte Ideen im Verlauf (§5) markieren; neue Ideen hier anhängen.
 ## 5. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 23.10.2026 | R008 | `ki` / `design` | Reel/Intro | „Welcome to Flow Media AI“ – Hologramm-Intro mit Blitzen und eigenem Sound | `format = cinematic-intro` |
 | 23.10.2026 | R007 | `foto` / `ki` | Reel | „Ich als Hologramm.“ – Foto → Tiefenkarte → Punktwolke → Hologramm | `format = prozess-reveal` |
 | 23.10.2026 | R006 | `web` / `design` | Reel | „Meine neue Website. Komplett mit KI.“ – Website-Tour im Handy-Rahmen | `format = website-tour` |
 | 23.10.2026 | P001 | `lernen` / `design` | Einzelpost + Story | Flyer „Digitaler Stammtisch #1 – Mit KI zur Personal Brand“ (26.10., 18 Uhr, 15 €) | – (Event) |
