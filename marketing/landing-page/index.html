@@ -18,7 +18,7 @@
 /* Look: skill flow-design (black, white, one blue accent, condensed uppercase headlines, Maik in every block),
    finished like a premium studio site: deep black, hairline borders, glass cards, soft blue light, flowing lines as the motif. */
 :root {
-  --bg: #0A0A0A; --bg2: #0E0E0E; --card: rgba(255,255,255,.035); --card-h: rgba(255,255,255,.06);
+  --bg: #0A0A0A; --bg2: #0E0E0E; --card: rgba(18,18,18,.82); --card-h: rgba(24,24,26,.9);
   --white: #FFFFFF; --text: rgba(255,255,255,.78); --muted: rgba(255,255,255,.5); --line: rgba(255,255,255,.1); --line2: rgba(255,255,255,.18);
   --blue: #2F5BFF; --blue-glow: rgba(47,91,255,.45);
   --f-head: "Oswald", "Arial Narrow", sans-serif; --f-label: "Montserrat", system-ui, sans-serif; --f-body: "Inter", system-ui, sans-serif;
@@ -199,6 +199,59 @@ footer .sp { margin-left: auto }
 .fab-panel .btn { width: 100%; margin-top: 10px }
 .fab-panel .num { display: block; text-align: center; margin-top: 14px; font: 400 13px var(--f-body); letter-spacing: .06em; color: var(--muted) }
 
+/* lenis smooth scroll */
+html.lenis, html.lenis body { height: auto }
+.lenis.lenis-smooth { scroll-behavior: auto !important }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain }
+
+/* film grain over everything */
+body::after { content: ""; position: fixed; inset: -100%; z-index: 90; pointer-events: none; opacity: .045; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); animation: grain 1.2s steps(6) infinite }
+@keyframes grain { 0% { transform: translate(0,0) } 20% { transform: translate(-3%,2%) } 40% { transform: translate(2%,-3%) } 60% { transform: translate(-2%,-1%) } 80% { transform: translate(3%,3%) } 100% { transform: translate(0,0) } }
+
+/* intro */
+.intro { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center; transition: opacity .7s var(--ease), visibility .7s }
+.intro img { width: min(220px, 50vw); opacity: 0; animation: introLogo 1s var(--ease) .1s forwards }
+.intro i { position: absolute; left: 50%; top: calc(50% + 70px); width: 0; height: 1px; background: var(--blue); box-shadow: 0 0 14px var(--blue); transform: translateX(-50%); animation: introLine 1s var(--ease) .25s forwards }
+@keyframes introLogo { from { opacity: 0; transform: translateY(10px); filter: blur(6px) } to { opacity: 1; transform: none; filter: none } }
+@keyframes introLine { to { width: min(260px, 60vw) } }
+body.ready .intro { opacity: 0; visibility: hidden }
+body:not(.ready) .hero * { animation-play-state: paused !important }
+
+/* custom cursor (mouse only) */
+.cur, .cur-ring { position: fixed; left: 0; top: 0; z-index: 95; pointer-events: none; border-radius: 50%; display: none }
+@media (hover: hover) and (pointer: fine) {
+  .cur, .cur-ring { display: block }
+  .cur { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff }
+  .cur-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255,255,255,.45); transition: width .3s var(--ease), height .3s var(--ease), margin .3s var(--ease), background .3s, border-color .3s }
+  .cur-ring.hov { width: 72px; height: 72px; margin: -36px 0 0 -36px; background: rgba(47,91,255,.14); border-color: rgba(47,91,255,.7) }
+}
+
+/* manifesto: words light up while scrolling */
+.manifest { padding-block: clamp(110px, 15vw, 200px) }
+.manifest p { margin: 0; font: 500 clamp(34px, 5vw, 72px)/1.12 var(--f-body); letter-spacing: -.025em; color: var(--white); max-width: 18ch }
+.manifest .w { opacity: .16; transition: opacity .25s linear, color .4s }
+.manifest .w.on { opacity: 1 }
+.manifest .w.k.on { color: var(--blue); text-shadow: 0 0 30px rgba(47,91,255,.5) }
+.manifest .sig { display: flex; align-items: center; gap: 14px; margin-top: 46px }
+.manifest .sig span { width: 44px; height: 44px; border-radius: 50%; background: url(img/maik_avatar.jpg) center/cover; filter: grayscale(1); border: 1px solid var(--line2) }
+
+/* one flowing line runs through the whole page and draws itself with the scroll */
+main { position: relative; isolation: isolate }
+#flowpath { position: absolute; left: 0; top: 0; width: 100%; z-index: -1; pointer-events: none; overflow: visible }
+#flowpath .base { fill: none; stroke: rgba(255,255,255,.06); stroke-width: 1 }
+#flowpath .prog { fill: none; stroke: url(#fpg); stroke-width: 1.6; stroke-linecap: round }
+#flowpath circle { fill: #fff; filter: drop-shadow(0 0 8px var(--blue)) drop-shadow(0 0 18px var(--blue)) }
+
+/* workshop countdown */
+.countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 14px }
+.countdown div { text-align: center; padding: 12px 4px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.025) }
+.countdown b { display: block; font: 500 26px/1 var(--f-head); color: var(--white); font-variant-numeric: tabular-nums }
+.countdown small { display: block; margin-top: 6px; font: 500 10px var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--muted) }
+.countdown.done { display: block; text-align: center; padding: 12px; border-radius: 12px; border: 1px solid var(--line); color: var(--white) }
+
+/* JS-driven marquee */
+.marquee.js .track { animation: none }
+
 @media (max-width: 1000px) {
   .values, .offers { grid-template-columns: minmax(0, 1fr) }
   .value { min-height: 0 }
@@ -216,6 +269,7 @@ footer .sp { margin-left: auto }
   .sec-head { grid-template-columns: minmax(0, 1fr); gap: 22px }
   .scroll-hint { display: none }
   .fab-btn { padding: 5px; } .fab-btn .t { display: none }
+  #flowpath { display: none }
 }
 @media (max-width: 420px) { .logo img { height: 25px } nav .btn { padding: 10px 14px; font-size: 13px } }
 @media (prefers-reduced-motion: reduce) {
@@ -239,6 +293,8 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 </script>
 </head>
 <body>
+<div class="intro" aria-hidden="true"><img src="img/logo_flow.png" alt=""><i></i></div>
+<div class="cur" aria-hidden="true"></div><div class="cur-ring" aria-hidden="true"></div>
 
 <nav id="nav" aria-label="Hauptnavigation"><div class="wrap">
   <a class="logo" href="#top"><img src="img/logo_flow.png" alt="Flow Media AI" width="822" height="222"></a>
@@ -273,6 +329,14 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 </div></div>
 
 <main>
+<svg id="flowpath" aria-hidden="true"><defs><linearGradient id="fpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F5BFF" stop-opacity=".1"/><stop offset=".5" stop-color="#2F5BFF" stop-opacity=".55"/><stop offset="1" stop-color="#8aa4ff" stop-opacity=".7"/></linearGradient></defs><path class="base"/><path class="prog"/><circle r="3.5"/></svg>
+
+<section class="manifest" aria-label="Haltung"><div class="wrap">
+  <span class="label eyebrow">Meine Haltung</span>
+  <p id="manifest">Ich glaube nicht an KI als Zauberei. Ich glaube daran, Dinge zu *bauen*, Menschen zu *verbinden* und anderen zu *zeigen,* wie es geht. Das ist *Flow.*</p>
+  <div class="sig"><span></span><div class="label"><b style="color:#fff">Maik</b> · Flow Media AI</div></div>
+</div></section>
+
 <section id="werte"><div class="wrap">
   <div class="sec-head">
     <div><span class="label eyebrow rv">Wofür Flow Media AI steht</span><h2 class="display rv d1">Drei Worte.<br>Ein <span class="blue">Flow.</span></h2></div>
@@ -348,6 +412,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         <div><em>Dauer</em><strong>60 Min</strong></div>
         <div><em>Pro Person</em><strong class="blue">15 €</strong></div>
       </div>
+      <div class="countdown" id="countdown" data-start="2026-10-26T18:00:00+01:00" aria-live="off"></div>
       <div class="grow"></div>
       <a class="btn primary" data-cta="offer_workshop" data-wa="workshop" href="#">Platz sichern <span class="ar">→</span></a>
     </article>
@@ -378,7 +443,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <div class="rv d1">
     <div class="browser">
       <div class="bar"><i></i><i></i><i></i><span>flow-board · Demo</span></div>
-      <div class="screen" id="screen">
+      <div class="screen" id="screen" data-lenis-prevent>
         <button class="play" id="play" type="button" data-cta="tool_demo"><span><b></b>Live ausprobieren</span></button>
       </div>
     </div>
@@ -430,6 +495,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <button class="fab-btn" id="fab-btn" type="button" aria-expanded="false" aria-controls="fab-panel" aria-label="Maik kontaktieren"><span class="av"></span><span class="t"><b>Frag Maik</b><small>WhatsApp oder Anruf</small></span></button>
 </div>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 // Contact links. COMMUNITY_URL: invite link of the WhatsApp community – while empty, the button opens a prefilled chat with Maik instead.
 const PHONE = "4917645961547";
@@ -509,6 +575,100 @@ function flowLines(canvas, opts) {
 }
 flowLines(document.getElementById("flow"), { lines: 34, top: .28, spread: .62, blueIndex: 21 });
 flowLines(document.getElementById("flow2"), { lines: 26, top: .15, spread: .75, blueIndex: 13 });
+
+// ---- Next level: intro, smooth scroll, cursor, manifesto, flow line, marquee, countdown ----
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+// Intro: full on the first visit of a session, short afterwards
+let seen = false; try { seen = sessionStorage.getItem("flow-intro") === "1"; sessionStorage.setItem("flow-intro", "1") } catch {}
+setTimeout(() => document.body.classList.add("ready"), REDUCE ? 0 : seen ? 250 : 1250);
+
+// Smooth scroll (Lenis); anchor links glide to their section
+let lenis = null;
+if (window.Lenis && !REDUCE) {
+  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  const raf = t => { lenis.raf(t); requestAnimationFrame(raf) }; requestAnimationFrame(raf);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const id = a.getAttribute("href"); if (id.length < 2 || a.dataset.wa) return;
+  const el = document.querySelector(id); if (!el) return;
+  e.preventDefault(); lenis ? lenis.scrollTo(el, { offset: -70 }) : el.scrollIntoView({ behavior: "smooth" });
+}));
+
+// Cursor and magnetic buttons
+if (FINE && !REDUCE) {
+  const dot = document.querySelector(".cur"), ring = document.querySelector(".cur-ring");
+  let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+  addEventListener("pointermove", e => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px,${y}px)` }, { passive: true });
+  (function loop() { rx += (x - rx) * .16; ry += (y - ry) * .16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop) })();
+  document.querySelectorAll("a, button, .card").forEach(el => {
+    el.addEventListener("pointerenter", () => ring.classList.add("hov"));
+    el.addEventListener("pointerleave", () => ring.classList.remove("hov"));
+  });
+  document.querySelectorAll(".btn").forEach(b => {
+    b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .3}px)` });
+    b.addEventListener("pointerleave", () => b.style.transform = "");
+  });
+}
+
+// Manifesto: split into words, *word* marks a key word
+const man = document.getElementById("manifest");
+man.innerHTML = man.textContent.trim().split(/\s+/).map(w => { const k = /^\*.*\*[.,]?$/.test(w) || /^\*.*\*$/.test(w); return `<span class="w${k ? " k" : ""}">${w.replace(/\*/g, "")}</span>` }).join(" ");
+const words = [...man.querySelectorAll(".w")];
+
+// Flow line through main: a soft S-curve from section to section
+const svg = document.getElementById("flowpath"), base = svg.querySelector(".base"), prog = svg.querySelector(".prog"), head = svg.querySelector("circle"), mainEl = document.querySelector("main");
+let pathLen = 0;
+function buildPath() {
+  const W = mainEl.clientWidth, H = mainEl.scrollHeight, step = Math.max(520, innerHeight * .75);
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.style.height = H + "px";
+  const left = W < 700 ? W * .06 : W * .045, right = W - left;
+  let d = `M ${W * .5} 0`, yPrev = 0, side = 0;
+  for (let y = step * .6; y < H + step; y += step) {
+    const x = side ? left : right, yy = Math.min(y, H);
+    d += ` C ${W * .5} ${yPrev + step * .45}, ${x} ${yy - step * .55}, ${x} ${yy}`; yPrev = yy; side ^= 1; if (yy >= H) break;
+  }
+  base.setAttribute("d", d); prog.setAttribute("d", d);
+  pathLen = prog.getTotalLength(); prog.style.strokeDasharray = pathLen;
+}
+
+// Marquee follows scroll speed
+const track = document.querySelector(".marquee .track"); let mq = 0, lastY = scrollY, vel = 0;
+if (!REDUCE) document.querySelector(".marquee").classList.add("js");
+const heroPhoto = document.querySelector(".hero-photo");
+
+function frame() {
+  const sy = scrollY, vh = innerHeight;
+  vel += ((sy - lastY) - vel) * .1; lastY = sy;
+  if (!REDUCE) {
+    mq -= .6 + Math.abs(vel) * .35; const half = track.scrollWidth / 2; if (-mq > half) mq += half; track.style.transform = `translateX(${mq}px)`;
+    if (sy < vh) heroPhoto.style.translate = `0 ${sy * .18}px`;
+  }
+  // manifesto words
+  const r = man.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35)));
+  const lit = Math.floor(p * words.length * 1.05); words.forEach((w, i) => w.classList.toggle("on", REDUCE || i < lit));
+  // flow line
+  if (pathLen) {
+    const mr = mainEl.getBoundingClientRect(), q = Math.min(1, Math.max(0, (vh * .6 - mr.top) / mr.height));
+    prog.style.strokeDashoffset = pathLen * (1 - q);
+    const pt = prog.getPointAtLength(pathLen * q); head.setAttribute("cx", pt.x); head.setAttribute("cy", pt.y); head.style.opacity = q > 0 && q < 1 ? 1 : 0;
+  }
+  requestAnimationFrame(frame);
+}
+addEventListener("load", () => { buildPath(); requestAnimationFrame(frame) });
+addEventListener("resize", () => { clearTimeout(window.__bp); window.__bp = setTimeout(buildPath, 150) });
+
+// Workshop countdown (real date from data-start)
+const cd = document.getElementById("countdown"), start = new Date(cd.dataset.start);
+function tick() {
+  const ms = start - new Date();
+  if (ms <= 0) { cd.className = "countdown done"; cd.textContent = ms > -3600e3 ? "Läuft gerade – live dabei sein" : "Nächster Termin folgt – schreib mir für Infos"; return }
+  const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60, z = n => String(n).padStart(2, "0");
+  cd.innerHTML = `<div><b>${d}</b><small>Tage</small></div><div><b>${z(h)}</b><small>Std</small></div><div><b>${z(m)}</b><small>Min</small></div><div><b>${z(s)}</b><small>Sek</small></div>`;
+  setTimeout(tick, 1000);
+}
+tick();
 
 // Count clicks on calls to action (PostHog event "cta_click" with the button name)
 document.addEventListener("click", e => {
