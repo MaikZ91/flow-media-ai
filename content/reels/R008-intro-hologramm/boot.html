@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;transform-origin:50% 45%}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+.ov{position:absolute;inset:0;pointer-events:none}
+.term{position:absolute;left:84px;right:84px;top:600px;font:400 40px/1.55 "JetBrains Mono",monospace;color:#cfd8ff;text-shadow:0 0 12px rgba(47,91,255,.8)}
+.term .ok{color:#2F5BFF}
+.term .bar{margin-top:26px;height:6px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+.term .bar i{display:block;height:100%;width:0;background:#2F5BFF;box-shadow:0 0 18px #2F5BFF}
+.word{position:absolute;left:0;right:0;top:1250px;text-align:center;font:700 250px/.9 Oswald;text-transform:uppercase;opacity:0;color:#fff}
+.word span{color:#2F5BFF}
+.welcome{position:absolute;left:0;right:0;top:1230px;text-align:center;opacity:0}
+.welcome .w{font:500 34px Montserrat;letter-spacing:.6em;text-transform:uppercase;color:#bfcaff;padding-left:.6em}
+.welcome img{display:block;width:780px;margin:30px auto 0;filter:drop-shadow(0 0 24px rgba(47,91,255,.95)) drop-shadow(0 0 70px rgba(47,91,255,.6))}
+.welcome .v{margin-top:40px;font:500 26px Montserrat;letter-spacing:.42em;text-transform:uppercase;padding-left:.42em}
+.welcome .v b{color:#2F5BFF}
+.hud{position:absolute;inset:60px 60px auto 60px;display:flex;justify-content:space-between;font:500 20px "JetBrains Mono",monospace;color:rgba(190,205,255,.75);letter-spacing:.12em;opacity:0}
+.corner{position:absolute;width:70px;height:70px;border-color:rgba(160,180,255,.6);border-style:solid;opacity:0}
+.c1{left:50px;top:110px;border-width:2px 0 0 2px}.c2{right:50px;top:110px;border-width:2px 2px 0 0}.c3{left:50px;bottom:110px;border-width:0 0 2px 2px}.c4{right:50px;bottom:110px;border-width:0 2px 2px 0}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.03) 0 2px,transparent 2px 5px);mix-blend-mode:screen}
+.vign{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,transparent 45%,rgba(0,0,0,.8) 100%)}
+#flash{position:absolute;inset:0;background:#dfe6ff;opacity:0}
+</style>
+<script type="importmap">{"imports":{"three":"./three/build/three.module.js"}}</script>
+</head><body>
+<div id="stage">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="ov">
+  <div class="vign"></div><div class="scan"></div>
+  <div class="hud" id="hud"><span>FLOW_MEDIA_AI · v1.0</span><span id="tc">00:00:00</span></div>
+  <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+  <div class="term" id="term"></div>
+  <div class="word" id="w0">Build<span>.</span></div>
+  <div class="word" id="w1">Connect<span>.</span></div>
+  <div class="word" id="w2">Enable<span>.</span></div>
+  <div class="welcome" id="welcome"><div class="w">Welcome to</div><img src="logo_flow.png" alt=""><div class="v">Build <b>·</b> Connect <b>·</b> Enable</div></div>
+</div>
+</div>
+<div id="flash"></div>
+<script type="module">
+import * as THREE from "three";
+import { EffectComposer } from "./three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "./three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "./three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { ShaderPass } from "./three/examples/jsm/postprocessing/ShaderPass.js";
+import { OutputPass } from "./three/examples/jsm/postprocessing/OutputPass.js";
+
+const W = 1080, H = 1920, TOTAL = 15; window.TOTAL = TOTAL;
+const D = 4.0, B = 60 / 143.55;                    // drop time and beat length of MZ.9 track (Dcony8)
+const beat = k => D + k * B;
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false); renderer.setClearColor(0x000000, 1);
+const scene = new THREE.Scene(); scene.fog = new THREE.FogExp2(0x000000, .03);
+const cam = new THREE.PerspectiveCamera(34, W / H, .05, 200);
+const rng = s => () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296 };
+const R = rng(11);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const eo = x => 1 - Math.pow(1 - cl(x), 3);
+const load = u => new Promise(r => new THREE.TextureLoader().load(u, t => { t.colorSpace = THREE.NoColorSpace; r(t) }));
+const [photo, depth] = await Promise.all([load("photo.png"), load("depth.png")]);
+
+// hologram point cloud
+const GX = 300, GY = 400, N = GX * GY;
+const pos = new Float32Array(N * 3), uv = new Float32Array(N * 2), rnd = new Float32Array(N), start = new Float32Array(N * 3);
+for (let y = 0; y < GY; y++) for (let x = 0; x < GX; x++) {
+  const i = y * GX + x, u = x / (GX - 1), v = 1 - y / (GY - 1);
+  pos[i * 3] = (u - .5) * 2.4; pos[i * 3 + 1] = (v - .5) * 3.2; uv[i * 2] = u; uv[i * 2 + 1] = v; rnd[i] = R();
+  const a = R() * Math.PI * 2, r = 2 + R() * 5; start[i * 3] = Math.cos(a) * r; start[i * 3 + 1] = (R() - .5) * 8; start[i * 3 + 2] = Math.sin(a) * r - 1.5;
+}
+const g = new THREE.BufferGeometry();
+g.setAttribute("position", new THREE.BufferAttribute(pos, 3)); g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
+g.setAttribute("rnd", new THREE.BufferAttribute(rnd, 1)); g.setAttribute("aStart", new THREE.BufferAttribute(start, 3));
+const U = { uPhoto: { value: photo }, uDepth: { value: depth }, uT: { value: 0 }, uAsm: { value: 0 }, uGlitch: { value: 0 }, uPulse: { value: 0 }, uFade: { value: 1 }, uDepthView: { value: 0 }, uScan: { value: 0 } };
+const holo = new THREE.Points(g, new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  vertexShader: `
+  uniform sampler2D uPhoto,uDepth;uniform float uT,uAsm,uGlitch,uPulse;
+  attribute float rnd;attribute vec3 aStart;varying float vL,vM,vY,vR,vK,vD;
+  void main(){
+    float d=texture2D(uDepth,uv).r; vD=d; vL=texture2D(uPhoto,uv).r; vR=rnd;
+    vM=smoothstep(.30,.42,d)*smoothstep(.0,.14,uv.y);
+    vec3 tgt=position; tgt.z=(d-.45)*1.45;
+    float k=clamp(uAsm*1.9-(1.-uv.y)*.55-rnd*.35,0.,1.); k=k*k*(3.-2.*k); vK=k;
+    float sw=(1.-k)*5.; vec3 s=aStart; s.xz=mat2(cos(sw),-sin(sw),sin(sw),cos(sw))*s.xz;
+    vec3 p=mix(s,tgt,k);
+    float slice=floor((tgt.y+uT*.8)*16.);
+    float gj=step(.93,fract(sin(slice*91.7+floor(uT*16.)*13.1)*43758.5));
+    p.x+=gj*uGlitch*(fract(sin(slice*7.1)*999.)-.5)*.6;
+    p+=vec3(sin(uT*2.+rnd*40.),cos(uT*1.7+rnd*30.),sin(uT*1.3+rnd*20.))*.006;
+    p+=normalize(vec3(p.xy,1.))*uPulse*.04*sin(rnd*30.+uT*20.);
+    vec4 mv=modelViewMatrix*vec4(p,1.); vY=tgt.y;
+    gl_PointSize=(1.9+1.8*(1.-k)+rnd*.6)*(10./-mv.z);
+    gl_Position=projectionMatrix*mv;
+  }`,
+  fragmentShader: `
+  uniform float uT,uFade,uDepthView,uScan;varying float vL,vM,vY,vR,vK,vD;
+  void main(){
+    float r=length(gl_PointCoord-.5); if(r>.5) discard;
+    float soft=smoothstep(.5,.0,r);
+    float band=smoothstep(.05,0.,abs(fract(vY*.3-uT*.42)-.5)-.4);
+    float lines=.86+.14*sin(vY*190.+uT*8.);
+    vec3 blue=vec3(.16,.34,1.), ice=vec3(.82,.9,1.);
+    vec3 c=(mix(blue*.8,ice,pow(vL,1.05))*lines+blue*band*1.8)*1.45;
+    vec3 dcol=mix(vec3(.05,.1,.45),vec3(.6,.85,1.6),pow(smoothstep(.45,1.,vD),.8));
+    float sweep=smoothstep(.08,0.,abs(vY-(-1.6+fract(uT*.9)*3.4)));
+    c=mix(c,dcol+vec3(.6,.8,1.)*sweep*2.,uDepthView);
+    c=mix(vec3(.55,.68,1.)*1.2,c,vK);
+    float lum=mix(.04+.96*pow(vL,1.5),.25+.75*vD,uDepthView);
+    float a=mix(vM,.5,1.-vK)*soft*mix(.35,lum,vK)*(.88+.12*sin(uT*45.+vR*7.))*uFade*.7;
+    a*=mix(1.,.25+.75*step(.5,fract(vY*14.+uT*2.)),uScan);
+    gl_FragColor=vec4(c*a,a);
+  }`
+}));
+holo.position.y = .55; scene.add(holo);
+
+// stars
+const SN = 2200, sp = new Float32Array(SN * 3); for (let i = 0; i < SN; i++) { sp[i * 3] = (R() - .5) * 50; sp[i * 3 + 1] = (R() - .5) * 70; sp[i * 3 + 2] = -10 - R() * 90 }
+const sg = new THREE.BufferGeometry(); sg.setAttribute("position", new THREE.BufferAttribute(sp, 3));
+const stars = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9fb4ff, size: .08, transparent: true, opacity: .6, blending: THREE.AdditiveBlending, depthWrite: false })); scene.add(stars);
+// platform rings + flow waves
+const plat = new THREE.Group(); plat.position.y = -1.55; scene.add(plat);
+const rings = []; for (let i = 0; i < 6; i++) { const r = .8 + i * .3, m = new THREE.MeshBasicMaterial({ color: i % 2 ? 0x2F5BFF : 0x9fb4ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+  const ring = new THREE.Mesh(new THREE.RingGeometry(r, r + (i === 0 ? .03 : .012), 160), m); ring.rotation.x = -Math.PI / 2; plat.add(ring); rings.push(m) }
+const waves = []; for (let i = 0; i < 9; i++) { const n = 240, pa = new Float32Array(n * 3), lg = new THREE.BufferGeometry(); lg.setAttribute("position", new THREE.BufferAttribute(pa, 3));
+  const lm = new THREE.LineBasicMaterial({ color: i === 4 ? 0x5577ff : 0xcfd8ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending }); const ln = new THREE.Line(lg, lm); scene.add(ln); waves.push({ pa, lm, ln, i }) }
+// shockwave ring at the drop
+const shock = new THREE.Mesh(new THREE.RingGeometry(.98, 1, 200), new THREE.MeshBasicMaterial({ color: 0xbfd0ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, side: THREE.DoubleSide }));
+shock.rotation.x = -Math.PI / 2; shock.position.y = -1.5; scene.add(shock);
+// BUILD grid / CONNECT nodes / ENABLE beam
+const grid = new THREE.GridHelper(16, 32, 0x2F5BFF, 0x2F5BFF); grid.position.y = -1.56; grid.material.transparent = true; grid.material.opacity = 0; grid.material.blending = THREE.AdditiveBlending; scene.add(grid);
+const nodes = Array.from({ length: 12 }, (_, i) => ({ a: i / 12 * Math.PI * 2, r: 1.8 + (i % 3) * .3, y: -.6 + (i % 4) * .6 }));
+const nodeG = new THREE.BufferGeometry(), np = new Float32Array(nodes.length * 3); nodeG.setAttribute("position", new THREE.BufferAttribute(np, 3));
+const nodePts = new THREE.Points(nodeG, new THREE.PointsMaterial({ color: 0xffffff, size: .17, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); scene.add(nodePts);
+const linkG = new THREE.BufferGeometry(), lp = new Float32Array(nodes.length * 2 * 6); linkG.setAttribute("position", new THREE.BufferAttribute(lp, 3));
+const links = new THREE.LineSegments(linkG, new THREE.LineBasicMaterial({ color: 0x6f8cff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending })); scene.add(links);
+const beam = new THREE.Mesh(new THREE.CylinderGeometry(.5, 1.4, 9, 64, 1, true), new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, uniforms: { uA: { value: 0 }, uT: U.uT },
+  vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader: `uniform float uA,uT;varying vec2 vUv;void main(){float a=pow(1.-vUv.y,1.5)*.22*uA*(.7+.3*sin(vUv.x*80.+uT*4.));gl_FragColor=vec4(vec3(.25,.45,1.)*a,a);}` }));
+beam.position.y = 2.9; scene.add(beam);
+const RN = 1400, rp = new Float32Array(RN * 3), rr = []; for (let i = 0; i < RN; i++) rr.push([R() * Math.PI * 2, .3 + R() * 2.2, R()]);
+const rg = new THREE.BufferGeometry(); rg.setAttribute("position", new THREE.BufferAttribute(rp, 3));
+const rise = new THREE.Points(rg, new THREE.PointsMaterial({ color: 0xaabbff, size: .03, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); scene.add(rise);
+
+// lightning
+const boltPool = [];
+function boltPts(a, b, seed, lvl = 6) { const r = rng(seed); let pts = [a.clone(), b.clone()], disp = a.distanceTo(b) * .22;
+  for (let l = 0; l < lvl; l++) { const nn = []; for (let i = 0; i < pts.length - 1; i++) { const m = pts[i].clone().lerp(pts[i + 1], .5); m.x += (r() - .5) * disp; m.y += (r() - .5) * disp * .5; m.z += (r() - .5) * disp; nn.push(pts[i], m) } nn.push(pts[pts.length - 1]); pts = nn; disp *= .55 }
+  const br = []; for (let k = 0; k < 3; k++) { const i = 2 + Math.floor(r() * pts.length * .7); if (pts[i]) br.push([pts[i], pts[i].clone().add(new THREE.Vector3((r() - .5) * 1.4, -r() * 1.2, (r() - .5)))]) } return { pts, br } }
+function addBolt(a, b, seed, s) { const { pts, br } = boltPts(a, b, seed);
+  const mk = (arr, op, col) => { const ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints(arr), new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: op, blending: THREE.AdditiveBlending })); scene.add(ln); boltPool.push(ln) };
+  for (let j = 0; j < 3; j++) mk(pts.map(p => p.clone().add(new THREE.Vector3((j - 1) * .012, 0, 0))), s * (j === 1 ? 1 : .6), j === 1 ? 0xffffff : 0x8fa8ff);
+  br.forEach(([s0, e]) => mk(boltPts(s0, e, seed + 99, 4).pts, s * .6, 0x8fa8ff)) }
+const clearBolts = () => { boltPool.forEach(l => { scene.remove(l); l.geometry.dispose(); l.material.dispose() }); boltPool.length = 0 };
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const STRIKES = [[D, V(0, 10, 0), V(0, -1.55, 0), 1.3], [beat(2), V(-.6, 10, 0), V(0, -1.55, 0), 1], [beat(6), V(.6, 10, 0), V(0, -1.55, 0), 1], [beat(10), V(0, 10, 0), V(0, -1.55, 0), 1.1],
+  [beat(12), V(-2.6, 2.8, .4), V(-.9, 1.2, .3), .8], [beat(13), V(2.6, 3, .2), V(.95, 1.6, .2), .8], [beat(14), V(-2.4, 2, .3), V(-.8, .6, .3), .8], [beat(15), V(2.4, 2.4, .2), V(.9, 1, .2), .8],
+  [beat(16), V(-2.2, 10, -1), V(0, -1.55, 0), 1.4], [beat(16) + .06, V(2.2, 10, -1), V(0, -1.55, 0), 1.2]];
+
+// post
+const composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, cam));
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), .9, .35, .38); composer.addPass(bloom);
+const fx = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uT: { value: 0 }, uCA: { value: .002 }, uRGB: { value: 0 } },
+  vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader: `uniform sampler2D tDiffuse;uniform float uT,uCA,uRGB;varying vec2 vUv;
+  float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233))+uT*7.)*43758.5453);}
+  void main(){vec2 uv=vUv; float row=floor(uv.y*48.); uv.x+=uRGB*(step(.82,fract(sin(row*13.7+floor(uT*24.))*917.3))-.0)*(fract(sin(row*3.1)*99.)-.5)*.12;
+  vec2 d=(uv-.5)*uCA*2.;float r=texture2D(tDiffuse,uv+d).r,g=texture2D(tDiffuse,uv).g,b=texture2D(tDiffuse,uv-d).b;
+  vec3 c=vec3(r,g,b)*1.05-.012+(h(uv*vec2(1080.,1920.))-.5)*.03;gl_FragColor=vec4(c,1.);}` });
+composer.addPass(fx); composer.addPass(new OutputPass());
+
+// terminal boot lines (appear before the drop)
+const TERM = [[0.15, "> boot flow_media_ai --mode=holo"], [0.75, "> loading identity ......... <span class=ok>maik</span>"], [1.35, "> modules: build · connect · enable"], [1.95, "> depth scan ............... <span class=ok>ok</span>"], [2.5, "> rendering 120.000 points"], [3.15, "> <span class=ok>system online_</span>"]];
+const term = document.getElementById("term"), words = [0, 1, 2].map(i => document.getElementById("w" + i)), welcome = document.getElementById("welcome"),
+  flash = document.getElementById("flash"), stage = document.getElementById("stage"), hud = document.getElementById("hud"), tc = document.getElementById("tc"), corners = [...document.querySelectorAll(".corner")];
+const WORDS = [[beat(2), beat(4)], [beat(6), beat(8)], [beat(10), beat(12)]];
+// shots after the drop: [from beat, camera dist, target y, depth view, scan]
+const SHOTS = [[0, 8.6, .15, 0, 0], [2, 9.6, .25, 0, 0], [4, 7.4, .35, 0, 1], [6, 9.6, .25, 0, 0], [8, 7.2, .45, 1, 0], [10, 9.8, .25, 0, 0], [12, 8.2, .2, 0, 0], [16, 9.4, -.1, 0, 0]];
+
+window.DRAW = t => {
+  U.uT.value = t; fx.uniforms.uT.value = t;
+  const after = t >= D, kb = after ? (t - D) / B : -1, bi = Math.floor(kb), bf = kb - bi;
+  // shot selection
+  let shot = SHOTS[0]; if (after) SHOTS.forEach(s => { if (kb >= s[0]) shot = s });
+  const pre = !after;
+  // camera
+  const punch = after ? (1 - eo(bf)) * .35 : 0;                     // small push on every beat
+  let dist = pre ? 11.5 - 1.8 * ease(t / D) : shot[1] - punch * (shot[1] > 5 ? 1 : .3);
+  const ty = pre ? .2 : shot[2];
+  const orbit = pre ? Math.sin(t * .3) * .1 : (kb >= 12 && kb < 16 ? Math.sin((kb - 12) / 4 * Math.PI) * .32 : Math.sin(t * .5) * .08);
+  cam.position.set(Math.sin(orbit) * dist, ty + .5 + (shot[1] < 7 ? -.35 : 0), Math.cos(orbit) * dist); cam.lookAt(0, ty, 0);
+  // hologram
+  U.uAsm.value = pre ? .55 * ease(t / D) : 1;
+  U.uDepthView.value = after ? shot[3] : 0; U.uScan.value = after ? shot[4] : .6;
+  holo.rotation.y = kb >= 12 && kb < 16 ? Math.sin((kb - 12) / 4 * Math.PI * 2) * .38 : (after ? Math.sin(t * .8) * .12 : 0);
+  U.uGlitch.value = pre ? .3 : (bf < .18 ? 1 : .35);
+  let pulse = after ? (1 - bf) * .5 : 0; STRIKES.forEach(([ts, , , s]) => { if (t >= ts && t < ts + .4) pulse = Math.max(pulse, (1 - (t - ts) / .4) * s) }); U.uPulse.value = pulse;
+  U.uFade.value = pre ? (.35 + .45 * ease(t / D)) * (Math.sin(t * 30) > .7 ? .4 : 1) : (kb >= 16 ? .7 : 1);
+  // environment
+  const env = after ? 1 : 0;
+  rings.forEach((m, i) => m.opacity = env * (.25 + .5 * Math.max(0, Math.sin(t * 3 - i * .8))) * (1 + pulse));
+  plat.rotation.y = t * .4;
+  waves.forEach(w => { const n = 240; for (let j = 0; j < n; j++) { const a = j / (n - 1) * Math.PI * 2, Rr = 1.15 + w.i * .17, dir = w.i % 2 ? 1 : -1;
+      w.pa[j * 3] = Math.cos(a + t * .35 * dir) * Rr; w.pa[j * 3 + 2] = Math.sin(a + t * .35 * dir) * Rr; w.pa[j * 3 + 1] = -1.5 + Math.sin(a * 3 + t * 2 + w.i * .7) * (.08 + w.i * .012 + pulse * .05) + w.i * .02 }
+    w.ln.geometry.attributes.position.needsUpdate = true; w.lm.opacity = env * (w.i === 4 ? 1 : .22) });
+  const ds = after ? (t - D) / .9 : -1; shock.scale.setScalar(.5 + 7 * eo(ds)); shock.material.opacity = ds >= 0 && ds < 1 ? (1 - ds) * .9 : 0;
+  grid.material.opacity = (kb >= 2 && kb < 4 ? 1 : kb >= 4 ? .25 : 0) * .4;
+  const kc = kb >= 6 && kb < 8 ? 1 : kb >= 8 ? .3 : 0;
+  nodes.forEach((n, i) => { const a = n.a + t * .5; np[i * 3] = Math.cos(a) * n.r; np[i * 3 + 1] = n.y + .55; np[i * 3 + 2] = Math.sin(a) * n.r }); nodeG.attributes.position.needsUpdate = true;
+  let li = 0; nodes.forEach((n, i) => [(i + 1) % 12, (i + 4) % 12].forEach(o => { lp.set([np[i * 3], np[i * 3 + 1], np[i * 3 + 2], np[o * 3], np[o * 3 + 1], np[o * 3 + 2]], li); li += 6 }));
+  linkG.attributes.position.needsUpdate = true; nodePts.material.opacity = kc; links.material.opacity = kc * .6;
+  const ke = kb >= 10 && kb < 12 ? 1 : kb >= 12 ? .35 : 0; beam.material.uniforms.uA.value = ke;
+  for (let i = 0; i < RN; i++) { const [a, r, o] = rr[i]; const y = (o + t * .2) % 1; rp.set([Math.cos(a + t * .25) * r * (1 - y * .4), -1.5 + y * 6, Math.sin(a + t * .25) * r * (1 - y * .4)], i * 3) }
+  rg.attributes.position.needsUpdate = true; rise.material.opacity = (after ? .35 : 0) + ke * .5;
+  // lightning
+  clearBolts(); let fl = 0;
+  STRIKES.forEach(([ts, a, b, s], k) => { const dt = t - ts; if (dt >= 0 && dt < .2) { addBolt(a, b, k * 100 + Math.floor(dt * 30), s * (1 - dt / .2 * .5)); fl = Math.max(fl, s * (1 - dt / .2)) } });
+  const beatFlash = after && kb < 16 ? Math.max(0, 1 - bf * 6) * .12 : 0;
+  flash.style.opacity = Math.min(.5, (t >= D && t < D + .12 ? .9 * (1 - (t - D) / .12) : 0) + fl * .18 + beatFlash);
+  bloom.strength = .85 + fl * .9 + pulse * .3;
+  fx.uniforms.uCA.value = .0015 + fl * .006 + pulse * .003; fx.uniforms.uRGB.value = after && bf < .12 ? 1 : (pre && Math.sin(t * 13) > .92 ? .6 : 0);
+  // camera shake on beats
+  const sh = after ? Math.max(0, 1 - bf * 5) * 14 : 0;
+  stage.style.transform = `translate(${Math.sin(t * 97) * sh}px,${Math.cos(t * 83) * sh}px)`;
+  // terminal
+  term.style.opacity = pre ? 1 : 0;
+  term.innerHTML = TERM.filter(([ts]) => t >= ts).map(([ts, s], i, arr) => { const typed = i === arr.length - 1 ? s.slice(0, Math.floor((t - ts) * 70) + 1) : s; return `<div>${typed}</div>` }).join("") +
+    `<div class="bar"><i style="width:${cl(t / (D - .2)) * 100}%"></i></div>`;
+  // hud
+  hud.style.opacity = after ? .9 : cl(t - 2.5); tc.textContent = `00:${String(Math.floor(t)).padStart(2, "0")}:${String(Math.floor((t % 1) * 30)).padStart(2, "0")}`;
+  corners.forEach(c => c.style.opacity = after ? .8 : 0);
+  // words
+  words.forEach((w, i) => { const [a0, a1] = WORDS[i], dt = t - a0; const on = t >= a0 && t < a1;
+    w.style.opacity = on ? 1 : 0; const s = 1.3 - .3 * eo(dt / .25), jx = dt < .2 ? Math.sin(dt * 200) * 22 * (1 - dt / .2) : 0;
+    w.style.transform = `translateX(${jx}px) scale(${s})`;
+    const ca = 8 * (1 - cl(dt / .3)); w.style.textShadow = `${-ca}px 0 rgba(255,40,80,.75), ${ca}px 0 rgba(40,200,255,.75), 0 0 30px rgba(47,91,255,.95), 0 0 100px rgba(47,91,255,.6)` });
+  const dw = t - beat(16); const aw = dw < 0 ? 0 : eo(dw / .4);
+  welcome.style.opacity = aw * cl((TOTAL - t) / .6); welcome.style.transform = `scale(${1.15 - .15 * aw})`;
+  composer.render();
+};
+window.READY = true;
+</script>
+</body></html>
