@@ -55,6 +55,6 @@ Teil C §5: 1. Mensch im ersten Frame (Maik, Zoom) ✓ 2. Hook ab Bild 1 lesbar 
 `flow-design` §9: Schwarz/Weiß + Blau ✓ · Maik in jeder Szene ✓ · neue Wortmarke (Logo) ✓
 
 ## Neu rendern
-1. `node rec.js site.webm` – nimmt die Live-Website Bild für Bild auf (Playwright-Clock, 390×844 @2x, 22,4 s). `site.webm` liegt wegen der Größe nicht im Repo.
+1. `node rec.js site_frames` – nimmt die Live-Website Bild für Bild als JPGs auf (Playwright-Clock, 390×844 @2x, 22,4 s; Lenis und Einblend-Effekte für die Aufnahme aus, damit nichts wackelt; harte Schnitte statt schneller Scroll-Sprünge). `site_frames/` liegt wegen der Größe nicht im Repo.
 2. `node frames.js <ordner>` → `video_only.mp4`
 3. `ffmpeg -i video_only.mp4 -ss 38 -i motivating-mornings.mp3 -t 28.6 -filter_complex "[1:a]volume=0.55,afade=t=in:d=0.4,afade=t=out:st=27.2:d=1.4[a]" -map 0:v -map "[a]" -c:v libx264 -crf 23 -pix_fmt yuv420p -c:a aac -movflags +faststart R006.mp4`

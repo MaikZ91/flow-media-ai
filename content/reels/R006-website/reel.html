@@ -27,7 +27,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 .cap .t{font:700 84px/.95 Oswald;text-transform:uppercase;margin-top:14px}
 .avatar{position:absolute;right:76px;top:150px;width:112px;height:112px;border-radius:50%;background:url(img/maik_avatar.jpg) center/cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.85)}
 .phone{position:absolute;left:50%;top:430px;width:570px;transform:translateX(-50%);padding:16px;border-radius:78px;background:#151515;border:2px solid #2c2c2c;box-shadow:0 60px 160px -40px rgba(47,91,255,.55),0 40px 90px -30px #000}
-.phone video{display:block;width:100%;aspect-ratio:390/844;border-radius:62px;object-fit:cover;background:#0A0A0A}
+.phone img{display:block;width:100%;aspect-ratio:390/844;border-radius:62px;object-fit:cover;background:#0A0A0A}
 .phone:after{content:"";position:absolute;left:50%;top:30px;width:120px;height:32px;border-radius:20px;background:#000;transform:translateX(-50%)}
 .url{position:absolute;left:0;right:0;top:1660px;text-align:center;font:500 24px Montserrat;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
 </style></head><body>
@@ -55,7 +55,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
     <div class="c" data-c><div class="n">06 · Kontakt</div><div class="t">Frag Maik –<br><span class="blue">per WhatsApp.</span></div></div>
   </div>
   <div class="avatar"></div>
-  <div class="phone"><video id="vid" src="site.webm" muted playsinline preload="auto"></video></div>
+  <div class="phone"><img id="vid" src="site_frames/f0000.jpg" alt=""></div>
 </section>
 
 <section class="scene" id="s3">
@@ -92,8 +92,8 @@ window.DRAW=async t=>{
   if(id==="s2"){ lines(t);
     let ci=0; CAPS.forEach((c,i)=>{if(l>=c)ci=i});
     document.querySelectorAll("[data-c]").forEach((c,i)=>{const a=i===ci?ease((l-CAPS[i])/.4):0;c.style.opacity=a;c.style.transform=`translateY(${(1-a)*24}px)`});
-    const v=document.getElementById("vid"), want=Math.min(l, v.duration-0.04);
-    if(Math.abs(v.currentTime-want)>0.001) await new Promise(res=>{v.addEventListener("seeked",res,{once:true}); v.currentTime=want});
+    const v=document.getElementById("vid"), f=Math.min(671,Math.round(l*30)), src="site_frames/f"+String(f).padStart(4,"0")+".jpg";
+    if(!v.src.endsWith(src)) await new Promise(res=>{v.onload=res; v.onerror=res; v.src=src});
   }
 };
 </script>
