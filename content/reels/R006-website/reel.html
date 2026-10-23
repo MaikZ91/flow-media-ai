@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0A0A0A;--white:#fff;--grey:#9A9A9A;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center top;filter:grayscale(1) contrast(1.1) brightness(.92);transform-origin:50% 30%}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,0) 18%,rgba(10,10,10,0) 38%,rgba(10,10,10,.88) 58%,#0A0A0A 80%)}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.09;z-index:50;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{position:absolute;left:76px;top:116px;width:210px;z-index:5}
+.pad{position:absolute;left:76px;right:76px}
+.kicker{font:500 26px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#d8d8d8}
+.rule{width:64px;height:3px;background:#fff;margin:30px 0}
+.h{font:700 128px/.93 Oswald;text-transform:uppercase}
+.h.m{font-size:98px}.h.s{font-size:92px}
+.blue{color:var(--blue)}
+.body{font:400 38px/1.4 Inter;color:#e6e6e6}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:7}
+.prog i{display:block;height:100%;background:#fff;width:0}
+/* tour */
+#lines{position:absolute;inset:0}
+.cap{position:absolute;left:76px;right:220px;top:150px;height:250px}
+.cap .c{position:absolute;inset:0;opacity:0;transform:translateY(24px)}
+.cap .n{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+.cap .t{font:700 84px/.95 Oswald;text-transform:uppercase;margin-top:14px}
+.avatar{position:absolute;right:76px;top:150px;width:112px;height:112px;border-radius:50%;background:url(img/maik_avatar.jpg) center/cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.85)}
+.phone{position:absolute;left:50%;top:430px;width:570px;transform:translateX(-50%);padding:16px;border-radius:78px;background:#151515;border:2px solid #2c2c2c;box-shadow:0 60px 160px -40px rgba(47,91,255,.55),0 40px 90px -30px #000}
+.phone video{display:block;width:100%;aspect-ratio:390/844;border-radius:62px;object-fit:cover;background:#0A0A0A}
+.phone:after{content:"";position:absolute;left:50%;top:30px;width:120px;height:32px;border-radius:20px;background:#000;transform:translateX(-50%)}
+.url{position:absolute;left:0;right:0;top:1660px;text-align:center;font:500 24px Montserrat;letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+</style></head><body>
+<div class="grain" id="grain"></div>
+<div class="prog"><i id="prog"></i></div>
+
+<section class="scene" id="s1">
+  <div class="bg" id="bg1" style="background-image:url(img/portrait_front.jpg)"></div><div class="shade"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="pad" style="top:990px">
+    <div class="kicker">Build in public</div>
+    <div class="rule"></div>
+    <div class="h m">Meine neue<br>Website.<br><span class="blue">Komplett</span><br><span class="blue">mit KI.</span></div>
+  </div>
+</section>
+
+<section class="scene" id="s2">
+  <canvas id="lines" width="1080" height="1920"></canvas>
+  <div class="cap">
+    <div class="c" data-c><div class="n">01 · Der Einstieg</div><div class="t">Alles ist<br><span class="blue">im Flow.</span></div></div>
+    <div class="c" data-c><div class="n">02 · Meine Haltung</div><div class="t">Wort für Wort<br><span class="blue">beim Scrollen.</span></div></div>
+    <div class="c" data-c><div class="n">03 · Meine Werte</div><div class="t">Build. Connect.<br><span class="blue">Enable.</span></div></div>
+    <div class="c" data-c><div class="n">04 · Angebote</div><div class="t">Community<br><span class="blue">als Einstieg.</span></div></div>
+    <div class="c" data-c><div class="n">05 · Mein Tool</div><div class="t">Live zum<br><span class="blue">Ausprobieren.</span></div></div>
+    <div class="c" data-c><div class="n">06 · Kontakt</div><div class="t">Frag Maik –<br><span class="blue">per WhatsApp.</span></div></div>
+  </div>
+  <div class="avatar"></div>
+  <div class="phone"><video id="vid" src="site.webm" muted playsinline preload="auto"></video></div>
+</section>
+
+<section class="scene" id="s3">
+  <div class="bg" id="bg3" style="background-image:url(img/portrait_front.jpg)"></div><div class="shade"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="pad" style="top:1000px">
+    <div class="kicker">Build · Connect · Enable</div>
+    <div class="rule"></div>
+    <div class="h s">Willst du auch<br>so eine <span class="blue">Seite?</span></div>
+    <div class="body" style="margin-top:30px">Schreib mir.</div>
+  </div>
+</section>
+
+<script>
+const SC=[["s1",2.6],["s2",22.4],["s3",3.6]];
+const CAPS=[0,3.9,7.8,15.8,18.6,20.9];
+const TOTAL=SC.reduce((a,[,d])=>a+d,0); window.TOTAL=TOTAL;
+const cl=x=>Math.max(0,Math.min(1,x)), ease=x=>1-Math.pow(1-cl(x),3);
+const lc=document.getElementById("lines").getContext("2d");
+function lines(t){ lc.clearRect(0,0,1080,1920); const N=26;
+  for(let i=0;i<N;i++){const p=i/(N-1),blue=i===15,base=1920*(.12+p*.8),amp=1920*(.03+.04*Math.sin(p*3+t*.3));
+    lc.beginPath(); for(let x=-20;x<=1100;x+=16){const k=x/1080,y=base+Math.sin(k*5+t*.55+p*2.2)*amp+Math.sin(k*11-t*.35+p*4)*amp*.28; x===-20?lc.moveTo(x,y):lc.lineTo(x,y)}
+    lc.strokeStyle=blue?"rgba(47,91,255,.85)":`rgba(255,255,255,${.03+.05*Math.sin(p*Math.PI)})`; lc.lineWidth=blue?2:1.2; lc.shadowBlur=blue?18:0; lc.shadowColor="#2F5BFF"; lc.stroke()}}
+window.DRAW=async t=>{
+  document.getElementById("prog").style.width=Math.min(100,t/TOTAL*100)+"%";
+  document.getElementById("grain").style.transform=`translate(${(Math.floor(t*12)*37)%120-60}px,${(Math.floor(t*12)*53)%120-60}px)`;
+  let acc=0,idx=SC.length-1,l=0;
+  for(let i=0;i<SC.length;i++){if(t<acc+SC[i][1]){idx=i;l=t-acc;break}acc+=SC[i][1]}
+  if(t>=TOTAL){idx=SC.length-1;l=SC[idx][1]}
+  document.querySelectorAll(".scene").forEach((s,i)=>s.style.opacity=i===idx?(idx===0?1:cl(l/0.2)):(i===idx-1&&l<0.2?1:0));
+  const id=SC[idx][0];
+  if(id==="s1") document.getElementById("bg1").style.transform=`scale(${1.08-0.05*l/2.6})`;
+  if(id==="s3") document.getElementById("bg3").style.transform=`scale(${1.02+0.06*l/3.6})`;
+  if(id==="s2"){ lines(t);
+    let ci=0; CAPS.forEach((c,i)=>{if(l>=c)ci=i});
+    document.querySelectorAll("[data-c]").forEach((c,i)=>{const a=i===ci?ease((l-CAPS[i])/.4):0;c.style.opacity=a;c.style.transform=`translateY(${(1-a)*24}px)`});
+    const v=document.getElementById("vid"), want=Math.min(l, v.duration-0.04);
+    if(Math.abs(v.currentTime-want)>0.001) await new Promise(res=>{v.addEventListener("seeked",res,{once:true}); v.currentTime=want});
+  }
+};
+</script>
+</body></html>
