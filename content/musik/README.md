@@ -10,7 +10,7 @@ Stand: 23.10.2026 · Der Creative Director wählt hier die Musik für jedes Reel
 - Keine Musik aus fremden Reels, keine Charts.
 
 ## Eigene Tracks (MZ.9) – `eigene/`
-Quelle: Maiks Reels auf @mz.9_nyc, Ton herausgelöst am 23.10.2026.
+Quelle: Maiks Reels auf @mz.9_nyc, Ton herausgelöst am 23.10.2026. Doppelte aussortiert (C-0GPl3to1h = Loneliness, DCY6xnINtwk = Evolution). Nicht übernommen: DC-DTqvoqEX (THE-TRIBE-Account, „Electric Circle Vol.3 – Tracks von allen Beteiligten“ → auch fremde Musik).
 
 | Datei | Titel | Länge | Tempo | Energie / Drop | Passt zu |
 |---|---|---|---|---|---|
@@ -21,6 +21,11 @@ Quelle: Maiks Reels auf @mz.9_nyc, Ton herausgelöst am 23.10.2026.
 | `mz9_track_DTdqqs.m4a` | *Titel bei Maik erfragen* | 90 s | ~144 BPM | steigert sich durchgehend, ab ~25 s volle Energie | Montagen, Build-in-public-Zeitraffer |
 | `mz9_track_DFfIfN.m4a` | *Titel bei Maik erfragen* | 106 s | ~144 BPM | fast sofort voll (ab ~3 s), lange Hochphase | kurze Reels, die sofort Tempo brauchen |
 | `mz9_set_bigger-than-techno.m4a` | DJ-Mitschnitt „Bigger than Techno × Break the Rules“ | 47 s | ~144 BPM | voll ab ~13 s | **nur nutzen, wenn alles darin eigene Musik ist** (DJ-Set – bei Maik bestätigen) |
+| `mz9_loneliness-v1-3.m4a` | **Loneliness v.1.3** | 180 s | ~152 BPM | lange ruhige Einleitung, steigt ab ~60 s, Höhepunkt ~73–80 s, danach hoch | emotionale Reels, langsamer Aufbau mit großem Moment |
+| `mz9_white-shadows.m4a` | **White Shadows** („aus Dunkelheit ein Funken Licht“) | 180 s | ~144 BPM | lange gedämpft, großer Drop bei ~137 s | persönliche Geschichte, Vorher/Nachher, „vom Dunkeln ins Licht“ |
+| `mz9_independence-2-1.m4a` | **Independence 2.1** („Sound der Freiheit“) | 90 s | ~144 BPM | ab ~3 s volle, hypnotische Energie durchgehend | Freiheit/Selbstständigkeit, schnelle Montagen, Hooks ohne Anlauf |
+| `mz9_track_DCMdFj.m4a` | *Titel bei Maik erfragen* | 145 s | ~144 BPM | wellig, großer Drop bei ~108 s | Intros mit Aufbau, Reveal |
+| `mz9_track_C-FhYj.m4a` | *Titel bei Maik erfragen* – klingt wie eine andere Version von `mz9_track_DFfIfN` | 97 s | ~144 BPM | fast sofort voll | wie DFfIfN |
 
 Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 - BREAKING: `:::--====++====--=+=-=--#+====-=+++-=+#*+==-=+=-===+#+++*#*#*=*==#+*=+==@@*--:.`
