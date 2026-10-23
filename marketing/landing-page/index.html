@@ -4,132 +4,156 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flow Media AI – Maik baut mit KI</title>
-<meta name="description" content="Ich baue mit KI Apps, Websites und Automatisierungen – und zeige, was dabei rauskommt. Flow Media AI: Ideen umsetzen. Arbeit vereinfachen. Möglichkeiten schaffen.">
+<meta name="description" content="Kostenlose Community, digitaler Stammtisch, Workshops jeden Montag und Projekte mit KI: Apps, Websites, Automatisierung. Flow Media AI von Maik.">
 <!-- TODO Impressum: noindex entfernen, sobald das Impressum vollständig ist -->
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0B0B">
 <meta property="og:title" content="Flow Media AI – Maik baut mit KI">
-<meta property="og:description" content="Apps, Websites und Automatisierungen mit KI. Zeigen statt erzählen.">
-<meta property="og:image" content="img/board.jpg">
+<meta property="og:description" content="Community, Stammtisch, Workshops und Projekte rund um KI, Business und Marketing.">
+<meta property="og:image" content="img/maik_front.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: one long page, narrow reading column for text, wide band for project screenshots; a "build log" of real projects is the core. */
+/* Look: skill flow-design – black, white, one blue accent, condensed uppercase headlines, Maik in every block */
 :root {
-  --bg: #f6f6f2;
-  --paper: #ffffff;
-  --ink: #121512;
-  --muted: #5b625c;
-  --line: #dfe1db;
-  --accent: #2f5bff;
-  --accent-ink: #ffffff;
-  --soft: #e8ecff;
-  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --wrap: 1120px;
+  --black: #0B0B0B; --card: #121212; --white: #FFFFFF; --text: #E6E6E6; --grey: #9A9A9A; --line: #2A2A2A; --blue: #2F5BFF;
+  --f-head: "Oswald", "Arial Narrow", sans-serif;
+  --f-label: "Montserrat", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, sans-serif;
+  --wrap: 1160px;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) { :root {
-  --bg: #0f1210; --paper: #171b18; --ink: #ecefea; --muted: #a3aba4; --line: #2a302b; --accent: #7d97ff; --accent-ink: #0f1210; --soft: #1d2440; color-scheme: dark } }
 * { box-sizing: border-box }
 html { scroll-behavior: smooth }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased }
+body { margin: 0; background: var(--black); color: var(--text); font: 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased }
 img { max-width: 100%; display: block }
 a { color: inherit }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)) }
-h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; margin: 0 }
-.eyebrow { font: 500 13px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); transition: transform .15s ease }
-.btn:hover { transform: translateY(-1px) }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
-.btn.ghost { background: transparent }
+h1, h2, h3 { font-family: var(--f-head); font-weight: 700; text-transform: uppercase; line-height: .95; letter-spacing: 0; color: var(--white); margin: 0; text-wrap: balance }
+.blue { color: var(--blue) }
+.label { font: 500 13px/1.5 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--grey) }
+.label b { color: var(--white); font-weight: 600 }
+.rule { width: 56px; height: 3px; background: var(--white); margin: 26px 0 }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 24px; font: 600 14px/1 var(--f-label); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--white); color: var(--white); transition: background .15s, color .15s, border-color .15s }
+.btn:hover { background: var(--white); color: var(--black) }
+.btn.primary { background: var(--blue); border-color: var(--blue) }
+.btn.primary:hover { background: var(--white); border-color: var(--white); color: var(--black) }
+.btn svg { width: 18px; height: 18px; flex: none }
 
 /* nav */
-nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line) }
-nav .wrap { display: flex; align-items: center; gap: 24px; padding-block: 14px }
-.logo { font: 800 19px/1 var(--f-display); text-decoration: none; letter-spacing: -.02em }
-.logo span { color: var(--accent) }
-nav ul { display: flex; gap: 22px; list-style: none; margin: 0 0 0 auto; padding: 0 }
-nav ul a { text-decoration: none; color: var(--muted); font-weight: 500 }
-nav ul a:hover { color: var(--ink) }
-nav .btn { padding: 9px 16px; font-size: 15px }
+nav { position: sticky; top: 0; z-index: 20; background: rgba(11,11,11,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line) }
+nav .wrap { display: flex; align-items: center; gap: 28px; padding-block: 14px }
+.logo img { height: 34px; width: auto }
+nav ul { display: flex; gap: 26px; list-style: none; margin: 0 0 0 auto; padding: 0 }
+nav ul a { text-decoration: none; font: 500 12px var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--grey) }
+nav ul a:hover { color: var(--white) }
+nav .btn { padding: 11px 16px; font-size: 12px }
 
 /* hero */
-.hero { padding-block: 72px 56px }
-.hero h1 { font-size: clamp(42px, 7.2vw, 92px); font-weight: 800; max-width: 14ch; margin-top: 18px }
-.hero h1 em { font-style: normal; color: var(--accent) }
-.hero p.lead { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 46ch; margin: 24px 0 32px }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center }
-.cta-note { font-size: 14px; color: var(--muted) }
-.hero-shot { margin-top: 56px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(18,21,18,.35); aspect-ratio: 1400 / 620; background: #2a6f74 }
-.hero-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top }
-.caption { font: 500 13px/1.4 var(--f-mono); color: var(--muted); margin-top: 12px }
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line) }
+.hero .wrap { position: relative; min-height: min(86vh, 820px); display: flex; flex-direction: column; justify-content: center; padding-block: 72px }
+.hero-photo { position: absolute; right: 0; top: 0; bottom: 0; width: min(52%, 640px); background: url(img/maik_front.jpg) center 15%/cover; filter: grayscale(1) contrast(1.1); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%); mask-image: linear-gradient(90deg, transparent 0%, #000 45%) }
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, var(--black) 100%) }
+.hero-copy { position: relative; max-width: 640px }
+.hero h1 { font-size: clamp(56px, 9vw, 124px); margin-top: 6px }
+.hero .lead { font-size: clamp(18px, 2vw, 21px); max-width: 34ch; margin: 26px 0 34px }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px }
+.hero .note { margin-top: 18px; font-size: 14px; color: var(--grey) }
 
 /* sections */
-section { padding-block: 80px }
-section + section { border-top: 1px solid var(--line) }
-.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: end; margin-bottom: 44px }
-.sec-head h2 { font-size: clamp(32px, 4.4vw, 54px); font-weight: 700 }
-.sec-head p { color: var(--muted); margin: 0; max-width: 52ch }
+section { padding-block: 96px; border-bottom: 1px solid var(--line) }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: end; margin-bottom: 48px }
+.sec-head h2 { font-size: clamp(42px, 6vw, 80px) }
+.sec-head p { margin: 0; max-width: 48ch; color: var(--text) }
 
-/* build log */
-.log { display: grid; gap: 22px }
-.entry { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 28px }
+/* offers */
+.offer.offer-main { display: grid; padding: 0; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); border: 1.5px solid var(--white); margin-bottom: 20px; background: var(--card) }
+.offer-main .copy { padding: clamp(28px, 4vw, 52px) }
+.offer-main h3 { font-size: clamp(40px, 5.4vw, 72px); margin: 14px 0 0 }
+.offer-main .img { background: url(img/community.jpg) center 20%/cover; min-height: 340px; filter: grayscale(1); border-left: 1.5px solid var(--white) }
+.badge { display: inline-block; background: var(--blue); color: var(--white); font: 600 12px/1 var(--f-label); letter-spacing: .16em; text-transform: uppercase; padding: 9px 12px }
+.offer p { margin: 18px 0 0; max-width: 52ch }
+.ticks { list-style: none; padding: 0; margin: 24px 0 30px; display: grid; gap: 12px }
+.ticks li { display: flex; gap: 14px; align-items: flex-start; font: 500 14px/1.4 var(--f-label); letter-spacing: .1em; text-transform: uppercase; color: var(--white) }
+.ticks svg { width: 22px; height: 22px; stroke: var(--white); stroke-width: 1.5; fill: none; flex: none }
+.offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px }
+.offer { border: 1.5px solid var(--line); background: var(--card); padding: 30px; display: flex; flex-direction: column }
+.offer .n { font: 600 13px var(--f-label); letter-spacing: .18em; color: var(--grey) }
+.offer h3 { font-size: 40px; margin: 12px 0 0 }
+.offer .grow { flex: 1 }
+.offer .btn { margin-top: 26px; align-self: flex-start }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1.5px solid var(--line); margin-top: 24px }
+.facts div { padding: 14px 0; border-bottom: 1.5px solid var(--line) }
+.facts div:nth-child(odd) { padding-right: 12px; border-right: 1.5px solid var(--line) }
+.facts div:nth-child(even) { padding-left: 16px }
+.facts em { display: block; font: 500 11px var(--f-label); font-style: normal; letter-spacing: .18em; text-transform: uppercase; color: var(--grey) }
+.facts strong { display: block; font: 700 26px/1.1 var(--f-head); text-transform: uppercase; color: var(--white); margin-top: 4px }
+.facts strong.blue { color: var(--blue) }
+.workshop-topic { margin-top: 18px; padding: 16px 18px; border-left: 3px solid var(--blue); background: #161616 }
+.workshop-topic b { display: block; font: 700 22px/1.1 var(--f-head); text-transform: uppercase; color: var(--white) }
+.workshop-topic span { display: block; font-size: 15px; margin-top: 6px }
+.flyer { margin-top: 18px; border: 1.5px solid var(--line) }
+
+/* projects */
+.log { display: grid; gap: 20px }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 36px; align-items: center; border: 1.5px solid var(--line); background: var(--card); padding: 28px }
 .entry:nth-child(even) .media { order: -1 }
-.entry h3 { font-size: 30px; font-weight: 700; margin: 10px 0 12px }
-.entry p { margin: 0 0 14px; color: var(--muted) }
-.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none }
-.facts li { font: 500 12.5px/1 var(--f-mono); background: var(--soft); color: var(--ink); padding: 7px 10px; border-radius: 999px }
-.media { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg) }
-.media img { width: 100%; height: 100%; object-fit: cover; object-position: top }
-.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; background: #111; padding: 14px; border-radius: 12px }
-.phones img { border-radius: 10px; aspect-ratio: 9 / 16; object-fit: cover; object-position: top }
-
-/* services */
-.services { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px }
-@media (max-width: 1100px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)) } .services .svc:last-child { grid-column: 1 / -1 } }
-@media (max-width: 560px) { .services { grid-template-columns: minmax(0, 1fr) } }
-.svc { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px }
-.svc .n { font: 500 12px var(--f-mono); color: var(--accent) }
-.svc h3 { font-size: 22px; font-weight: 700 }
-.svc p { margin: 0; color: var(--muted); font-size: 16px }
-
-/* process */
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s }
-.step { border-top: 2px solid var(--ink); padding-top: 18px }
-.step .n { font: 500 13px var(--f-mono); color: var(--muted) }
-.step h3 { font-size: 24px; font-weight: 700; margin: 8px 0 10px }
-.step p { margin: 0; color: var(--muted) }
+.entry h3 { font-size: 40px; margin: 10px 0 14px }
+.entry p { margin: 0 0 16px }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none }
+.chips li { font: 500 11px/1 var(--f-label); letter-spacing: .14em; text-transform: uppercase; border: 1.5px solid var(--line); padding: 8px 10px; color: var(--grey) }
+.media { border: 1.5px solid var(--line); overflow: hidden }
+.media img { width: 100%; max-height: 440px; object-fit: cover; object-position: top; filter: grayscale(1) contrast(1.05) }
+.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 12px; border: 1.5px solid var(--line) }
+.phones img { aspect-ratio: 9 / 16; object-fit: cover; object-position: top; filter: grayscale(1) }
 
 /* about */
-.about { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px }
-.about h2 { font-size: clamp(32px, 4.4vw, 54px); font-weight: 700 }
-.about p { margin: 0 0 18px; max-width: 60ch }
+.about { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: center }
+.about .photo { aspect-ratio: 4 / 5; background: url(img/maik_laptop.jpg) center 20%/cover; filter: grayscale(1) contrast(1.08); border: 1.5px solid var(--line) }
+.about h2 { font-size: clamp(42px, 6vw, 80px); margin-bottom: 26px }
+.about p { margin: 0 0 18px; max-width: 58ch }
 .values { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px }
-.values span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 14px; color: var(--muted) }
+.values span { font: 500 11px/1 var(--f-label); letter-spacing: .14em; text-transform: uppercase; border: 1.5px solid var(--line); padding: 9px 12px; color: var(--grey) }
 
-/* final cta */
-.final { text-align: left; background: var(--ink); color: var(--bg); border-radius: 24px; padding: clamp(32px, 6vw, 64px); margin-block: 80px }
-.final h2 { font-size: clamp(34px, 5vw, 64px); font-weight: 800; max-width: 16ch }
-.final p { color: color-mix(in srgb, var(--bg) 70%, transparent); max-width: 52ch; margin: 18px 0 28px }
-.final .btn.ghost { border-color: var(--bg); color: var(--bg) }
+/* final */
+.final { padding-block: 110px; text-align: left }
+.final h2 { font-size: clamp(48px, 8vw, 110px); max-width: 12ch }
+.final p { max-width: 50ch; margin: 24px 0 34px }
 
-footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px }
+footer { padding-block: 30px 120px; color: var(--grey); font-size: 14px }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center }
-footer a { color: var(--muted) }
+footer a { color: var(--grey) }
 footer .sp { margin-left: auto }
 
+/* contact avatar, bottom right */
+.fab { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 30; display: flex; flex-direction: column; align-items: flex-end; gap: 12px }
+.fab-btn { position: relative; width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--white); background: url(img/maik_avatar.jpg) center/cover; filter: grayscale(1); cursor: pointer; box-shadow: 0 14px 40px rgba(0,0,0,.6); padding: 0 }
+.fab-btn::after { content: ""; position: absolute; right: 2px; bottom: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); border: 2px solid var(--black) }
+.fab-panel { width: min(320px, calc(100vw - 36px)); background: var(--card); border: 1.5px solid var(--white); padding: 22px; box-shadow: 0 20px 60px rgba(0,0,0,.7); display: none }
+.fab.open .fab-panel { display: block }
+.fab-panel h3 { font-size: 30px }
+.fab-panel p { font-size: 15px; margin: 8px 0 18px }
+.fab-panel .btn { width: 100%; margin-top: 10px }
+.fab-panel .num { display: block; text-align: center; margin-top: 12px; font: 500 13px var(--f-label); letter-spacing: .12em; color: var(--grey) }
+
+@media (max-width: 980px) {
+  .offers { grid-template-columns: minmax(0, 1fr) }
+  .offer.offer-main { grid-template-columns: minmax(0, 1fr) }
+  .offer-main .img { border-left: 0; border-top: 1.5px solid var(--white); min-height: 300px }
+}
 @media (max-width: 860px) {
   nav ul { display: none }
   nav .btn { margin-left: auto }
+  .hero .wrap { min-height: auto; padding-top: 52vh; padding-bottom: 56px }
+  .hero-photo { width: 100%; height: 62vh; bottom: auto; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%); mask-image: linear-gradient(180deg, #000 55%, transparent 100%) }
   .sec-head, .entry, .about { grid-template-columns: minmax(0, 1fr) }
   .entry:nth-child(even) .media { order: 0 }
-  .steps { grid-template-columns: minmax(0, 1fr) }
-  section { padding-block: 56px }
-  .hero { padding-block: 48px 32px }
+  section { padding-block: 64px }
 }
+@media (max-width: 420px) { .logo img { height: 28px } nav .btn { padding: 10px 12px; letter-spacing: .1em } }
 </style>
 <!-- PostHog (EU, ohne Cookies: persistence "memory", keine Aufzeichnungen) -->
 <script>
@@ -147,43 +171,113 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 <body>
 
 <nav aria-label="Hauptnavigation"><div class="wrap">
-  <a class="logo" href="#top">Flow Media <span>AI</span></a>
+  <a class="logo" href="#top"><img src="img/logo_flow.png" alt="Flow Media AI" width="822" height="222"></a>
   <ul>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#angebote">Stammtisch & Workshop</a></li>
     <li><a href="#projekte">Projekte</a></li>
-    <li><a href="#leistungen">Leistungen</a></li>
-    <li><a href="#ablauf">Ablauf</a></li>
     <li><a href="#ueber-mich">Über mich</a></li>
   </ul>
-  <a class="btn primary" data-cta="nav_calendly" href="https://calendly.com/mzschach-bkgt/1-kennenlernen" target="_blank" rel="noopener">15 Min reden</a>
+  <a class="btn primary" data-cta="nav_community" data-wa="community" href="#community">Community beitreten</a>
 </div></nav>
 
-<header class="hero" id="top"><div class="wrap">
-  <span class="eyebrow">Maik · Flow Media AI</span>
-  <h1>Ich baue mit KI. Und zeige, <em>was dabei rauskommt.</em></h1>
-  <p class="lead">Apps, Websites, Tools und Automatisierungen – schneller umgesetzt, als die meisten denken. Für Menschen und Betriebe, die lieber etwas Funktionierendes sehen als ein weiteres Konzept.</p>
-  <div class="cta-row">
-    <a class="btn primary" data-cta="hero_calendly" href="https://calendly.com/mzschach-bkgt/1-kennenlernen" target="_blank" rel="noopener">Kennenlernen – 15 Min am Telefon</a>
-    <a class="btn ghost" data-cta="hero_projects" href="#projekte">Was ich gebaut habe</a>
+<header class="hero" id="top">
+  <div class="hero-photo" role="img" aria-label="Maik, Gründer von Flow Media AI"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="label"><b>Maik</b> · Flow Media AI · Bielefeld</div>
+      <div class="rule"></div>
+      <h1>Ideen umsetzen.<br>Mit <span class="blue">KI.</span></h1>
+      <p class="lead">Ich baue Apps, Websites und Automatisierungen mit KI – und zeige dir, wie du das selbst kannst. In der Community, beim Stammtisch, im Workshop oder als Projekt.</p>
+      <div class="cta-row">
+        <a class="btn primary" data-cta="hero_community" data-wa="community" href="#community">Kostenlos der Community beitreten</a>
+        <a class="btn" data-cta="hero_projekt" href="#projektanfrage">Projekt anfragen</a>
+      </div>
+      <p class="note">Kostenlos · ohne Haken · Bielefeld, Münster und digital</p>
+    </div>
   </div>
-  <figure style="margin:0">
-    <div class="hero-shot"><img src="img/board.jpg" alt="Flow Board: ein selbst gebautes Aufgaben-Board mit sechs Spalten, Prioritäten und Kalender" width="1400" height="860"></div>
-    <figcaption class="caption">Flow Board – mein eigenes Trello mit Kalender, Calendly und Dateiablage. Mit KI an einem Tag gebaut.</figcaption>
-  </figure>
-</div></header>
+</header>
 
 <main>
+<section id="community"><div class="wrap">
+  <div class="sec-head">
+    <h2>So bist du<br><span class="blue">dabei.</span></h2>
+    <p>Vier Wege, je nachdem, was du gerade brauchst: Austausch, Praxis oder jemanden, der dein Projekt umsetzt. Der einfachste Einstieg ist die Community – kostenlos.</p>
+  </div>
+
+  <article class="offer offer-main">
+    <div class="copy">
+      <span class="badge">01 · Kostenlos · Einstieg</span>
+      <h3>Flow Business<br>Community</h3>
+      <p>Für Gründer, Selbstständige und Macher. Ideen teilen, Feedback bekommen, gemeinsam ins Machen kommen. Build. Market. Grow.</p>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24"><path d="M4 19V9l8-5 8 5v10M9 19v-6h6v6"/></svg>Business & Marketing</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>KI & digitale Tools</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg>Austausch & Umsetzung</li>
+      </ul>
+      <a class="btn primary" data-cta="offer_community" data-wa="community" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+        WhatsApp-Community beitreten
+      </a>
+    </div>
+    <div class="img" role="img" aria-label="Plakat Flow Business Community"></div>
+  </article>
+
+  <div class="offers" id="angebote">
+    <article class="offer">
+      <span class="n">02 · Grundsätzlich kostenlos</span>
+      <h3>Digitaler<br>Stammtisch</h3>
+      <p>Offener Austausch zu Business, KI und Marketing. Eigene Projekte vorstellen, Fragen stellen, Leute kennenlernen, die auch etwas aufbauen.</p>
+      <ul class="ticks" style="margin-bottom:0">
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8"/></svg>Digital & live</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.8 6 5.5"/></svg>Business · KI · Marketing</li>
+      </ul>
+      <div class="grow"></div>
+      <a class="btn" data-cta="offer_stammtisch" data-wa="stammtisch" href="#">Infos per WhatsApp</a>
+    </article>
+
+    <article class="offer" id="workshop">
+      <span class="n">03 · Jeden Montag</span>
+      <h3>Workshop<br><span class="blue">am Montag</span></h3>
+      <p>Jede Woche ein konkretes Thema, live und zum Mitmachen. Du gehst mit etwas raus, das du direkt nutzen kannst.</p>
+      <div class="workshop-topic"><span class="label">Nächster Termin</span><b>Mit KI zur Personal Brand</b><span>Wie dein Content immer gleich aussieht: Stil definieren, eigenen KI-Skill bauen, Workflow für deinen Account.</span></div>
+      <div class="facts">
+        <div><em>Wann</em><strong>Mo 26.10.</strong></div>
+        <div><em>Uhrzeit</em><strong>18:00</strong></div>
+        <div><em>Dauer</em><strong>60 Min</strong></div>
+        <div><em>Pro Person</em><strong class="blue">15 €</strong></div>
+      </div>
+      <div class="grow"></div>
+      <a class="btn primary" data-cta="offer_workshop" data-wa="workshop" href="#">Platz sichern</a>
+    </article>
+
+    <article class="offer" id="projektanfrage">
+      <span class="n">04 · Projektanfragen</span>
+      <h3>Dein<br>Projekt</h3>
+      <p>Du brauchst eine App, eine Website, ein eigenes Tool oder eine Automatisierung? Ich baue es mit KI – schnell, pragmatisch, und ich zeige dir, wie du es selbst weiterführst.</p>
+      <ul class="ticks" style="margin-bottom:0">
+        <li><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>Apps & Tools</li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18"/></svg>Websites & Landingpages</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg>Automatisierung</li>
+      </ul>
+      <div class="grow"></div>
+      <a class="btn primary" data-cta="offer_erstgespraech" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Kostenloses Erstgespräch</a>
+    </article>
+  </div>
+</div></section>
+
 <section id="projekte"><div class="wrap">
   <div class="sec-head">
-    <h2>Was ich gebaut habe</h2>
+    <h2>Was ich<br>gebaut habe.</h2>
     <p>Keine Referenzen von Kunden, die es nicht gibt – sondern eigene Projekte, die laufen. Genau so arbeite ich auch für andere.</p>
   </div>
   <div class="log">
     <article class="entry">
       <div>
-        <span class="eyebrow">App & Community · Bielefeld und Münster</span>
+        <span class="label">App & Community · Bielefeld und Münster</span>
         <h3>THE TRIBE</h3>
         <p>Eine Ausgeh-App mit Community: alle Events der Stadt an einem Ort, und Leute finden, die mitkommen. Mit Stadtpuls, Chat, Event-Seiten und WhatsApp-Community – entwickelt mit KI, ohne Entwicklerteam.</p>
-        <ul class="facts"><li>Web-App</li><li>Event-Seiten</li><li>Community</li></ul>
+        <ul class="chips"><li>Web-App</li><li>Event-Seiten</li><li>Community</li></ul>
       </div>
       <div class="phones">
         <img src="img/tribe_index.jpg" alt="THE TRIBE Startseite" loading="lazy">
@@ -193,82 +287,56 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     </article>
     <article class="entry">
       <div>
-        <span class="eyebrow">Eigenes Tool</span>
+        <span class="label">Eigenes Tool</span>
         <h3>Flow Board</h3>
-        <p>Weil mir Trello zu wenig war: Aufgaben-Board mit Prioritäten-Matrix, Wochenkalender mit Uhrzeiten, gebuchten Calendly-Terminen, Dateiablage und GitHub-Anbindung. Läuft auf Laptop und Handy.</p>
-        <ul class="facts"><li>Board & Kalender</li><li>Calendly</li><li>Datenbank</li></ul>
+        <p>Weil mir Trello zu wenig war: Aufgaben-Board mit Prioritäten-Matrix, Wochenkalender, gebuchten Calendly-Terminen, Dateiablage in Google Drive. Läuft auf Laptop und Handy, als App installierbar.</p>
+        <ul class="chips"><li>Board & Kalender</li><li>Calendly</li><li>Google Drive</li></ul>
       </div>
       <div class="media"><img src="img/board_cal.jpg" alt="Flow Board Kalender mit Wochenansicht" loading="lazy" width="1400" height="860"></div>
     </article>
     <article class="entry">
       <div>
-        <span class="eyebrow">Websites</span>
+        <span class="label">Websites</span>
         <h3>30+ Seiten, eine Person</h3>
         <p>Landingpages, Event-Seiten mit Ticketverkauf, eine Agentur-Website, eine Sammlung kostenloser Tools für kleine Betriebe. Nicht alles perfekt – aber alles live.</p>
-        <ul class="facts"><li>Landingpages</li><li>Event-Seiten</li><li>Tools</li></ul>
+        <ul class="chips"><li>Landingpages</li><li>Event-Seiten</li><li>Tools</li></ul>
       </div>
       <div class="media"><img src="img/websites.jpg" alt="Raster aus zwölf selbst gebauten Websites" loading="lazy"></div>
     </article>
     <article class="entry">
       <div>
-        <span class="eyebrow">Automatisierung</span>
-        <h3>Reels, die sich (fast) selbst bauen</h3>
-        <p>Ein Autopilot, der täglich Zahlen auswertet, Reels baut, postet und aus den Ergebnissen lernt. Mit allen Fehlern, die dazugehören – darüber rede ich offen auf <a href="https://www.instagram.com/flow.media.ai/" data-cta="log_instagram" target="_blank" rel="noopener">@flow.media.ai</a>.</p>
-        <ul class="facts"><li>Daten → Briefing → Reel</li><li>Learnings</li></ul>
+        <span class="label">Content & Automatisierung</span>
+        <h3>Content mit System</h3>
+        <p>Ein Creative Director und ein Design-Skill, die jeden Tag einen Post bauen – immer im selben Look. Wie das geht, zeige ich auf <a href="https://www.instagram.com/flow.media.ai/" data-cta="log_instagram" target="_blank" rel="noopener">@flow.media.ai</a> und im Workshop.</p>
+        <ul class="chips"><li>KI-Skills</li><li>Design-System</li><li>Daily Content</li></ul>
       </div>
-      <div class="phones">
-        <img src="img/reel_a.jpg" alt="Reel-Ausschnitt: Ohne Agentur. Ohne Dev-Team." loading="lazy">
-        <img src="img/reel_b.jpg" alt="Reel-Ausschnitt: 30+ Seiten. 1 Person." loading="lazy">
-        <img src="img/reel_c.jpg" alt="Reel-Ausschnitt: Folg @flow.media.ai" loading="lazy">
-      </div>
+      <div class="media"><img src="img/workshop_26-10.jpg" alt="Flyer im Flow-Look, gebaut mit dem Design-Skill" loading="lazy"></div>
     </article>
   </div>
 </div></section>
 
-<section id="leistungen"><div class="wrap">
-  <div class="sec-head">
-    <h2>Wobei ich helfe</h2>
-    <p>KI ist für mich kein Selbstzweck. Entscheidend ist, was am Ende entsteht: weniger Handarbeit, schnellere Umsetzung, mehr Zeit für das Wichtige.</p>
-  </div>
-  <div class="services">
-    <div class="svc"><span class="n">01</span><h3>KI & Automatisierung</h3><p>Wiederkehrende Aufgaben vereinfachen und Abläufe so bauen, dass sie von selbst laufen.</p></div>
-    <div class="svc"><span class="n">02</span><h3>Apps & Websites</h3><p>Digitale Produkte, Plattformen und individuelle Tools – vom ersten Prototyp bis live.</p></div>
-    <div class="svc"><span class="n">03</span><h3>Content mit KI</h3><p>Inhalte, Bilder, Videos und Werbemittel effizient erstellen, ohne nach KI zu klingen.</p></div>
-    <div class="svc"><span class="n">04</span><h3>Social Media, automatisiert</h3><p>Regelmäßig sichtbar bleiben, ohne dass Social Media den halben Tag frisst.</p></div>
-    <div class="svc"><span class="n">05</span><h3>Workshops</h3><p>Selbst Websites, Apps und Tools mit KI bauen lernen. Ich zeige, wie – damit du nicht von mir abhängig bist.</p></div>
-  </div>
-</div></section>
-
-<section id="ablauf"><div class="wrap">
-  <div class="sec-head">
-    <h2>So arbeite ich</h2>
-    <p>Lieber etwas Funktionierendes bauen und verbessern als monatelang darüber reden.</p>
-  </div>
-  <div class="steps">
-    <div class="step"><span class="n">Schritt 1</span><h3>Kurz reden</h3><p>15 Minuten am Telefon: Was ist das Problem, was soll am Ende besser sein? Passt die Chemie?</p></div>
-    <div class="step"><span class="n">Schritt 2</span><h3>Prototyp sehen</h3><p>Statt eines langen Konzepts bekommst du schnell etwas zum Anfassen – und merkst, ob es in die richtige Richtung geht.</p></div>
-    <div class="step"><span class="n">Schritt 3</span><h3>Verbessern & übergeben</h3><p>Wir machen es alltagstauglich. Und ich zeige dir, wie du es selbst weiterführst.</p></div>
-  </div>
-</div></section>
-
 <section id="ueber-mich"><div class="wrap about">
-  <div><span class="eyebrow">Über mich</span><h2 style="margin-top:14px">Hi, ich bin Maik.</h2></div>
+  <div class="photo" role="img" aria-label="Maik am Laptop"></div>
   <div>
+    <span class="label">Über mich</span>
+    <div class="rule"></div>
+    <h2>Hi, ich bin<br><span class="blue">Maik.</span></h2>
     <p>Mich fasziniert, wie schnell man heute aus einer Idee etwas Echtes machen kann. Was früher Zeit, mehrere Dienstleister und viel Technik-Wissen brauchte, geht mit den richtigen KI-Werkzeugen oft in Tagen.</p>
-    <p>Ich denke nicht nur technisch und nicht nur kreativ – ich verbinde beides. Ich sehe eine Möglichkeit, baue einen ersten Prototyp und verbessere ihn, bis er hilft. Ein Beispiel ist THE TRIBE, meine Community für echte Begegnungen in Bielefeld und Münster.</p>
+    <p>Ich denke nicht nur technisch und nicht nur kreativ – ich verbinde beides. Ich sehe eine Möglichkeit, baue einen ersten Prototyp und verbessere ihn, bis er hilft.</p>
     <p>Mit Flow Media AI teile ich, was ich baue: Ergebnisse, Experimente und auch das, was nicht auf Anhieb klappt. Ohne erfundene Erfolgsgeschichten.</p>
     <div class="values"><span>Pragmatisch</span><span>Ehrlich</span><span>Kreativ</span><span>Wirksam</span><span>Befähigen statt abhängig machen</span></div>
   </div>
 </div></section>
 
-<div class="wrap">
-  <div class="final" id="kontakt">
-    <h2>Lass uns 15 Minuten telefonieren.</h2>
-    <p>Kein Verkaufsgespräch, kein Hin- und Herschreiben. Wir schauen kurz, ob ich dir helfen kann – und wenn nicht, sage ich dir das ehrlich.</p>
-    <div class="cta-row">
-      <a class="btn primary" data-cta="final_calendly" href="https://calendly.com/mzschach-bkgt/1-kennenlernen" target="_blank" rel="noopener">Termin aussuchen</a>
-      <a class="btn ghost" data-cta="final_instagram" href="https://www.instagram.com/flow.media.ai/" target="_blank" rel="noopener">Auf Instagram folgen</a>
-    </div>
+<div class="wrap final" id="kontakt">
+  <span class="label">Los geht's</span>
+  <div class="rule"></div>
+  <h2>Komm in die<br><span class="blue">Community.</span></h2>
+  <p>Kostenlos, ohne Verpflichtung. Und wenn du ein konkretes Projekt hast: 15 Minuten am Telefon reichen, um zu sehen, ob ich dir helfen kann.</p>
+  <div class="cta-row">
+    <a class="btn primary" data-cta="final_community" data-wa="community" href="#">Community beitreten</a>
+    <a class="btn" data-cta="final_calendly" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Erstgespräch buchen</a>
+    <a class="btn" data-cta="final_instagram" href="https://www.instagram.com/flow.media.ai/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </div>
 </main>
@@ -281,7 +349,35 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <a href="datenschutz.html">Datenschutz</a>
 </div></footer>
 
+<div class="fab" id="fab">
+  <div class="fab-panel" id="fab-panel" role="dialog" aria-label="Maik kontaktieren">
+    <h3>Hi, ich bin Maik.</h3>
+    <p>Fragen zur Community, zum Workshop oder zu deinem Projekt? Schreib mir oder ruf direkt an.</p>
+    <a class="btn primary" data-cta="fab_whatsapp" data-wa="hallo" href="#">WhatsApp schreiben</a>
+    <a class="btn" data-cta="fab_call" href="tel:+4917645961547">Anrufen</a>
+    <span class="num">+49 176 45961547</span>
+  </div>
+  <button class="fab-btn" id="fab-btn" type="button" aria-expanded="false" aria-controls="fab-panel" aria-label="Maik kontaktieren"></button>
+</div>
+
 <script>
+// Contact links. COMMUNITY_URL: invite link of the WhatsApp community – while empty, the button opens a prefilled chat with Maik instead.
+const PHONE = "4917645961547";
+const COMMUNITY_URL = "";
+const WA_TEXT = {
+  community: "Hi Maik, ich möchte in die Flow Business Community.",
+  stammtisch: "Hi Maik, ich interessiere mich für den digitalen Stammtisch.",
+  workshop: "Hi Maik, ich möchte beim Workshop am Montag, 26.10. um 18 Uhr dabei sein („Mit KI zur Personal Brand“).",
+  hallo: "Hi Maik, ich hab eine Frage:",
+};
+document.querySelectorAll("[data-wa]").forEach(a => {
+  const k = a.dataset.wa;
+  a.href = k === "community" && COMMUNITY_URL ? COMMUNITY_URL : `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT[k])}`;
+  a.target = "_blank"; a.rel = "noopener";
+});
+const fab = document.getElementById("fab"), fabBtn = document.getElementById("fab-btn");
+fabBtn.addEventListener("click", () => { const o = fab.classList.toggle("open"); fabBtn.setAttribute("aria-expanded", o) });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { fab.classList.remove("open"); fabBtn.setAttribute("aria-expanded", false) } });
 // Count clicks on calls to action (PostHog event "cta_click" with the button name)
 document.addEventListener("click", e => {
   const a = e.target.closest("[data-cta]");
