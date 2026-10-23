@@ -8,6 +8,7 @@ Stand: 19.10.2026
 | `profilbild_ki.png` | Profilbild: Maik vor dem Wellen-Zeichen, rund, schwarz-weiß | KI-generiert. **Nur klein verwenden** (siehe unten). |
 
 ## Regeln (Maik, 19.10.2026)
+- **Personal Brand (23.10.2026):** Maik ist in jedem Post zu sehen. Die freigegebenen Porträts der neuen Serie (Liste in `.claude/skills/flow-design/SKILL.md` §4) dürfen groß eingesetzt werden. Die folgende Klein-Regel gilt nur für `profilbild_ki.png`.
 - **Profilbild nur sehr klein** (z. B. Instagram-Profilbild, Avatar-Kreis bis ca. 120 px, Footer/Signatur). Nie groß in Reels, auf der Landingpage oder in Posts: Das Bild ist KI-generiert und sieht Maik aus der Nähe nicht ähnlich genug. Für alles Große echte Fotos/Videos von Maik nehmen.
 - **Schriftzug „Flow Media AI“ ist noch nicht fertig** – wird noch entwickelt. Bis dahin: Wortmarke wie auf der Landingpage (Bricolage Grotesque ExtraBold, „AI“ in Flow-Blau #2F5BFF).
 - Wellen-Zeichen bis zur finalen Fassung nur als Entwurf behandeln.

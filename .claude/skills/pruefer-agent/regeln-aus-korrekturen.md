@@ -5,6 +5,8 @@ Dauerhafte Regeln, die aus Korrekturen von Maik entstanden sind. Vor jeder Arbei
 | Datum | Regel | Anlass |
 |---|---|---|
 | 23.10.2026 | Visueller Look von Flow = Skill `flow-design` (aus Maiks Plakaten: schwarz-weiß, große Versal-Headlines, ein blauer Akzent). Ersetzt die Regel „Designs folgen der Landing Page“ für neue Gestaltungen; R003/R004 bleiben im R002-Stil. | „Flow-AI-Skill-Design, also minimalistisches Layout, schwarz, weiß, Primärfarben, große Überschriften“ / „die beiden Reels … im selben Style wie vorher“ |
+| 23.10.2026 | Personal Brand: Maik ist in jedem Post zu sehen, groß oder klein. Die freigegebenen Porträts (Liste in `flow-design` §4) dürfen groß eingesetzt werden; nur `profilbild_ki.png` bleibt klein. | „dass es auch jedes Mal irgendwie, ob klein oder groß … ein Bild von mir auch mit gepostet wird“ |
+| 23.10.2026 | Der Wow-Hook (begeisterter Einstieg) ist eine Option im Creative Director, keine Pflicht. | „ich will jetzt den Creative Director nicht einengen … gib das so ein bisschen als Option“ |
 | 19.10.2026 | Ablage ist Google Drive (`Flow Media AI`), nicht mehr Dropbox. Kundenunterlagen, Angebote und Belege nur dort; das Board verlinkt auf Drive. | „verknüpfe auch mein Bord damit also kein dropbox mehr am Ende“ |
 | 19.10.2026 | Auch die Blindspot-Analyse ist optional: nur auf Maiks ausdrücklichen Wunsch, nicht von selbst vorschlagen oder starten; nicht in `CLAUDE.md` als Pflicht. | „ne auch blindspot analyse optional“ |
 | 19.10.2026 | Die Prüferagent-Regel steht nicht in `CLAUDE.md` und gilt nicht immer; sie ist ein optionaler Skill, den Maik selbst einschaltet. | „ne packe es aus der claude.md mach es als optionalen skill den ich einschalten kann“ |

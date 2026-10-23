@@ -30,7 +30,8 @@ Teile: A = Überblick & Regeln · B = Themen & Formate · C = Virale Reels · D 
 
 ## 4. Stil
 - **Look (Maik, 23.10.2026):** festgelegt im Skill `flow-design` (aus Maiks Plakaten): schwarz-weiß, minimalistisch, große schmale Versal-Headlines, s/w-Fotos, Blau `#2F5BFF` als einziger Akzent. Für alles Gestaltete zusätzlich `flow-design` laden. Reels R003/R004 bleiben bewusst im R002-Stil (Maiks Wunsch 23.10.2026).
-- **Logo & Profilbild (Maik, 19.10.2026):** Dateien in `marketing/brand/` (Regeln im README dort). Das Profilbild ist KI-generiert → **nur sehr klein** einsetzen (Profilbild, kleiner Kreis, Abspann-Signatur), nie groß im Reel. Der Schriftzug „Flow Media AI“ wird noch entwickelt; bis dahin Wortmarke wie auf der Landingpage. Wellen-Zeichen = Entwurf (Ähnlichkeit zum Tailwind-CSS-Logo vor finaler Nutzung klären).
+- **Personal Brand – Maik in jedem Post (Maik, 23.10.2026):** Jeder Post, jedes Karussell, jedes Reel zeigt Maik, groß oder klein. Dafür die freigegebenen Porträts aus `flow-design` §4 nutzen (dürfen groß sein) oder eigenes Video/Foto.
+- **Logo & Profilbild (Maik, 19.10.2026):** Dateien in `marketing/brand/` (Regeln im README dort). Nur `profilbild_ki.png` bleibt **sehr klein** (Profilbild, kleiner Kreis, Abspann-Signatur), weil es Maik aus der Nähe nicht ähnlich genug sieht. Der Schriftzug „Flow Media AI“ wird noch entwickelt; bis dahin Wortmarke wie auf der Landingpage. Wellen-Zeichen = Entwurf (Ähnlichkeit zum Tailwind-CSS-Logo vor finaler Nutzung klären).
 - **Nicht** der schwarze Kupfer-Flyer-Look von THE TRIBE und nicht der Dating-Look – die Marken bleiben getrennt.
 - Eigenes Material zuerst: Selfie-Videos, Bildschirmaufnahmen, Fotos von Maik beim Bauen. Stock-Clips nur als Nebenmotiv und nie unverändert.
 - Musik nur mit freier Lizenz (z. B. Mixkit); Quelle notieren.
@@ -80,7 +81,8 @@ Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) s
 - **Bewegung + Mensch im ersten Frame** – nie Logo/Titelbild als Start.
 - Text-Hook bis 1,0 s lesbar, Auflösung angedeutet bis 3 s.
 - Funktionierende Hook-Typen: konkretes Ergebnis („Ich hab in 20 Minuten …“), echte Zahl, Frage an eine Gruppe, Überraschung, „POV: …“.
-- Keine generischen Einstiege („KI revolutioniert alles“ usw. – siehe CLAUDE.md).
+- **Option Wow-Hook (Maik, 23.10.2026):** ein begeisterter Einstieg, der das Staunen über das eigene Ergebnis zeigt – „WOW. ICH HAB'S GESCHAFFT.“ (Karussell 23.10.), „Das hat mich gerade echt umgehauen“, „Krass, das geht jetzt wirklich“. Kam gut an, ist aber **eine Möglichkeit, keine Pflicht**: der Creative Director entscheidet je Post, ob er passt. Regeln dafür: Die Begeisterung muss echt sein und sofort belegt werden (direkt danach das konkrete Ergebnis, z. B. „Eine komplette Software … von Linux auf Windows portiert“); nicht zwei Wow-Hooks hintereinander; als Test-Variable `hook = wow` in `content/learnings.md` gegen andere Hook-Typen vergleichen.
+- Keine generischen Einstiege („KI revolutioniert alles“ usw. – siehe CLAUDE.md). Ein Wow-Hook ohne konkretes Ergebnis dahinter zählt auch dazu.
 
 ## 3. Schnitt & Tempo
 - **7–15 s** ideal. Demos dürfen bis ~30 s, wenn jede Sekunde trägt.
