@@ -29,7 +29,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate · C = Virale Reels · D 
 - Konsequenz: **Maik im Bild** (Gesicht, Stimme, Hände am Laptop) oder **echte Bildschirmaufnahme** eines eigenen Tools. Keine reinen Grafik-Reels, keine Stock-Menschen als Hauptmotiv.
 
 ## 4. Stil
-- Look noch offen – Maik entscheidet (hier eintragen, sobald festgelegt). Bis dahin: ruhig, hell oder neutral, viel Raum, gut lesbare Schrift.
+- **Look (Maik, 23.10.2026):** festgelegt im Skill `flow-design` (aus Maiks Plakaten): schwarz-weiß, minimalistisch, große schmale Versal-Headlines, s/w-Fotos, Blau `#2F5BFF` als einziger Akzent. Für alles Gestaltete zusätzlich `flow-design` laden. Reels R003/R004 bleiben bewusst im R002-Stil (Maiks Wunsch 23.10.2026).
 - **Logo & Profilbild (Maik, 19.10.2026):** Dateien in `marketing/brand/` (Regeln im README dort). Das Profilbild ist KI-generiert → **nur sehr klein** einsetzen (Profilbild, kleiner Kreis, Abspann-Signatur), nie groß im Reel. Der Schriftzug „Flow Media AI“ wird noch entwickelt; bis dahin Wortmarke wie auf der Landingpage. Wellen-Zeichen = Entwurf (Ähnlichkeit zum Tailwind-CSS-Logo vor finaler Nutzung klären).
 - **Nicht** der schwarze Kupfer-Flyer-Look von THE TRIBE und nicht der Dating-Look – die Marken bleiben getrennt.
 - Eigenes Material zuerst: Selfie-Videos, Bildschirmaufnahmen, Fotos von Maik beim Bauen. Stock-Clips nur als Nebenmotiv und nie unverändert.

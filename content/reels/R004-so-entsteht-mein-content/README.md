@@ -1,6 +1,6 @@
 # R004 · „So entsteht gerade mein Content“
 
-Stand: 21.10.2026 · Format: Reel 1080×1920, 26,5 s · Status: **Rohschnitt fertig (`R004_entwurf.mp4`), 3 Clips von Maik fehlen**
+Stand: 23.10.2026 · Format: Reel 1080×1920, ca. 30 s · Status: **Rohschnitt der Bildschirm-Szenen fertig (`R004_entwurf.mp4`), Text fertig – Maik erstellt das HeyGen-Avatar-Video, danach Schnitt wie R002**
 
 ## Konzept
 Build in public: Maik zeigt, wie seine Posts gerade entstehen – mit seinem Creative-Director-Skill. Alles im Bild ist echt: Maiks Nachricht vom 21.10. („…einen persönlichen Post zu meinem Warum“), die Regeln aus `SKILL.md`, der Markenkern aus seinem Drive-Doc „Essenz“, das fertige Skript von R003 und ein Ausschnitt aus R002. Maik selbst am Anfang, in der Mitte und am Ende.
@@ -9,7 +9,20 @@ Ehrlich bleiben: Gepostet wird noch von Hand (kein eigener Instagram-Zugang). Da
 
 **Test-Variable:** `format = prozess-schritte` (nummerierte Schritte 1–7, Bildschirm-Material, Maik als Rahmen) – Vergleich mit R003 (persönliche Geschichte).
 
-## Ablauf (26,5 s)
+## Umsetzung wie R002 (Maiks Wunsch 23.10.2026)
+HeyGen-Avatar mit **Maiks eigener Stimme** (Sprachmemo hochladen, keine Computerstimme). Avatar groß am Anfang und Ende, während der Bildschirm-Szenen als runde Blase unten links. Die drei Platzhalter im Rohschnitt werden durch den Avatar ersetzt, die Szenen 1–6 bleiben, ihre Länge folgt der Sprechaufnahme.
+
+## Text für HeyGen (selbst einsprechen, ca. 30 s)
+> So entsteht gerade mein Content – und ich schreibe kaum noch selbst.
+> Ich sage nur, worum es gehen soll. Heute zum Beispiel: mein Warum.
+> Dann übernimmt mein Creative Director. Das ist ein KI-Skill, den ich mir selbst gebaut habe.
+> Er kennt meine Regeln: nichts erfinden, ein Mensch im ersten Bild, keine Agentursprache.
+> Er liest meine Markendokumente und schreibt Skript, Drehplan und Caption.
+> Ich spreche nur noch den Text ein. Den Schnitt macht er auch.
+> Posten mache ich noch selbst. Ob das besser läuft als vorher, zeige ich euch in ein paar Wochen.
+> Willst du so einen Creative Director für dein Business? Schreib mir.
+
+## Ablauf (Rohschnitt, 26,5 s – wird an die Aufnahme angepasst)
 
 | Zeit | Szene | Text im Bild | Material |
 |---|---|---|---|
@@ -24,7 +37,7 @@ Ehrlich bleiben: Gepostet wird noch von Hand (kein eigener Instagram-Zugang). Da
 
 Musik: „Motivating Mornings“ (Mixkit Stock Music Free License), ab 0:11,5, leise ein- und ausgeblendet.
 
-## Was Maik aufnimmt (Handy, 9:16, 5 Minuten)
+## Frühere Variante: echte Selfie-Clips (nicht mehr geplant)
 1. **Clip 1 (2,5 s):** Selfie, Blick in die Kamera, in Bewegung: „So entsteht gerade mein Content.“
 2. **Clip 2 (2,5 s):** Von der Seite gefilmt (oder Selfie-Stick): Handy auf den Tisch stellen, Aufnahme starten, ansetzen zu sprechen. Gern die Aufnahme von R003 – zwei Fliegen mit einer Klappe.
 3. **Clip 3 (3 s):** Selfie, lockeres Lächeln: „Willst du so einen Creative Director? Den bau ich dir auch. Schreib mir.“

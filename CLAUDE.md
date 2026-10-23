@@ -17,6 +17,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
+- `.claude/skills/flow-design/` – visuelles Design (schwarz-weiß, große Versal-Headlines, ein blauer Akzent) für alles Gestaltete
 - `.claude/skills/blindspot-analyse/` – optional, nur wenn Maik ihn einschaltet: Blindspot-Pass vor neuen Projekten
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
