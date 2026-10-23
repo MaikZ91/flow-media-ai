@@ -118,7 +118,7 @@ Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hoc
 2. **Thema** aus `content-themen` wählen (Rotation §3, Verlauf §5). Hat Maik für heute ein Thema genannt, gilt seins.
 3. **Format** wählen: Reel, Karussell oder Einzelpost (Wechsel laut `content-themen` §3). Maik ist in jedem Motiv (Personal Brand, `flow-design` §4).
 4. **Bauen** im `flow-design`-Look mit HTML + Playwright (Vorgehen wie R004/R005):
-   - Reel: 1080×1920 MP4, Text im Bild, freie Musik (Mixkit Free), läuft ohne Ton. Dazu ein **Sprechtext** (15–30 s), falls Maik selbst einsprechen will (Sprachmemo oder HeyGen mit eigener Stimme) – dann wird neu geschnitten.
+   - Reel: 1080×1920 MP4, Text im Bild, Musik aus `content/musik/` (eigene MZ.9-Tracks bevorzugt, sonst freie Lizenz; Schnitt auf den Beat), läuft auch ohne Ton. Dazu ein **Sprechtext** (15–30 s), falls Maik selbst einsprechen will (Sprachmemo oder HeyGen mit eigener Stimme) – dann wird neu geschnitten.
    - Karussell: 3–7 PNG-Folien 1080×1350. Einzelpost: 1 PNG 1080×1350.
    - Ablage: `content/reels/R<nnn>-<name>/` bzw. `content/posts/P<nnn>-<name>/` mit README (Konzept, Caption, Sprechtext, Test-Variable, Checkliste).
 5. **Prüfen:** Checklisten Teil C §5 und `flow-design` §9; Frames/Folien ansehen. Nichts erfunden, keine Arbeitgeber- oder Kundendaten.

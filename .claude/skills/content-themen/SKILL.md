@@ -20,6 +20,8 @@ Der Creative Director wählt hier das Thema, `creative-director` regelt Inhalt/H
 | `ki` | **KI-Werkzeuge & Workflows** | was ein Tool wirklich kann, selbst getestet; Claude Code, Skills, Agenten | eigene Tests, Skills in `.claude/skills/` |
 | `weg` | **Build in public / mein Weg** | Warum, Ziele, Fehler, Zahlen des Kanals | R003, `content/learnings.md`, Startplan |
 | `lernen` | **Selbst umsetzen (Workshops)** | „Das kannst du auch“ – Befähigung, Mini-Anleitungen | Workshop-Formate (ohne Kundennamen), Karussell-Anleitungen |
+| `kreativ` | **Kreativer Content mit KI** (Maik, 23.10.2026) | Videos, 3D, Animation, Hologramme, Motion Design, Sounddesign, eigene Musik – zeigen, was kreativ mit KI und Code geht | R007 Hologramm, R008 Intro, Flyer-/Reel-Pipeline, MZ.9-Musik (`content/musik/`) |
+| `engineering` | **Engineering mit KI** (Maik, 23.10.2026) | technische Probleme lösen: CAD-Modelle, Bauteile, Berechnungen, Simulationen, Messdaten auswerten, Software für Hardware | nur eigene oder klar als Demo gekennzeichnete Beispiele – nie Arbeitgeber-Projekte |
 
 Weitere Säulen nur nach Maiks OK ergänzen.
 
@@ -33,18 +35,20 @@ Weitere Säulen nur nach Maiks OK ergänzen.
 - `ki`: „Claude-Skills erklärt in 30 Sekunden“ · „Ein Tool, das kaum jemand kennt“ (selbst getestet)
 - `weg`: „Mein erster Business-Kanal: 59 Follower, 0 Anfragen“ · „Woche 1 von Flow Media AI“
 - `lernen`: „In 3 Schritten zu deinem eigenen Design-Skill“ · „Dein erstes Tool ohne Programmieren“
+- `kreativ` (Pool, keine Pflicht): Hologramm/3D aus einem Foto · Intro im eigenen Stil · Reel komplett auf eigene Musik geschnitten · Animation aus Code · Sounddesign ohne Samples · „Von der Idee zum Effekt in einem Abend“ · Making-of eines Effekts
+- `engineering` (Pool, keine Pflicht): Ein Bauteil per Text als CAD-Modell (z. B. OpenSCAD/CadQuery) · Halterung/Gehäuse fürs eigene Setup entwerfen und 3D-drucken · Messdaten mit KI auswerten · kleine Simulation erklären · „Engineering-Problem in 30 Minuten mit KI gelöst“ – nur eigene Demos
 
 Verbrauchte Ideen im Verlauf (§5) markieren; neue Ideen hier anhängen.
 
 ## 3. Rotation
 - Nie dieselbe Säule zwei Tage hintereinander; jede Säule mindestens alle 10 Tage einmal.
-- Gewichtung am Anfang (bis Learnings etwas anderes zeigen): `social`, `tools`, `web` je ca. 20 %, Rest verteilt.
+- Gewichtung am Anfang (bis Learnings etwas anderes zeigen): `social`, `tools`, `web` je ca. 20 %, Rest verteilt. `kreativ` und `engineering` sind Themenpools, aus denen der Creative Director bei passender Gelegenheit schöpft – keine feste Quote.
 - Format wechseln: Reel, Karussell, Einzelpost – nicht dreimal dasselbe Format am Stück.
 - Learnings schlagen Plan: Wenn eine Säule nach 48 h deutlich besser läuft (`content/learnings.md`), öfter wählen.
 - Fehlt für eine Idee echtes Material (Bildschirmaufnahme, Zahl, Freigabe), Idee zurückstellen statt erfinden – oder als Frage an Maik in die Tagesausgabe.
 
 ## 4. Grenzen
-- Keine Arbeitgeber-Projekte (auch nicht beschrieben), keine Kundennamen ohne OK, keine erfundenen Zahlen.
+- Keine Arbeitgeber-Projekte (auch nicht beschrieben), keine Kundennamen ohne OK, keine erfundenen Zahlen. Gilt besonders für `engineering`: keine Geräte, Software, Messdaten oder Abläufe aus Maiks Job, auch nicht verfremdet – nur eigene Demo-Bauteile und frei erfundene, klar gekennzeichnete Beispiel-Aufgaben.
 - THE TRIBE nur als Projekt (wie gebaut), nicht als Werbung. Dating (`shotwAIse`) gar nicht.
 
 ## 5. Verlauf (neueste oben)

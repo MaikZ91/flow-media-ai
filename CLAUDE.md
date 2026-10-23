@@ -25,6 +25,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
+- `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
 
 ## Google-Drive-Spiegel (Pflicht, Maik 19.10.2026)
 
