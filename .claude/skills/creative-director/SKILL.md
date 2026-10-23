@@ -115,7 +115,7 @@ Quellen: later.com/blog/instagram-reels-algorithm · socialpilot.co (Reels Algor
 Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hochlädt. Läuft als geplante Aufgabe täglich morgens in Maiks Claude-Code-Chat; Maik kann sie auch jederzeit mit „Daily Content“ auslösen.
 
 1. `git pull`; `CLAUDE.md`, diesen Skill, `flow-design`, `content-themen` und `content/learnings.md` lesen.
-2. **Thema** aus `content-themen` wählen (Rotation §3, Verlauf §5). Hat Maik für heute ein Thema genannt, gilt seins.
+2. **Thema:** zuerst `content-themen` §5 „Eingeplant“ prüfen – steht dort etwas für heute, gilt das. Sonst aus `content-themen` wählen (Rotation §3, Verlauf §6). Hat Maik für heute ein Thema genannt, gilt seins.
 3. **Format** wählen: Reel, Karussell oder Einzelpost (Wechsel laut `content-themen` §3). Maik ist in jedem Motiv (Personal Brand, `flow-design` §4).
 4. **Bauen** im `flow-design`-Look mit HTML + Playwright (Vorgehen wie R004/R005):
    - Reel: 1080×1920 MP4, Text im Bild, Musik aus `content/musik/` (eigene MZ.9-Tracks bevorzugt, sonst freie Lizenz; Schnitt auf den Beat), läuft auch ohne Ton. Dazu ein **Sprechtext** (15–30 s), falls Maik selbst einsprechen will (Sprachmemo oder HeyGen mit eigener Stimme) – dann wird neu geschnitten.
@@ -123,7 +123,7 @@ Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hoc
    - Ablage: `content/reels/R<nnn>-<name>/` bzw. `content/posts/P<nnn>-<name>/` mit README (Konzept, Caption, Sprechtext, Test-Variable, Checkliste).
 5. **Prüfen:** Checklisten Teil C §5 und `flow-design` §9; Frames/Folien ansehen. Nichts erfunden, keine Arbeitgeber- oder Kundendaten.
 6. **Ausgabe in den Chat:** Datei(en) mit `SendUserFile` schicken, darunter die **Caption fertig zum Kopieren** (mit Hashtags), Grund zum Senden, beste Uhrzeit, optional Sprechtext.
-7. Verlauf in `content-themen` §5 eintragen; committen, pushen; Drive spiegeln (README → `01_Marketing/Reels` bzw. `01_Marketing/Posts`, als Google Doc „<ID>_<Name>_Caption“). Videos/Bilder legt Maik selbst ab bzw. lädt sie direkt hoch.
+7. Verlauf in `content-themen` §6 eintragen (erledigten Eintrag aus §5 entfernen); committen, pushen; Drive spiegeln (README → `01_Marketing/Reels` bzw. `01_Marketing/Posts`, als Google Doc „<ID>_<Name>_Caption“). Videos/Bilder legt Maik selbst ab bzw. lädt sie direkt hoch.
 8. Nach 48 h fragt der Creative Director in der nächsten Tagesausgabe nach den Zahlen des Posts von vorgestern (Views, Skip-Rate, Sends, Saves) und trägt sie in `content/learnings.md` ein.
 
 Eigene Aufnahmen: Will Maik ein Reel selbst einsprechen oder filmen, schickt er die Datei (Drive `01_Marketing/Reels`) – der Creative Director schneidet sie im selben Look und ersetzt damit die Tagesausgabe oder ergänzt sie.

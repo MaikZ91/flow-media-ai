@@ -38,7 +38,7 @@ Weitere Säulen nur nach Maiks OK ergänzen.
 - `kreativ` (Pool, keine Pflicht): Hologramm/3D aus einem Foto · Intro im eigenen Stil · Reel komplett auf eigene Musik geschnitten · Animation aus Code · Sounddesign ohne Samples · „Von der Idee zum Effekt in einem Abend“ · Making-of eines Effekts
 - `engineering` (Pool, keine Pflicht): Ein Bauteil per Text als CAD-Modell (z. B. OpenSCAD/CadQuery) · Halterung/Gehäuse fürs eigene Setup entwerfen und 3D-drucken · Messdaten mit KI auswerten · kleine Simulation erklären · „Engineering-Problem in 30 Minuten mit KI gelöst“ – nur eigene Demos
 
-Verbrauchte Ideen im Verlauf (§5) markieren; neue Ideen hier anhängen.
+Verbrauchte Ideen im Verlauf (§6) markieren; neue Ideen hier anhängen.
 
 ## 3. Rotation
 - Nie dieselbe Säule zwei Tage hintereinander; jede Säule mindestens alle 10 Tage einmal.
@@ -51,7 +51,14 @@ Verbrauchte Ideen im Verlauf (§5) markieren; neue Ideen hier anhängen.
 - Keine Arbeitgeber-Projekte (auch nicht beschrieben), keine Kundennamen ohne OK, keine erfundenen Zahlen. Gilt besonders für `engineering`: keine Geräte, Software, Messdaten oder Abläufe aus Maiks Job, auch nicht verfremdet – nur eigene Demo-Bauteile und frei erfundene, klar gekennzeichnete Beispiel-Aufgaben.
 - THE TRIBE nur als Projekt (wie gebaut), nicht als Werbung. Dating (`shotwAIse`) gar nicht.
 
-## 5. Verlauf (neueste oben)
+## 5. Eingeplant (hat Vorrang vor der Rotation)
+Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erledigte Einträge wandern in den Verlauf (§6).
+
+| Datum | Was | Briefing |
+|---|---|---|
+| 24.10.2026 | **Reel zum Workshop am Montag** (Maik, 23.10.2026) | Kein Flyer, sondern ein Video, das Lust auf den Workshop macht: Digitaler Stammtisch #1 „Mit KI zur Personal Brand – wie dein Content immer gleich aussieht“, **Mo 26.10.2026, 18:00, ca. 60 Min, digital & live, 15 €**, Anmeldung per Nachricht/WhatsApp. Kreative Umsetzung frei (Creative Director entscheidet): Maik im Bild, eigene MZ.9-Musik aus `content/musik/` mit Schnitt auf den Beat, gern das Thema selbst zeigen (Content ohne System vs. mit Design-Skill, R005/P001/Flyer als echtes Material). Datum, Uhrzeit und Preis klar lesbar, Countdown-Gefühl („Montag 18 Uhr“). Nichts erfinden: keine Teilnehmerzahlen, kein „ausgebucht“. Story-Version 1080×1920 gleich mitliefern. |
+
+## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
 | 23.10.2026 | R008 | `kreativ` | Reel/Intro | „Welcome to Flow Media AI“ – System-Boot auf MZ.9-Track, KI-Systemstimme, Beat-Schnitt (v2) | `format = cinematic-intro`, `musik = eigene` |
