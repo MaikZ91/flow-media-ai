@@ -252,6 +252,36 @@ main { position: relative; isolation: isolate }
 /* JS-driven marquee */
 .marquee.js .track { animation: none }
 
+/* values: pinned scroll scene, Build -> Connect -> Enable */
+.vals { height: 360vh; padding: 0 }
+.vals-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center }
+.vals-bgword { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none }
+.vals-bgword span { font: 700 clamp(160px, 30vw, 460px)/.8 var(--f-head); text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.06); white-space: nowrap; transition: opacity .5s var(--ease), transform .8s var(--ease) }
+.vals-grid { position: relative; width: 100%; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(30px, 5vw, 80px); align-items: center }
+.vals-count { display: flex; align-items: baseline; gap: 10px; margin: 26px 0 18px; font-family: var(--f-head) }
+.vals-count b { font-size: 64px; line-height: 1; color: var(--blue); font-weight: 500; font-variant-numeric: tabular-nums }
+.vals-count span { font-size: 22px; color: var(--muted) }
+.vals-texts { position: relative; min-height: 330px }
+.vt { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(40px); filter: blur(8px); transition: opacity .6s var(--ease), transform .8s var(--ease), filter .6s var(--ease); pointer-events: none }
+.vt.on { opacity: 1; transform: none; filter: none; pointer-events: auto }
+.vt.out { transform: translateY(-40px) }
+.vt h3 { font: 700 clamp(72px, 9vw, 150px)/.88 var(--f-head); text-transform: uppercase }
+.vt h3 span { color: var(--blue); text-shadow: 0 0 30px var(--blue-glow) }
+.vt p { margin: 24px 0 0; max-width: 34ch; font-size: clamp(17px, 1.5vw, 20px) }
+.vals-steps { display: flex; gap: 8px; margin-top: 30px; max-width: 360px }
+.vals-steps i { flex: 1; height: 2px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden }
+.vals-steps b { display: block; height: 100%; width: 0; background: var(--blue); box-shadow: 0 0 10px var(--blue) }
+.vals-stage { position: relative; aspect-ratio: 1 / 1; max-height: 78vh; width: 100% }
+.vals-stage canvas { position: absolute; inset: 0; width: 100%; height: 100% }
+@media (max-width: 860px) {
+  .vals { height: 340vh }
+  .vals-grid { grid-template-columns: minmax(0, 1fr); gap: 4px; align-content: center }
+  .vals-stage { order: -1; aspect-ratio: auto; height: 38vh; max-height: none }
+  .vals-count { margin: 6px 0 8px } .vals-count b { font-size: 40px }
+  .vals-texts { min-height: 250px }
+  .vals-steps { margin-top: 8px }
+}
+
 @media (max-width: 1000px) {
   .values, .offers { grid-template-columns: minmax(0, 1fr) }
   .value { min-height: 0 }
@@ -337,32 +367,24 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <div class="sig"><span></span><div class="label"><b style="color:#fff">Maik</b> · Flow Media AI</div></div>
 </div></section>
 
-<section id="werte"><div class="wrap">
-  <div class="sec-head">
-    <div><span class="label eyebrow rv">Wofür Flow Media AI steht</span><h2 class="display rv d1">Drei Worte.<br>Ein <span class="blue">Flow.</span></h2></div>
-    <p class="rv d2">Alles, was ich mache, folgt diesen drei Schritten: etwas bauen, Menschen zusammenbringen und dich befähigen, es selbst zu können.</p>
+<section id="werte" class="vals" aria-label="Werte: Build, Connect, Enable">
+  <div class="vals-pin">
+    <div class="vals-bgword" aria-hidden="true"><span id="vbg">Build</span></div>
+    <div class="wrap vals-grid">
+      <div class="vals-copy">
+        <span class="label">Wofür Flow Media AI steht</span>
+        <div class="vals-count"><b id="vnum">01</b><span>/ 03</span></div>
+        <div class="vals-texts">
+          <article class="vt on" data-i="0"><h3>Build<span>.</span></h3><p>Ideen in echte Tools, Apps und Websites verwandeln – mit KI, schnell und pragmatisch. Lieber etwas Funktionierendes als ein weiteres Konzept.</p></article>
+          <article class="vt" data-i="1"><h3>Connect<span>.</span></h3><p>Menschen zusammenbringen, die etwas aufbauen wollen – in der Community, beim Stammtisch und im Workshop. Austausch statt Einzelkampf.</p></article>
+          <article class="vt" data-i="2"><h3>Enable<span>.</span></h3><p>Dich befähigen, es selbst zu können. Ich mache dich nicht abhängig von mir – ich zeige dir, wie es geht.</p></article>
+        </div>
+        <div class="vals-steps" aria-hidden="true"><i><b id="vb0"></b></i><i><b id="vb1"></b></i><i><b id="vb2"></b></i></div>
+      </div>
+      <div class="vals-stage"><canvas id="vcanvas" aria-hidden="true"></canvas></div>
+    </div>
   </div>
-  <div class="values">
-    <article class="card value rv">
-      <span class="num">01</span>
-      <svg viewBox="0 0 300 120" aria-hidden="true"><rect x="20" y="70" width="60" height="40" rx="3"/><rect x="90" y="45" width="60" height="65" rx="3"/><rect class="acc" x="160" y="15" width="60" height="95" rx="3"/><path d="M230 110 L280 110"/><path d="M20 110 L230 110"/></svg>
-      <h3>Build<span>.</span></h3>
-      <p>Ideen in echte Tools, Apps und Websites verwandeln – mit KI, schnell und pragmatisch. Lieber etwas Funktionierendes als ein weiteres Konzept.</p>
-    </article>
-    <article class="card value rv d1">
-      <span class="num">02</span>
-      <svg viewBox="0 0 300 120" aria-hidden="true"><circle cx="50" cy="60" r="18"/><circle cx="150" cy="28" r="14"/><circle cx="150" cy="96" r="14"/><circle class="acc" cx="250" cy="60" r="18"/><path d="M68 56 L136 32 M68 64 L136 92 M164 32 L232 56 M164 92 L232 64 M150 42 L150 82"/></svg>
-      <h3>Connect<span>.</span></h3>
-      <p>Menschen zusammenbringen, die etwas aufbauen wollen – in der Community, beim Stammtisch und im Workshop. Austausch statt Einzelkampf.</p>
-    </article>
-    <article class="card value rv d2">
-      <span class="num">03</span>
-      <svg viewBox="0 0 300 120" aria-hidden="true"><path d="M10 100 C 60 100, 70 60, 120 60 S 180 20, 230 20"/><path class="acc" d="M215 8 L235 20 L215 32"/><path d="M10 110 L290 110"/><circle cx="120" cy="60" r="4"/></svg>
-      <h3>Enable<span>.</span></h3>
-      <p>Dich befähigen, es selbst zu können. Ich mache dich nicht abhängig von mir – ich zeige dir, wie es geht.</p>
-    </article>
-  </div>
-</div></section>
+</section>
 
 <section id="angebote" style="padding-top:0"><div class="wrap">
   <div class="sec-head">
@@ -669,6 +691,116 @@ function tick() {
   setTimeout(tick, 1000);
 }
 tick();
+
+// ---- Values scene: scroll drives Build -> Connect -> Enable, canvas draws each value ----
+(function () {
+  const sec = document.querySelector(".vals"), cv = document.getElementById("vcanvas"), ctx = cv.getContext("2d");
+  const texts = [...document.querySelectorAll(".vt")], num = document.getElementById("vnum"), bg = document.getElementById("vbg");
+  const bars = [0, 1, 2].map(i => document.getElementById("vb" + i)), NAMES = ["Build", "Connect", "Enable"];
+  const av = new Image(); av.src = "img/maik_avatar.jpg";
+  let W = 0, H = 0, cur = -1, time = 0, vis = false;
+  const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  function size() { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0) }
+  size(); addEventListener("resize", size);
+  new IntersectionObserver(([e]) => vis = e.isIntersecting).observe(sec);
+  const glow = (c, b) => { ctx.shadowColor = c; ctx.shadowBlur = b };
+  const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h) };
+
+  // BUILD: tiles fly in and assemble into an app interface
+  const tiles = [[0, 0, 12, 1], [0, 1, 3, 7], [3, 1, 3, 3, 1], [6, 1, 3, 3], [9, 1, 3, 3], [3, 4, 9, 1.4], [3, 5.4, 4.5, 2.6], [7.5, 5.4, 4.5, 2.6]];
+  function build(t, a) {
+    const S = Math.min(W, H) * .8, u = S / 12, ox = (W - S) / 2, oy = (H - u * 8) / 2;
+    tiles.forEach(([gx, gy, gw, gh, acc], i) => {
+      const k = ease((t * 1.25 - i * .09) / .35), x = ox + gx * u + 4, y = oy + gy * u + 4, w = gw * u - 8, h = gh * u - 8;
+      if (k <= 0) return;
+      ctx.save(); ctx.globalAlpha = a * k;
+      ctx.translate(x + w / 2, y + h / 2 + (1 - k) * 120); ctx.rotate((1 - k) * (i % 2 ? .35 : -.35)); ctx.scale(.7 + .3 * k, .7 + .3 * k);
+      rr(-w / 2, -h / 2, w, h, 8);
+      ctx.fillStyle = acc ? "rgba(47,91,255,.22)" : "rgba(255,255,255,.04)"; ctx.fill();
+      glow(acc ? "#2F5BFF" : "transparent", acc ? 24 : 0); ctx.strokeStyle = acc ? "#2F5BFF" : "rgba(255,255,255,.35)"; ctx.lineWidth = 1.2; ctx.stroke(); glow("transparent", 0);
+      // content lines inside the tiles
+      ctx.fillStyle = "rgba(255,255,255,.18)";
+      if (h > u * .8 && w > u * 2) for (let l = 0; l < Math.min(3, Math.floor(h / (u * .7))); l++) { rr(-w / 2 + 14, -h / 2 + 16 + l * 18, (w - 28) * (l ? .55 : .8), 6, 3); ctx.fill() }
+      ctx.restore();
+    });
+    // blinking build cursor
+    const k = ease((t - .75) / .2);
+    if (k > 0) { ctx.globalAlpha = a * k * (Math.sin(time * 6) > 0 ? 1 : .2); ctx.fillStyle = "#2F5BFF"; ctx.fillRect(ox + 4.6 * u, oy + 2.1 * u, 3, u * .6); ctx.globalAlpha = 1 }
+  }
+
+  // CONNECT: Maik in the middle, people around, lines connect and pulses travel
+  const nodes = Array.from({ length: 9 }, (_, i) => ({ ang: i / 9 * Math.PI * 2 + .3, r: i % 2 ? .82 : .62 }));
+  const edges = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 0], [0, 4], [2, 6], [1, 5], [3, 7]];
+  function connect(t, a) {
+    const cx = W / 2, cy = H / 2, R = Math.min(W, H) * .4;
+    const P = nodes.map((n, i) => { const wob = Math.sin(time * .8 + i) * 6; return [cx + Math.cos(n.ang + time * .05) * R * n.r + wob, cy + Math.sin(n.ang + time * .05) * R * n.r - wob] });
+    ctx.globalAlpha = a;
+    // spokes to the center, then ring edges
+    P.forEach((p, i) => { const k = ease((t * 1.4 - i * .05) / .3); if (k <= 0) return; ctx.strokeStyle = "rgba(47,91,255,.55)"; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + (p[0] - cx) * k, cy + (p[1] - cy) * k); ctx.stroke() });
+    edges.forEach(([i, j], e) => { const k = ease((t * 1.4 - .35 - e * .03) / .3); if (k <= 0) return; ctx.strokeStyle = "rgba(255,255,255,.22)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(P[i][0], P[i][1]); ctx.lineTo(P[i][0] + (P[j][0] - P[i][0]) * k, P[i][1] + (P[j][1] - P[i][1]) * k); ctx.stroke() });
+    // pulses
+    if (t > .5) edges.concat(P.map((_, i) => [-1, i])).forEach(([i, j], e) => {
+      const q = (time * .35 + e * .17) % 1, A = i < 0 ? [cx, cy] : P[i], B = P[j];
+      ctx.fillStyle = "#fff"; glow("#2F5BFF", 12); ctx.beginPath(); ctx.arc(A[0] + (B[0] - A[0]) * q, A[1] + (B[1] - A[1]) * q, 2, 0, 7); ctx.fill(); glow("transparent", 0);
+    });
+    // people
+    P.forEach((p, i) => { const k = ease((t * 1.6 - i * .06) / .25); if (k <= 0) return; ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = "#121212"; ctx.strokeStyle = "rgba(255,255,255,.6)"; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(p[0], p[1], 13 * k, 0, 7); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "rgba(255,255,255,.7)"; ctx.beginPath(); ctx.arc(p[0], p[1] - 3, 3.6, 0, 7); ctx.fill(); ctx.beginPath(); ctx.arc(p[0], p[1] + 8, 6.5, Math.PI, 0); ctx.fill(); ctx.restore() });
+    // Maik in the center
+    const k = ease(t / .25), r = Math.min(W, H) * .085 * k;
+    if (r > 1) { ctx.save(); glow("#2F5BFF", 40); ctx.beginPath(); ctx.arc(cx, cy, r + 3, 0, 7); ctx.fillStyle = "#2F5BFF"; ctx.fill(); glow("transparent", 0); ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.clip(); if (av.complete) { ctx.filter = "grayscale(1)"; ctx.drawImage(av, cx - r, cy - r, r * 2, r * 2) } ctx.restore() }
+    ctx.globalAlpha = 1;
+  }
+
+  // ENABLE: a growth curve draws itself, milestones light up, sparks fly from the tip
+  const sparks = [];
+  function enable(t, a) {
+    const x0 = W * .1, x1 = W * .9, y0 = H * .78, y1 = H * .2, N = 80, k = ease(t * 1.15);
+    const f = u => y0 - (y0 - y1) * (u * u * (3 - 2 * u)) - Math.sin(u * Math.PI * 3) * H * .025 * (1 - u);
+    ctx.globalAlpha = a;
+    ctx.strokeStyle = "rgba(255,255,255,.1)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y0 + 30); ctx.lineTo(x1, y0 + 30); ctx.stroke();
+    const grad = ctx.createLinearGradient(x0, 0, x1, 0); grad.addColorStop(0, "rgba(255,255,255,.35)"); grad.addColorStop(1, "#2F5BFF");
+    ctx.strokeStyle = grad; ctx.lineWidth = 2.4; glow("#2F5BFF", 16); ctx.beginPath();
+    for (let i = 0; i <= N * k; i++) { const u = i / N, x = x0 + (x1 - x0) * u; i ? ctx.lineTo(x, f(u)) : ctx.moveTo(x, f(u)) } ctx.stroke(); glow("transparent", 0);
+    // milestones
+    [["Idee", .08], ["Prototyp", .45], ["Selbst können", .9]].forEach(([lab, u]) => {
+      const on = k >= u, x = x0 + (x1 - x0) * u, y = f(u);
+      ctx.fillStyle = on ? "#fff" : "rgba(255,255,255,.2)"; if (on) glow("#2F5BFF", 18); ctx.beginPath(); ctx.arc(x, y, on ? 6 : 4, 0, 7); ctx.fill(); glow("transparent", 0);
+      ctx.font = "500 12px Montserrat, sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = on ? "rgba(255,255,255,.85)" : "rgba(255,255,255,.25)";
+      ctx.fillText(lab.toUpperCase(), x, y + (u > .6 ? -22 : 28));
+    });
+    // tip + sparks
+    const tu = Math.max(.001, k), tx = x0 + (x1 - x0) * tu, ty = f(tu);
+    if (k > .02 && k < 1.001) { for (let i = 0; i < 2; i++) sparks.push({ x: tx, y: ty, vx: (Math.random() - .3) * 2.2, vy: (Math.random() - .8) * 2.2, l: 1 }) }
+    for (let i = sparks.length - 1; i >= 0; i--) { const s = sparks[i]; s.x += s.vx; s.y += s.vy; s.vy += .02; s.l -= .02; if (s.l <= 0) { sparks.splice(i, 1); continue } ctx.fillStyle = `rgba(138,164,255,${s.l * a})`; ctx.fillRect(s.x, s.y, 2, 2) }
+    if (sparks.length > 220) sparks.splice(0, sparks.length - 220);
+    ctx.fillStyle = "#fff"; glow("#2F5BFF", 26); ctx.beginPath(); ctx.arc(tx, ty, 5, 0, 7); ctx.fill(); glow("transparent", 0);
+    ctx.globalAlpha = 1;
+  }
+
+  const DRAW = [build, connect, enable];
+  function loop() {
+    requestAnimationFrame(loop);
+    if (!vis) return;
+    const r = sec.getBoundingClientRect(), vh = innerHeight, p = clamp(-r.top / (r.height - vh));
+    const seg = Math.min(2, Math.floor(p * 3)), local = clamp(p * 3 - seg);
+    if (seg !== cur) {
+      texts.forEach((el, i) => { el.classList.toggle("on", i === seg); el.classList.toggle("out", i < seg) });
+      num.textContent = "0" + (seg + 1); bg.textContent = NAMES[seg];
+      bg.style.opacity = 0; requestAnimationFrame(() => bg.style.opacity = 1);
+      cur = seg;
+    }
+    bars.forEach((b, i) => b.style.width = (i < seg ? 100 : i === seg ? local * 100 : 0) + "%");
+    bg.style.transform = `translateX(${(.5 - local) * 6}%)`;
+    ctx.clearRect(0, 0, W, H);
+    // cross-fade at the segment border
+    const fadeIn = clamp(local / .12), fadeOut = seg < 2 ? clamp((1 - local) / .08) : 1;
+    DRAW[seg](clamp(local / .7), Math.min(fadeIn, fadeOut) || (seg === 0 && local === 0 ? 1 : 0));
+    if (!REDUCE) time += 1 / 60;
+  }
+  loop();
+})();
 
 // Count clicks on calls to action (PostHog event "cta_click" with the button name)
 document.addEventListener("click", e => {
