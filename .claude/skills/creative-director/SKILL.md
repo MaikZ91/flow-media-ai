@@ -46,7 +46,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - **Getrennt halten:** keine Flow-Werbung auf @the_tribe.bi.ms oder @natuerlich.du.ms, keine Tribe-/Dating-CTAs hier. THE TRIBE darf als *Projekt* gezeigt werden (wie es gebaut wurde), nicht als Werbung für die Community.
 - Echte Betriebe/Websites nur mit deren Einverständnis zeigen – sonst eine klar gekennzeichnete Demo-Firma.
 - Kaltmail-Versand nicht zeigen oder bewerben.
-- **Niemanden markieren** (keine @-Namen, User-Tags, Collabs), keine Kalt-DMs, keine KI-Menschen als „Kunden“, keine Computerstimme als Maik.
+- **Niemanden markieren** (keine @-Namen, User-Tags, Collabs) – **Ausnahme:** Maiks eigener Musik-Account **@mz.9_nyc** wird immer genannt, wenn ein MZ.9-Track läuft (Maik, 24.10.2026). Keine Kalt-DMs, keine KI-Menschen als „Kunden“, keine Computerstimme als Maik.
 - Keine Tokens, Passwörter, Mailadressen oder fremden Daten in Bildschirmaufnahmen – vorher prüfen.
 - Automatisches Posten erst, wenn eigene Zugangsdaten für @flow.media.ai existieren; nie den Zugang von Tribe oder Dating verwenden.
 
@@ -122,7 +122,7 @@ Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hoc
    - Karussell: 3–7 PNG-Folien 1080×1350. Einzelpost: 1 PNG 1080×1350.
    - Ablage: `content/reels/R<nnn>-<name>/` bzw. `content/posts/P<nnn>-<name>/` mit README (Konzept, Caption, Sprechtext, Test-Variable, Checkliste).
 5. **Prüfen:** Checklisten Teil C §5 und `flow-design` §9; Frames/Folien ansehen. Nichts erfunden, keine Arbeitgeber- oder Kundendaten.
-6. **Ausgabe in den Chat:** Datei(en) mit `SendUserFile` schicken, darunter die **Caption fertig zum Kopieren** (mit Hashtags), Grund zum Senden, beste Uhrzeit, optional Sprechtext.
+6. **Ausgabe in den Chat:** Datei(en) mit `SendUserFile` schicken, darunter die **Caption fertig zum Kopieren** (mit Hashtags; läuft eigene Musik: Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“ und beim Posten den Account in der Musik-/Audio-Angabe bzw. als Erwähnung verlinken), Grund zum Senden, beste Uhrzeit, optional Sprechtext.
 7. Verlauf in `content-themen` §6 eintragen (erledigten Eintrag aus §5 entfernen); committen, pushen; Drive spiegeln (README → `01_Marketing/Reels` bzw. `01_Marketing/Posts`, als Google Doc „<ID>_<Name>_Caption“). Videos/Bilder legt Maik selbst ab bzw. lädt sie direkt hoch.
 8. Nach 48 h fragt der Creative Director in der nächsten Tagesausgabe nach den Zahlen des Posts von vorgestern (Views, Skip-Rate, Sends, Saves) und trägt sie in `content/learnings.md` ein.
 

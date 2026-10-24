@@ -32,7 +32,7 @@ Hologramm, Blitze, Systemstimme – alles mit KI und Code gebaut. Und der Track 
 
 Build. Connect. Enable.
 
-🎵 MZ.9 – [Titel]
+🎵 MZ.9 – [Titel] · @mz.9_nyc
 
 #KI #3D #Hologramm #FlowMediaAI #BuildInPublic
 

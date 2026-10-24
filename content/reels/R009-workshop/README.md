@@ -35,7 +35,7 @@ Beim ersten digitalen Stammtisch von Flow Media AI bauen wir live:
 
 Platz sichern: Schreib mir eine Nachricht oder klick den Link in meiner Bio.
 
-🎵 MZ.9 – Independence 2.1
+🎵 MZ.9 – Independence 2.1 · @mz.9_nyc
 
 #KI #PersonalBrand #ContentCreation #Workshop #FlowMediaAI
 

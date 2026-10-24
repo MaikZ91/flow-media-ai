@@ -6,7 +6,7 @@ Stand: 23.10.2026 · Der Creative Director wählt hier die Musik für jedes Reel
 - **Eigene Musik zuerst**, wenn sie zur Stimmung passt: Maik produziert als **MZ.9** (Instagram @mz.9_nyc, Album „LOVE“ auf Spotify). Das ist ein echtes Unterscheidungsmerkmal – kaum ein KI-Kanal hat eigenen Sound.
 - **Schnitt auf den Beat:** Die meisten MZ.9-Tracks laufen mit ~143 BPM (ein Beat ≈ 0,42 s). Szenenwechsel, Text-Pops und Effekte auf Beats bzw. alle 2/4 Beats legen; den Drop für den Höhepunkt (Logo, Ergebnis, Hook-Auflösung) nutzen. Beat-Zeiten stehen in `eigene/analyse.json`.
 - **Freie Musik** nur mit Lizenz, die kommerzielle Nutzung erlaubt (z. B. Mixkit *Stock Music Free License*, keine *Restricted License*). Quelle im Reel-README notieren.
-- **In der Caption** bei eigener Musik optional nennen: „Musik: MZ.9 – Titel“ – baut die Personal Brand mit auf.
+- **In der Caption bei eigener Musik immer verlinken** (Maik, 24.10.2026): Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“. Beim Posten @mz.9_nyc zusätzlich in der Audio-/Musikangabe bzw. als Erwähnung im Reel verlinken.
 - Keine Musik aus fremden Reels, keine Charts.
 
 ## Eigene Tracks (MZ.9) – `eigene/`
