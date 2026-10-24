@@ -1,45 +1,45 @@
-# R010 · Community-Reel „Der Kreis ist offen“
+# R010 · Community-Reel „Gründer. Selbstständige. Macher.“
 
-Stand: 24.10.2026 · Format: Reel 1080×1920, 20 s (funktioniert auch als Story) · Status: **fertig (`R010.mp4`), postbereit**
+Stand: 24.10.2026 (Version 2 – v1 „Der Kreis ist offen“ verworfen: Kreis zu lange im Vordergrund, Community erst spät sichtbar, Tonqualität schlecht) · Format: Reel 1080×1920, 19,7 s (funktioniert auch als Story) · Status: **fertig (`R010.mp4`), postbereit**
 
-Säule: `weg` / `design` (Community-Reihe) · Anlass: Werbung für die kostenlose Flow Business Community (WhatsApp) · **Test-Variable:** `format = linien-animation`, `musik = eigene`
+Säule: `weg` / `design` (Community-Reihe) · Anlass: Werbung für die kostenlose Flow Business Community (WhatsApp) · **Test-Variable:** `hook = community-bild`, `musik = frei`
 
-## Idee (Maik, 24.10.2026)
-Die Community als minimalistischer blauer Linienkreis: Er zeichnet sich, dreht sich ein und öffnet sich oben. In der Öffnung steht Maik, danach entsteht um ihn herum der Netzwerk-Effekt der Website (Connect-Szene): Menschen tauchen auf dem Beat auf, Linien verbinden sie, Impulse laufen. Zum Schluss kommt durch die Öffnung ein neuer Punkt „DU“ dazu. Austausch steht im Vordergrund.
+## Idee
+Die Community steht von Bild 1 an im Vordergrund: Menschen am Tisch aus Maiks Community-Plakat, dazu die Zielgruppe auf den Beat. Danach die drei Themen des Plakats, Maik, der Netzwerk-Effekt der Website (der blaue Kreis ist dort nur noch ein Rahmen, der sich in einem Beat zeichnet), die Orte und zum Schluss das ganze Plakat mit „Jetzt dabei sein“.
 
-## Ablauf (Schnitt auf „Loneliness v.1.3“, 1 Beat = 0,608 s)
+## Ablauf (Schnitt auf „Uplifting Bass“, 1 Beat = 0,448 s)
 | Beats | Zeit | Bild | Text |
 |---|---|---|---|
-| 0–6 | 0–3,6 s | Blauer Kreis zeichnet sich als Linie | Flow Business Community – DU BAUST MIT KI – ABER **ALLEIN?** |
-| 6–12 | 3,6–7,3 s | Ringe drehen sich ein, der Kreis öffnet sich oben | DER KREIS IST **OFFEN.** |
-| 12–19 | 7,3–11,6 s | Maik erscheint im Kreis (Scanlinie) | Ich bin Maik – UND ICH WILL DAS **NICHT ALLEIN** MACHEN. |
-| 19–28 | 11,6–17 s | Höhepunkt des Tracks: Maik wird zum Mittelpunkt, Netzwerk wächst | Connect – AUSTAUSCH STATT **EINZELKAMPF.** · Ideen teilen · Feedback · gemeinsam umsetzen |
-| 28–33 | 17–20 s | „DU“ kommt durch die Öffnung dazu, Logo | Bielefeld · Münster · digital – KOSTENLOS **BEITRETEN.** WhatsApp-Community · Link in Bio |
+| 0–6 | 0–2,7 s | Menschen am Tisch (Plakat) | Flow Business Community · kostenlos – GRÜNDER. SELBSTSTÄNDIGE. **MACHER.** |
+| 6–14 | 2,7–6,3 s | drei Themen-Karten | Business & Marketing · KI & digitale Tools · Austausch & **Umsetzung** – EIN ORT FÜR **ALLE DREI.** |
+| 14–20 | 6,3–9 s | Maik frontal | Ich bin Maik – ICH BRINGE LEUTE ZUSAMMEN, DIE **MACHEN.** |
+| 20–30 | 9–13,4 s | Netzwerk: Maik in der Mitte, Menschen kommen dazu | IDEEN TEILEN. FEEDBACK BEKOMMEN. **GEMEINSAM MACHEN.** |
+| 30–36 | 13,4–16,1 s | Stadtbild (Plakat) | Treffen & Austausch – BIELEFELD. MÜNSTER. **DIGITAL.** |
+| 36–44 | 16,1–19,7 s | das Community-Plakat | JETZT **DABEI SEIN.** Kostenlos · WhatsApp-Community · Link in Bio |
 
-Musik: **MZ.9 – Loneliness v.1.3** (`content/musik/eigene/mz9_loneliness-v1-3.m4a`), ab 65,37 s (Anstieg bis zum Höhepunkt). Passt zur Geschichte: von „allein“ zu „gemeinsam“.
+Bilder: `marketing/landing-page/img/community.jpg` (Maiks Plakat, Ausschnitte hochskaliert), `board.jpg` (Flow Board), `portrait_front.jpg`.
+Musik: **„Uplifting Bass“ – Mixkit, Stock Music Free License** (`content/musik/frei/uplifting-bass.mp3`, 320 kbps), ab 14,42 s (direkt nach dem Drop).
 
 ## Caption (zum Kopieren)
-Mit KI kannst du heute fast alles alleine bauen. Musst du aber nicht.
+Gründer, Selbstständige, Macher: Ihr müsst das nicht allein machen.
 
-Darum gibt es die Flow Business Community: ein offener Kreis für Gründer, Selbstständige und Macher, die mit KI und digitalen Tools ins Machen kommen wollen.
+In der Flow Business Community geht's um Business & Marketing, KI & digitale Tools – und vor allem um Austausch und Umsetzung.
 
 → Ideen teilen
 → Feedback bekommen
-→ gemeinsam umsetzen
+→ gemeinsam ins Machen kommen
 
 Kostenlos, in Bielefeld, Münster und digital. Der Link zur WhatsApp-Community ist in meiner Bio – oder schreib mir einfach „Community“.
 
-🎵 MZ.9 – Loneliness v.1.3 · @mz.9_nyc
-
-#Community #KI #Gründer #Selbstständig #FlowMediaAI
+#Community #Gründer #Selbstständig #KI #FlowMediaAI
 
 **Grund zum Senden:** „Schick das jemandem, der gerade allein an seinem Projekt sitzt.“ (erster Kommentar)
-**Posten:** So oder Mo, nicht am selben Tag wie R009 (Workshop-Reel heute). Gut auch als Story mit Link-Sticker zur Community.
+**Posten:** So oder Mo, nicht am selben Tag wie R009. Gut auch als Story mit Link-Sticker zur Community.
 
 ## Checkliste
-Teil C §5: Hook ab Bild 1 (Text + Kreis) ✓ · ~20 s, Schnitt auf den Beat ✓ · Loop (Kreis am Ende → Kreis am Anfang) ✓ · Grund zum Senden ✓ · Text unten-mittig, unterer Rand frei ✓ · nichts erfunden (keine Mitgliederzahlen; Angaben von der Website: kostenlos, WhatsApp, Bielefeld/Münster/digital) ✓
-`flow-design` §9: schwarz-weiß + ein Blau, Oswald/Montserrat/Inter ✓ · Maik ab Sekunde 7 und als Mittelpunkt des Netzwerks ✓ – **Ausnahme:** erstes Bild ohne Mensch, weil Maik den Kreis ausdrücklich als Einstieg wollte.
+Teil C §5: Menschen im ersten Frame ✓ · Hook ab Bild 1 (Zielgruppe direkt angesprochen) ✓ · ~20 s, Schnitt auf jeden Beat ✓ · Loop (Plakat am Ende enthält das Bild vom Anfang) ✓ · Grund zum Senden ✓ · Text unten, unterer Rand frei ✓ · nichts erfunden (keine Mitgliederzahlen; alle Angaben vom Plakat/der Website) ✓
+`flow-design` §9: schwarz-weiß + ein Blau, Oswald/Montserrat/Inter ✓ · Maik in Szene 3, im Netzwerk und auf dem Plakat ✓
 
 ## Neu rendern
 `node frames.js <ordner>` → `video_only.mp4`, dann
-`ffmpeg -i video_only.mp4 -ss 65.37 -i ../../musik/eigene/mz9_loneliness-v1-3.m4a -t 20.06 -filter_complex "[1:a]afade=t=in:d=0.3,afade=t=out:st=18.9:d=1.15[a]" -map 0:v -map "[a]" -c:v libx264 -crf 22 -c:a aac -b:a 192k -movflags +faststart R010.mp4`
+`ffmpeg -i video_only.mp4 -ss 14.42 -i ../../musik/frei/uplifting-bass.mp3 -t 19.70 -filter_complex "[1:a]afade=t=out:st=18.6:d=1.1,aresample=48000[a]" -map 0:v -map "[a]" -c:v libx264 -crf 22 -c:a aac -b:a 256k -movflags +faststart R010.mp4`

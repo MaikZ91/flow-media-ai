@@ -5,146 +5,131 @@
 :root{--black:#0A0A0A;--blue:#2F5BFF;--grey:#9A9A9A}
 *{box-sizing:border-box;margin:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
-canvas{position:absolute;inset:0}
-.t{position:absolute;left:76px;right:76px;opacity:0}
+#stage{position:absolute;inset:0}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.ph{position:absolute;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.08)}
+.card{position:absolute;left:76px;right:76px;overflow:hidden;border:1.5px solid rgba(255,255,255,.18);box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.card .ph{inset:0}
+.pad{position:absolute;left:76px;right:76px}
 .k{font:500 26px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#d8d8d8}
 .rule{width:64px;height:3px;background:#fff;margin:26px 0}
-.h{font:700 108px/.94 Oswald;text-transform:uppercase}
+.h{font:700 112px/.94 Oswald;text-transform:uppercase}
 .b{color:var(--blue)}
 .p{font:400 38px/1.4 Inter;color:#e6e6e6}
-.logo{position:absolute;left:76px;top:116px;width:200px;opacity:0}
-.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18)}
+.w{display:block;opacity:0}
+.logo{position:absolute;left:76px;top:116px;width:200px;z-index:5}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:20}
 .prog i{display:block;height:100%;background:#fff;width:0}
-.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.08;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,0) 18%,rgba(10,10,10,0) 40%,rgba(10,10,10,.9) 60%,#0A0A0A 80%)}
+.pill{position:absolute;left:76px;right:76px;height:300px;overflow:hidden;border:1.5px solid rgba(255,255,255,.18);opacity:0}
+.pill .ph{inset:0;filter:grayscale(1) contrast(1.08) brightness(.55)}
+.pill span{position:absolute;left:40px;bottom:34px;font:700 76px/1 Oswald;text-transform:uppercase}
+.pill em{position:absolute;left:42px;top:30px;font:500 24px Montserrat;font-style:normal;letter-spacing:.18em;color:var(--blue)}
+canvas{position:absolute;inset:0}
 </style></head><body>
-<canvas id="cv" width="1080" height="1920"></canvas>
+<div id="stage">
 <div class="grain" id="grain"></div>
 <div class="prog"><i id="prog"></i></div>
-<img class="logo" id="logo" src="img/logo_flow.png" alt="">
 
-<div class="t" id="t1" style="top:1350px"><div class="k">Flow Business Community</div><div class="rule"></div>
-  <div class="h">Du baust mit KI –<br>aber <span class="b">allein?</span></div></div>
-<div class="t" id="t2" style="top:1350px"><div class="k">Stell dir einen Kreis vor</div><div class="rule"></div>
-  <div class="h">Der Kreis<br>ist <span class="b">offen.</span></div></div>
-<div class="t" id="t3" style="top:1350px"><div class="k">Ich bin Maik</div><div class="rule"></div>
-  <div class="h" style="font-size:96px">Und ich will das<br><span class="b">nicht allein</span> machen.</div></div>
-<div class="t" id="t4" style="top:1350px"><div class="k">Connect</div><div class="rule"></div>
-  <div class="h" style="font-size:100px">Austausch statt<br><span class="b">Einzelkampf.</span></div>
-  <div class="p" id="t4p" style="margin-top:24px;opacity:0">Ideen teilen · Feedback · gemeinsam umsetzen</div></div>
-<div class="t" id="t5" style="top:1330px"><div class="k">Bielefeld · Münster · digital</div><div class="rule"></div>
-  <div class="h">Kostenlos<br><span class="b">beitreten.</span></div>
-  <div class="p" style="margin-top:24px">WhatsApp-Community · Link in Bio</div></div>
+<!-- 1 hook: the community is visible from frame 1 -->
+<section class="scene" id="hook">
+  <div class="card" style="top:250px;height:900px"><div class="ph" id="hph" style="background-image:url(img/p_group.jpg);background-position:42% center"></div></div>
+  <div class="pad" style="top:1220px"><div class="k">Flow Business Community · kostenlos</div><div class="rule"></div>
+    <div class="h"><span class="w" data-w>Gründer.</span><span class="w" data-w>Selbstständige.</span><span class="w b" data-w>Macher.</span></div></div>
+</section>
+
+<!-- 2 the three topics -->
+<section class="scene" id="topics">
+  <div class="pad" style="top:200px"><div class="k">Hier geht's um</div></div>
+  <div class="pill" data-p style="top:300px"><div class="ph" style="background-image:url(img/p_laptop.jpg)"></div><em>01</em><span>Business &amp; Marketing</span></div>
+  <div class="pill" data-p style="top:640px"><div class="ph" style="background-image:url(img/board.jpg);background-position:left top"></div><em>02</em><span>KI &amp; digitale Tools</span></div>
+  <div class="pill" data-p style="top:980px"><div class="ph" style="background-image:url(img/p_group.jpg)"></div><em>03</em><span>Austausch &amp; <b class="b">Umsetzung</b></span></div>
+  <div class="pad" style="top:1360px"><div class="h" style="font-size:96px">Ein Ort für<br><span class="b">alle drei.</span></div></div>
+</section>
+
+<!-- 3 Maik -->
+<section class="scene" id="maik">
+  <div class="ph" id="mph" style="inset:0;background-image:url(img/portrait_front.jpg);background-position:center top"></div><div class="shade"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="pad" style="top:1080px"><div class="k">Ich bin Maik</div><div class="rule"></div>
+    <div class="h" style="font-size:96px">Ich bringe Leute<br>zusammen, die<br><span class="b">machen.</span></div></div>
+</section>
+
+<!-- 4 network (website connect effect), the circle is only a frame here -->
+<section class="scene" id="net">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div class="pad" style="top:1330px"><div class="h" style="font-size:100px">
+    <span class="w" data-n>Ideen teilen.</span><span class="w" data-n>Feedback bekommen.</span><span class="w b" data-n>Gemeinsam machen.</span></div></div>
+</section>
+
+<!-- 5 where -->
+<section class="scene" id="where">
+  <div class="card" style="top:250px;height:820px"><div class="ph" id="wph" style="background-image:url(img/p_city.jpg)"></div></div>
+  <div class="pad" style="top:1150px"><div class="k">Treffen &amp; Austausch</div><div class="rule"></div>
+    <div class="h"><span class="w" data-c>Bielefeld.</span><span class="w" data-c>Münster.</span><span class="w b" data-c>Digital.</span></div></div>
+</section>
+
+<!-- 6 CTA with the community poster -->
+<section class="scene" id="cta">
+  <div class="card" id="pcard" style="left:150px;right:150px;top:150px;height:1170px"><div class="ph" style="background-image:url(img/poster_2x.jpg);filter:none"></div></div>
+  <div class="pad" style="top:1390px"><div class="h" style="font-size:104px">Jetzt <span class="b">dabei sein.</span></div>
+    <div class="p" style="margin-top:22px">Kostenlos · WhatsApp-Community · Link in Bio</div></div>
+</section>
+</div>
+<div id="flash"></div>
 
 <script>
-const B = 0.6079;                 // beat of "Loneliness v.1.3" from 65.37 s
-const TOTAL = 33 * B; window.TOTAL = TOTAL;
-const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
-const img = new Image(); img.src = "img/portrait_front.jpg";
-const BLUE = "#2F5BFF", CX = 540, CY = 800, R = 340, TAU = Math.PI * 2;
+const B = 0.4478, OFF = 14.42;     // "Uplifting Bass" (Mixkit), beat grid from 14.42 s
+const SC = [["hook",0,6],["topics",6,14],["maik",14,20],["net",20,30],["where",30,36],["cta",36,44]];
+const TOTAL = 44 * B; window.TOTAL = TOTAL;
 const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const $ = id => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+const av = new Image(); av.src = "img/portrait_front.jpg";
+const BLUE = "#2F5BFF", CX = 540, CY = 800, R = 380, TAU = Math.PI * 2;
+let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+const N = 12, nodes = Array.from({ length: N }, (_, i) => ({ a: i / N * TAU - Math.PI / 2 + .2 + (rnd() - .5) * .3, r: .55 + rnd() * .35, ph: rnd() * TAU }));
+const edges = []; for (let i = 0; i < N; i++) { edges.push([i, (i + 1) % N]); if (i % 3 === 0) edges.push([i, (i + 5) % N]) }
 const glow = (c, b) => { ctx.shadowColor = c; ctx.shadowBlur = b };
-// seeded rng
-let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
-// people around Maik (inside the circle), they pop in on the beats of the network scene
-const N = 11, nodes = Array.from({ length: N }, (_, i) => ({ a: i / N * TAU - Math.PI / 2 + .25 + (rnd() - .5) * .3, r: .58 + rnd() * .3, ph: rnd() * TAU }));
-const edges = []; for (let i = 0; i < N; i++) { edges.push([i, (i + 1) % N]); if (i % 3 === 0) edges.push([i, (i + 4) % N]) }
+const dot = (x, y, r, c, bl) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = c; glow(BLUE, bl || 0); ctx.fill(); glow("transparent", 0) };
+function words(sel, lk, starts) { document.querySelectorAll(sel).forEach((el, i) => { const a = eo((lk - starts[i]) / .35); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * 40}px)` }) }
 
-function arc(r, a0, a1, w, col, bl) { ctx.beginPath(); ctx.arc(CX, CY, r, a0, a1); ctx.strokeStyle = col; ctx.lineWidth = w; glow(BLUE, bl || 0); ctx.stroke(); glow("transparent", 0) }
-function dot(x, y, r, col, bl) { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = col; glow(BLUE, bl || 0); ctx.fill(); glow("transparent", 0) }
-function portrait(r, a) {
-  if (!img.complete || r < 2) return;
-  ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(CX, CY, r, 0, TAU); ctx.clip();
-  ctx.filter = "grayscale(1) contrast(1.08)"; const hs = 500; ctx.drawImage(img, 445 - hs, 790 - hs, hs * 2, hs * 2, CX - r, CY - r, r * 2, r * 2); ctx.restore();
+function network(lk, t, pulse) {
+  ctx.clearRect(0, 0, 1080, 1920);
+  ctx.fillStyle = "rgba(255,255,255,.05)"; for (let x = 18; x < 1080; x += 36) for (let y = 18; y < 1920; y += 36) ctx.fillRect(x, y, 2, 2);
+  // the circle draws in one beat – just a frame
+  const k = eio(lk / 1);
+  ctx.beginPath(); ctx.arc(CX, CY, R, -Math.PI / 2, -Math.PI / 2 + TAU * k); ctx.strokeStyle = BLUE; ctx.lineWidth = 3 + pulse * 1.5; glow(BLUE, 24 + pulse * 10); ctx.stroke(); glow("transparent", 0);
+  const P = nodes.map(n => { const w = Math.sin(t * 1.3 + n.ph) * 6; return [CX + Math.cos(n.a + t * .05) * R * n.r * .9 + w, CY + Math.sin(n.a + t * .05) * R * n.r * .9 - w] });
+  const pop = i => eo((lk - .4 - i * .35) / .4);
+  P.forEach((p, i) => { const q = pop(i); if (q <= 0) return; ctx.strokeStyle = "rgba(47,91,255,.6)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(CX + (p[0] - CX) * q, CY + (p[1] - CY) * q); ctx.stroke() });
+  edges.forEach(([i, j], e) => { const q = eo((lk - 3 - e * .12) / .5); if (q <= 0) return; ctx.strokeStyle = "rgba(255,255,255,.3)"; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(P[i][0], P[i][1]); ctx.lineTo(P[i][0] + (P[j][0] - P[i][0]) * q, P[i][1] + (P[j][1] - P[i][1]) * q); ctx.stroke() });
+  if (lk > 2) edges.concat(P.map((_, i) => [-1, i])).forEach(([i, j], e) => { const q = (t * .6 + e * .173) % 1, A = i < 0 ? [CX, CY] : P[i], Bp = P[j]; dot(A[0] + (Bp[0] - A[0]) * q, A[1] + (Bp[1] - A[1]) * q, 3.4, "#fff", 16) });
+  P.forEach((p, i) => { const q = pop(i); if (q <= 0) return; const r = 28 * q * (1 + .12 * pulse);
+    ctx.fillStyle = "#121212"; ctx.strokeStyle = "rgba(255,255,255,.75)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, TAU); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = "rgba(255,255,255,.8)"; ctx.beginPath(); ctx.arc(p[0], p[1] - r * .24, r * .27, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.arc(p[0], p[1] + r * .58, r * .48, Math.PI, 0); ctx.fill() });
+  const r = 120 * eo(lk / .6);
+  if (r > 2 && av.complete) { dot(CX, CY, r + 5, BLUE, 40 + pulse * 20); ctx.save(); ctx.beginPath(); ctx.arc(CX, CY, r, 0, TAU); ctx.clip(); ctx.filter = "grayscale(1)"; ctx.drawImage(av, -55, 290, 1000, 1000, CX - r, CY - r, r * 2, r * 2); ctx.restore() }
 }
-function show(id, a, y) { const el = document.getElementById(id); el.style.opacity = a; el.style.transform = `translateY(${y || 0}px)` }
 
 window.DRAW = t => {
-  const kb = t / B, bi = Math.floor(kb), bf = kb - bi, beatPulse = 1 - eo(bf / .6);
-  document.getElementById("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
-  document.getElementById("grain").style.transform = `translate(${(bi * 37) % 120 - 60}px,${(bi * 53) % 120 - 60}px)`;
-  ctx.clearRect(0, 0, 1080, 1920);
-  // faint dot grid, fades in with the network
-  const gA = cl((kb - 18) / 3) * (1 - cl((kb - 31.5) / 1.5));
-  if (gA > 0) { ctx.fillStyle = `rgba(255,255,255,${.05 * gA})`; for (let x = 18; x < 1080; x += 36) for (let y = 18; y < 1920; y += 36) ctx.fillRect(x, y, 2, 2) }
-
-  // gap at the top of the circle: opens at beat 9, stays open (invitation), a newcomer enters at the end
-  const gap = .62 * eio((kb - 9) / 2.5) * (1 - .0 * kb);
-  const top = -Math.PI / 2, rot = kb * .04;
-
-  // 1) circle draws itself (b0-4)
-  if (kb < 12.5) {
-    const k = eio((kb + .9) / 4.5), spin = eio((kb - 5) / 6); // spin-in from b5
-    // inner rings that twist in (b5-12), then fold into the frame
-    const fold = eio((kb - 10.5) / 2);
-    for (let i = 1; i <= 5; i++) {
-      const a = eo((kb - 4.6 - i * .35) / 1.2) * (1 - fold); if (a <= 0) continue;
-      const r = R * (1 - i * .15 * spin) + (R - R * (1 - i * .15 * spin)) * fold, len = TAU * (.55 + .07 * i);
-      const st = top + rot * 4 + spin * (i % 2 ? 1 : -1) * (2.4 + i * .6) + i * .9;
-      ctx.globalAlpha = a; arc(r, st, st + len, 2.2, i === 1 ? BLUE : "rgba(47,91,255,.6)", 14); ctx.globalAlpha = 1;
-    }
-    // main ring
-    const a0 = top + gap / 2, a1 = top + gap / 2 + (TAU - gap) * k;
-    arc(R, a0, a1, 3.4 + beatPulse * 1.6 * cl(kb - 4), BLUE, 26 + beatPulse * 12);
-    if (k < 1) { const ang = a1; dot(CX + Math.cos(ang) * R, CY + Math.sin(ang) * R, 9, "#fff", 30) }
-    // gap end caps
-    if (gap > .02) { [top - gap / 2, top + gap / 2].forEach(g => dot(CX + Math.cos(g) * R, CY + Math.sin(g) * R, 7, "#fff", 22)) }
-  }
-
-  // 2) Maik in the circle (b12-19), then he becomes the center node (b19+)
-  if (kb >= 12) {
-    const shrink = eio((kb - 19) / 1.6);
-    const rFrame = R, rImg = (R - 14) * eo((kb - 12) / 1.4) * (1 - shrink) + 118 * shrink;
-    const outA = 1 - cl((kb - 31.8) / 1.2);           // network fades out at the very end -> loop
-    // big frame with opening
-    arc(R, top + gap / 2, top + TAU - gap / 2, 3.4 + beatPulse * 1.4, BLUE, 26 + beatPulse * 10);
-    [top - gap / 2, top + gap / 2].forEach(g => dot(CX + Math.cos(g) * R, CY + Math.sin(g) * R, 7, "#fff", 22));
-    // network
-    if (kb >= 19) {
-      const P = nodes.map((n, i) => { const w = Math.sin(t * 1.3 + n.ph) * 6; return [CX + Math.cos(n.a + t * .05) * R * n.r * .92 + w, CY + Math.sin(n.a + t * .05) * R * n.r * .92 - w] });
-      const pop = i => eo((kb - 19.6 - i * .55) / .5);   // ~2 people per beat
-      ctx.globalAlpha = outA;
-      P.forEach((p, i) => { const k = pop(i); if (k <= 0) return; ctx.strokeStyle = "rgba(47,91,255,.6)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(CX + (p[0] - CX) * k, CY + (p[1] - CY) * k); ctx.stroke() });
-      edges.forEach(([i, j], e) => { const k = eo((kb - 22 - e * .18) / .6); if (k <= 0 || pop(i) < 1 || pop(j) < 1) return; ctx.strokeStyle = "rgba(255,255,255,.28)"; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(P[i][0], P[i][1]); ctx.lineTo(P[i][0] + (P[j][0] - P[i][0]) * k, P[i][1] + (P[j][1] - P[i][1]) * k); ctx.stroke() });
-      if (kb > 21) edges.concat(P.map((_, i) => [-1, i])).forEach(([i, j], e) => {
-        if (pop(j) < 1 || (i >= 0 && pop(i) < 1)) return;
-        const q = (t * .55 + e * .173) % 1, A = i < 0 ? [CX, CY] : P[i], Bp = P[j];
-        dot(A[0] + (Bp[0] - A[0]) * q, A[1] + (Bp[1] - A[1]) * q, 3.4, "#fff", 16);
-      });
-      P.forEach((p, i) => { const k = pop(i); if (k <= 0) return; const r = 26 * k * (1 + .12 * beatPulse);
-        ctx.fillStyle = "#121212"; ctx.strokeStyle = "rgba(255,255,255,.75)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, TAU); ctx.fill(); ctx.stroke();
-        ctx.fillStyle = "rgba(255,255,255,.8)"; ctx.beginPath(); ctx.arc(p[0], p[1] - r * .24, r * .27, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.arc(p[0], p[1] + r * .58, r * .48, Math.PI, 0); ctx.fill() });
-      // newcomer: a dot travels in through the opening and links up (b27.5-30)
-      const nk = eio((kb - 27.5) / 2.2);
-      if (nk > 0) {
-        const y0 = CY - R - 260, y1 = CY - R * .42, ny = y0 + (y1 - y0) * nk, nx = CX;
-        ctx.strokeStyle = BLUE; ctx.lineWidth = 2; ctx.setLineDash([10, 12]); ctx.beginPath(); ctx.moveTo(nx, y0); ctx.lineTo(nx, ny); ctx.stroke(); ctx.setLineDash([]);
-        if (nk >= 1) { const lk = eo((kb - 29.7) / .6); ctx.strokeStyle = BLUE; ctx.lineWidth = 2.4; glow(BLUE, 16); ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(CX, CY + (ny - CY) * lk); ctx.stroke(); glow("transparent", 0) }
-        dot(nx, ny, 24 + 4 * beatPulse, BLUE, 40); ctx.font = "600 22px Montserrat"; ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("DU", nx, ny + 1);
-      }
-      ctx.globalAlpha = 1;
-    }
-    // Maik
-    const pa = cl((kb - 12) / .8) * outA;
-    if (kb >= 19) { ctx.globalAlpha = pa; dot(CX, CY, rImg + 5, BLUE, 40 + beatPulse * 20); ctx.globalAlpha = 1 }
-    portrait(rImg, pa);
-    if (kb < 19) { // scan line sweeping over the portrait on reveal
-      const q = eo((kb - 12) / 1.6); if (q < 1) { ctx.globalAlpha = 1 - q; ctx.fillStyle = BLUE; ctx.fillRect(CX - R, CY - R + 2 * R * q, 2 * R, 4); ctx.globalAlpha = 1 }
-    }
-  }
-  // flash on the scene change into the network (peak of the track)
-  const fl = (kb >= 19 && kb < 19.35) ? (1 - (kb - 19) / .35) * .35 : 0;
-  if (fl) { ctx.fillStyle = `rgba(255,255,255,${fl})`; ctx.fillRect(0, 0, 1080, 1920) }
-
-  // texts on the beat
-  const win = (a, b) => eo((kb - a) / .5) * (1 - eo((kb - b) / .4));
-  show("t1", win(-1, 5.6), 0);
-  show("t2", win(7, 11.8), (1 - eo((kb - 7) / .5)) * 30);
-  show("t3", win(13, 18.6), (1 - eo((kb - 13) / .5)) * 30);
-  show("t4", win(20, 27.4), (1 - eo((kb - 20) / .5)) * 30);
-  document.getElementById("t4p").style.opacity = eo((kb - 23) / .6);
-  show("t5", win(28, 99) * (1 - cl((kb - 32.2) / .8)), (1 - eo((kb - 28) / .5)) * 30);
-  document.getElementById("logo").style.opacity = win(28, 99) * (1 - cl((kb - 32.2) / .8));
-  cv.style.transform = `scale(${1 + beatPulse * .012 * (kb >= 19 && kb < 32 ? 1 : 0)})`;
+  const kb = t / B, bi = Math.floor(kb), bf = kb - bi, pulse = 1 - eo(bf / .6);
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(bi * 37) % 120 - 60}px,${(bi * 53) % 120 - 60}px)`;
+  let cur = SC[SC.length - 1]; SC.forEach(x => { if (kb >= x[1] && kb < x[2]) cur = x });
+  document.querySelectorAll(".scene").forEach(x => x.style.opacity = x.id === cur[0] ? 1 : 0);
+  const lk = kb - cur[1];
+  const change = SC.some(x => x[1] > 0 && kb >= x[1] && kb < x[1] + .3);
+  $("flash").style.opacity = change ? (1 - (kb % 1) / .3) * .45 : 0;
+  $("stage").style.transform = `scale(${1 + pulse * .012})`;
+  if (cur[0] === "hook") { $("hph").style.transform = `scale(${1.12 - .08 * cl(lk / 6)})`; words("[data-w]", lk, [0, 2, 4]) }
+  if (cur[0] === "topics") document.querySelectorAll("[data-p]").forEach((el, i) => { const a = eo((lk - i * 2) / .4); el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -120}px)` });
+  if (cur[0] === "maik") $("mph").style.transform = `scale(${1.04 + .05 * cl(lk / 6)})`;
+  if (cur[0] === "net") { network(lk, t, pulse); words("[data-n]", lk, [1, 4, 7]) }
+  if (cur[0] === "where") { $("wph").style.transform = `scale(${1.15 - .1 * cl(lk / 6)})`; words("[data-c]", lk, [0, 2, 4]) }
+  if (cur[0] === "cta") { const a = eo(lk / .6); $("pcard").style.transform = `translateY(${(1 - a) * 80}px) scale(${.96 + .04 * a + .02 * cl(lk / 8)})` }
 };
 </script>
 </body></html>

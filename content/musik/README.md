@@ -32,7 +32,10 @@ Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 - Evolution: `+++====###++*=+=+**#++++===*#**++*##%*#*#+++@@@%*#**++%#@#*#**…`
 - Dcony8: `#+======++++++-+++++*%@%@@%@@%%%#+++*+*+*+*+*+*+*+*##*****========:-+=-=+@@%%%%%%%%%##++.`
 
+**Tonqualität (24.10.2026):** Die Tracks in `eigene/` stammen aus Instagram und haben dort nur ~40–75 kbps. Für Reels, bei denen der Ton zählt, freie Musik in voller Qualität nehmen oder Maiks Originaldateien (WAV/MP3) anfordern. Nicht nur eigene Tracks verwenden – freie Musik ist gleichwertig (Maik, 24.10.2026).
+
 ## Freie Musik – `frei/`
 | Datei | Quelle / Lizenz | Passt zu |
 |---|---|---|
 | `motivating-mornings.mp3` | „Motivating Mornings“, Mixkit – Stock Music Free License | helle, positive Reels (R002–R006) |
+| `uplifting-bass.mp3` | „Uplifting Bass“, Mixkit – Stock Music Free License (320 kbps) | moderne, positive Reels mit Drop bei ~14,4 s; R010 Community |
