@@ -61,6 +61,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 24.10.2026 | R010 | `weg` / `design` | Reel | Community-Reel „Der Kreis ist offen“ – blauer Linienkreis öffnet sich, Netzwerk-Effekt, auf MZ.9 „Loneliness v.1.3“ | `format = linien-animation`, `musik = eigene` |
 | 24.10.2026 | R009 | `lernen` / `design` | Reel | Workshop-Promo „Chaos vs. System“ – Mit KI zur Personal Brand (Mo 26.10., 18 Uhr, 15 €), auf MZ.9 „Independence 2.1“ | `format = chaos-vs-system`, `musik = eigene` |
 | 23.10.2026 | R008 | `kreativ` | Reel/Intro | „Welcome to Flow Media AI“ – System-Boot auf MZ.9-Track, KI-Systemstimme, Beat-Schnitt (v2) | `format = cinematic-intro`, `musik = eigene` |
 | 23.10.2026 | R007 | `foto` / `ki` | Reel | „Ich als Hologramm.“ – Foto → Tiefenkarte → Punktwolke → Hologramm | `format = prozess-reveal` |
