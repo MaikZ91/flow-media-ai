@@ -4,6 +4,7 @@ Dauerhafte Regeln, die aus Korrekturen von Maik entstanden sind. Vor jeder Arbei
 
 | Datum | Regel | Anlass |
 |---|---|---|
+| 24.10.2026 | Rohvideos legt Maik in Drive `01_Marketing/RAW` (per Link freigegeben). Claude lädt sie selbst herunter und schneidet sie, ohne nachzufragen. Einzelne Dateien nicht extra freigeben lassen. | „Mach du, immer“ (R011) |
 | 24.10.2026 | Musik: nicht nur Maiks eigene Tracks, auch freie Musik in guter Tonqualität (z. B. Mixkit Free License, 256–320 kbps). Die Instagram-Kopien seiner Tracks (~70 kbps) nur, wenn es klanglich passt. Thema-Reels zeigen ihr Thema ab Bild 1 (z. B. Community = Menschen/Plakat, Zielgruppe nennen); Grafik-Effekte wie der Kreis nur als Nebenrolle. | R010 v1: „die Musikqualität, das ist super schlecht … du sollst da nicht nur meine Sounds nehmen“ / „im Vordergrund soll die Community sein und es soll halt auch anfangen sichtbar sein“ |
 | 24.10.2026 | Läuft ein eigener MZ.9-Track im Reel, wird Maiks Musik-Account **@mz.9_nyc** immer in der Caption genannt und verlinkt (Ausnahme von „niemanden markieren“). | „mz.9_nyc verlinke meine Musik immer mit dem Insta“ |
 | 23.10.2026 | Visueller Look von Flow = Skill `flow-design` (aus Maiks Plakaten: schwarz-weiß, große Versal-Headlines, ein blauer Akzent). Ersetzt die Regel „Designs folgen der Landing Page“ für neue Gestaltungen; R003/R004 bleiben im R002-Stil. | „Flow-AI-Skill-Design, also minimalistisches Layout, schwarz, weiß, Primärfarben, große Überschriften“ / „die beiden Reels … im selben Style wie vorher“ |

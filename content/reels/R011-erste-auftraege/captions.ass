@@ -1,0 +1,61 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Oswald,108,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,4,2,70,70,400,1
+Style: Kick,Montserrat Medium,30,&H00E6E6E6,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,6,0,1,0,3,7,76,76,150,1
+Style: Big,Oswald,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,0,6,7,76,76,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.08,0:00:00.48,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}HABE {\alpha&HFF&\t(120,180,\alpha&H00&)}ICH {\alpha&HFF&\t(260,320,\alpha&H00&)}JETZT
+Dialogue: 1,0:00:00.48,0:00:00.84,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}AUCH {\alpha&HFF&\t(100,160,\alpha&H00&)}SCHON {\alpha&HFF&\t(240,300,\alpha&H00&)}DIE
+Dialogue: 1,0:00:00.84,0:00:01.64,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}ERSTEN {\alpha&HFF&\t(119,179,\alpha&H00&)}{\c&HFF5B2F&}AUFTRÄGE.{\c&HFFFFFF&}
+Dialogue: 1,0:00:01.64,0:00:02.44,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}BEVOR {\alpha&HFF&\t(240,300,\alpha&H00&)}ÜBERHAUPT {\alpha&HFF&\t(619,679,\alpha&H00&)}DAS
+Dialogue: 1,0:00:02.44,0:00:03.90,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}{\c&HFF5B2F&}COACHING{\c&HFFFFFF&} {\alpha&HFF&\t(380,440,\alpha&H00&)}ANGEFANGEN {\alpha&HFF&\t(1080,1140,\alpha&H00&)}HAT
+Dialogue: 1,0:00:03.90,0:00:05.06,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}ICH {\alpha&HFF&\t(240,300,\alpha&H00&)}HABE {\alpha&HFF&\t(700,760,\alpha&H00&)}GERADE
+Dialogue: 1,0:00:05.06,0:00:05.72,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}AB {\alpha&HFF&\t(99,159,\alpha&H00&)}DEM {\alpha&HFF&\t(279,339,\alpha&H00&)}2.
+Dialogue: 1,0:00:05.72,0:00:06.96,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}{\c&HFF5B2F&}NOVEMBER{\c&HFFFFFF&} {\alpha&HFF&\t(240,300,\alpha&H00&)}EIN {\alpha&HFF&\t(880,940,\alpha&H00&)}BUSINESS
+Dialogue: 1,0:00:06.96,0:00:08.50,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}{\c&HFF5B2F&}COACHING{\c&HFFFFFF&} {\alpha&HFF&\t(679,739,\alpha&H00&)}SEITDEM {\alpha&HFF&\t(1140,1200,\alpha&H00&)}ICH
+Dialogue: 1,0:00:08.50,0:00:09.98,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}MIT {\alpha&HFF&\t(1119,1179,\alpha&H00&)}SO {\alpha&HFF&\t(1279,1339,\alpha&H00&)}VIELEN
+Dialogue: 1,0:00:09.98,0:00:10.96,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}LEUTEN {\alpha&HFF&\t(280,340,\alpha&H00&)}DRÜBER {\alpha&HFF&\t(640,700,\alpha&H00&)}GEREDET
+Dialogue: 1,0:00:10.96,0:00:11.40,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}HABE,
+Dialogue: 1,0:00:11.40,0:00:12.20,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}DAS {\alpha&HFF&\t(399,459,\alpha&H00&)}FINDE {\alpha&HFF&\t(539,599,\alpha&H00&)}ICH
+Dialogue: 1,0:00:12.20,0:00:13.02,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}SCHON {\alpha&HFF&\t(140,200,\alpha&H00&)}ZIEMLICH,
+Dialogue: 1,0:00:13.02,0:00:13.86,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}ZIEMLICH {\alpha&HFF&\t(299,359,\alpha&H00&)}{\c&HFF5B2F&}GEIL,{\c&HFFFFFF&}
+Dialogue: 1,0:00:13.86,0:00:14.22,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}HÄTTE {\alpha&HFF&\t(100,160,\alpha&H00&)}ICH {\alpha&HFF&\t(240,300,\alpha&H00&)}JETZT
+Dialogue: 1,0:00:14.22,0:00:14.76,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}NIE {\alpha&HFF&\t(160,220,\alpha&H00&)}GEDACHT,
+Dialogue: 1,0:00:14.76,0:00:15.40,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}WEIL {\alpha&HFF&\t(280,340,\alpha&H00&)}EIGENTLICH {\alpha&HFF&\t(520,580,\alpha&H00&)}DIE
+Dialogue: 1,0:00:15.40,0:00:16.38,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}GANZE {\alpha&HFF&\t(100,160,\alpha&H00&)}ZEIT {\alpha&HFF&\t(660,720,\alpha&H00&)}SCHWIERIG
+Dialogue: 1,0:00:16.38,0:00:16.66,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}WAR,
+Dialogue: 1,0:00:16.66,0:00:17.12,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}MIR {\alpha&HFF&\t(240,300,\alpha&H00&)}AN {\alpha&HFF&\t(320,380,\alpha&H00&)}{\c&HFF5B2F&}KUNDEN{\c&HFFFFFF&}
+Dialogue: 1,0:00:17.12,0:00:17.70,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}ZU {\alpha&HFF&\t(219,279,\alpha&H00&)}KOMMEN,
+Dialogue: 1,0:00:17.70,0:00:18.14,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}AN {\alpha&HFF&\t(159,219,\alpha&H00&)}EUCH,
+Dialogue: 1,0:00:18.14,0:00:19.18,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}DIE {\alpha&HFF&\t(59,119,\alpha&H00&)}SICH {\alpha&HFF&\t(539,599,\alpha&H00&)}SELBSTSTÄNDIG
+Dialogue: 1,0:00:19.18,0:00:19.84,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}MACHEN {\alpha&HFF&\t(219,279,\alpha&H00&)}WOLLEN,
+Dialogue: 1,0:00:19.84,0:00:21.70,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}TRAGT {\alpha&HFF&\t(1340,1400,\alpha&H00&)}EURE {\alpha&HFF&\t(1539,1599,\alpha&H00&)}{\c&HFF5B2F&}MESSAGE{\c&HFFFFFF&}
+Dialogue: 1,0:00:21.70,0:00:22.56,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}DA {\alpha&HFF&\t(240,300,\alpha&H00&)}DRAUSSEN,
+Dialogue: 1,0:00:22.56,0:00:23.72,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}WAS {\alpha&HFF&\t(200,260,\alpha&H00&)}IHR {\alpha&HFF&\t(400,460,\alpha&H00&)}ANZUBIETEN
+Dialogue: 1,0:00:23.72,0:00:24.08,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}HABT,
+Dialogue: 1,0:00:24.08,0:00:25.14,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}WO {\alpha&HFF&\t(400,460,\alpha&H00&)}IHR {\alpha&HFF&\t(660,720,\alpha&H00&)}EINEN
+Dialogue: 1,0:00:25.14,0:00:26.81,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}{\c&HFF5B2F&}SKILL{\c&HFFFFFF&} {\alpha&HFF&\t(240,300,\alpha&H00&)}HABT {\alpha&HFF&\t(600,660,\alpha&H00&)}UND
+Dialogue: 1,0:00:26.81,0:00:27.51,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}DANN {\alpha&HFF&\t(299,359,\alpha&H00&)}{\c&HFF5B2F&}LÄUFT{\c&HFFFFFF&} {\alpha&HFF&\t(480,540,\alpha&H00&)}ES
+Dialogue: 1,0:00:27.51,0:00:27.97,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}IRGENDWIE.
+Dialogue: 1,0:00:27.97,0:00:29.67,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}MAN {\alpha&HFF&\t(1240,1300,\alpha&H00&)}SIEHT {\alpha&HFF&\t(1420,1480,\alpha&H00&)}SICH
+Dialogue: 1,0:00:29.67,0:00:31.19,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}VIELLEICHT {\alpha&HFF&\t(460,520,\alpha&H00&)}AM {\alpha&HFF&\t(1040,1100,\alpha&H00&)}{\c&HFF5B2F&}MONTAG{\c&HFFFFFF&}
+Dialogue: 1,0:00:31.19,0:00:32.35,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}IM {\alpha&HFF&\t(399,459,\alpha&H00&)}{\c&HFF5B2F&}WORKSHOP,{\c&HFFFFFF&}
+Dialogue: 1,0:00:32.35,0:00:32.83,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}DA {\alpha&HFF&\t(120,180,\alpha&H00&)}MACHEN {\alpha&HFF&\t(320,380,\alpha&H00&)}WIR
+Dialogue: 1,0:00:32.83,0:00:34.35,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}NÄMLICH {\alpha&HFF&\t(260,320,\alpha&H00&)}MIT {\alpha&HFF&\t(1040,1100,\alpha&H00&)}{\c&HFF5B2F&}KI,{\c&HFFFFFF&}
+Dialogue: 1,0:00:34.35,0:00:35.17,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}BAUEN {\alpha&HFF&\t(379,439,\alpha&H00&)}WIR {\alpha&HFF&\t(560,620,\alpha&H00&)}DEINE
+Dialogue: 1,0:00:35.17,0:00:36.51,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}{\c&HFF5B2F&}PERSONAL{\c&HFFFFFF&} {\alpha&HFF&\t(500,560,\alpha&H00&)}{\c&HFF5B2F&}BRAND{\c&HFFFFFF&} {\alpha&HFF&\t(840,900,\alpha&H00&)}AUF.
+Dialogue: 1,0:00:36.51,0:00:37.15,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}ICH {\alpha&HFF&\t(140,200,\alpha&H00&)}FREUE {\alpha&HFF&\t(319,379,\alpha&H00&)}MICH
+Dialogue: 1,0:00:37.15,0:00:37.97,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}AUF {\alpha&HFF&\t(259,319,\alpha&H00&)}EUCH.
+Dialogue: 1,0:00:37.97,0:00:38.29,Cap,,0,0,0,,{\fscx92\fscy92\t(0,90,\fscx100\fscy100)}{\alpha&HFF&\t(0,60,\alpha&H00&)}CIAO!
+Dialogue: 2,0:00:00.00,0:00:03.90,Kick,,0,0,0,,{\fad(0,200)}BUILD IN PUBLIC · FLOW MEDIA AI
+Dialogue: 2,0:00:00.00,0:00:03.90,Big,,0,0,0,,{\fad(0,200)}ERSTE AUFTRÄGE –\NVOR DEM ERSTEN\N{\c&HFF5B2F&}COACHING-TAG.
+Dialogue: 2,0:00:27.89,0:00:38.29,Kick,,0,0,0,,{\fad(200,0)}DIGITALER STAMMTISCH #1 · MO 26.10. · 18 UHR
+Dialogue: 2,0:00:28.14,0:00:38.29,Big,,0,0,0,,{\fad(200,0)}MIT KI ZUR\N{\c&HFF5B2F&}PERSONAL BRAND.{\c&HFFFFFF&}\N{\fnInter\fs40\b0\bord0\shad2}15 € · live · Link in Bio
