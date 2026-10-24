@@ -56,11 +56,12 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 
 | Datum | Was | Briefing |
 |---|---|---|
-| 24.10.2026 | **Reel zum Workshop am Montag** (Maik, 23.10.2026) | Kein Flyer, sondern ein Video, das Lust auf den Workshop macht: Digitaler Stammtisch #1 „Mit KI zur Personal Brand – wie dein Content immer gleich aussieht“, **Mo 26.10.2026, 18:00, ca. 60 Min, digital & live, 15 €**, Anmeldung per Nachricht/WhatsApp. Kreative Umsetzung frei (Creative Director entscheidet): Maik im Bild, eigene MZ.9-Musik aus `content/musik/` mit Schnitt auf den Beat, gern das Thema selbst zeigen (Content ohne System vs. mit Design-Skill, R005/P001/Flyer als echtes Material). Datum, Uhrzeit und Preis klar lesbar, Countdown-Gefühl („Montag 18 Uhr“). Nichts erfinden: keine Teilnehmerzahlen, kein „ausgebucht“. Story-Version 1080×1920 gleich mitliefern. |
+| – | – | aktuell nichts eingeplant |
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 24.10.2026 | R009 | `lernen` / `design` | Reel | Workshop-Promo „Chaos vs. System“ – Mit KI zur Personal Brand (Mo 26.10., 18 Uhr, 15 €), auf MZ.9 „Independence 2.1“ | `format = chaos-vs-system`, `musik = eigene` |
 | 23.10.2026 | R008 | `kreativ` | Reel/Intro | „Welcome to Flow Media AI“ – System-Boot auf MZ.9-Track, KI-Systemstimme, Beat-Schnitt (v2) | `format = cinematic-intro`, `musik = eigene` |
 | 23.10.2026 | R007 | `foto` / `ki` | Reel | „Ich als Hologramm.“ – Foto → Tiefenkarte → Punktwolke → Hologramm | `format = prozess-reveal` |
 | 23.10.2026 | R006 | `web` / `design` | Reel | „Meine neue Website. Komplett mit KI.“ – Website-Tour im Handy-Rahmen | `format = website-tour` |

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0A0A0A;--blue:#2F5BFF;--grey:#9A9A9A}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center top;filter:grayscale(1) contrast(1.1) brightness(.92)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.5) 0%,rgba(10,10,10,0) 18%,rgba(10,10,10,0) 38%,rgba(10,10,10,.9) 58%,#0A0A0A 80%)}
+.logo{position:absolute;left:76px;top:116px;width:200px;z-index:5}
+.pad{position:absolute;left:76px;right:76px}
+.k{font:500 26px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#d8d8d8}
+.rule{width:64px;height:3px;background:#fff;margin:28px 0}
+.h{font:700 118px/.92 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}
+.p{font:400 38px/1.4 Inter;color:#e6e6e6}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:20}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.08;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+/* chaos */
+#chaos .card{position:absolute;left:90px;right:90px;top:330px;height:1150px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:56px}
+#chaos .ph{position:absolute;inset:0;background:url(img/portrait_front.jpg) center 15%/cover}
+#chaos .tt{position:relative;font-size:120px;line-height:1}
+#chaos .tag{position:absolute;left:76px;right:76px;top:180px;font:500 26px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+#chaos .tag b{color:#fff}
+#chaos .x{position:absolute;left:76px;bottom:330px;font:700 64px/1 Oswald;text-transform:uppercase}
+/* system grid */
+#grid .tile{position:absolute;width:300px;height:450px;background-size:cover;background-position:center top;border:1.5px solid rgba(255,255,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+/* info */
+.info{position:absolute;left:76px;right:76px;top:560px}
+.row{display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #2a2a2a;padding:26px 0;opacity:0}
+.row em{font:500 26px Montserrat;font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+.row strong{font:700 120px/1 Oswald;text-transform:uppercase}
+</style></head><body>
+<div id="stage">
+<div class="grain" id="grain"></div>
+<div class="prog"><i id="prog"></i></div>
+
+<section class="scene" id="hook">
+  <div class="bg" style="background-image:url(img/portrait_front.jpg)" id="hbg"></div><div class="shade"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="pad" style="top:990px"><div class="k">Workshop · Montag 18 Uhr</div><div class="rule"></div>
+    <div class="h">Dein KI-Content<br>sieht jedes Mal<br><span class="b">anders</span> aus?</div></div>
+</section>
+
+<section class="scene" id="chaos">
+  <div class="tag"><b>Ohne System:</b> jeder Prompt, ein neuer Look</div>
+  <div class="card" id="ccard"><div class="ph" id="cph"></div><div class="tt" id="ctt">Mein Post</div></div>
+  <div class="x" id="cx"></div>
+</section>
+
+<section class="scene" id="stop">
+  <div class="pad" style="top:760px;text-align:center"><div class="h" style="font-size:260px">Stopp.</div></div>
+</section>
+
+<section class="scene" id="grid">
+  <div class="pad" style="top:170px"><div class="k"><b style="color:#fff">Mit System:</b> immer derselbe Look</div></div>
+  <div class="tile" data-t style="left:76px;top:300px;background-image:url(img/slide_front.jpg)"></div>
+  <div class="tile" data-t style="left:390px;top:300px;background-image:url(img/c005.png)"></div>
+  <div class="tile" data-t style="left:704px;top:300px;background-image:url(img/slide_laptop.jpg)"></div>
+  <div class="tile" data-t style="left:76px;top:770px;background-image:url(img/flyer.png)"></div>
+  <div class="tile" data-t style="left:390px;top:770px;background-image:url(img/community.jpg)"></div>
+  <div class="tile" data-t style="left:704px;top:770px;background-image:url(img/c006.png)"></div>
+  <div class="pad" style="top:1290px"><div class="h" style="font-size:96px">Ein Design-Skill.<br><span class="b">Jeder Post.</span></div></div>
+</section>
+
+<section class="scene" id="title">
+  <div class="bg" style="background-image:url(img/portrait_laptop.jpg);filter:grayscale(1) contrast(1.1) brightness(.5)"></div>
+  <div class="pad" style="top:640px"><div class="k">Digitaler Stammtisch #1 · Praxis-Workshop</div><div class="rule"></div>
+    <div class="h" style="font-size:150px">Mit KI zur<br><span class="b">Personal</span><br>Brand.</div></div>
+</section>
+
+<section class="scene" id="info">
+  <div class="pad" style="top:200px"><div class="k">Sei dabei</div></div>
+  <div class="info">
+    <div class="row" data-r><em>Wann</em><strong>Mo 26.10.</strong></div>
+    <div class="row" data-r><em>Uhrzeit</em><strong>18:00</strong></div>
+    <div class="row" data-r><em>Format</em><strong>Live · 60 Min</strong></div>
+    <div class="row" data-r><em>Pro Person</em><strong class="b">15 €</strong></div>
+  </div>
+</section>
+
+<section class="scene" id="you">
+  <div class="bg" style="background-image:url(img/portrait_laptop.jpg)" id="ybg"></div><div class="shade"></div>
+  <div class="pad" style="top:1010px"><div class="k">Du gehst raus mit</div><div class="rule"></div>
+    <div class="h" style="font-size:104px">Deinem eigenen<br><span class="b">Design-Skill.</span></div></div>
+</section>
+
+<section class="scene" id="cta">
+  <div class="bg" style="background-image:url(img/portrait_front.jpg)" id="cbg"></div><div class="shade"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="pad" style="top:1000px"><div class="k">Montag · 18 Uhr · 15 €</div><div class="rule"></div>
+    <div class="h">Platz<br><span class="b">sichern.</span></div><div class="p" style="margin-top:26px">Schreib mir eine Nachricht.</div></div>
+</section>
+</div>
+<div id="flash"></div>
+
+<script>
+const B = 0.4288;                                   // beat of "Independence 2.1" (from 3.344 s in the track)
+const SC = [["hook",0,5],["chaos",5,13],["stop",13,15],["grid",15,23],["title",23,27],["info",27,35],["you",35,39],["cta",39,46]];
+const TOTAL = 46 * B; window.TOTAL = TOTAL;
+const cl = x => Math.max(0, Math.min(1, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const STY = [
+  { bg: "#ff3df2", f: "italic 700 120px Georgia,serif", c: "#ffe600", fl: "hue-rotate(250deg) saturate(3)", x: "Prompt 1" },
+  { bg: "#00e0ff", f: "800 120px 'Comic Sans MS',cursive", c: "#ff2b2b", fl: "sepia(1) saturate(2)", x: "Prompt 2" },
+  { bg: "#1aff6a", f: "400 110px 'JetBrains Mono',monospace", c: "#1d00ff", fl: "invert(1)", x: "Prompt 3" },
+  { bg: "#ff8a00", f: "300 130px Inter", c: "#ffffff", fl: "saturate(4) contrast(1.4)", x: "Prompt 4" },
+  { bg: "#7a00ff", f: "600 120px Montserrat", c: "#00ffd0", fl: "hue-rotate(120deg) saturate(3)", x: "Prompt 5" },
+  { bg: "#fff36b", f: "italic 400 130px 'Times New Roman',serif", c: "#ff00a8", fl: "blur(3px) saturate(2)", x: "Prompt 6" },
+  { bg: "#ff2f5f", f: "700 140px Oswald", c: "#00ff6a", fl: "grayscale(1) contrast(2)", x: "Prompt 7" },
+  { bg: "#00ffb3", f: "500 120px Courier,monospace", c: "#6b00ff", fl: "hue-rotate(60deg) saturate(5)", x: "Prompt 8" },
+];
+window.DRAW = t => {
+  const kb = t / B, bi = Math.floor(kb), bf = kb - bi;
+  document.getElementById("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  document.getElementById("grain").style.transform = `translate(${(bi * 37) % 120 - 60}px,${(bi * 53) % 120 - 60}px)`;
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (kb >= s[1] && kb < s[2]) cur = s });
+  document.querySelectorAll(".scene").forEach(s => s.style.opacity = s.id === cur[0] ? 1 : 0);
+  const lk = kb - cur[1];                           // beats into the scene
+  // beat punch + flash on scene changes
+  const punch = 1 + (1 - eo(bf / .5)) * .025;
+  document.getElementById("stage").style.transform = `scale(${cur[0] === "chaos" || cur[0] === "info" || cur[0] === "grid" ? punch : 1})`;
+  const change = SC.some(s => s[1] > 0 && kb >= s[1] && kb < s[1] + .35);
+  document.getElementById("flash").style.opacity = change ? (1 - (kb % 1) / .35) * .55 : 0;
+  if (cur[0] === "hook") document.getElementById("hbg").style.transform = `scale(${1.08 - .04 * cl(lk / 5)})`;
+  if (cur[0] === "chaos") {
+    const s = STY[Math.min(7, Math.floor(lk))];
+    const card = document.getElementById("ccard"); card.style.background = s.bg;
+    document.getElementById("cph").style.filter = s.fl; document.getElementById("cph").style.opacity = .85;
+    const tt = document.getElementById("ctt"); tt.style.font = s.f; tt.style.color = s.c;
+    card.style.transform = `rotate(${[-3, 2, -1.5, 3, -2, 1, -3, 2][Math.floor(lk) % 8]}deg)`;
+    document.getElementById("cx").textContent = s.x;
+  }
+  if (cur[0] === "stop") document.getElementById("stop").style.transform = `scale(${1.15 - .15 * eo(lk / .4)})`;
+  if (cur[0] === "grid") document.querySelectorAll("[data-t]").forEach((el, i) => { const a = eo((lk - i) / .5); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * -60}px) scale(${1.1 - .1 * a})` });
+  if (cur[0] === "info") document.querySelectorAll("[data-r]").forEach((el, i) => { const a = eo((lk - i * 2) / .4); el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -80}px)` });
+  if (cur[0] === "you") document.getElementById("ybg").style.transform = `scale(${1.02 + .04 * cl(lk / 4)})`;
+  if (cur[0] === "cta") document.getElementById("cbg").style.transform = `scale(${1.02 + .05 * cl(lk / 7)})`;
+};
+</script>
+</body></html>
