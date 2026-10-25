@@ -37,7 +37,7 @@ Weitere Säulen nur nach Maiks OK ergänzen.
 - `weg`: „Mein erster Business-Kanal: 59 Follower, 0 Anfragen“ · „Woche 1 von Flow Media AI“
 - `lernen`: „In 3 Schritten zu deinem eigenen Design-Skill“ · „Dein erstes Tool ohne Programmieren“
 - `kreativ` (Pool, keine Pflicht): Hologramm/3D aus einem Foto · Intro im eigenen Stil · Reel komplett auf eigene Musik geschnitten · Animation aus Code · Sounddesign ohne Samples · „Von der Idee zum Effekt in einem Abend“ · Making-of eines Effekts
-- `agentic`: „Ich gebe keine Ideen mehr vor“ (R016) · „Was mein Creative Director heute entschieden hat“ · „Woche 1 mit Agentic Marketing: was die KI gepostet hat“ · „Skill für Skill erklärt“
+- `agentic`: „Ich gebe keine Ideen mehr vor“ (R016) · „Was mein Creative Director heute entschieden hat“ · „Woche 1 mit Agentic Marketing: was die KI gepostet hat“ · „Skill für Skill erklärt“ · Lead-Pipeline (R017, nur Demo-Betriebe, kein Kaltmail-Versand zeigen)
 - `engineering` (Pool, keine Pflicht): Ein Bauteil per Text als CAD-Modell (z. B. OpenSCAD/CadQuery) · Halterung/Gehäuse fürs eigene Setup entwerfen und 3D-drucken · Messdaten mit KI auswerten · kleine Simulation erklären · „Engineering-Problem in 30 Minuten mit KI gelöst“ – nur eigene Demos
 
 Verbrauchte Ideen im Verlauf (§6) markieren; neue Ideen hier anhängen.
@@ -63,6 +63,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 25.10.2026 | R017 | `agentic` / `web` | Reel (Pipeline) | „Alte Website? Meine KI baut die neue.“ – Lead-Pipeline (Demo-Bäckerei, Versand nur auf Anfrage), Agentic Marketing Teil 2 | `format = pipeline-erklaerer` |
 | 25.10.2026 | R016 | `agentic` | Reel (Pipeline) | „Ich gebe keine Ideen mehr vor.“ – Social-Media-Pipeline in 8 Stationen (Routine → Thema → Idee → Look → Bauen → Prüfen → Auto-Post → Lernen) | `format = pipeline-erklaerer` |
 | 25.10.2026 | R015 | `engineering` / `ki` | Reel (3D-Animation) | „Build your own Kleberoboter für 420 €“ – 3D-Drucker druckt eigene Halterung, Claude Code schreibt den Pfad (ohne Arbeitsbezug) | `format = 3d-animation` |
 | 25.10.2026 | P002 | `weg` / `design` | Einzelpost + Story | „Hey, ich bin Maik.“ – Foto im Sakko, Build · Connect · Enable (Vorstellungs-Post zum Anpinnen) | `format = intro-post` |
