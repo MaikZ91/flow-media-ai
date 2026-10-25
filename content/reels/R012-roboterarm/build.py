@@ -9,8 +9,9 @@ B = 0.4645                    # beat of "Digital Clouds" (Mixkit), grid from 29.
 M0 = 29.92
 SCENE = 10 * B                # each scene = 10 beats
 # (src_start, src_end, crop_w, crop_h, center_x, center_y) – robot in the middle of the lab
-SEG = [
+SEG = [   # "photo" = Maik in front of the robot arm (portfolio photo, prepared in img/maik_roboter.jpg)
     (0.5, 6.3, 608, 1080, 1010, 540),
+    "photo",
     (8.0, 13.8, 608, 1080, 1010, 540),
     (15.0, 20.8, 608, 1080, 1010, 540),
     (26.6, 31.25, 608, 1080, 960, 540),
@@ -22,7 +23,8 @@ def ts(x):
 BL = "{\\c&HFF5B2F&}"; WH = "{\\c&HFFFFFF&}"
 TXT = [  # (kicker, headline with \N, small line)
     ("STUDIUM · MEDICAL ENGINEERING", f"HIER HAT ES\\N{BL}ANGEFANGEN.{WH}", ""),
-    ("MEIN STUDIENPROJEKT", f"EIN ROBOTERARM.\\N{BL}GESTEUERT MIT KI.{WH}", "Noch von Hand trainiert – lange vor Claude."),
+    ("MEIN STUDIENPROJEKT", f"DAS BIN ICH.\\N{BL}MIT MEINEM ROBOTER.{WH}", "Studentische Hilfskraft · Robotik"),
+    ("WIE ES LIEF", f"EIN ROBOTERARM.\\N{BL}GESTEUERT MIT KI.{WH}", "Noch von Hand trainiert – lange vor Claude."),
     ("DER MOMENT", f"AUTOMATISIEREN\\NIST {BL}MEIN DING.{WH}", "Ideen und Technik, die das Leben einfacher machen."),
     ("UND HEUTE", f"BAUE ICH GENAU DAS.\\N{BL}MIT KI.{WH}", "Flow Media AI · Build. Connect. Enable."),
 ]
@@ -40,12 +42,20 @@ for i, (k, h, s) in enumerate(TXT):
     if s: ass.append(f"Dialogue: 1,{ts(a + B * 3)},{ts(b)},Small,,0,0,0,,{{\\fad(200,0)}}{s}")
 open(os.path.join(HERE, "captions.ass"), "w").write("\n".join(ass) + "\n")
 
-fc = [f"[0:v]fps=30,split={len(SEG)}" + "".join(f"[s{i}]" for i in range(len(SEG)))]
-for i, (a, b, w, h, cx, cy) in enumerate(SEG):
+VID = [x for x in SEG if x != "photo"]
+fc = [f"[0:v]fps=30,split={len(VID)}" + "".join(f"[s{i}]" for i in range(len(VID)))]
+k = 0
+for i, seg in enumerate(SEG):
+    if seg == "photo":   # slow push-in on the still
+        fc.append(f"[5:v]scale=1080:1920,zoompan=z='1.0+0.0016*on':x='iw/2-(iw/zoom/2)':y='ih*0.42-(ih/zoom*0.42)':d=1:s=1080x1920:fps=30,"
+                  f"trim=duration={SCENE:.4f},setpts=PTS-STARTPTS,setsar=1[v{i}]")
+        continue
+    a, b, w, h, cx, cy = seg
     sp = (b - a) / SCENE
-    fc.append(f"[s{i}]trim={a}:{b},setpts=(PTS-STARTPTS)/{sp:.4f},crop={w}:{h}:{cx - w // 2}:{cy - h // 2},"
+    fc.append(f"[s{k}]trim={a}:{b},setpts=(PTS-STARTPTS)/{sp:.4f},crop={w}:{h}:{cx - w // 2}:{cy - h // 2},"
               f"scale=1080:1920:flags=lanczos,zoompan=z='1+0.0009*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30,"
               f"trim=duration={SCENE:.4f},setpts=PTS-STARTPTS,setsar=1[v{i}]")
+    k += 1
 fc.append("".join(f"[v{i}]" for i in range(len(SEG))) + f"concat=n={len(SEG)}:v=1:a=0[vc]")
 fc.append("[vc]hue=s=0,eq=contrast=1.15:gamma=0.95,unsharp=5:5:0.6,noise=alls=3:allf=t[vg];[3:v]format=rgba[sh];[vg][sh]overlay=0:0,"
           f"ass={os.path.join(HERE, 'captions.ass')}:fontsdir={os.path.join(HERE, 'fonts')}[vs]")
@@ -55,6 +65,7 @@ fc.append(f"[2:a]atrim=start={M0}:duration={TOTAL:.3f},asetpts=PTS-STARTPTS,afad
           "loudnorm=I=-14:TP=-1.0:LRA=9[aout]")
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", SRC, "-i", os.path.join(HERE, "logo_flow.png"), "-i", MUSIC,
     "-i", os.path.join(HERE, "shade.png"), "-loop", "1", "-i", os.path.join(HERE, "img/avatar_circle.png"),
+    "-loop", "1", "-framerate", "30", "-t", f"{SCENE + 1:.2f}", "-i", os.path.join(HERE, "img/maik_roboter.jpg"),
     "-filter_complex", ";".join(fc), "-map", "[vout]", "-map", "[aout]", "-t", f"{TOTAL:.3f}",
     "-c:v", "libx264", "-crf", "21", "-preset", "slow", "-maxrate", "9M", "-bufsize", "18M", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", os.path.join(HERE, "R012.mp4")], check=True)

@@ -15,11 +15,14 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 1,0:00:00.00,0:00:04.65,Kick,,0,0,0,,{\fad(120,0)}STUDIUM · MEDICAL ENGINEERING
 Dialogue: 1,0:00:00.23,0:00:04.65,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}HIER HAT ES\N{\c&HFF5B2F&}ANGEFANGEN.{\c&HFFFFFF&}
 Dialogue: 1,0:00:04.65,0:00:09.29,Kick,,0,0,0,,{\fad(120,0)}MEIN STUDIENPROJEKT
-Dialogue: 1,0:00:04.88,0:00:09.29,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}EIN ROBOTERARM.\N{\c&HFF5B2F&}GESTEUERT MIT KI.{\c&HFFFFFF&}
-Dialogue: 1,0:00:06.04,0:00:09.29,Small,,0,0,0,,{\fad(200,0)}Noch von Hand trainiert – lange vor Claude.
-Dialogue: 1,0:00:09.29,0:00:13.94,Kick,,0,0,0,,{\fad(120,0)}DER MOMENT
-Dialogue: 1,0:00:09.52,0:00:13.94,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}AUTOMATISIEREN\NIST {\c&HFF5B2F&}MEIN DING.{\c&HFFFFFF&}
-Dialogue: 1,0:00:10.68,0:00:13.94,Small,,0,0,0,,{\fad(200,0)}Ideen und Technik, die das Leben einfacher machen.
-Dialogue: 1,0:00:13.94,0:00:18.58,Kick,,0,0,0,,{\fad(120,0)}UND HEUTE
-Dialogue: 1,0:00:14.17,0:00:18.58,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}BAUE ICH GENAU DAS.\N{\c&HFF5B2F&}MIT KI.{\c&HFFFFFF&}
-Dialogue: 1,0:00:15.33,0:00:18.58,Small,,0,0,0,,{\fad(200,0)}Flow Media AI · Build. Connect. Enable.
+Dialogue: 1,0:00:04.88,0:00:09.29,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}DAS BIN ICH.\N{\c&HFF5B2F&}MIT MEINEM ROBOTER.{\c&HFFFFFF&}
+Dialogue: 1,0:00:06.04,0:00:09.29,Small,,0,0,0,,{\fad(200,0)}Studentische Hilfskraft · Robotik
+Dialogue: 1,0:00:09.29,0:00:13.94,Kick,,0,0,0,,{\fad(120,0)}WIE ES LIEF
+Dialogue: 1,0:00:09.52,0:00:13.94,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}EIN ROBOTERARM.\N{\c&HFF5B2F&}GESTEUERT MIT KI.{\c&HFFFFFF&}
+Dialogue: 1,0:00:10.68,0:00:13.94,Small,,0,0,0,,{\fad(200,0)}Noch von Hand trainiert – lange vor Claude.
+Dialogue: 1,0:00:13.94,0:00:18.58,Kick,,0,0,0,,{\fad(120,0)}DER MOMENT
+Dialogue: 1,0:00:14.17,0:00:18.58,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}AUTOMATISIEREN\NIST {\c&HFF5B2F&}MEIN DING.{\c&HFFFFFF&}
+Dialogue: 1,0:00:15.33,0:00:18.58,Small,,0,0,0,,{\fad(200,0)}Ideen und Technik, die das Leben einfacher machen.
+Dialogue: 1,0:00:18.58,0:00:23.23,Kick,,0,0,0,,{\fad(120,0)}UND HEUTE
+Dialogue: 1,0:00:18.81,0:00:23.23,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}BAUE ICH GENAU DAS.\N{\c&HFF5B2F&}MIT KI.{\c&HFFFFFF&}
+Dialogue: 1,0:00:19.97,0:00:23.23,Small,,0,0,0,,{\fad(200,0)}Flow Media AI · Build. Connect. Enable.

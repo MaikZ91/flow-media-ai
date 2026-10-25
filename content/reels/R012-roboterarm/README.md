@@ -1,21 +1,22 @@
 # R012 · „Hier hat es angefangen“ – der Roboterarm aus dem Studium
 
-Stand: 25.10.2026 · Format: Reel 1080×1920, 18,6 s · Status: **Version 1 fertig (`R012.mp4`)** – wartet auf Maiks Avatar-Video (Kreis mit Erklärung), dann neu schneiden
+Stand: 25.10.2026 · Format: Reel 1080×1920, 23,2 s · Status: **Version 1 fertig (`R012.mp4`)** – wartet auf Maiks Avatar-Video (Kreis mit Erklärung), dann neu schneiden
 
 Säule: `weg` / `engineering` (Maiks eigenes Studienprojekt, kein Arbeitgeber-Material) · **Test-Variable:** `format = origin-story`
 
 ## Idee (Maik, 25.10.2026)
 Woher Maiks Begeisterung für Automatisierung kommt: Im Studium (Medical Engineering / Biomedizintechnik, Hochschule Hamm-Lippstadt) hat er als studentische Hilfskraft einen robotergesteuerten Teststand entwickelt – einen Roboterarm, per KI gesteuert, damals noch von Hand trainiert („noch nicht zu Claude-Zeiten“). Dort hat er gemerkt, wie geil es ist, Dinge zu automatisieren: Ideen und Kreativität mit Technik verbinden, damit etwas entsteht, das das Leben einfacher macht. Heute macht er genau das mit KI.
 
-Material: Video des Roboterarms von Maiks Portfolio-Seite (maikzs.wixsite.com, Galerie „Projektarbeit als SHK – Entwicklung eines robotergesteuerten Teststands zur Zugkraftmessung von chirurgischen Meshes“), 31 s, 1080p.
+Material: Foto „Maik vor dem Roboterarm“ (Portfolio-Galerie, Screenshot 1080×752 → Ausschnitt Maik + Roboter, Hochformat; Gesichter der anderen Personen im Hintergrund weichgezeichnet) und Video des Roboterarms von Maiks Portfolio-Seite (maikzs.wixsite.com, Galerie „Projektarbeit als SHK – Entwicklung eines robotergesteuerten Teststands zur Zugkraftmessung von chirurgischen Meshes“), 31 s, 1080p.
 
-## Ablauf (4 Szenen à 10 Beats, „Digital Clouds“, 1 Beat = 0,465 s)
+## Ablauf (5 Szenen à 10 Beats, „Digital Clouds“, 1 Beat = 0,465 s)
 | Zeit | Bild | Text |
 |---|---|---|
 | 0–4,6 s | Roboterarm im Labor | Studium · Medical Engineering – HIER HAT ES **ANGEFANGEN.** |
-| 4,6–9,3 s | Arm bewegt sich | Mein Studienprojekt – EIN ROBOTERARM. **GESTEUERT MIT KI.** · Noch von Hand trainiert – lange vor Claude. |
-| 9,3–13,9 s | Arm bewegt sich | Der Moment – AUTOMATISIEREN IST **MEIN DING.** · Ideen und Technik, die das Leben einfacher machen. |
-| 13,9–18,6 s | Nahaufnahme | Und heute – BAUE ICH GENAU DAS. **MIT KI.** · Flow Media AI · Build. Connect. Enable. |
+| 4,6–9,3 s | **Foto: Maik im Labor vor dem Roboterarm** (langsamer Zoom) | Mein Studienprojekt – DAS BIN ICH. **MIT MEINEM ROBOTER.** · Studentische Hilfskraft · Robotik |
+| 9,3–13,9 s | Arm bewegt sich | Wie es lief – EIN ROBOTERARM. **GESTEUERT MIT KI.** · Noch von Hand trainiert – lange vor Claude. |
+| 13,9–18,6 s | Arm bewegt sich | Der Moment – AUTOMATISIEREN IST **MEIN DING.** · Ideen und Technik, die das Leben einfacher machen. |
+| 18,6–23,2 s | Nahaufnahme | Und heute – BAUE ICH GENAU DAS. **MIT KI.** · Flow Media AI · Build. Connect. Enable. |
 
 Maik als Kreis unten links (Porträt als Platzhalter → wird durch sein Avatar-Video ersetzt). Querformat auf 9:16 zugeschnitten, langsamer Zoom, s/w, Original-Ton des Labors raus.
 Musik: **„Digital Clouds“ – Mixkit, Stock Music Free License** (`content/musik/frei/digital-clouds.mp3`), ab 29,92 s.
@@ -41,7 +42,7 @@ Was würdest du sofort automatisieren, wenn du könntest? 👇
 **Posten:** Mo–Mi abends 18–20 Uhr, nicht am Workshop-Tag (Mo 26.10.) – also Di 27.10. Am besten mit Avatar-Video.
 
 ## Checkliste
-Teil C §5: Bewegung ab Bild 1 (Roboterarm) + Maik als Kreis ab 0,9 s ✓ · Hook-Text ≤ 1 s ✓ · 18,6 s ✓ · Szenenwechsel alle 4,6 s + Text-Pops dazwischen ✓ · Grund zum Senden ✓ · Text oben, Kreis links (rechts liegen die Instagram-Buttons) ✓ · nichts erfunden: alle Aussagen von Maik, Projektbezeichnung von seiner Portfolio-Seite ✓ · kein Arbeitgeber-Material (Hochschulprojekt) ✓
+Teil C §5: Bewegung ab Bild 1 (Roboterarm) + Maik als Kreis ab 0,9 s ✓ · Hook-Text ≤ 1 s ✓ · 23,2 s ✓ · Szenenwechsel alle 4,6 s + Text-Pops dazwischen ✓ · Grund zum Senden ✓ · Text oben, Kreis links (rechts liegen die Instagram-Buttons) ✓ · nichts erfunden: alle Aussagen von Maik, Projektbezeichnung von seiner Portfolio-Seite ✓ · kein Arbeitgeber-Material (Hochschulprojekt) ✓
 `flow-design` §9: s/w, Oswald/Montserrat/Inter, ein Blau ✓
 
 ## Neu bauen
