@@ -21,7 +21,7 @@ Der Creative Director wählt hier das Thema, `creative-director` regelt Inhalt/H
 | `weg` | **Build in public / mein Weg** | Warum, Ziele, Fehler, Zahlen des Kanals | R003, `content/learnings.md`, Startplan |
 | `lernen` | **Selbst umsetzen (Workshops)** | „Das kannst du auch“ – Befähigung, Mini-Anleitungen | Workshop-Formate (ohne Kundennamen), Karussell-Anleitungen |
 | `kreativ` | **Kreativer Content mit KI** (Maik, 23.10.2026) | Videos, 3D, Animation, Hologramme, Motion Design, Sounddesign, eigene Musik – zeigen, was kreativ mit KI und Code geht | R007 Hologramm, R008 Intro, Flyer-/Reel-Pipeline, MZ.9-Musik (`content/musik/`) |
-| `engineering` | **Engineering mit KI** (Maik, 23.10.2026) | technische Probleme lösen: CAD-Modelle, Bauteile, Berechnungen, Simulationen, Messdaten auswerten, Software für Hardware | nur eigene oder klar als Demo gekennzeichnete Beispiele – nie Arbeitgeber-Projekte |
+| `engineering` | **Engineering mit KI** (Maik, 23.10.2026) | technische Probleme lösen: CAD-Modelle, Bauteile, Berechnungen, Simulationen, Messdaten auswerten, Software für Hardware | nur eigene oder klar als Demo gekennzeichnete Beispiele – nie Arbeitgeber-Projekte · Robotik-/Automations-Videos aus dem Studium (§7) |
 
 Weitere Säulen nur nach Maiks OK ergänzen.
 
@@ -76,3 +76,19 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | 23.10.2026 | R003/R004 | `weg` / `social` | Reel (Avatar, in Arbeit) | Mein Warum · So entsteht mein Content | – |
 | 19.10.2026 | R002 | `tools` | Reel | Flow Board | `opener = avatar` |
 | 18.10.2026 | R001 | `web` | Reel | Websites | – |
+
+## 7. Archiv: eigenes Video- und Fotomaterial (Maik, 25.10.2026)
+Für Reels zu **Automatisierung, Robotik, Messtechnik und „mein Weg“** darf der Creative Director dieses Material jederzeit selbst laden und verwenden (Maik: „Wenn ich Automation-Videos mache, kannst du auf diese Videos zugreifen“). Quelle ist Maiks Portfolio-Seite https://maikzs.wixsite.com/maikzschach (Galerie). Download direkt per `curl` (öffentlich, 1080p):
+`https://video.wixstatic.com/video/97c2a9_<ID>/1080p/mp4/file.mp4` (bei 404: `720p` oder `480p`) · Fotos: `https://static.wixstatic.com/media/97c2a9_<ID>~mv2.jpg`
+
+| ID | Was | Länge/Format | Schon genutzt | Darf |
+|---|---|---|---|---|
+| `8f2b5d9c6b914d0d865917d1a6e3c17b` (Video) | Roboterarm (DENSO) im Labor, Weitwinkel + Nah – Studienprojekt als SHK: robotergesteuerter Teststand zur Zugkraftmessung chirurgischer Meshes (Hochschule Hamm-Lippstadt) | 31 s, 1920×1080 | R012 | ✓ |
+| `772be53dec504fd7920a7fa89d4fa60c` (Video) | gleicher Teststand: Roboter zieht das Netz (Nahaufnahme) | 65 s, 1920×1080 | R013 | ✓ |
+| `2297ff977a9d426bb597b156b88d0d1c` (Video) | Bildschirm der Messsoftware (LabVIEW „Zugversuch 2.0“, 2017): Kraftkurve live + Kamera aufs Netz | 60 s, 1920×1080 | R014 | ✓ |
+| `2e519d1743fc44f2b68540e80308ab9c` (Video) | Hobbyprojekt: selbst gebauter Staubroboter (Arduino) fährt durch die Wohnung | 22 s, 480×640 (hochkant, niedrige Auflösung) | – | ✓ |
+| `bdb2c460b41a460b8d03c4d57a829f7c` (Foto) | Maik im Labor vor dem Roboterarm (Screenshot mit Galerie-Pfeilen, 1080×752); vorbereitet als `content/reels/R012-roboterarm/img/maik_roboter.jpg` (Hochformat, Hintergrund-Gesichter weichgezeichnet) | Foto | R012 | ✓ (andere Personen immer weichzeichnen) |
+| `199781dd251c4081879ba74ee8b1f6c2` (Foto) | Maik mit HoloLens (SHK-Projekt: medizinische Anwendungen mit Augmented Reality) | Foto | – | ✓ |
+| `9d4dfd6c29c44bda8758c80c695c2e4e`, `4aea96b845c94970a7b3db478a061ddb` (Videos) | Bachelorarbeit Olympus, Praxissemester Dräger | – | – | **✗ Arbeitgeber-Material – nicht verwenden** |
+
+Weitere SHK-/Hobbyprojekte auf der Seite (nur Fotos): IoT-Lungentrainer, Bruxismus-Diagnostik, polarimetrischer Kohlenhydrat-Sensor. Format-Vorlage: R012–R014 (`build.py`: 9:16-Ausschnitt oder Querformat-Karte, Text oben, Maik als Kreis unten links, freie Musik im Takt). Aussagen nur so, wie sie auf der Portfolio-Seite oder von Maik stehen – keine Messwerte oder Leistungen dazudichten.
