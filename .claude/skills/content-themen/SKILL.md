@@ -61,6 +61,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 25.10.2026 | P002 | `weg` / `design` | Einzelpost + Story | „Hey, ich bin Maik.“ – Foto im Sakko, Build · Connect · Enable (Vorstellungs-Post zum Anpinnen) | `format = intro-post` |
 | 25.10.2026 | R014 | `engineering` | Reel | „So sieht Zugkraft aus“ – Live-Messkurve + Kamera des Teststands (Robotik-Reihe Teil 3) | `format = screen-cards` |
 | 25.10.2026 | R013 | `engineering` / `weg` | Reel | „Was macht ein Roboter mit einem OP-Netz?“ – Zugversuch (Robotik-Reihe Teil 2) | `hook = frage` |
 | 25.10.2026 | R012 | `weg` / `engineering` | Reel | „Hier hat es angefangen“ – Roboterarm aus Maiks Studienprojekt (v1, Avatar-Video folgt) | `format = origin-story` |
