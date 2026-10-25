@@ -44,3 +44,4 @@ Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 | `pop-track-03.mp3` | „Pop Track 03“, Mixkit – Stock Music Free License (320 kbps) | energiegeladen, Maker/Tech-Demos; ~109 BPM, voll ab ~9 s; R015 |
 | `driving-ambition.mp3` | „Driving Ambition“, Mixkit – Stock Music Free License (256 kbps) | motivierend, Erklärer/Pipelines; ~99 BPM, voll ab ~39 s; R016 |
 | `reaching-out.mp3` | „Reaching Out“, Mixkit – Stock Music Free License (256 kbps) | ruhig-treibend, Erklärer; ~117 BPM, gleichmäßig; R017 |
+| `aruba.mp3` | „Aruba“, Mixkit – Stock Music Free License (256 kbps) | Lounge/Beach, Bar, Sommer; ~80 BPM (161 halbiert), ab ~12 s; R018 |

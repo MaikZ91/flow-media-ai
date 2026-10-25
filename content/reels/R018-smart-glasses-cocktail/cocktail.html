@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+canvas{position:absolute;inset:0}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,11,11,.85) 0%,rgba(11,11,11,.3) 24%,rgba(11,11,11,0) 38%,rgba(11,11,11,0) 76%,rgba(11,11,11,.5) 100%)}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:20}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.logo{position:absolute;left:76px;top:110px;width:170px;z-index:10}
+.konz{position:absolute;left:280px;top:118px;font:600 20px Montserrat;letter-spacing:.2em;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:6px 14px;z-index:10}
+.av{position:absolute;right:56px;top:84px;width:230px;z-index:10;opacity:0}
+.txt{position:absolute;left:76px;right:76px;top:300px;z-index:12}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:16px;font:700 108px/.94 Oswald;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.s{margin-top:22px;font:400 38px/1.35 Inter;color:#e6e6e6;text-shadow:0 3px 14px rgba(0,0,0,.6)}
+.b{color:var(--blue)}
+/* HUD (what you see through the glasses) */
+.hud{position:absolute;inset:0;z-index:15;opacity:0;pointer-events:none}
+.hud .frame{position:absolute;left:40px;right:40px;top:220px;bottom:300px;border-radius:60px;box-shadow:inset 0 0 120px rgba(47,91,255,.25);border:2px solid rgba(47,91,255,.35)}
+.hud .panel{position:absolute;left:90px;top:280px;width:640px;padding:30px 36px;border-radius:26px;background:rgba(8,12,30,.55);border:1.5px solid rgba(120,150,255,.45);backdrop-filter:blur(4px)}
+.hud .step{font:500 26px 'JetBrains Mono',monospace;color:#9fb4ff;letter-spacing:.06em}
+.hud .ins{margin-top:12px;font:700 84px/.95 Oswald;text-transform:uppercase}
+.hud .sub{margin-top:12px;font:400 30px Inter;color:#d7defa}
+.hud .ring{position:absolute;right:90px;top:300px;width:240px;height:240px}
+.hud .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hud .ring .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;font:700 70px/1 Oswald}
+.hud .ring .val small{font:500 22px Montserrat;letter-spacing:.14em;color:#9fb4ff;margin-top:6px}
+.hud .voice{position:absolute;left:90px;bottom:340px;display:flex;align-items:center;gap:20px;padding:22px 30px;border-radius:40px;background:rgba(8,12,30,.55);border:1.5px solid rgba(120,150,255,.4)}
+.hud .voice .w{display:flex;gap:6px;align-items:center;height:40px}
+.hud .voice .w i{display:block;width:6px;border-radius:3px;background:#9fb4ff}
+.hud .voice span{font:400 30px Inter;color:#e8ecff}
+.hud .rec{position:absolute;right:90px;bottom:350px;display:flex;align-items:center;gap:12px;font:600 26px Montserrat;letter-spacing:.14em}
+.hud .rec i{width:20px;height:20px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 16px #ff3b3b}
+.hud .steps{position:absolute;left:90px;right:90px;top:240px;display:flex;gap:10px}
+.hud .steps i{flex:1;height:6px;border-radius:3px;background:rgba(159,180,255,.25)}
+.hud .steps i.on{background:#9fb4ff}
+/* feature list */
+.feat{position:absolute;left:76px;right:76px;top:1080px;z-index:12;opacity:0}
+.feat div{display:flex;align-items:center;gap:26px;padding:24px 28px;margin-bottom:16px;border-radius:22px;background:rgba(11,11,11,.72);border:1.5px solid rgba(255,255,255,.14);opacity:0}
+.feat b{display:inline-flex;width:66px;height:66px;border-radius:50%;background:var(--blue);align-items:center;justify-content:center;font:700 30px Oswald;flex:none}
+.feat span{font:600 40px Inter}.feat small{display:block;font:400 28px Inter;color:#cfcfcf;margin-top:4px}
+.cta{position:absolute;left:76px;right:76px;top:1560px;font:500 36px Inter;z-index:12;opacity:0;text-shadow:0 3px 14px rgba(0,0,0,.7)}
+</style>
+<script type="importmap">{"imports":{"three":"./three/build/three.module.js","three/addons/":"./three/examples/jsm/"}}</script>
+<script>
+window.BEAT = 0.7442;   // 2 beats of "Aruba" (Mixkit), grid from 11.91 s
+window.SCENES = [["hook",0,5],["problem",5,8],["ice",8,12],["vodka",12,16],["orange",16,21],["cran",21,25],["garnish",25,28],["features",28,33],["end",33,38]];
+window.TOTAL = 38 * window.BEAT;
+window.TXT = {
+  hook: ["Produktidee · Smart Glasses", "Cocktails mixen.<br><span class='b'>Hände frei.</span>", ""],
+  problem: ["Das Problem", "Rezept am Handy?<br><span class='b'>Hände voll.</span>", ""],
+  features: ["So funktioniert's", "Die Brille<br><span class='b'>führt dich.</span>", ""],
+  end: ["Konzept · Flow Media AI", "Jeder mixt<br><span class='b'>wie ein Profi.</span>", ""],
+};
+window.HUD = {   // step, instruction, sub, target cl, voice line
+  ice: ["SCHRITT 1 / 5", "Glas mit Eis", "Highball bis oben füllen", 0, "„Fülle das Glas mit Eis.“"],
+  vodka: ["SCHRITT 2 / 5", "4 cl Wodka", "Ich zähle mit – stopp bei 4.", 4, "„Jetzt 4 cl Wodka.“"],
+  orange: ["SCHRITT 3 / 5", "Pfirsich + Orange", "2 cl Pfirsichlikör · 4 cl Orangensaft", 6, "„Pfirsichlikör, dann Orangensaft.“"],
+  cran: ["SCHRITT 4 / 5", "4 cl Cranberry", "Langsam – für den Sunset-Effekt", 4, "„Cranberry langsam einlaufen lassen.“"],
+  garnish: ["SCHRITT 5 / 5", "Fertig.", "Orangenscheibe an den Rand · Sex on the Beach", 0, "„Perfekt. Video ist gespeichert.“"],
+};
+</script>
+</head><body>
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="shade" id="shade"></div>
+<div class="prog"><i id="prog"></i></div>
+<img class="logo" src="logo_flow.png" alt=""><div class="konz">KONZEPT</div>
+<img class="av" id="av" src="img/avatar_circle.png" alt="">
+<div class="txt" id="txt"><div class="k" id="k"></div><div class="h" id="h"></div><div class="s" id="s"></div></div>
+<div class="hud" id="hud">
+  <div class="frame"></div>
+  <div class="steps" id="steps"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="panel"><div class="step" id="hs"></div><div class="ins" id="hi"></div><div class="sub" id="hsub"></div></div>
+  <div class="ring" id="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="rgba(8,12,30,.55)" stroke="rgba(159,180,255,.25)" stroke-width="6"/><circle id="rc" cx="50" cy="50" r="44" fill="none" stroke="#2F5BFF" stroke-width="6" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><div class="val"><span id="rv">0</span><small>CL</small></div></div>
+  <div class="voice"><div class="w" id="wave"></div><span id="hv"></span></div>
+  <div class="rec"><i id="recdot"></i>REC</div>
+</div>
+<div class="feat" id="feat">
+  <div><b>01</b><span>Anzeige im Display<small>Schritt, Menge, Timing – im Blickfeld</small></span></div>
+  <div><b>02</b><span>Ansage im Ohr<small>Die Brille sagt dir, was als Nächstes kommt</small></span></div>
+  <div><b>03</b><span>Kamera filmt mit<small>erkennt, wie viel schon im Glas ist</small></span></div>
+</div>
+<div class="cta" id="cta">Würdest du sie aufsetzen? 🍹</div>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+const B = window.BEAT, SC = window.SCENES;
+const R = new THREE.WebGLRenderer({ canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true });
+R.setPixelRatio(1); R.setSize(1080, 1920, false); R.outputColorSpace = THREE.SRGBColorSpace;
+R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.15; R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+const S = new THREE.Scene(); S.background = new THREE.Color(0x0c0a09);
+S.environment = new THREE.PMREMGenerator(R).fromScene(new RoomEnvironment(), 0.04).texture;
+const cam = new THREE.PerspectiveCamera(38, 1080 / 1920, 0.5, 2000);
+const key = new THREE.SpotLight(0xffe2c4, 900, 0, Math.PI / 6, 0.5, 1.6); key.position.set(-18, 60, 30); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0005; S.add(key); key.target.position.set(0, 0, 0); S.add(key.target);
+const rim = new THREE.DirectionalLight(0x8fa8ff, 1.4); rim.position.set(30, 20, -40); S.add(rim);
+S.add(new THREE.HemisphereLight(0xffe6cc, 0x0a0806, 0.35));
+// bokeh lights in the back bar
+const bok = new THREE.Group(); S.add(bok);
+const bokTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.6, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c) })();
+let seed = 3; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+for (let i = 0; i < 46; i++) { const warm = rnd() > .25; const m = new THREE.SpriteMaterial({ map: bokTex, color: warm ? new THREE.Color().setHSL(.07 + rnd() * .05, .9, .55) : new THREE.Color(0x4a6bff), transparent: true, opacity: .25 + rnd() * .35, depthWrite: false, blending: THREE.AdditiveBlending }); const s = new THREE.Sprite(m); const sc = 4 + rnd() * 10; s.scale.set(sc, sc, 1); s.position.set((rnd() - .5) * 160, 8 + rnd() * 70, -70 - rnd() * 60); bok.add(s) }
+// bar counter
+const M = {
+  counter: new THREE.MeshStandardMaterial({ color: 0x141210, roughness: .22, metalness: .3 }),
+  glass: new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: .02, metalness: 0, transparent: true, opacity: .18, clearcoat: 1, clearcoatRoughness: .02, side: THREE.DoubleSide, depthWrite: false }),
+  ice: new THREE.MeshPhysicalMaterial({ color: 0xeaf4ff, roughness: .12, metalness: 0, transparent: true, opacity: .55, clearcoat: 1 }),
+  frame: new THREE.MeshStandardMaterial({ color: 0x111214, roughness: .35, metalness: .4 }),
+  lens: new THREE.MeshPhysicalMaterial({ color: 0x6f8cff, roughness: .02, metalness: .3, transparent: true, opacity: .45, clearcoat: 1, side: THREE.DoubleSide, envMapIntensity: 2.5 }),
+  glow: new THREE.MeshBasicMaterial({ color: 0x2f5bff }),
+};
+const counter = new THREE.Mesh(new RoundedBoxGeometry(400, 10, 120, 4, 1.5), M.counter); counter.position.set(0, -5, -20); counter.receiveShadow = true; S.add(counter);
+const edge = new THREE.Mesh(new THREE.BoxGeometry(400, .4, .4), new THREE.MeshBasicMaterial({ color: 0x2f5bff })); edge.position.set(0, 0, 40); S.add(edge);
+// highball glass (lathe)
+const GR = 3.6, GH = 14;
+const prof = [[0, 0], [GR - .2, 0], [GR, .3], [GR, GH], [GR - .25, GH], [GR - .25, .9], [0, .9]].map(p => new THREE.Vector2(p[0], p[1]));
+const glass = new THREE.Mesh(new THREE.LatheGeometry(prof, 64), M.glass); glass.castShadow = true; S.add(glass);
+// liquid layers
+const liq = (col, op) => new THREE.Mesh(new THREE.CylinderGeometry(GR - .32, GR - .38, 1, 48), new THREE.MeshPhysicalMaterial({ color: col, roughness: .1, transparent: true, opacity: op, clearcoat: .6, emissive: col, emissiveIntensity: .12 }));
+const L1 = liq(0xf0e6c8, .35), L2 = liq(0xff8a1c, .88), L3 = liq(0xc4102c, .9); [L1, L2, L3].forEach(l => { l.visible = false; S.add(l) });
+function setLayer(m, y0, h) { m.visible = h > .02; m.scale.y = Math.max(h, .001); m.position.y = y0 + h / 2 }
+// ice cubes
+const ices = []; for (let i = 0; i < 6; i++) { const c = new THREE.Mesh(new RoundedBoxGeometry(2.6, 2.6, 2.6, 3, .45), M.ice); c.castShadow = true; c.userData = { x: (i % 2 ? 1 : -1) * 1.2 + (rnd() - .5) * .4, z: ((i >> 1) % 2 ? 1 : -1) * 1 + (rnd() - .5) * .4, y: 2.2 + Math.floor(i / 2) * 2.7, r: rnd() * 6 }; S.add(c); ices.push(c) }
+// bottle + stream
+const bottle = new THREE.Group(); S.add(bottle);
+const bprof = [[0, 0], [3.2, 0], [3.4, .4], [3.4, 15], [3.1, 17], [1.2, 20], [1, 24], [1.1, 24.6], [0, 24.6]].map(p => new THREE.Vector2(p[0], p[1]));
+const bMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: .03, transparent: true, opacity: .35, clearcoat: 1, depthWrite: false });
+const bBody = new THREE.Mesh(new THREE.LatheGeometry(bprof, 48), bMat); bottle.add(bBody);
+const bLiq = new THREE.Mesh(new THREE.CylinderGeometry(3.1, 3.1, 12, 40), new THREE.MeshPhysicalMaterial({ color: 0xf0f0f0, transparent: true, opacity: .4 })); bLiq.position.y = 7; bottle.add(bLiq);
+const label = new THREE.Mesh(new THREE.CylinderGeometry(3.45, 3.45, 5, 48, 1, true), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: .6 })); label.position.y = 8; bottle.add(label);
+const pourer = new THREE.Mesh(new THREE.CylinderGeometry(.35, .6, 2.2, 16), new THREE.MeshStandardMaterial({ color: 0xbfc4ca, metalness: 1, roughness: .2 })); pourer.position.y = 25.6; bottle.add(pourer);
+const stream = new THREE.Mesh(new THREE.CylinderGeometry(.22, .3, 1, 12), new THREE.MeshPhysicalMaterial({ color: 0xf0e6c8, transparent: true, opacity: .8, clearcoat: 1 })); S.add(stream);
+// orange slice
+const slice = new THREE.Group(); S.add(slice);
+const peel = new THREE.Mesh(new THREE.CylinderGeometry(2.6, 2.6, .5, 40), new THREE.MeshStandardMaterial({ color: 0xff8a1c, roughness: .5 })); slice.add(peel);
+const pulp = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 2.3, .52, 40), new THREE.MeshStandardMaterial({ color: 0xffb347, roughness: .4, emissive: 0x552200, emissiveIntensity: .2 })); slice.add(pulp);
+for (let i = 0; i < 8; i++) { const sp = new THREE.Mesh(new THREE.BoxGeometry(2.2, .54, .08), new THREE.MeshStandardMaterial({ color: 0xfff1d6 })); sp.rotation.y = i / 8 * Math.PI; slice.add(sp) }
+slice.rotation.set(Math.PI / 2, 0, 0.3); slice.position.set(GR - .2, GH - .6, 0);
+// smart glasses
+const G = new THREE.Group(); S.add(G);
+const fr = (w, h, d) => { const m = new THREE.Mesh(new RoundedBoxGeometry(w, h, d, 3, Math.min(w, h, d) * .45), M.frame); m.castShadow = true; return m };
+function rr(w, h, r) { const x = -w / 2, y = -h / 2, sh = new THREE.Shape(); sh.moveTo(x + r, y); sh.lineTo(x + w - r, y); sh.quadraticCurveTo(x + w, y, x + w, y + r); sh.lineTo(x + w, y + h - r); sh.quadraticCurveTo(x + w, y + h, x + w - r, y + h); sh.lineTo(x + r, y + h); sh.quadraticCurveTo(x, y + h, x, y + h - r); sh.lineTo(x, y + r); sh.quadraticCurveTo(x, y, x + r, y); return sh }
+for (const s of [-1, 1]) {
+  const sh = rr(5.8, 4.4, 1.6); sh.holes.push(rr(4.7, 3.3, 1.1));
+  const rimO = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: .55, bevelEnabled: true, bevelSize: .12, bevelThickness: .12, bevelSegments: 3, curveSegments: 16 }), M.frame); rimO.castShadow = true; rimO.position.set(s * 3.35, 0, -.27); G.add(rimO);
+  const lens = new THREE.Mesh(new THREE.ShapeGeometry(rr(4.75, 3.35, 1.1), 16), M.lens); lens.position.set(s * 3.35, 0, .05); G.add(lens);
+  const temple = fr(.45, .65, 13); temple.position.set(s * 6.15, .9, -6.6); G.add(temple);
+  const hinge = fr(.9, 1.1, 1.2); hinge.position.set(s * 6.1, .9, -.2); G.add(hinge);
+}
+const bridge = fr(1.2, .5, .5); bridge.position.set(0, .9, 0); G.add(bridge);
+const camDot = new THREE.Mesh(new THREE.CylinderGeometry(.42, .42, .3, 24), new THREE.MeshStandardMaterial({ color: 0x050505, roughness: .1, metalness: .8 })); camDot.rotation.x = Math.PI / 2; camDot.position.set(-6.1, 1.4, .45); G.add(camDot);
+const camRing = new THREE.Mesh(new THREE.TorusGeometry(.5, .08, 8, 24), M.glow); camRing.position.set(-6.1, 1.4, .55); G.add(camRing);
+const prism = new THREE.Mesh(new THREE.BoxGeometry(1.4, .9, .5), new THREE.MeshPhysicalMaterial({ color: 0x2f5bff, emissive: 0x2f5bff, emissiveIntensity: 1.2, transparent: true, opacity: .85 })); prism.position.set(4.6, 1.2, .6); G.add(prism);
+const speaker = fr(.6, .9, 2.2); speaker.position.set(6.2, .3, -9); G.add(speaker);
+// timeline
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const POV = [V(0, 44, 30), V(0, 41, 27), V(0, 5, 0), V(0, 5, 0)];
+const CAM = {
+  hook: [V(-34, 24, 58), V(26, 22, 56), V(3, 10, 0), V(3, 10, 0)],
+  problem: [V(20, 24, 56), V(0, 22, 30), V(2, 12, 3), V(0, 12, 3)],
+  ice: POV, vodka: POV, orange: POV, cran: POV, garnish: [V(0, 38, 34), V(6, 34, 34), V(0, 8, 0), V(0, 8, 0)],
+  features: [V(34, 22, 58), V(-20, 22, 58), V(-2, 11, 0), V(-2, 11, 0)],
+  end: [V(-14, 18, 60), V(12, 16, 54), V(-1, 7, 0), V(-1, 7, 0)],
+};
+const HUDS = ["ice", "vodka", "orange", "cran", "garnish"];
+window.DRAW = t => {
+  const kb = t / B; let cur = SC[SC.length - 1]; for (const s of SC) if (kb >= s[1] && kb < s[2]) { cur = s; break }
+  const name = cur[0], k = (kb - cur[1]) / (cur[2] - cur[1]), lk = kb - cur[1];
+  const c = CAM[name], e = eio(k); cam.position.lerpVectors(c[0], c[1], e); cam.lookAt(new THREE.Vector3().lerpVectors(c[2], c[3], e));
+  if (HUDS.includes(name)) { cam.position.x += Math.sin(t * 1.3) * .25; cam.position.y += Math.sin(t * 1.7) * .15 }   // subtle head motion
+  // drink state by scene
+  const at = n => SC.findIndex(s => s[0] === n), si = SC.indexOf(cur), past = n => si > at(n), now = n => name === n;
+  const iceK = past('ice') ? 1 : now('ice') ? eo((lk - .3) / 2.4) : (name === 'hook' || name === 'features' || name === 'end') ? 1 : 0;
+  ices.forEach((c2, i) => { const d = c2.userData, a = cl(iceK * 6 - i); c2.visible = a > 0; c2.position.set(d.x, d.y + (1 - eo(a)) * 18, d.z); c2.rotation.set(d.r, d.r * .7 + (1 - a) * 2, d.r * .3) });
+  const full = name === 'hook' || name === 'features' || name === 'end' || past('cran');
+  let v1 = 0, v2 = 0, v3 = 0, pour = 0, pourCol = 0xf0e6c8;
+  if (full) { v1 = 0; v2 = 6.2; v3 = 3.6 }
+  else {
+    if (past('vodka') || now('vodka')) v1 = now('vodka') ? 2.6 * eio((lk - .5) / 2.6) : 2.6;
+    if (now('vodka')) { pour = cl((lk - .3) / .3) * (1 - cl((lk - 3.2) / .3)); pourCol = 0xf0e6c8 }
+    if (past('orange') || now('orange')) { const f = now('orange') ? eio((lk - .5) / 3.6) : 1; v2 = (2.6 + 3.6) * f; v1 = 2.6 * (1 - f) }
+    if (now('orange')) { pour = cl((lk - .3) / .3) * (1 - cl((lk - 4.2) / .3)); pourCol = 0xff8a1c }
+    if (now('cran')) { v3 = 3.6 * eio((lk - .5) / 2.8); pour = cl((lk - .3) / .3) * (1 - cl((lk - 3.2) / .3)); pourCol = 0xc4102c }
+  }
+  const base = .9; setLayer(L3, base, v3); setLayer(L2, base + v3, v2); setLayer(L1, base + v3 + v2, v1);
+  // bottle pouring
+  bottle.visible = pour > 0.01; stream.visible = pour > .5;
+  if (bottle.visible) {
+    const surf = base + v1 + v2 + v3; bottle.rotation.set(0, 0, 1.95 * eo(pour)); bottle.position.set(-6 - 10 * (1 - eo(pour)), 16 + 6 * (1 - eo(pour)), 0);
+    const tipW = new THREE.Vector3(0, 26.6, 0).applyEuler(bottle.rotation).add(bottle.position);
+    const top = tipW.clone(), bot = new THREE.Vector3(.3, surf, 0); const len = top.distanceTo(bot);
+    stream.position.copy(top.clone().add(bot).multiplyScalar(.5)); stream.scale.set(1, len, 1); stream.lookAt(bot); stream.rotateX(Math.PI / 2); stream.material.color.setHex(pourCol);
+    bLiq.material.color.setHex(pourCol); bLiq.material.opacity = pourCol === 0xf0e6c8 ? .35 : .85;
+  }
+  slice.visible = full && (name !== 'cran') || now('garnish'); if (now('garnish')) { const a = eo((lk - .2) / .8); slice.position.set(GR - .2, GH - .6 + (1 - a) * 8, 0) } else slice.position.set(GR - .2, GH - .6, 0);
+  // glasses: hero in hook/features/end, flies into the camera in "problem"
+  G.visible = name === 'hook' || name === 'problem' || name === 'features' || name === 'end';
+  if (name === 'hook') { G.position.set(1.5, 4.2, 15); G.rotation.set(-.18, -.25 + Math.sin(t * .8) * .3, .03) }
+  if (name === 'problem') { const a = eio(k); const p = cam.position; G.position.set(1.5 + (p.x - 1.5) * a, 4.2 + (p.y - 1.2 - 4.2) * a, 15 + (p.z - 5 - 15) * a); G.rotation.set(-.18 * (1 - a), (-.25 + Math.sin(5 * B * .8) * .3) * (1 - a), 0) }
+  if (name === 'features') { G.position.set(0, 16, 12); G.rotation.set(-.1, Math.sin(t * .8) * .35, 0) }
+  if (name === 'end') { G.position.set(-1, 4, 15); G.rotation.set(-.18, .25 + Math.sin(t * .8) * .2, .03) }
+  prism.material.emissiveIntensity = 1 + .5 * Math.sin(t * 4); camRing.material.color.setHSL(.63, 1, .5 + .1 * Math.sin(t * 6));
+  R.render(S, cam);
+  // overlays
+  const isHud = HUDS.includes(name);
+  document.getElementById('prog').style.width = Math.min(100, t / window.TOTAL * 100) + '%';
+  document.getElementById('av').style.opacity = name === 'hook' ? eo((kb - 1) / .6) : isHud ? .0 : 1;
+  const T = window.TXT[name]; const tx = document.getElementById('txt');
+  if (T) { document.getElementById('k').innerHTML = T[0]; document.getElementById('h').innerHTML = T[1]; document.getElementById('s').innerHTML = T[2]; const a = eo(lk / .5); tx.style.opacity = a; tx.style.transform = `translateY(${(1 - a) * 24}px)` } else tx.style.opacity = 0;
+  document.getElementById('shade').style.opacity = isHud ? .35 : 1;
+  const hud = document.getElementById('hud'); hud.style.opacity = isHud ? eo(lk / .35) : 0;
+  if (isHud) {
+    const H = window.HUD[name], idx = HUDS.indexOf(name);
+    document.getElementById('hs').textContent = H[0]; document.getElementById('hi').innerHTML = H[1]; document.getElementById('hsub').textContent = H[2];
+    [...document.getElementById('steps').children].forEach((el, i) => el.className = i <= idx ? 'on' : '');
+    const ring = document.getElementById('ring'); ring.style.opacity = H[3] ? 1 : 0;
+    const f = name === 'vodka' ? eio((lk - .5) / 2.6) : name === 'orange' ? eio((lk - .5) / 3.6) : name === 'cran' ? eio((lk - .5) / 2.8) : 0;
+    document.getElementById('rc').setAttribute('stroke-dashoffset', 276.5 * (1 - f)); document.getElementById('rv').textContent = (H[3] * f).toFixed(f < 1 ? 1 : 0).replace('.', ',');
+    const vt = H[4], n = Math.floor(cl(lk / 1.6) * vt.length); document.getElementById('hv').textContent = vt.slice(0, n);
+    document.getElementById('wave').innerHTML = Array.from({ length: 9 }, (_, i) => `<i style="height:${8 + Math.abs(Math.sin(t * 9 + i * 1.3)) * (n < vt.length ? 30 : 6)}px"></i>`).join('');
+    document.getElementById('recdot').style.opacity = .5 + .5 * Math.sin(t * 6);
+  }
+  const feat = document.getElementById('feat'); feat.style.opacity = name === 'features' ? 1 : 0;
+  [...feat.children].forEach((el, i) => { const a = name === 'features' ? eo((lk - .4 - i * 1.1) / .5) : 0; el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -60}px)` });
+  document.getElementById('cta').style.opacity = name === 'end' ? eo((lk - 2) / .5) : 0;
+};
+window.READY = true;
+</script>
+</body></html>
