@@ -1,0 +1,25 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Kick,Montserrat Medium,30,&H00E6E6E6,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,6,0,1,0,2,7,76,76,250,1
+Style: Big,Oswald,112,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,1,0,0,0,100,100,0,0,1,0,6,7,76,76,330,1
+Style: Small,Inter,40,&H00E6E6E6,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,0,0,1,0,3,7,76,76,600,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:04.65,Kick,,0,0,0,,{\fad(120,0)}STUDIENPROJEKT · ROBOTIK
+Dialogue: 1,0:00:00.23,0:00:04.65,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}WAS MACHT EIN ROBOTER\N{\c&HFF5B2F&}MIT EINEM OP-NETZ?{\c&HFFFFFF&}
+Dialogue: 1,0:00:04.65,0:00:09.29,Kick,,0,0,0,,{\fad(120,0)}ZUGVERSUCH
+Dialogue: 1,0:00:04.88,0:00:09.29,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}ER ZIEHT.\N{\c&HFF5B2F&}IMMER WIEDER.{\c&HFFFFFF&}
+Dialogue: 1,0:00:06.04,0:00:09.29,Small,,0,0,0,,{\fad(200,0)}Zugkraftmessung an chirurgischen Netzen
+Dialogue: 1,0:00:09.29,0:00:13.94,Kick,,0,0,0,,{\fad(120,0)}MEIN TESTSTAND
+Dialogue: 1,0:00:09.52,0:00:13.94,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}AUTOMATISIERT.\N{\c&HFF5B2F&}STATT VON HAND.{\c&HFFFFFF&}
+Dialogue: 1,0:00:10.68,0:00:13.94,Small,,0,0,0,,{\fad(200,0)}Genau das hat mich damals gepackt.
+Dialogue: 1,0:00:13.94,0:00:18.58,Kick,,0,0,0,,{\fad(120,0)}UND HEUTE
+Dialogue: 1,0:00:14.17,0:00:18.58,Big,,0,0,0,,{\fad(150,0)\fscx94\fscy94\t(0,140,\fscx100\fscy100)}AUTOMATISIERE ICH\N{\c&HFF5B2F&}MIT KI.{\c&HFFFFFF&}
+Dialogue: 1,0:00:15.33,0:00:18.58,Small,,0,0,0,,{\fad(200,0)}Flow Media AI · Build. Connect. Enable.

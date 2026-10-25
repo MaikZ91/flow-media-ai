@@ -61,6 +61,8 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 25.10.2026 | R014 | `engineering` | Reel | „So sieht Zugkraft aus“ – Live-Messkurve + Kamera des Teststands (Robotik-Reihe Teil 3) | `format = screen-cards` |
+| 25.10.2026 | R013 | `engineering` / `weg` | Reel | „Was macht ein Roboter mit einem OP-Netz?“ – Zugversuch (Robotik-Reihe Teil 2) | `hook = frage` |
 | 25.10.2026 | R012 | `weg` / `engineering` | Reel | „Hier hat es angefangen“ – Roboterarm aus Maiks Studienprojekt (v1, Avatar-Video folgt) | `format = origin-story` |
 | 24.10.2026 | R011 | `weg` | Reel (Selfie-Schnitt) | „Erste Aufträge – vor dem ersten Coaching-Tag“ – aus Maiks Rohvideo, Workshop-CTA | `format = selfie-schnitt` |
 | 24.10.2026 | R010 | `weg` / `design` | Reel | Community-Reel „Gründer. Selbstständige. Macher.“ – Community-Plakat ab Bild 1, Themen, Netzwerk-Effekt, Orte (v2), auf Mixkit „Uplifting Bass“ | `hook = community-bild`, `musik = frei` |
