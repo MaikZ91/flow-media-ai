@@ -68,6 +68,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | 25.10.2026 | R016 | `agentic` | Reel (Pipeline) | „Ich gebe keine Ideen mehr vor.“ – Social-Media-Pipeline in 8 Stationen (Routine → Thema → Idee → Look → Bauen → Prüfen → Auto-Post → Lernen) | `format = pipeline-erklaerer` |
 | 25.10.2026 | R015 | `engineering` / `ki` | Reel (3D-Animation) | „Build your own Kleberoboter für 420 €“ – 3D-Drucker druckt eigene Halterung, Claude Code schreibt den Pfad (ohne Arbeitsbezug) | `format = 3d-animation` |
 | 25.10.2026 | P002 | `weg` / `design` | Einzelpost + Story | „Hey, ich bin Maik.“ – Foto im Sakko, Build · Connect · Enable (Vorstellungs-Post zum Anpinnen) | `format = intro-post` |
+| 25.10.2026 | P003 | `wissen` / `weg` | Karussell (4 Slides) | „Was willst du mit KI bauen?“ – Workshop-Themen 01–10 aus der Community-Umfrage, Abstimmung per Nummer in den Kommentaren | `format = umfrage-karussell` |
 | 25.10.2026 | R014 | `engineering` | Reel | „So sieht Zugkraft aus“ – Live-Messkurve + Kamera des Teststands (Robotik-Reihe Teil 3) | `format = screen-cards` |
 | 25.10.2026 | R013 | `engineering` / `weg` | Reel | „Was macht ein Roboter mit einem OP-Netz?“ – Zugversuch (Robotik-Reihe Teil 2) | `hook = frage` |
 | 25.10.2026 | R012 | `weg` / `engineering` | Reel | „Hier hat es angefangen“ – Roboterarm aus Maiks Studienprojekt (v1, Avatar-Video folgt) | `format = origin-story` |
