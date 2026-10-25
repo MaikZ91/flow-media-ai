@@ -65,6 +65,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - **Vorher/Nachher-Schnitt:** Ausgangslage → Ergebnis, mit Zeitangabe nur, wenn sie stimmt.
 - **Ehrliche Zahl:** eine echte Zahl groß als Hook, dann was dahintersteckt.
 - **Karussell:** für Schritt-für-Schritt-Anleitungen (Saves); erste Folie = Ergebnis, letzte = Frage.
+- **3D-Animation (Maik, 25.10.2026 – „der Ton ist gut, das Reel auch“):** realistische 3D-/CAD-Animation (three.js mit PBR-Licht und Schatten, gerendert per Playwright/SwiftShader) + Text-Story in nummerierten Schritten (01 … 05) + freie Musik in voller Qualität im Takt. Für alles ohne echtes Filmmaterial: Maker-Builds, Automatisierungen als „Maschine“, Tools, die sich zusammenbauen. Bauteile in Flow-Blau als einziger Akzent, sonst dunkel/neutral; kein Markenlogo an Geräten; Maik als Kreis unten links. Ehrlich kennzeichnen („Die Animation zeigt das Prinzip“), nie als echte Aufnahme ausgeben. Vorlage: R015 (`robot.html`, `render.js`). Arbeitsthemen nur als allgemeine Maker-Version, ohne Firma, Produkt oder Ablauf aus dem Job.
 
 # Teil C – Virale Reels
 
