@@ -41,3 +41,4 @@ Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 | `uplifting-bass.mp3` | „Uplifting Bass“, Mixkit – Stock Music Free License (320 kbps) | moderne, positive Reels mit Drop bei ~14,4 s; R010 Community |
 | `digital-clouds.mp3` | „Digital Clouds“, Mixkit – Stock Music Free License (256 kbps) | Technik, Robotik, Automatisierung; ~129 BPM, kräftig ab ~30 s; R012, R013 |
 | `close-up.mp3` | „Close Up“, Mixkit – Stock Music Free License (256 kbps) | Technik, Daten, ruhiger Groove; ~105 BPM; R014 |
+| `pop-track-03.mp3` | „Pop Track 03“, Mixkit – Stock Music Free License (320 kbps) | energiegeladen, Maker/Tech-Demos; ~109 BPM, voll ab ~9 s; R015 |

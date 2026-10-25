@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+canvas{position:absolute;inset:0}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,11,11,.85) 0%,rgba(11,11,11,.35) 26%,rgba(11,11,11,0) 40%,rgba(11,11,11,0) 72%,rgba(11,11,11,.55) 100%)}
+.logo{position:absolute;right:70px;top:150px;width:170px;opacity:.9}
+.txt{position:absolute;left:76px;right:76px;top:240px}
+.k{font:500 30px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:14px;font:700 104px/.94 Oswald;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.s{margin-top:22px;font:400 38px/1.35 Inter;color:#e6e6e6;text-shadow:0 3px 14px rgba(0,0,0,.6)}
+.b{color:var(--blue)}
+.num{color:var(--blue)}
+.av{position:absolute;left:30px;top:1290px;width:400px;opacity:0}
+.term{position:absolute;left:76px;right:76px;top:1150px;height:380px;border-radius:18px;background:rgba(10,12,18,.88);border:1.5px solid rgba(255,255,255,.14);padding:28px 32px;font:400 30px/1.45 'JetBrains Mono',monospace;color:#d8dde8;opacity:0;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.term .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:#3a3f4b;margin-right:8px}
+.term .p{color:var(--blue)}
+.term .c{color:#8a92a6}
+.price{position:absolute;left:76px;right:76px;top:660px;opacity:0;background:rgba(11,11,11,.72);border-radius:18px;padding:6px 30px}
+.row{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid rgba(255,255,255,.18);padding:24px 0}
+.row em{font:500 28px Montserrat;font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#cfcfcf}
+.row strong{font:700 84px/1 Oswald}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18)}
+.prog i{display:block;height:100%;background:#fff;width:0}
+</style>
+<script type="importmap">{"imports":{"three":"./three/build/three.module.js","three/addons/":"./three/examples/jsm/"}}</script>
+</head><body>
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="shade"></div>
+<div class="prog"><i id="prog"></i></div>
+<img class="logo" src="logo_flow.png" alt="">
+<div class="txt"><div class="k" id="k"></div><div class="h" id="h"></div><div class="s" id="s"></div></div>
+<div class="term" id="term"><div style="margin-bottom:18px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div id="tt"></div></div>
+<div class="price" id="price">
+  <div class="row" data-r><em>3D-Drucker + Teile</em><strong>~400 €</strong></div>
+  <div class="row" data-r><em>Claude Code</em><strong>~20 €<span style="font-size:40px">/Monat</span></strong></div>
+  <div class="row" data-r style="border-bottom:2px solid rgba(255,255,255,.18)"><em>Ergebnis</em><strong class="b">Kleberoboter</strong></div>
+</div>
+<img class="av" id="av" src="img/avatar_circle.png" alt="">
+<script>
+window.BEAT = 0.5504;   // "Pop Track 03" (Mixkit), grid from 8.89 s
+window.SCENES = [["hook",0,6],["build",6,14],["print",14,21],["mount",21,27],["path",27,35],["glue",35,42],["price",42,50]];
+window.TOTAL = 50 * window.BEAT;
+const B_ = '<span class="b">', E_ = '</span>';
+window.TXT = {
+  hook:  ["Build your own", "Kleberoboter<br>für "+B_+"420 €?"+E_, ""],
+  build: ["<span class='num'>01</span> · Die Basis", "Ein 3D-Drucker.", "Ein ganz normaler Maker-Drucker."],
+  print: ["<span class='num'>02</span> · Drucken", "Er druckt sein<br>"+B_+"eigenes Teil."+E_, "Die Halterung für den Dosierkopf."],
+  mount: ["<span class='num'>03</span> · Umbauen", "Dosierkopf<br>drauf.", "Mechanik + Spritze mit Kleber."],
+  path:  ["<span class='num'>04</span> · Steuern", "Claude Code<br>"+B_+"schreibt den Pfad."+E_, ""],
+  glue:  ["<span class='num'>05</span> · Kleben", "Eine Raupe.<br>"+B_+"Auf den Millimeter."+E_, "Zum Beispiel: Gehäuse abdichten."],
+  price: ["Build your own", "Dein<br>"+B_+"Kleberoboter."+E_, ""],
+};
+window.TERM = [
+  '<span class="p">❯</span> claude<br>',
+  '<span class="c">&gt; Fahr eine Dichtraupe um den Deckel,</span><br>',
+  '<span class="c">&nbsp;&nbsp;1,5 mm vom Rand, langsam in den Ecken.</span><br>',
+  '<br>',
+  'G1 Z12 F600<br>',
+  'G1 X63.5 Y39.5 F1200<br>',
+  'M42 P1 S255 <span class="c">; Kleber an</span><br>',
+  'G2 X39.5 Y63.5 R6 F300<br>',
+  'G1 X-39.5 F900<br>',
+  '<span class="c">… 214 Zeilen</span><br>',
+];
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+const B = window.BEAT || 0.5;
+const cv = document.getElementById('gl');
+const R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, preserveDrawingBuffer: true });
+R.setPixelRatio(1); R.setSize(1080, 1920, false);
+R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.3;
+R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+const S = new THREE.Scene(); S.background = new THREE.Color(0x0e0f12);
+const pm = new THREE.PMREMGenerator(R); S.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+const cam = new THREE.PerspectiveCamera(38, 1080 / 1920, 1, 5000);
+
+// lights
+const key = new THREE.DirectionalLight(0xffffff, 2.8); key.position.set(-350, 700, 450); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); Object.assign(key.shadow.camera, { left: -500, right: 500, top: 500, bottom: -500, near: 10, far: 2000 }); key.shadow.bias = -0.0004; S.add(key);
+const rim = new THREE.DirectionalLight(0x9fb4ff, 1.2); rim.position.set(500, 300, -500); S.add(rim);
+S.add(new THREE.HemisphereLight(0xffffff, 0x202028, 0.6));
+
+// materials
+const M = {
+  black: new THREE.MeshStandardMaterial({ color: 0x15161a, roughness: .55, metalness: .35 }),
+  alu: new THREE.MeshStandardMaterial({ color: 0x8c9096, roughness: .32, metalness: .9 }),
+  aluDark: new THREE.MeshStandardMaterial({ color: 0x2b2d33, roughness: .45, metalness: .8 }),
+  steel: new THREE.MeshStandardMaterial({ color: 0xc8ccd2, roughness: .18, metalness: 1 }),
+  brass: new THREE.MeshStandardMaterial({ color: 0xc9a050, roughness: .25, metalness: 1 }),
+  bed: new THREE.MeshStandardMaterial({ color: 0x24262b, roughness: .8, metalness: .2 }),
+  blue: new THREE.MeshStandardMaterial({ color: 0x2f5bff, roughness: .5, metalness: 0, emissive: 0x0a1a66, emissiveIntensity: .25 }),
+  white: new THREE.MeshStandardMaterial({ color: 0xe9eaec, roughness: .55, metalness: 0 }),
+  glue: new THREE.MeshPhysicalMaterial({ color: 0xe0b45e, roughness: .06, metalness: 0, clearcoat: 1, clearcoatRoughness: .03, transparent: true, opacity: .95, emissive: 0x3a2400, emissiveIntensity: .25 }),
+  syr: new THREE.MeshPhysicalMaterial({ color: 0xdfe6ee, roughness: .05, metalness: 0, transparent: true, opacity: .35, clearcoat: 1 }),
+  floor: new THREE.MeshStandardMaterial({ color: 0x111215, roughness: .9, metalness: 0 }),
+  glow: new THREE.MeshBasicMaterial({ color: 0x2f5bff }),
+};
+const box = (w, h, d, m, r = 2) => { const g = r > 0 ? new RoundedBoxGeometry(w, h, d, 3, r) : new THREE.BoxGeometry(w, h, d); const o = new THREE.Mesh(g, m); o.castShadow = o.receiveShadow = true; return o };
+const cyl = (r1, r2, h, m, seg = 32) => { const o = new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, h, seg), m); o.castShadow = o.receiveShadow = true; return o };
+// 2040 aluminium extrusion with slots (approximation: core + 4 rails)
+function extrusion(len, axis = 'y') {
+  const g = new THREE.Group();
+  const core = box(20, len, 40, M.alu, 1.2); g.add(core);
+  for (const s of [-1, 1]) { const slot = box(6.5, len + .2, 3, M.aluDark, 0); slot.position.set(0, 0, s * 19); g.add(slot); const slot2 = box(3, len + .2, 6.5, M.aluDark, 0); slot2.position.set(s * 9.6, 0, s * 9); g.add(slot2) }
+  if (axis === 'x') g.rotation.z = Math.PI / 2;
+  return g;
+}
+
+// floor
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), M.floor); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; S.add(floor);
+
+// ---- printer ----
+const P = new THREE.Group(); S.add(P);
+const base = box(420, 70, 380, M.black, 8); base.position.y = 35; P.add(base);
+const screen = box(70, 40, 4, new THREE.MeshStandardMaterial({ color: 0x0b0c10, roughness: .2, metalness: .3, emissive: 0x1a2c7a, emissiveIntensity: .5 }), 3); screen.position.set(130, 38, 192); screen.rotation.x = -0.35; P.add(screen);
+const knob = cyl(9, 9, 10, M.aluDark); knob.rotation.x = Math.PI / 2; knob.position.set(70, 38, 192); P.add(knob);
+// y rail + bed
+const yrail = box(20, 12, 360, M.alu, 1); yrail.position.set(0, 76, 0); P.add(yrail);
+const bed = new THREE.Group(); bed.position.y = 88; P.add(bed);
+const plate = box(250, 6, 250, M.bed, 3); bed.add(plate);
+for (let i = -4; i <= 4; i++) { const l = box(240, .4, .8, new THREE.MeshStandardMaterial({ color: 0x33363d, roughness: .9 }), 0); l.position.set(0, 3.2, i * 27); bed.add(l) }
+const carrierB = box(200, 8, 200, M.aluDark, 2); carrierB.position.y = -8; bed.add(carrierB);
+// uprights + top bar
+const upL = extrusion(430); upL.position.set(-200, 70 + 215, -60); P.add(upL);
+const upR = extrusion(430); upR.position.set(200, 70 + 215, -60); P.add(upR);
+const top = extrusion(420, 'x'); top.position.set(0, 70 + 430 + 10, -60); P.add(top);
+const spool = new THREE.Group(); spool.position.set(0, 560, -60); P.add(spool);
+const sp1 = cyl(80, 80, 6, M.black); sp1.rotation.z = Math.PI / 2; sp1.position.x = -32; spool.add(sp1);
+const sp2 = sp1.clone(); sp2.position.x = 32; spool.add(sp2);
+const fil = cyl(66, 66, 58, new THREE.MeshStandardMaterial({ color: 0x2f5bff, roughness: .6 })); fil.rotation.z = Math.PI / 2; spool.add(fil);
+// z motors + lead screws
+for (const s of [-1, 1]) { const mot = box(42, 42, 42, M.black, 3); mot.position.set(s * 200, 70 + 21, -10); P.add(mot); const ls = cyl(4, 4, 380, M.steel, 12); ls.position.set(s * 200, 70 + 230, -10); P.add(ls) }
+// x gantry (moves in Z height)
+const gantry = new THREE.Group(); P.add(gantry);
+const xbar = extrusion(400, 'x'); xbar.position.set(0, 0, -60); gantry.add(xbar);
+for (const s of [-1, 1]) { const blk = box(50, 60, 60, M.black, 4); blk.position.set(s * 200, 0, -40); gantry.add(blk) }
+const carriage = new THREE.Group(); carriage.position.z = -30; gantry.add(carriage);
+const cbody = box(60, 70, 28, M.black, 5); carriage.add(cbody);
+const fan = cyl(17, 17, 4, M.aluDark); fan.rotation.x = Math.PI / 2; fan.position.set(0, 5, 16); carriage.add(fan);
+const fanG = cyl(12, 12, 4.5, new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1 })); fanG.rotation.x = Math.PI / 2; fanG.position.set(0, 5, 16.5); carriage.add(fanG);
+// hotend (print phase)
+const hotend = new THREE.Group(); carriage.add(hotend);
+const heat = box(22, 12, 18, M.alu, 1.5); heat.position.set(0, -44, 24); hotend.add(heat);
+const nozzle = cyl(5, 1.2, 9, M.brass, 16); nozzle.position.set(0, -54, 24); hotend.add(nozzle);
+const tip = new THREE.Mesh(new THREE.SphereGeometry(1.6, 12, 12), M.glow); tip.position.set(0, -59, 24); hotend.add(tip);
+// dispenser (glue phase): printed blue mount + syringe + needle
+const disp = new THREE.Group(); carriage.add(disp);
+const mount = new THREE.Group(); disp.add(mount);
+const mPlate = box(56, 64, 6, M.blue, 2); mPlate.position.set(0, -10, 18); mount.add(mPlate);
+for (const y of [-2, -34]) { const ring = new THREE.Mesh(new THREE.TorusGeometry(13, 4, 14, 32), M.blue); ring.rotation.x = Math.PI / 2; ring.position.set(0, y, 36); ring.castShadow = true; mount.add(ring) }
+const syringe = new THREE.Group(); syringe.position.set(0, 0, 36); disp.add(syringe);
+const barrel = cyl(10, 10, 74, M.syr); barrel.position.y = -10; syringe.add(barrel);
+const glueIn = cyl(8.6, 8.6, 50, M.glue); glueIn.position.y = -22; syringe.add(glueIn);
+const plunger = cyl(9, 9, 6, M.black); plunger.position.y = 6; syringe.add(plunger);
+const rod = cyl(2.5, 2.5, 40, M.steel, 12); rod.position.y = 28; syringe.add(rod);
+const hub = cyl(5, 3, 8, M.blue, 16); hub.position.y = -51; syringe.add(hub);
+const needle = cyl(.9, .9, 22, M.steel, 10); needle.position.y = -66; syringe.add(needle);
+const tube = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 30, 36), new THREE.Vector3(0, 80, 20), new THREE.Vector3(-60, 140, -20), new THREE.Vector3(-150, 160, -40)]), 40, 3, 8), new THREE.MeshStandardMaterial({ color: 0x1b1d22, roughness: .5 })); disp.add(tube);
+const NEEDLE_TIP = -77;  // y of needle tip in carriage space
+
+// ---- objects on the bed ----
+// printed mount growing on the bed (print phase)
+const printed = new THREE.Group(); printed.position.set(-40, 3, 30); bed.add(printed);
+const pPlate = box(56, 6, 64, M.blue, 1.5); pPlate.position.y = 3; printed.add(pPlate);
+const pRing = new THREE.Mesh(new THREE.TorusGeometry(13, 4, 14, 32), M.blue); pRing.rotation.x = Math.PI / 2; pRing.position.set(0, 10, 0); printed.add(pRing);
+const pRing2 = pRing.clone(); pRing2.position.set(0, 18, 0); printed.add(pRing2);
+const clipPrint = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
+printed.traverse(o => { if (o.material) { o.material = o.material.clone(); o.material.clippingPlanes = [clipPrint]; o.castShadow = true } });
+R.localClippingEnabled = true;
+// enclosure to be sealed (glue phase)
+const enc = new THREE.Group(); enc.position.set(0, 3, 0); bed.add(enc);
+const W = 130, D = 90, H = 34, WALL = 3;
+const encOuter = box(W, H, D, M.white, 6); encOuter.position.y = H / 2; enc.add(encOuter);
+const encInner = box(W - 2 * WALL, 4, D - 2 * WALL, new THREE.MeshStandardMaterial({ color: 0xbfc2c7, roughness: .7 }), 4); encInner.position.y = H - 1.5; enc.add(encInner);
+const pcb = box(60, 2, 40, new THREE.MeshStandardMaterial({ color: 0x0d3b1f, roughness: .5 }), .5); pcb.position.set(0, H - 2, 0); enc.add(pcb);
+const chip = box(18, 3, 18, M.black, .5); chip.position.set(8, H - .5, 0); enc.add(chip);
+// rounded-rectangle glue path on the top rim
+const inset = WALL / 2, rw = W / 2 - inset, rd = D / 2 - inset, rr = 6 - inset;
+function rrPath() {
+  const pts = [], N = 60;
+  const corner = (cx, cz, a0) => { for (let i = 0; i <= N / 4; i++) { const a = a0 + i / (N / 4) * Math.PI / 2; pts.push(new THREE.Vector3(cx + Math.cos(a) * rr, 0, cz + Math.sin(a) * rr)) } };
+  corner(rw - rr, rd - rr, 0); corner(-rw + rr, rd - rr, Math.PI / 2); corner(-rw + rr, -rd + rr, Math.PI); corner(rw - rr, -rd + rr, Math.PI * 1.5);
+  pts.push(pts[0].clone()); return pts;
+}
+const pathPts = rrPath().map(p => p.add(new THREE.Vector3(0, H + 1.4, 0)));
+const curve = new THREE.CatmullRomCurve3(pathPts, false, 'centripetal');
+const beadGeo = new THREE.TubeGeometry(curve, 400, 2.2, 12, false);
+const bead = new THREE.Mesh(beadGeo, M.glue); bead.castShadow = true; enc.add(bead);
+const beadIdxPerSeg = 12 * 6;   // radialSegments * 6 indices per tubular segment
+const prevGeo = new THREE.TubeGeometry(curve, 400, 1.1, 8, false);
+const preview = new THREE.Mesh(prevGeo, new THREE.MeshBasicMaterial({ color: 0x2f5bff })); preview.position.y = .4; enc.add(preview);
+const blob = new THREE.Mesh(new THREE.SphereGeometry(2.2, 16, 16), M.glue); enc.add(blob);
+
+// ---- timeline ----
+const SC = window.SCENES;                         // [name, startBeat, endBeat]
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const CAM = {   // [from pos, to pos, from target, to target]
+  hook: [V(420, 330, 560), V(250, 260, 470), V(0, 150, 0), V(0, 140, 0)],
+  build: [V(1150, 760, 1500), V(980, 660, 1300), V(0, 270, 0), V(0, 270, 0)],
+  print: [V(-180, 230, 260), V(-120, 200, 200), V(-40, 100, 30), V(-40, 105, 30)],
+  mount: [V(160, 260, 260), V(110, 240, 200), V(0, 200, -20), V(0, 195, -20)],
+  path: [V(0, 470, 300), V(0, 440, 250), V(0, 70, -30), V(0, 70, -30)],
+  glue: [V(240, 300, 340), V(170, 260, 290), V(0, 128, 0), V(0, 128, 0)],
+  price: [V(-1050, 380, 1300), V(-900, 340, 1150), V(0, 330, 0), V(0, 330, 0)],
+};
+function setTool(x, z) { carriage.position.x = x; bed.position.z = -z }
+
+window.DRAW = t => {
+  const kb = t / B; let cur = SC[SC.length - 1]; for (const s of SC) if (kb >= s[1] && kb < s[2]) { cur = s; break }
+  const name = cur[0], k = (kb - cur[1]) / (cur[2] - cur[1]), lk = kb - cur[1];
+  const c = CAM[name], e = eio(k);
+  cam.position.lerpVectors(c[0], c[1], e); const tg = new THREE.Vector3().lerpVectors(c[2], c[3], e); cam.lookAt(tg);
+  // defaults: fully assembled glue robot
+  [base, yrail, bed, upL, upR, top, gantry, spool].forEach(o => { o.visible = true });
+  hotend.visible = false; disp.visible = true; printed.visible = false; enc.visible = true; preview.visible = false; blob.visible = false;
+  gantry.position.y = 70 + 150; disp.position.y = 0; disp.position.x = 0;
+  bead.geometry.setDrawRange(0, Infinity);
+  const glueAt = (f) => { const p = curve.getPointAt(cl(f)); setTool(p.x, p.z); gantry.position.y = 88 + 3 + p.y - NEEDLE_TIP + 2.4; bead.geometry.setDrawRange(0, Math.floor(cl(f) * 400) * beadIdxPerSeg); blob.visible = f > 0 && f < 1; blob.position.copy(p) };
+  if (name === 'hook') { glueAt(.15 + .55 * k) }
+  if (name === 'build') {   // parts fly in one after another
+    const parts = [[base, 0], [yrail, .08], [bed, .14], [upL, .22], [upR, .26], [top, .34], [gantry, .42], [spool, .5]];
+    const off = { [base.id]: V(0, -300, 0), [yrail.id]: V(0, 0, 500), [bed.id]: V(0, 300, 0), [upL.id]: V(-400, 0, 0), [upR.id]: V(400, 0, 0), [top.id]: V(0, 400, 0), [gantry.id]: V(0, 300, 200), [spool.id]: V(0, 400, 0) };
+    for (const [o, d] of parts) { const a = eo((k - d) / .32); o.visible = a > 0.001; o.userData.base = o.userData.base || o.position.clone(); o.position.copy(o.userData.base).addScaledVector(off[o.id], 1 - a) }
+    hotend.visible = true; disp.visible = false; enc.visible = false; gantry.position.y = 70 + 150 + (1 - eo((k - .42) / .32)) * 300; setTool(0, 0);
+  } else { for (const o of [base, yrail, bed, upL, upR, top, gantry, spool]) if (o.userData.base) o.position.copy(o.userData.base) }
+  if (name === 'print') {   // the mount grows layer by layer, nozzle zig-zags
+    hotend.visible = true; disp.visible = false; enc.visible = false; printed.visible = true;
+    const hgt = 26 * cl(k / .92), layer = Math.floor(hgt / 1.2) * 1.2; clipPrint.constant = 88 + 3 + layer + 0.01;
+    const zz = (kb * 2.6) % 2, sweep = zz < 1 ? zz : 2 - zz;
+    setTool(-40 + (sweep - .5) * 54, 30 + Math.sin(kb * 5.3) * 26); gantry.position.y = 88 + 3 + layer - (-59) + 1;
+    gantry.position.y = 88 + 3 + layer + 59 + 1;
+  }
+  if (name === 'mount') {   // hotend out, printed dispenser mount + syringe slide in
+    const a = eo((k - .1) / .5), b2 = eo((k - .45) / .45);
+    hotend.visible = k < .3; hotend.position.y = -eo(k / .3) * 0; hotend.position.x = eo(k / .3) * -160;
+    mount.position.z = (1 - a) * 160; syringe.position.y = (1 - b2) * 180; enc.visible = false; setTool(0, 0); gantry.position.y = 70 + 160;
+  } else { hotend.position.set(0, 0, 0); mount.position.z = 0; syringe.position.y = 0 }
+  if (name === 'path') { preview.visible = true; bead.geometry.setDrawRange(0, 0); setTool(curve.getPointAt(0).x, curve.getPointAt(0).z); gantry.position.y = 88 + 3 + H + 1.4 - NEEDLE_TIP + 30; prevGeo.setDrawRange(0, Math.floor(eo(k / .8) * 400) * 8 * 6) }
+  if (name === 'glue') { glueAt(eio(k)) }
+  if (name === 'price') { glueAt(1); setTool(0, -80); gantry.position.y = 70 + 200 }
+  tip.material.color.setHSL(.63, 1, .55 + .1 * Math.sin(t * 20));
+  R.render(S, cam);
+  // overlays
+  const T = window.TXT[name] || ['', '', ''];
+  const sa = eo(lk / .5); ['k', 'h', 's'].forEach((id, i) => { const el = document.getElementById(id); el.innerHTML = T[i]; el.style.opacity = id === 's' ? eo((lk - 1.5) / .5) : sa; el.style.transform = `translateY(${(1 - sa) * 24}px)` });
+  document.getElementById('prog').style.width = Math.min(100, t / window.TOTAL * 100) + '%';
+  document.getElementById('av').style.opacity = name === 'path' ? 1 - eo(lk / .4) : eo((kb - 1) / .6);
+  const term = document.getElementById('term'); term.style.opacity = name === 'path' ? eo(lk / .5) : 0;
+  if (name === 'path') { const full = window.TERM; const n = Math.floor(cl(lk / (cur[2] - cur[1] - 1)) * full.length); document.getElementById('tt').innerHTML = full.slice(0, n).join('') }
+  const pr = document.getElementById('price'); pr.style.opacity = name === 'price' ? 1 : 0;
+  document.querySelectorAll('[data-r]').forEach((el, i) => { const a = name === 'price' ? eo((lk - .5 - i * 1.2) / .5) : 0; el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -60}px)` });
+};
+window.READY = true;
+</script>
+</body></html>
