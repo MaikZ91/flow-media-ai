@@ -108,7 +108,7 @@ Quellen: later.com/blog/instagram-reels-algorithm · socialpilot.co (Reels Algor
 4. Checkliste (Teil C §5) durchgehen.
 5. Posten: bis es einen eigenen Zugang gibt, postet Maik selbst – Skript + Caption fertig übergeben.
 6. Nach 48 h: Views, Durchsehquote/Skip-Rate, Sends, Saves, Profilaufrufe in `content/learnings.md` (mit Datum, Zahl, Variable, Schluss daraus).
-7. Google Drive spiegeln (siehe `CLAUDE.md` → „Google-Drive-Spiegel“): geänderte Pläne, Learnings, Reel-Texte und diesen Skill in `Flow Media AI` aktualisieren; Reel-Videos legt Maik selbst in `01_Marketing/Reels/`.
+7. Google Drive spiegeln (siehe `CLAUDE.md` → „Google-Drive-Spiegel“): geänderte Pläne, Learnings, Reel-Texte und diesen Skill in `Flow Media AI` aktualisieren; Reel-Videos legt Maik selbst in den passenden Themenordner unter `01_Marketing/Content/` (Apps, Personal, Workshops, Automation, Community) – in der Antwort vorschlagen, welcher passt.
 
 # Teil E – Daily-Content-Routine (Maik, 23.10.2026)
 
@@ -123,7 +123,7 @@ Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hoc
    - Ablage: `content/reels/R<nnn>-<name>/` bzw. `content/posts/P<nnn>-<name>/` mit README (Konzept, Caption, Sprechtext, Test-Variable, Checkliste).
 5. **Prüfen:** Checklisten Teil C §5 und `flow-design` §9; Frames/Folien ansehen. Nichts erfunden, keine Arbeitgeber- oder Kundendaten.
 6. **Ausgabe in den Chat:** Datei(en) mit `SendUserFile` schicken, darunter die **Caption fertig zum Kopieren** (mit Hashtags; läuft eigene Musik: Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“ und beim Posten den Account in der Musik-/Audio-Angabe bzw. als Erwähnung verlinken), Grund zum Senden, beste Uhrzeit, optional Sprechtext.
-7. Verlauf in `content-themen` §6 eintragen (erledigten Eintrag aus §5 entfernen); committen, pushen; Drive spiegeln (README → `01_Marketing/Reels` bzw. `01_Marketing/Posts`, als Google Doc „<ID>_<Name>_Caption“). Videos/Bilder legt Maik selbst ab bzw. lädt sie direkt hoch.
+7. Verlauf in `content-themen` §6 eintragen (erledigten Eintrag aus §5 entfernen); committen, pushen; Drive spiegeln (README → `01_Marketing/Content` bzw. `01_Marketing/Posts`, als Google Doc „<ID>_<Name>_Caption“). Videos/Bilder legt Maik selbst ab – Themenordner unter `Content` vorschlagen (Apps, Personal, Workshops, Automation, Community).
 8. Nach 48 h fragt der Creative Director in der nächsten Tagesausgabe nach den Zahlen des Posts von vorgestern (Views, Skip-Rate, Sends, Saves) und trägt sie in `content/learnings.md` ein.
 
 Eigene Aufnahmen: Will Maik ein Reel selbst einsprechen oder filmen, legt er die Datei in Drive `01_Marketing/RAW` (Ordner ist per Link freigegeben, der Connector lädt nur bis 10 MB – darum per `curl`, siehe `CLAUDE.md`). Vorgehen wie R011 (`build.py`): Abschrift mit Wortzeiten, stärkster Satz als Hook nach vorn, Pausen/Versprecher raus, Jump-Cuts mit Punch-in, Wort-Untertitel im Flow-Look, Stimme säubern, Musik leise darunter – der Creative Director schneidet sie im selben Look und ersetzt damit die Tagesausgabe oder ergänzt sie.
