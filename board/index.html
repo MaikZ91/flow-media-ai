@@ -2009,6 +2009,8 @@ async function startBoard() {
     toast("Das Board konnte nicht geladen werden. Prüfe die Internetverbindung."); return;
   }
   $("#auth")?.remove();
+  // ask the browser not to evict storage, so the installed app keeps the board link instead of asking again
+  try { navigator.storage?.persist?.() } catch {}
   const table = name => ({ doc: id => ({
     set: data => api("upsert", { table: name, id, data }).then(ping),
     delete: () => api("delete", { table: name, id }).then(ping),
