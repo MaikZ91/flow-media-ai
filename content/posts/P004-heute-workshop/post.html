@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--white:#fff;--grey:#9A9A9A;--line:rgba(255,255,255,.2);--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--black);color:#fff;font-family:Inter,sans-serif;overflow:hidden}
+#c{position:relative;overflow:hidden;background:var(--black)}
+.ph{position:absolute;background:url(img/portrait_laptop.jpg) center top/cover;filter:grayscale(1) contrast(1.12) brightness(.92)}
+.fade{position:absolute;inset:0}
+.grain{position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.live{position:absolute;right:76px;top:80px;display:flex;align-items:center;gap:12px;font:500 22px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#e6e6e6}
+.live i{width:14px;height:14px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(47,91,255,.25)}
+.txt{position:absolute;left:76px;right:76px}
+.k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{font:700 168px/.88 Oswald;text-transform:uppercase;margin-top:18px}
+.b{color:var(--blue)}
+.sub{font:700 54px/1.02 Oswald;text-transform:uppercase;margin-top:26px}
+.rule{height:1px;background:var(--line);margin:32px 0 26px}
+.facts{display:flex;gap:0}
+.facts div{flex:1;border-left:1px solid var(--line);padding-left:22px}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts b{display:block;font:700 46px/1 Oswald;text-transform:uppercase}
+.facts span{display:block;margin-top:8px;font:400 21px/1.3 Inter;color:#bdbdbd}
+.cta{margin-top:30px;font:400 27px/1.4 Inter;color:#e0e0e0}
+.cta b{font-weight:600;color:#fff}
+/* feed 1080x1350 – Maik right/top, text bottom-left */
+.feed #c{width:1080px;height:1350px}
+.feed .ph{left:300px;right:-60px;top:-190px;height:1000px}
+.feed .h{font-size:146px;white-space:nowrap}
+.feed .fade{background:linear-gradient(90deg,#0B0B0B 24%,rgba(11,11,11,.0) 50%),linear-gradient(180deg,rgba(11,11,11,.5) 0%,rgba(11,11,11,0) 14%,rgba(11,11,11,0) 40%,rgba(11,11,11,.92) 55%,#0B0B0B 62%)}
+.feed .txt{bottom:72px}
+/* story 1080x1920 – headline upper third, bottom 20 % free */
+.story #c{width:1080px;height:1920px}
+.story .ph{left:120px;right:120px;top:400px;height:900px;background-position:center 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(180deg,transparent 0,#000 14%);-webkit-mask-composite:source-in;mask-composite:intersect}
+.story .fade{background:linear-gradient(180deg,#0B0B0B 0%,#0B0B0B 18%,rgba(11,11,11,.0) 30%,rgba(11,11,11,0) 54%,rgba(11,11,11,.92) 64%,#0B0B0B 68%)}
+.story .head{top:200px}
+.story .h{font-size:176px}
+.story .txt.info{top:1250px}
+</style></head>
+<body>
+<div id="c">
+  <div class="ph"></div><div class="fade"></div><div class="grain"></div>
+  <img class="logo" src="img/logo_flow.png" alt="">
+  <div class="live"><i></i>Heute live</div>
+
+  <!-- feed -->
+  <div class="txt only-feed">
+    <div class="k">Digitaler Stammtisch #1 · Workshop</div>
+    <div class="h">Heute. <span class="b">18 Uhr.</span></div>
+    <div class="sub">Mit KI zur Personal Brand.</div>
+    <div class="rule"></div>
+    <div class="facts">
+      <div><b>Mo 26.10.</b><span>heute</span></div>
+      <div><b>18:00</b><span>ca. 60 Minuten</span></div>
+      <div><b>Digital</b><span>live dabei</span></div>
+      <div><b>15 €</b><span>pro Person</span></div>
+    </div>
+    <p class="cta"><b>Noch kurz entschlossen?</b> Schreib mir, dann schick ich dir die Infos.</p>
+  </div>
+
+  <!-- story -->
+  <div class="txt head only-story">
+    <div class="k">Digitaler Stammtisch #1 · Workshop</div>
+    <div class="h">Heute.<br><span class="b">18 Uhr.</span></div>
+  </div>
+  <div class="txt info only-story">
+    <div class="sub">Mit KI zur Personal Brand.</div>
+    <div class="rule"></div>
+    <div class="facts">
+      <div><b>18:00</b><span>ca. 60 Minuten</span></div>
+      <div><b>Digital</b><span>live dabei</span></div>
+      <div><b>15 €</b><span>pro Person</span></div>
+    </div>
+    <p class="cta"><b>Noch kurz entschlossen?</b> Schreib mir, dann schick ich dir die Infos.</p>
+  </div>
+</div>
+<script>
+const m = location.hash.slice(1) || "feed";
+document.body.className = m;
+document.querySelectorAll(m === "feed" ? ".only-story" : ".only-feed").forEach(e => e.remove());
+</script>
+</body></html>

@@ -63,6 +63,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 26.10.2026 | P004 | `lernen` | Einzelpost + Story | „Heute. 18 Uhr.“ – Tag-X-Erinnerung an den Workshop „Mit KI zur Personal Brand“, Porträt Laptop | `format = event-reminder` |
 | 25.10.2026 | R018 | `kreativ` / `ki` | Reel (3D-Produktkonzept) | „Cocktails mixen. Hände frei.“ – Smart Glasses führen durch einen Sex on the Beach (Konzept) | `format = produktkonzept-3d` |
 | 25.10.2026 | R017 | `agentic` / `web` | Reel (Pipeline) | „Alte Website? Meine KI baut die neue.“ – Lead-Pipeline (Demo-Bäckerei, Versand nur auf Anfrage), Agentic Marketing Teil 2 | `format = pipeline-erklaerer` |
 | 25.10.2026 | R016 | `agentic` | Reel (Pipeline) | „Ich gebe keine Ideen mehr vor.“ – Social-Media-Pipeline in 8 Stationen (Routine → Thema → Idee → Look → Bauen → Prüfen → Auto-Post → Lernen) | `format = pipeline-erklaerer` |
