@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:20}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.logo{position:absolute;left:76px;top:110px;width:180px;z-index:10}
+.av{position:absolute;right:56px;top:84px;width:200px;z-index:10;opacity:0}
+#hook{position:absolute;inset:0}
+#hook .ph{position:absolute;inset:0;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#hook .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5) 0%,rgba(11,11,11,0) 18%,rgba(11,11,11,0) 42%,rgba(11,11,11,.92) 60%,#0B0B0B 76%)}
+.txt{position:absolute;left:76px;right:76px;top:300px;z-index:12}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:16px;font:700 112px/.94 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}
+#hookTxt{top:1080px}
+.zone{position:absolute;left:76px;right:76px;top:700px;height:820px;z-index:11}
+.scene{position:absolute;inset:0;opacity:0}
+/* 01 record */
+.phone{position:absolute;left:50%;top:0;width:430px;height:780px;margin-left:-215px;border-radius:48px;border:10px solid #2a2c33;background:#000;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.phone .cam{position:absolute;inset:0;background:url(img/portrait_front.jpg) center 20%/cover;filter:grayscale(1) contrast(1.1)}
+.rec{position:absolute;left:24px;top:26px;display:flex;align-items:center;gap:10px;font:600 22px Montserrat;letter-spacing:.12em}
+.rec i{width:16px;height:16px;border-radius:50%;background:#e5484d}
+.tm{position:absolute;right:24px;top:26px;font:500 22px 'JetBrains Mono',monospace}
+.wave{position:absolute;left:30px;right:30px;bottom:40px;height:90px;display:flex;align-items:center;gap:6px}
+.wave i{flex:1;background:#fff;border-radius:3px;height:10%}
+/* 02 transcript */
+.tr{position:absolute;inset:0;border-radius:28px;background:var(--card);border:1.5px solid var(--line);padding:50px}
+.lab{font:400 26px 'JetBrains Mono',monospace;color:var(--grey)}
+.lines{margin-top:36px}
+.lines p{font:400 40px/1.4 Inter;color:#e6e6e6;margin-bottom:22px;opacity:0}
+.lines mark{background:rgba(47,91,255,.25);color:#fff;border-radius:6px;padding:0 6px}
+.tags{position:absolute;left:50px;right:50px;bottom:46px;display:flex;flex-wrap:wrap;gap:14px}
+.tags span{font:500 26px Montserrat;letter-spacing:.08em;border:1.5px solid var(--blue);border-radius:30px;padding:10px 20px;opacity:0}
+/* 03 skills */
+.src{position:absolute;left:50%;top:0;width:220px;height:300px;margin-left:-110px;border-radius:26px;border:6px solid #2a2c33;background:url(img/portrait_front.jpg) center 20%/cover;filter:grayscale(1)}
+.sk{position:absolute;width:440px;height:200px;border-radius:24px;background:var(--card);border:1.5px solid var(--line);padding:30px 32px;opacity:0}
+.sk b{display:block;font:700 54px/1 Oswald;text-transform:uppercase}
+.sk span{display:block;margin-top:12px;font:400 26px/1.35 Inter;color:#bdbdbd}
+.sk code{position:absolute;right:28px;top:28px;font:400 20px 'JetBrains Mono',monospace;color:var(--grey)}
+.sk.blue{border-color:var(--blue);box-shadow:0 0 40px rgba(47,91,255,.35)}
+/* 04 output */
+.outs{position:absolute;inset:0}
+.outs img{position:absolute;width:420px;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.7);border:2px solid #2a2a2a;opacity:0}
+.mine{position:absolute;left:0;right:0;bottom:-10px;text-align:center;font:500 24px Montserrat;letter-spacing:.18em;color:var(--grey);opacity:0}
+/* 05 facts */
+.facts{position:absolute;inset:0}
+.facts .row{display:flex;align-items:baseline;justify-content:space-between;padding:30px 0;border-top:1.5px solid var(--line);opacity:0}
+.facts .row b{font:700 84px/1 Oswald;text-transform:uppercase}
+.facts .row span{font:400 30px Inter;color:#bdbdbd}
+/* end */
+.end{position:absolute;left:76px;right:76px;top:760px;z-index:12;opacity:0;text-align:left}
+.end .avb{width:220px;height:220px;border-radius:50%;background:url(img/portrait_laptop.jpg) center 30%/cover;filter:grayscale(1) contrast(1.1);border:3px solid var(--blue)}
+.end p{margin-top:44px;font:400 40px/1.4 Inter;color:#e0e0e0}
+.end p b{color:#fff;font-weight:600}
+</style></head><body>
+<div id="stage">
+<div class="grain" id="grain"></div>
+<div class="prog"><i id="prog"></i></div>
+<div id="hook"><div class="ph" id="hph"></div><div class="sh"></div></div>
+<img class="logo" src="img/logo_flow.png" alt="">
+<img class="av" id="av" src="img/avatar_circle.png" alt="">
+<div class="txt" id="hookTxt"><div class="k">Talk-to-Brand · Workshop Vol. 2</div>
+  <div class="h">Einmal reden.<br><span class="b">Immer posten.</span></div></div>
+<div class="txt" id="txt" style="opacity:0"><div class="k" id="k"></div><div class="h" id="h"></div></div>
+
+<div class="zone" id="zone">
+  <section class="scene" id="s_rec"><div class="phone"><div class="cam" id="cam"></div>
+    <div class="rec"><i id="dot"></i>REC</div><div class="tm" id="tm">00:00</div>
+    <div class="wave" id="wave"></div></div></section>
+  <section class="scene" id="s_tr"><div class="tr"><div class="lab">transkript · lokal auf deinem rechner</div><div style="position:absolute;right:50px;top:46px;font:500 20px Montserrat;letter-spacing:.14em;color:var(--grey);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px">BEISPIEL</div>
+    <div class="lines" id="lines">
+      <p>„Ich will Ideen <mark>schnell umsetzen</mark> – nicht ewig drüber reden.“</p>
+      <p>„Mir ist wichtig, dass Menschen es <mark>selbst können</mark>.“</p>
+      <p>„Ehrlich, persönlich, <mark>ohne Agentur-Sprech</mark>.“</p>
+    </div>
+    <div class="tags" id="tags"><span>Werte</span><span>Stimme</span><span>Zielgruppe</span><span>Geschichte</span></div></div></section>
+  <section class="scene" id="s_sk"><div class="src" id="src"></div>
+    <div class="sk" data-k style="left:0;top:340px"><code>01</code><b>DNA</b><span>Wer du bist, wie du klingst</span></div>
+    <div class="sk" data-k style="right:0;top:340px"><code>02</code><b>Look</b><span>Farben, Schrift, Fotos</span></div>
+    <div class="sk blue" data-k style="left:0;top:580px"><code>03</code><b>Content</b><span>Posts, Captions, Reels</span></div>
+    <div class="sk" data-k style="right:0;top:580px"><code>04</code><b>Website</b><span>Deine Landingpage</span></div></section>
+  <section class="scene" id="s_out"><div class="outs">
+    <img data-o src="img/out_p002.png" style="left:0;top:40px;transform:rotate(-6deg)" alt="">
+    <img data-o src="img/out_p005.png" style="left:244px;top:0;z-index:2" alt="">
+    <img data-o src="img/out_p004.png" style="right:0;top:60px;transform:rotate(6deg);z-index:1" alt="">
+    <div class="mine" id="mine">Meine Posts · gebaut mit meinen eigenen Skills</div></div></section>
+  <section class="scene" id="s_facts"><div class="facts" id="facts">
+    <div class="row"><b>Mo 02.11.</b><span>Montag</span></div>
+    <div class="row"><b class="b">18 Uhr</b><span>ca. 60 Minuten</span></div>
+    <div class="row"><b>Digital</b><span>live dabei</span></div>
+    <div class="row"><b>15 €</b><span>pro Person</span></div></div></section>
+</div>
+<div class="end" id="end"><div class="avb"></div>
+  <p><b>Bring ein Video von dir mit.</b><br>Du gehst mit deiner Marke als Skill raus.<br>Schreib mir für einen Platz.</p></div>
+</div>
+
+<script>
+const B = 0.4954;   // "Motivating Mornings" (Mixkit), grid from 20.271 s
+const SC = [["hook",0,6],["rec",6,14],["tr",14,22],["sk",22,31],["out",31,39],["facts",39,47],["end",47,54]];
+const TOTAL = 54 * B; window.TOTAL = TOTAL;
+const T = {
+  rec: ["01 · Red über dich", "Ein Video.<br><span class='b'>5 Minuten.</span>"],
+  tr: ["02 · KI hört zu", "Deine Worte.<br><span class='b'>Deine Werte.</span>"],
+  sk: ["03 · Talk-to-Brand", "Deine Marke.<br><span class='b'>Als Skill.</span>"],
+  out: ["04 · Content", "Klingt nach dir.<br><span class='b'>Jeden Tag.</span>"],
+  facts: ["Workshop · Vol. 2", "Talk-to-<span class='b'>Brand.</span>"],
+  end: ["Von KI zur Personal Brand", "Sei <span class='b'>dabei.</span>"],
+};
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const wave = $("wave"); for (let i = 0; i < 28; i++) wave.appendChild(document.createElement("i"));
+window.DRAW = t => {
+  const kb = t / B, bi = Math.floor(kb);
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (kb >= s[1] && kb < s[2]) cur = s });
+  const name = cur[0], lk = kb - cur[1];
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(bi * 37) % 120 - 60}px,${(bi * 53) % 120 - 60}px)`;
+  const isHook = name === "hook";
+  $("hook").style.opacity = isHook ? 1 : 0; $("hookTxt").style.opacity = isHook ? 1 : 0;
+  $("hph").style.transform = `scale(${1.1 - .06 * cl(kb / 6)})`;
+  $("hookTxt").style.transform = `translateY(${(1 - eo(kb / .8)) * 40}px)`;
+  $("av").style.opacity = isHook || name === "end" ? 0 : 1;
+  if (!isHook) { $("k").innerHTML = T[name][0]; $("h").innerHTML = T[name][1]; const a = eo(lk / .4); $("txt").style.transform = `translateY(${(1 - a) * 26}px)`; $("txt").style.opacity = a } else $("txt").style.opacity = 0;
+  document.querySelectorAll(".scene").forEach(s => s.style.opacity = s.id === "s_" + name ? 1 : 0);
+  $("zone").style.transform = `scale(${1 - (1 - eo(lk / .35)) * .03})`;
+  if (name === "rec") {
+    const sec = Math.floor(lk * B * 40); $("tm").textContent = `0${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
+    $("dot").style.opacity = Math.floor(lk * 2) % 2 ? .3 : 1; $("cam").style.transform = `scale(${1.04 + .04 * cl(lk / 8)})`;
+    [...wave.children].forEach((el, i) => el.style.height = (14 + 80 * Math.abs(Math.sin(t * 7 + i * .9) * Math.sin(t * 3.1 + i * .37))) + "%");
+  }
+  if (name === "tr") {
+    [...$("lines").children].forEach((el, i) => { const a = eo((lk - .2 - i * 1.4) / .5); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * 20}px)` });
+    [...$("tags").children].forEach((el, i) => { const a = eo((lk - 4.6 - i * .5) / .4); el.style.opacity = a; el.style.transform = `scale(${.8 + .2 * a})` });
+  }
+  if (name === "sk") {
+    $("src").style.transform = `scale(${1 - .25 * eo((lk - .5) / 1.5)})`;
+    document.querySelectorAll("[data-k]").forEach((el, i) => { const a = eo((lk - 1 - i * .9) / .5); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * -180}px) scale(${.7 + .3 * a})` });
+  }
+  if (name === "out") {
+    document.querySelectorAll("[data-o]").forEach((el, i) => { const a = eo((lk - .3 - i * .8) / .5); el.style.opacity = a; el.style.translate = `0 ${(1 - a) * 80}px` });
+    $("mine").style.opacity = eo((lk - 3) / .5);
+  }
+  if (name === "facts") [...$("facts").children].forEach((el, i) => { const a = eo((lk - .3 - i * .7) / .4); el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -60}px)` });
+  $("end").style.opacity = name === "end" ? eo((lk - .6) / .5) : 0;
+};
+</script>
+</body></html>

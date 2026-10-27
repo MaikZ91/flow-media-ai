@@ -1,8 +1,8 @@
-# Workshop: Von KI zur Personal Brand – Vol. 2 · Die Video-Methode
+# Workshop: Von KI zur Personal Brand – Vol. 2 · Talk-to-Brand
 
 Mo 02.11.2026 · 18:00 · ca. 60 Min · digital & live · 15 € · Reel-Plan: `content/reels/R019-workshop-vol2/`
 
-**Ein Video rein – deine Marke als Skill raus.** Der Master-Skill `brand-builder` macht aus einem Video-Transkript, Fotos und (optional) der Website in einem Durchlauf vier persönliche Skills.
+**Talk-to-Brand: Einmal reden, immer posten.** Der Master-Skill `brand-builder` macht aus einem Video-Transkript, Fotos und (optional) der Website in einem Durchlauf vier persönliche Skills.
 
 ## Inhalt
 ```

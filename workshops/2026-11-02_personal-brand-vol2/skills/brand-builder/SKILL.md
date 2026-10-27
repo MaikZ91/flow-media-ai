@@ -1,11 +1,11 @@
 ---
 name: brand-builder
-description: Baut aus einem Video über dich (Transkript), deinen Fotos und optional deiner Website in einem Durchlauf deine persönlichen Marken-Skills – brand-dna (wer du bist und wie du klingst), brand-look (wie du aussiehst), brand-content (Posts, Captions, Reel-Skripte) und brand-website (Landingpage). Nutzen, wenn jemand sagt „Bau meine Marke“, „Brand-Builder starten“, ein Transkript über sich hochlädt oder seine Personal Brand als Skill haben will.
+description: Baut aus einem Video über dich (Transkript), deinen Fotos und optional deiner Website in einem Durchlauf deine persönlichen Marken-Skills – brand-dna (wer du bist und wie du klingst), brand-look (wie du aussiehst), brand-content (Posts, Captions, Reel-Skripte) und brand-website (Landingpage). Nutzen, wenn jemand sagt „Talk-to-Brand“, „Bau meine Marke“, „Brand-Builder starten“, ein Transkript über sich hochlädt oder seine Personal Brand als Skill haben will.
 ---
 
-# Brand-Builder – ein Video rein, deine Marke als Skill raus
+# Brand-Builder · Talk-to-Brand – einmal reden, immer posten
 
-Workshop „Von KI zur Personal Brand – Vol. 2: Die Video-Methode“ (Flow Media AI). Ziel: in **einem Durchlauf** vier fertige Skills, die danach jeden Content in der Stimme und im Look der Person erstellen.
+Methode **Talk-to-Brand** aus dem Workshop „Von KI zur Personal Brand – Vol. 2“ (Flow Media AI). Ziel: in **einem Durchlauf** vier fertige Skills, die danach jeden Content in der Stimme und im Look der Person erstellen.
 
 ## 1. Material einsammeln
 Prüfe, was da ist, und frag **einmal gesammelt** nach dem, was fehlt:

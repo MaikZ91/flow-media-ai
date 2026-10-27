@@ -1,40 +1,45 @@
-# R019 – Workshop Vol. 2: Die Video-Methode (PLAN)
+# R019 – Talk-to-Brand: Einmal reden. Immer posten. (Workshop Vol. 2)
 
-Stand: 27.10.2026 · Status: **Plan, noch nicht gebaut** · Säule `lernen` / `social`
+Stand: 27.10.2026 · Reel 1080×1920, 26,8 s · Status: **fertig (`R019.mp4`)** · Säule `lernen` / `social` · Test-Variable `hook = methoden-name` (Name der Methode als Hook)
 
-Workshop: „Von KI zur Personal Brand – Vol. 2: Die Video-Methode“ · Mo 02.11.2026 · 18:00 · ca. 60 Min · digital & live · 15 € (Board-Karte `ws2pb20261102`)
+Workshop: „Von KI zur Personal Brand – Vol. 2: Talk-to-Brand“ · Mo 02.11.2026 · 18:00 · ca. 60 Min · digital & live · 15 € · Material: `workshops/2026-11-02_personal-brand-vol2/`
 
-## Idee des Workshops (Ultrafast)
-Ein Video rein → deine Marke als wiederverwendbarer Skill raus. Teilnehmende bringen ein kurzes Video von sich mit; daraus baut ein Master-Skill automatisch die Marken-Skills, die danach Content und Website in ihrer Sprache und mit ihren Bildern erstellen.
+## Szenen (Beat-Raster „Motivating Mornings“, Mixkit, ab 20,271 s, B = 0,4954 s)
+1. Hook (0–3 s): Maik groß, „EINMAL REDEN. IMMER POSTEN.“ · Kicker „Talk-to-Brand · Workshop Vol. 2“
+2. 01 Red über dich: Handy mit REC + Wellenform – „Ein Video. 5 Minuten.“
+3. 02 KI hört zu: Transkript-Karte (BEISPIEL-Sätze, sinngemäß aus Maiks Werten) → Tags Werte · Stimme · Zielgruppe · Geschichte
+4. 03 Talk-to-Brand: Video zerfällt in 4 Skills (DNA · Look · Content · Website)
+5. 04 Content: Maiks echte Posts P002, P005, P004 – „Meine Posts · gebaut mit meinen eigenen Skills“
+6. Fakten: Mo 02.11. · 18 Uhr · Digital · 15 €
+7. Ende: Maik (Kreis) – „Bring ein Video von dir mit. Du gehst mit deiner Marke als Skill raus. Schreib mir für einen Platz.“
 
-### Vorbereitung der Teilnehmenden
-1. Video 2–5 Min, Handy frontal, beantwortet: Wer bist du? Wofür stehst du? Für wen? Deine 3 Werte? Eine Geschichte, die dich ausmacht?
-2. 5–10 eigene Fotos (Porträt, Arbeit, Umfeld).
-3. Optional: Website-Link oder bestehende Texte.
-4. Claude Pro (Skills).
+## Caption
+```
+Einmal reden. Immer posten. 🎙️
 
-### Skills, die wir bauen
-| Skill | Input | Output |
-|---|---|---|
-| `brand-builder` (Master, Ultrafast) | Transkript + Fotos + Links | erzeugt die vier Skills unten in einem Durchlauf |
-| `brand-dna` | Video-Transkript | Markenprofil: Positionierung, Werte, Zielgruppe, Geschichte, **Stimme** (Wortwahl, Satzlänge, typische Sätze, No-Gos) |
-| `brand-look` | Fotos, Stills, Website | Design-Regeln: Farben, Schrift, Bildstil, freigegebene Porträts, Layout-Muster |
-| `brand-content` | DNA + Look | Posts, Captions, Reel-Skripte, Karussell-Texte in der eigenen Stimme |
-| `brand-website` | DNA + Look | One-Pager / Landingpage im eigenen Look |
+Mein nächster Workshop heißt Talk-to-Brand:
+Du nimmst ein 5-Minuten-Video von dir auf – wer du bist, wofür du stehst, für wen.
+Daraus baut die KI deine Marke als Skill: deine Werte, deine Stimme, dein Look.
 
-„Stimme“ heißt Schreibstimme. Echte Stimm-Klone (z. B. HeyGen/ElevenLabs) nur mit der eigenen Stimme und als Ausblick.
+Danach schreibt Claude Posts, Captions und sogar deine Website so, dass sie nach dir klingen. Nicht nach KI.
 
-### Ablauf 60 Min
-0–5 Begrüßung + Ergebnis vorab zeigen · 5–15 Video → Transkript · 15–30 `brand-builder` laufen lassen, DNA prüfen und korrigieren · 30–40 Look aus den Fotos · 40–55 live: ein Post + eine Website-Skizze pro Person · 55–60 wiederverwenden, Fragen
+Genau so entsteht mein eigener Content – live zeigen statt erzählen.
 
-## Reel-Plan (ca. 22 s, 1080×1920, flow-design)
-| Sek. | Bild | Text |
-|---|---|---|
-| 0–2 | Maik (Porträt/Selfie), Bewegung | „EIN VIDEO VON DIR.“ |
-| 2–5 | Video-Kachel zerfällt in 4 Skill-Karten (DNA · Look · Content · Website) | „DEINE MARKE. ALS **SKILL.**“ |
-| 5–12 | 01 Video aufnehmen → 02 KI zieht Werte, Stimme, Look raus → 03 Skill baut Posts & Website | nummerierte Schritte |
-| 12–16 | Beweis: Maiks eigene Ergebnisse aus seinen Skills (P002, P004, Reel-Cover, Landingpage) | „SO LÄUFT'S BEI MIR.“ |
-| 16–20 | Faktenleiste | VOL. 2 · MO 02.11. · 18 UHR · DIGITAL · 15 € |
-| 20–22 | Maik + Loop zum Anfang | „Schreib mir für einen Platz.“ |
+📅 Montag, 2. November, 18:00 Uhr
+⏱ ca. 60 Minuten, digital und live
+💶 15 € pro Person
 
-Musik: freie Mixkit-Musik, Schnitt auf den Beat. Test-Variable: `hook = ein-satz-versprechen`. Kein Keyword-Funnel (keine Auto-DM). Optional: 2-s-Selfie von Maik als Hook („Ein Video. Mehr brauchst du nicht.“).
+Du willst dabei sein? Schreib mir eine Nachricht, dann schick ich dir die Vorbereitung.
+
+#PersonalBrand #KI #ClaudeAI #ContentCreation #FlowMediaAI
+```
+Grund zum Senden: „Schick das jemandem, dessen KI-Posts klingen wie von einer Maschine.“
+Posten: heute oder morgen 18–20 Uhr; Story-Erinnerung am Mo 02.11. morgens.
+
+## Checklisten
+Teil C §5: Maik im ersten Bild ✓ · Hook ≤ 1 s lesbar ✓ · 26,8 s (Erklärer) ✓ · Wechsel alle 2–4 s ✓ · Grund zum Senden ✓ · Text oben, unten 20 % frei ✓ · nichts erfunden: Transkript-Sätze als BEISPIEL gekennzeichnet, gezeigte Posts sind echte eigene ✓
+flow-design §9: s/w + Blau ✓ · Maik im Motiv ✓ · keine fremden Wasserzeichen ✓
+
+## Neu rendern
+`node frames.js <ordner>` → `video_only.mp4`, dann
+`ffmpeg -i video_only.mp4 -ss 20.271 -i ../../musik/frei/motivating-mornings.mp3 -t 26.75 -filter_complex "[1:a]afade=t=in:d=0.05,afade=t=out:st=25.3:d=1.4,loudnorm=I=-14:TP=-1:LRA=9[a]" -map 0:v -map "[a]" -c:v libx264 -crf 21 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart R019.mp4`
