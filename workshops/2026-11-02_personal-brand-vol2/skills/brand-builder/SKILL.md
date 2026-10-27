@@ -9,7 +9,9 @@ Workshop „Von KI zur Personal Brand – Vol. 2: Die Video-Methode“ (Flow Med
 
 ## 1. Material einsammeln
 Prüfe, was da ist, und frag **einmal gesammelt** nach dem, was fehlt:
-- **Transkript** des Videos (Pflicht): Text, `.txt` oder `.srt`. Ein Video selbst kann Claude nicht anhören – fehlt das Transkript, bitte um eines (z. B. Auto-Untertitel aus CapCut exportieren, Diktierfunktion, Word „Transkribieren“) oder darum, die fünf Fragen aus `fragen.md` kurz schriftlich zu beantworten.
+- **Video oder Transkript** (Pflicht):
+  - **In Claude Code** (Terminal/Shell verfügbar): Das Video selbst transkribieren. Einmalig `pip install faster-whisper` (falls nicht installiert), dann `python3 <skill-ordner>/scripts/transcribe.py "<video>"` – schreibt `<video>.transkript.txt` daneben. Erster Lauf lädt das Sprachmodell (~500 MB), danach ca. 1–2 Min. pro 5 Min. Video. Bei schwachem Rechner `… "<video>" base` (schneller, etwas ungenauer). Das Video bleibt auf dem Rechner.
+  - **In der Claude-App** (claude.ai, ohne Shell): Ein Video kann Claude dort nicht anhören. Bitte um ein Transkript als Text (`.txt`/`.srt`, z. B. Auto-Untertitel aus CapCut exportieren, Diktierfunktion, Word „Transkribieren“) oder darum, die fünf Fragen aus `fragen.md` kurz schriftlich zu beantworten.
 - **Fotos** (empfohlen, 5–10): Porträts, Arbeit, Umfeld. Ohne Fotos wird `brand-look` neutral angelegt und als „vorläufig“ markiert.
 - **Website / Texte** (optional): Link oder eingefügter Text.
 - **Vorname** und wie die Person angesprochen werden will (du/Sie).

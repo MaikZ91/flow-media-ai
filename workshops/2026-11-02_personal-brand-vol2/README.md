@@ -9,6 +9,7 @@ Mo 02.11.2026 · 18:00 · ca. 60 Min · digital & live · 15 € · Reel-Plan: `
 skills/brand-builder/
 ├── SKILL.md              Master-Skill (Ultrafast)
 ├── fragen.md             die 5 Fragen fürs Vorbereitungs-Video
+├── scripts/transcribe.py Video → Transkript (nur Claude Code, faster-whisper, lokal)
 └── templates/
     ├── brand-dna.md      wer ich bin, Werte, Stimme
     ├── brand-look.md     Farben, Schrift, Bildstil, Fotos
@@ -18,7 +19,7 @@ skills/brand-builder/
 Bewusst **nicht** unter `.claude/skills/`, damit die Vorlagen nicht in Maiks eigene Sessions laden.
 
 ## Für Teilnehmende
-1. Vorher: Video nach `fragen.md` aufnehmen, Transkript exportieren, 5–10 Fotos bereitlegen, Claude Pro.
+1. Vorher: Video nach `fragen.md` aufnehmen (mit Claude Code reicht das Video – der Skill transkribiert selbst; in der Claude-App Transkript exportieren), 5–10 Fotos bereitlegen, Claude Pro.
 2. Im Workshop: `brand-builder.zip` in Claude hochladen (Einstellungen → Fähigkeiten → Skills), Chat starten: „Brand-Builder starten“ + Transkript und Fotos anhängen.
 3. Die vier erzeugten Skills als ZIP herunterladen und genauso hochladen.
 
