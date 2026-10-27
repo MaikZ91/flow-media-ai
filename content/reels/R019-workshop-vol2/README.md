@@ -21,7 +21,7 @@ Mein nächster Workshop heißt Talk-to-Brand:
 Du nimmst ein 5-Minuten-Video von dir auf – wer du bist, wofür du stehst, für wen.
 Daraus baut die KI deine Marke als Skill: deine Werte, deine Stimme, dein Look.
 
-Danach schreibt Claude Posts, Captions und sogar deine Website so, dass sie nach dir klingen. Nicht nach KI.
+Danach schreibt deine KI – ob Claude oder Codex – Posts, Captions und sogar deine Website so, dass sie nach dir klingen. Nicht nach KI.
 
 Genau so entsteht mein eigener Content. Ob es bei dir genauso gut klappt? Finden wir zusammen raus – das Ganze ist ein Experiment, live.
 
@@ -33,7 +33,7 @@ Am Ende gehst du mit deinem eigenen Skill raus.
 
 Du willst dabei sein? Schreib mir eine Nachricht, dann schick ich dir die Vorbereitung.
 
-#PersonalBrand #KI #ClaudeAI #ContentCreation #FlowMediaAI
+#PersonalBrand #KI #ClaudeAI #Codex #FlowMediaAI
 ```
 Grund zum Senden: „Schick das jemandem, dessen KI-Posts klingen wie von einer Maschine.“
 Posten: heute oder morgen 18–20 Uhr; Story-Erinnerung am Mo 02.11. morgens.
