@@ -12,18 +12,18 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 .logo{position:absolute;left:76px;top:110px;width:180px;z-index:10}
 .av{position:absolute;right:56px;top:84px;width:200px;z-index:10;opacity:0}
 #hook{position:absolute;inset:0}
-#hook .ph{position:absolute;inset:0;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
-#hook .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5) 0%,rgba(11,11,11,0) 18%,rgba(11,11,11,0) 42%,rgba(11,11,11,.92) 60%,#0B0B0B 76%)}
+#hook .ph{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;filter:brightness(.9)}
+#hook .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,0) 14%,rgba(11,11,11,0) 52%,rgba(11,11,11,.92) 64%,#0B0B0B 74%)}
 .txt{position:absolute;left:76px;right:76px;top:300px;z-index:12}
 .k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
 .h{margin-top:16px;font:700 112px/.94 Oswald;text-transform:uppercase}
 .b{color:var(--blue)}
-#hookTxt{top:1080px}
+#hookTxt{top:1250px}
 .zone{position:absolute;left:76px;right:76px;top:700px;height:820px;z-index:11}
 .scene{position:absolute;inset:0;opacity:0}
 /* 01 record */
 .phone{position:absolute;left:50%;top:0;width:430px;height:780px;margin-left:-215px;border-radius:48px;border:10px solid #2a2c33;background:#000;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6)}
-.phone .cam{position:absolute;inset:0;background:url(img/portrait_front.jpg) center 20%/cover;filter:grayscale(1) contrast(1.1)}
+.phone .cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rec{position:absolute;left:24px;top:26px;display:flex;align-items:center;gap:10px;font:600 22px Montserrat;letter-spacing:.12em}
 .rec i{width:16px;height:16px;border-radius:50%;background:#e5484d}
 .tm{position:absolute;right:24px;top:26px;font:500 22px 'JetBrains Mono',monospace}
@@ -55,14 +55,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 .facts .row span{font:400 30px Inter;color:#bdbdbd}
 /* end */
 .end{position:absolute;left:76px;right:76px;top:760px;z-index:12;opacity:0;text-align:left}
-.end .avb{width:220px;height:220px;border-radius:50%;background:url(img/portrait_laptop.jpg) center 30%/cover;filter:grayscale(1) contrast(1.1);border:3px solid var(--blue)}
+.end .avb{width:260px;height:260px;border-radius:50%;object-fit:cover;border:3px solid var(--blue)}
 .end p{margin-top:44px;font:400 40px/1.4 Inter;color:#e0e0e0}
 .end p b{color:#fff;font-weight:600}
 </style></head><body>
 <div id="stage">
 <div class="grain" id="grain"></div>
 <div class="prog"><i id="prog"></i></div>
-<div id="hook"><div class="ph" id="hph"></div><div class="sh"></div></div>
+<div id="hook"><img class="ph" id="hph" src="raw/hook/001.jpg" alt=""><div class="sh"></div></div>
 <img class="logo" src="img/logo_flow.png" alt="">
 <img class="av" id="av" src="img/avatar_circle.png" alt="">
 <div class="txt" id="hookTxt"><div class="k">Talk-to-Brand · Workshop Vol. 2</div>
@@ -70,7 +70,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 <div class="txt" id="txt" style="opacity:0"><div class="k" id="k"></div><div class="h" id="h"></div></div>
 
 <div class="zone" id="zone">
-  <section class="scene" id="s_rec"><div class="phone"><div class="cam" id="cam"></div>
+  <section class="scene" id="s_rec"><div class="phone"><img class="cam" id="cam" src="raw/rec/001.jpg" alt="">
     <div class="rec"><i id="dot"></i>REC</div><div class="tm" id="tm">00:00</div>
     <div class="wave" id="wave"></div></div></section>
   <section class="scene" id="s_tr"><div class="tr"><div class="lab">transkript · lokal auf deinem rechner</div><div style="position:absolute;right:50px;top:46px;font:500 20px Montserrat;letter-spacing:.14em;color:var(--grey);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px">BEISPIEL</div>
@@ -96,7 +96,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
     <div class="row"><b>Digital</b><span>live dabei</span></div>
     <div class="row"><b>15 €</b><span>pro Person</span></div></div></section>
 </div>
-<div class="end" id="end"><div class="avb"></div>
+<div class="end" id="end"><img class="avb" id="ev" src="raw/end/001.jpg" alt="">
   <p><b>Bring ein Video von dir mit.</b><br>Du gehst mit deiner Marke als Skill raus.<br>Schreib mir für einen Platz.</p></div>
 </div>
 
@@ -115,7 +115,9 @@ const T = {
 const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
 const $ = id => document.getElementById(id);
 const wave = $("wave"); for (let i = 0; i < 28; i++) wave.appendChild(document.createElement("i"));
-window.DRAW = t => {
+const RAW = { hook: [0, 89, "hph"], rec: [0, 119, "cam"], end: [0, 104, "ev"] };
+const frame = async (name, lk) => { const r = RAW[name]; if (!r) return; const el = $(r[2]), n = Math.min(r[1], 1 + Math.floor(lk * B * 30)), src = `raw/${name}/${String(n).padStart(3, "0")}.jpg`; if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } };
+window.DRAW = async t => {
   const kb = t / B, bi = Math.floor(kb);
   let cur = SC[SC.length - 1]; SC.forEach(s => { if (kb >= s[1] && kb < s[2]) cur = s });
   const name = cur[0], lk = kb - cur[1];
@@ -123,7 +125,7 @@ window.DRAW = t => {
   $("grain").style.transform = `translate(${(bi * 37) % 120 - 60}px,${(bi * 53) % 120 - 60}px)`;
   const isHook = name === "hook";
   $("hook").style.opacity = isHook ? 1 : 0; $("hookTxt").style.opacity = isHook ? 1 : 0;
-  $("hph").style.transform = `scale(${1.1 - .06 * cl(kb / 6)})`;
+  $("hph").style.transform = `translateY(-260px) scale(${1.14 - .04 * cl(kb / 6)})`;
   $("hookTxt").style.transform = `translateY(${(1 - eo(kb / .8)) * 40}px)`;
   $("av").style.opacity = isHook || name === "end" ? 0 : 1;
   if (!isHook) { $("k").innerHTML = T[name][0]; $("h").innerHTML = T[name][1]; const a = eo(lk / .4); $("txt").style.transform = `translateY(${(1 - a) * 26}px)`; $("txt").style.opacity = a } else $("txt").style.opacity = 0;
@@ -131,7 +133,7 @@ window.DRAW = t => {
   $("zone").style.transform = `scale(${1 - (1 - eo(lk / .35)) * .03})`;
   if (name === "rec") {
     const sec = Math.floor(lk * B * 40); $("tm").textContent = `0${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
-    $("dot").style.opacity = Math.floor(lk * 2) % 2 ? .3 : 1; $("cam").style.transform = `scale(${1.04 + .04 * cl(lk / 8)})`;
+    $("dot").style.opacity = Math.floor(lk * 2) % 2 ? .3 : 1; $("cam").style.transform = `scale(${1.02 + .04 * cl(lk / 8)})`;
     [...wave.children].forEach((el, i) => el.style.height = (14 + 80 * Math.abs(Math.sin(t * 7 + i * .9) * Math.sin(t * 3.1 + i * .37))) + "%");
   }
   if (name === "tr") {
@@ -147,7 +149,8 @@ window.DRAW = t => {
     $("mine").style.opacity = eo((lk - 3) / .5);
   }
   if (name === "facts") [...$("facts").children].forEach((el, i) => { const a = eo((lk - .3 - i * .7) / .4); el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -60}px)` });
-  $("end").style.opacity = name === "end" ? eo((lk - .6) / .5) : 0;
+  $("end").style.opacity = name === "end" ? eo((lk - .2) / .4) : 0;
+  await frame(name, lk);
 };
 </script>
 </body></html>

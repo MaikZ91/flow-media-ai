@@ -5,13 +5,13 @@ Stand: 27.10.2026 · Reel 1080×1920, 26,8 s · Status: **fertig (`R019.mp4`)** 
 Workshop: „Von KI zur Personal Brand – Vol. 2: Talk-to-Brand“ · Mo 02.11.2026 · 18:00 · ca. 60 Min · digital & live · 15 € · Material: `workshops/2026-11-02_personal-brand-vol2/`
 
 ## Szenen (Beat-Raster „Motivating Mornings“, Mixkit, ab 20,271 s, B = 0,4954 s)
-1. Hook (0–3 s): Maik groß, „EINMAL REDEN. IMMER POSTEN.“ · Kicker „Talk-to-Brand · Workshop Vol. 2“
-2. 01 Red über dich: Handy mit REC + Wellenform – „Ein Video. 5 Minuten.“
+1. Hook (0–3 s): Maik im echten Selfie-Video (RAW 24.10., „ziemlich geil“-Moment), „EINMAL REDEN. IMMER POSTEN.“ · Kicker „Talk-to-Brand · Workshop Vol. 2“
+2. 01 Red über dich: Handy mit REC + Wellenform, darin Maiks echtes Video („tragt eure Message da draußen“) – „Ein Video. 5 Minuten.“
 3. 02 KI hört zu: Transkript-Karte (BEISPIEL-Sätze, sinngemäß aus Maiks Werten) → Tags Werte · Stimme · Zielgruppe · Geschichte
 4. 03 Talk-to-Brand: Video zerfällt in 4 Skills (DNA · Look · Content · Website)
 5. 04 Content: Maiks echte Posts P002, P005, P004 – „Meine Posts · gebaut mit meinen eigenen Skills“
 6. Fakten: Mo 02.11. · 18 Uhr · Digital · 15 €
-7. Ende: Maik (Kreis) – „Bring ein Video von dir mit. Du gehst mit deiner Marke als Skill raus. Schreib mir für einen Platz.“
+7. Ende: Maik im Video-Kreis („Ich freue mich auf euch. Ciao!“) – „Bring ein Video von dir mit. Du gehst mit deiner Marke als Skill raus. Schreib mir für einen Platz.“
 
 ## Caption
 ```
@@ -41,5 +41,6 @@ Teil C §5: Maik im ersten Bild ✓ · Hook ≤ 1 s lesbar ✓ · 26,8 s (Erklä
 flow-design §9: s/w + Blau ✓ · Maik im Motiv ✓ · keine fremden Wasserzeichen ✓
 
 ## Neu rendern
+RAW-Frames (nicht im Repo, `raw/` ist ignoriert): Drive RAW `1pfmBWTy1i32mJBwH2Kuvipl34FMRxHLI` (Selfie 24.10., wie R011) per curl laden, dann mit HLG→SDR-Tonemap + s/w-Grade wie R011 als JPEG-Folgen extrahieren: `hook` ab 38,2 s (2,98 s, 1080×1920), `rec` ab 58,6 s (3,97 s, 600×1068), `end` ab 88,4 s (3,48 s, Crop 480×480 bei y=110 → 440²), je 30 fps.
 `node frames.js <ordner>` → `video_only.mp4`, dann
 `ffmpeg -i video_only.mp4 -ss 20.271 -i ../../musik/frei/motivating-mornings.mp3 -t 26.75 -filter_complex "[1:a]afade=t=in:d=0.05,afade=t=out:st=25.3:d=1.4,loudnorm=I=-14:TP=-1:LRA=9[a]" -map 0:v -map "[a]" -c:v libx264 -crf 21 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart R019.mp4`
