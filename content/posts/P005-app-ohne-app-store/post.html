@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--white:#fff;--grey:#9A9A9A;--line:rgba(255,255,255,.18);--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--black);color:#fff;font-family:Inter,sans-serif;overflow:hidden}
+.s{display:none;position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--black)}
+.grain{position:absolute;inset:0;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.pg{position:absolute;right:76px;top:84px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a}
+.swipe{position:absolute;left:76px;bottom:76px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a;text-transform:uppercase}
+.swipe i{font-style:normal;color:var(--blue)}
+.box{position:absolute;left:76px;right:76px}
+.k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{font:700 128px/.9 Oswald;text-transform:uppercase;margin-top:20px}
+.p{font:400 32px/1.4 Inter;color:#cfcfcf;margin-top:30px;max-width:880px}
+.b{color:var(--blue)}
+.phone{position:absolute;border-radius:46px;background:#000;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px #2a2a2a}
+.phone img{display:block;width:100%;border-radius:36px}
+.tag{position:absolute;font:500 18px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#8a8a8a}
+.ph{position:absolute;background:url(img/portrait_front.jpg) center top/cover;filter:grayscale(1) contrast(1.12) brightness(.92)}
+.steps > div{display:flex;gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.steps .n{font:600 26px JetBrains Mono;color:var(--blue);width:52px;flex:none;padding-top:8px}
+.steps b{display:block;font:700 54px/1 Oswald;text-transform:uppercase}
+.steps span{display:block;margin-top:10px;font:400 27px/1.4 Inter;color:#bdbdbd}
+.steps em{font-style:normal;color:#fff;font-weight:600}
+.avatar{width:120px;height:120px;border-radius:50%;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1) contrast(1.1);border:2px solid var(--line)}
+</style></head>
+<body>
+
+<!-- 1 · Hook -->
+<section class="s" id="s1">
+  <div class="ph" style="left:360px;right:-100px;top:330px;height:1100px"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 30%,rgba(11,11,11,0) 52%),linear-gradient(180deg,#0B0B0B 26%,rgba(11,11,11,0) 38%,rgba(11,11,11,0) 78%,#0B0B0B 100%)"></div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">1 / 5</div>
+  <div class="box" style="top:180px">
+    <div class="k">Tools · Flow Board</div>
+    <div class="h">Meine App.<br><span class="b">Ohne App Store.</span></div>
+  </div>
+  <div class="phone" style="left:76px;top:560px;width:300px"><img src="img/board.png" alt=""></div>
+  <div class="tag" style="left:76px;top:1228px">Beispieldaten</div>
+  <div class="swipe" style="left:auto;right:76px">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<!-- 2 · What it is -->
+<section class="s" id="s2">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">2 / 5</div>
+  <div class="box" style="top:190px">
+    <div class="k">Was das ist</div>
+    <div class="h" style="font-size:104px">Ein Board.<br><span class="b">Alles drin.</span></div>
+    <p class="p" style="font-size:29px;margin-top:22px">Aufgaben, Kalender und Finanzen in einem Tool. Selbst gebaut mit Claude Code, installiert auf meinem Handy.</p>
+  </div>
+  <div class="phone" style="left:76px;top:640px;width:288px"><img src="img/board.png" alt=""></div>
+  <div class="phone" style="left:396px;top:640px;width:288px"><img src="img/cal.png" alt=""></div>
+  <div class="phone" style="left:716px;top:640px;width:288px"><img src="img/fin.png" alt=""></div>
+  <div class="tag" style="left:76px;top:1270px">Kanban · Kalender · Finanzen — Beispieldaten</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 3 · How -->
+<section class="s" id="s3">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">3 / 5</div>
+  <div class="box" style="top:270px">
+    <div class="k">So geht's</div>
+    <div class="h" style="font-size:112px">Website rein.<br><span class="b">App raus.</span></div>
+    <div class="steps" style="margin-top:46px">
+      <div><span class="n">01</span><div><b>Web-App bauen</b><span>Eine Website plus zwei kleine Dateien: <em>Manifest</em> (Name, Icon) und <em>Service Worker</em>.</span></div></div>
+      <div><span class="n">02</span><div><b>Android</b><span>In Chrome öffnen → <em>⋮</em> → <em>App installieren</em>.</span></div></div>
+      <div><span class="n">03</span><div><b>iPhone</b><span>In Safari öffnen → <em>Teilen</em> → <em>Zum Home-Bildschirm</em>.</span></div></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 4 · Why -->
+<section class="s" id="s4">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">4 / 5</div>
+  <div class="box" style="top:270px">
+    <div class="k">Warum ich das so mache</div>
+    <div class="h" style="font-size:112px">Kein Store.<br><span class="b">Kein Warten.</span></div>
+    <div class="steps" style="margin-top:46px">
+      <div><span class="n">01</span><div><b>Keine Freigabe</b><span>Kein Review im App Store, kein Upload. Link öffnen, installieren, fertig.</span></div></div>
+      <div><span class="n">02</span><div><b>Updates sofort</b><span>Ich ändere was, und beim nächsten Öffnen ist es auf dem Handy.</span></div></div>
+      <div><span class="n">03</span><div><b>Ein Code für alles</b><span>Laptop, Android und iPhone laufen mit derselben App.</span></div></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 5 · Honest bug + question -->
+<section class="s" id="s5">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">5 / 5</div>
+  <div class="box" style="top:380px">
+    <div class="k">Build in public</div>
+    <div class="h" style="font-size:112px">Ein Bug<br><span class="b">gab's auch.</span></div>
+    <p class="p">Auf meinem Android wollte die App bei jedem Start meinen Board-Link neu. Der Fix ist drin, heute teste ich ihn.</p>
+    <div style="height:1px;background:var(--line);margin:56px 0 46px"></div>
+    <div style="display:flex;align-items:center;gap:30px">
+      <div class="avatar"></div>
+      <div style="font:700 60px/1.02 Oswald;text-transform:uppercase">Welches Tool<br>würdest du dir <span class="b">bauen?</span></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<script>document.getElementById(location.hash.slice(1) || "s1").style.display = "block";</script>
+</body></html>

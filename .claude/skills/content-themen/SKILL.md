@@ -28,7 +28,7 @@ Weitere Säulen nur nach Maiks OK ergänzen.
 
 ## 2. Ideen je Säule (nur Ideen auf Basis echter Projekte)
 - `web`: „Website von 2014 → heute“ (Demo-Firma) · „Landingpage in einem Abend“ · „3 Dinge, die jede kleine Website braucht“
-- `tools`: „Ich hab mein Trello ersetzt“ (Flow Board) · „Board als App aufs iPhone – ohne App Store“ · „Kalender per Doppelklick wie Outlook, selbst gebaut“
+- `tools`: „Ich hab mein Trello ersetzt“ (Flow Board) · „Board als App aufs iPhone – ohne App Store“ (✓ P005) · „Kalender per Doppelklick wie Outlook, selbst gebaut“
 - `social`: „Dein KI-Content sieht jedes Mal anders aus?“ (R005) · „Jeden Tag ein Post – wie meine Routine läuft“ · „Mein Creative Director kennt meine Regeln“ · „Was mein Autopilot falsch gemacht hat (Token-Ausfall)“
 - `foto`: „Eine Porträtserie, die zusammenpasst“ · „Von einem Selfie zum Plakatmotiv“ (nur mit eigenen Fotos)
 - `design`: „Wie ich aus meinen Plakaten ein Design-System gemacht habe“ · „Warum Schwarz-Weiß + eine Farbe wirkt“
@@ -63,6 +63,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 27.10.2026 | P005 | `tools` | Karussell (5 Folien) | „Meine App. Ohne App Store.“ – Flow Board als Web-App aufs Handy (Anleitung + echter Link-Bug), Beispieldaten | `format = anleitung-karussell` |
 | 26.10.2026 | P004 | `lernen` | Einzelpost + Story | „Heute. 18 Uhr.“ – Tag-X-Erinnerung an den Workshop „Mit KI zur Personal Brand“, Porträt Laptop | `format = event-reminder` |
 | 25.10.2026 | R018 | `kreativ` / `ki` | Reel (3D-Produktkonzept) | „Cocktails mixen. Hände frei.“ – Smart Glasses führen durch einen Sex on the Beach (Konzept) | `format = produktkonzept-3d` |
 | 25.10.2026 | R017 | `agentic` / `web` | Reel (Pipeline) | „Alte Website? Meine KI baut die neue.“ – Lead-Pipeline (Demo-Bäckerei, Versand nur auf Anfrage), Agentic Marketing Teil 2 | `format = pipeline-erklaerer` |
