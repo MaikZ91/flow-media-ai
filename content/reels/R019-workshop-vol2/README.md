@@ -11,7 +11,7 @@ Workshop: „Von KI zur Personal Brand – Vol. 2: Talk-to-Brand“ · Mo 02.11.
 4. 03 Talk-to-Brand: Video zerfällt in 4 Skills (DNA · Look · Content · Website)
 5. 04 Content: Maiks echte Posts P002, P005, P004 – „Meine Posts · gebaut mit meinen eigenen Skills“
 6. Fakten: Mo 02.11. · 18 Uhr · Digital · 15 €
-7. Ende: Maik im Video-Kreis („Ich freue mich auf euch. Ciao!“) – „Bring ein Video von dir mit. Du gehst mit deiner Marke als Skill raus. Schreib mir für einen Platz.“
+7. Ende: Maik im Video-Kreis („Ich freue mich auf euch. Ciao!“) – „Dein eigener Skill.“ / „Bring ein Video von dir mit. Du gehst mit deinem eigenen Skill raus. Ein Experiment – mach mit. Schreib mir.“
 
 ## Caption
 ```
@@ -23,7 +23,9 @@ Daraus baut die KI deine Marke als Skill: deine Werte, deine Stimme, dein Look.
 
 Danach schreibt Claude Posts, Captions und sogar deine Website so, dass sie nach dir klingen. Nicht nach KI.
 
-Genau so entsteht mein eigener Content – live zeigen statt erzählen.
+Genau so entsteht mein eigener Content. Ob es bei dir genauso gut klappt? Finden wir zusammen raus – das Ganze ist ein Experiment, live.
+
+Am Ende gehst du mit deinem eigenen Skill raus.
 
 📅 Montag, 2. November, 18:00 Uhr
 ⏱ ca. 60 Minuten, digital und live
@@ -44,8 +46,8 @@ Posten: heute oder morgen 18–20 Uhr; Story-Erinnerung am Mo 02.11. morgens.
 | 7–11 | Die KI hört zu und zieht deine Werte, deine Stimme und deine Zielgruppe raus. |
 | 11–15 | Daraus wird deine Marke als Skill: DNA, Look, Content und Website. |
 | 15–19 | Und dann klingt jeder Post nach dir. Genau so entsteht mein Content. |
-| 19–23 | Montag, zweiter November, achtzehn Uhr. Digital, fünfzehn Euro. |
-| 23–26 | Bring ein Video mit. Schreib mir für einen Platz. |
+| 19–23 | Ein Experiment, live: Montag, zweiter November, achtzehn Uhr. Fünfzehn Euro. |
+| 23–26 | Bring ein Video mit. Du gehst mit deinem eigenen Skill raus. |
 
 Stimme: Maik selbst (Sprachmemo) oder Maiks eigener Stimmklon (ElevenLabs Starter, kommerzielle Lizenz) – keine fremde Computerstimme als Maik. Beim Mischen Musik per sidechaincompress unter die Stimme ducken.
 
