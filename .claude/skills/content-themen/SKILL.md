@@ -63,6 +63,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 30.10.2026 | P006 | `ki` / `lernen` | Karussell (6 Folien) | „Chat, Web oder Terminal?“ – 3 Stufen (ChatGPT/Claude Chat · Claude Code Web/Codex Cloud · Claude Code/Codex CLI), Vergleich, Fazit „Starte im Web“ | `format = vergleich-karussell` |
 | 30.10.2026 | R022 | `kreativ` / `ki` | Reel (Sitcom) | „Bertrand · Folge 1: Das Budget“ – „Drei Bananen pro Prompt. Premium kostet fünf.“ (KI-Sitcom aus Maiks Clips, Maiks KI-Stimme stumm/Untertitel) | `format = sitcom-bertrand` |
 | 30.10.2026 | R021 | `kreativ` / `lernen` | Reel (How-to) | „Dieser Film war ein Bild.“ – Storyboard aus ChatGPT → komplett in Seedance 2.5 → Film; 5 Szenen Bild vs. Video; Bertrand (Affe) als neuer Nebencharakter | `format = howto-storyboard` |
 | 30.10.2026 | R020 | `weg` / `engineering` | Ad-Reel (5 s) | „AI Community“ – rotes AI mit Roboterarm in den Buchstaben, Flug durchs I, Endkarte Community beitreten (Ad für Community-Aufbau, Branding frei) | `format = ad-5s` |

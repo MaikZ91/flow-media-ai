@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--white:#fff;--grey:#9A9A9A;--line:rgba(255,255,255,.16);--blue:#2F5BFF;--card:#141519}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--black);color:#fff;font-family:Inter,sans-serif;overflow:hidden}
+.s{display:none;position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--black)}
+.grain{position:absolute;inset:0;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.pg{position:absolute;right:76px;top:84px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a}
+.swipe{position:absolute;left:76px;bottom:72px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a;text-transform:uppercase}
+.swipe i{font-style:normal;color:var(--blue)}
+.box{position:absolute;left:76px;right:76px}
+.k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{font:700 120px/.9 Oswald;text-transform:uppercase;margin-top:20px}
+.p{font:400 32px/1.4 Inter;color:#cfcfcf;margin-top:28px}
+.b{color:var(--blue)}
+.ph{position:absolute;background:url(img/portrait_laptop.jpg) center top/cover;filter:grayscale(1) contrast(1.12) brightness(.9)}
+/* level slides */
+.lvl{display:flex;align-items:center;gap:22px;margin-top:6px}
+.lvl .n{font:700 150px/1 Oswald;color:var(--blue)}
+.lvl .t{font:700 92px/.92 Oswald;text-transform:uppercase}
+.tools{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.tools span{font:600 26px Inter;border:1.5px solid rgba(255,255,255,.35);border-radius:40px;padding:10px 22px}
+.mock{margin-top:34px;border-radius:22px;background:var(--card);border:1.5px solid var(--line);padding:26px 30px;font:400 27px/1.5 'JetBrains Mono',monospace;color:#d0d0d0}
+.mock .u{color:#fff}.mock .a{color:#8fa4ff}.mock .d{color:#7a7a7a}
+.rows{margin-top:34px}
+.rows > div{display:flex;gap:22px;padding:20px 0;border-top:1px solid var(--line)}
+.rows b{flex:none;width:200px;font:600 22px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);padding-top:6px}
+.rows span{font:400 30px/1.4 Inter;color:#eee}
+.rows em{font-style:normal;color:#fff;font-weight:600}
+/* table */
+table{width:100%;border-collapse:collapse;margin-top:40px}
+th{font:700 40px Oswald;text-transform:uppercase;text-align:center;padding:14px 6px;border-bottom:2px solid #fff}
+th:first-child{text-align:left}
+td{font:400 26px/1.3 Inter;color:#ddd;text-align:center;padding:22px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td:first-child{text-align:left;font:600 21px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);width:220px}
+.dots i{display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid #fff;margin:0 3px}
+.dots i.on{background:#fff}
+.dots.bl i{border-color:var(--blue)}.dots.bl i.on{background:var(--blue)}
+.avatar{width:140px;height:140px;border-radius:50%;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1) contrast(1.1);border:3px solid var(--blue);flex:none}
+</style></head>
+<body>
+
+<!-- 1 · Hook -->
+<section class="s" id="s1">
+  <div class="ph" style="left:380px;right:-120px;top:330px;height:1100px"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 30%,rgba(11,11,11,0) 55%),linear-gradient(180deg,#0B0B0B 24%,rgba(11,11,11,0) 38%,rgba(11,11,11,0) 80%,#0B0B0B 100%)"></div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">1 / 6</div>
+  <div class="box" style="top:170px">
+    <div class="k">ChatGPT · Claude · Codex</div>
+    <div class="h">Chat, Web<br>oder <span class="b">Terminal?</span></div>
+  </div>
+  <div class="box" style="top:640px;right:680px">
+    <p class="p" style="font-size:34px">Drei Stufen, wie du mit KI arbeitest. Welche brauchst du wirklich?</p>
+  </div>
+  <div class="swipe" style="left:auto;right:76px">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<!-- 2 · Stufe 1 Chat -->
+<section class="s" id="s2">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">2 / 6</div>
+  <div class="box" style="top:250px">
+    <div class="k">Stufe 1 · Einsteigen</div>
+    <div class="lvl"><span class="n">01</span><span class="t">Der<br>Chat</span></div>
+    <div class="tools"><span>ChatGPT</span><span>Claude Chat</span></div>
+    <div class="mock"><span class="u">Du:</span> Schreib mir eine Caption für …<br><span class="a">KI:</span> Klar, hier sind drei Varianten …</div>
+    <div class="rows">
+      <div><b>Gut für</b><span>Texte, Ideen, Recherche, Bilder, Dateien auswerten</span></div>
+      <div><b>Setup</b><span><em>Keins.</em> App öffnen, losschreiben.</span></div>
+      <div><b>Grenze</b><span>Das Ergebnis bleibt im Chat. Kopieren und umsetzen machst du selbst.</span></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 3 · Stufe 2 Web-App -->
+<section class="s" id="s3">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">3 / 6</div>
+  <div class="box" style="top:250px">
+    <div class="k">Stufe 2 · Bauen</div>
+    <div class="lvl"><span class="n">02</span><span class="t">Die<br>Web-App</span></div>
+    <div class="tools"><span>Claude Code im Web</span><span>Codex (Cloud)</span></div>
+    <div class="mock"><span class="u">Du:</span> Bau mir eine Landingpage<br><span class="a">KI:</span> Erledigt. <span class="d">Dateien erstellt, Projekt gespeichert ✓</span></div>
+    <div class="rows">
+      <div><b>Gut für</b><span>Websites, Tools, einfache Automatisierungen – <em>echte Projekte statt Chat-Text</em></span></div>
+      <div><b>Setup</b><span>Keine Installation, läuft in der Cloud, sogar vom Handy</span></div>
+      <div><b>Grenze</b><span>Kein Zugriff auf deinen eigenen Rechner</span></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 4 · Stufe 3 Terminal -->
+<section class="s" id="s4">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">4 / 6</div>
+  <div class="box" style="top:250px">
+    <div class="k">Stufe 3 · Fortgeschritten</div>
+    <div class="lvl"><span class="n">03</span><span class="t">Das<br>Terminal</span></div>
+    <div class="tools"><span>Claude Code</span><span>Codex CLI</span></div>
+    <div class="mock"><span class="d">~/projekte $</span> <span class="u">claude</span><br><span class="a">›</span> Sortier meine Rechnungen und öffne den Browser …</div>
+    <div class="rows">
+      <div><b>Gut für</b><span>Voller Dateizugriff, eigene Programme, <em>Browser- &amp; Computer-Use</em>, komplexe Abläufe</span></div>
+      <div><b>Setup</b><span>Läuft auf deinem Rechner, kurze Installation</span></div>
+      <div><b>Achtung</b><span>Mehr Macht, mehr Verantwortung: nur freigeben, was es braucht</span></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 5 · Vergleich -->
+<section class="s" id="s5">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">5 / 6</div>
+  <div class="box" style="top:190px">
+    <div class="k">Auf einen Blick</div>
+    <div class="h" style="font-size:96px">Der <span class="b">Vergleich.</span></div>
+    <table>
+      <tr><th></th><th>Chat</th><th>Web</th><th>Terminal</th></tr>
+      <tr><td>Leicht zu starten</td><td><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots"><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="dots"><i class="on"></i><i></i><i></i></span></td></tr>
+      <tr><td>Baut Projekte</td><td><span class="dots"><i class="on"></i><i></i><i></i></span></td><td><span class="dots"><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="dots bl"><i class="on"></i><i class="on"></i><i class="on"></i></span></td></tr>
+      <tr><td>Zugriff auf Rechner</td><td>–</td><td>–</td><td>voll</td></tr>
+      <tr><td>Browser / PC steuern</td><td>–</td><td>–</td><td>✓</td></tr>
+      <tr><td>Ideal für</td><td>Texte, Ideen</td><td>Websites, Tools, Routinen</td><td>Profi-Automation</td></tr>
+    </table>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 6 · Fazit -->
+<section class="s" id="s6">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">6 / 6</div>
+  <div class="box" style="top:250px">
+    <div class="k">Mein Fazit</div>
+    <div class="h" style="font-size:108px">Starte im Web.<br><span class="b">Wachse ins Terminal.</span></div>
+    <p class="p">Für den Einstieg und einfache Automatisierungen reicht die Web-App völlig. Mein täglicher Content-Entwurf entsteht genau so. Das Terminal holst du dir, wenn du mehr willst.</p>
+    <div style="height:1px;background:var(--line);margin:50px 0 40px"></div>
+    <div style="display:flex;align-items:center;gap:30px">
+      <div class="avatar"></div>
+      <div style="font:700 58px/1.02 Oswald;text-transform:uppercase">Welche Stufe<br>nutzt du? <span class="b">1, 2 oder 3?</span></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<script>document.getElementById(location.hash.slice(1) || "s1").style.display = "block";</script>
+</body></html>
