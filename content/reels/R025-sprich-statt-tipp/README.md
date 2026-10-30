@@ -1,18 +1,18 @@
 # R025 – Sprich statt tipp (mit Bertrands Stimme)
 
-Stand: 30.10.2026 · Reel 1080×1920, 20 s · Status: **fertig (`R025.mp4`)** · Säule `ki` / `lernen` · Test-Variable `voice = bertrand` (erstes Reel mit Bertrands Stimme)
+Stand: 30.10.2026 · Reel 1080×1920, 20 s · Status: **fertig (`R025.mp4`)** · Säule `ki` / `lernen` · Test-Variable `format = tipp-bertrand` · **ohne Stimme** (Maik: TTS klang abgehackt) – Bertrands Sätze nur als Untertitel
 
 ## Ablauf
 | Zeit | Bild | Text / Ton |
 |---|---|---|
 | 0–2,4 s | Maik reibt sich auf der Couch die Augen (a.mov, KI) | DU TIPPST DEINE PROMPTS NOCH? |
-| 2,4–5 s | Bertrand schiebt die Sonnenbrille hoch (a.mov) | 🔊 BERTRAND: „Tippen? Ich rede einfach.“ |
-| 5–9,6 s | Handy-Mockup: Spracheingabe, Wellenform, Mikrofon pulsiert, Text schreibt sich mit | 01 · Mikrofon statt Tastatur · EINFACH REDEN. · „Bau mir eine Landingpage für meinen Workshop am Montag …“ · 🔊 „Mikrofon an. Drauflos reden. Fertig.“ |
-| 9,6–14,7 s | 3 Tipps oben, Bertrand am Laptop unten (Bertrand.mov) | SPRICH WIE MIT EINEM KOLLEGEN: 1 Mikrofon-Taste in ChatGPT oder Claude · 2 Diktierfunktion der Tastatur (geht überall, sogar im Terminal) · 3 Ziel, Kontext, Beispiel · 🔊 „Erzähl mir einfach alles. Ziel, Kontext, Beispiel. Ich sortier das.“ |
-| 14,7–17,6 s | Maiks Reaktion + Bertrand mit Banane (a.mov, Original-Untertitel abgedeckt) | 🔊 „Sprich mit mir. Nicht mit deiner Tastatur.“ |
+| 2,4–5 s | Bertrand schiebt die Sonnenbrille hoch (a.mov) | BERTRAND: „Tippen? Ich rede einfach.“ |
+| 5–9,6 s | Handy-Mockup: Spracheingabe, Wellenform, Mikrofon pulsiert, Text schreibt sich mit | 01 · Mikrofon statt Tastatur · EINFACH REDEN. · „Bau mir eine Landingpage für meinen Workshop am Montag …“ · „Mikrofon an. Drauflos reden. Fertig.“ |
+| 9,6–14,7 s | 3 Tipps oben, Bertrand am Laptop unten (Bertrand.mov) | SPRICH WIE MIT EINEM KOLLEGEN: 1 Mikrofon-Taste in ChatGPT oder Claude · 2 Diktierfunktion der Tastatur (geht überall, sogar im Terminal) · 3 Ziel, Kontext, Beispiel · „Erzähl mir einfach alles. Ziel, Kontext, Beispiel. Ich sortier das.“ |
+| 14,7–17,6 s | Maiks Reaktion + Bertrand mit Banane (a.mov, Original-Untertitel abgedeckt) | „Sprich mit mir. Nicht mit deiner Tastatur.“ |
 | 17,6–20 s | Endkarte gelb | SPRICH DEINE PROMPTS. · Probier's heute aus – und erzähl mir, was du der KI als Erstes gesagt hast. 🍌 |
 
-Ton: Bertrands Stimme `tools/bertrand-voice/say.py` (Piper „thorsten“, CC0), Dateien in `voice/`; Musik „Cat Walk“ (Mixkit, Stock Music Free License) ab 28 s, unter der Stimme geduckt. Maik spricht nicht. Badge „KI-GENERIERT“.
+Ton: nur Musik „Cat Walk“ (Mixkit, Stock Music Free License) ab 28 s. (Die TTS-Spuren in `voice/` und `stimmproben/` sind verworfen.) Maik spricht nicht. Badge „KI-GENERIERT“.
 
 ## Caption
 ```
