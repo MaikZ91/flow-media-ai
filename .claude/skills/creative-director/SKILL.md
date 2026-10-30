@@ -67,6 +67,13 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - **Karussell:** für Schritt-für-Schritt-Anleitungen (Saves); erste Folie = Ergebnis, letzte = Frage.
 - **3D-Animation (Maik, 25.10.2026 – „der Ton ist gut, das Reel auch“):** realistische 3D-/CAD-Animation (three.js mit PBR-Licht und Schatten, gerendert per Playwright/SwiftShader) + Text-Story in nummerierten Schritten (01 … 05) + freie Musik in voller Qualität im Takt. Für alles ohne echtes Filmmaterial: Maker-Builds, Automatisierungen als „Maschine“, Tools, die sich zusammenbauen. Bauteile in Flow-Blau als einziger Akzent, sonst dunkel/neutral; kein Markenlogo an Geräten; Maik als Kreis unten links. Ehrlich kennzeichnen („Die Animation zeigt das Prinzip“), nie als echte Aufnahme ausgeben. Vorlage: R015 (`robot.html`, `render.js`). Arbeitsthemen nur als allgemeine Maker-Version, ohne Firma, Produkt oder Ablauf aus dem Job.
 
+## Nebencharakter „Bertrand“ (Maik, 30.10.2026)
+- **Wer:** Bertrand ist ein Schimpanse mit Sonnenbrille und schwarzem Hoodie, KI-generiert (Storyboard in ChatGPT, Video in Seedance 2.5 bzw. Kling/CapCut). Er **verkörpert die KI**: Alle denken „Affen sind doof“, aber Bertrand ist schlauer als gedacht und erledigt für Maik die KI-Arbeit – mit Pointe (z. B. die „fertige App“ ist eine Bananen-Einkaufsliste).
+- **Botschaft:** „KI ist so einfach, dass sogar ein Affe sie bedienen kann“ → Switch: Der Affe ist die KI, und die ist schlauer, als man denkt. Claim aus dem Material: „KI für alle. Auch ohne Affen.“
+- **Einsatz:** als wiederkehrender **Nebencharakter**, nicht als eigene Serie: Gastauftritt in How-tos, Hooks, Endkarten oder Sitcom-Szenen mit Maik (2–4 s), etwa jedes 3.–4. Reel. Maik bleibt Hauptfigur.
+- **Material:** Drive `01_Marketing/Content/Videos` (Storyboard `Bertrand2.png`, `Bertrand.mov`, Sitcom- und Büro-Clips). Clips mit CapCut-Wasserzeichen nur mit weggeschnittenem Rand verwenden. Immer „KI-generiert“ kennzeichnen.
+- Maiks Gesicht in diesen Clips ist eine KI-Version aus seinem eigenen Referenzfoto (freigegeben); keine fremden Personen oder Promi-Gesichter generieren.
+
 # Teil C – Virale Reels
 
 Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) sind drei Hauptsignale; Prozentzahlen sind Richtwerte aus Marketing-Blogs, keine offiziellen Werte.

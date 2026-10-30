@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.14);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:25}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.scene{position:absolute;inset:0;opacity:0}
+.full{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.85) 0%,rgba(11,11,11,.2) 30%,rgba(11,11,11,0) 55%,rgba(11,11,11,.55) 100%)}
+#s_hook .shade{background:linear-gradient(180deg,rgba(11,11,11,.5) 0%,rgba(11,11,11,0) 15%,rgba(11,11,11,0) 50%,rgba(11,11,11,.85) 68%,rgba(11,11,11,.6) 100%)}
+.txt{position:absolute;left:76px;right:76px;top:150px;z-index:12}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:14px;font:700 104px/.94 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}
+.y{color:var(--banana)}
+.badge{position:absolute;right:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:6px 14px;z-index:26;background:rgba(0,0,0,.35)}
+/* prompt card */
+.card{position:absolute;left:76px;right:76px;top:560px;border-radius:28px;background:var(--card);border:1.5px solid var(--line);padding:46px 48px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.lab{font:400 24px 'JetBrains Mono',monospace;color:var(--grey);display:flex;align-items:center;gap:16px}
+.ref{width:110px;height:110px;border-radius:18px;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1);border:2px solid var(--line)}
+.att{display:flex;align-items:center;gap:22px;margin-top:30px;font:500 28px Inter;color:#cfcfcf}
+.ptxt{margin-top:34px;font:400 35px/1.45 Inter;color:#eee;min-height:560px}
+.ptxt mark{background:rgba(47,91,255,.28);color:#fff;border-radius:6px;padding:0 6px}
+.cur{display:inline-block;width:3px;height:38px;background:#fff;vertical-align:-6px;margin-left:2px}
+/* storyboard */
+#sb{position:absolute;left:50%;top:560px;width:900px;margin-left:-450px;border-radius:18px;box-shadow:0 40px 100px rgba(0,0,0,.7);border:2px solid #222}
+.tool{position:absolute;left:50%;top:1030px;width:600px;height:240px;margin-left:-300px;border-radius:30px;border:3px solid var(--blue);background:rgba(20,22,30,.95);opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;box-shadow:0 0 80px rgba(47,91,255,.4)}
+.tool b{font:700 64px Oswald;text-transform:uppercase;letter-spacing:.02em}
+.bar{width:440px;height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--blue)}
+/* compare */
+.cmp{position:absolute;left:76px;right:76px;height:640px;border-radius:24px;overflow:hidden;border:2px solid #262626}
+.cmp img{width:100%;height:100%;object-fit:cover}
+.cmp .tg{position:absolute;left:18px;top:16px;font:600 22px Montserrat;letter-spacing:.14em;background:rgba(0,0,0,.65);padding:8px 14px;border-radius:10px}
+.cmp .tg.v{background:var(--blue)}
+.arrow{position:absolute;left:0;right:0;top:1232px;text-align:center;font:700 54px Oswald;color:var(--blue)}
+.num{position:absolute;right:76px;top:300px;font:700 30px Oswald;color:var(--grey)}
+/* end */
+.end{position:absolute;left:76px;right:76px;top:1180px;z-index:12}
+.end .rule{font:600 30px Montserrat;letter-spacing:.12em;margin-top:30px;color:#fff;background:rgba(0,0,0,.55);display:inline-block;padding:14px 22px;border-radius:14px}
+</style></head><body>
+<div id="stage">
+<div class="prog"><i id="prog"></i></div>
+<div class="badge" id="badge">KI-GENERIERT</div>
+
+<section class="scene" id="s_hook"><img class="full" id="v_hook" alt=""><div class="shade"></div>
+  <div class="txt" style="top:1150px"><div class="k">How-to · KI-Video</div><div class="h">Dieser Film<br>war <span class="b">ein Bild.</span></div></div></section>
+
+<section class="scene" id="s_prompt">
+  <div class="txt"><div class="k">Schritt 01 · ChatGPT</div><div class="h">Foto + <span class="b">Prompt.</span></div></div>
+  <div class="card"><div class="lab">chatgpt · bild erstellen</div>
+    <div class="att"><div class="ref"></div>Referenzfoto von mir</div>
+    <div class="ptxt" id="ptxt"></div></div></section>
+
+<section class="scene" id="s_sb">
+  <div class="txt"><div class="k">Schritt 02 · Ergebnis</div><div class="h">Ein Bild.<br><span class="b">Sechs Szenen.</span></div></div>
+  <img id="sb" src="img/storyboard.jpg" alt="">
+  <div class="tool" id="tool"><b>Seedance 2.5</b><div class="bar"><i id="bar"></i></div></div></section>
+
+<section class="scene" id="s_cmp">
+  <div class="txt"><div class="k" id="ck">Schritt 03 · Seedance 2.5</div><div class="h" style="font-size:84px">Bild rein.<br><span class="b">Film raus.</span></div></div>
+  <div class="num" id="num">1 / 5</div>
+  <div class="cmp" style="top:560px"><img id="pimg" alt=""><span class="tg">STORYBOARD</span></div>
+  <div class="cmp" style="top:1230px"><img id="v_cmp" alt=""><span class="tg v">VIDEO</span></div></section>
+
+<section class="scene" id="s_end"><img class="full" id="v_end" alt=""><div class="shade"></div>
+  <div class="txt"><div class="k">Neu im Team</div><div class="h">Das ist<br><span class="y">Bertrand.</span></div></div>
+  <div class="end"><div style="font:400 40px/1.4 Inter;color:#eee;text-shadow:0 2px 20px #000">Er macht ab jetzt die KI-Arbeit.<br>Sagt er zumindest.</div>
+    <div class="rule">IDEE → STORYBOARD → VIDEO</div></div></section>
+
+<div class="grain" id="grain"></div>
+</div>
+<script>
+const B = 0.6008;   // "Sicilian Coffee" (Mixkit), grid from 16.115 s
+const SC = [["hook",0,4],["prompt",4,10],["sb",10,15],["cmp",15,30],["end",30,37]];
+const TOTAL = 37 * B; window.TOTAL = TOTAL;
+const PROMPT = "„Erstelle ein cineastisches Storyboard als <mark>EIN Bild</mark> mit 4–6 Szenen für ein 15-sekündiges Instagram Reel. <mark>Meine Person aus dem Referenzfoto</mark> soll die Hauptfigur sein. Idee: [DEINE IDEE]. Fotorealistisch, kreativ, humorvoll und im Hochformat 9:16.“";
+const PLAIN = PROMPT.replace(/<[^>]+>/g, "");
+const N = { hook: 73, p1: 55, p2: 55, p3: 55, p4: 54, p5: 55, end: 128 };
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const $ = id => document.getElementById(id);
+const frame = async (el, set, sec) => { const n = Math.min(N[set], 1 + Math.floor(sec * 30)), src = `raw/${set}/${String(n).padStart(3, "0")}.jpg`; if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } };
+const img = async (el, src) => { if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } };
+// type the prompt, keeping the <mark> tags intact
+const typed = n => { let out = "", c = 0, i = 0; while (i < PROMPT.length && c < n) { if (PROMPT[i] === "<") { const j = PROMPT.indexOf(">", i); out += PROMPT.slice(i, j + 1); i = j + 1 } else { out += PROMPT[i++]; c++ } } return out + (PROMPT.slice(i).includes("</mark>") && out.lastIndexOf("<mark>") > out.lastIndexOf("</mark>") ? "</mark>" : "") };
+window.DRAW = async t => {
+  const kb = t / B, fr = Math.round(t * 30);
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (kb >= s[1] && kb < s[2]) cur = s });
+  const name = cur[0], lk = kb - cur[1], ls = lk * B;
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  document.querySelectorAll(".scene").forEach(s => s.style.opacity = s.id === "s_" + name ? 1 : 0);
+  const pop = eo(lk / .35);
+  document.querySelectorAll(".txt").forEach(el => { el.style.transform = `translateY(${(1 - pop) * 26}px)`; el.style.opacity = pop });
+  $("badge").style.opacity = name === "hook" || name === "cmp" || name === "end" ? 1 : 0;
+  if (name === "hook") { await frame($("v_hook"), "hook", ls); $("v_hook").style.transform = `scale(${1.08 - .06 * cl(lk / 4)})` }
+  if (name === "prompt") { const n = Math.floor(PLAIN.length * cl((lk - .6) / 4.6)); $("ptxt").innerHTML = typed(n) + '<span class="cur"></span>' }
+  if (name === "sb") {
+    const fly = eio((lk - 3) / 1.4);
+    $("sb").style.transform = `translateY(${fly * 520}px) scale(${1 - .7 * fly})`; $("sb").style.opacity = 1 - fly * .6;
+    $("sb").style.top = "560px";
+    $("tool").style.opacity = eo((lk - 2.4) / .4); $("bar").style.width = cl((lk - 3.6) / 1.3) * 100 + "%";
+  }
+  if (name === "cmp") {
+    const i = Math.min(4, Math.floor(lk / 3)), l = lk - i * 3;
+    $("num").textContent = `${i + 1} / 5`;
+    await img($("pimg"), `img/p${i + 1}.jpg`);
+    await frame($("v_cmp"), "p" + (i + 1), l * B);
+    $("pimg").style.transform = `scale(${1.06 - .06 * eo(l / .5)})`;
+  }
+  if (name === "end") await frame($("v_end"), "end", ls);
+};
+</script>
+</body></html>
