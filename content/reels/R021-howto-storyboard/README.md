@@ -6,7 +6,7 @@ Stand: 30.10.2026 · Reel 1080×1920, 22,2 s · Status: **fertig (`R021.mp4`)** 
 1. Hook (0–2,4 s): Maik (KI-Version) fassungslos vor der Bananen-App – „DIESER FILM WAR EIN BILD.“ · Badge „KI-GENERIERT“
 2. Schritt 01 · ChatGPT (2,4–6 s): Referenzfoto + der Storyboard-Prompt tippt sich (Maiks Prompt-Vorlage, Idee als [DEINE IDEE])
 3. Schritt 02 · Ergebnis (6–9 s): das ganze Storyboard-Bild (6 Szenen) → fliegt in „Seedance 2.5“, Ladebalken
-4. Schritt 03 · Seedance 2.5 (9–18 s): 5× Storyboard-Szene oben, passende Videostelle unten („Bild rein. Film raus.“)
+4. Schritt 03 · Seedance 2.5 (9–18 s): 5× passende Videostelle groß im vollen 9:16-Format (nichts abgeschnitten), Storyboard-Szene als Bild-im-Bild daneben („Bild rein. Film raus.“)
 5. Ende (18–22 s): Bertrand am Laptop – „Das ist Bertrand. Er macht ab jetzt die KI-Arbeit. Sagt er zumindest.“ · IDEE → STORYBOARD → VIDEO
 
 Material: Drive `Content/Videos` – `Bertrand2.png` (Storyboard aus ChatGPT), `Bertrand.mov` (Seedance-2.5-Ergebnis aus dem kompletten Storyboard-Bild). Originalton des Videos ist nur Musik → ersetzt durch Mixkit „Sicilian Coffee“ (Stock Music Free License).

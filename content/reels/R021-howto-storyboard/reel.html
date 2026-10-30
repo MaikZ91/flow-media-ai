@@ -33,8 +33,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 .tool b{font:700 64px Oswald;text-transform:uppercase;letter-spacing:.02em}
 .bar{width:440px;height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--blue)}
 /* compare */
-.cmp{position:absolute;left:76px;right:76px;height:640px;border-radius:24px;overflow:hidden;border:2px solid #262626}
-.cmp img{width:100%;height:100%;object-fit:cover}
+.cmp{position:absolute;border-radius:24px;overflow:hidden;border:2px solid #262626;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.cmp img{display:block;width:100%;height:auto}
+.cmp.vid{left:400px;top:520px;width:604px;height:1074px}
+.cmp.vid img{height:100%;object-fit:contain}
+.cmp.pan{left:60px;top:640px;width:380px;z-index:3;border-color:#3a3a3a}
 .cmp .tg{position:absolute;left:18px;top:16px;font:600 22px Montserrat;letter-spacing:.14em;background:rgba(0,0,0,.65);padding:8px 14px;border-radius:10px}
 .cmp .tg.v{background:var(--blue)}
 .arrow{position:absolute;left:0;right:0;top:1232px;text-align:center;font:700 54px Oswald;color:var(--blue)}
@@ -64,8 +67,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);col
 <section class="scene" id="s_cmp">
   <div class="txt"><div class="k" id="ck">Schritt 03 · Seedance 2.5</div><div class="h" style="font-size:84px">Bild rein.<br><span class="b">Film raus.</span></div></div>
   <div class="num" id="num">1 / 5</div>
-  <div class="cmp" style="top:560px"><img id="pimg" alt=""><span class="tg">STORYBOARD</span></div>
-  <div class="cmp" style="top:1230px"><img id="v_cmp" alt=""><span class="tg v">VIDEO</span></div></section>
+  <div class="cmp vid"><img id="v_cmp" alt=""><span class="tg v" style="left:auto;right:18px">VIDEO</span></div>
+  <div class="cmp pan"><img id="pimg" alt=""><span class="tg">STORYBOARD</span></div>
+  <div style="position:absolute;left:150px;top:1080px;font:700 90px Oswald;color:var(--blue);z-index:3">→</div></section>
 
 <section class="scene" id="s_end"><img class="full" id="v_end" alt=""><div class="shade"></div>
   <div class="txt"><div class="k">Neu im Team</div><div class="h">Das ist<br><span class="y">Bertrand.</span></div></div>
