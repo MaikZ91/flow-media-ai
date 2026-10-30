@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--banana:#FFD43B;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+#vid{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.badge{position:absolute;right:60px;top:90px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.45);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.4);z-index:20}
+/* sitcom title */
+#title{position:absolute;left:0;right:0;top:250px;text-align:center;z-index:15}
+#title .show{display:inline-block;font:700 150px/1 Oswald;letter-spacing:.06em;color:var(--banana);text-transform:uppercase;text-shadow:0 8px 0 #000,0 0 40px rgba(0,0,0,.6);transform:rotate(-3deg)}
+#title .ep{margin-top:20px;font:600 36px Montserrat;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 14px #000}
+/* subtitles */
+#sub{position:absolute;left:70px;right:70px;top:1180px;text-align:center;z-index:15}
+#sub .who{display:inline-block;font:700 30px Montserrat;letter-spacing:.16em;padding:8px 18px;border-radius:10px;margin-bottom:14px}
+#sub .who.m{background:#fff;color:#000}
+#sub .who.b{background:var(--banana);color:#000}
+#sub .line{font:700 66px/1.12 Inter;text-shadow:0 4px 0 #000,0 0 30px rgba(0,0,0,.8)}
+#cover{position:absolute;left:0;right:0;top:1330px;height:420px;background:linear-gradient(180deg,rgba(11,11,11,0),#0B0B0B 22%,#0B0B0B 80%,rgba(11,11,11,0));z-index:12;opacity:0}
+/* end card */
+#end{position:absolute;inset:0;background:var(--banana);z-index:18;opacity:0;color:#000}
+#end .show{position:absolute;left:0;right:0;top:560px;text-align:center;font:700 190px/1 Oswald;letter-spacing:.05em;text-transform:uppercase;transform:rotate(-3deg)}
+#end .tag{position:absolute;left:80px;right:80px;top:820px;text-align:center;font:700 56px/1.2 Inter}
+#end .q{position:absolute;left:80px;right:80px;top:1080px;text-align:center;font:600 40px/1.35 Inter}
+#end .ai{position:absolute;left:0;right:0;top:1300px;text-align:center;font:600 24px Montserrat;letter-spacing:.2em}
+</style></head><body>
+<div id="stage">
+  <img id="vid" src="raw/s1/001.jpg" alt="">
+  <div id="cover"></div>
+  <div id="title"><div class="show">Bertrand</div><div class="ep">Folge 1 · Das Budget</div></div>
+  <div id="sub"></div>
+  <div class="badge">KI-GENERIERT</div>
+  <div id="end"><div class="show">Bertrand</div>
+    <div class="tag">Sieht aus wie ein Affe.<br>Rechnet wie eine KI.</div>
+    <div class="q">Folge 2? Schreib 🍌 in die Kommentare.</div>
+    <div class="ai">KI-GENERIERT · FLOW MEDIA AI</div></div>
+  <div class="grain" id="grain"></div>
+</div>
+<script>
+// [set, start s, length s, speaker, line]  — Maik's lines are shown as subtitles only (his AI voice is muted)
+const SEG = [
+  ["s1", 0.0, 2.0, "m", "Darf ich vorstellen: unser neuer KI-Mitarbeiter."],
+  ["s2", 2.0, 1.6, "", ""],
+  ["s3", 3.6, 2.3, "m", "Kannst du mir helfen, ein KI-Business aufzubauen?"],
+  ["s4", 5.9, 2.3, "b", "Klar. Erst mal brauch ich ein Budget."],
+  ["s5", 8.2, 1.0, "m", "Wie viel?"],
+  ["s6", 9.2, 3.1, "b", "Drei Bananen pro Prompt. Premium kostet fünf."],
+  ["s7", 12.3, 3.0, "", "🍌"],
+];
+const N = { s1: 60, s2: 48, s3: 69, s4: 69, s5: 30, s6: 93, s7: 90 };
+const END = 15.3, TOTAL = 17.3; window.TOTAL = TOTAL;
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const WHO = { m: "MAIK", b: "BERTRAND" };
+let lastSub = "";
+window.DRAW = async t => {
+  const fr = Math.round(t * 30);
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  const seg = SEG.filter(s => t >= s[1]).pop();
+  const lt = t - seg[1];
+  // title over the first shot
+  $("title").style.opacity = t < 2 ? eo(t / .25) * (1 - eo((t - 1.7) / .3)) : 0;
+  $("title").style.transform = `scale(${1.25 - .25 * eo(t / .3)})`;
+  // subtitles (word-pop for Bertrand's punchline)
+  const sub = $("sub");
+  if (t < END && seg[4]) {
+    const key = seg[0];
+    if (lastSub !== key) { sub.innerHTML = (seg[3] ? `<div class="who ${seg[3]}">${WHO[seg[3]]}</div>` : "") + `<div class="line">${seg[4]}</div>`; lastSub = key }
+    sub.style.opacity = eo(lt / .15); sub.style.transform = `scale(${1.08 - .08 * eo(lt / .2)})`;
+    if (key === "s7") { sub.querySelector(".line").style.fontSize = "160px"; sub.style.top = "1150px" } else sub.style.top = "1180px";
+  } else sub.style.opacity = 0;
+  $("cover").style.opacity = seg[0] === "s7" && t < END ? 1 : 0;
+  // punch-in on the reaction
+  $("vid").style.transform = seg[0] === "s7" ? `scale(${1 + .12 * eo(lt / .4)})` : "scale(1)";
+  // end card
+  $("end").style.opacity = t >= END ? eo((t - END) / .2) : 0;
+  $("end").querySelector(".show").style.transform = `rotate(-3deg) scale(${1.3 - .3 * eo((t - END) / .3)})`;
+  if (t < END) { const n = Math.min(N[seg[0]], 1 + Math.floor(lt * 30)), src = `raw/${seg[0]}/${String(n).padStart(3, "0")}.jpg`; const el = $("vid"); if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } }
+};
+</script>
+</body></html>
