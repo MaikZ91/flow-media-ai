@@ -63,6 +63,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 30.10.2026 | R020 | `weg` / `engineering` | Ad-Reel (5 s) | „AI Community“ – rotes AI mit Roboterarm in den Buchstaben, Flug durchs I, Endkarte Community beitreten (Ad für Community-Aufbau, Branding frei) | `format = ad-5s` |
 | 27.10.2026 | R019 | `lernen` / `social` | Reel (Erklärer) | „Einmal reden. Immer posten.“ – Workshop Vol. 2 Talk-to-Brand (Mo 02.11., 18 Uhr, 15 €), Video → 4 Skills, echte eigene Posts als Beweis | `hook = methoden-name` |
 | 27.10.2026 | P005 | `tools` | Karussell (5 Folien) | „Meine App. Ohne App Store.“ – Flow Board als Web-App aufs Handy (Anleitung + echter Link-Bug), Beispieldaten | `format = anleitung-karussell` |
 | 26.10.2026 | P004 | `lernen` | Einzelpost + Story | „Heute. 18 Uhr.“ – Tag-X-Erinnerung an den Workshop „Mit KI zur Personal Brand“, Porträt Laptop | `format = event-reminder` |

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--red:#E10600;--ink:#0A0A0A}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--red);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+#vid{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover}
+#mask{position:absolute;inset:0}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.09;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.tag{position:absolute;left:0;right:0;top:330px;text-align:center;font:600 34px Montserrat;letter-spacing:.32em;text-transform:uppercase;z-index:10}
+#word{position:absolute;left:0;right:0;top:860px;text-align:center;font:700 190px/1 Oswald;text-transform:uppercase;letter-spacing:-.01em;z-index:10;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+#word b{background:var(--red);padding:0 30px;font-weight:700}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:20}
+#end{position:absolute;inset:0;z-index:12;opacity:0}
+#end .bg{position:absolute;inset:0;background:var(--red)}
+#end .k{position:absolute;left:0;right:0;top:420px;text-align:center;font:600 34px Montserrat;letter-spacing:.32em}
+#end h1{position:absolute;left:40px;right:40px;top:500px;text-align:center;font:700 200px/.9 Oswald;text-transform:uppercase}
+#end h1 span{display:block;color:var(--ink);font-size:180px}
+#end .sub{position:absolute;left:0;right:0;top:1050px;text-align:center;font:600 54px/1.25 Inter}
+#end .chips{position:absolute;left:0;right:0;top:1190px;display:flex;justify-content:center;gap:16px}
+#end .chips span{font:600 30px Montserrat;letter-spacing:.06em;border:3px solid #fff;border-radius:40px;padding:12px 26px}
+#end .cta{position:absolute;left:50%;top:1330px;transform:translateX(-50%);background:#fff;color:var(--red);font:800 52px Inter;padding:26px 54px;border-radius:70px;white-space:nowrap;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+</style></head><body>
+<div id="stage">
+  <img id="vid" src="raw/wide/001.jpg" alt="">
+  <svg id="mask" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <defs><mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+      <rect width="1080" height="1920" fill="#fff"/>
+      <g id="tg"><text x="540" y="1390" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="1150" fill="#000" letter-spacing="10" id="aitext">AI</text></g>
+    </mask></defs>
+    <rect id="redr" width="1080" height="1920" fill="#E10600" mask="url(#m)"/>
+  </svg>
+  <div class="tag" id="tag">Die Community für</div>
+  <div id="word"></div>
+  <div id="end"><div class="bg"></div>
+    <div class="k">FÜR MACHER, DIE MIT KI BAUEN</div>
+    <h1>AI<span>Community</span></h1>
+    <div class="sub">Lernen. Bauen. Connecten.</div>
+    <div class="chips"><span>Workshops</span><span>Austausch</span><span>Projekte</span></div>
+    <div class="cta">Jetzt beitreten →</div>
+  </div>
+  <div id="flash"></div>
+  <div class="grain" id="grain"></div>
+</div>
+<script>
+const B = 0.557;   // "Pop Track 03" (Mixkit), drop at 4.481 s = frame 0
+const TOTAL = 9 * B; window.TOTAL = TOTAL;
+const WORDS = ["Automation", "Robotik", "KI-Tools", "Projekte"];
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), ei = x => Math.pow(cl(x), 3);
+const $ = id => document.getElementById(id);
+const IX = 856, IY = 1000;   // zoom-through point: centre of the "I" stem (measured in the rendered frame)
+const setFrame = async (set, n) => { const el = $("vid"), src = `raw/${set}/${String(n).padStart(3, "0")}.jpg`; if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } };
+window.DRAW = async t => {
+  const kb = t / B, fr = Math.round(t * 30);
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  // impact flash + shake on the drop and on each scene change
+  const hits = [0, 2, 4, 6];
+  const since = Math.min(...hits.map(h => kb >= h ? kb - h : 99));
+  $("flash").style.opacity = since < .12 ? (1 - since / .12) * .55 : 0;
+  const sh = since < .5 ? (1 - since / .5) * 26 : 0;
+  $("stage").style.transform = `translate(${Math.sin(fr * 2.1) * sh}px,${Math.cos(fr * 2.7) * sh}px)`;
+  // scene 1 (0-2 beats): AI slams in, robot visible through the letters
+  // scene 2 (2-4 beats): fly through the "I" into the video
+  let s = 1, zoom = 1;
+  if (kb < 2) { s = 1.7 - .7 * eo(kb / .35); zoom = 1 }
+  else if (kb < 4) { s = 1; zoom = 1 + 11 * ei((kb - 2) / 1.2) }
+  const sc = s * zoom;
+  $("tg").setAttribute("transform", `translate(${IX} ${IY}) scale(${sc}) translate(${-IX} ${-IY})`);
+  $("redr").style.display = sc < 9 ? "" : "none";   // huge glyphs stop rendering; the stem already fills the frame at ~9x
+  $("tag").style.opacity = kb < 2 ? eo((kb - .4) / .3) : 0;
+  // words (4-6 beats), half-beat each, over the close-up
+  const w = $("word");
+  if (kb >= 2.6 && kb < 4) { w.textContent = "AI"; w.style.opacity = 0 }
+  if (kb >= 4 && kb < 6) { const i = Math.floor((kb - 4) * 2); w.innerHTML = "<b>" + WORDS[i] + ".</b>"; w.style.opacity = 1; const l = (kb - 4) * 2 - i; w.style.transform = `scale(${1.25 - .25 * eo(l / .4)})` } else w.style.opacity = 0;
+  // end card (6-9 beats)
+  const e = eo((kb - 6) / .25); $("end").style.opacity = kb >= 6 ? e : 0;
+  $("end").querySelector("h1").style.transform = `scale(${1.3 - .3 * eo((kb - 6) / .35)})`;
+  $("end").querySelector(".cta").style.transform = `translateX(-50%) scale(${kb > 7 ? 1 + .05 * Math.sin((kb - 7) * Math.PI * 2) : eo((kb - 6.5) / .4)})`;
+  // footage
+  if (kb < 4) await setFrame("wide", Math.min(66, 1 + Math.floor(t * 30)));
+  else await setFrame("close", Math.min(36, 1 + Math.floor((t - 4 * B) * 30)));
+};
+</script>
+</body></html>
