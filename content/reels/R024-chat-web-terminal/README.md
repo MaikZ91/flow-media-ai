@@ -31,3 +31,26 @@ Welche Stufe nutzt du? 1, 2 oder 3? 👇
 ```
 Grund zum Senden: „Schick das jemandem, der immer noch alles aus ChatGPT rauskopiert.“
 Posten: 18–20 Uhr, mit Abstand zum Karussell P006 (z. B. 2–3 Tage später). Label „Mit KI erstellt“.
+
+## Variante Q&A (`R024_QA.mp4`, Quelle `qa.html`, Maik 30.10.2026)
+Gleiche Clips und Musik, aber als Frage-Antwort: Hook „Ihr fragt. Bertrand antwortet.“ · je Stufe ein Story-Fragesticker („Frag Bertrand“) und danach die Antwort „🍌 Bertrand sagt: 01 Der Chat …“:
+- „Ich will nur Texte und Ideen. Was brauche ich?“ → Chat
+- „Ich will eine Website oder Automatisierung bauen. Reicht das?“ → Web-App
+- „Die KI soll meinen Rechner und Browser steuern. Geht das?“ → Terminal
+Pointe und Fazit („Bertrands Fazit“) wie oben. Test-Variable gegen R024: `format = qa-reel`.
+Render: `node frames.js <ordner> qa.html`.
+
+### Caption (Q&A)
+```
+Ihr fragt, Bertrand antwortet. 🍌
+
+„Ich will nur Texte und Ideen.“ → Chat (ChatGPT, Claude)
+„Ich will eine Website oder Automatisierung bauen.“ → Web-App (Claude Code im Web, Codex)
+„Die KI soll meinen Rechner und Browser steuern.“ → Terminal (Claude Code, Codex CLI)
+
+Bertrands Fazit: Starte im Web. Wachse ins Terminal.
+
+Welche Frage soll Bertrand als Nächstes beantworten? Schreib sie in die Kommentare 👇
+
+#ClaudeCode #ChatGPT #Codex #KI #FlowMediaAI
+```

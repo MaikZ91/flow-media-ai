@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.14);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:25}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.badge{position:absolute;right:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.4);z-index:26}
+#clip{position:absolute;left:0;width:1080px;object-fit:cover;z-index:1}
+#clip.full{top:0;height:1920px}
+#clip.half{top:930px;height:990px;object-position:50% 46%}
+.fade{position:absolute;left:0;right:0;z-index:2;pointer-events:none}
+.txt{position:absolute;left:76px;right:76px;top:150px;z-index:12}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:14px;font:700 108px/.92 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}.y{color:var(--banana)}
+.lvl{display:flex;align-items:center;gap:22px}
+.lvl .n{font:700 150px/1 Oswald;color:var(--blue)}
+.lvl .t{font:700 96px/.9 Oswald;text-transform:uppercase}
+.tools{display:flex;gap:12px;margin-top:16px}
+.tools span{font:600 26px Inter;border:1.5px solid rgba(255,255,255,.35);border-radius:40px;padding:8px 20px}
+.mock{position:absolute;left:76px;right:76px;top:560px;border-radius:24px;background:var(--card);border:1.5px solid var(--line);padding:26px 30px;font:400 29px/1.55 'JetBrains Mono',monospace;color:#d0d0d0;z-index:12;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.mock .u{color:#fff}.mock .a{color:#8fa4ff}.mock .d{color:#7a7a7a}.mock .ok{color:#5bd68a}
+.cap{position:absolute;left:76px;right:76px;top:800px;z-index:12;font:600 36px/1.3 Inter;color:#fff}
+.cap em{font-style:normal;color:var(--grey);font-weight:400}
+#punch{position:absolute;left:60px;right:60px;top:1180px;text-align:center;z-index:12}
+#punch .l1{font:700 70px/1.05 Oswald;text-transform:uppercase;text-shadow:0 6px 0 #000,0 0 30px rgba(0,0,0,.7)}
+#punch .l2{display:inline-block;margin-top:14px;font:700 104px/1 Oswald;text-transform:uppercase;background:var(--banana);color:#000;padding:4px 26px;transform:rotate(-2deg)}
+/* fazit */
+.cmp{position:absolute;left:76px;right:76px;top:700px;z-index:12;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cmp div{border:1.5px solid var(--line);border-radius:22px;padding:26px 20px;text-align:center;background:var(--card)}
+.cmp div.hi{border-color:var(--blue);box-shadow:0 0 50px rgba(47,91,255,.35)}
+.cmp b{display:block;font:700 54px Oswald;text-transform:uppercase}
+.cmp span{display:block;margin-top:10px;font:400 25px/1.3 Inter;color:#cfcfcf}
+.cmp i{display:block;margin-top:14px;font:600 20px Montserrat;letter-spacing:.14em;color:var(--blue);font-style:normal}
+.q{position:absolute;left:76px;right:76px;top:1060px;z-index:12;font:700 64px/1.05 Oswald;text-transform:uppercase}
+.qs{position:absolute;left:110px;right:110px;top:150px;z-index:13;border-radius:34px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#fff;color:#111}
+.qs .hd{background:linear-gradient(90deg,#2F5BFF,#7a5cff);color:#fff;font:700 30px Inter;padding:22px 30px;text-align:center}
+.qs .qq{font:600 40px/1.3 Inter;padding:30px 34px;text-align:center}
+.ans{position:absolute;left:76px;right:76px;top:520px;z-index:12}
+</style></head><body>
+<div id="stage">
+<div class="prog"><i id="prog"></i></div>
+<div class="badge" id="badge">KI-GENERIERT</div>
+<img id="clip" class="full" alt="">
+<div class="fade" id="fadeTop" style="top:0;height:1000px;background:linear-gradient(180deg,rgba(11,11,11,.85),rgba(11,11,11,0))"></div>
+<div class="fade" id="fadeHalf" style="top:880px;height:180px;background:linear-gradient(180deg,#0B0B0B,rgba(11,11,11,0))"></div>
+<div class="fade" id="fadeBot" style="top:1000px;height:920px;background:linear-gradient(180deg,rgba(11,11,11,0),rgba(11,11,11,.8))"></div>
+
+<div class="txt" id="t_hook"><div class="k">Q&amp;A · KI-Tools</div><div class="h">Ihr fragt.<br><span class="b">Bertrand antwortet.</span></div>
+  <div style="margin-top:26px;font:600 38px Inter">Chat, Web oder Terminal? 🍌</div></div>
+
+<div class="qs" id="q_chat"><div class="hd">Frag Bertrand</div><div class="qq">Ich will nur Texte und Ideen. Was brauche ich?</div></div>
+<div class="ans" id="t_chat"><div class="k" style="color:#FFD43B;margin-bottom:6px">🍌 Bertrand sagt:</div><div class="lvl"><span class="n">01</span><span class="t">Der<br>Chat</span></div><div class="tools"><span>ChatGPT</span><span>Claude Chat</span></div></div>
+<span id="m_chat" style="display:none"><span id="ty_chat"></span></span>
+<div class="cap" id="c_chat">Texte, Ideen, Recherche.<br><em>Aber: Das Ergebnis bleibt im Chat.</em></div>
+
+<div class="qs" id="q_web"><div class="hd">Frag Bertrand</div><div class="qq">Ich will eine Website oder Automatisierung bauen. Reicht das?</div></div>
+<div class="ans" id="t_web"><div class="k" style="color:#FFD43B;margin-bottom:6px">🍌 Bertrand sagt:</div><div class="lvl"><span class="n">02</span><span class="t">Die<br>Web-App</span></div><div class="tools"><span>Claude Code im Web</span><span>Codex</span></div></div>
+<span id="m_web" style="display:none"><span id="ty_web"></span></span>
+<div class="cap" id="c_web">Baut echte Projekte. Ohne Installation.<br><em>Ideal für den Einstieg.</em></div>
+
+<div class="qs" id="q_term"><div class="hd">Frag Bertrand</div><div class="qq">Die KI soll meinen Rechner und Browser steuern. Geht das?</div></div>
+<div class="ans" id="t_term"><div class="k" style="color:#FFD43B;margin-bottom:6px">🍌 Bertrand sagt:</div><div class="lvl"><span class="n">03</span><span class="t">Das<br>Terminal</span></div><div class="tools"><span>Claude Code</span><span>Codex CLI</span></div></div>
+<span id="m_term" style="display:none"><span id="ty_term"></span></span>
+<div class="cap" id="c_term">Voller Zugriff auf deinen Rechner.<br><em>Browser- &amp; Computer-Use. Für Profis.</em></div>
+
+<div id="punch"><div class="l1">Und Stufe 2?</div><div class="l2">Schafft sogar Bertrand.</div></div>
+
+<div class="txt" id="t_end"><div class="k">Bertrands Fazit</div><div class="h" style="font-size:100px">Starte im Web.<br><span class="b">Wachse ins Terminal.</span></div></div>
+<div class="cmp" id="cmp"><div><b>Chat</b><span>Texte &amp; Ideen</span><i>EINSTIEG</i></div><div class="hi"><b>Web</b><span>Projekte &amp; Automation</span><i>EMPFEHLUNG</i></div><div><b>Terminal</b><span>Voller Zugriff</span><i>PROFI</i></div></div>
+<div class="q" id="q">Welche Stufe<br>nutzt du? <span class="b">1, 2 oder 3?</span></div>
+<div class="grain" id="grain"></div>
+</div>
+<script>
+const B = 0.5457;   // "Upbeat Jazz" (Mixkit), grid from 20.271 s
+const SC = [["hook",0,5],["chat",5,10],["web",10,15],["term",15,20],["punch",20,24],["end",24,30]];
+const TOTAL = 30 * B; window.TOTAL = TOTAL;
+const N = { hook: 80, chat: 80, web: 80, term: 80, punch: 64 };
+const TY = { chat: "Klar, hier sind drei Varianten …", web: "Erledigt ✓ Projekt gespeichert.", term: "Sortier meine Rechnungen + öffne den Browser" };
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const show = (ids, on) => ids.forEach(id => { const el = $(id); if (el) el.style.opacity = on ? 1 : 0 });
+window.DRAW = async t => {
+  const kb = t / B, fr = Math.round(t * 30);
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (kb >= s[1] && kb < s[2]) cur = s });
+  const name = cur[0], lk = kb - cur[1], ls = lk * B;
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  ["hook", "end"].forEach(n => { const el = $("t_" + n); el.style.opacity = n === name ? eo(lk / .35) : 0; el.style.transform = `translateY(${(1 - eo(lk / .35)) * 26}px)` });
+  ["chat", "web", "term"].forEach(n => { const on = n === name, q = $("q_" + n), a = $("t_" + n);
+    q.style.opacity = on ? eo(lk / .3) : 0; q.style.transform = `scale(${on ? .85 + .15 * eo(lk / .35) : 1}) rotate(-1.5deg)`;
+    a.style.opacity = on ? eo((lk - 1.3) / .35) : 0; a.style.transform = `translateX(${on ? (1 - eo((lk - 1.3) / .35)) * -60 : 0}px)` });
+  ["chat", "web", "term"].forEach(n => {
+    const on = n === name;
+    $("m_" + n).style.opacity = on ? eo((lk - .4) / .4) : 0;
+    $("c_" + n).style.opacity = on ? eo((lk - 2.4) / .4) : 0;
+    if (on) { const s = TY[n], k = Math.floor(s.length * cl((lk - 1) / 1.8)); $("ty_" + n).innerHTML = (n === "web" && k > 8 ? '<span class="ok">' + s.slice(0, k) + '</span>' : s.slice(0, k)) }
+  });
+  $("punch").style.opacity = name === "punch" ? 1 : 0;
+  $("punch").querySelector(".l1").style.opacity = eo(lk / .3);
+  $("punch").querySelector(".l2").style.opacity = eo((lk - 1.2) / .25);
+  $("punch").querySelector(".l2").style.transform = `rotate(-2deg) scale(${1.4 - .4 * eo((lk - 1.2) / .35)})`;
+  $("cmp").style.opacity = name === "end" ? eo((lk - 1) / .4) : 0;
+  $("q").style.opacity = name === "end" ? eo((lk - 2.6) / .4) : 0;
+  [...$("cmp").children].forEach((el, i) => el.style.transform = name === "end" ? `translateY(${(1 - eo((lk - 1 - i * .3) / .4)) * 40}px)` : "");
+  // clip layout
+  const clip = $("clip"), half = ["chat", "web", "term"].includes(name), full = name === "hook" || name === "punch";
+  clip.className = half ? "half" : "full";
+  clip.style.display = name === "end" ? "none" : "";
+  $("fadeTop").style.opacity = full ? 1 : 0; $("fadeBot").style.opacity = name === "punch" ? 1 : 0; $("fadeHalf").style.opacity = half ? 1 : 0;
+  $("badge").style.opacity = name === "end" ? 0 : 1;
+  clip.style.transform = `scale(${1.06 - .06 * eo(lk / 1.5)})`;
+  if (name !== "end") { const n = Math.min(N[name], 1 + Math.floor(ls * 30)), src = `raw/${name}/${String(n).padStart(3, "0")}.jpg`; if (!clip.src.endsWith(src)) { clip.src = src; await clip.decode().catch(() => {}) } }
+};
+</script>
+</body></html>
