@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.14);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;z-index:30;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:25}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.badge{position:absolute;right:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.4);z-index:26}
+#clip{position:absolute;left:0;width:1080px;object-fit:cover;z-index:1}
+#clip.full{top:0;height:1920px}
+#clip.half{top:1000px;height:920px;object-position:50% 40%}
+#shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(11,11,11,.8) 0%,rgba(11,11,11,0) 32%,rgba(11,11,11,0) 55%,rgba(11,11,11,.75) 78%)}
+#fadeHalf{position:absolute;left:0;right:0;top:960px;height:160px;z-index:2;background:linear-gradient(180deg,#0B0B0B,rgba(11,11,11,0))}
+#cover{position:absolute;left:0;right:0;top:1330px;height:420px;z-index:3;background:linear-gradient(180deg,rgba(11,11,11,0),#0B0B0B 22%,#0B0B0B 80%,rgba(11,11,11,0))}
+.txt{position:absolute;left:76px;right:76px;top:160px;z-index:12}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:14px;font:700 108px/.92 Oswald;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.b{color:var(--blue)}.y{color:var(--banana)}
+#sub{position:absolute;left:70px;right:70px;top:1480px;text-align:center;z-index:15}
+#sub .who{display:inline-block;font:700 28px Montserrat;letter-spacing:.16em;padding:8px 18px;border-radius:10px;margin-bottom:12px;background:var(--banana);color:#000}
+#sub .line{font:700 58px/1.15 Inter;text-shadow:0 4px 0 #000,0 0 30px rgba(0,0,0,.8)}
+/* voice demo */
+.phone{position:absolute;left:150px;right:150px;top:560px;height:860px;border-radius:56px;border:10px solid #2a2c33;background:#0f1013;z-index:10;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7)}
+.bubble{position:absolute;left:34px;right:34px;top:60px;background:#1d2030;border-radius:28px;padding:26px 28px;font:500 34px/1.42 Inter;color:#fff;min-height:200px}
+.bubble .hint{display:block;font:600 20px Montserrat;letter-spacing:.14em;color:var(--blue);margin-bottom:10px}
+.wave{position:absolute;left:60px;right:60px;bottom:200px;height:110px;display:flex;align-items:center;gap:7px}
+.wave i{flex:1;background:var(--blue);border-radius:4px;height:10%}
+.mic{position:absolute;left:50%;bottom:50px;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(47,91,255,.6)}
+.mic svg{width:54px;height:54px}
+/* tips */
+.tips{position:absolute;left:76px;right:76px;top:470px;z-index:12}
+.tips > div{display:flex;gap:22px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line);opacity:0}
+.tips b{flex:none;font:700 44px Oswald;color:var(--blue);width:56px}
+.tips span{font:500 33px/1.32 Inter}
+.tips em{font-style:normal;color:var(--grey);display:block;font-size:26px;margin-top:4px}
+/* end */
+#end{position:absolute;inset:0;background:var(--banana);z-index:18;opacity:0;color:#000}
+#end .h1{position:absolute;left:60px;right:60px;top:520px;text-align:center;font:700 150px/.95 Oswald;text-transform:uppercase}
+#end .p{position:absolute;left:90px;right:90px;top:900px;text-align:center;font:600 44px/1.3 Inter}
+#end .ai{position:absolute;left:0;right:0;top:1180px;text-align:center;font:600 24px Montserrat;letter-spacing:.2em}
+</style></head><body>
+<div id="stage">
+<div class="prog"><i id="prog"></i></div>
+<div class="badge">KI-GENERIERT</div>
+<img id="clip" class="full" alt="">
+<div id="shade"></div><div id="fadeHalf"></div><div id="cover"></div>
+
+<div class="txt" id="t_hook"><div class="k">Prompt-Hack</div><div class="h">Du tippst deine<br>Prompts <span class="b">noch?</span></div></div>
+<div class="txt" id="t_demo"><div class="k">01 · Mikrofon statt Tastatur</div><div class="h" style="font-size:96px">Einfach <span class="b">reden.</span></div></div>
+<div class="phone" id="phone"><div class="bubble"><span class="hint">● SPRACHEINGABE</span><span id="said"></span></div>
+  <div class="wave" id="wave"></div>
+  <div class="mic" id="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div></div>
+<div class="txt" id="t_tips"><div class="k">02 · So geht's</div><div class="h" style="font-size:96px">Sprich wie mit<br>einem <span class="b">Kollegen.</span></div></div>
+<div class="tips" id="tips" style="top:520px">
+  <div><b>1</b><span>Mikrofon-Taste in ChatGPT oder Claude<em>direkt neben dem Eingabefeld</em></span></div>
+  <div><b>2</b><span>Oder die Diktierfunktion deiner Tastatur<em>geht überall – sogar im Terminal</em></span></div>
+  <div><b>3</b><span>Erzähl drauflos: Ziel, Kontext, Beispiel<em>die KI sortiert das für dich</em></span></div>
+</div>
+<div id="sub"></div>
+<div id="end"><div class="h1">Sprich deine<br>Prompts.</div>
+  <div class="p">Probier's heute aus – und erzähl mir, was du der KI als Erstes gesagt hast. 🍌</div>
+  <div class="ai">KI-GENERIERT · FLOW MEDIA AI</div></div>
+<div class="grain" id="grain"></div>
+</div>
+<script>
+// scene timeline in seconds; Bertrand's voice lines are mixed in separately at the same times
+const SC = [["hook", 0, 2.4], ["bert", 2.4, 5.0], ["demo", 5.0, 9.6], ["tips", 9.6, 14.7], ["punch", 14.7, 17.6], ["end", 17.6, 20.0]];
+const TOTAL = 20.0; window.TOTAL = TOTAL;
+const N = { hook: 72, bert: 78, tips: 150, punch: 90 };
+const VO = [[2.6, 4.4, "Tippen? Ich rede einfach."], [6.2, 9.1, "Mikrofon an. Drauflos reden. Fertig."], [9.9, 14.7, "Erzähl mir einfach alles. Ziel, Kontext, Beispiel. Ich sortier das."], [14.9, 17.4, "Sprich mit mir. Nicht mit deiner Tastatur."]];
+const SAID = "Bau mir eine Landingpage für meinen Workshop am Montag. Dunkel, modern, mit Anmelde-Button und meinem Foto oben.";
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const wave = $("wave"); for (let i = 0; i < 26; i++) wave.appendChild(document.createElement("i"));
+let lastVo = -1;
+window.DRAW = async t => {
+  const fr = Math.round(t * 30);
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (t >= s[1] && t < s[2]) cur = s });
+  const name = cur[0], lt = t - cur[1];
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  ["hook", "demo", "tips"].forEach(n => { const el = $("t_" + n); el.style.opacity = n === name ? eo(lt / .3) : 0; el.style.transform = `translateY(${(1 - eo(lt / .3)) * 24}px)` });
+  // clip layout
+  const clip = $("clip"), hasClip = name in N;
+  clip.style.display = hasClip ? "" : "none";
+  clip.className = name === "tips" ? "half" : "full";
+  $("shade").style.opacity = hasClip && name !== "tips" ? 1 : 0;
+  $("fadeHalf").style.opacity = name === "tips" ? 1 : 0;
+  $("cover").style.opacity = name === "punch" ? 1 : 0;
+  clip.style.transform = `scale(${1.05 - .05 * eo(lt / 1.2)})`;
+  // voice demo
+  $("phone").style.opacity = name === "demo" ? eo(lt / .3) : 0;
+  $("phone").style.transform = `translateY(${name === "demo" ? (1 - eo(lt / .4)) * 80 : 0}px)`;
+  if (name === "demo") {
+    const words = SAID.split(" "), k = Math.floor(words.length * cl((lt - .5) / 3.4));
+    $("said").textContent = words.slice(0, k).join(" ");
+    const talking = lt > .4 && lt < 4.0;
+    [...wave.children].forEach((el, i) => el.style.height = (talking ? 14 + 80 * Math.abs(Math.sin(t * 9 + i * .7) * Math.sin(t * 3.3 + i * .31)) : 8) + "%");
+    $("mic").style.boxShadow = `0 0 0 ${talking ? 10 + 14 * Math.abs(Math.sin(t * 5)) : 0}px rgba(47,91,255,.35)`;
+  }
+  // tips
+  [...$("tips").children].forEach((el, i) => { const a = name === "tips" ? eo((lt - .5 - i * .9) / .35) : 0; el.style.opacity = a; el.style.transform = `translateX(${(1 - a) * -40}px)` });
+  // Bertrand subtitles
+  const vi = VO.findIndex(v => t >= v[0] && t < v[1]), sub = $("sub");
+  if (vi >= 0 && name !== "end") { if (lastVo !== vi) { sub.innerHTML = `<div class="who">BERTRAND</div><div class="line">${VO[vi][2]}</div>`; lastVo = vi } sub.style.opacity = eo((t - VO[vi][0]) / .15) } else sub.style.opacity = 0;
+  sub.style.top = name === "tips" ? "1430px" : name === "demo" ? "1480px" : "1480px";
+  if (name === "demo") sub.style.top = "1460px";
+  // end card
+  $("end").style.opacity = name === "end" ? eo(lt / .25) : 0;
+  $("end").querySelector(".h1").style.transform = `scale(${name === "end" ? 1.25 - .25 * eo(lt / .35) : 1})`;
+  if (hasClip) { const n = Math.min(N[name], 1 + Math.floor(lt * 30)), src = `raw/${name}/${String(n).padStart(3, "0")}.jpg`; if (!clip.src.endsWith(src)) { clip.src = src; await clip.decode().catch(() => {}) } }
+};
+</script>
+</body></html>

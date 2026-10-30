@@ -48,3 +48,4 @@ Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 | `talent-in-the-air.mp3` | „Talent in the Air“ (Diego Nava), Mixkit – Stock Music Free License (256 kbps) | House, positiv, gut unter Sprache; ~122 BPM, Raster ab 15,766 s; R019 |
 | `sicilian-coffee.mp3` | „Sicilian Coffee“, Mixkit – Stock Music Free License (256 kbps) | Comedy/Filmmusik, verspielt, Sitcom; ~100 BPM, Raster ab 16,115 s; R021 (Bertrand) |
 | `upbeat-jazz.mp3` | „Upbeat Jazz“, Mixkit – Stock Music Free License (256 kbps) | Jazz, locker, Erklärformat mit Humor; ~110 BPM, Raster ab 20,271 s; R024 |
+| `cat-walk.mp3` | „Cat Walk“ (Arulo), Mixkit – Stock Music Free License (256 kbps) | House, locker, gut unter Sprache; ~129 BPM, laut ab ~28 s; R025 |

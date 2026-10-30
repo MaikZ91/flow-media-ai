@@ -73,6 +73,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - **Einsatz:** als wiederkehrender **Nebencharakter**, nicht als eigene Serie: Gastauftritt in How-tos, Hooks, Endkarten oder Sitcom-Szenen mit Maik (2–4 s), etwa jedes 3.–4. Reel. Maik bleibt Hauptfigur.
 - **Material:** Drive `01_Marketing/Content/Videos` (Storyboard `Bertrand2.png`, `Bertrand.mov`, Sitcom- und Büro-Clips). Clips mit CapCut-Wasserzeichen nur mit weggeschnittenem Rand verwenden. Immer „KI-generiert“ kennzeichnen.
 - Maiks Gesicht in diesen Clips ist eine KI-Version aus seinem eigenen Referenzfoto (freigegeben); keine fremden Personen oder Promi-Gesichter generieren.
+- **Stimme (30.10.2026):** Bertrand spricht Deutsch mit seiner festen Stimme: `tools/bertrand-voice/say.py "Text" out.wav` (Piper „thorsten“, Datensatz CC0, tiefer gepitcht + Bass + leichter Hall). Immer dieselbe Stimme verwenden. Bertrand darf eine Computerstimme haben, er *ist* die KI; Maik nie (seine Sätze als Untertitel oder selbst eingesprochen).
 
 # Teil C – Virale Reels
 
