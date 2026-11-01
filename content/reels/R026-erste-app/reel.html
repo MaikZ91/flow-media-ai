@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.16);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+#vid{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(.96);transform-origin:50% 60%}
+#bert{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;opacity:0;z-index:3}
+#shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(11,11,11,.78) 0%,rgba(11,11,11,.35) 30%,rgba(11,11,11,0) 44%,rgba(11,11,11,0) 70%,rgba(11,11,11,.7) 100%)}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;z-index:40;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:25}
+.prog i{display:block;height:100%;background:#fff;width:0}
+#count{position:absolute;right:76px;top:96px;z-index:25;display:flex;gap:10px}
+#count i{width:46px;height:8px;border-radius:4px;background:rgba(255,255,255,.25)}
+#count i.on{background:var(--blue)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:35;pointer-events:none}
+.txt{position:absolute;left:76px;right:76px;top:150px;z-index:12;opacity:0}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:10px;font:700 112px/1.0 Oswald;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.b{color:var(--blue)}
+.st{display:flex;align-items:flex-start;gap:26px}
+.st .n{font:700 190px/.8 Oswald;color:var(--blue)}
+.st .t{font:700 100px/1.02 Oswald;text-transform:uppercase;padding-top:6px}
+/* step props */
+.prop{position:absolute;left:76px;right:76px;top:470px;z-index:12;opacity:0}
+.chips{display:flex;flex-wrap:wrap;gap:14px}
+.chips span{font:600 40px Inter;background:rgba(20,21,25,.92);border:1.5px solid var(--line);border-radius:40px;padding:14px 26px;opacity:0}
+.folder{display:flex;align-items:center;gap:26px}
+.folder .ico{width:150px;height:116px;position:relative}
+.folder .ico:before{content:"";position:absolute;left:0;top:0;width:62px;height:24px;border-radius:10px 10px 0 0;background:var(--blue)}
+.folder .ico:after{content:"";position:absolute;left:0;top:18px;right:0;bottom:0;border-radius:0 14px 14px 14px;background:var(--blue)}
+.folder .files{display:flex;gap:12px}
+.folder .files span{font:600 36px Inter;background:rgba(20,21,25,.92);border:1.5px solid var(--line);border-radius:16px;padding:12px 20px;opacity:0}
+.eq{margin-top:26px;font:600 42px Inter;color:#fff;opacity:0}
+.eq b{color:var(--blue)}
+.prompt{font:400 30px/1.45 'JetBrains Mono',monospace;background:rgba(20,21,25,.94);border:1.5px solid var(--line);border-radius:22px;padding:22px 26px;color:#d0d0d0}
+.prompt .a{color:#8fa4ff}
+.phones{display:flex;gap:16px;margin-top:22px}
+.phones div{flex:1;height:250px;border-radius:22px;border:3px solid #fff;background:#141519;position:relative;opacity:0;overflow:hidden}
+.phones div:before{content:"";position:absolute;left:14px;right:14px;top:18px;height:70px;border-radius:10px;background:rgba(255,255,255,.18)}
+.phones div:after{content:"";position:absolute;left:14px;right:40px;top:104px;height:14px;border-radius:7px;background:rgba(255,255,255,.12);box-shadow:0 30px 0 rgba(255,255,255,.12),20px 60px 0 rgba(255,255,255,.12)}
+.phones b{position:absolute;left:0;right:0;bottom:12px;text-align:center;font:700 34px Oswald;z-index:2}
+.phones div.win{border-color:var(--blue);box-shadow:0 0 50px rgba(47,91,255,.55)}
+.phones div.win:before{background:var(--blue)}
+.tick{position:absolute;right:10px;top:10px;width:46px;height:46px;border-radius:50%;background:var(--blue);display:none;align-items:center;justify-content:center;font:700 28px Inter;z-index:3}
+.refine{margin-top:26px;font:600 42px Inter;opacity:0}
+.refine b{color:var(--blue)}
+.pills{display:flex;gap:18px;align-items:center}
+.pills span{font:700 46px Oswald;text-transform:uppercase;border:3px solid #fff;border-radius:60px;padding:12px 34px;background:rgba(11,11,11,.7);opacity:0}
+.pills em{font:600 32px Inter;font-style:normal;color:var(--grey);opacity:0}
+.done{margin-top:26px;display:inline-block;font:700 64px Oswald;text-transform:uppercase;background:var(--blue);padding:6px 28px;opacity:0;transform:rotate(-2deg)}
+/* bertrand cutaway */
+#bsticker{position:absolute;left:60px;right:60px;top:1180px;text-align:center;z-index:13;opacity:0}
+#bsticker span{display:inline-block;font:700 70px/1.05 Oswald;text-transform:uppercase;background:var(--banana);color:#000;padding:10px 28px;transform:rotate(-2deg)}
+#bbadge{position:absolute;left:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.5);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.45);z-index:26;opacity:0}
+/* punch + cta */
+#punch{position:absolute;left:60px;right:60px;top:300px;text-align:center;z-index:12;opacity:0}
+#punch .l1{font:700 84px/1 Oswald;text-transform:uppercase}
+#punch .l2{display:inline-block;margin-top:14px;font:700 120px/1 Oswald;text-transform:uppercase;background:var(--blue);padding:4px 30px;transform:rotate(-2deg)}
+#cta{position:absolute;left:76px;right:76px;top:150px;z-index:12;opacity:0}
+#cta .box{margin-top:26px;border:3px solid var(--blue);border-radius:28px;padding:28px 32px;background:rgba(11,11,11,.82);box-shadow:0 0 70px rgba(47,91,255,.4)}
+#cta .box .t{font:700 92px/.92 Oswald;text-transform:uppercase}
+#cta .box .s{margin-top:16px;font:500 34px/1.35 Inter;color:#ddd}
+#dm{position:absolute;left:76px;right:76px;top:760px;z-index:12;opacity:0;display:flex;align-items:center;gap:22px;font:700 54px Oswald;text-transform:uppercase}
+#dm svg{width:78px;height:78px;flex:none}
+/* captions */
+#cap{position:absolute;left:60px;right:60px;top:1560px;text-align:center;z-index:15;font:800 70px/1.1 Inter;text-shadow:0 5px 0 #000,0 0 30px rgba(0,0,0,.85)}
+#cap span{display:inline-block;margin:0 9px}
+#cap span.on{color:var(--blue);transform:scale(1.08)}
+/* end */
+#end{position:absolute;inset:0;background:var(--black);z-index:30;opacity:0}
+#end .k{position:absolute;left:0;right:0;top:600px;text-align:center}
+#end .h1{position:absolute;left:40px;right:40px;top:660px;text-align:center;font:700 170px/.9 Oswald;text-transform:uppercase}
+#end .p{position:absolute;left:90px;right:90px;top:1060px;text-align:center;font:600 46px/1.3 Inter}
+#end .dmb{position:absolute;left:50%;top:1250px;transform:translateX(-50%);font:700 52px Oswald;text-transform:uppercase;background:var(--blue);padding:14px 40px;border-radius:60px;white-space:nowrap}
+#end img{position:absolute;left:50%;top:160px;width:220px;margin-left:-110px}
+</style></head><body>
+<div id="stage">
+<img id="vid" alt=""><img id="bert" alt="">
+<div id="shade"></div>
+<div class="prog"><i id="prog"></i></div>
+<div id="count"><i></i><i></i><i></i><i></i><i></i></div>
+<div id="bbadge">BERTRAND · KI-GENERIERT</div>
+
+<div class="txt" id="t_hook"><div class="k">How-to · in 5 Schritten</div><div class="h">Deine erste<br><span class="b">App.</span></div></div>
+<div class="txt" id="t_s1"><div class="st"><span class="n">1</span><span class="t">Stell dir<br><span class="b">Fragen.</span></span></div></div>
+<div class="txt" id="t_s2"><div class="st"><span class="n">2</span><span class="t">Content<br><span class="b">sammeln.</span></span></div></div>
+<div class="txt" id="t_s3"><div class="st"><span class="n">3</span><span class="t">5 Versionen<br><span class="b">bauen lassen.</span></span></div></div>
+<div class="txt" id="t_s4"><div class="st"><span class="n">4</span><span class="t">Die beste<br><span class="b">auswählen.</span></span></div></div>
+<div class="txt" id="t_s5"><div class="st"><span class="n">5</span><span class="t">Online<br><span class="b">stellen.</span></span></div></div>
+
+<div class="prop" id="p_s1"><div class="chips"><span>Was muss sie können?</span><span>Welche Features?</span><span>Welches Ziel?</span></div></div>
+<div class="prop" id="p_s2"><div class="folder"><div class="ico"></div><div class="files"><span>Bilder</span><span>Videos</span><span>Design</span></div></div><div class="eq">Ein Ordner = <b>Kontext für die KI</b></div></div>
+<div class="prop" id="p_s3"><div class="prompt"><span class="a">›</span> <span id="ty"></span></div><div class="phones" id="ph3"><div><b>V1</b></div><div><b>V2</b></div><div><b>V3</b></div><div><b>V4</b></div><div><b>V5</b></div></div></div>
+<div class="prop" id="p_s4"><div class="phones" id="ph4" style="margin-top:0"><div><b>V1</b></div><div><b>V2</b></div><div><b>V3</b><span class="tick">✓</span></div><div><b>V4</b></div><div><b>V5</b></div></div><div class="refine">→ Dann den <b>Prototyp verfeinern</b></div></div>
+<div class="prop" id="p_s5"><div class="pills"><span>Play Store</span><em>oder</em><span>Web-App</span></div><div class="done">Fertig ✓</div></div>
+
+<div id="bsticker"><span>Bertrand baut alle 5.</span></div>
+<div id="punch"><div class="l1">Gar nicht so</div><div class="l2">kompliziert.</div></div>
+<div id="cta"><div class="k">AI Masterclass</div><div class="box"><div class="t">Deine erste App.<br><span class="b">Mit mir.</span></div><div class="s">KI-Skills lernen und deinen eigenen Prototyp bauen – für dein Business, deine Idee, deine Prozesse.</div></div></div>
+<div id="dm"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg><span>Schreib mir per DM</span></div>
+<div id="cap"></div>
+<div id="end"><img src="img/logo_flow.png" alt=""><div class="k">AI Masterclass</div><div class="h1">Bau deine<br><span class="b">erste App.</span></div>
+  <div class="p">Du willst das mit mir zusammen machen?</div><div class="dmb">Schreib mir „APP“ per DM</div></div>
+<div id="flash"></div>
+<div class="grain" id="grain"></div>
+</div>
+<script>
+const CUTS = [{"step": "hook", "in": 19.8, "out": 21.95, "t": 0, "f0": 0, "nf": 65}, {"step": "s1", "in": 24.85, "out": 25.72, "t": 2.15, "f0": 65, "nf": 27}, {"step": "s1", "in": 26.2, "out": 29.05, "t": 3.02, "f0": 92, "nf": 86}, {"step": "s1", "in": 29.05, "out": 31.2, "t": 5.87, "f0": 178, "nf": 65}, {"step": "s2", "in": 41.05, "out": 43.78, "t": 8.02, "f0": 243, "nf": 82}, {"step": "s2", "in": 51.88, "out": 55.98, "t": 10.75, "f0": 325, "nf": 123}, {"step": "s3", "in": 59.68, "out": 61.85, "t": 14.85, "f0": 448, "nf": 66}, {"step": "s3", "in": 62.7, "out": 63.8, "t": 17.02, "f0": 514, "nf": 33}, {"step": "s3", "in": 64.58, "out": 66.42, "t": 18.12, "f0": 547, "nf": 56}, {"step": "s4", "in": 82.95, "out": 88.18, "t": 19.96, "f0": 603, "nf": 157}, {"step": "s4", "in": 98.85, "out": 101.38, "t": 25.19, "f0": 760, "nf": 76}, {"step": "s5", "in": 104.9, "out": 108.98, "t": 27.72, "f0": 836, "nf": 122}, {"step": "s5", "in": 110.88, "out": 112.98, "t": 31.8, "f0": 958, "nf": 63}, {"step": "punch", "in": 113.52, "out": 115.0, "t": 33.9, "f0": 1021, "nf": 45}, {"step": "cta", "in": 115.68, "out": 119.48, "t": 35.38, "f0": 1066, "nf": 114}, {"step": "cta", "in": 127.18, "out": 129.98, "t": 39.18, "f0": 1180, "nf": 84}, {"step": "cta", "in": 142.9, "out": 145.12, "t": 41.98, "f0": 1264, "nf": 67}];
+const CAPS = [[0.04, 0.22, "wie"], [0.22, 0.62, "du"], [0.62, 0.92, "deine"], [0.92, 1.18, "erste"], [1.18, 1.44, "App"], [1.44, 2.08, "entwickelst."], [2.22, 2.38, "stell"], [2.38, 2.54, "dir"], [2.54, 3.02, "Fragen."], [3.08, 3.74, "Welche"], [3.74, 4.76, "Anforderungen"], [4.76, 5.1, "hast"], [5.1, 5.32, "du"], [5.32, 5.52, "an"], [5.52, 5.68, "deine"], [5.68, 5.87, "App?"], [5.94, 6.26, "Was"], [6.26, 6.5, "muss"], [6.5, 6.66, "sie"], [6.66, 6.94, "können?"], [7.16, 7.42, "Welche"], [7.42, 7.96, "Features?"], [8.07, 8.41, "überleg"], [8.41, 8.71, "dir,"], [9.29, 9.67, "welchen"], [9.67, 10.11, "Content"], [10.11, 10.51, "hast"], [10.51, 10.73, "du?"], [10.81, 11.09, "Alles"], [11.09, 11.35, "das"], [11.35, 11.85, "packst"], [11.85, 11.97, "du"], [11.97, 12.13, "in"], [12.13, 12.43, "einem"], [12.43, 12.89, "Ordner,"], [13.07, 13.19, "das"], [13.19, 13.33, "ist"], [13.33, 13.55, "quasi"], [13.55, 13.85, "der"], [13.85, 14.27, "Kontext"], [14.27, 14.51, "für"], [14.51, 14.63, "die"], [14.63, 14.85, "KI"], [14.89, 15.07, "Dann"], [15.07, 15.43, "sagst"], [15.43, 15.69, "du,"], [16.05, 16.39, "Claude"], [16.39, 16.59, "oder"], [16.59, 17.02, "Codex,"], [17.06, 17.3, "ich"], [17.3, 17.7, "möchte"], [17.7, 18.12, "fünf"], [18.18, 18.66, "verschiedene"], [18.66, 19.12, "Versionen"], [19.12, 19.38, "von"], [19.38, 19.68, "meiner"], [19.68, 19.96, "App."], [20.01, 20.57, "dann"], [20.57, 22.05, "selektierst"], [22.05, 22.17, "du"], [22.17, 22.41, "die"], [22.41, 23.01, "App"], [23.01, 23.33, "aus,"], [23.49, 23.55, "die"], [23.55, 24.31, "dir"], [24.31, 24.45, "am"], [24.45, 24.71, "besten"], [24.71, 25.11, "gefällt,"], [25.26, 25.94, "deine"], [25.94, 26.2, "ersten"], [26.2, 26.84, "Prototypen"], [26.84, 27.44, "verfeinern"], [27.44, 27.72, "kannst."], [27.78, 27.9, "ob"], [27.9, 28.1, "du"], [28.1, 28.4, "im"], [28.4, 28.62, "Play"], [28.62, 28.9, "Store"], [28.9, 29.34, "oder"], [29.34, 29.56, "als"], [29.56, 29.72, "Web"], [29.72, 30.12, "App"], [30.12, 31.14, "das"], [31.14, 31.58, "Launchen"], [31.58, 31.76, "willst,"], [31.84, 32.58, "Und"], [32.58, 32.78, "dann"], [32.78, 33.26, "bist"], [33.26, 33.36, "du"], [33.36, 33.48, "eigentlich"], [33.48, 33.64, "schon"], [33.64, 33.9, "fertig."], [33.96, 34.22, "Also"], [34.22, 34.42, "es"], [34.42, 34.42, "ist"], [34.42, 34.54, "gar"], [34.54, 34.62, "nicht"], [34.62, 34.74, "so"], [34.74, 35.26, "kompliziert."], [35.42, 35.84, "Und"], [35.84, 36.4, "wenn"], [36.4, 36.54, "du"], [36.54, 36.86, "genau"], [36.86, 37.14, "das"], [37.14, 37.4, "lernen"], [37.4, 37.94, "möchtest,"], [38.14, 38.28, "eine"], [38.28, 38.6, "App"], [38.6, 38.94, "zu"], [38.94, 39.18, "bauen,"], [39.24, 39.44, "dann"], [39.44, 39.98, "melde"], [39.98, 40.24, "dich"], [40.24, 40.5, "in"], [40.5, 40.7, "meiner"], [40.7, 41.06, "KI"], [41.06, 41.84, "-Masterclass"], [41.84, 41.98, "an."], [42.04, 42.34, "Meld"], [42.34, 42.44, "dich"], [42.44, 42.66, "gerne"], [42.66, 43.08, "per"], [43.08, 44.02, "Direct"], [44.02, 44.2, "Message."]];
+const VEND = 44.2, TOTAL = VEND + 2.6; window.TOTAL = TOTAL;
+const STEPS = ["s1","s2","s3","s4","s5"];
+const BERT = [16.95, 18.75];
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const stepStart = {}; CUTS.forEach(c => { if (!(c.step in stepStart)) stepStart[c.step] = c.t });
+// caption groups: up to 3 words, break on sentence end or pause
+const GR = []; let g = [];
+CAPS.forEach((w, i) => { g.push(w); const nx = CAPS[i + 1]; if (g.length >= 3 || /[.?!,]$/.test(w[2]) || !nx || nx[0] - w[1] > .25) { GR.push(g); g = [] } });
+let lastG = -1;
+const pop = (el, x) => { el.style.opacity = eo(x / .25); el.style.transform = `translateY(${(1 - eo(x / .25)) * 24}px) scale(${1.15 - .15 * eo(x / .25)})` };
+window.DRAW = async t => {
+  const fr = Math.round(t * 30);
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  let ci = 0; CUTS.forEach((c, i) => { if (t >= c.t) ci = i });
+  const cut = CUTS[ci], name = t < VEND ? cut.step : "end", ls = t - stepStart[cut.step];
+  // flash on step change
+  const sinceStep = t - stepStart[cut.step];
+  $("flash").style.opacity = t < VEND && cut.step !== "hook" && sinceStep < .12 ? .55 * (1 - sinceStep / .12) : 0;
+  // counter
+  const si = STEPS.indexOf(name), past = ["punch","cta","end"].includes(name);
+  [...$("count").children].forEach((el, i) => el.className = (si >= i || past) ? "on" : "");
+  $("count").style.opacity = name === "hook" || name === "end" ? 0 : 1;
+  // titles
+  ["hook", ...STEPS].forEach(n => { const el = $("t_" + n); if (n === name) { el.style.opacity = eo(ls / .2); el.style.transform = `scale(${1.25 - .25 * eo(ls / .25)})`; el.style.transformOrigin = "0 0" } else el.style.opacity = 0 });
+  STEPS.forEach(n => $("p_" + n).style.opacity = n === name ? 1 : 0);
+  if (name === "s1") [...document.querySelectorAll("#p_s1 span")].forEach((el, i) => pop(el, ls - [1.0, 3.8, 5.0][i]));
+  if (name === "s2") { [...document.querySelectorAll("#p_s2 .files span")].forEach((el, i) => pop(el, ls - .9 - i * .35)); pop(document.querySelector("#p_s2 .eq"), ls - 3.0); const f = document.querySelector("#p_s2 .ico"); f.style.transform = `scale(${1 + .12 * Math.max(0, 1 - Math.abs(ls - 2.9) / .25)})` }
+  if (name === "s3") { const s = "Claude, bau mir 5 Versionen meiner App.", k = Math.floor(s.length * cl((ls - .5) / 1.4)); $("ty").textContent = s.slice(0, k); [...$("ph3").children].forEach((el, i) => pop(el, ls - 3.3 - i * .12)) }
+  if (name === "s4") {
+    [...$("ph4").children].forEach((el, i) => { el.style.opacity = i === 2 ? 1 : 1 - .75 * eo((ls - 1.6) / .4); el.className = i === 2 && ls > 1.6 ? "win" : ""; el.style.transform = i === 2 && ls > 1.6 ? `scale(${1.12 - .04 * eo((ls - 1.6) / .3)})` : "scale(1)" });
+    document.querySelector("#ph4 .tick").style.display = ls > 1.7 ? "flex" : "none";
+    pop(document.querySelector("#p_s4 .refine"), t - 25.19);
+  }
+  if (name === "s5") { const sp = document.querySelectorAll("#p_s5 .pills span"); pop(sp[0], ls - .9); pop(document.querySelector("#p_s5 em"), ls - 1.5); pop(sp[1], ls - 1.9); const d = document.querySelector("#p_s5 .done"); d.style.opacity = eo((t - 32.3) / .2); d.style.transform = `rotate(-2deg) scale(${1.4 - .4 * eo((t - 32.3) / .3)})` }
+  // punch
+  $("punch").style.opacity = name === "punch" ? 1 : 0;
+  if (name === "punch") { pop($("punch").querySelector(".l1"), ls); const l2 = $("punch").querySelector(".l2"); l2.style.opacity = eo((ls - .45) / .15); l2.style.transform = `rotate(-2deg) scale(${1.5 - .5 * eo((ls - .45) / .25)})` }
+  // cta
+  $("cta").style.opacity = name === "cta" ? eo(ls / .25) : 0;
+  $("cta").style.transform = `translateY(${name === "cta" ? (1 - eo(ls / .3)) * 30 : 0}px)`;
+  $("dm").style.opacity = name === "cta" ? eo((t - 42.0) / .25) : 0;
+  $("dm").style.transform = `scale(${name === "cta" ? 1.2 - .2 * eo((t - 42.0) / .3) : 1})`;
+  // bertrand cutaway
+  const inB = t >= BERT[0] && t < BERT[1];
+  $("bert").style.opacity = inB ? 1 : 0; $("bbadge").style.opacity = inB ? 1 : 0;
+  $("bsticker").style.opacity = inB ? eo((t - BERT[0] - .15) / .15) : 0;
+  $("bsticker").querySelector("span").style.transform = `rotate(-2deg) scale(${inB ? 1.3 - .3 * eo((t - BERT[0] - .15) / .25) : 1})`;
+  if (inB) { $("t_s3").style.opacity = 0; $("p_s3").style.opacity = 0 }
+  // jump-cut punch-ins: alternate zoom per cut
+  const z = [1.0, 1.12, 1.05][ci % 3] + .02 * cl((t - cut.t) / 3);
+  $("vid").style.transform = `scale(${name === "punch" ? 1.2 + .03 * cl(ls / 1.5) : z})`;
+  // captions
+  const gi = GR.findIndex(gr => t >= gr[0][0] - .05 && t < gr[gr.length - 1][1] + .15);
+  const cap = $("cap");
+  if (gi >= 0 && name !== "end" && !inB) { if (gi !== lastG) { cap.innerHTML = GR[gi].map(w => `<span>${w[2].replace(/[,]$/, "")}</span>`).join(""); lastG = gi } let cur = 0; GR[gi].forEach((w, i) => { if (t >= w[0] - .03) cur = i }); [...cap.children].forEach((el, i) => el.className = i === cur ? "on" : ""); cap.style.opacity = 1; cap.style.top = name === "cta" ? "1600px" : "1560px" } else cap.style.opacity = 0;
+  // end card
+  $("end").style.opacity = t >= VEND ? eo((t - VEND) / .25) : 0;
+  $("end").querySelector(".h1").style.transform = `scale(${t >= VEND ? 1.2 - .2 * eo((t - VEND) / .35) : 1})`;
+  // frames
+  if (t < VEND) { const local = Math.min(cut.nf - 1, Math.floor((t - cut.t) * 30)), n = cut.f0 + local + 1, src = `raw/edit/${String(n).padStart(4, "0")}.jpg`, el = $("vid"); if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } }
+  if (inB) { const n = Math.min(48, 1 + Math.floor((t - BERT[0]) * 30)), src = `raw/bert/${String(n).padStart(3, "0")}.jpg`, el = $("bert"); if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } }
+};
+</script>
+</body></html>

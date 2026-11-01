@@ -70,6 +70,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 01.11.2026 | R026 | `lernen` / `apps` | Reel (How-to, Talking Head) | „Deine erste App in 5 Schritten“ – Maiks Selfie-Video geschnitten (Fragen → Content-Ordner → 5 Versionen → beste wählen → online), Bertrand-Cutaway, CTA AI Masterclass per DM | `format = howto-talkinghead-steps` |
 | 30.10.2026 | R025 | `ki` / `lernen` | Reel (Tipp + Bertrand) | „Du tippst deine Prompts noch?“ – Spracheingabe statt Tippen, 3 Tipps, Bertrand per Untertitel (TTS verworfen) | `format = tipp-bertrand` |
 | 30.10.2026 | R024 | `ki` / `lernen` | Reel (Vergleich + Bertrand) | „Chat, Web oder Terminal? Bertrand erklärt's.“ – Reel-Version von P006, Punchline „Stufe 2 schafft sogar Bertrand.“ | `format = vergleich-reel-bertrand` |
 | 30.10.2026 | P006 | `ki` / `lernen` | Karussell (6 Folien) | „Chat, Web oder Terminal?“ – 3 Stufen (ChatGPT/Claude Chat · Claude Code Web/Codex Cloud · Claude Code/Codex CLI), Vergleich, Fazit „Starte im Web“ | `format = vergleich-karussell` |
