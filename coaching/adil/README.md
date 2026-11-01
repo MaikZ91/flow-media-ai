@@ -11,6 +11,7 @@ Web-App mit Cocktailrezepten, die Schritt für Schritt und freihändig durch die
 - Zubereitungsmodus mit Auto-Weiter, Vorlesen, Sprachbefehlen und Wach-Modus
 - Bestellungen mit Gesamtdauer und Playlist, die alle Drinks nacheinander abspielt
 - Alkoholgehalt pro Drink (Schätzung). Wer fährt, trinkt nicht.
+- Installierbar als Web-App auf iPhone und Android, funktioniert offline
 
 ## Aufbau
 - `v1-…` bis `v7-….html`: Design-Varianten, `v7-amber.html` ist der Favorit

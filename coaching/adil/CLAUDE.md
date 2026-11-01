@@ -21,6 +21,11 @@ Web-App (reines HTML/CSS/JS, kein Build) mit Cocktailrezepten und freihändigem 
 - Nutzereingaben und Rezepttexte immer mit `Bar.esc()` ausgeben.
 - `localStorage` nur über `Bar.store` (abgesichert).
 
+## Web-App (PWA)
+- `manifest.webmanifest` (Name, Start `v7-amber.html`, Symbole in `icons/`), `sw.js` (Service Worker, speichert App und alle Fotos für den Offline-Betrieb). iPhone über die Apple-Meta-Tags in `v7-amber.html`, Knopf „App installieren“ im Hero (Android: Browser-Dialog, iPhone: Anleitung).
+- **Nach jeder Änderung an App-Dateien `VERSION` in `sw.js` hochzählen.** Neue Fotos auch in die Liste `BILDER` in `sw.js` eintragen.
+- Der eingebaute Browser der Claude-App kann keine Service Worker registrieren. Zum Testen Playwright oder einen normalen Chrome nehmen.
+
 ## Lokal testen
 Dateien lassen sich per Doppelklick öffnen. Mit Server: `python -m http.server 8765` im Projektordner, dann `http://127.0.0.1:8765/v5-bernstein.html`. Schriften kommen von Google Fonts und brauchen beim ersten Laden Internet.
 

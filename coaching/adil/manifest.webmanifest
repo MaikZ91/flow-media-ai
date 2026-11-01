@@ -1,0 +1,19 @@
+{
+  "name": "Adil's Bar – Cocktails",
+  "short_name": "Adil's Bar",
+  "description": "Cocktails Schritt für Schritt, freihändig: Geschmacks-Finder, Zufallsmodus, Bestellungen und Playlist.",
+  "lang": "de",
+  "id": "./",
+  "start_url": "./v7-amber.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#120f0d",
+  "theme_color": "#120f0d",
+  "categories": ["food", "lifestyle"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
