@@ -267,7 +267,7 @@ nav.polster::after{content:"";position:absolute;left:0;right:0;bottom:-2px;heigh
 /* Installieren */
 .install{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;
   background:rgba(18,15,13,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,176,74,.55);color:var(--acc);font-family:Jost;letter-spacing:.12em;text-transform:uppercase;font-size:.74rem;
-  opacity:0;animation:hoch .8s ease 2.6s forwards}
+  opacity:0;animation:hoch .8s ease 1s forwards}
 .install[hidden]{display:none}
 .install svg{width:16px;height:16px}
 .inst{position:fixed;inset:0;z-index:400;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.65)}
@@ -326,10 +326,7 @@ nav.polster::after{content:"";position:absolute;left:0;right:0;bottom:-2px;heigh
 <aside class="drawer" id="dr" aria-label="Bestellungen" aria-hidden="true"></aside>
 <div class="toast" id="toast" role="status"></div>
 <div class="inst" id="inst" role="dialog" aria-modal="true" aria-label="App installieren"><div class="box">
-  <h3>Adil's Bar aufs iPhone</h3>
-  <ol><li>Unten in Safari auf <span class="ios-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 8l5-5 5 5M5 12v8h14v-8"/></svg></span> <b>Teilen</b> tippen.</li>
-    <li>Nach unten scrollen und <b>„Zum Home-Bildschirm“</b> wählen.</li>
-    <li>Oben rechts auf <b>„Hinzufügen“</b> tippen.</li></ol>
+  <div id="insttext"></div>
   <small>Danach startet die App vom Home-Bildschirm im Vollbild und funktioniert auch ohne Internet.</small>
   <button id="instzu">Verstanden</button></div></div>
 <button class="pill" id="pill" hidden></button>
@@ -562,17 +559,35 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 (function(){
   const knopf=$('#install'),inst=$('#inst');
   const installiert=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
-  const ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const ua=navigator.userAgent;
+  const ios=/iP(hone|ad|od)/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const android=/Android/.test(ua);
+  const inApp=/Instagram|FBAN|FBAV|FB_IAB|Line\/|TikTok|Snapchat|LinkedInApp|WhatsApp/i.test(ua);
+  const iosSafari=ios&&!/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua)&&!inApp;
   let angebot=null;
   if(installiert)return;
-  // Android/Chrome: der Browser bietet die Installation an, wir zeigen dafür den Knopf
-  addEventListener('beforeinstallprompt',e=>{e.preventDefault();angebot=e;knopf.hidden=false});
-  addEventListener('appinstalled',()=>{knopf.hidden=true;toast('Installiert. Viel Spaß mit Adil\'s Bar!')});
-  // iPhone/iPad: kein automatisches Angebot, deshalb Anleitung
-  if(ios)knopf.hidden=false;
+  const teilen='<span class="ios-share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 8l5-5 5 5M5 12v8h14v-8"/></svg></span>';
+  // Anleitung je nach Gerät und Browser
+  function anleitung(){
+    if(inApp)return `<h3>Erst im Browser öffnen</h3><ol><li>Du bist gerade im Browser einer App (z. B. Instagram). Dort geht Installieren nicht.</li>
+      <li>Oben rechts auf <b>⋯</b> tippen und <b>„${ios?'In Safari öffnen':'Im Browser öffnen'}“</b> wählen.</li><li>Dort noch mal auf <b>„App installieren“</b> tippen.</li></ol>`;
+    if(iosSafari)return `<h3>Adil's Bar aufs iPhone</h3><ol><li>Unten in Safari auf ${teilen} <b>Teilen</b> tippen.</li>
+      <li>Nach unten scrollen und <b>„Zum Home-Bildschirm“</b> wählen.</li><li>Oben rechts auf <b>„Hinzufügen“</b> tippen.</li></ol>`;
+    if(ios)return `<h3>Adil's Bar aufs iPhone</h3><ol><li>Oben in der Adressleiste auf ${teilen} <b>Teilen</b> tippen.</li>
+      <li><b>„Zum Home-Bildschirm“</b> wählen und bestätigen.</li><li>Klappt das nicht: Seite in <b>Safari</b> öffnen und dort über Teilen hinzufügen.</li></ol>`;
+    if(android)return `<h3>Adil's Bar aufs Handy</h3><ol><li>Oben rechts im Browser auf <b>⋮</b> (drei Punkte) tippen.</li>
+      <li><b>„App installieren“</b> oder <b>„Zum Startbildschirm hinzufügen“</b> wählen.</li><li>Mit <b>„Installieren“</b> bestätigen.</li></ol>
+      <small>Am besten in Chrome. Erscheint der Punkt nicht, Seite einmal neu laden und ein paar Sekunden warten.</small>`;
+    return `<h3>Adil's Bar installieren</h3><ol><li>In Chrome oder Edge rechts in der Adressleiste auf das <b>Installieren-Symbol</b> klicken.</li>
+      <li>Oder im Menü <b>⋮</b> auf <b>„App installieren“</b>.</li><li>Fürs Handy: diese Seite dort öffnen und auf „App installieren“ tippen.</li></ol>`;
+  }
+  // Chrome/Edge auf Android und Desktop bieten die Installation direkt an
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();angebot=e});
+  addEventListener('appinstalled',()=>{knopf.hidden=true;inst.classList.remove('an');toast('Installiert. Viel Spaß mit Adil\'s Bar!')});
+  knopf.hidden=false;
   knopf.onclick=async()=>{
     if(angebot){angebot.prompt();const r=await angebot.userChoice;angebot=null;if(r.outcome==='accepted')knopf.hidden=true;return}
-    inst.classList.add('an');
+    $('#insttext').innerHTML=anleitung();inst.classList.add('an');
   };
   $('#instzu').onclick=()=>inst.classList.remove('an');
   inst.onclick=e=>{if(e.target===inst)inst.classList.remove('an')};

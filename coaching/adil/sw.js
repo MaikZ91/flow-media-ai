@@ -1,6 +1,6 @@
 /* Service Worker: macht die App installierbar und offline nutzbar.
    Bei Änderungen an App-Dateien VERSION hochzählen, damit alte Caches verschwinden. */
-const VERSION = "adilsbar-1";
+const VERSION = "adilsbar-2";
 const KERN = [
   "./", "./index.html", "./v7-amber.html", "./manifest.webmanifest",
   "./daten/kern.js", "./daten/kern.css", "./daten/rezepte.js",
