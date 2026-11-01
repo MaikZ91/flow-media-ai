@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#120f0d">
+<title>Adil's Cocktails · Amber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+/* Look: dunkle Decke mit bernsteinfarbenen Lichtlinien, Eichenholz, petrolfarbene Polsterkante, cognacfarbenes Leder */
+:root{--bk-head:Jost,sans-serif;--bk-font:Inter,system-ui,sans-serif;--bk-bg:#100d0b;--bk-fg:#f3e9dc;--bk-accent:#ffb04a;--bk-accent-fg:#1c1005;--bk-card:#1e1713;--bk-line:#3a2c20;--bk-muted:#a49382;
+  --bg:#120f0d;--ink:#1a1411;--fg:#f3e9dc;--muted:#a49382;--amber:#ffb04a;--amber2:#ff8a1f;--oak:#b98652;--oak2:#8d5f35;--petrol:#2b6a70;--petrol2:#1f4a50;--leder:#5a3a22;--line:#3a2c20}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
+/* Hero mit Lichtlinien */
+.hero{position:relative;height:min(78vh,640px);min-height:420px;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#241a13 0%,#120f0d 70%)}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero .l{stroke:var(--amber);stroke-linecap:round;filter:url(#glow)}
+.hero .l.a{animation:flackern 7s ease-in-out infinite}.hero .l.b{animation:flackern 9s ease-in-out -3s infinite}
+@keyframes flackern{50%{opacity:.62}}
+.hero .lamp{fill:#ffd9a0;filter:url(#glow2)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,var(--bg))}
+.hero .t{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 20px 56px}
+.kick{font-family:Jost;letter-spacing:.42em;text-transform:uppercase;font-size:.72rem;color:var(--amber)}
+.hero h1{font-family:Jost,sans-serif;font-weight:500;font-size:clamp(2.6rem,9vw,5.6rem);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 8px;line-height:1;text-shadow:0 0 40px rgba(255,176,74,.35)}
+.hero p{margin:0 auto;color:#d6c5b1;max-width:48ch;line-height:1.55}
+/* Petrol-Navigation wie die Polsterkante */
+nav.polster{position:sticky;top:0;z-index:30;background:linear-gradient(var(--petrol),var(--petrol2));border-bottom:2px solid var(--amber);box-shadow:0 8px 30px rgba(0,0,0,.45);padding:max(0px,env(safe-area-inset-top)) 0 0}
+nav .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:8px 14px;overflow-x:auto;scrollbar-width:none}
+nav button{white-space:nowrap;font-family:Jost;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;padding:11px 15px;border-radius:8px;color:#cfe3e2}
+nav button[aria-selected=true]{background:rgba(0,0,0,.3);color:#fff;box-shadow:inset 0 -2px 0 var(--amber)}
+nav .such{margin-left:auto;display:flex;align-items:center;background:rgba(0,0,0,.28);border-radius:8px;padding:0 12px;min-width:150px}
+nav .such input{background:none;border:0;color:#fff;font:inherit;font-size:.9rem;height:40px;outline:0;width:100%}
+nav .such input::placeholder{color:#a9c6c5}
+.wrap{max-width:1180px;margin:0 auto;padding:10px 18px 90px}
+.sek{margin-top:46px}
+.sek h2{font-family:Jost;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:1.25rem;margin:0;display:flex;align-items:center;gap:16px}
+.sek h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--amber),transparent);box-shadow:0 0 14px var(--amber);opacity:.8}
+.sek .s{color:var(--muted);margin:6px 0 20px}
+.raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+@media(min-width:720px){.raster{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}}
+/* Karte: Eichenkante oben, Lederkörper */
+.karte{position:relative;text-align:left;border-radius:14px;overflow:hidden;background:linear-gradient(#261d17,#1b1410);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.karte::before{content:"";height:7px;background:repeating-linear-gradient(90deg,var(--oak) 0 38px,var(--oak2) 38px 40px,#c99562 40px 76px,var(--oak2) 76px 78px)}
+.karte:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 0 1px var(--amber2)}
+.karte .im{aspect-ratio:4/4.4;overflow:hidden}
+.karte img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}.karte:hover img{transform:scale(1.05)}
+.karte .tx{padding:12px 14px 14px;border-top:2px solid var(--amber2)}
+.karte h3{font-family:Jost;font-weight:500;font-size:1.15rem;letter-spacing:.06em;margin:0 0 3px;text-transform:uppercase}
+.karte small{color:var(--muted)}
+.karte .hz{position:absolute;top:16px;right:10px;width:38px;height:38px;border-radius:50%;background:rgba(10,8,6,.6);backdrop-filter:blur(6px);display:grid;place-items:center}
+.hz svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2}.hz.an svg{fill:var(--amber);stroke:var(--amber)}
+.leer{text-align:center;color:var(--muted);padding:70px 0}
+/* Detail: Rezeptkarte auf Holztisch */
+.tisch{position:fixed;inset:0;z-index:60;overflow:auto;display:none;
+  background:repeating-linear-gradient(90deg,#6d4a2a 0 118px,#5a3b20 118px 121px,#765232 121px 240px,#5a3b20 240px 243px),#6d4a2a}
+.tisch::before{content:"";position:fixed;inset:0;background:radial-gradient(90% 70% at 50% 20%,rgba(255,176,74,.18),rgba(8,6,4,.78));pointer-events:none}
+.tisch.offen{display:block;animation:ein .3s}@keyframes ein{from{opacity:0}}
+.blatt{position:relative;max-width:980px;margin:max(22px,env(safe-area-inset-top)) auto 120px;background:#18120e;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:1px solid #4a3523;display:grid}
+@media(min-width:860px){.blatt{grid-template-columns:1fr 1.15fr;margin:40px auto 120px}}
+.blatt .ph{position:relative;height:42vh;min-height:280px;background:var(--petrol2)}
+@media(min-width:860px){.blatt .ph{height:auto;min-height:560px}}
+.blatt .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.blatt .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--amber);box-shadow:0 0 22px var(--amber)}
+.blatt .in{padding:26px 24px 30px}
+.blatt .kat{font-family:Jost;letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:var(--amber)}
+.blatt h2{font-family:Jost;font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(2rem,5vw,3rem);margin:6px 0 10px;line-height:1.05}
+.blatt p.b{color:#d6c5b1;line-height:1.6;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.meta span{border:1px solid #4a3523;border-radius:8px;padding:6px 12px;font-size:.85rem;background:#201812}
+.blatt h4{font-family:Jost;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:.85rem;color:var(--amber);margin:24px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.port{display:flex;align-items:center;background:#241a13;border-radius:999px;padding:3px;letter-spacing:0;text-transform:none;color:var(--fg);font-family:Inter;font-size:.85rem}
+.port button{width:32px;height:32px;border-radius:50%;font-size:1.1rem}.port span{min-width:78px;text-align:center}
+ul.zl{list-style:none;margin:0;padding:0}ul.zl li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #2e2217}
+ul.zl b{color:var(--amber);font-weight:500;white-space:nowrap;text-shadow:0 0 14px rgba(255,176,74,.4)}
+ol.sl{list-style:none;counter-reset:s;margin:0;padding:0}
+ol.sl li{counter-increment:s;display:flex;gap:14px;padding:9px 0;line-height:1.5}
+ol.sl li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(var(--petrol),var(--petrol2));display:grid;place-items:center;font-family:Jost;font-size:.9rem;margin-top:1px}
+.hint{background:#2a1f14;border:1px solid #5a4020;border-radius:10px;padding:10px 12px;color:#f0d6a8;font-size:.88rem;margin-top:14px}
+.credit{color:#7d6d5d;font-size:.72rem;margin-top:22px}.credit a{color:#7d6d5d}
+.zu{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:70;width:46px;height:46px;border-radius:50%;background:rgba(10,8,6,.72);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:14px 16px max(16px,env(safe-area-inset-bottom));display:flex;justify-content:center;background:linear-gradient(transparent,rgba(8,6,4,.85) 45%)}
+.cta button{width:min(560px,100%);height:62px;border-radius:12px;background:linear-gradient(var(--amber),var(--amber2));color:#1c1005;font-family:Jost;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:1rem;box-shadow:0 0 34px rgba(255,138,31,.35)}
+footer.f{text-align:center;color:#6f6152;font-size:.78rem;padding:0 20px 40px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow2" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+    </defs>
+    <!-- Lichtlinien der Decke, laufen auf einen Fluchtpunkt zu -->
+    <g fill="none" stroke-width="3">
+      <path class="l a" d="M-20 60 L1220 150"/><path class="l b" d="M-20 190 L1220 40" stroke-width="2"/>
+      <path class="l a" d="M120 -20 L760 330" stroke-width="2.5"/><path class="l b" d="M420 -20 L880 300"/>
+      <path class="l a" d="M760 -20 L560 360" stroke-width="2"/><path class="l b" d="M1060 -20 L260 380" stroke-width="2.5"/>
+      <path class="l a" d="M-20 330 L1220 250" stroke-width="2"/><path class="l b" d="M300 -20 L1040 420" stroke-width="1.6" opacity=".7"/>
+    </g>
+    <!-- Pendelleuchten -->
+    <g stroke="#7a5c3a" stroke-width="1.2"><path d="M180 0v120M470 0v90M730 0v140M980 0v100"/></g>
+    <g class="lamp"><circle cx="180" cy="128" r="9"/><circle cx="470" cy="98" r="9"/><circle cx="730" cy="148" r="9"/><circle cx="980" cy="108" r="9"/></g>
+    <g fill="#ffe9c4"><circle cx="180" cy="128" r="4"/><circle cx="470" cy="98" r="4"/><circle cx="730" cy="148" r="4"/><circle cx="980" cy="108" r="4"/></g>
+  </svg>
+  <div class="t"><div class="kick">Adil's Bar · Amber Edition</div><h1>Die Karte</h1><p>Klassiker, Moderne und Tiki. Warm serviert, Schritt für Schritt erklärt, mit freien Händen.</p></div>
+</header>
+<nav class="polster"><div class="in" id="tabs" role="tablist"></div></nav>
+<div class="wrap" id="wrap"></div>
+<footer class="f">Rezepte nach IBA. Fotos: Wikimedia Commons, Lizenzen im jeweiligen Rezept.</footer>
+<div class="tisch" id="tisch" role="dialog" aria-modal="true"></div>
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s), wrap=$('#wrap'), tisch=$('#tisch');
+const state={kat:'alle',q:''}; let cur=null,p=1;
+const tabs=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien];
+const herz='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C1.1 8.6 3 5 6.4 5c2 0 3.6 1.1 4.4 2.6h.4C12 6.1 13.6 5 15.6 5 19 5 20.900 8.600 21.300 11.900 19 16.400 12 21 12 21z"/></svg>';
+function renderNav(){
+  $('#tabs').innerHTML=tabs.map(t=>`<button role="tab" aria-selected="${t.id===state.kat}" data-k="${t.id}">${t.name}</button>`).join('')+
+   `<label class="such"><input id="q" type="search" placeholder="Suchen" value="${Bar.esc(state.q)}" autocomplete="off"></label>`;
+  $('#q').oninput=e=>{state.q=e.target.value;render()};
+}
+function karte(r){return `<div style="position:relative"><button class="karte" style="width:100%;height:100%" data-id="${r.id}"><div class="im"><img src="${r.bild}" alt="${Bar.esc(r.name)}" loading="lazy"></div><div class="tx"><h3>${Bar.esc(r.name)}</h3><small>${Bar.esc(r.glas)} · ${r.zeit} Min.</small></div></button>
+  <button class="hz ${Bar.isFav(r.id)?'an':''}" data-fav="${r.id}" aria-label="Favorit">${herz}</button></div>`}
+function render(){
+  const f=Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q));
+  if(!f.length){wrap.innerHTML=`<p class="leer">${state.kat==='fav'&&!state.q?'Noch keine Favoriten. Tippe auf das Herz.':'Nichts gefunden.'}</p>`;return}
+  wrap.innerHTML=Bar.kategorien.map(k=>{const it=f.filter(r=>r.kategorie===k.id);
+    return it.length?`<section class="sek"><h2>${k.name}</h2><p class="s">${k.text}</p><div class="raster">${it.map(karte).join('')}</div></section>`:''}).join('');
+}
+function zeigen(id){cur=Bar.byId(id);p=1;paint();tisch.classList.add('offen');tisch.scrollTop=0;document.body.style.overflow='hidden'}
+function paint(){const r=cur,s=tisch.scrollTop;
+  tisch.innerHTML=`<button class="zu" data-zu aria-label="Zurück">${Bar.icon.left}</button>
+  <article class="blatt"><div class="ph"><img src="${r.bild}" alt="${Bar.esc(r.name)}"></div><div class="in">
+   <div class="kat">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p class="b">${Bar.esc(r.beschreibung)}</p>
+   <div class="meta"><span>${Bar.esc(r.glas)}</span><span>${r.technik}</span><span>${Bar.staerkeText(r.staerke)}</span><span>${r.zeit} Min.</span></div>
+   ${r.hinweis?`<div class="hint">${Bar.esc(r.hinweis)}</div>`:''}
+   <h4>Zutaten <span class="port"><button data-p="-1" aria-label="Weniger">−</button><span>${p} ${p===1?'Portion':'Portionen'}</span><button data-p="1" aria-label="Mehr">+</button></span></h4>
+   <ul class="zl">${r.zutaten.map(z=>`<li><span>${Bar.esc(z.n)}</span><b>${Bar.menge(z,p)}</b></li>`).join('')}</ul>
+   <h4>Zubereitung</h4><ol class="sl">${r.schritte.map(x=>`<li>${Bar.esc(x.t)}</li>`).join('')}</ol>
+   <h4>Garnitur</h4><p class="b" style="margin:0">${Bar.esc(r.garnitur)}</p>
+   <div class="credit">${Bar.credit(r)}</div></div></article>
+  <div class="cta"><button data-go>Zubereitung starten</button></div>`;
+  tisch.scrollTop=s;
+}
+function zu(){tisch.classList.remove('offen');document.body.style.overflow='';render()}
+document.addEventListener('click',e=>{
+  const c=s=>e.target.closest(s);
+  if(c('[data-k]')){state.kat=c('[data-k]').dataset.k;renderNav();render();scrollTo({top:document.querySelector('nav').offsetTop-1})}
+  else if(c('[data-fav]')){c('[data-fav]').classList.toggle('an',Bar.toggleFav(c('[data-fav]').dataset.fav))}
+  else if(c('.karte'))zeigen(c('.karte').dataset.id);
+  else if(c('[data-zu]'))zu();
+  else if(c('[data-p]')){p=Math.max(1,Math.min(12,p+(+c('[data-p]').dataset.p)));paint()}
+  else if(c('[data-go]'))Bar.kochen(cur,p);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tisch.classList.contains('offen')&&!document.querySelector('.bk'))zu()});
+renderNav();render();
+</script>
+</body>
+</html>

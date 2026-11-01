@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#120f0d">
+<title>Adil's Cocktails · Amber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+/* Look: dunkle Decke mit bernsteinfarbenen Lichtlinien, Eichenholz, petrolfarbene Polsterkante, cognacfarbenes Leder (Stil von Version 5) */
+:root{--bk-head:Jost,sans-serif;--bk-font:Inter,system-ui,sans-serif;--bk-bg:#100d0b;--bk-fg:#f3e9dc;--bk-accent:#ffb04a;--bk-accent-fg:#1c1005;--bk-card:#1e1713;--bk-line:#3a2c20;--bk-muted:#a49382;
+  --bg:#120f0d;--fg:#f3e9dc;--muted:#a49382;--acc:#ffb04a;--acc2:#ff8a1f;--oak:#b98652;--oak2:#8d5f35;--petrol:#2b6a70;--petrol2:#1f4a50;
+  --panel:#1e1713;--panel2:#261c15;--line:#3a2c20;--ink:#1c1005;--soft:#d6c5b1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
+.holz{background:repeating-linear-gradient(90deg,var(--oak) 0 38px,var(--oak2) 38px 40px,#c99562 40px 76px,var(--oak2) 76px 78px)}
+/* Hero mit Lichtlinien */
+.hero{position:relative;height:min(52vh,470px);min-height:340px;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#241a13 0%,#120f0d 70%)}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+/* Intro: Lichtlinien zeichnen sich nacheinander, dann gehen die Lampen flackernd an, dann erscheint der Titel */
+.hero svg{will-change:transform}
+.hero .l{stroke:var(--acc);stroke-linecap:round;filter:url(#glow);stroke-dasharray:1;stroke-dashoffset:1;
+  animation:zeichnen 1.3s cubic-bezier(.65,0,.25,1) var(--d,0s) forwards,flackern var(--f,8s) ease-in-out calc(var(--d,0s) + 1.6s) infinite}
+@keyframes zeichnen{to{stroke-dashoffset:0}}
+@keyframes flackern{0%,100%{opacity:1}50%{opacity:.58}}
+/* Lichtimpulse, die über die Linien wandern */
+.hero .p{stroke:#fff4dc;stroke-linecap:round;stroke-dasharray:.07 1.3;stroke-dashoffset:.07;opacity:0;filter:url(#glow);
+  animation:puls var(--t,6s) linear calc(2.2s + var(--q,0s)) infinite}
+@keyframes puls{0%{stroke-dashoffset:.07;opacity:0}8%,85%{opacity:1}100%{stroke-dashoffset:-1.07;opacity:0}}
+/* Pendelleuchten: flackernd an, dann sanftes Schwingen */
+.hero .pendel{transform-box:view-box;transform-origin:var(--x) 0;animation:schwingen var(--s,6s) ease-in-out calc(var(--d) + .4s) infinite alternate}
+@keyframes schwingen{from{transform:rotate(-1.8deg)}to{transform:rotate(1.8deg)}}
+.hero .kabel{stroke:#7a5c3a;stroke-width:1.2}
+.hero .glut{fill:#ffd9a0;filter:url(#glow2);opacity:0;animation:an 1s linear var(--d) forwards}
+.hero .kern{fill:#ffe9c4;opacity:0;animation:an 1s linear var(--d) forwards}
+@keyframes an{0%{opacity:0}10%{opacity:.9}18%{opacity:.1}30%{opacity:1}40%{opacity:.25}55%,100%{opacity:1}}
+/* Warmer Lichtschein, der dem Finger oder der Maus folgt */
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(440px circle at var(--mx,50%) var(--my,28%),rgba(255,176,74,.17),transparent 70%);opacity:0;animation:aufhellen 1.6s ease 1.5s forwards}
+@keyframes aufhellen{to{opacity:1}}
+/* Aufsteigende Funken */
+.funken{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.funken i{position:absolute;bottom:-12px;width:var(--g);height:var(--g);border-radius:50%;background:radial-gradient(#ffe2a8 0,#ffb04a 35%,rgba(255,138,31,0) 70%);opacity:0;animation:steigen var(--t) linear var(--v) infinite}
+@keyframes steigen{0%{transform:translate(0,0);opacity:0}12%{opacity:.85}75%{opacity:.45}100%{transform:translate(var(--dx),-520px);opacity:0}}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:2;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.hero .t{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 20px 44px;will-change:transform,opacity}
+.kick{font-family:Jost;letter-spacing:.42em;text-transform:uppercase;font-size:.72rem;color:var(--acc)}
+.hero .kick{opacity:0;animation:hoch .9s ease 1.5s forwards}
+.hero h1{font-family:Jost,sans-serif;font-weight:500;font-size:clamp(2.4rem,9vw,5rem);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 8px;line-height:1;text-shadow:0 0 40px rgba(255,176,74,.35);
+  opacity:0;animation:titel 1.5s cubic-bezier(.2,.7,.2,1) 1.7s forwards,gluehen 5s ease-in-out 3.4s infinite}
+@keyframes titel{from{opacity:0;letter-spacing:.45em;filter:blur(10px)}to{opacity:1;letter-spacing:.06em;filter:blur(0)}}
+@keyframes gluehen{50%{text-shadow:0 0 70px rgba(255,176,74,.65),0 0 14px rgba(255,176,74,.45)}}
+.hero p{margin:0 auto;color:var(--soft);max-width:48ch;line-height:1.55;opacity:0;animation:hoch .9s ease 2.2s forwards}
+@keyframes hoch{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* Petrol-Navigation wie die Polsterkante */
+nav.polster{position:sticky;top:0;z-index:30;background:linear-gradient(var(--petrol),var(--petrol2));border-bottom:2px solid var(--acc);box-shadow:0 8px 30px rgba(0,0,0,.45);padding:max(0px,env(safe-area-inset-top)) 0 0}
+nav .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 14px}
+.modus{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.modus button{white-space:nowrap;font-family:Jost;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;padding:11px 14px;border-radius:8px;color:#cfe3e2}
+.modus button[aria-selected=true]{background:rgba(0,0,0,.3);color:#fff;box-shadow:inset 0 -2px 0 var(--acc)}
+.cart{flex:none;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:8px;background:rgba(0,0,0,.28);color:#fff;font-family:Jost;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
+.cart i{font-style:normal;font-family:Inter;letter-spacing:0;min-width:22px;height:22px;border-radius:999px;background:var(--acc);color:var(--ink);display:grid;place-items:center;font-size:.8rem;font-weight:600;padding:0 6px}
+.cart.ohne i{background:rgba(255,255,255,.2);color:#fff}
+.cart .w{display:none}@media(min-width:560px){.cart .w{display:inline}}
+.wrap{max-width:1180px;margin:0 auto;padding:6px 18px 110px}
+h1.v{font-family:Jost;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:clamp(1.7rem,5.4vw,2.8rem);line-height:1.1;margin:30px 0 8px}
+h1.v em{color:var(--acc);font-style:normal;text-shadow:0 0 30px rgba(255,176,74,.35)}
+.lead{color:var(--muted);margin:0 0 22px;max-width:56ch;line-height:1.55}
+/* Wahl */
+.pick{position:relative;overflow:hidden;background:linear-gradient(#261d17,#1b1410);border:1px solid var(--line);border-radius:16px;padding:30px 18px 20px;display:grid;gap:24px}
+.pick::before,.karte::before,.drawer::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:repeating-linear-gradient(90deg,var(--oak) 0 38px,var(--oak2) 38px 40px,#c99562 40px 76px,var(--oak2) 76px 78px)}
+.grp h3{margin:0 0 12px;font-family:Jost;font-weight:500;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);display:flex;justify-content:space-between;gap:10px}
+.grp h3 small{font-family:Inter;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:300;font-size:.8rem}
+.chipset{display:flex;flex-wrap:wrap;gap:8px}
+.chipset button{padding:11px 18px;border-radius:10px;border:1px solid #4a3523;background:#201812;font-size:1rem;transition:.15s;font-weight:400}
+.chipset button:hover{border-color:var(--acc)}
+.chipset small{opacity:.7;font-size:.8em;margin-left:3px}
+.chipset button[aria-pressed=true]{background:linear-gradient(var(--acc),var(--acc2));border-color:var(--acc);color:var(--ink);font-weight:500;box-shadow:0 0 22px rgba(255,138,31,.25)}
+.aktionen{display:flex;gap:10px;flex-wrap:wrap}
+.aktionen button{padding:11px 18px;border-radius:10px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.aktionen .ueber{border-color:var(--acc);color:var(--acc)}
+.pill{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translate(-50%,0);z-index:40;background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);font-family:Jost;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.85rem;padding:16px 26px;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 34px rgba(255,138,31,.35);transition:.25s;white-space:nowrap}
+.pill[hidden]{display:block;opacity:0;pointer-events:none;transform:translate(-50%,30px)}
+/* Ergebnisse */
+#res{margin-top:34px;scroll-margin-top:90px}
+.hint{color:var(--muted);text-align:center;padding:40px 10px;border:1px dashed #4a3523;border-radius:16px;line-height:1.6}
+.hinweis{background:#2a1f14;border:1px solid #5a4020;border-radius:12px;padding:14px 16px;color:#f0d6a8;margin-bottom:18px;line-height:1.5}
+h2.t{font-family:Jost;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:1.15rem;margin:30px 0 16px;display:flex;align-items:center;gap:16px}
+h2.t::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--acc),transparent);box-shadow:0 0 14px var(--acc);opacity:.8}
+.feat{display:grid;border-radius:16px;overflow:hidden;background:linear-gradient(#261d17,#1b1410);border:1px solid var(--acc2);box-shadow:0 0 40px rgba(255,138,31,.15),0 30px 80px rgba(0,0,0,.5)}
+@media(min-width:760px){.feat{grid-template-columns:.9fr 1.1fr}}
+.feat .im{min-height:300px;position:relative;border-bottom:3px solid var(--acc2)}.feat .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(min-width:760px){.feat .im{border-bottom:0;border-right:3px solid var(--acc2)}}
+.feat .tx{padding:24px 22px}
+.feat .eb{font-family:Jost;color:var(--acc);letter-spacing:.3em;text-transform:uppercase;font-size:.72rem}
+.feat h3{font-family:Jost;font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.9rem,5vw,2.7rem);margin:6px 0 10px;line-height:1.05}
+.feat p{color:var(--soft);line-height:1.6;margin:10px 0 14px}
+.match{display:inline-block;background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);font-weight:600;border-radius:8px;padding:5px 11px;font-size:.82rem}
+.why{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.why span{border:1px solid #4a3523;background:#201812;border-radius:8px;padding:4px 11px;font-size:.82rem;color:#eadfce}
+.why i{font-style:normal;color:var(--acc);letter-spacing:1px;margin-left:5px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btns button{height:52px;padding:0 22px;border-radius:12px;font-family:Jost;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem}
+.btns .a{background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);box-shadow:0 0 28px rgba(255,138,31,.25)}.btns .b{border:1px solid #5a4020}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}}
+/* Karte: Eichenkante oben, Lederkörper */
+.card{position:relative;text-align:left;border-radius:14px;overflow:hidden;background:linear-gradient(#261d17,#1b1410);border:1px solid var(--line);display:flex;flex-direction:column;width:100%;height:100%;transition:transform .25s,box-shadow .25s}
+.card::before{content:"";height:7px;flex:none;background:repeating-linear-gradient(90deg,var(--oak) 0 38px,var(--oak2) 38px 40px,#c99562 40px 76px,var(--oak2) 76px 78px)}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 0 1px var(--acc2)}
+.card .im{position:relative;aspect-ratio:4/4.4;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}.card:hover img{transform:scale(1.05)}
+.card .tx{padding:12px 14px 14px;border-top:2px solid var(--acc2)}
+.card h3{font-family:Jost;font-weight:500;font-size:1.1rem;letter-spacing:.06em;margin:0 0 3px;text-transform:uppercase}
+.card small{color:var(--muted)}
+.card .match{position:absolute;top:10px;left:10px;z-index:3}
+.heart{position:absolute;top:17px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(10,8,6,.6);backdrop-filter:blur(6px);display:grid;place-items:center}
+.heart svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2}.heart.an svg{fill:var(--acc);stroke:var(--acc)}
+/* Alle Rezepte */
+.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:0 16px;height:46px;margin:14px 0 12px}
+.search input{flex:1;background:none;border:0;color:var(--fg);font:inherit;outline:0;min-width:0}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:14px}
+.tabs button{white-space:nowrap;padding:9px 16px;border-radius:10px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.tabs button[aria-selected=true]{background:linear-gradient(var(--acc),var(--acc2));border-color:var(--acc);color:var(--ink);font-weight:500}
+.leer{color:var(--muted);text-align:center;padding:60px 0}
+/* Detail: Rezeptkarte auf Holztisch */
+.sheet{position:fixed;inset:0;z-index:50;overflow:auto;display:none;
+  background:repeating-linear-gradient(90deg,#6d4a2a 0 118px,#5a3b20 118px 121px,#765232 121px 240px,#5a3b20 240px 243px),#6d4a2a}
+.sheet::before{content:"";position:fixed;inset:0;background:radial-gradient(90% 70% at 50% 20%,rgba(255,176,74,.18),rgba(8,6,4,.78));pointer-events:none}
+.sheet.offen{display:block;animation:rein .3s}@keyframes rein{from{opacity:0}}
+.sh-in{position:relative;max-width:980px;margin:max(22px,env(safe-area-inset-top)) auto 130px;background:#18120e;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:1px solid #4a3523;display:grid}
+@media(min-width:860px){.sh-in{grid-template-columns:1fr 1.15fr;margin:40px auto 130px}}
+.sh-img{position:relative;height:42vh;min-height:280px;background:var(--petrol2)}
+@media(min-width:860px){.sh-img{height:auto;min-height:560px}}
+.sh-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sh-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--acc);box-shadow:0 0 22px var(--acc)}
+.zu{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:70;width:46px;height:46px;border-radius:50%;background:rgba(10,8,6,.72);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.sh-txt{padding:26px 24px 30px}
+.sh-txt .kat{font-family:Jost;letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:var(--acc)}
+.sh-txt h2{font-family:Jost;font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(2rem,5vw,3rem);margin:6px 0 10px;line-height:1.05}
+.sh-txt p.b{color:var(--soft);line-height:1.6;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.meta span{border:1px solid #4a3523;border-radius:8px;padding:6px 12px;font-size:.85rem;background:#201812}
+h4{font-family:Jost;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:.85rem;color:var(--acc);margin:24px 0 8px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.port{display:flex;align-items:center;background:#241a13;border-radius:999px;padding:3px;letter-spacing:0;text-transform:none;color:var(--fg);font-family:Inter;font-size:.85rem}
+.port button{width:32px;height:32px;border-radius:50%;font-size:1.1rem}.port span{min-width:78px;text-align:center}
+ul.zl{list-style:none;margin:0;padding:0}ul.zl li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #2e2217}
+ul.zl b{color:var(--acc);font-weight:500;white-space:nowrap;text-shadow:0 0 14px rgba(255,176,74,.4)}
+ol.sl{list-style:none;counter-reset:s;margin:0;padding:0}
+ol.sl li{counter-increment:s;display:flex;gap:14px;padding:9px 0;line-height:1.5}
+ol.sl li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:8px;background:linear-gradient(var(--petrol),var(--petrol2));display:grid;place-items:center;font-family:Jost;font-size:.9rem;margin-top:1px}
+.prof{display:grid;gap:8px}.prof div{display:flex;justify-content:space-between;gap:10px}.prof i{font-style:normal;color:var(--acc);letter-spacing:3px}
+.hint2{background:#2a1f14;border:1px solid #5a4020;border-radius:10px;padding:10px 12px;color:#f0d6a8;font-size:.88rem;margin-top:14px}
+/* Alkoholangaben */
+.card small{display:block}
+.card .alk{color:var(--acc);font-weight:500;margin-top:2px}
+.alk2{color:var(--acc);font-size:.92rem;margin:8px 0 2px}
+.alkt{background:rgba(255,176,74,.9)!important;color:var(--ink);font-weight:600}
+.meta .alkm{border-color:var(--acc);color:var(--acc);font-weight:500}
+.fahr{background:#2a1713;border:1px solid #6a3a2a;border-radius:10px;padding:10px 12px;color:#f3cdb8;font-size:.84rem;line-height:1.5;margin-top:10px}
+.fahr b{color:#ffb9a0}
+.credit{color:#7d6d5d;font-size:.72rem;margin-top:22px}.credit a{color:#7d6d5d}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:75;padding:14px 16px max(16px,env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;background:linear-gradient(transparent,rgba(8,6,4,.88) 45%)}
+.cta button{flex:1;max-width:300px;height:62px;border-radius:12px;background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);font-family:Jost;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.9rem;box-shadow:0 0 34px rgba(255,138,31,.3)}
+.cta .sek{background:#18120e;border:1px solid var(--acc);color:var(--acc);box-shadow:none}
+/* Bestellungen */
+.toast{position:fixed;left:50%;bottom:max(96px,calc(env(safe-area-inset-bottom) + 90px));transform:translate(-50%,20px);z-index:300;background:#f3e9dc;color:#1c1005;padding:12px 20px;border-radius:10px;font-weight:500;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.toast.an{opacity:1;transform:translate(-50%,0)}
+.scrim{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.65);opacity:0;pointer-events:none;transition:.25s}
+.scrim.an{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:130;background:#15100d;border-left:1px solid #4a3523;transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column}
+.drawer.an{transform:none}
+.drawer::before{position:static;flex:none}
+.dr-top{display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 18px 12px}
+.dr-top h2{font-family:Jost;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:1.3rem;margin:0}
+.dr-x{width:44px;height:44px;border-radius:50%;background:var(--panel2);display:grid;place-items:center}
+.sum{margin:0 18px 6px;background:linear-gradient(135deg,#2a1d10,#1a130c);border:1px solid #5a4020;border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.sum b{display:block;font-family:Jost;font-weight:500;font-size:2.3rem;color:var(--acc);line-height:1.05;text-shadow:0 0 24px rgba(255,176,74,.4)}
+.sum span{color:#f0d6a8;font-size:.92rem}
+.sum small{display:block;color:var(--muted);margin-top:6px;font-size:.78rem}
+.play{flex:none;width:68px;height:68px;border-radius:50%;background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);display:grid;place-items:center;box-shadow:0 0 34px rgba(255,138,31,.45)}
+.play svg{width:32px;height:32px}
+.dr-list{flex:1;overflow:auto;padding:10px 18px}
+.dr-leer{color:var(--muted);text-align:center;padding:50px 10px;line-height:1.6}
+.bst{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;background:linear-gradient(#261d17,#1b1410);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
+.bst img{width:64px;height:64px;border-radius:10px;object-fit:cover}
+.bst .n{font-family:Jost;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:1.05rem;line-height:1.15}
+.bst .z{color:var(--muted);font-size:.85rem;margin-top:3px}
+.bst .z b{color:var(--acc);font-weight:500}
+.bst .a{grid-column:1/-1;display:flex;gap:8px;align-items:center}
+.bst .st{display:flex;align-items:center;background:#201812;border-radius:999px}
+.bst .st button{width:40px;height:40px;font-size:1.2rem}.bst .st span{min-width:30px;text-align:center;font-weight:500}
+.bst .go{flex:1;height:44px;border-radius:10px;background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);font-family:Jost;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem}
+.bst .mv{width:40px;height:44px;border-radius:10px;background:#201812;color:var(--muted);font-size:1.1rem}
+.bst .rm{width:44px;height:44px;border-radius:10px;background:#201812;color:var(--muted)}
+.dr-fuss{padding:12px 18px max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:8px}
+.dr-fuss button{height:54px;border-radius:12px;font-family:Jost;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem}
+.dr-fuss .alle{background:linear-gradient(var(--acc),var(--acc2));color:var(--ink);box-shadow:0 0 28px rgba(255,138,31,.25)}
+.dr-fuss .clr{border:1px solid var(--line);color:var(--muted);height:44px;font-weight:500}
+.dr-fuss button:disabled{opacity:.4;box-shadow:none}
+/* Zufall im Tinder-Stil */
+.tn{display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:6px}
+.tn-top{width:min(440px,100%);display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:.9rem;min-height:30px}
+.tg{display:flex;align-items:center;gap:8px;cursor:pointer}.tg input{accent-color:var(--acc);width:18px;height:18px}
+.tn-stack{position:relative;width:min(440px,92vw);height:min(54dvh,600px);touch-action:pan-y;user-select:none}
+.tc{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:#111;border:1px solid #4a3523;box-shadow:0 30px 70px rgba(0,0,0,.6);will-change:transform;cursor:grab}
+.tc::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;z-index:4;background:repeating-linear-gradient(90deg,var(--oak) 0 38px,var(--oak2) 38px 40px,#c99562 40px 76px,var(--oak2) 76px 78px)}
+.tc.hinten{transform:scale(.93) translateY(16px);filter:brightness(.55);pointer-events:none}
+.tc.zieht{cursor:grabbing}
+.tc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.tc::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,6,3,.94));pointer-events:none}
+.tc-info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 20px 20px;pointer-events:none}
+.tc-info .k{font-family:Jost;color:var(--acc);letter-spacing:.3em;text-transform:uppercase;font-size:.7rem}
+.tc-info h2{font-family:Jost;font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.9rem,8vw,2.5rem);margin:4px 0 6px;line-height:1.02;text-shadow:0 0 30px rgba(255,176,74,.3)}
+.tc-info p{margin:0 0 10px;color:var(--soft);line-height:1.4;font-size:.95rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-size:.78rem;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.14)}
+.stamp{position:absolute;top:30px;z-index:5;padding:6px 14px;border:4px solid;border-radius:10px;font-weight:800;letter-spacing:.08em;font-size:1.4rem;opacity:0;pointer-events:none;background:rgba(0,0,0,.25)}
+.stamp.ja{left:20px;color:#5be08a;border-color:#5be08a;transform:rotate(-12deg)}
+.stamp.nein{right:20px;color:#ff6b6b;border-color:#ff6b6b;transform:rotate(12deg)}
+.tn-btns{display:flex;gap:18px;align-items:center;justify-content:center}
+.tn-btns button{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:50%;background:var(--panel);border:1px solid #4a3523;transition:transform .15s}
+.tn-btns button:active{transform:scale(.92)}
+.tn-btns .nein,.tn-btns .ja{width:84px;height:84px;font-size:2rem;line-height:1}
+.tn-btns .nein{color:#ff6b6b;border-color:#5a2a2a}.tn-btns .ja{color:var(--ink);background:linear-gradient(var(--acc),var(--acc2));border-color:var(--acc);box-shadow:0 0 30px rgba(255,138,31,.35)}
+.tn-btns small{font-size:.62rem;margin-top:2px;letter-spacing:.04em}
+.tn-btns .zur{width:52px;height:52px;font-size:1.3rem;color:var(--muted)}
+.tn-hint{color:var(--muted);font-size:.82rem;margin:0;text-align:center}
+.tn-ende{width:min(440px,92vw);min-height:300px;border:1px dashed #4a3523;border-radius:18px;display:grid;place-content:center;text-align:center;gap:14px;padding:24px}
+.tn-ende h2{font-family:Jost;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin:0;font-size:1.7rem}
+.tn-ende .btns{justify-content:center}
+footer.f{text-align:center;color:#6f6152;font-size:.78rem;padding:0 20px 40px}
+/* ---------- Lebendigkeit ---------- */
+/* Lichtreflex, der über die Bernsteinkante der Navigation läuft */
+nav.polster::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,#fff3d6,transparent) no-repeat;background-size:28% 100%;background-position:-40% 0;animation:schimmer 7s ease-in-out 2.6s infinite}
+@keyframes schimmer{0%{background-position:-40% 0}45%,100%{background-position:140% 0}}
+/* Inhalte gleiten beim Erscheinen sanft herein */
+.warte{opacity:0}
+.rein{animation:auf .55s cubic-bezier(.2,.7,.2,1) var(--rd,0s) both}
+@keyframes auf{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+/* Auswahl-Chips springen kurz beim Antippen */
+.chipset button:active,.modus button:active,.tabs button:active{transform:scale(.95)}
+.chipset button[aria-pressed=true]{animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(.9)}100%{transform:scale(1)}}
+/* Prozent-Badge und Play-Knopf leuchten */
+.feat .match{animation:schein 3s ease-in-out infinite}
+@keyframes schein{50%{box-shadow:0 0 22px rgba(255,176,74,.7)}}
+.play{animation:atmen 2.4s ease-in-out infinite}
+@keyframes atmen{50%{box-shadow:0 0 56px rgba(255,138,31,.75);transform:scale(1.04)}}
+.cart i{transition:transform .3s}
+.cart.hops i{animation:hops .5s cubic-bezier(.3,1.8,.5,1)}
+@keyframes hops{0%{transform:scale(1)}40%{transform:scale(1.5)}100%{transform:scale(1)}}
+/* Rezeptkarte hebt sich vom Holztisch */
+.sheet.offen .sh-in{animation:abheben .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes abheben{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .funken{display:none}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow2" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+    </defs>
+    <!-- Lichtlinien der Decke (zeichnen sich beim Öffnen nacheinander) -->
+    <g fill="none" stroke-width="3">
+      <path class="l" pathLength="1" style="--d:.10s;--f:7s" d="M-20 60 L1220 150"/><path class="l" pathLength="1" style="--d:.28s;--f:9s" d="M-20 190 L1220 40" stroke-width="2"/>
+      <path class="l" pathLength="1" style="--d:.46s;--f:8s" d="M120 -20 L760 330" stroke-width="2.5"/><path class="l" pathLength="1" style="--d:.64s;--f:10s" d="M420 -20 L880 300"/>
+      <path class="l" pathLength="1" style="--d:.82s;--f:7.5s" d="M760 -20 L560 360" stroke-width="2"/><path class="l" pathLength="1" style="--d:1.0s;--f:9.5s" d="M1060 -20 L260 380" stroke-width="2.5"/>
+      <path class="l" pathLength="1" style="--d:1.18s;--f:8.5s" d="M-20 330 L1220 250" stroke-width="2"/><path class="l" pathLength="1" style="--d:1.36s;--f:11s" d="M300 -20 L1040 420" stroke-width="1.6" opacity=".7"/>
+    </g>
+    <!-- Lichtimpulse -->
+    <g fill="none" stroke-width="4">
+      <path class="p" pathLength="1" style="--t:5.5s;--q:0s" d="M-20 60 L1220 150"/><path class="p" pathLength="1" style="--t:7s;--q:2.3s" d="M1060 -20 L260 380"/>
+      <path class="p" pathLength="1" style="--t:6.2s;--q:1.1s" d="M120 -20 L760 330"/><path class="p" pathLength="1" style="--t:8s;--q:3.6s" d="M-20 330 L1220 250"/>
+      <path class="p" pathLength="1" style="--t:6.6s;--q:4.8s" d="M-20 190 L1220 40"/>
+    </g>
+    <!-- Pendelleuchten -->
+    <g class="pendel" style="--x:180px;--d:1.45s;--s:6s"><path class="kabel" d="M180 0v120"/><circle class="glut" cx="180" cy="128" r="9"/><circle class="kern" cx="180" cy="128" r="4"/></g>
+    <g class="pendel" style="--x:470px;--d:1.7s;--s:7.2s"><path class="kabel" d="M470 0v90"/><circle class="glut" cx="470" cy="98" r="9"/><circle class="kern" cx="470" cy="98" r="4"/></g>
+    <g class="pendel" style="--x:730px;--d:1.55s;--s:5.4s"><path class="kabel" d="M730 0v140"/><circle class="glut" cx="730" cy="148" r="9"/><circle class="kern" cx="730" cy="148" r="4"/></g>
+    <g class="pendel" style="--x:980px;--d:1.85s;--s:6.6s"><path class="kabel" d="M980 0v100"/><circle class="glut" cx="980" cy="108" r="9"/><circle class="kern" cx="980" cy="108" r="4"/></g>
+  </svg>
+  <div class="funken" id="funken" aria-hidden="true"></div>
+  <div class="t"><div class="kick">Amber Edition</div><h1>Adil's Bar</h1><p>Finde deinen Drink. Warm serviert, Schritt für Schritt erklärt, mit freien Händen.</p></div>
+</header>
+<nav class="polster"><div class="in">
+  <div class="modus" role="tablist"><button role="tab" data-v="finder" aria-selected="true">Mein Geschmack</button><button role="tab" data-v="zufall" aria-selected="false">Zufall</button><button role="tab" data-v="alle" aria-selected="false">Alle Rezepte</button></div>
+  <button class="cart ohne" id="cart" aria-label="Bestellungen öffnen"><span class="w">Bestellungen</span><i id="cn">0</i></button>
+</div></nav>
+<div class="wrap" id="wrap"></div>
+<footer class="f">Rezepte nach IBA. Fotos: Wikimedia Commons, Lizenzen im jeweiligen Rezept.</footer>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="dr" aria-label="Bestellungen" aria-hidden="true"></aside>
+<div class="toast" id="toast" role="status"></div>
+<button class="pill" id="pill" hidden></button>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s), wrap=$('#wrap'), sheet=$('#sheet'), pill=$('#pill');
+const W=Object.assign({geschmack:[],stil:[],alkohol:'',basis:[]},Bar.store.get('wahl',{}));
+W.staerke='';W.basis=W.basis.filter(b=>Bar.BASIS.some(x=>x.id===b));
+const state={v:'finder',kat:'alle',q:''};
+const herz='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C1.1 8.6 3 5 6.4 5c2 0 3.6 1.1 4.4 2.6h.4C12 6.1 13.6 5 15.6 5 19 5 20.900 8.600 21.300 11.900 19 16.400 12 21 12 21z"/></svg>';
+const punkte=n=>'●'.repeat(n)+'○'.repeat(3-n);
+const save=()=>Bar.store.set('wahl',W);
+const aktiv=()=>W.geschmack.length||W.stil.length||W.alkohol||W.basis.length;
+const gName=id=>Bar.GESCHMACK.find(g=>g.id===id).name;
+
+/* ---------- Mein Geschmack ---------- */
+const chipset=(liste,sel,key)=>`<div class="chipset">${liste.map(x=>`<button aria-pressed="${Array.isArray(sel)?sel.includes(x.id):sel===x.id}" data-w="${key}" data-id="${x.id}">${x.name}${x.text?` <small>${x.text}</small>`:''}</button>`).join('')}</div>`;
+function finder(){
+  wrap.innerHTML=`<h1 class="v">Worauf hast du <em>Lust?</em></h1><p class="lead">Tippe an, was dir schmeckt. Du kannst mehrere Richtungen mischen, zum Beispiel süß und exotisch. Wir suchen dir die passendsten Drinks heraus.</p>
+  <div class="pick" id="pick">
+    <div class="grp"><h3>Geschmack <small>mehrere möglich</small></h3>${chipset(Bar.GESCHMACK,W.geschmack,'geschmack')}</div>
+    <div class="grp"><h3>Lust auf … <small>Spirituose, mehrere möglich</small></h3>${chipset(Bar.BASIS,W.basis,'basis')}</div>
+    <div class="grp"><h3>Alkoholgehalt <small>optional</small></h3>${chipset(Bar.ALKOHOL,W.alkohol,'alkohol')}</div>
+    <div class="grp"><h3>Stil <small>optional</small></h3>${chipset(Bar.STIL,W.stil,'stil')}</div>
+    <div class="aktionen"><button class="ueber" data-a="zufall">Überrasch mich</button><button data-a="reset">Zurücksetzen</button></div>
+  </div><div id="res"></div>`;
+  ergebnisse();
+}
+function warum(r){return W.geschmack.filter(k=>r.profil[k]).map(k=>`<span>${gName(k)}<i>${punkte(r.profil[k])}</i></span>`).join('')}
+function ergebnisse(){
+  const res=$('#res'); if(!res)return;
+  document.querySelectorAll('#pick [data-w]').forEach(b=>{const k=b.dataset.w,id=b.dataset.id;b.setAttribute('aria-pressed',Array.isArray(W[k])?W[k].includes(id):W[k]===id)});
+  if(!aktiv()){res.innerHTML='<div class="hint">Wähle oben ein paar Geschmacksrichtungen.<br>Hier erscheinen dann die passendsten Drinks.</div>';pill.hidden=true;return}
+  const {treffer,naheDran}=Bar.empfehle(W), zeigeProzent=W.geschmack.length>0;
+  const liste=treffer.length?treffer:naheDran;
+  if(!liste.length){res.innerHTML='<div class="hint">Dazu haben wir leider nichts gefunden. Nimm einen Filter heraus.</div>';pill.hidden=true;return}
+  const [best,...rest]=liste;
+  const pct=x=>zeigeProzent?`<span class="match">${Math.round(x.punkte*100)} % passend</span>`:'';
+  res.innerHTML=`${treffer.length?'':'<div class="hinweis">Genau diese Kombination gibt es bei uns nicht. Das hier kommt deinem Geschmack am nächsten. Nimm einen Filter heraus, um mehr zu sehen.</div>'}
+   <h2 class="t" style="margin-top:0">${treffer.length?(treffer.length===1?'Dein Drink':'Dein perfekter Drink'):'Am nächsten dran'}</h2>
+   <article class="feat"><div class="im"><img src="${best.r.bild}" alt="${Bar.esc(best.r.name)}"></div><div class="tx">
+     <div class="eb">${Bar.katName(best.r.kategorie)}</div><h3>${Bar.esc(best.r.name)}</h3>${pct(best)}
+     <div class="why">${warum(best.r)}</div><div class="alk2">${Bar.alkoholText(best.r)} · ${Bar.alkoholGramm(best.r)}</div><p>${Bar.esc(best.r.beschreibung)}</p>
+     <div class="btns"><button class="a" data-go="${best.r.id}">Zubereitung starten</button><button class="b" data-id="${best.r.id}">Rezept ansehen</button></div></div></article>
+   ${rest.length?`<h2 class="t">${rest.length===1?'Noch ein Vorschlag':'Weitere Vorschläge'} <small style="color:var(--muted);font-family:Inter;letter-spacing:0;font-size:.9rem">(${rest.length})</small></h2><div class="grid">${rest.map(x=>karte(x.r,pct(x))).join('')}</div>`:''}`;
+  pill.hidden=false;pill.textContent=`${liste.length} ${liste.length===1?'Vorschlag':'Vorschläge'} ansehen ↓`;
+  beobachter.disconnect();beobachter.observe(res);
+}
+const beobachter=new IntersectionObserver(e=>{pill.hidden=!aktiv()||e[0].isIntersecting&&e[0].intersectionRatio>0.15},{threshold:[0,.15,.4]});
+pill.onclick=()=>$('#res').scrollIntoView({behavior:'smooth'});
+function karte(r,badge=''){return `<div style="position:relative;height:100%"><button class="card" data-id="${r.id}"><div class="im"><img src="${r.bild}" alt="${Bar.esc(r.name)}" loading="lazy">${badge}</div><div class="tx"><h3>${Bar.esc(r.name)}</h3><small>${Bar.esc(r.glas)} · ${r.zeit} Min.</small><small class="alk">${Bar.alkoholText(r)}</small></div></button>
+  <button class="heart ${Bar.isFav(r.id)?'an':''}" data-fav="${r.id}" aria-label="Favorit">${herz}</button></div>`}
+
+/* ---------- Alle Rezepte ---------- */
+function alle(){
+  const tabs=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien];
+  wrap.innerHTML=`<h1 class="v">Alle <em>Rezepte</em></h1>
+   <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a49382" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Cocktail, Zutat oder Geschmack" value="${Bar.esc(state.q)}" autocomplete="off"></label>
+   <div class="tabs">${tabs.map(t=>`<button aria-selected="${t.id===state.kat}" data-k="${t.id}">${t.name}</button>`).join('')}</div><div class="grid" id="g"></div>`;
+  $('#q').oninput=e=>{state.q=e.target.value;gitter()};gitter();pill.hidden=true;
+}
+function gitter(){
+  const l=Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q));
+  $('#g').innerHTML=l.length?l.map(r=>karte(r)).join(''):`<p class="leer" style="grid-column:1/-1">${state.kat==='fav'&&!state.q?'Noch keine Favoriten. Tippe auf das Herz.':'Nichts gefunden.'}</p>`;
+}
+
+/* ---------- Zufall (Tinder-Stil): rechts = gefällt mir, links = heute nicht ---------- */
+let deck=[],idx=0,nurGeschmack=false;
+function mischen(){
+  const pool=(nurGeschmack&&aktiv())?Bar.empfehle(W).treffer.map(x=>x.r):[...Bar.rezepte];
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  deck=pool;idx=0;
+}
+function zufall(){
+  if(!deck.length)mischen();
+  wrap.innerHTML=`<div class="tn" style="padding-top:26px"><div class="tn-top"><span id="tz"></span>${aktiv()?`<label class="tg"><input type="checkbox" id="ng" ${nurGeschmack?'checked':''}> Nur nach meinem Geschmack</label>`:''}</div>
+   <div class="tn-stack" id="stack"></div>
+   <div class="tn-btns"><button class="nein" data-s="nein" aria-label="Heute nicht">✕<small>Heute nicht</small></button><button class="zur" data-s="zurueck" aria-label="Eine Karte zurück">↶</button><button class="ja" data-s="ja" aria-label="Gefällt mir">♥<small>Gefällt mir</small></button></div>
+   <p class="tn-hint">Nach rechts wischen: gefällt mir. Nach links: heute nicht.</p></div>`;
+  const ng=$('#ng');if(ng)ng.onchange=()=>{nurGeschmack=ng.checked;mischen();zufall()};
+  stapel();pill.hidden=true;
+}
+const karteHtml=(r,vorn)=>`<div class="tc ${vorn?'':'hinten'}" data-id="${r.id}"><img src="${r.bild}" alt="${Bar.esc(r.name)}" draggable="false">
+  ${vorn?'<div class="stamp ja">GEFÄLLT MIR</div><div class="stamp nein">HEUTE NICHT</div>':''}
+  <div class="tc-info"><div class="k">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p>${Bar.esc(r.beschreibung)}</p>
+  <div class="tags"><span class="alkt">${Bar.alkoholText(r)}</span><span>${r.zeit} Min.</span>${r.geschmack.slice(0,2).map(g=>`<span>${g}</span>`).join('')}</div></div></div>`;
+function stapel(){
+  const s=$('#stack');if(!s)return;
+  $('#tz').textContent=deck.length?`${Math.min(idx+1,deck.length)} von ${deck.length}`:'';
+  if(idx>=deck.length){
+    s.style.height='auto';
+    s.innerHTML=`<div class="tn-ende"><h2>Alle durch.</h2><p class="lead" style="margin:0">Die Drinks, die dir gefallen haben, findest du bei den Favoriten.</p>
+      <div class="btns"><button class="a" data-a="mischen">Neu mischen</button><button class="b" data-a="favs">Zu den Favoriten</button></div></div>`;
+    document.querySelector('.tn-btns').style.display='none';return;
+  }
+  s.style.height='';document.querySelector('.tn-btns').style.display='';
+  s.innerHTML=(deck[idx+1]?karteHtml(deck[idx+1],false):'')+karteHtml(deck[idx],true);
+  ziehen(s.lastElementChild);
+}
+function ziehen(el){
+  let x0=null,dx=0;
+  const stempel=()=>{el.querySelector('.stamp.ja').style.opacity=Math.max(0,Math.min(1,dx/90));el.querySelector('.stamp.nein').style.opacity=Math.max(0,Math.min(1,-dx/90))};
+  el.addEventListener('pointerdown',e=>{x0=e.clientX;dx=0;el.classList.add('zieht');el.style.transition='none';el.setPointerCapture(e.pointerId)});
+  el.addEventListener('pointermove',e=>{if(x0==null)return;dx=e.clientX-x0;el.style.transform=`translateX(${dx}px) rotate(${dx/18}deg)`;stempel()});
+  const ende=()=>{if(x0==null)return;x0=null;el.classList.remove('zieht');
+    if(Math.abs(dx)>110)return wegfliegen(dx>0);
+    el.style.transition='transform .25s';el.style.transform='';dx=0;stempel()};
+  el.addEventListener('pointerup',ende);el.addEventListener('pointercancel',ende);
+}
+function wegfliegen(ja){
+  const el=document.querySelector('.tn-stack .tc:not(.hinten)');if(!el||el.dataset.weg)return;
+  el.dataset.weg=1;el.style.transition='transform .35s ease,opacity .35s';
+  el.style.transform=`translateX(${ja?'':'-'}140vw) rotate(${ja?30:-30}deg)`;el.style.opacity='0';
+  setTimeout(()=>entscheide(ja),280);
+}
+function entscheide(ja){
+  const r=deck[idx];idx++;stapel();
+  if(ja){if(!Bar.isFav(r.id))Bar.toggleFav(r.id);zeigen(r.id)}
+}
+function ansicht(v,springen=true){
+  state.v=v;beobachter.disconnect();
+  document.querySelectorAll('.modus button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));
+  v==='finder'?finder():v==='zufall'?zufall():alle();
+  if(springen)scrollTo({top:document.querySelector('nav').offsetTop-1});
+}
+
+/* ---------- Rezept ---------- */
+function zeigen(id){
+  const r=Bar.byId(id); let p=1;
+  const prof=Bar.GESCHMACK.filter(g=>r.profil[g.id]).map(g=>`<div><span>${g.name}</span><i>${punkte(r.profil[g.id])}</i></div>`).join('');
+  sheet.innerHTML=`<button class="zu" aria-label="Zurück">${Bar.icon.left}</button>
+  <article class="sh-in"><div class="sh-img"><img src="${r.bild}" alt="${Bar.esc(r.name)}"></div>
+  <div class="sh-txt"><div class="kat">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p class="b">${Bar.esc(r.beschreibung)}</p>
+    <div class="meta"><span class="alkm">${Bar.alkoholText(r)}</span><span>${Bar.alkoholGramm(r)}</span><span>${Bar.esc(r.glas)}</span><span>${r.technik}</span><span>${r.zeit} Min.</span></div>
+    ${Bar.alkoholStufe(r)==='frei'?'':`<div class="fahr"><b>Alkohol:</b> Schätzwert aus den Zutaten, inklusive Eis-Verdünnung. ${Bar.FAHRHINWEIS}</div>`}
+    ${r.hinweis?`<div class="hint2">${Bar.esc(r.hinweis)}</div>`:''}
+    <h4>Geschmack</h4><div class="prof">${prof}</div>
+    <h4>Zutaten <span class="port"><button data-p="-1" aria-label="Weniger">−</button><span id="pl"></span><button data-p="1" aria-label="Mehr">+</button></span></h4>
+    <ul class="zl" id="zl"></ul>
+    <h4>Zubereitung</h4><ol class="sl">${r.schritte.map(s=>`<li>${Bar.esc(s.t)}</li>`).join('')}</ol>
+    <h4>Garnitur</h4><p class="b" style="margin:0">${Bar.esc(r.garnitur)}</p>
+    <div class="credit">${Bar.credit(r)}</div></div></article>
+  <div class="cta"><button class="sek" id="best"></button><button id="los">Zubereitung starten</button></div>`;
+  const paint=()=>{$('#pl').textContent=p+(p===1?' Portion':' Portionen');$('#best').textContent=`Bestellen (${p}×)`;$('#zl').innerHTML=r.zutaten.map(z=>`<li><span>${Bar.esc(z.n)}</span><b>${Bar.menge(z,p)}</b></li>`).join('')};
+  paint();sheet.classList.add('offen');sheet.scrollTop=0;document.body.style.overflow='hidden';
+  sheet.onclick=e=>{
+    if(e.target.closest('.zu'))return zu();
+    const b=e.target.closest('[data-p]');if(b){p=Math.max(1,Math.min(12,p+(+b.dataset.p)));paint()}
+    if(e.target.closest('#best')){Bar.queue.add(r.id,p);badge();toast(`${p}× ${r.name} bestellt · gesamt ${Bar.minText(Bar.queue.gesamt())}`)}
+    if(e.target.closest('#los'))Bar.kochen(r,p);
+  };
+}
+
+/* ---------- Bestellungen (Warenkorb mit Gesamtdauer und Playlist) ---------- */
+const dr=$('#dr'),scrim=$('#scrim');
+let toastT;
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('an');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('an'),2400)}
+function badge(){const n=Bar.queue.anzahl(),c=$('#cart');$('#cn').textContent=n;c.classList.toggle('ohne',!n);if(dr.classList.contains('an'))bestellungen()}
+function uhr(min){return new Date(Date.now()+min*60000).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}
+function bestellungen(){
+  const q=Bar.queue.get(),gesamt=Bar.queue.gesamt(),anz=Bar.queue.anzahl();
+  dr.innerHTML=`<div class="dr-top"><h2>Bestellungen</h2><button class="dr-x" data-b="zu" aria-label="Schließen">${Bar.icon.x}</button></div>
+  ${q.length?`<div class="sum"><div><b>${Bar.minText(gesamt)}</b><span>${anz} ${anz===1?'Drink':'Drinks'} · ${q.length} ${q.length===1?'Sorte':'Sorten'} · gesamt</span><small>Geschätzt. Fertig gegen ${uhr(gesamt)} Uhr, wenn du jetzt beginnst.</small></div><button class="play" data-b="alle" aria-label="Alle Drinks nacheinander abspielen">${Bar.icon.play}</button></div>`:''}
+  <div class="dr-list">${q.length?q.map(o=>{const r=Bar.byId(o.id);return `<div class="bst"><img src="${r.bild}" alt=""><div><div class="n">${Bar.esc(r.name)}</div><div class="z">${Bar.alkoholText(r)} · <b>${Bar.minText(Bar.dauer(r,o.n))}</b></div></div>
+    <div class="a"><div class="st"><button data-b="minus" data-u="${o.uid}" aria-label="Weniger">−</button><span>${o.n}</span><button data-b="plus" data-u="${o.uid}" aria-label="Mehr">+</button></div>
+    <button class="go" data-b="go" data-u="${o.uid}">Nur diesen</button><button class="mv" data-b="hoch" data-u="${o.uid}" aria-label="Nach oben">↑</button><button class="mv" data-b="runter" data-u="${o.uid}" aria-label="Nach unten">↓</button><button class="rm" data-b="rm" data-u="${o.uid}" aria-label="Entfernen">${Bar.icon.x}</button></div></div>`}).join('')
+    :'<div class="dr-leer">Noch keine Bestellungen.<br>Öffne einen Drink und tippe auf „Bestellen“.</div>'}</div>
+  <div class="dr-fuss"><button class="alle" data-b="alle" ${q.length?'':'disabled'}>▶ Playlist abspielen</button><button class="clr" data-b="clr" ${q.length?'':'disabled'}>Bestellungen leeren</button></div>`;
+}
+function bestOeffnen(){bestellungen();dr.classList.add('an');scrim.classList.add('an');dr.setAttribute('aria-hidden','false')}
+function bestSchliessen(){dr.classList.remove('an');scrim.classList.remove('an');dr.setAttribute('aria-hidden','true')}
+function erledigt(uid){Bar.queue.set(Bar.queue.get().filter(o=>o.uid!==uid));badge()}
+function zubereiten(uid){
+  const o=Bar.queue.get().find(x=>x.uid===uid);if(!o)return;
+  Bar.kochen(Bar.byId(o.id),o.n,()=>erledigt(uid));
+}
+$('#cart').onclick=bestOeffnen;scrim.onclick=bestSchliessen;
+dr.addEventListener('click',e=>{
+  const b=e.target.closest('[data-b]');if(!b)return;
+  const u=b.dataset.u,q=Bar.queue.get(),o=q.find(x=>x.uid===u),a=b.dataset.b;
+  if(a==='zu')return bestSchliessen();
+  if(a==='clr'){Bar.queue.set([]);return badge()}
+  if(a==='alle'){return q.length&&Bar.queue.abspielen(badge)}
+  if(!o)return;
+  const pos=q.indexOf(o);
+  if(a==='plus')o.n=Math.min(24,o.n+1);else if(a==='minus')o.n=Math.max(1,o.n-1);
+  else if(a==='rm'){Bar.queue.set(q.filter(x=>x!==o));return badge()}
+  else if(a==='hoch'&&pos>0){q.splice(pos,1);q.splice(pos-1,0,o)}
+  else if(a==='runter'&&pos<q.length-1){q.splice(pos,1);q.splice(pos+1,0,o)}
+  else if(a==='go')return zubereiten(u);
+  Bar.queue.set(q);badge();
+});
+function zu(){sheet.classList.remove('offen');document.body.style.overflow='';state.v==='alle'?gitter():null}
+
+document.addEventListener('click',e=>{
+  const c=s=>e.target.closest(s);
+  if(c('.modus [data-v]'))return ansicht(c('.modus [data-v]').dataset.v);
+  const w=c('#pick [data-w]');
+  if(w){const k=w.dataset.w,id=w.dataset.id;
+    if(Array.isArray(W[k])){const i=W[k].indexOf(id);i<0?W[k].push(id):W[k].splice(i,1)}else W[k]=W[k]===id?'':id;
+    save();return ergebnisse()}
+  const s=c('[data-s]');
+  if(s){
+    if(s.dataset.s==='zurueck'){if(idx>0){idx--;stapel()}return}
+    return wegfliegen(s.dataset.s==='ja');
+  }
+  const a=c('[data-a]');
+  if(a){
+    if(a.dataset.a==='reset'){W.geschmack=[];W.stil=[];W.alkohol='';W.basis=[];save();return ergebnisse()}
+    if(a.dataset.a==='zufall'){return ansicht('zufall')}
+    if(a.dataset.a==='mischen'){mischen();return zufall()}
+    if(a.dataset.a==='favs'){state.kat='fav';return ansicht('alle')}
+  }
+  if(c('[data-k]')){state.kat=c('[data-k]').dataset.k;return alle()}
+  if(c('[data-fav]')){const f=c('[data-fav]');return f.classList.toggle('an',Bar.toggleFav(f.dataset.fav))}
+  if(c('[data-go]'))return Bar.kochen(Bar.byId(c('[data-go]').dataset.go),1);
+  const k=c('.card,.btns .b[data-id]');if(k)zeigen(k.dataset.id);
+});
+document.addEventListener('keydown',e=>{
+  if(document.querySelector('.bk'))return;
+  if(e.key==='Escape'&&sheet.classList.contains('offen'))return zu();
+  if(state.v==='zufall'&&!sheet.classList.contains('offen')&&idx<deck.length){
+    if(e.key==='ArrowRight')wegfliegen(true);else if(e.key==='ArrowLeft')wegfliegen(false);
+  }
+});
+/* ---------- Animationen ---------- */
+const ruhig=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Beim Öffnen immer oben starten, damit das Intro zu sehen ist
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+const nachOben=()=>scrollTo({top:0,behavior:'instant'});nachOben();addEventListener('load',()=>{nachOben();setTimeout(nachOben,50)});
+// Funken im Hero
+(function(){const f=$('#funken');if(ruhig)return;let h='';for(let i=0;i<22;i++){const g=(2+Math.random()*4).toFixed(1),t=(7+Math.random()*8).toFixed(1),v=(1.8+Math.random()*9).toFixed(1),dx=Math.round(Math.random()*120-60);
+  h+=`<i style="left:${(Math.random()*100).toFixed(1)}%;--g:${g}px;--t:${t}s;--v:${v}s;--dx:${dx}px"></i>`}f.innerHTML=h})();
+// Lichtschein folgt Finger/Maus, Parallax beim Scrollen
+const hero=$('.hero'),heroSvg=$('.hero svg'),heroT=$('.hero .t');
+hero.addEventListener('pointermove',e=>{const b=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-b.left)+'px');hero.style.setProperty('--my',(e.clientY-b.top)+'px')});
+let rafP=0;
+addEventListener('scroll',()=>{if(ruhig||rafP)return;rafP=requestAnimationFrame(()=>{rafP=0;const y=scrollY,h=hero.offsetHeight;if(y>h)return;
+  heroSvg.style.transform=`translateY(${y*.35}px)`;heroT.style.transform=`translateY(${y*.18}px)`;heroT.style.opacity=Math.max(0,1-y/(h*.7))})},{passive:true});
+// Inhalte beim Erscheinen hereingleiten lassen
+const sichtbar=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('warte');e.target.classList.add('rein');sichtbar.unobserve(e.target)}}),{threshold:.08});
+function markieren(){if(ruhig)return;let i=0;wrap.querySelectorAll('.grid > div,.feat,.grp,h2.t,h1.v,.lead,.tn-stack,.hint').forEach(el=>{if(el.dataset.anim)return;el.dataset.anim=1;
+  el.style.setProperty('--rd',Math.min(i++,9)*55+'ms');el.classList.add('warte');sichtbar.observe(el)})}
+new MutationObserver(markieren).observe(wrap,{childList:true,subtree:true});
+// Bestellungen-Zähler hüpft, wenn etwas dazukommt
+const badgeAlt=badge;let letzteAnzahl=Bar.queue.anzahl();
+badge=function(){badgeAlt();const n=Bar.queue.anzahl();if(n>letzteAnzahl){const c=$('#cart');c.classList.remove('hops');void c.offsetWidth;c.classList.add('hops')}letzteAnzahl=n};
+badge();
+ansicht('finder',false);
+</script>
+</body>
+</html>

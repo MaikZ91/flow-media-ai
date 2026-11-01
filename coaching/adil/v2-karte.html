@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e0d0c">
+<title>Adil's Cocktails · Karte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+:root{--bk-head:"Cormorant Garamond",Georgia,serif;--bk-font:Jost,system-ui,sans-serif;--bk-bg:#0e0d0c;--bk-accent:#c9a66b;
+  --bg:#0e0d0c;--fg:#efe8da;--muted:#8f887b;--line:#2b2825;--acc:#c9a66b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Jost,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 100px}
+header{text-align:center;padding:max(40px,env(safe-area-inset-top)) 0 22px}
+.ornament{color:var(--acc);letter-spacing:.5em;font-size:.7rem;text-transform:uppercase}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(2.6rem,9vw,4.6rem);margin:10px 0 4px;letter-spacing:.02em}
+header p{color:var(--muted);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.2rem;margin:0}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);margin:22px 0}
+.search{display:block;margin:0 auto 18px;width:100%;max-width:520px;text-align:center;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:1.05rem;padding:10px;outline:0}
+.search:focus{border-color:var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:6px}
+.chips button{padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.chips button[aria-pressed=true]{border-color:var(--acc);color:var(--acc)}
+.chips.k button{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem}
+section.kat{margin-top:44px}
+section.kat h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(1.9rem,6vw,2.6rem);text-align:center;margin:0}
+section.kat .sub{text-align:center;color:var(--muted);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.1rem;margin:2px 0 18px}
+.eintrag{border-top:1px solid var(--line)}
+.eintrag:last-child{border-bottom:1px solid var(--line)}
+.kopf{width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 16px;text-align:left;padding:18px 0;align-items:center}
+.kopf .n{font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:500;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.kopf .n i{font-family:Jost;font-style:normal;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.kopf .z{grid-column:1;color:var(--muted);font-size:.92rem;line-height:1.4}
+.kopf .th{grid-column:2;grid-row:1/3;width:68px;height:68px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.dots{display:flex;gap:4px;margin-top:2px}.dots b{width:7px;height:7px;border-radius:50%;border:1px solid var(--acc)}.dots b.an{background:var(--acc)}
+.detail{display:none;padding:0 0 28px;animation:auf .3s}
+.eintrag.offen .detail{display:block}
+@keyframes auf{from{opacity:0;transform:translateY(-6px)}}
+.dg{display:grid;gap:22px}
+@media(min-width:700px){.dg{grid-template-columns:260px 1fr}}
+.dg img{width:100%;border-radius:4px;aspect-ratio:4/5;object-fit:cover}
+.dg h5{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.3rem;margin:0 0 8px;color:var(--acc);display:flex;justify-content:space-between;align-items:center}
+.dg p{line-height:1.55;margin:0 0 14px}
+.port{display:inline-flex;align-items:center;font-family:Jost;font-size:.8rem;color:var(--fg)}
+.port button{width:30px;height:30px;border:1px solid var(--line);border-radius:50%}
+.port span{min-width:84px;text-align:center}
+.zl{list-style:none;padding:0;margin:0 0 18px}
+.zl li{display:flex;align-items:baseline;gap:8px;padding:5px 0}
+.zl li::after{content:"";order:2;flex:1;border-bottom:1px dotted var(--line)}
+.zl li span{order:1}.zl li b{order:3;font-weight:400;color:var(--acc);white-space:nowrap}
+ol{margin:0 0 16px;padding-left:20px;line-height:1.55}ol li{padding:3px 0}
+.go{display:block;width:100%;padding:16px;background:var(--acc);color:#16120a;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;border-radius:2px}
+.fav{margin-top:10px;display:block;width:100%;padding:12px;border:1px solid var(--line);letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;border-radius:2px}
+.credit{color:var(--muted);font-size:.72rem;margin-top:12px}.credit a{color:var(--muted)}
+.hint{font-style:italic;color:var(--acc);font-family:"Cormorant Garamond",serif;font-size:1.05rem;margin-bottom:12px}
+.leer{text-align:center;color:var(--muted);padding:50px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="ornament">Cocktailkarte</div><h1>Adil's Bar</h1><p>Von Klassikern bis Tiki, Schritt für Schritt</p></header>
+  <input class="search" id="q" type="search" placeholder="Suchen: Name, Zutat, Geschmack …" autocomplete="off">
+  <div class="chips k" id="kats"></div>
+  <div class="chips" id="gs"></div>
+  <div class="rule"></div>
+  <div id="liste"></div>
+</div>
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s), liste=$('#liste');
+const state={kat:'alle',q:'',g:new Set(),offen:null,p:1};
+const geschmack=[...new Set(Bar.rezepte.flatMap(r=>r.geschmack))].sort();
+function chips(){
+  $('#kats').innerHTML=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien].map(k=>`<button aria-pressed="${state.kat===k.id}" data-k="${k.id}">${k.name}</button>`).join('');
+  $('#gs').innerHTML=geschmack.map(g=>`<button aria-pressed="${state.g.has(g)}" data-g="${g}">${g}</button>`).join('');
+}
+function zeile(r){
+  const o=state.offen===r.id;
+  return `<div class="eintrag ${o?'offen':''}" id="e-${r.id}"><button class="kopf" data-id="${r.id}" aria-expanded="${o}">
+    <span class="n">${Bar.esc(r.name)}<i>${r.glas}</i></span>
+    <span class="z">${r.zutaten.slice(0,4).map(z=>Bar.esc(z.n)).join(' · ')}</span>
+    <img class="th" src="${r.bild}" alt="" loading="lazy"></button>
+    <div class="detail">${o?detail(r):''}</div></div>`;
+}
+function detail(r){
+  return `<div class="dg"><img src="${r.bild}" alt="${Bar.esc(r.name)}"><div>
+    <p>${Bar.esc(r.beschreibung)}</p>
+    ${r.hinweis?`<div class="hint">${Bar.esc(r.hinweis)}</div>`:''}
+    <h5>Zutaten <span class="port"><button data-p="-1" aria-label="Weniger">−</button><span>${state.p} ${state.p===1?'Portion':'Portionen'}</span><button data-p="1" aria-label="Mehr">+</button></span></h5>
+    <ul class="zl">${r.zutaten.map(z=>`<li><span>${Bar.esc(z.n)}</span><b>${Bar.menge(z,state.p)}</b></li>`).join('')}</ul>
+    <h5>Zubereitung</h5><ol>${r.schritte.map(s=>`<li>${Bar.esc(s.t)}</li>`).join('')}</ol>
+    <p><i>Garnitur:</i> ${Bar.esc(r.garnitur)} · ${Bar.staerkeText(r.staerke)} · ${r.zeit} Min.</p>
+    <button class="go" data-go="${r.id}">Zubereitung starten</button>
+    <button class="fav" data-fav="${r.id}">${Bar.isFav(r.id)?'★ Aus Favoriten entfernen':'☆ Zu Favoriten'}</button>
+    <div class="credit">${Bar.credit(r)}</div></div></div>`;
+}
+function render(){
+  const f=Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q)&&[...state.g].every(g=>r.geschmack.includes(g)));
+  if(!f.length){liste.innerHTML='<p class="leer">Nichts gefunden.</p>';return}
+  liste.innerHTML=Bar.kategorien.map(k=>{const items=f.filter(r=>r.kategorie===k.id);
+    return items.length?`<section class="kat"><h2>${k.name}</h2><div class="sub">${k.text}</div>${items.map(zeile).join('')}</section>`:''}).join('');
+}
+document.addEventListener('click',e=>{
+  const k=e.target.closest('[data-k]'),g=e.target.closest('[data-g]'),h=e.target.closest('.kopf'),p=e.target.closest('[data-p]'),go=e.target.closest('[data-go]'),fv=e.target.closest('[data-fav]');
+  if(k){state.kat=k.dataset.k;chips();render()}
+  else if(g){state.g.has(g.dataset.g)?state.g.delete(g.dataset.g):state.g.add(g.dataset.g);chips();render()}
+  else if(h){const id=h.dataset.id;state.offen=state.offen===id?null:id;state.p=1;render();if(state.offen)document.getElementById('e-'+id).scrollIntoView({block:'start',behavior:'smooth'})}
+  else if(p){state.p=Math.max(1,Math.min(12,state.p+(+p.dataset.p)));const y=scrollY;render();scrollTo(0,y)}
+  else if(go)Bar.kochen(Bar.byId(go.dataset.go),state.p);
+  else if(fv){Bar.toggleFav(fv.dataset.fav);const y=scrollY;render();scrollTo(0,y)}
+});
+$('#q').oninput=e=>{state.q=e.target.value;render()};
+chips();render();
+</script>
+</body>
+</html>

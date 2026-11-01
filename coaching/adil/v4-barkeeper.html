@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101214">
+<title>Adil's Cocktails · Barkeeper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+:root{--bk-head:"Barlow Condensed",sans-serif;--bk-font:Barlow,system-ui,sans-serif;--bk-bg:#0c0e10;--bk-accent:#2dd4bf;--bk-accent-fg:#04201c;--bk-card:#171a1d;--bk-line:#262b30;--bk-muted:#8b949e;
+  --bg:#101214;--panel:#171a1d;--panel2:#1d2125;--line:#262b30;--fg:#eef2f5;--muted:#8b949e;--acc:#2dd4bf}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Barlow,system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
+.top{display:flex;align-items:center;gap:14px;padding:max(10px,env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line);background:#0c0e10}
+.logo{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.logo b{color:var(--acc)}
+.top input{flex:1;min-width:0;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:0 14px;font:inherit;outline:0}
+.top input:focus{border-color:var(--acc)}
+.qbtn{position:relative;height:44px;padding:0 16px;border-radius:10px;background:var(--acc);color:#04201c;font-weight:600;white-space:nowrap}
+.qbtn i{font-style:normal;margin-left:6px;background:#04201c;color:var(--acc);border-radius:999px;padding:1px 8px;font-size:.85rem}
+.app{flex:1;display:grid;grid-template-columns:380px 1fr;min-height:0}
+.liste{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.filter{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.filter button{white-space:nowrap;padding:7px 13px;border-radius:8px;background:var(--panel);color:var(--muted);font-weight:500;font-size:.9rem}
+.filter button[aria-selected=true]{background:var(--fg);color:#101214}
+.rows{overflow:auto;flex:1}
+.row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+.row:hover,.row[aria-current=true]{background:var(--panel2)}
+.row[aria-current=true]{box-shadow:inset 3px 0 0 var(--acc)}
+.row img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:none}
+.row .n{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.35rem;line-height:1.1}
+.row .s{color:var(--muted);font-size:.85rem}
+.row .z{margin-left:auto;color:var(--muted);font-size:.85rem;text-align:right;white-space:nowrap}
+.row .z.q{color:var(--acc);font-weight:600}
+.detail{overflow:auto;position:relative}
+.leer{height:100%;display:grid;place-items:center;color:var(--muted);text-align:center;padding:30px}
+.hd{display:grid;grid-template-columns:240px 1fr;gap:26px;padding:26px 30px 10px}
+.hd img{width:240px;height:300px;object-fit:cover;border-radius:16px}
+.hd .k{color:var(--acc);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem}
+.hd h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.95;text-transform:uppercase;margin:4px 0 10px}
+.hd p{color:#c7d0d8;line-height:1.5;margin:0 0 14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tags span{background:var(--panel2);border-radius:8px;padding:6px 12px;font-size:.9rem}
+.tags span b{color:var(--acc);font-weight:600}
+.sek{padding:10px 30px}
+.sek h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:1rem;color:var(--muted);margin:16px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.zt{width:100%;border-collapse:collapse}
+.zt td{padding:11px 0;border-bottom:1px solid var(--line);font-size:1.1rem}
+.zt td:first-child{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.6rem;color:var(--acc);width:130px;white-space:nowrap}
+.step{display:flex;gap:14px;padding:11px 0;font-size:1.1rem;line-height:1.4;border-bottom:1px solid var(--line)}
+.step i{font-style:normal;flex:none;width:30px;height:30px;border-radius:8px;background:var(--panel2);display:grid;place-items:center;font-weight:600;font-family:"Barlow Condensed";font-size:1.1rem}
+.aktion{position:sticky;bottom:0;display:flex;gap:10px;padding:14px 30px max(16px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 35%);align-items:center;flex-wrap:wrap}
+.port{display:flex;align-items:center;background:var(--panel2);border-radius:10px}
+.port button{width:48px;height:56px;font-size:1.5rem}
+.port span{min-width:54px;text-align:center;font-family:"Barlow Condensed";font-weight:700;font-size:1.7rem}
+.b1{flex:1;min-width:180px;height:56px;border-radius:10px;background:var(--acc);color:#04201c;font-weight:600;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em}
+.b2{height:56px;padding:0 18px;border-radius:10px;border:1px solid var(--line);font-weight:500}
+.hint{background:#1a2420;border:1px solid #234038;border-radius:10px;padding:10px 12px;margin:0 30px;color:#9fe0d3;font-size:.92rem}
+.credit{padding:0 30px 24px;color:#5f6872;font-size:.75rem}.credit a{color:#5f6872}
+.zu{display:none}
+/* Bestellungen */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:200;background:#0c0e10;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+.drawer.offen{transform:none}
+.drawer header{display:flex;align-items:center;justify-content:space-between;padding:max(14px,env(safe-area-inset-top)) 18px 12px;border-bottom:1px solid var(--line)}
+.drawer h2{font-family:"Barlow Condensed";text-transform:uppercase;letter-spacing:.08em;margin:0;font-size:1.5rem}
+.drawer .liste2{flex:1;overflow:auto;padding:10px 16px}
+.bst{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;background:var(--panel);border-radius:12px;padding:10px;margin-bottom:10px}
+.bst img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.bst .n{font-family:"Barlow Condensed";font-weight:700;font-size:1.4rem}
+.bst .a{grid-column:1/-1;display:flex;gap:8px}
+.bst .a button{flex:1;height:46px;border-radius:8px;background:var(--panel2);font-weight:500}
+.bst .a .go{background:var(--acc);color:#04201c;font-weight:600}
+.bst .nr{color:var(--acc)}
+.sum{margin:12px 16px 0;padding:14px 16px;border-radius:12px;background:#10211f;border:1px solid #1f4a43;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sum[hidden]{display:none}
+.sum b{font-family:"Barlow Condensed";font-weight:700;font-size:2.2rem;color:var(--acc);line-height:1}
+.sum small{display:block;color:#8fc9c0;font-size:.85rem;text-align:right}
+.drawer footer{padding:12px 16px max(14px,env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+  .detail{position:fixed;inset:0;z-index:100;background:var(--bg);transform:translateX(100%);transition:transform .25s}
+  .detail.show{transform:none}
+  .zu{display:grid;position:sticky;top:0;z-index:5;margin:max(10px,env(safe-area-inset-top)) 0 0 12px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);place-items:center}
+  .hd{grid-template-columns:1fr;padding:0 18px}.hd img{width:100%;height:240px}
+  .sek,.aktion{padding-left:18px;padding-right:18px}.hint{margin:0 18px}.credit{padding:0 18px 24px}
+  .logo span{display:none}
+}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">Adil's <b>Bar</b><span> · Barkeeper</span></div><input id="q" type="search" placeholder="Suchen" autocomplete="off"><button class="qbtn" id="qb">Bestellungen<i id="qn">0</i></button></div>
+<div class="app">
+  <div class="liste"><div class="filter" id="f" role="tablist"></div><div class="rows" id="rows"></div></div>
+  <div class="detail" id="d"></div>
+</div>
+<aside class="drawer" id="dr" aria-label="Bestellungen"><header><h2>Bestellungen</h2><button class="b2" id="drx">Schließen</button></header><div class="sum" id="sum"></div><div class="liste2" id="ql"></div><footer style="display:grid;gap:8px"><button class="b1" id="qplay" style="height:60px">▶ Playlist abspielen</button><button class="b2" id="qclr" style="width:100%;height:48px">Alle löschen</button></footer></aside>
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const state={kat:'alle',q:'',sel:null,p:1}; let queue=Bar.store.get('queue',[]);
+const tabs=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien];
+const save=()=>{Bar.store.set('queue',queue);$('#qn').textContent=queue.reduce((a,b)=>a+b.n,0)};
+function filter(){return Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q))}
+function renderList(){
+  $('#f').innerHTML=tabs.map(t=>`<button role="tab" aria-selected="${t.id===state.kat}" data-k="${t.id}">${t.name}</button>`).join('');
+  const l=filter(),inQ=id=>queue.filter(x=>x.id===id).reduce((a,b)=>a+b.n,0);
+  $('#rows').innerHTML=l.map(r=>`<button class="row" data-id="${r.id}" aria-current="${r.id===state.sel}"><img src="${r.bild}" alt="" loading="lazy"><span><div class="n">${Bar.esc(r.name)}</div><div class="s">${Bar.esc(r.glas)}</div></span><span class="z ${inQ(r.id)?'q':''}">${inQ(r.id)?inQ(r.id)+'× bestellt':r.zeit+' Min.'}</span></button>`).join('')||'<div class="leer">Nichts gefunden.</div>';
+}
+function renderDetail(){
+  const r=Bar.byId(state.sel),d=$('#d');
+  if(!r){d.innerHTML='<div class="leer">Cocktail aus der Liste wählen.</div>';d.classList.remove('show');return}
+  d.innerHTML=`<button class="zu" data-zu aria-label="Zurück">${Bar.icon.left}</button>
+  <div class="hd"><img src="${r.bild}" alt="${Bar.esc(r.name)}"><div><div class="k">${Bar.katName(r.kategorie)}</div><h1>${Bar.esc(r.name)}</h1><p>${Bar.esc(r.beschreibung)}</p>
+   <div class="tags"><span>Glas <b>${Bar.esc(r.glas)}</b></span><span>Methode <b>${r.technik}</b></span><span>Stärke <b>${Bar.staerkeText(r.staerke)}</b></span><span>Zeit <b>${r.zeit} Min.</b></span></div></div></div>
+  ${r.hinweis?`<div class="hint">${Bar.esc(r.hinweis)}</div>`:''}
+  <div class="sek"><h3>Zutaten für ${state.p} ${state.p===1?'Portion':'Portionen'}</h3><table class="zt">${r.zutaten.map(z=>`<tr><td>${Bar.menge(z,state.p)||'–'}</td><td>${Bar.esc(z.n)}</td></tr>`).join('')}</table>
+   <h3>Ablauf</h3>${r.schritte.map((s,i)=>`<div class="step"><i>${i+1}</i><span>${Bar.esc(s.t)}</span></div>`).join('')}
+   <h3>Garnitur</h3><div class="step" style="border:0">${Bar.esc(r.garnitur)}</div></div>
+  <div class="credit">${Bar.credit(r)}</div>
+  <div class="aktion"><div class="port"><button data-p="-1" aria-label="Weniger">−</button><span>${state.p}</span><button data-p="1" aria-label="Mehr">+</button></div>
+   <button class="b1" data-go>Jetzt zubereiten</button><button class="b2" data-q>+ Bestellung</button><button class="b2" data-fav>${Bar.isFav(r.id)?'★':'☆'}</button></div>`;
+  d.classList.add('show');
+}
+function renderQ(){
+  const gesamt=queue.reduce((a,o)=>a+Bar.dauer(Bar.byId(o.id),o.n),0),anz=queue.reduce((a,o)=>a+o.n,0);
+  $('#sum').hidden=!queue.length;
+  $('#sum').innerHTML=`<div><b>${Bar.minText(gesamt)}</b></div><small>${anz} ${anz===1?'Drink':'Drinks'} gesamt<br>fertig gegen ${new Date(Date.now()+gesamt*60000).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})} Uhr (geschätzt)</small>`;
+  $('#ql').innerHTML=queue.length?queue.map((o,i)=>{const r=Bar.byId(o.id);return `<div class="bst"><img src="${r.bild}" alt=""><div><div class="n"><span class="nr">${o.n}×</span> ${Bar.esc(r.name)}</div><small style="color:var(--muted)">${Bar.esc(r.glas)} · ca. ${Bar.minText(Bar.dauer(r,o.n))}</small></div>
+    <div class="a"><button class="go" data-qgo="${i}">Zubereiten</button><button data-qok="${i}">Erledigt</button></div></div>`}).join(''):'<div class="leer" style="height:200px">Keine offenen Bestellungen.</div>';
+}
+document.addEventListener('click',e=>{
+  const t=e.target,c=s=>t.closest(s);
+  if(c('[data-k]')){state.kat=c('[data-k]').dataset.k;renderList()}
+  else if(c('.row')){state.sel=c('.row').dataset.id;state.p=1;renderList();renderDetail();$('#d').scrollTop=0}
+  else if(c('[data-zu]'))$('#d').classList.remove('show');
+  else if(c('[data-p]')){state.p=Math.max(1,Math.min(12,state.p+(+c('[data-p]').dataset.p)));const s=$('#d').scrollTop;renderDetail();$('#d').scrollTop=s}
+  else if(c('[data-go]'))Bar.kochen(Bar.byId(state.sel),state.p);
+  else if(c('[data-q]')){queue.push({id:state.sel,n:state.p});save();renderQ();renderList();$('#dr').classList.add('offen')}
+  else if(c('[data-fav]')){Bar.toggleFav(state.sel);const s=$('#d').scrollTop;renderDetail();$('#d').scrollTop=s;if(state.kat==='fav')renderList()}
+  else if(c('#qb')){renderQ();$('#dr').classList.add('offen')}
+  else if(c('#drx'))$('#dr').classList.remove('offen');
+  else if(c('#qplay')){if(queue.length)Bar.queue.abspielen(()=>{queue=Bar.store.get('queue',[]);save();renderQ();renderList()})}
+  else if(c('#qclr')){queue=[];save();renderQ();renderList()}
+  else if(c('[data-qgo]')){const o=queue[+c('[data-qgo]').dataset.qgo];Bar.kochen(Bar.byId(o.id),o.n)}
+  else if(c('[data-qok]')){queue.splice(+c('[data-qok]').dataset.qok,1);save();renderQ();renderList()}
+});
+$('#q').oninput=e=>{state.q=e.target.value;renderList()};
+save();renderQ();renderList();renderDetail();
+if(innerWidth>900){const l=filter();if(l[0]){state.sel=l[0].id;renderList();renderDetail()}}
+</script>
+</body>
+</html>

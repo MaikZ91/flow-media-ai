@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101214">
+<title>Adil's Cocktails · Geschmack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+:root{--bk-head:"Playfair Display",Georgia,serif;--bk-font:Inter,system-ui,sans-serif;--bk-bg:#0c0e10;--bk-fg:#eef2f5;--bk-muted:#8b949e;--bk-accent:#2dd4bf;--bk-accent-fg:#04201c;--bk-card:#171a1d;--bk-line:#262b30;
+  --bg:#101214;--panel:#171a1d;--panel2:#1d2125;--line:#262b30;--fg:#eef2f5;--muted:#8b949e;--acc:#2dd4bf}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
+header{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 75%,transparent);padding:max(14px,env(safe-area-inset-top)) 18px 12px}
+.bar{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{font-family:"Playfair Display",serif;font-size:1.5rem;letter-spacing:.04em}.logo em{color:var(--acc);font-style:normal}
+.modus{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:auto}
+.modus button{padding:9px 16px;border-radius:999px;color:var(--muted);font-size:.92rem;font-weight:500}
+.modus button[aria-selected=true]{background:var(--acc);color:#04201c}
+.wrap{max-width:1200px;margin:0 auto;padding:6px 18px 110px}
+h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(2rem,6vw,3.4rem);line-height:1.05;margin:14px 0 8px}
+h1 em{color:var(--acc);font-style:italic}
+.lead{color:var(--muted);margin:0 0 22px;max-width:56ch;line-height:1.5}
+/* Wahl */
+.pick{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 18px;display:grid;gap:22px}
+.grp h3{margin:0 0 10px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;display:flex;justify-content:space-between;gap:10px}
+.grp h3 small{letter-spacing:0;text-transform:none;color:var(--muted);font-weight:400;font-size:.8rem}
+.chipset{display:flex;flex-wrap:wrap;gap:8px}
+.chipset button{padding:11px 18px;border-radius:999px;border:1px solid #2f363c;background:var(--panel2);font-size:1rem;transition:.15s}
+.chipset button:hover{border-color:var(--acc)}
+.chipset button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#04201c;font-weight:600}
+.aktionen{display:flex;gap:10px;flex-wrap:wrap}
+.aktionen button{padding:11px 18px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.aktionen .ueber{border-color:var(--acc);color:var(--acc)}
+.pill{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translate(-50%,0);z-index:40;background:var(--acc);color:#04201c;font-weight:600;padding:15px 26px;border-radius:999px;box-shadow:0 12px 40px rgba(0,0,0,.6);transition:.25s;white-space:nowrap}
+.pill[hidden]{display:block;opacity:0;pointer-events:none;transform:translate(-50%,30px)}
+/* Ergebnisse */
+#res{margin-top:34px;scroll-margin-top:90px}
+.hint{color:var(--muted);text-align:center;padding:40px 10px;border:1px dashed var(--line);border-radius:20px;line-height:1.6}
+.hinweis{background:#10211f;border:1px solid #1f4a43;border-radius:14px;padding:14px 16px;color:#9fe0d3;margin-bottom:18px;line-height:1.5}
+h2.t{font-family:"Playfair Display",serif;font-weight:500;font-size:1.7rem;margin:26px 0 14px}
+.feat{display:grid;border-radius:22px;overflow:hidden;background:var(--panel);border:1px solid var(--acc);box-shadow:0 0 0 1px rgba(45,212,191,.2),0 30px 80px rgba(0,0,0,.5)}
+@media(min-width:760px){.feat{grid-template-columns:.9fr 1.1fr}}
+.feat .im{min-height:300px;position:relative}.feat .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat .tx{padding:24px 22px}
+.feat .eb{color:var(--acc);letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.feat h3{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2rem,5vw,2.8rem);margin:6px 0 6px;line-height:1.05}
+.feat p{color:#c7d0d8;line-height:1.55;margin:10px 0 14px}
+.match{display:inline-block;background:var(--acc);color:#04201c;font-weight:700;border-radius:999px;padding:5px 12px;font-size:.85rem}
+.why{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.why span{border:1px solid #2f363c;border-radius:999px;padding:4px 11px;font-size:.82rem;color:#dfe6ec}
+.why i{font-style:normal;color:var(--acc);letter-spacing:1px;margin-left:5px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btns button{height:52px;padding:0 22px;border-radius:14px;font-weight:600}
+.btns .a{background:var(--acc);color:#04201c}.btns .b{border:1px solid #38414a}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}}
+.card{position:relative;text-align:left;border-radius:18px;overflow:hidden;background:var(--panel);border:1px solid var(--line);aspect-ratio:4/5;display:block;width:100%;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--acc)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.9))}
+.card .t{position:absolute;left:14px;right:14px;bottom:12px;z-index:2}
+.card h3{font-family:"Playfair Display",serif;font-weight:600;font-size:1.2rem;margin:0 0 2px}
+.card small{color:#d0d8df;font-size:.8rem}
+.card .match{position:absolute;top:10px;left:10px;z-index:3}
+.heart{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);display:grid;place-items:center}
+.heart svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2}.heart.an svg{fill:var(--acc);stroke:var(--acc)}
+/* Alle Rezepte */
+.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:0 16px;height:46px;margin:14px 0 12px}
+.search input{flex:1;background:none;border:0;color:var(--fg);font:inherit;outline:0;min-width:0}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:14px}
+.tabs button{white-space:nowrap;padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#04201c;font-weight:600}
+.leer{color:var(--muted);text-align:center;padding:60px 0}
+/* Detail */
+.sheet{position:fixed;inset:0;z-index:50;background:var(--bg);overflow:auto;display:none}
+.sheet.offen{display:block;animation:rein .3s}@keyframes rein{from{opacity:0;transform:translateY(24px)}}
+.sh-in{max-width:1000px;margin:0 auto;display:grid}
+@media(min-width:860px){.sh-in{grid-template-columns:1fr 1.1fr;min-height:100vh}}
+.sh-img{position:relative;height:42vh;min-height:280px}
+@media(min-width:860px){.sh-img{position:sticky;top:0;height:100vh}}
+.sh-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sh-img::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,var(--bg))}
+@media(min-width:860px){.sh-img::after{background:linear-gradient(90deg,transparent 70%,var(--bg))}}
+.zu{position:fixed;top:max(12px,env(safe-area-inset-top));left:14px;z-index:60;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.sh-txt{padding:24px 22px 130px}
+.sh-txt .kat{color:var(--acc);letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.sh-txt h2{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.4rem);margin:6px 0 10px;line-height:1.05}
+.sh-txt p.b{color:#c7d0d8;line-height:1.55;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.meta span{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.85rem;color:#d0d8df}
+h4{font-family:"Playfair Display",serif;font-weight:500;font-size:1.3rem;margin:26px 0 10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.port{display:flex;align-items:center;gap:2px;background:var(--panel);border-radius:999px;padding:3px;font-family:Inter;font-size:.85rem}
+.port button{width:32px;height:32px;border-radius:50%;font-size:1.1rem}.port span{min-width:78px;text-align:center}
+ul.zl{list-style:none;margin:0;padding:0}ul.zl li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}ul.zl b{color:var(--acc);font-weight:600;white-space:nowrap}
+ol.sl{margin:0;padding:0;list-style:none;counter-reset:s}
+ol.sl li{counter-increment:s;display:flex;gap:14px;padding:11px 0;line-height:1.45}
+ol.sl li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--acc);color:var(--acc);display:grid;place-items:center;font-size:.85rem;margin-top:1px}
+.prof{display:grid;gap:8px}.prof div{display:flex;justify-content:space-between;gap:10px}.prof i{font-style:normal;color:var(--acc);letter-spacing:3px}
+.hint2{background:#10211f;border:1px solid #1f4a43;border-radius:12px;padding:12px 14px;color:#9fe0d3;font-size:.9rem;margin-top:14px}
+.credit{color:var(--muted);font-size:.75rem;margin-top:26px}.credit a{color:var(--muted)}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px max(14px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 40%);display:flex;justify-content:center}
+.cta{gap:10px}
+.cta button{flex:1;max-width:300px;height:60px;border-radius:16px;background:var(--acc);color:#04201c;font-weight:600;font-size:1.05rem}
+.cta .sek{background:var(--panel);border:1px solid var(--acc);color:var(--acc)}
+@media(min-width:860px){.cta{left:45%}}
+/* Bestellungen */
+.bar{justify-content:space-between}
+.modus{order:3;width:100%;margin-left:0;justify-content:center}
+.modus button{flex:1}
+@media(min-width:760px){.modus{order:0;width:auto;margin-left:auto}.modus button{flex:none}.cart{margin-left:0}}
+.cart{position:relative;display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--acc);color:var(--acc);font-weight:600;font-size:.92rem}
+.cart i{font-style:normal;min-width:22px;height:22px;border-radius:999px;background:var(--acc);color:#04201c;display:grid;place-items:center;font-size:.8rem;padding:0 6px}
+.cart.ohne i{background:var(--line);color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:max(96px,calc(env(safe-area-inset-bottom) + 90px));transform:translate(-50%,20px);z-index:300;background:#fff;color:#111;padding:12px 20px;border-radius:999px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.toast.an{opacity:1;transform:translate(-50%,0)}
+.scrim{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.25s}
+.scrim.an{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:130;background:#0c0e10;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column}
+.drawer.an{transform:none}
+.dr-top{display:flex;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top)) 18px 12px}
+.dr-top h2{font-family:"Playfair Display",serif;font-weight:500;font-size:1.7rem;margin:0}
+.dr-x{width:44px;height:44px;border-radius:50%;background:var(--panel);display:grid;place-items:center}
+.sum{margin:0 18px 6px;background:linear-gradient(135deg,#10211f,#0c1715);border:1px solid #1f4a43;border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.play{flex:none;width:68px;height:68px;border-radius:50%;background:var(--acc);color:#04201c;display:grid;place-items:center;box-shadow:0 0 30px rgba(45,212,191,.35)}
+.play svg{width:32px;height:32px}
+.bst .mv{width:40px;height:44px;border-radius:12px;background:var(--panel2);color:var(--muted);font-size:1.1rem}
+.sum b{display:block;font-family:"Playfair Display",serif;font-size:2.2rem;color:var(--acc);line-height:1.05}
+.sum span{color:#9fe0d3;font-size:.92rem}
+.sum small{display:block;color:var(--muted);margin-top:6px;font-size:.78rem}
+.dr-list{flex:1;overflow:auto;padding:10px 18px}
+.dr-leer{color:var(--muted);text-align:center;padding:50px 10px;line-height:1.6}
+.bst{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:10px}
+.bst img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.bst .n{font-family:"Playfair Display",serif;font-weight:600;font-size:1.2rem;line-height:1.1}
+.bst .z{color:var(--muted);font-size:.85rem;margin-top:3px}
+.bst .z b{color:var(--acc);font-weight:600}
+.bst .a{grid-column:1/-1;display:flex;gap:8px;align-items:center}
+.bst .st{display:flex;align-items:center;background:var(--panel2);border-radius:999px}
+.bst .st button{width:40px;height:40px;font-size:1.2rem}.bst .st span{min-width:30px;text-align:center;font-weight:600}
+.bst .go{flex:1;height:44px;border-radius:12px;background:var(--acc);color:#04201c;font-weight:600}
+.bst .rm{width:44px;height:44px;border-radius:12px;background:var(--panel2);color:var(--muted)}
+.dr-fuss{padding:12px 18px max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:8px}
+.dr-fuss button{height:54px;border-radius:14px;font-weight:600}
+.dr-fuss .alle{background:var(--acc);color:#04201c;font-size:1rem}
+.dr-fuss .clr{border:1px solid var(--line);color:var(--muted);height:44px;font-weight:500}
+.dr-fuss button:disabled{opacity:.4}
+/* Zufall im Tinder-Stil */
+.modus button{padding:9px 13px}
+@media(min-width:520px){.modus button{padding:9px 16px}}
+.tn{display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:6px}
+.tn-top{width:min(440px,100%);display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:.9rem;min-height:30px}
+.tg{display:flex;align-items:center;gap:8px;cursor:pointer}.tg input{accent-color:var(--acc);width:18px;height:18px}
+.tn-stack{position:relative;width:min(440px,92vw);height:min(54dvh,600px);touch-action:pan-y;user-select:none}
+.tc{position:absolute;inset:0;border-radius:26px;overflow:hidden;background:#111;border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.6);will-change:transform;cursor:grab}
+.tc.hinten{transform:scale(.93) translateY(16px);filter:brightness(.55);pointer-events:none}
+.tc.zieht{cursor:grabbing}
+.tc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.tc::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.92));pointer-events:none}
+.tc-info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 20px 20px;pointer-events:none}
+.tc-info .k{color:var(--acc);letter-spacing:.2em;text-transform:uppercase;font-size:.74rem}
+.tc-info h2{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2rem,8vw,2.7rem);margin:4px 0 6px;line-height:1.02}
+.tc-info p{margin:0 0 10px;color:#d0d8df;line-height:1.4;font-size:.95rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-size:.78rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.14)}
+.stamp{position:absolute;top:26px;z-index:4;padding:6px 14px;border:4px solid;border-radius:12px;font-weight:800;letter-spacing:.08em;font-size:1.5rem;opacity:0;pointer-events:none;background:rgba(0,0,0,.25)}
+.stamp.ja{left:20px;color:#5be08a;border-color:#5be08a;transform:rotate(-12deg)}
+.stamp.nein{right:20px;color:#ff6b6b;border-color:#ff6b6b;transform:rotate(12deg)}
+.tn-btns{display:flex;gap:18px;align-items:center;justify-content:center}
+.tn-btns button{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:50%;background:var(--panel);border:1px solid var(--line);transition:transform .15s}
+.tn-btns button:active{transform:scale(.92)}
+.tn-btns .nein,.tn-btns .ja{width:84px;height:84px;font-size:2rem;line-height:1}
+.tn-btns .nein{color:#ff6b6b;border-color:#5a2a2a}.tn-btns .ja{color:#04201c;background:var(--acc);border-color:var(--acc)}
+.tn-btns small{font-size:.62rem;margin-top:2px;letter-spacing:.04em}
+.tn-btns .zur{width:52px;height:52px;font-size:1.3rem;color:var(--muted)}
+.tn-hint{color:var(--muted);font-size:.82rem;margin:0;text-align:center}
+.tn-ende{width:min(440px,92vw);min-height:300px;border:1px dashed var(--line);border-radius:26px;display:grid;place-content:center;text-align:center;gap:14px;padding:24px}
+.tn-ende h2{font-family:"Playfair Display",serif;font-weight:500;margin:0;font-size:2rem}
+.tn-ende .btns{justify-content:center}
+</style>
+</head>
+<body>
+<header><div class="bar"><div class="logo">Adil's <em>Bar</em></div>
+  <button class="cart ohne" id="cart" aria-label="Bestellungen öffnen">Bestellungen <i id="cn">0</i></button>
+  <div class="modus" role="tablist"><button role="tab" data-v="finder" aria-selected="true">Mein Geschmack</button><button role="tab" data-v="zufall" aria-selected="false">Zufall</button><button role="tab" data-v="alle" aria-selected="false">Alle</button></div></div></header>
+<div class="wrap" id="wrap"></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="dr" aria-label="Bestellungen" aria-hidden="true"></aside>
+<div class="toast" id="toast" role="status"></div>
+<button class="pill" id="pill" hidden></button>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s), wrap=$('#wrap'), sheet=$('#sheet'), pill=$('#pill');
+const W=Object.assign({geschmack:[],stil:[],staerke:'',basis:[]},Bar.store.get('wahl',{}));
+const state={v:'finder',kat:'alle',q:''};
+const herz='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C1.1 8.6 3 5 6.4 5c2 0 3.6 1.1 4.4 2.6h.4C12 6.1 13.6 5 15.6 5 19 5 20.900 8.600 21.300 11.900 19 16.400 12 21 12 21z"/></svg>';
+const punkte=n=>'●'.repeat(n)+'○'.repeat(3-n);
+const save=()=>Bar.store.set('wahl',W);
+const aktiv=()=>W.geschmack.length||W.stil.length||W.staerke||W.basis.length;
+const gName=id=>Bar.GESCHMACK.find(g=>g.id===id).name;
+
+/* ---------- Mein Geschmack ---------- */
+const chipset=(liste,sel,key)=>`<div class="chipset">${liste.map(x=>`<button aria-pressed="${sel.includes?sel.includes(x.id):sel===x.id}" data-w="${key}" data-id="${x.id}">${x.name}</button>`).join('')}</div>`;
+function finder(){
+  wrap.innerHTML=`<h1>Worauf hast du <em>Lust?</em></h1><p class="lead">Tippe an, was dir schmeckt. Du kannst mehrere Richtungen mischen, zum Beispiel süß und exotisch. Wir suchen dir die passendsten Drinks heraus.</p>
+  <div class="pick" id="pick">
+    <div class="grp"><h3>Geschmack <small>mehrere möglich</small></h3>${chipset(Bar.GESCHMACK,W.geschmack,'geschmack')}</div>
+    <div class="grp"><h3>Stil <small>optional</small></h3>${chipset(Bar.STIL,W.stil,'stil')}</div>
+    <div class="grp"><h3>Stärke <small>optional</small></h3>${chipset(Bar.STAERKE,W.staerke,'staerke')}</div>
+    <div class="grp"><h3>Lieblings-Spirituose <small>optional</small></h3>${chipset(Bar.BASIS,W.basis,'basis')}</div>
+    <div class="aktionen"><button class="ueber" data-a="zufall">Überrasch mich</button><button data-a="reset">Zurücksetzen</button></div>
+  </div><div id="res"></div>`;
+  ergebnisse();
+}
+function warum(r){return W.geschmack.filter(k=>r.profil[k]).map(k=>`<span>${gName(k)}<i>${punkte(r.profil[k])}</i></span>`).join('')}
+function ergebnisse(){
+  const res=$('#res'); if(!res)return;
+  document.querySelectorAll('#pick [data-w]').forEach(b=>{const k=b.dataset.w,id=b.dataset.id;b.setAttribute('aria-pressed',Array.isArray(W[k])?W[k].includes(id):W[k]===id)});
+  if(!aktiv()){res.innerHTML='<div class="hint">Wähle oben ein paar Geschmacksrichtungen.<br>Hier erscheinen dann die passendsten Drinks.</div>';pill.hidden=true;return}
+  const {treffer,naheDran}=Bar.empfehle(W), zeigeProzent=W.geschmack.length>0;
+  const liste=treffer.length?treffer:naheDran;
+  if(!liste.length){res.innerHTML='<div class="hint">Dazu haben wir leider nichts gefunden. Nimm einen Filter heraus.</div>';pill.hidden=true;return}
+  const [best,...rest]=liste;
+  const pct=x=>zeigeProzent?`<span class="match">${Math.round(x.punkte*100)} % passend</span>`:'';
+  res.innerHTML=`${treffer.length?'':'<div class="hinweis">Genau diese Kombination gibt es bei uns nicht. Das hier kommt deinem Geschmack am nächsten. Nimm einen Filter heraus, um mehr zu sehen.</div>'}
+   <h2 class="t" style="margin-top:0">${treffer.length?(treffer.length===1?'Dein Drink':'Dein perfekter Drink'):'Am nächsten dran'}</h2>
+   <article class="feat"><div class="im"><img src="${best.r.bild}" alt="${Bar.esc(best.r.name)}"></div><div class="tx">
+     <div class="eb">${Bar.katName(best.r.kategorie)}</div><h3>${Bar.esc(best.r.name)}</h3>${pct(best)}
+     <div class="why">${warum(best.r)}</div><p>${Bar.esc(best.r.beschreibung)}</p>
+     <div class="btns"><button class="a" data-go="${best.r.id}">Zubereitung starten</button><button class="b" data-id="${best.r.id}">Rezept ansehen</button></div></div></article>
+   ${rest.length?`<h2 class="t">${rest.length===1?'Noch ein Vorschlag':'Weitere Vorschläge'} <small style="color:var(--muted);font-family:Inter;font-size:.9rem">(${rest.length})</small></h2><div class="grid">${rest.map(x=>karte(x.r,pct(x))).join('')}</div>`:''}`;
+  pill.hidden=false;pill.textContent=`${liste.length} ${liste.length===1?'Vorschlag':'Vorschläge'} ansehen ↓`;
+  beobachter.disconnect();beobachter.observe(res);
+}
+const beobachter=new IntersectionObserver(e=>{pill.hidden=!aktiv()||e[0].isIntersecting&&e[0].intersectionRatio>0.15},{threshold:[0,.15,.4]});
+pill.onclick=()=>$('#res').scrollIntoView({behavior:'smooth'});
+function karte(r,badge=''){return `<div style="position:relative"><button class="card" data-id="${r.id}"><img src="${r.bild}" alt="${Bar.esc(r.name)}" loading="lazy">${badge}<div class="t"><h3>${Bar.esc(r.name)}</h3><small>${Bar.esc(r.glas)} · ${r.zeit} Min.</small></div></button>
+  <button class="heart ${Bar.isFav(r.id)?'an':''}" data-fav="${r.id}" aria-label="Favorit">${herz}</button></div>`}
+
+/* ---------- Alle Rezepte ---------- */
+function alle(){
+  const tabs=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien];
+  wrap.innerHTML=`<h1>Alle <em>Rezepte</em></h1>
+   <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9d968a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Cocktail, Zutat oder Geschmack" value="${Bar.esc(state.q)}" autocomplete="off"></label>
+   <div class="tabs">${tabs.map(t=>`<button aria-selected="${t.id===state.kat}" data-k="${t.id}">${t.name}</button>`).join('')}</div><div class="grid" id="g"></div>`;
+  $('#q').oninput=e=>{state.q=e.target.value;gitter()};gitter();pill.hidden=true;
+}
+function gitter(){
+  const l=Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q));
+  $('#g').innerHTML=l.length?l.map(r=>karte(r)).join(''):`<p class="leer" style="grid-column:1/-1">${state.kat==='fav'&&!state.q?'Noch keine Favoriten. Tippe auf das Herz.':'Nichts gefunden.'}</p>`;
+}
+/* ---------- Zufall (Tinder-Stil): rechts = gefällt mir, links = heute nicht ---------- */
+let deck=[],idx=0,nurGeschmack=false;
+function mischen(){
+  const pool=(nurGeschmack&&aktiv())?Bar.empfehle(W).treffer.map(x=>x.r):[...Bar.rezepte];
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  deck=pool;idx=0;
+}
+function zufall(){
+  if(!deck.length)mischen();
+  wrap.innerHTML=`<div class="tn"><div class="tn-top"><span id="tz"></span>${aktiv()?`<label class="tg"><input type="checkbox" id="ng" ${nurGeschmack?'checked':''}> Nur nach meinem Geschmack</label>`:''}</div>
+   <div class="tn-stack" id="stack"></div>
+   <div class="tn-btns"><button class="nein" data-s="nein" aria-label="Heute nicht">✕<small>Heute nicht</small></button><button class="zur" data-s="zurueck" aria-label="Eine Karte zurück">↶</button><button class="ja" data-s="ja" aria-label="Gefällt mir">♥<small>Gefällt mir</small></button></div>
+   <p class="tn-hint">Nach rechts wischen: gefällt mir. Nach links: heute nicht.</p></div>`;
+  const ng=$('#ng');if(ng)ng.onchange=()=>{nurGeschmack=ng.checked;mischen();zufall()};
+  stapel();pill.hidden=true;
+}
+const karteHtml=(r,vorn)=>`<div class="tc ${vorn?'':'hinten'}" data-id="${r.id}"><img src="${r.bild}" alt="${Bar.esc(r.name)}" draggable="false">
+  ${vorn?'<div class="stamp ja">GEFÄLLT MIR</div><div class="stamp nein">HEUTE NICHT</div>':''}
+  <div class="tc-info"><div class="k">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p>${Bar.esc(r.beschreibung)}</p>
+  <div class="tags"><span>${r.zeit} Min.</span><span>${Bar.staerkeText(r.staerke)}</span>${r.geschmack.slice(0,2).map(g=>`<span>${g}</span>`).join('')}</div></div></div>`;
+function stapel(){
+  const s=$('#stack');if(!s)return;
+  $('#tz').textContent=deck.length?`${Math.min(idx+1,deck.length)} von ${deck.length}`:'';
+  if(idx>=deck.length){
+    s.style.height='auto';
+    s.innerHTML=`<div class="tn-ende"><h2>Alle durch.</h2><p class="lead" style="margin:0">Die Drinks, die dir gefallen haben, findest du bei den Favoriten.</p>
+      <div class="btns"><button class="a" data-a="mischen">Neu mischen</button><button class="b" data-a="favs">Zu den Favoriten</button></div></div>`;
+    document.querySelector('.tn-btns').style.display='none';return;
+  }
+  s.style.height='';document.querySelector('.tn-btns').style.display='';
+  s.innerHTML=(deck[idx+1]?karteHtml(deck[idx+1],false):'')+karteHtml(deck[idx],true);
+  ziehen(s.lastElementChild);
+}
+function ziehen(el){
+  let x0=null,dx=0;
+  const stempel=()=>{el.querySelector('.stamp.ja').style.opacity=Math.max(0,Math.min(1,dx/90));el.querySelector('.stamp.nein').style.opacity=Math.max(0,Math.min(1,-dx/90))};
+  el.addEventListener('pointerdown',e=>{x0=e.clientX;dx=0;el.classList.add('zieht');el.style.transition='none';el.setPointerCapture(e.pointerId)});
+  el.addEventListener('pointermove',e=>{if(x0==null)return;dx=e.clientX-x0;el.style.transform=`translateX(${dx}px) rotate(${dx/18}deg)`;stempel()});
+  const ende=()=>{if(x0==null)return;x0=null;el.classList.remove('zieht');
+    if(Math.abs(dx)>110)return wegfliegen(dx>0);
+    el.style.transition='transform .25s';el.style.transform='';dx=0;stempel()};
+  el.addEventListener('pointerup',ende);el.addEventListener('pointercancel',ende);
+}
+function wegfliegen(ja){
+  const el=document.querySelector('.tn-stack .tc:not(.hinten)');if(!el||el.dataset.weg)return;
+  el.dataset.weg=1;el.style.transition='transform .35s ease,opacity .35s';
+  el.style.transform=`translateX(${ja?'':'-'}140vw) rotate(${ja?30:-30}deg)`;el.style.opacity='0';
+  setTimeout(()=>entscheide(ja),280);
+}
+function entscheide(ja){
+  const r=deck[idx];idx++;stapel();
+  if(ja){if(!Bar.isFav(r.id))Bar.toggleFav(r.id);zeigen(r.id)}
+}
+function ansicht(v){
+  state.v=v;beobachter.disconnect();
+  document.querySelectorAll('.modus button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));
+  v==='finder'?finder():v==='zufall'?zufall():alle();scrollTo({top:0});
+}
+
+/* ---------- Rezept ---------- */
+function zeigen(id){
+  const r=Bar.byId(id); let p=1;
+  const prof=Bar.GESCHMACK.filter(g=>r.profil[g.id]).map(g=>`<div><span>${g.name}</span><i>${punkte(r.profil[g.id])}</i></div>`).join('');
+  sheet.innerHTML=`<button class="zu" aria-label="Zurück">${Bar.icon.left}</button>
+  <div class="sh-in"><div class="sh-img"><img src="${r.bild}" alt="${Bar.esc(r.name)}"></div>
+  <div class="sh-txt"><div class="kat">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p class="b">${Bar.esc(r.beschreibung)}</p>
+    <div class="meta"><span>${Bar.esc(r.glas)}</span><span>${r.technik}</span><span>${Bar.staerkeText(r.staerke)}</span><span>${r.zeit} Min.</span></div>
+    ${r.hinweis?`<div class="hint2">${Bar.esc(r.hinweis)}</div>`:''}
+    <h4>Geschmack</h4><div class="prof">${prof}</div>
+    <h4>Zutaten <div class="port"><button data-p="-1" aria-label="Weniger">−</button><span id="pl"></span><button data-p="1" aria-label="Mehr">+</button></div></h4>
+    <ul class="zl" id="zl"></ul>
+    <h4>Zubereitung</h4><ol class="sl">${r.schritte.map(s=>`<li>${Bar.esc(s.t)}</li>`).join('')}</ol>
+    <h4>Garnitur</h4><p class="b">${Bar.esc(r.garnitur)}</p>
+    <div class="credit">${Bar.credit(r)}</div></div></div>
+  <div class="cta"><button class="sek" id="best"></button><button id="los">Zubereitung starten</button></div>`;
+  const paint=()=>{$('#pl').textContent=p+(p===1?' Portion':' Portionen');$('#best').textContent=`In die Bestellung (${p}×)`;$('#zl').innerHTML=r.zutaten.map(z=>`<li><span>${Bar.esc(z.n)}</span><b>${Bar.menge(z,p)}</b></li>`).join('')};
+  paint();sheet.classList.add('offen');sheet.scrollTop=0;document.body.style.overflow='hidden';
+  sheet.onclick=e=>{
+    if(e.target.closest('.zu'))return zu();
+    const b=e.target.closest('[data-p]');if(b){p=Math.max(1,Math.min(12,p+(+b.dataset.p)));paint()}
+    if(e.target.closest('#best')){Bar.queue.add(r.id,p);badge();toast(`${p}× ${r.name} bestellt · gesamt ${Bar.minText(Bar.queue.gesamt())}`)}
+    if(e.target.closest('#los'))Bar.kochen(r,p);
+  };
+}
+
+/* ---------- Bestellungen (Warenkorb mit Gesamtdauer) ---------- */
+const dr=$('#dr'),scrim=$('#scrim');
+let toastT;
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('an');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('an'),2400)}
+function badge(){const n=Bar.queue.anzahl(),c=$('#cart');$('#cn').textContent=n;c.classList.toggle('ohne',!n);if(dr.classList.contains('an'))bestellungen()}
+function uhr(min){return new Date(Date.now()+min*60000).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}
+function bestellungen(){
+  const q=Bar.queue.get(),gesamt=Bar.queue.gesamt(),anz=Bar.queue.anzahl();
+  dr.innerHTML=`<div class="dr-top"><h2>Bestellungen</h2><button class="dr-x" data-b="zu" aria-label="Schließen">${Bar.icon.x}</button></div>
+  ${q.length?`<div class="sum"><div><b>${Bar.minText(gesamt)}</b><span>${anz} ${anz===1?'Drink':'Drinks'} · ${q.length} ${q.length===1?'Sorte':'Sorten'} · gesamt</span><small>Geschätzt. Fertig gegen ${uhr(gesamt)} Uhr, wenn du jetzt beginnst.</small></div><button class="play" data-b="alle" aria-label="Alle Drinks nacheinander abspielen">${Bar.icon.play}</button></div>`:''}
+  <div class="dr-list">${q.length?q.map(o=>{const r=Bar.byId(o.id);return `<div class="bst"><img src="${r.bild}" alt=""><div><div class="n">${Bar.esc(r.name)}</div><div class="z">${Bar.esc(r.glas)} · <b>${Bar.minText(Bar.dauer(r,o.n))}</b></div></div>
+    <div class="a"><div class="st"><button data-b="minus" data-u="${o.uid}" aria-label="Weniger">−</button><span>${o.n}</span><button data-b="plus" data-u="${o.uid}" aria-label="Mehr">+</button></div>
+    <button class="go" data-b="go" data-u="${o.uid}">Nur diesen</button><button class="mv" data-b="hoch" data-u="${o.uid}" aria-label="Nach oben">↑</button><button class="mv" data-b="runter" data-u="${o.uid}" aria-label="Nach unten">↓</button><button class="rm" data-b="rm" data-u="${o.uid}" aria-label="Entfernen">${Bar.icon.x}</button></div></div>`}).join('')
+    :'<div class="dr-leer">Noch keine Bestellungen.<br>Öffne einen Drink und tippe auf „In die Bestellung“.</div>'}</div>
+  <div class="dr-fuss"><button class="alle" data-b="alle" ${q.length?'':'disabled'}>▶ Playlist abspielen</button><button class="clr" data-b="clr" ${q.length?'':'disabled'}>Bestellungen leeren</button></div>`;
+}
+function bestOeffnen(){bestellungen();dr.classList.add('an');scrim.classList.add('an');dr.setAttribute('aria-hidden','false')}
+function bestSchliessen(){dr.classList.remove('an');scrim.classList.remove('an');dr.setAttribute('aria-hidden','true')}
+function erledigt(uid){Bar.queue.set(Bar.queue.get().filter(o=>o.uid!==uid));badge()}
+function zubereiten(uid){
+  const o=Bar.queue.get().find(x=>x.uid===uid);if(!o)return;
+  Bar.kochen(Bar.byId(o.id),o.n,()=>erledigt(uid));
+}
+$('#cart').onclick=bestOeffnen;scrim.onclick=bestSchliessen;
+dr.addEventListener('click',e=>{
+  const b=e.target.closest('[data-b]');if(!b)return;
+  const u=b.dataset.u,q=Bar.queue.get(),o=q.find(x=>x.uid===u),a=b.dataset.b;
+  if(a==='zu')return bestSchliessen();
+  if(a==='clr'){Bar.queue.set([]);return badge()}
+  if(a==='alle'){return q.length&&Bar.queue.abspielen(badge)}
+  if(!o)return;
+  const pos=q.indexOf(o);
+  if(a==='plus')o.n=Math.min(24,o.n+1);else if(a==='minus')o.n=Math.max(1,o.n-1);
+  else if(a==='rm'){Bar.queue.set(q.filter(x=>x!==o));return badge()}
+  else if(a==='hoch'&&pos>0){q.splice(pos,1);q.splice(pos-1,0,o)}
+  else if(a==='runter'&&pos<q.length-1){q.splice(pos,1);q.splice(pos+1,0,o)}
+  else if(a==='go')return zubereiten(u);
+  Bar.queue.set(q);badge();
+});
+function zu(){sheet.classList.remove('offen');document.body.style.overflow='';state.v==='alle'?gitter():null}
+
+document.addEventListener('click',e=>{
+  const c=s=>e.target.closest(s);
+  if(c('.modus [data-v]'))return ansicht(c('.modus [data-v]').dataset.v);
+  const w=c('#pick [data-w]');
+  if(w){const k=w.dataset.w,id=w.dataset.id;
+    if(Array.isArray(W[k])){const i=W[k].indexOf(id);i<0?W[k].push(id):W[k].splice(i,1)}else W[k]=W[k]===id?'':id;
+    save();return ergebnisse()}
+  const s=c('[data-s]');
+  if(s){
+    if(s.dataset.s==='zurueck'){if(idx>0){idx--;stapel()}return}
+    return wegfliegen(s.dataset.s==='ja');
+  }
+  const a=c('[data-a]');
+  if(a){
+    if(a.dataset.a==='reset'){W.geschmack=[];W.stil=[];W.staerke='';W.basis=[];save();return ergebnisse()}
+    if(a.dataset.a==='zufall'){return ansicht('zufall')}
+    if(a.dataset.a==='mischen'){mischen();return zufall()}
+    if(a.dataset.a==='favs'){state.kat='fav';return ansicht('alle')}
+  }
+  if(c('[data-k]')){state.kat=c('[data-k]').dataset.k;return alle()}
+  if(c('[data-fav]')){const f=c('[data-fav]');return f.classList.toggle('an',Bar.toggleFav(f.dataset.fav))}
+  if(c('[data-go]'))return Bar.kochen(Bar.byId(c('[data-go]').dataset.go),1);
+  const k=c('.card,.btns .b[data-id]');if(k)zeigen(k.dataset.id);
+});
+document.addEventListener('keydown',e=>{
+  if(document.querySelector('.bk'))return;
+  if(e.key==='Escape'&&sheet.classList.contains('offen'))return zu();
+  if(state.v==='zufall'&&!sheet.classList.contains('offen')&&idx<deck.length){
+    if(e.key==='ArrowRight')wegfliegen(true);else if(e.key==='ArrowLeft')wegfliegen(false);
+  }
+});
+badge();
+ansicht('finder');
+</script>
+</body>
+</html>

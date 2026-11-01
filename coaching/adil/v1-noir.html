@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0c">
+<title>Adil's Cocktails · Noir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="daten/kern.css">
+<style>
+:root{--bk-head:"Playfair Display",Georgia,serif;--bk-font:Inter,system-ui,sans-serif;
+  --bg:#0b0b0c;--panel:#151413;--line:#2a2724;--fg:#f4efe6;--muted:#9d968a;--gold:#d4a24c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+header{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 70%,transparent);padding:max(14px,env(safe-area-inset-top)) 18px 10px}
+.bar{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{font-family:"Playfair Display",serif;font-size:1.5rem;letter-spacing:.04em}
+.logo em{color:var(--gold);font-style:normal}
+.search{flex:1;min-width:180px;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:0 16px;height:44px}
+.search input{flex:1;background:none;border:0;color:var(--fg);font:inherit;outline:0;min-width:0}
+.tabs{max-width:1200px;margin:12px auto 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs button{white-space:nowrap;padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.tabs button[aria-selected=true]{background:var(--gold);border-color:var(--gold);color:#17120a;font-weight:600}
+.hero{max-width:1200px;margin:18px auto 6px;padding:0 18px}
+.hero h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:0 0 8px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:var(--muted);margin:0;max-width:52ch}
+main{max-width:1200px;margin:0 auto;padding:18px 18px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+@media(min-width:700px){main{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}}
+.card{position:relative;text-align:left;border-radius:18px;overflow:hidden;background:var(--panel);border:1px solid var(--line);aspect-ratio:4/5;display:block;width:100%;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.05)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.88))}
+.card .t{position:absolute;left:14px;right:14px;bottom:12px;z-index:2}
+.card h3{font-family:"Playfair Display",serif;font-weight:600;font-size:1.25rem;margin:0 0 2px}
+.card small{color:#d9d1c2;font-size:.8rem}
+.heart{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);display:grid;place-items:center}
+.heart svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2}
+.heart.an svg{fill:var(--gold);stroke:var(--gold)}
+.leer{grid-column:1/-1;color:var(--muted);text-align:center;padding:60px 0}
+/* Detail */
+.sheet{position:fixed;inset:0;z-index:50;background:var(--bg);overflow:auto;display:none}
+.sheet.offen{display:block;animation:rein .3s}
+@keyframes rein{from{opacity:0;transform:translateY(24px)}}
+.sh-in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:860px){.sh-in{grid-template-columns:1fr 1.1fr;min-height:100vh}}
+.sh-img{position:relative;min-height:46vh}
+@media(min-width:860px){.sh-img{position:sticky;top:0;height:100vh}}
+.sh-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sh-img::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,var(--bg))}
+@media(min-width:860px){.sh-img::after{background:linear-gradient(90deg,transparent 70%,var(--bg))}}
+.zu{position:fixed;top:max(12px,env(safe-area-inset-top));left:14px;z-index:60;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.sh-txt{padding:24px 22px 120px}
+.sh-txt .kat{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.sh-txt h2{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.4rem);margin:6px 0 10px;line-height:1.05}
+.sh-txt p.b{color:#cfc7b8;line-height:1.55;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.meta span{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.85rem;color:#d9d1c2}
+h4{font-family:"Playfair Display",serif;font-weight:500;font-size:1.3rem;margin:26px 0 10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.port{display:flex;align-items:center;gap:2px;background:var(--panel);border-radius:999px;padding:3px;font-family:Inter;font-size:.85rem}
+.port button{width:32px;height:32px;border-radius:50%;font-size:1.1rem}
+.port span{min-width:78px;text-align:center}
+ul.zl{list-style:none;margin:0;padding:0}
+ul.zl li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+ul.zl b{color:var(--gold);font-weight:600;white-space:nowrap}
+ol.sl{margin:0;padding:0;list-style:none;counter-reset:s}
+ol.sl li{counter-increment:s;display:flex;gap:14px;padding:11px 0;line-height:1.45}
+ol.sl li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:.85rem;margin-top:1px}
+.hint{background:#1c1710;border:1px solid #3a2f1b;border-radius:12px;padding:12px 14px;color:#d9c9a6;font-size:.9rem;margin-top:14px}
+.credit{color:var(--muted);font-size:.75rem;margin-top:26px}.credit a{color:var(--muted)}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px max(14px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 40%);display:flex;justify-content:center}
+.cta button{width:min(560px,100%);height:60px;border-radius:16px;background:var(--gold);color:#17120a;font-weight:600;font-size:1.1rem}
+@media(min-width:860px){.cta{left:45%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo">Adil's <em>Bar</em></div>
+    <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9d968a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Cocktail, Zutat oder Geschmack suchen" autocomplete="off"></label>
+  </div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+</header>
+<section class="hero"><h1>Gut gemixt. <em>Schritt für Schritt.</em></h1><p>26 Rezepte von Klassikern bis Tiki. Im Zubereitungsmodus bleiben die Hände frei: große Schrift, Wischen oder Sprachbefehl.</p></section>
+<main id="grid"></main>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+
+<script src="daten/rezepte.js"></script>
+<script src="daten/kern.js"></script>
+<script>
+const $=s=>document.querySelector(s), grid=$('#grid'), sheet=$('#sheet'), tabsEl=$('#tabs');
+const state={kat:'alle',q:''};
+const tabs=[{id:'alle',name:'Alle'},{id:'fav',name:'Favoriten'},...Bar.kategorien];
+const herz='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C1.1 8.6 3 5 6.4 5c2 0 3.6 1.1 4.4 2.6h.4C12 6.1 13.6 5 15.6 5 19 5 20.900 8.600 21.300 11.900 19 16.400 12 21 12 21z"/></svg>';
+
+function renderTabs(){tabsEl.innerHTML=tabs.map(t=>`<button role="tab" aria-selected="${t.id===state.kat}" data-k="${t.id}">${t.name}</button>`).join('')}
+function renderGrid(){
+  const list=Bar.rezepte.filter(r=>(state.kat==='alle'||(state.kat==='fav'?Bar.isFav(r.id):r.kategorie===state.kat))&&Bar.suche(r,state.q));
+  grid.innerHTML=list.length?list.map(r=>`
+    <div style="position:relative"><button class="card" data-id="${r.id}"><img src="${r.bild}" alt="${Bar.esc(r.name)}" loading="lazy">
+      <div class="t"><h3>${Bar.esc(r.name)}</h3><small>${Bar.esc(r.glas)} · ${r.zeit} Min.</small></div></button>
+      <button class="heart ${Bar.isFav(r.id)?'an':''}" data-fav="${r.id}" aria-label="Favorit">${herz}</button></div>`).join('')
+    :`<p class="leer">${state.kat==='fav'?'Noch keine Favoriten. Tippe auf das Herz.':'Nichts gefunden.'}</p>`;
+}
+function zeigen(id){
+  const r=Bar.byId(id); let p=1;
+  sheet.innerHTML=`<button class="zu" aria-label="Zurück">${Bar.icon.left}</button>
+  <div class="sh-in"><div class="sh-img"><img src="${r.bild}" alt="${Bar.esc(r.name)}"></div>
+  <div class="sh-txt"><div class="kat">${Bar.katName(r.kategorie)}</div><h2>${Bar.esc(r.name)}</h2><p class="b">${Bar.esc(r.beschreibung)}</p>
+    <div class="meta"><span>${Bar.esc(r.glas)}</span><span>${r.technik}</span><span>${Bar.staerkeText(r.staerke)}</span><span>${r.zeit} Min.</span>${r.geschmack.map(g=>`<span>${g}</span>`).join('')}</div>
+    <h4>Zutaten <div class="port"><button data-p="-1" aria-label="Weniger">−</button><span id="pl"></span><button data-p="1" aria-label="Mehr">+</button></div></h4>
+    <ul class="zl" id="zl"></ul>
+    <h4>Zubereitung</h4><ol class="sl">${r.schritte.map(s=>`<li>${Bar.esc(s.t)}</li>`).join('')}</ol>
+    <h4>Garnitur</h4><p class="b">${Bar.esc(r.garnitur)}</p>
+    ${r.hinweis?`<div class="hint">${Bar.esc(r.hinweis)}</div>`:''}
+    <div class="credit">${Bar.credit(r)}</div></div></div>
+  <div class="cta"><button id="los">Zubereitung starten</button></div>`;
+  const paint=()=>{$('#pl').textContent=p+(p===1?' Portion':' Portionen');$('#zl').innerHTML=r.zutaten.map(z=>`<li><span>${Bar.esc(z.n)}</span><b>${Bar.menge(z,p)}</b></li>`).join('')};
+  paint(); sheet.classList.add('offen'); sheet.scrollTop=0; document.body.style.overflow='hidden';
+  sheet.onclick=e=>{
+    if(e.target.closest('.zu'))return zu();
+    const b=e.target.closest('[data-p]'); if(b){p=Math.max(1,Math.min(12,p+(+b.dataset.p)));paint()}
+    if(e.target.closest('#los'))Bar.kochen(r,p);
+  };
+}
+function zu(){sheet.classList.remove('offen');document.body.style.overflow='';renderGrid()}
+tabsEl.onclick=e=>{const b=e.target.closest('[data-k]');if(b){state.kat=b.dataset.k;renderTabs();renderGrid()}};
+$('#q').oninput=e=>{state.q=e.target.value;renderGrid()};
+grid.onclick=e=>{
+  const f=e.target.closest('[data-fav]'); if(f){f.classList.toggle('an',Bar.toggleFav(f.dataset.fav));return}
+  const c=e.target.closest('[data-id]'); if(c)zeigen(c.dataset.id);
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sheet.classList.contains('offen')&&!document.querySelector('.bk'))zu()});
+renderTabs();renderGrid();
+</script>
+</body>
+</html>
