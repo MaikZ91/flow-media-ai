@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.16);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.full{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;opacity:0}
+.bw{filter:grayscale(1) contrast(1.1)}
+.shade{position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(11,11,11,.85) 0%,rgba(11,11,11,.2) 34%,rgba(11,11,11,0) 50%,rgba(11,11,11,.9) 74%,#0B0B0B 100%)}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;z-index:40;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.badge{position:absolute;right:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.45);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.45);z-index:30;opacity:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:35}
+/* timer */
+#timer{position:absolute;left:0;right:0;top:150px;text-align:center;z-index:20}
+#timer .lab{font:500 26px Montserrat;letter-spacing:.24em;color:#cfcfcf;text-transform:uppercase}
+#timer .t{font:700 230px/1 'JetBrains Mono',monospace;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#timer .t.red{color:var(--blue)}
+#tbar{width:800px;height:10px;margin:16px auto 0;border-radius:5px;background:rgba(255,255,255,.15);overflow:hidden}
+#tbar i{display:block;height:100%;width:100%;background:var(--blue)}
+/* hook text */
+#hook{position:absolute;left:76px;right:76px;top:1230px;z-index:15}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:12px;font:700 120px/1 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}.y{color:var(--banana)}
+/* browser */
+#browser{position:absolute;left:90px;right:90px;top:560px;height:980px;border-radius:26px;background:#f4f4f4;overflow:hidden;z-index:10;box-shadow:0 40px 120px rgba(0,0,0,.7);opacity:0}
+#browser .bar{height:62px;background:#1c1d22;display:flex;align-items:center;gap:10px;padding:0 22px}
+#browser .bar i{width:16px;height:16px;border-radius:50%;background:#555}
+#browser .url{margin-left:18px;flex:1;height:38px;border-radius:19px;background:#2b2d33;font:500 22px Inter;color:#bbb;display:flex;align-items:center;padding:0 18px;gap:10px}
+#browser .url b{width:12px;height:12px;border-radius:50%;background:#666}
+#browser .url b.live{background:#3ad16f;box-shadow:0 0 12px #3ad16f}
+#site{position:absolute;left:0;right:0;top:62px;bottom:0;background:#fff;color:#111;overflow:hidden}
+#site > div{opacity:0}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid #eee;font:700 26px Oswald;letter-spacing:.06em}
+.nav span{font:500 18px Montserrat;letter-spacing:.14em;color:#666;margin-left:22px}
+.hero{display:flex;gap:30px;padding:34px 34px 20px}
+.hero .ph{width:330px;height:420px;border-radius:14px;background:url(img/portrait_front.jpg) center 20%/cover;flex:none}
+.hero .tx{padding-top:20px}
+.hero .tx .s{font:500 18px Montserrat;letter-spacing:.2em;color:#777}
+.hero .tx .t{margin-top:12px;font:700 66px/1 Oswald;text-transform:uppercase}
+.hero .tx .t span{color:var(--blue)}
+.hero .tx .p{margin-top:18px;font:400 23px/1.4 Inter;color:#444}
+.hero .tx .btn{display:inline-block;margin-top:22px;background:#111;color:#fff;font:600 22px Inter;padding:14px 26px;border-radius:40px}
+.cards{display:flex;gap:16px;padding:10px 34px}
+.cards div{flex:1;border:1px solid #e3e3e3;border-radius:14px;padding:18px;font:600 21px Inter}
+.cards div em{display:block;font:400 17px/1.35 Inter;font-style:normal;color:#777;margin-top:6px}
+.form{margin:18px 34px 0;padding:20px;border-radius:14px;background:#111;color:#fff;display:flex;gap:12px;align-items:center}
+.form i{flex:1;height:44px;border-radius:10px;background:#2a2a2a}
+.form b{font:600 21px Inter;background:var(--blue);padding:12px 22px;border-radius:10px}
+/* wireframe state */
+#site.wire .hero .ph{background:#ddd}
+#site.wire .hero .tx .t,#site.wire .hero .tx .p,#site.wire .nav{color:transparent;background:repeating-linear-gradient(#e2e2e2 0 70%,transparent 70% 100%);border-radius:6px}
+#site.wire .hero .tx .t span{color:transparent}
+#site.wire .hero .tx .btn{background:#ccc;color:transparent}
+/* milestones */
+#ms{position:absolute;left:76px;right:76px;top:1580px;z-index:15;text-align:center}
+#ms .c{display:inline-block;font:700 50px/1.1 Oswald;text-transform:uppercase;background:rgba(11,11,11,.9);border:2px solid var(--blue);border-radius:16px;padding:14px 28px}
+#ms .c small{display:block;font:500 24px Montserrat;letter-spacing:.18em;color:var(--blue);margin-bottom:6px}
+/* bertrand */
+.sticker{position:absolute;left:60px;right:60px;text-align:center;z-index:16;opacity:0}
+.sticker span{display:inline-block;font:700 68px/1.05 Oswald;text-transform:uppercase;background:var(--banana);color:#000;padding:10px 28px;transform:rotate(-2deg)}
+.sticker em{display:inline-block;margin-top:14px;font:700 30px Montserrat;letter-spacing:.16em;padding:8px 18px;border-radius:10px;background:var(--banana);color:#000;font-style:normal}
+/* banana site */
+#ban{position:absolute;left:90px;right:90px;top:430px;height:900px;border-radius:26px;overflow:hidden;z-index:12;opacity:0;box-shadow:0 40px 120px rgba(0,0,0,.7);background:#ff00ff}
+#ban .bar{height:62px;background:#1c1d22;display:flex;align-items:center;padding:0 22px;font:500 22px Inter;color:#bbb}
+#ban .in{position:absolute;top:62px;left:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,#ffe600 0 40px,#ffd000 40px 80px);text-align:center;padding-top:40px;color:#0000ee;font-family:'Comic Sans MS','Comic Neue',cursive}
+#ban .t1{font-size:96px;font-weight:700;color:#ff0000;text-shadow:4px 4px 0 #00ff00}
+#ban .t2{margin-top:20px;font-size:44px;text-decoration:underline}
+#ban .t3{margin-top:30px;font-size:120px}
+#ban .t4{margin-top:24px;display:inline-block;background:#000;color:#ff0;font-size:36px;padding:10px 20px}
+#ban .t5{margin-top:30px;font-size:30px;color:#000}
+/* offer */
+#offer{position:absolute;left:76px;right:76px;top:980px;z-index:15;opacity:0}
+#offer .box{margin-top:20px;border:3px solid var(--blue);border-radius:28px;padding:30px 34px;background:rgba(11,11,11,.9);box-shadow:0 0 80px rgba(47,91,255,.4)}
+#offer .box .t{font:700 104px/.98 Oswald;text-transform:uppercase}
+#offer ul{list-style:none;padding:0;margin-top:22px}
+#offer li{font:500 36px/1.3 Inter;padding:10px 0;border-top:1px solid var(--line);opacity:0}
+#offer li b{color:var(--blue)}
+#cta{position:absolute;left:76px;right:76px;top:1730px;z-index:15;opacity:0;text-align:center}
+#cta span{display:inline-block;font:700 56px Oswald;text-transform:uppercase;background:var(--blue);padding:16px 40px;border-radius:60px}
+#logo{position:absolute;left:76px;top:96px;width:170px;z-index:30}
+</style></head><body>
+<div id="stage">
+<img class="full bw" id="v_maik" alt="">
+<img class="full" id="v_bert" alt="">
+<div class="shade" id="shade"></div>
+<img id="logo" src="img/logo_flow.png" alt="">
+<div class="badge" id="badge">BERTRAND · KI-GENERIERT</div>
+
+<div id="timer"><div class="lab" id="tlab">Countdown läuft</div><div class="t" id="tt">120:00</div><div id="tbar"><i id="tb"></i></div></div>
+
+<div id="hook"><div class="k">Neu · Website-Masterclass</div><div class="h">Deine Premium-<br>Website. <span class="b">In 120 Min.</span></div></div>
+
+<div id="browser"><div class="bar"><i></i><i></i><i></i><div class="url"><b id="dot"></b><span id="url">localhost:3000</span></div></div>
+ <div id="site" class="wire">
+  <div class="nav" id="s_nav">MAIK ZSCHACH<div><span>ÜBER MICH</span><span>ANGEBOT</span><span>KONTAKT</span></div></div>
+  <div class="hero" id="s_hero"><div class="ph"></div><div class="tx"><div class="s">KI · APPS · AUTOMATISIERUNG</div><div class="t">Ideen <span>umsetzen.</span></div><div class="p" id="htxt"></div><div class="btn">Projekt anfragen</div></div></div>
+  <div class="cards" id="s_cards"><div>Websites<em>in deinem Look, mit KI gebaut</em></div><div>Automatisierung<em>weniger Klicks im Alltag</em></div><div>Workshops<em>selbst bauen lernen</em></div></div>
+  <div class="form" id="s_form"><i></i><i></i><b>Senden</b></div>
+ </div></div>
+
+<div id="ms"></div>
+<div class="sticker" id="bs1" style="top:1250px"><em>BERTRAND</em><br><span>„Ich will auch eine!“</span></div>
+<div class="sticker" id="bs2" style="top:1280px"><em>BERTRAND</em><br><span>„Meine hat 3 Minuten gedauert.“</span></div>
+<div id="ban"><div class="bar">www.bertrands-bananen.de</div><div class="in"><div class="t1">BANANEN!!!</div><div class="t2">Willkommen auf meiner Website</div><div class="t3">🍌🍌🍌</div><br><div class="t4">⚠ UNDER CONSTRUCTION ⚠</div><div class="t5">Besucher: 000001</div></div></div>
+<div class="sticker" id="bs3" style="top:1400px"><span style="background:#fff">Sieht man auch.</span></div>
+
+<div id="offer"><div class="k">Website-Masterclass · 1:1 mit mir</div><div class="box"><div class="t">120 Minuten.<br><span class="b">Deine Website.</span></div>
+ <ul><li><b>Premium-Website</b> in deinem Look – wir bauen sie zusammen</li><li><b>KI-Skills inklusive:</b> wie du mit KI arbeitest</li><li>Danach pflegst du sie <b>selbst weiter</b></li></ul></div></div>
+<div id="cta"><span>Schreib mir „WEBSITE“</span></div>
+<div id="flash"></div>
+<div class="grain" id="grain"></div>
+</div>
+<script>
+const TOTAL = 25.0; window.TOTAL = TOTAL;
+const T0 = 2.2, T1 = 15.0;             // countdown runs 120:00 -> 00:00
+const BERT = [9.4, 11.0], BERT2 = [15.6, 17.8], BAN = [17.8, 20.0], OFFER = 20.0;
+const MS = [[3.0, "118:00", "KI-Skills: So sprichst du mit der KI"], [5.2, "98:00", "Deine Story → Texte in deiner Stimme"], [7.3, "75:00", "Premium-Design statt Baukasten"], [11.0, "42:00", "Kontakt + Handy-Ansicht"], [13.3, "12:00", "Online stellen"], [15.0, "00:00", "Live. ✓"]];
+const N = { maik: 89, maikend: 104, bert: 69, bert2: 93 };
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const remain = t => { const u = cl((t - T0) / (T1 - T0)); return 7200 * (1 - (0.35 * u + 0.65 * u * u)) };
+const fmt = s => { s = Math.max(0, Math.round(s)); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0") };
+const HTXT = "Ich baue Websites, Apps und Automatisierungen mit KI.";
+const pop = (el, x) => { el.style.opacity = eo(x / .25); el.style.transform = `scale(${1.2 - .2 * eo(x / .25)})` };
+const frame = async (el, set, sec, loop) => { let n = 1 + Math.floor(sec * 30); n = loop ? ((n - 1) % N[set]) + 1 : Math.min(N[set], n); const src = `raw/${set}/${String(n).padStart(3, "0")}.jpg`; if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } };
+let lastMs = -1;
+window.DRAW = async t => {
+  const fr = Math.round(t * 30);
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  const inB = t >= BERT[0] && t < BERT[1], inB2 = t >= BERT2[0] && t < BERT2[1], inBan = t >= BAN[0] && t < BAN[1], hook = t < T0 + .6, offer = t >= OFFER;
+  // video layers
+  const vm = $("v_maik"), vb = $("v_bert");
+  vm.style.opacity = hook || offer || (t >= T1 && t < BERT2[0]) ? 1 : 0;
+  vb.style.opacity = inB || inB2 ? 1 : 0;
+  $("shade").style.opacity = hook || offer || inB || inB2 || (t >= T1 && t < BERT2[0]) ? 1 : 0;
+  if (hook || (t >= T1 && t < BERT2[0])) await frame(vm, "maik", t, true);
+  if (offer) await frame(vm, "maik", t - OFFER + 1, true);
+  vm.style.transform = `scale(${1.06 - .06 * cl(t / 3)})`;
+  if (inB) await frame(vb, "bert", t - BERT[0] + .5, false);
+  if (inB2) await frame(vb, "bert2", t - BERT2[0] + .8, false);
+  $("badge").style.opacity = inB || inB2 || inBan ? 1 : 0;
+  // timer
+  const r = remain(t), tt = $("tt");
+  tt.textContent = fmt(r); tt.className = "t" + (r < 600 ? " red" : "");
+  $("tb").style.width = (r / 7200 * 100) + "%";
+  $("timer").style.opacity = offer || inB2 || inBan ? 0 : 1;
+  $("tlab").textContent = t < T0 ? "Bereit?" : r <= 0 ? "Fertig" : "Countdown läuft";
+  $("timer").style.transform = `scale(${t >= T1 && t < T1 + .4 ? 1.15 - .15 * eo((t - T1) / .4) : 1})`;
+  // hook
+  $("hook").style.opacity = hook ? eo(t / .3) * (t > T0 ? 1 - eo((t - T0) / .4) : 1) : 0;
+  $("hook").style.transform = `scale(${1.15 - .15 * eo(t / .35)})`; $("hook").style.transformOrigin = "0 0";
+  // browser build
+  const bOn = t >= T0 && t < BERT2[0] && !inB;
+  $("browser").style.opacity = bOn ? eo((t - T0) / .3) : 0;
+  $("browser").style.transform = `translateY(${(1 - eo((t - T0) / .4)) * 120}px) scale(${t >= T1 ? 1 - .04 * eo((t - T1) / .4) : 1})`;
+  const showAt = { s_nav: 3.2, s_hero: 4.2, s_cards: 8.4, s_form: 11.2 };
+  Object.entries(showAt).forEach(([id, a]) => { const el = $(id); el.style.opacity = eo((t - a) / .3); el.style.transform = `translateY(${(1 - eo((t - a) / .3)) * 30}px)` });
+  $("site").className = t < 7.3 ? "wire" : "";
+  $("htxt").textContent = HTXT.slice(0, Math.floor(HTXT.length * cl((t - 5.3) / 1.6)));
+  const live = t >= 13.6;
+  $("dot").className = live ? "live" : ""; $("url").textContent = live ? "deine-website.de" : "localhost:3000";
+  // milestones
+  let mi = -1; MS.forEach((m, i) => { if (t >= m[0]) mi = i });
+  const ms = $("ms");
+  if (mi >= 0 && t < BERT2[0] && !inB && !(t >= T1 + 0.6)) { if (mi !== lastMs) { ms.innerHTML = `<div class="c"><small>${MS[mi][1]}</small>${MS[mi][2]}</div>`; lastMs = mi } pop(ms.firstChild, t - MS[mi][0]) } else ms.innerHTML = "", lastMs = -1;
+  // flash at milestones and at zero
+  const sinceMs = mi >= 0 ? t - MS[mi][0] : 9;
+  $("flash").style.opacity = (mi === MS.length - 1 && sinceMs < .15) ? .7 * (1 - sinceMs / .15) : (sinceMs < .06 && t < T1 ? .25 : 0);
+  // bertrand stickers
+  $("bs1").style.opacity = inB ? eo((t - BERT[0] - .2) / .15) : 0;
+  $("bs2").style.opacity = inB2 ? eo((t - BERT2[0] - .3) / .15) : 0;
+  [["bs1", BERT], ["bs2", BERT2]].forEach(([id, w]) => $(id).querySelector("span").style.transform = `rotate(-2deg) scale(${1.3 - .3 * eo((t - w[0] - .2) / .25)})`);
+  $("ban").style.opacity = inBan ? 1 : 0;
+  $("ban").style.transform = `rotate(${inBan ? -3 + 3 * eo((t - BAN[0]) / .3) : 0}deg) scale(${inBan ? 1.15 - .15 * eo((t - BAN[0]) / .3) : 1})`;
+  document.querySelector("#ban .t4").style.visibility = Math.floor(t * 4) % 2 ? "visible" : "hidden";
+  $("bs3").style.opacity = inBan ? eo((t - BAN[0] - 1.0) / .15) : 0;
+  $("bs3").querySelector("span").style.transform = `rotate(-2deg) scale(${1.4 - .4 * eo((t - BAN[0] - 1.0) / .25)})`;
+  // offer
+  $("offer").style.opacity = offer ? eo((t - OFFER) / .3) : 0;
+  $("offer").style.transform = `translateY(${offer ? (1 - eo((t - OFFER) / .35)) * 40 : 0}px)`;
+  [...document.querySelectorAll("#offer li")].forEach((el, i) => { const a = eo((t - OFFER - .8 - i * .55) / .3); el.style.opacity = offer ? a : 0; el.style.transform = `translateX(${(1 - a) * -40}px)` });
+  $("cta").style.opacity = offer ? eo((t - 23.0) / .25) : 0;
+  $("cta").style.transform = `scale(${offer ? 1.25 - .25 * eo((t - 23.0) / .3) : 1})`;
+  $("logo").style.opacity = inBan || inB || inB2 ? 0 : 1;
+};
+</script>
+</body></html>

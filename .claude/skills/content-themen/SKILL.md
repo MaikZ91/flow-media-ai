@@ -70,6 +70,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 02.11.2026 | R027 | `web` / `lernen` | Reel (Offer, Countdown + Bertrand) | „120 Minuten. Deine Website.“ – Countdown 120:00→00:00, Website baut sich auf, Bertrands Bananen-Seite als Gag, Angebot Website-Masterclass 1:1 (Preis noch nicht genannt), CTA „WEBSITE“ per DM | `format = countdown-offer` |
 | 02.11.2026 | P007 | `lernen` | Story | „Heute. 18 Uhr.“ – Workshop-Tag Talk-to-Brand (R019-Cover, Countdown-Sticker in Instagram) | `format = event-reminder` |
 | 01.11.2026 | R026 | `lernen` / `apps` | Reel (How-to, Talking Head) | „Deine erste App in 5 Schritten“ – Maiks Selfie-Video geschnitten (Fragen → Content-Ordner → 5 Versionen → beste wählen → online), Bertrand-Cutaway, CTA AI Masterclass per DM | `format = howto-talkinghead-steps` |
 | 30.10.2026 | R025 | `ki` / `lernen` | Reel (Tipp + Bertrand) | „Du tippst deine Prompts noch?“ – Spracheingabe statt Tippen, 3 Tipps, Bertrand per Untertitel (TTS verworfen) | `format = tipp-bertrand` |
