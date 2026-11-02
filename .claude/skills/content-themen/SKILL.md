@@ -60,7 +60,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 |---|---|---|
 | Sa 31.10. 18–20 Uhr | ✓ gesendet · R019 Talk-to-Brand | Workshop-Promo Vol. 2 (Mo 02.11.) – muss vor dem Workshop raus |
 | So 01.11. 19–21 Uhr | ✓ gesendet (Routine 01.11.) · R022 Bertrand · Folge 1 | Sitcom, Wochenend-Unterhaltung |
-| Mo 02.11. morgens | Story aus R019 (Cover) | Erinnerung „Heute 18 Uhr“ mit Countdown-Sticker |
+| Mo 02.11. morgens | ✓ gesendet als P007 · Story aus R019 (Cover) | Erinnerung „Heute 18 Uhr“ mit Countdown-Sticker |
 | Di 03.11. 12–13 Uhr | P006 Chat, Web oder Terminal? | Karussell (Saves) |
 | Mi 04.11. 18–20 Uhr | R021 How-to Storyboard → Seedance | Bertrand-Auftritt, Prompt zum Speichern |
 | Do 05.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
@@ -70,6 +70,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 02.11.2026 | P007 | `lernen` | Story | „Heute. 18 Uhr.“ – Workshop-Tag Talk-to-Brand (R019-Cover, Countdown-Sticker in Instagram) | `format = event-reminder` |
 | 01.11.2026 | R026 | `lernen` / `apps` | Reel (How-to, Talking Head) | „Deine erste App in 5 Schritten“ – Maiks Selfie-Video geschnitten (Fragen → Content-Ordner → 5 Versionen → beste wählen → online), Bertrand-Cutaway, CTA AI Masterclass per DM | `format = howto-talkinghead-steps` |
 | 30.10.2026 | R025 | `ki` / `lernen` | Reel (Tipp + Bertrand) | „Du tippst deine Prompts noch?“ – Spracheingabe statt Tippen, 3 Tipps, Bertrand per Untertitel (TTS verworfen) | `format = tipp-bertrand` |
 | 30.10.2026 | R024 | `ki` / `lernen` | Reel (Vergleich + Bertrand) | „Chat, Web oder Terminal? Bertrand erklärt's.“ – Reel-Version von P006, Punchline „Stufe 2 schafft sogar Bertrand.“ | `format = vergleich-reel-bertrand` |
