@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.16);--banana:#FFD43B}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent;color:#fff;font-family:Inter,sans-serif}
+.layer{position:absolute;inset:0;opacity:0}
+.full{background:var(--black)}
+svg{position:absolute;left:0;top:0}
+/* top cards */
+.top{position:absolute;left:60px;right:60px;top:110px;z-index:10;opacity:0}
+.pill{display:inline-flex;align-items:center;gap:16px;background:rgba(11,11,11,.88);border-radius:22px;padding:18px 28px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.pill .n{font:700 76px/1 Oswald;color:var(--blue)}
+.pill .t{font:700 66px/1 Oswald;text-transform:uppercase}
+.pill .k{font:500 22px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.chips span{font:600 34px Inter;background:rgba(11,11,11,.88);border:2px solid var(--blue);border-radius:40px;padding:10px 24px;opacity:0}
+/* captions */
+#cap{position:absolute;left:50px;right:50px;top:1530px;text-align:center;z-index:30;font:800 64px/1.12 Inter;text-shadow:0 4px 0 #000,0 0 26px rgba(0,0,0,.9)}
+#cap span{display:inline-block;margin:0 8px}
+#cap span.on{color:var(--blue)}
+/* big slam */
+.slam{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.slam .k{font:500 30px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#cfcfcf}
+.slam .n{font:700 420px/.9 Oswald;color:var(--blue)}
+.slam .t{font:700 120px/1 Oswald;text-transform:uppercase}
+.lab{position:absolute;left:0;right:0;text-align:center;font:700 92px/1 Oswald;text-transform:uppercase}
+.sub{position:absolute;left:0;right:0;text-align:center;font:500 30px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.badge{position:absolute;right:60px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.45);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.45);z-index:31;opacity:0}
+/* bars */
+.bars{position:absolute;left:90px;right:90px;top:760px}
+.bars .row{margin-bottom:60px}
+.bars .nm{font:600 40px Inter;margin-bottom:16px;display:flex;justify-content:space-between}
+.bars .tr{height:44px;border-radius:22px;background:rgba(255,255,255,.12);overflow:hidden}
+.bars .tr i{display:block;height:100%;width:0;border-radius:22px;background:#fff}
+.bars .row.b .tr i{background:var(--blue)}
+/* credits */
+.meter{width:100%;margin-top:14px;background:rgba(11,11,11,.88);border-radius:22px;padding:20px 26px}
+.meter .h{display:flex;justify-content:space-between;font:700 40px Oswald;text-transform:uppercase}
+.meter .h b{color:var(--blue);font-family:'JetBrains Mono',monospace}
+.meter .tr{margin-top:12px;height:22px;border-radius:11px;background:rgba(255,255,255,.12);overflow:hidden}
+.meter .tr i{display:block;height:100%;background:var(--blue)}
+/* prompt */
+.prompt{margin-top:14px;font:400 36px/1.4 'JetBrains Mono',monospace;background:rgba(11,11,11,.9);border:2px solid var(--blue);border-radius:22px;padding:20px 26px}
+.cur{display:inline-block;width:4px;height:40px;background:#fff;vertical-align:-6px;margin-left:3px}
+#bert{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+</style></head><body>
+
+<!-- intro -->
+<div class="top" id="t_intro"><div class="pill"><span class="k">Community-Update</span></div>
+  <div class="chips" id="c_intro"><span>01 Wachstum</span><span>02 Café</span><span>03 KI-Videos</span></div></div>
+
+<!-- 01 growth network -->
+<div class="top" id="t_eins"><div class="pill"><span class="n">01</span><span class="t">Wir wachsen.</span></div></div>
+<div class="layer full" id="l_net"><svg id="net" width="1080" height="1920"></svg>
+  <div class="sub" style="top:300px">Unsere Community</div><div class="lab" style="top:350px">So viele<br><span style="color:var(--blue)">Persönlichkeiten.</span></div></div>
+
+<!-- breathwork -->
+<div class="layer full" id="l_breath"><svg width="1080" height="1920"><circle id="bc2" cx="540" cy="960" r="200" fill="none" stroke="rgba(47,91,255,.35)" stroke-width="3"/><circle id="bc" cx="540" cy="960" r="150" fill="rgba(47,91,255,.9)"/></svg>
+  <div class="sub" style="top:300px">Wir haben jemanden für</div><div class="lab" style="top:350px">Breathwork</div>
+  <div class="lab" id="breathTxt" style="top:925px;font-size:64px">Einatmen</div></div>
+
+<!-- book -->
+<div class="layer full" id="l_buch"><svg width="1080" height="1920" id="booksvg">
+  <rect x="190" y="700" width="700" height="520" rx="18" fill="#141519" stroke="#fff" stroke-width="4"/>
+  <line x1="540" y1="700" x2="540" y2="1220" stroke="#fff" stroke-width="4"/>
+  <g id="lines"></g>
+  <polygon id="page" points="540,700 890,700 890,1220 540,1220" fill="#fff" opacity=".9"/></svg>
+  <div class="sub" style="top:300px">Wir haben jemanden für</div><div class="lab" style="top:350px">Bücher <span style="color:var(--blue)">schreiben</span></div></div>
+
+<!-- ki fans -->
+<div class="top" id="t_ki"><div class="pill"><span class="t">KI-Begeisterte</span><span style="font-size:52px">⚡</span></div>
+  <div class="chips" id="c_ki"><span>Prompts</span><span>Bilder</span><span>Apps</span><span>Automationen</span></div></div>
+
+<!-- slams -->
+<div class="layer full" id="l_zwei"><div class="slam"><div class="k">Das Zweite</div><div class="n">02</div></div></div>
+<div class="layer full" id="l_drei"><div class="slam"><div class="k">Das Dritte</div><div class="n">03</div></div></div>
+
+<!-- cafe -->
+<div class="layer full" id="l_cafe"><svg width="1080" height="1920" id="cafesvg">
+  <rect x="120" y="1240" width="840" height="20" rx="10" fill="#fff"/>
+  <!-- two people -->
+  <g id="p1"><circle cx="300" cy="900" r="80" fill="#2a2c33"/><path d="M225 875 q75 -90 150 0" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/><rect x="215" y="990" width="170" height="250" rx="70" fill="#2a2c33"/><circle cx="270" cy="905" r="22" fill="none" stroke="#fff" stroke-width="5"/><circle cx="330" cy="905" r="22" fill="none" stroke="#fff" stroke-width="5"/></g>
+  <g id="p2"><circle cx="780" cy="900" r="80" fill="#2a2c33"/><path d="M705 885 q75 -110 150 0 q10 60 -10 90 M705 885 q-10 60 10 90" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/><rect x="695" y="990" width="170" height="250" rx="70" fill="#2a2c33"/></g>
+  <!-- cups -->
+  <g><rect x="410" y="1160" width="80" height="80" rx="12" fill="#fff"/><path d="M490 1180 q30 0 30 25 q0 25 -30 25" fill="none" stroke="#fff" stroke-width="8"/>
+     <rect x="590" y="1160" width="80" height="80" rx="12" fill="#fff"/><path d="M590 1180 q-30 0 -30 25 q0 25 30 25" fill="none" stroke="#fff" stroke-width="8"/>
+     <path id="st1" d="M440 1140 q-15 -30 0 -60 q15 -30 0 -60" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6" stroke-linecap="round"/>
+     <path id="st2" d="M620 1140 q-15 -30 0 -60 q15 -30 0 -60" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6" stroke-linecap="round"/></g>
+  <!-- bubbles -->
+  <g id="b1" opacity="0"><rect x="160" y="620" width="300" height="140" rx="40" fill="#fff"/><polygon points="270,760 310,760 280,800" fill="#fff"/><text x="310" y="712" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="72" fill="#0B0B0B">…</text></g>
+  <g id="b2" opacity="0"><rect x="620" y="600" width="300" height="140" rx="40" fill="var(--blue)" style="fill:#2F5BFF"/><polygon points="770,740 810,740 790,780" fill="#2F5BFF"/><text x="770" y="692" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="72" fill="#fff">…</text></g>
+  </svg>
+  <div class="sub" style="top:300px">Heute im Café, nebenan:</div><div class="lab" style="top:350px">Ein Rentner-<br>Ehepaar.</div></div>
+<div class="top" id="t_frage"><div class="pill"><span class="t">Worüber? 🤔</span></div></div>
+<div class="layer" id="l_ki" style="background:var(--blue)"><div class="slam"><div class="k" style="color:#fff">Thema am Nachbartisch</div><div class="t" style="font-size:250px">Über<br>KI.</div></div></div>
+
+<!-- generations -->
+<div class="layer full" id="l_gen"><div class="sub" style="top:300px">Gefühlt auf dem Stand bei KI</div><div class="lab" style="top:350px">Wer ist<br><span style="color:var(--blue)">weiter?</span></div>
+  <div class="bars"><div class="row b"><div class="nm"><span>🧓👵 Rentner-Ehepaar</span></div><div class="tr"><i id="bar1"></i></div></div>
+  <div class="row"><div class="nm"><span>🙋 Unsere Generation</span></div><div class="tr"><i id="bar2"></i></div></div></div></div>
+<div class="top" id="t_mood"><div class="pill"><span class="t" id="mood">Traurig 😕</span></div></div>
+
+<!-- 03 generation tiles -->
+<div class="layer full" id="l_tiles"><svg width="1080" height="1920" id="tiles"></svg>
+  <div class="sub" style="top:300px">Gerade süchtig nach</div><div class="lab" style="top:350px">Bild- &amp; Video-<br><span style="color:var(--blue)">Generierung.</span></div>
+  <div style="position:absolute;left:90px;right:90px;top:1330px" class="prompt"><span style="color:#8fa4ff">›</span> <span id="ptype"></span><span class="cur"></span></div></div>
+<div class="top" id="t_story"><div class="pill"><span class="t">Stories erzeugen 🎬</span></div></div>
+
+<!-- money -->
+<div class="top" id="t_geld"><div class="pill"><span class="t">Süchtig 🎰</span></div>
+  <div class="meter"><div class="h"><span>Credits</span><b id="cred">100 %</b></div><div class="tr"><i id="credbar" style="width:100%"></i></div></div></div>
+<div class="top" id="t_oft"><div class="pill"><span class="t">Mehr davon kommt.</span></div></div>
+
+<!-- sitcom / bertrand -->
+<div class="layer" id="l_bert"><img id="bert" alt="">
+  <div style="position:absolute;left:0;right:0;top:250px;text-align:center"><div style="display:inline-block;font:700 140px/1 Oswald;letter-spacing:.06em;color:var(--banana);text-transform:uppercase;text-shadow:0 8px 0 #000;transform:rotate(-3deg)">Bertrand</div>
+  <div style="margin-top:14px;font:600 34px Montserrat;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 14px #000">Die KI-Sitcom</div></div></div>
+<div class="badge" id="badge">BERTRAND · KI-GENERIERT</div>
+
+<!-- you -->
+<div class="top" id="t_du"><div class="pill"><span class="t">Dein Zug.</span></div>
+  <div class="prompt"><span style="color:#8fa4ff">›</span> <span id="dtype"></span><span class="cur"></span></div></div>
+
+<!-- outro -->
+<div class="top" id="t_outro"><div class="pill"><span class="t">Schönen Abend 👋</span></div>
+  <div class="chips" id="c_outro"><span>Lass uns austauschen</span></div></div>
+<div class="layer full" id="l_end"><img src="img/logo_flow.png" style="position:absolute;left:50%;top:860px;width:420px;margin-left:-210px" alt=""></div>
+
+<div id="cap"></div>
+<div id="flash"></div>
+<script>
+const CUTS = __CUTS__, CAPS = __CAPS__, VEND = __TOTAL__;
+const TOTAL = VEND + 1.0; window.TOTAL = TOTAL;
+const S = {}; CUTS.forEach(c => { if (!(c.sec in S)) S[c.sec] = c.t });
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const $ = id => document.getElementById(id);
+const win = (t, a, b, f = .25) => t < a || t >= b ? 0 : Math.min(eo((t - a) / f), eo((b - t) / f));
+// windows (video time). fullscreen B-rolls are short; the voice keeps running underneath
+const W = {
+  intro: [0.2, 2.8], eins: [2.8, 5.2], net: [5.2, 8.17], breath: [8.17, 9.67], buch: [9.67, 12.57], ki: [12.57, 18.1],
+  zwei: [18.1, 19.2], cafe: [19.2, 24.0], frage: [24.0, S.ueberki], kislam: [S.ueberki, S.gen + .25], gen: [S.gen + .25, 35.0], mood: [35.0, S.drei],
+  drei: [S.drei, S.drei + 1.0], tiles: [S.drei + 1.0, 46.8], story: [46.8, S.geld], geld: [S.geld, S.oefter], oft: [S.oefter, S.sitcom],
+  bert: [S.sitcom + .6, S.sitcom + 3.6], du: [S.du, S.outro], outro: [S.outro, VEND - .6], end: [VEND - .6, TOTAL + 1]
+};
+// network nodes
+const net = $("net"), NODES = [];
+for (let i = 0; i < 26; i++) { const a = i * 2.39996, r = 90 + 330 * Math.sqrt(i / 26); NODES.push([540 + r * Math.cos(a), 1080 + r * Math.sin(a) * 1.1]) }
+NODES.forEach((p, i) => { if (i) { const j = Math.floor(i * .55), l = document.createElementNS("http://www.w3.org/2000/svg", "line"); l.setAttribute("x1", p[0]); l.setAttribute("y1", p[1]); l.setAttribute("x2", NODES[j][0]); l.setAttribute("y2", NODES[j][1]); l.setAttribute("stroke", "rgba(255,255,255,.35)"); l.setAttribute("stroke-width", "3"); l.dataset.i = i; net.appendChild(l) } });
+NODES.forEach((p, i) => { const c = document.createElementNS("http://www.w3.org/2000/svg", "circle"); c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", i === 0 ? 30 : 16 + (i % 3) * 5); c.setAttribute("fill", i % 4 === 0 ? "#2F5BFF" : "#fff"); c.dataset.i = i; net.appendChild(c) });
+// book lines
+const lines = $("lines"); for (let i = 0; i < 9; i++) { const l = document.createElementNS("http://www.w3.org/2000/svg", "rect"); l.setAttribute("x", 230); l.setAttribute("y", 760 + i * 48); l.setAttribute("height", 14); l.setAttribute("rx", 7); l.setAttribute("fill", i === 0 ? "#2F5BFF" : "rgba(255,255,255,.7)"); l.dataset.w = i === 0 ? 180 : 230 + (i * 37) % 60; lines.appendChild(l) }
+// tiles
+const tiles = $("tiles"), TL = [];
+for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) { const g = document.createElementNS("http://www.w3.org/2000/svg", "rect"); g.setAttribute("x", 150 + c * 270); g.setAttribute("y", 600 + r * 240); g.setAttribute("width", 240); g.setAttribute("height", 210); g.setAttribute("rx", 18); tiles.appendChild(g); TL.push(g) }
+// captions
+const GR = []; let g = [];
+CAPS.forEach((w, i) => { g.push(w); const nx = CAPS[i + 1]; if (g.length >= 3 || /[.?!,]$/.test(w[2]) || !nx || nx[0] - w[1] > .3) { GR.push(g); g = [] } });
+let lastG = -1;
+const typeTo = (el, s, x) => el.textContent = s.slice(0, Math.floor(s.length * cl(x)));
+const chipPop = (sel, t, t0, step) => [...document.querySelectorAll(sel + " span")].forEach((el, i) => { const a = eo((t - t0 - i * step) / .25); el.style.opacity = a; el.style.display = "inline-block"; el.style.transform = `scale(${1.25 - .25 * a})` });
+window.DRAW = async t => {
+  const on = k => win(t, W[k][0], W[k][1], k === "kislam" || k === "zwei" || k === "drei" ? .08 : .22);
+  // top cards
+  [["t_intro", "intro"], ["t_eins", "eins"], ["t_ki", "ki"], ["t_frage", "frage"], ["t_mood", "mood"], ["t_story", "story"], ["t_geld", "geld"], ["t_oft", "oft"], ["t_du", "du"], ["t_outro", "outro"]].forEach(([id, k]) => { const a = on(k); $(id).style.opacity = a; $(id).style.transform = `translateY(${(1 - a) * -30}px)` });
+  chipPop("#c_intro", t, W.intro[0] + .5, .45); chipPop("#c_ki", t, W.ki[0] + 4.6 - 3.4, .5); chipPop("#c_outro", t, W.outro[0] + 2.2, .3);
+  // fullscreen layers
+  [["l_net", "net"], ["l_breath", "breath"], ["l_buch", "buch"], ["l_zwei", "zwei"], ["l_cafe", "cafe"], ["l_ki", "kislam"], ["l_gen", "gen"], ["l_drei", "drei"], ["l_tiles", "tiles"], ["l_bert", "bert"], ["l_end", "end"]].forEach(([id, k]) => $(id).style.opacity = on(k));
+  // network grows
+  if (on("net")) { const k = cl((t - W.net[0]) / 2.4) * NODES.length; net.querySelectorAll("[data-i]").forEach(el => { const i = +el.dataset.i, a = cl(k - i); el.style.opacity = a; if (el.tagName === "circle") el.style.transform = `scale(${a})`, el.style.transformOrigin = `${NODES[i][0]}px ${NODES[i][1]}px`, el.style.transformBox = "view-box" }) }
+  // breathing circle (in 1.5 s, the friend's breathwork idea)
+  if (on("breath")) { const x = (t - W.breath[0]) / 1.5, r = 150 + 230 * eio(x); $("bc").setAttribute("r", r); $("bc2").setAttribute("r", r + 40 + 20 * Math.sin(t * 6)); $("breathTxt").textContent = x < .85 ? "Einatmen …" : "… und halten"; }
+  // book: page turns, lines type
+  if (on("buch")) { const x = t - W.buch[0], f = eio((x - .2) / .7); $("page").setAttribute("points", `540,700 ${890 - 700 * f},${700 - 40 * Math.sin(f * Math.PI)} ${890 - 700 * f},${1220 - 40 * Math.sin(f * Math.PI)} 540,1220`); $("page").style.opacity = f > .98 ? 0 : .9;
+    [...lines.children].forEach((l, i) => l.setAttribute("width", +l.dataset.w * cl((x - 1.0 - i * .17) / .2))) }
+  // slam shake
+  ["l_zwei", "l_drei", "l_ki"].forEach(id => { const k = id === "l_zwei" ? "zwei" : id === "l_drei" ? "drei" : "kislam", x = t - W[k][0]; $(id).firstElementChild.style.transform = `scale(${1.35 - .35 * eo(x / .2)}) rotate(${x < .3 ? Math.sin(x * 60) * 2 : 0}deg)` });
+  // cafe
+  if (on("cafe")) { const x = t - W.cafe[0]; $("b1").setAttribute("opacity", eo((x - 1.4) / .2)); $("b2").setAttribute("opacity", eo((x - 2.4) / .2)); ["st1", "st2"].forEach((id, i) => $(id).style.transform = `translateY(${-((t * 40 + i * 30) % 40)}px)`); $("p1").style.transform = `translateY(${Math.sin(t * 5) * 4}px)`; $("p2").style.transform = `translateY(${Math.cos(t * 5) * 4}px)` }
+  // generations bars (his impression, labelled "gefühlt")
+  if (on("gen")) { const x = t - W.gen[0]; $("bar1").style.width = 88 * eio((x - .6) / 1.2) + "%"; $("bar2").style.width = 41 * eio((x - 1.2) / 1.2) + "%" }
+  $("mood").textContent = t < 36.6 ? "Traurig 😕" : "…aber cool 😎";
+  // tiles resolve
+  if (on("tiles")) { const x = t - W.tiles[0]; TL.forEach((g, i) => { const a = cl((x - .3 - i * .22) / .5), n = Math.floor(t * 12 + i * 3) % 5; g.setAttribute("fill", a >= 1 ? (i % 3 === 1 ? "#2F5BFF" : "#ffffff") : `rgba(255,255,255,${.08 + .08 * n})`); g.setAttribute("stroke", a >= 1 ? "none" : "rgba(255,255,255,.3)"); g.setAttribute("stroke-width", 3); g.style.opacity = eo((x - i * .1) / .3) }); typeTo($("ptype"), "Erzeuge eine Sitcom-Szene …", (x - .4) / 1.6) }
+  // credits drain
+  if (on("geld")) { const x = cl((t - W.geld[0] - .6) / 4.0), v = Math.round(100 * (1 - eio(x))); $("cred").textContent = v + " %"; $("credbar").style.width = v + "%" }
+  // bertrand
+  if (on("bert")) { const n = Math.min(48, 1 + Math.floor((t - W.bert[0]) * 16)), src = `raw/bert/${String(n).padStart(3, "0")}.jpg`, el = $("bert"); if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } }
+  $("badge").style.opacity = on("bert");
+  // your turn
+  if (on("du")) typeTo($("dtype"), "Probier's einfach aus.", (t - W.du[0] - .4) / 1.4);
+  // flash on section numbers
+  const fz = [W.zwei[0], W.drei[0], W.kislam[0]].map(a => t - a).filter(x => x >= 0 && x < .1);
+  $("flash").style.opacity = fz.length ? .6 * (1 - fz[0] / .1) : 0;
+  // captions
+  const gi = GR.findIndex(gr => t >= gr[0][0] - .05 && t < gr[gr.length - 1][1] + .15), cap = $("cap");
+  if (gi >= 0 && t < VEND - .6 && !on("kislam")) { if (gi !== lastG) { cap.innerHTML = GR[gi].map(w => `<span>${w[2].replace(/,$/, "")}</span>`).join(""); lastG = gi } let cur = 0; GR[gi].forEach((w, i) => { if (t >= w[0] - .03) cur = i }); [...cap.children].forEach((el, i) => el.className = i === cur ? "on" : ""); cap.style.opacity = 1 } else cap.style.opacity = 0;
+  cap.style.top = on("gen") > .5 ? "1640px" : "1530px";
+};
+</script>
+</body></html>
