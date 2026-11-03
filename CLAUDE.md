@@ -18,6 +18,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `CLAUDE.md` – Brand Identity & Positionierung (maßgeblich)
 - `.claude/skills/creative-director/` – Creative Director für @flow.media.ai
 - `.claude/skills/flow-design/` – visuelles Design (schwarz-weiß, große Versal-Headlines, ein blauer Akzent) für alles Gestaltete
+- `.claude/skills/app-in-varianten/` – Maiks Workflow für jede App: fünf Varianten bauen, Maik fragen, neue Version auf der Grundlage bauen, dann veröffentlichen (zuerst in diesem Repo unter `coaching/<kunde>/`)
 - `.claude/skills/content-themen/` – Themenpool, Rotation und Verlauf für den täglichen Content
 - **Daily-Content-Routine:** jeden Morgen ein fertiger Post im Chat (Creative Director Teil E); Reels in `content/reels/`, Karussells/Einzelposts in `content/posts/`
 - `.claude/skills/blindspot-analyse/` – optional, nur wenn Maik ihn einschaltet: Blindspot-Pass vor neuen Projekten
