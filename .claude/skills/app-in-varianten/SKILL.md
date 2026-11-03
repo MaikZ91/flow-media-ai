@@ -9,8 +9,16 @@ Maiks Arbeitsweise: nicht eine Lösung raten, sondern fünf verschiedene zeigen,
 
 ## Der Ablauf
 
+### 0. Kunden-Ordner mit Masterclass-Template (zuerst prüfen)
+Gibt es einen Drive-Ordner des Kunden mit dem ausgefüllten **Template "Deine App-Idee / Vorbereitung für die AI Masterclass"** (Datei `Vorbereitung_AI-Masterclass_<Name>_<Datum>` als `.docx` oder Google Doc) und dem Unterordner `Content` mit `Media`, `Texte`, `Ideen`, `Sonstiges`? Dann **sofort lesen, ohne vorher zu fragen**:
+1. **Template lesen** (`read_file_content`). Es hat 5 Abschnitte: 1 Accounts, 2 Materialien, 3 App-Idee (Problem, Zielgruppe, Funktionsweise, Inspiration), 4 Feature-Ideen (Kästchen plus Top 3), 5 Ergebnis (Erfolg, Muss-Funktionen, offene Fragen).
+2. **Platzhalter erkennen:** Steht noch der graue Hilfetext (z. B. "Hier die Ausgangssituation beschreiben …", "Eigene Funktion hier eintragen", "1. … 2. … 3. …") oder ist ein Feld leer, ist es **nicht ausgefüllt**. Nichts daraus ableiten, nichts erfinden. Angekreuzt ist ein Feature nur bei `☒`, `☑` oder `[x]`, offene Kästchen sind `☐`. Eine ausgefüllte Frage ersetzt den Hilfetext durch Marcos eigenen Text.
+3. **Ordner lesen:** `Texte` (Notizen, Beschreibungen) lesen, `Ideen` (Skizzen, Beispiele, Links) ansehen, `Media` und `Sonstiges` auflisten. Fotos, die dort liegen, haben Vorrang vor beschafften. Videos nur auflisten und nach Titel einordnen.
+4. **Zusammenfassen und Lücken nennen:** Kurz sagen, was verstanden wurde (Problem, Nutzer, Funktionen, Top 3, Inspiration) und was fehlt. Die **leeren Abschnitte** als Rückfrage stellen, statt zu raten. Bei Marco (Vorlage mit vorbelegten Ideen zu Personenprofilen, Eskalations- und Trainingsplänen, Sprache-zu-Text, Drucken) gilt: Vorbelegte Ideen sind **Vorschläge des Templates, nicht Marcos Wunsch**, solange sie nicht angekreuzt sind.
+5. Das Ergebnis als `Produktanforderungen.md` ablegen (nur in Drive, nie im öffentlichen Repo) und dann mit Schritt 1 und 2 weitermachen.
+
 ### 1. Input einsammeln (Basis)
-Alles, was Maik liefert, ist die Grundlage. Erst nachsehen, was da ist, bevor etwas gebaut oder recherchiert wird:
+Alles, was Maik oder der Kunde liefert, ist die Grundlage. Erst nachsehen, was da ist, bevor etwas gebaut oder recherchiert wird:
 - **Produktanforderungen** (Markdown, Dokument, Chat): was die App können soll, für wen, welcher Eindruck.
 - **Videos und Fotos**, oft in einem Ordner wie `Content/Media`. Die haben Vorrang vor allem Beschafften.
 - **Mitgelieferte Designs und Referenzen:** Homepages, Screenshots, Plakate, Fotos von Räumen oder Produkten, Markenfarben. Daraus kommt der Stil (siehe Schritt 3).
