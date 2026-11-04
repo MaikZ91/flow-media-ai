@@ -62,7 +62,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | So 01.11. 19–21 Uhr | ✓ gesendet (Routine 01.11.) · R022 Bertrand · Folge 1 | Sitcom, Wochenend-Unterhaltung |
 | Mo 02.11. morgens | ✓ gesendet als P007 · Story aus R019 (Cover) | Erinnerung „Heute 18 Uhr“ mit Countdown-Sticker |
 | Di 03.11. 12–13 Uhr | ✓ gesendet (Routine 03.11.) · P006 Chat, Web oder Terminal? | Karussell (Saves) |
-| Mi 04.11. 18–20 Uhr | R021 How-to Storyboard → Seedance | Bertrand-Auftritt, Prompt zum Speichern |
+| Mi 04.11. 18–20 Uhr | ✓ gesendet (Routine 04.11.) · R021 How-to Storyboard → Seedance | Bertrand-Auftritt, Prompt zum Speichern |
 | Do 05.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
 | Fr 06.11. 18–20 Uhr | R024 (Q&A-Version) | Vergleich als Reel, Abstand zu P006 |
 | laufend | R020 Ad AI Community | nur als bezahlte Anzeige, nicht im Feed |
