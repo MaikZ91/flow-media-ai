@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--card:#141519;--line:rgba(255,255,255,.16)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;z-index:40;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:3px;background:rgba(255,255,255,.18);z-index:30}
+.prog i{display:block;height:100%;background:#fff;width:0}
+.badge{position:absolute;right:76px;top:96px;font:500 20px Montserrat;letter-spacing:.14em;border:1.5px solid rgba(255,255,255,.45);border-radius:20px;padding:6px 14px;background:rgba(0,0,0,.45);z-index:30}
+#vid{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;opacity:0}
+#shade{position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(11,11,11,.7) 0%,rgba(11,11,11,0) 25%,rgba(11,11,11,0) 55%,rgba(11,11,11,.92) 80%,#0B0B0B 100%)}
+.txt{position:absolute;left:76px;right:76px;top:150px;z-index:20;opacity:0}
+.k{font:500 28px Montserrat;letter-spacing:.2em;color:#e6e6e6;text-transform:uppercase}
+.h{margin-top:12px;font:700 112px/1 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}
+.st{display:flex;align-items:flex-start;gap:24px}
+.st .n{font:700 170px/.82 Oswald;color:var(--blue)}
+.st .t{font:700 94px/1.02 Oswald;text-transform:uppercase;padding-top:4px}
+.card{position:absolute;border-radius:24px;overflow:hidden;border:3px solid #fff;box-shadow:0 30px 90px rgba(0,0,0,.7);opacity:0;z-index:10;background:#000}
+.card img{display:block;width:100%;height:100%;object-fit:cover}
+.card .tg{position:absolute;left:14px;bottom:14px;font:600 24px Montserrat;letter-spacing:.1em;background:rgba(0,0,0,.75);padding:8px 14px;border-radius:10px}
+.card .tg.v{background:var(--blue)}
+.plus{position:absolute;left:0;right:0;top:880px;text-align:center;font:700 150px Oswald;color:var(--blue);z-index:12;opacity:0}
+.prompt{position:absolute;left:76px;right:76px;top:520px;z-index:12;opacity:0;font:400 30px/1.45 'JetBrains Mono',monospace;background:rgba(20,21,25,.96);border:1.5px solid var(--line);border-radius:22px;padding:22px 26px;color:#ddd;min-height:150px}
+.prompt .l{display:block;font:600 20px Montserrat;letter-spacing:.16em;color:var(--blue);margin-bottom:8px}
+.cur{display:inline-block;width:3px;height:34px;background:#fff;vertical-align:-6px;margin-left:2px}
+.tool{position:absolute;left:50%;top:1120px;width:620px;height:230px;margin-left:-310px;border-radius:30px;border:3px solid var(--blue);background:rgba(20,22,30,.96);opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;box-shadow:0 0 80px rgba(47,91,255,.45);z-index:14}
+.tool b{font:700 66px Oswald;text-transform:uppercase}
+.bar{width:440px;height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--blue)}
+#vlab{position:absolute;left:76px;top:150px;z-index:20;opacity:0;font:700 44px Oswald;text-transform:uppercase;background:var(--blue);padding:8px 20px;border-radius:12px}
+#hook{position:absolute;left:76px;right:76px;top:1360px;z-index:20}
+#end{position:absolute;left:76px;right:76px;top:1270px;z-index:20;opacity:0}
+#end .eq{font:700 84px/1.05 Oswald;text-transform:uppercase}
+#end .cta{margin-top:26px;display:inline-block;font:600 34px Inter;background:rgba(0,0,0,.6);border:2px solid #fff;border-radius:40px;padding:14px 28px}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:35}
+</style></head><body>
+<div id="stage">
+<img id="vid" alt=""><div id="shade"></div>
+<div class="prog"><i id="prog"></i></div>
+<div class="badge">KI-GENERIERT</div>
+
+<div id="hook"><div class="k">How-to · Seedance 2.5</div><div class="h">Dieses Video<br>war ein <span class="b">Plakat.</span></div></div>
+
+<div class="txt" id="t_s1"><div class="st"><span class="n">1</span><span class="t">Zwei<br><span class="b">Inputs.</span></span></div></div>
+<div class="card" id="c_selfie" style="left:70px;top:560px;width:450px;height:600px"><img src="img/selfie.jpg" alt=""><span class="tg">MEIN FOTO</span></div>
+<div class="card" id="c_plakat" style="left:560px;top:560px;width:450px;height:600px"><img src="img/plakat_blur.jpg" alt=""><span class="tg">PLAKAT = STIL</span></div>
+<div class="plus" id="plus">+</div>
+
+<div class="txt" id="t_s2"><div class="st"><span class="n">2</span><span class="t">Stil-<br><span class="b">Bild.</span></span></div></div>
+<div class="prompt" id="p_s2"><span class="l">CHATGPT · BILD</span><span id="ty2"></span><span class="cur"></span></div>
+<div class="card" id="c_stil" style="left:250px;top:760px;width:580px;height:940px"><img src="img/bild_stil.jpg" alt=""><span class="tg">ERGEBNIS 1</span></div>
+
+<div class="txt" id="t_s3"><div class="st"><span class="n">3</span><span class="t">Mein<br><span class="b">Charakter.</span></span></div></div>
+<div class="prompt" id="p_s3"><span class="l">CHATGPT · BILD + MEIN FOTO</span><span id="ty3"></span><span class="cur"></span></div>
+<div class="card" id="c_maik" style="left:250px;top:760px;width:580px;height:1030px"><img src="img/bild_maik.jpg" alt=""><span class="tg">ERGEBNIS 2</span></div>
+
+<div class="txt" id="t_s4"><div class="st"><span class="n">4</span><span class="t">Seedance<br><span class="b">2.5.</span></span></div></div>
+<div class="prompt" id="p_s4"><span class="l">SEEDANCE · BILD → VIDEO</span><span id="ty4"></span><span class="cur"></span></div>
+<div class="tool" id="tool"><b>Seedance 2.5</b><div class="bar"><i id="bar"></i></div></div>
+<div id="vlab">Seedance 2.5 · 10 s</div>
+
+<div id="end"><div class="eq">Foto + Plakat<br>+ Prompt = <span class="b">Film.</span></div><div class="cta">Alle Prompts in der Caption 👇</div></div>
+<div id="flash"></div>
+<div class="grain" id="grain"></div>
+</div>
+<script>
+const TOTAL = 21.5; window.TOTAL = TOTAL;
+const SC = [["hook", 0, 2.6], ["s1", 2.6, 6.4], ["s2", 6.4, 10.2], ["s3", 10.2, 13.4], ["s4", 13.4, 15.6], ["vid", 15.6, 19.2], ["end", 19.2, 21.5]];
+const P2 = "Poster im Stil dieses Plakats: dunkles Studio, Person im weißen Overall, Lichtstative. Titel „FLOW MEDIA AI“, Akzent Lila …";
+const P3 = "Ersetze die Person durch mich aus dem Foto. Arme verschränkt, Lächeln, beiger Pullover …";
+const P4 = "Kamera fährt langsam auf mich zu, lila Lichtringe kreisen und steigen auf …";
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const $ = id => document.getElementById(id);
+const pop = (el, x, s = 1) => { el.style.opacity = eo(x / .3); el.style.transform = `translateY(${(1 - eo(x / .35)) * 60}px) scale(${(1.12 - .12 * eo(x / .35)) * s})` };
+window.DRAW = async t => {
+  const fr = Math.round(t * 30);
+  let cur = SC[SC.length - 1]; SC.forEach(s => { if (t >= s[1] && t < s[2]) cur = s });
+  const name = cur[0], lt = t - cur[1];
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  $("grain").style.transform = `translate(${(fr * 37) % 120 - 60}px,${(fr * 53) % 120 - 60}px)`;
+  ["s1", "s2", "s3", "s4"].forEach(n => { const el = $("t_" + n); el.style.opacity = n === name ? eo(lt / .2) : 0; el.style.transform = `scale(${n === name ? 1.2 - .2 * eo(lt / .25) : 1})`; el.style.transformOrigin = "0 0" });
+  // video layer: hook, playback, end
+  const vOn = name === "hook" || name === "vid" || name === "end";
+  $("vid").style.opacity = vOn ? 1 : 0; $("shade").style.opacity = name === "hook" || name === "end" ? 1 : 0;
+  $("hook").style.opacity = name === "hook" ? eo(t / .3) : 0; $("hook").style.transform = `scale(${1.15 - .15 * eo(t / .35)})`; $("hook").style.transformOrigin = "0 100%";
+  // 1 inputs
+  $("c_selfie").style.opacity = 0; $("c_plakat").style.opacity = 0; $("plus").style.opacity = 0;
+  if (name === "s1") { pop($("c_selfie"), lt - .3); $("c_selfie").style.transform += " rotate(-4deg)"; pop($("plus"), lt - 1.0); pop($("c_plakat"), lt - 1.4); $("c_plakat").style.transform += " rotate(4deg)" }
+  // 2 style image
+  $("p_s2").style.opacity = name === "s2" ? eo(lt / .25) : 0; $("c_stil").style.opacity = 0;
+  if (name === "s2") { $("ty2").textContent = P2.slice(0, Math.floor(P2.length * cl((lt - .3) / 1.6))); pop($("c_stil"), lt - 2.0) }
+  // 3 my character
+  $("p_s3").style.opacity = name === "s3" ? eo(lt / .25) : 0; $("c_maik").style.opacity = 0;
+  if (name === "s3") { $("ty3").textContent = P3.slice(0, Math.floor(P3.length * cl((lt - .2) / 1.2))); pop($("c_maik"), lt - 1.5) }
+  // 4 seedance: image flies into the tool
+  $("p_s4").style.opacity = name === "s4" ? eo(lt / .25) : 0; $("tool").style.opacity = name === "s4" ? eo((lt - .2) / .3) : 0;
+  if (name === "s4") { $("ty4").textContent = P4.slice(0, Math.floor(P4.length * cl((lt - .2) / 1.1))); const c = $("c_maik"), f = eio((lt - .3) / .9); c.style.opacity = 1 - f * .8; c.style.transform = `translateY(${f * 200}px) scale(${1 - .75 * f})`; $("bar").style.width = cl((lt - 1.0) / 1.1) * 100 + "%" }
+  // flash into the video
+  $("flash").style.opacity = t >= 15.6 && t < 15.75 ? .8 * (1 - (t - 15.6) / .15) : 0;
+  $("vlab").style.opacity = name === "vid" ? eo((t - 15.8) / .2) : 0;
+  $("end").style.opacity = name === "end" ? eo(lt / .3) : 0;
+  $("end").style.transform = `translateY(${name === "end" ? (1 - eo(lt / .35)) * 40 : 0}px)`;
+  if (vOn) { const sec = name === "hook" ? 6.0 + t * .9 : 0.0 + (t - 15.6) * 1.0 + (name === "end" ? 0 : 0); let n = name === "hook" ? 1 + Math.floor(sec * 30) : 1 + Math.floor((t - 15.6) * 30 + 60); n = Math.min(303, n); const src = `raw/vid/${String(n).padStart(3, "0")}.jpg`, el = $("vid"); if (!el.src.endsWith(src)) { el.src = src; await el.decode().catch(() => {}) } }
+};
+</script>
+</body></html>
