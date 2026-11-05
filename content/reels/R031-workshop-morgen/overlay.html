@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--line:rgba(255,255,255,.16)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent;color:#fff;font-family:Inter,sans-serif}
+.top{position:absolute;left:60px;right:60px;top:110px;z-index:10;opacity:0}
+.pill{display:inline-flex;align-items:center;gap:16px;background:rgba(11,11,11,.9);border-radius:22px;padding:18px 28px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pill .t{font:700 66px/1 Oswald;text-transform:uppercase}
+.pill .k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.b{color:var(--blue)}
+.row{display:flex;gap:14px;margin-top:14px;align-items:center;flex-wrap:wrap}
+.chip{font:600 44px Inter;background:rgba(11,11,11,.9);border:2px solid rgba(255,255,255,.25);border-radius:40px;padding:12px 24px;opacity:0}
+.chip.on{border-color:var(--blue);background:var(--blue)}
+.arrow{font:700 44px Oswald;color:var(--blue);opacity:0}
+.layer{position:absolute;inset:0;opacity:0;background:var(--black)}
+.lab{position:absolute;left:0;right:0;text-align:center;font:700 100px/1 Oswald;text-transform:uppercase}
+.sub{position:absolute;left:0;right:0;text-align:center;font:500 30px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+svg{position:absolute;left:0;top:0}
+.file{position:absolute;left:190px;right:190px;top:760px;border-radius:24px;background:#141519;border:3px solid var(--blue);box-shadow:0 0 90px rgba(47,91,255,.45);padding:36px 40px;opacity:0}
+.file .fn{font:600 30px 'JetBrains Mono',monospace;color:#8fa4ff}
+.file .ti{margin-top:14px;font:700 76px/1 Oswald;text-transform:uppercase}
+.file .ln{height:14px;border-radius:7px;background:rgba(255,255,255,.18);margin-top:18px}
+.bars{position:absolute;left:90px;right:90px;top:780px}
+.bars .r{margin-bottom:70px}
+.bars .nm{display:flex;justify-content:space-between;font:700 54px Oswald;text-transform:uppercase;margin-bottom:16px}
+.bars .nm b{font-family:'JetBrains Mono',monospace;color:#fff}
+.bars .tr{height:56px;border-radius:28px;background:rgba(255,255,255,.12);overflow:hidden}
+.bars .tr i{display:block;height:100%;width:0;border-radius:28px;background:#fff}
+.bars .r.b .tr i{background:var(--blue)}
+.ws{position:absolute;left:70px;right:70px;top:120px;opacity:0;z-index:10;background:rgba(11,11,11,.92);border:3px solid var(--blue);border-radius:28px;padding:26px 32px;box-shadow:0 0 70px rgba(47,91,255,.35)}
+.ws .k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.ws .t{margin-top:8px;font:700 74px/1 Oswald;text-transform:uppercase}
+.ws .d{margin-top:14px;font:600 36px Inter}
+.ws .d span{display:inline-block;background:var(--blue);border-radius:12px;padding:6px 16px;margin-right:10px}
+.ws li{list-style:none;font:500 32px/1.35 Inter;padding:8px 0;border-top:1px solid var(--line);opacity:0}
+.ws ul{margin-top:14px;padding:0}
+#cap{position:absolute;left:50px;right:50px;top:1600px;text-align:center;z-index:30;font:800 64px/1.12 Inter;text-shadow:0 4px 0 #000,0 0 26px rgba(0,0,0,.9)}
+#cap span{display:inline-block;margin:0 8px}
+#cap span.on{color:var(--blue)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:4px;background:rgba(0,0,0,.25);z-index:31}
+.prog i{display:block;height:100%;background:#fff;width:0}
+
+.cal{display:inline-flex;flex-direction:column;align-items:center;width:150px;border-radius:20px;overflow:hidden;background:#fff;color:#0B0B0B;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cal .m{width:100%;text-align:center;background:var(--blue);color:#fff;font:700 30px Oswald;padding:6px 0}
+.cal .d{font:700 84px/1 Oswald;padding:6px 0 2px}
+.cal .w{font:600 22px Montserrat;letter-spacing:.14em;padding-bottom:8px}
+.posts{display:flex;gap:14px;margin-top:14px}
+.posts div{flex:1;height:260px;border-radius:18px;background:#0B0B0B;border:3px solid #fff;position:relative;overflow:hidden;opacity:0}
+.posts div:before{content:"";position:absolute;left:16px;right:16px;top:18px;height:110px;border-radius:10px;background:linear-gradient(135deg,#2F5BFF,#0B0B0B)}
+.posts div i{position:absolute;left:16px;top:144px;font:700 34px/1 Oswald;font-style:normal;text-transform:uppercase}
+.posts div b{position:absolute;right:12px;bottom:10px;width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font:700 26px Inter}
+.vs{display:flex;gap:14px;margin-top:14px}
+.vs div{flex:1;border-radius:20px;padding:20px;font:700 50px/1.05 Oswald;text-transform:uppercase;opacity:0}
+.vs .no{background:rgba(11,11,11,.9);color:#888;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:#C0392B}
+.vs .yes{background:var(--blue)}
+.stack{display:flex;flex-direction:column-reverse;gap:8px;margin-top:14px;width:600px}
+.stack div{border-radius:14px;background:rgba(11,11,11,.9);border:2px solid var(--blue);font:700 40px Oswald;text-transform:uppercase;padding:10px 20px;opacity:0}
+.stack div.base{background:var(--blue)}
+</style></head><body>
+<div class="prog"><i id="prog"></i></div>
+
+<div class="top" id="t_intro"><div class="pill"><span style="font-size:60px" id="sun">☀️</span><span class="t">Guten Morgen!</span></div></div>
+<div class="top" id="t_morgen"><div style="display:flex;gap:18px;align-items:center"><div class="cal" id="cal"><div class="m">NOV</div><div class="d">06</div><div class="w">FREITAG</div></div><div class="pill"><span class="k">Morgen</span><span class="t">Workshop <span class="b">17 Uhr</span></span></div></div></div>
+
+<div class="layer" id="l_thema"><div class="sub" style="top:700px">Thema diesmal</div><div class="lab" style="top:760px;font-size:150px">Mit KI zur<br><span class="b">Personal Brand.</span></div></div>
+
+<div class="top" id="t_skill"><div class="file" id="file" style="position:static;opacity:1;padding:24px 30px"><div class="fn">skills/deine-brand/SKILL.md</div><div class="ti" style="font-size:64px">Deine Brand als <span class="b">Skill</span></div><div class="ln" style="width:80%"></div><div class="ln" style="width:60%"></div></div></div>
+<div class="top" id="t_gleich"><div class="pill"><span class="t">Immer gleicher Look</span></div><div class="posts" id="posts"><div><i>Post 1</i><b>✓</b></div><div><i>Post 2</i><b>✓</b></div><div><i>Post 3</i><b>✓</b></div></div></div>
+<div class="top" id="t_brand"><div class="pill"><span class="t">Deine Brand überall</span></div><div class="row"><span class="chip" id="c1">🎨 Styling</span><span class="chip" id="c2">🌐 Website</span><span class="chip" id="c3">📱 Apps</span></div></div>
+<div class="top" id="t_generisch"><div class="vs"><div class="no" id="v1">Generisch</div><div class="yes" id="v2">Nach dir ✓</div></div></div>
+<div class="top" id="t_workflows"><div class="pill"><span class="t">+ ganze Workflows</span></div><svg width="960" height="200" style="position:relative;display:block;margin-top:10px" id="wf"></svg></div>
+<div class="top" id="t_basis"><div class="pill"><span class="t">Die Basis für KI</span></div><div class="stack" id="stack"><div class="base">Deine Brand als Skill</div><div>Content</div><div>Website &amp; Apps</div><div>Workflows</div></div></div>
+
+<div class="ws" id="ws"><div class="k">Workshop · morgen</div><div class="t">Mit KI zur<br><span class="b">Personal Brand</span></div>
+  <div class="d"><span>Fr 06.11.</span><span>17 Uhr</span></div>
+  <ul><li>Deinen eigenen Brand-Skill bauen</li><li>Content, Website &amp; Apps im eigenen Look</li><li>Noch nicht angemeldet? Schreib mir 👇</li></ul></div>
+<div class="top" id="t_bye" style="text-align:center"><div class="pill"><span class="t">Bis morgen 👋</span></div></div>
+
+<div id="cap"></div>
+<div id="flash"></div>
+<script>
+const CUTS = [{"sec": "intro", "in": 1.3, "out": 3.02, "t": 0.0, "nf": 52, "vt": 0.0}, {"sec": "morgen", "in": 3.5, "out": 7.02, "t": 1.733, "nf": 106, "vt": 1.733}, {"sec": "thema", "in": 7.4, "out": 11.12, "t": 5.267, "nf": 112, "vt": 5.267}, {"sec": "skill", "in": 11.74, "out": 14.02, "t": 9.0, "nf": 68, "vt": 9.0}, {"sec": "gleich", "in": 14.86, "out": 17.16, "t": 11.267, "nf": 69, "vt": 11.267}, {"sec": "gleich", "in": 18.64, "out": 19.42, "t": 13.567, "nf": 23, "vt": 13.567}, {"sec": "brand", "in": 19.46, "out": 22.94, "t": 14.333, "nf": 105, "vt": 14.333}, {"sec": "brand", "in": 23.4, "out": 25.04, "t": 17.833, "nf": 50, "vt": 17.833}, {"sec": "brand", "in": 25.62, "out": 31.04, "t": 19.5, "nf": 163, "vt": 19.5}, {"sec": "generisch", "in": 31.56, "out": 33.58, "t": 24.933, "nf": 61, "vt": 24.933}, {"sec": "generisch", "in": 33.7, "out": 35.72, "t": 26.967, "nf": 61, "vt": 26.967}, {"sec": "workflows", "in": 36.48, "out": 39.6, "t": 29.0, "nf": 94, "vt": 29.0}, {"sec": "basis", "in": 39.7, "out": 41.48, "t": 32.133, "nf": 54, "vt": 32.133}, {"sec": "basis", "in": 41.68, "out": 45.26, "t": 33.933, "nf": 107, "vt": 33.933}, {"sec": "los", "in": 45.5, "out": 47.18, "t": 37.5, "nf": 51, "vt": 37.5}, {"sec": "los", "in": 47.36, "out": 48.92, "t": 39.2, "nf": 47, "vt": 39.2}, {"sec": "cta", "in": 49.66, "out": 50.14, "t": 40.767, "nf": 15, "vt": 40.767}, {"sec": "cta", "in": 51.32, "out": 54.08, "t": 41.267, "nf": 83, "vt": 41.267}, {"sec": "cta", "in": 54.58, "out": 56.14, "t": 44.033, "nf": 47, "vt": 44.033}, {"sec": "bye", "in": 57.0, "out": 58.86, "t": 45.6, "nf": 56, "vt": 45.6}], CAPS = [[0.02, 0.18, "guten"], [0.18, 0.64, "Morgen,"], [0.84, 0.98, "liebe"], [0.98, 1.7, "Community."], [1.773, 1.9329999999999998, "Morgen"], [1.933, 2.1530000000000005, "ist"], [2.153, 2.3329999999999997, "es"], [2.333, 2.4730000000000003, "wieder"], [2.473, 2.893, "soweit,"], [2.953, 3.193, "wir"], [3.193, 3.693, "starten"], [3.693, 3.893, "mit"], [3.893, 4.053, "dem"], [4.053, 4.553, "nächsten"], [4.553, 5.233, "Workshop."], [5.287, 5.567, "Thema"], [5.567, 6.407, "diesmal,"], [6.667, 6.9270000000000005, "mit"], [6.927, 7.3469999999999995, "KI"], [7.347, 7.767, "zur"], [7.767, 8.466999999999999, "Personal"], [8.467, 8.967, "Brand."], [9.02, 9.2, "Und"], [9.2, 9.36, "hier"], [9.36, 9.799999999999999, "lernst"], [9.8, 9.88, "du,"], [9.92, 10.04, "wie"], [10.04, 10.219999999999999, "du"], [10.22, 10.520000000000001, "einen"], [10.52, 10.799999999999999, "Skill"], [10.8, 11.260000000000002, "erstellst"], [11.287, 11.807, "damit"], [11.807, 12.067, "dein"], [12.067, 13.147, "Content"], [13.147, 13.567, "immer"], [13.587, 13.907, "gleich"], [13.907, 14.327, "aussieht,"], [14.353, 14.533, "dass"], [14.533, 14.813, "du"], [14.813, 14.933, "eine"], [14.933, 15.313, "eigene"], [15.313, 15.733, "Personal"], [15.733, 16.232999999999997, "Brand"], [16.233, 16.953000000000003, "im"], [16.953, 17.813, "Styling,"], [17.853, 17.993000000000002, "auf"], [17.993, 18.173, "der"], [18.173, 19.453, "Webseite,"], [19.54, 19.619999999999997, "in"], [19.62, 19.92, "Apps"], [19.92, 20.14, "und"], [20.14, 20.3, "so"], [20.3, 21.020000000000003, "weiter"], [21.02, 22.84, "erstellst"], [22.84, 23.88, "und"], [23.88, 24.9, "anwendest."], [24.953, 25.093, "Damit"], [25.093, 25.313, "zieht"], [25.313, 25.453, "dein"], [25.453, 25.733, "Content"], [25.733, 26.093, "immer"], [26.093, 26.393, "wieder"], [26.393, 26.613, "gleich"], [26.613, 26.933, "aus,"], [26.967, 27.367, "kriegst"], [27.367, 27.777, "nicht"], [27.777, 28.177, "mehr"], [28.177, 28.587, "dieses"], [28.587, 28.987, "Generische"], [29.02, 29.439999999999998, "kannst"], [29.44, 29.76, "damit"], [29.76, 30.020000000000003, "auch"], [30.02, 30.299999999999997, "ganze"], [30.3, 31.360000000000003, "Workflows"], [31.36, 32.099999999999994, "aufbauen."], [32.153, 32.393, "Das"], [32.393, 32.673, "ist"], [32.673, 32.873, "eigentlich"], [32.873, 33.053, "so"], [33.053, 33.153, "die"], [33.153, 33.893, "Basis,"], [33.933, 34.533, "um"], [34.533, 35.123000000000005, "halt"], [35.123, 35.723, "mit"], [35.723, 36.32299999999999, "KI"], [36.323, 36.913000000000004, "effizient"], [36.913, 37.513, "umzugehen."], [37.52, 37.88, "Morgen,"], [38.12, 39.18, "Freitag,"], [39.22, 39.58, "17"], [39.58, 39.92, "Uhr"], [39.92, 40.12, "legen"], [40.12, 40.34, "wir"], [40.34, 40.74, "los."], [40.787, 41.227, "wenn"], [41.287, 41.467, "dich"], [41.467, 41.547000000000004, "noch"], [41.547, 43.06699999999999, "nicht"], [43.067, 43.527, "angemeldet"], [43.527, 44.007000000000005, "hast,"], [44.033, 44.343, "dann"], [44.343, 44.653, "melde"], [44.653, 44.973, "dich"], [44.973, 45.283, "bei"], [45.283, 45.593, "mir."], [45.62, 46.16, "ich"], [46.16, 46.32, "freu"], [46.32, 46.44, "mich"], [46.44, 46.6, "auf"], [46.6, 46.98, "morgen."], [47.28, 47.44, "Ciao!"]], VEND = 47.467;
+const TOTAL = VEND + 0.6; window.TOTAL = TOTAL;
+const S = {}; CUTS.forEach(c => { if (!(c.sec in S)) S[c.sec] = c.t });
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3), eio = x => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 };
+const $ = id => document.getElementById(id);
+const win = (t, a, b, f = .22) => t < a || t >= b ? 0 : Math.min(eo((t - a) / f), eo((b - t) / f));
+const W = { intro: [0.05, S.morgen], morgen: [S.morgen, S.thema], thema: [S.thema, S.skill], skill: [S.skill, S.gleich], gleich: [S.gleich, S.brand], brand: [S.brand, S.generisch],
+  generisch: [S.generisch, S.workflows], workflows: [S.workflows, S.basis], basis: [S.basis, S.los], los: [S.los, S.cta], cta: [S.los, S.bye], bye: [S.bye, TOTAL + 1] };
+const wf = $("wf"), WN = ["Idee", "Skill", "Content", "Post"];
+WN.forEach((n, i) => { const x = 100 + i * 250; if (i) { const l = document.createElementNS("http://www.w3.org/2000/svg", "line"); l.setAttribute("x1", x - 250 + 44); l.setAttribute("y1", 70); l.setAttribute("x2", x - 44); l.setAttribute("y2", 70); l.setAttribute("stroke", "#fff"); l.setAttribute("stroke-width", 6); l.dataset.i = i; wf.appendChild(l) }
+  const c = document.createElementNS("http://www.w3.org/2000/svg", "circle"); c.setAttribute("cx", x); c.setAttribute("cy", 70); c.setAttribute("r", 44); c.setAttribute("fill", "#0B0B0B"); c.setAttribute("stroke", "#2F5BFF"); c.setAttribute("stroke-width", 6); c.dataset.i = i; wf.appendChild(c);
+  const tx = document.createElementNS("http://www.w3.org/2000/svg", "text"); tx.setAttribute("x", x); tx.setAttribute("y", 160); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("font-family", "Inter"); tx.setAttribute("font-weight", "700"); tx.setAttribute("font-size", "36"); tx.setAttribute("fill", "#fff"); tx.setAttribute("stroke", "#000"); tx.setAttribute("stroke-width", "6"); tx.setAttribute("paint-order", "stroke"); tx.textContent = n; tx.dataset.i = i; wf.appendChild(tx) });
+const GR = []; let g = [];
+CAPS.forEach((w, i) => { g.push(w); const nx = CAPS[i + 1]; if (g.length >= 3 || /[.?!,]$/.test(w[2]) || !nx || nx[0] - w[1] > .3) { GR.push(g); g = [] } });
+let lastG = -1;
+const pop = (el, x) => { const a = eo(x / .25); el.style.opacity = a; el.style.transform = `scale(${1.25 - .25 * a})` };
+window.DRAW = async t => {
+  const on = k => win(t, W[k][0], W[k][1], k === "thema" ? .1 : .22);
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  ["intro", "morgen", "skill", "gleich", "brand", "generisch", "workflows", "basis", "bye"].forEach(k => { const el = $("t_" + k), a = on(k); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * -30}px)` });
+  $("sun").style.transform = `rotate(${t * 40}deg)`;
+  if (on("morgen")) { const x = t - W.morgen[0]; $("cal").style.transform = `perspective(600px) rotateX(${(1 - eo((x - .2) / .5)) * 90}deg)` }
+  // theme slam
+  $("l_thema").style.opacity = on("thema"); $("l_thema").querySelector(".lab").style.transform = `scale(${1.3 - .3 * eo((t - W.thema[0]) / .25)})`;
+  $("flash").style.opacity = t >= W.thema[0] && t < W.thema[0] + .1 ? .6 * (1 - (t - W.thema[0]) / .1) : 0;
+  if (on("skill")) { const x = t - W.skill[0]; $("file").style.transform = `scale(${1.15 - .15 * eo(x / .3)})`; [...$("file").querySelectorAll(".ln")].forEach((l, i) => l.style.transform = `scaleX(${eo((x - .5 - i * .3) / .4)})`, ); $("file").querySelectorAll(".ln").forEach(l => l.style.transformOrigin = "0 0") }
+  if (on("gleich")) { const x = t - W.gleich[0]; [...$("posts").children].forEach((p, i) => pop(p, x - .3 - i * .35)) }
+  if (on("brand")) { const x = t - W.brand[0]; [["c1", 2.0], ["c2", 3.6], ["c3", 5.4]].forEach(([id, d]) => { pop($(id), x - d); $(id).className = "chip" + (x > d + .3 ? " on" : "") }) }
+  if (on("generisch")) { const x = t - W.generisch[0]; pop($("v1"), x - 2.0); pop($("v2"), x - 3.0) }
+  if (on("workflows")) { const x = t - W.workflows[0]; wf.querySelectorAll("[data-i]").forEach(el => el.style.opacity = eo((x - .3 - (+el.dataset.i) * .45) / .25)); wf.querySelectorAll("circle").forEach(c => c.setAttribute("fill", x - .3 - (+c.dataset.i) * .45 > .3 ? "#2F5BFF" : "#0B0B0B")) }
+  if (on("basis")) { const x = t - W.basis[0]; [...$("stack").children].forEach((d, i) => { const a = eo((x - .3 - i * .5) / .25); d.style.opacity = a; d.style.transform = `translateY(${(1 - a) * -60}px)` }) }
+  // workshop card over the last part
+  const wa = on("cta"); $("ws").style.opacity = wa; $("ws").style.transform = `translateY(${(1 - wa) * -40}px)`;
+  [...document.querySelectorAll("#ws li")].forEach((li, i) => { const a = eo((t - W.cta[0] - [1.2, 2.2, 3.8][i]) / .3); li.style.opacity = a; li.style.transform = `translateX(${(1 - a) * -30}px)` });
+  const gi = GR.findIndex(gr => t >= gr[0][0] - .05 && t < gr[gr.length - 1][1] + .15), cap = $("cap");
+  if (gi >= 0 && !on("thema")) { if (gi !== lastG) { cap.innerHTML = GR[gi].map(w => `<span>${w[2].replace(/,$/, "")}</span>`).join(""); lastG = gi } let cur = 0; GR[gi].forEach((w, i) => { if (t >= w[0] - .03) cur = i }); [...cap.children].forEach((el, i) => el.className = i === cur ? "on" : ""); cap.style.opacity = 1 } else cap.style.opacity = 0;
+};
+</script>
+</body></html>

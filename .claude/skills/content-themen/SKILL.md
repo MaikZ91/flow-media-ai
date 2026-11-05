@@ -70,6 +70,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 05.11.2026 | R031 | `lernen` | Reel (Talking Head, Farbe + Animationen) | „Morgen: Mit KI zur Personal Brand“ – Workshop-Promo Fr 06.11. 17 Uhr, Brand-Skill → gleicher Look, nicht generisch, Workflows | `format = talkinghead-animiert-farbe` |
 | 04.11.2026 | R030 | `lernen` / `weg` | Reel (Talking Head, Farbe + Animationen) | „Das Skill-Experiment“ – Masterclass 2 h → Workflow als Skill (app-in-varianten) → heute in 1 h? Update folgt; CTA Workshop Fr 06.11. 17 Uhr | `format = talkinghead-animiert-farbe` |
 | 04.11.2026 | R029 | `kreativ` / `lernen` | Reel (How-to Bild → Video) | „Dieses Video war ein Plakat.“ – Selfie + Plakat-Referenz → Stil-Bild → Maik als Figur → Seedance 2.5, Prompts sinngemäß in der Caption | `format = howto-pipeline-bild-video` |
 | 03.11.2026 | R028 | `weg` / `community` | Reel (Talking Head, Farbe + Animationen) | „3 Dinge“ – Community wächst (Atemkreis, Buch, Netzwerk), Rentner-Ehepaar im Café redet über KI, süchtig nach Bild-/Video-Generierung (Credits-Balken, Bertrand) | `format = talkinghead-animiert` |
