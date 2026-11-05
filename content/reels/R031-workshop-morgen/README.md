@@ -16,6 +16,8 @@ Morgen ist Workshop-Tag. 🎙️
 Du baust dir einen eigenen Brand-Skill. Damit sieht dein Content immer nach dir aus – nicht mehr generisch nach KI. Für Posts, deine Website, deine Apps.
 Und darauf baust du ganze Workflows auf. Für mich ist das die Basis, um mit KI wirklich effizient zu arbeiten.
 
+🎁 Bonus für alle, die dabei sind: Bis zum 31.12. bekommst du von mir Q&A und technischen Support, während du deine eigenen Ideen umsetzt. Du stehst danach also nicht allein da.
+
 Noch nicht angemeldet? Schreib mir eine Nachricht – dann schick ich dir alle Infos. 👇
 
 #PersonalBrand #KI #ClaudeAI #Codex #FlowMediaAI
