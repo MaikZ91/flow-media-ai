@@ -577,13 +577,14 @@ const COMMUNITY_URL = "https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";
 const WA_TEXT = {
   community: "Hi Maik, ich möchte in die Flow Business Community.",
   stammtisch: "Hi Maik, ich interessiere mich für den digitalen Stammtisch.",
-  workshop: "Hi Maik, ich möchte beim Workshop am Montag, 26.10. um 18 Uhr dabei sein („Mit KI zur Personal Brand“).",
+  workshop: "Hi Maik, ich möchte beim Workshop am {DATUM} um 18 Uhr dabei sein („Mit KI zur Personal Brand“).",
   hallo: "Hi Maik, ich hab eine Frage:",
 };
 document.querySelectorAll("[data-wa]").forEach(a => {
   const k = a.dataset.wa;
   a.href = k === "community" && COMMUNITY_URL ? COMMUNITY_URL : `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT[k])}`;
   a.target = "_blank"; a.rel = "noopener";
+  if (k === "workshop") a.addEventListener("click", () => { const d = (document.getElementById("ws-date") || {}).textContent || "Montag"; a.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT.workshop.replace("{DATUM}", d.replace(/^Mo /, "Montag, ")))}` });
 });
 
 // Contact pill
