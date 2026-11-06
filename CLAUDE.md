@@ -40,7 +40,7 @@ Maiks Google Drive `Flow Media AI` (Ordner-ID `1b0BfA5Y56OwA3-RBMhKXakpJ4dKOBRiU
 | `CLAUDE.md` bis zur Linie `---` (Claude-Kopf; für Abschnitte 1–10 ein Verweis auf die Brand Identity) | `07_KI/CLAUDE` |
 | `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `07_KI/skills/<name>/…` |
 | `auswertungen/…` | `07_KI/auswertungen/…` |
-| `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `01_Marketing/Brand_Identity_Flow_Media_AI` |
+| `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `01_Marketing/Brand_Identity_Flow_Media_AI` (daneben Maiks eigenes Doc `Persoenlichkeitsprofil_und_Werte_Maik` – nie überschreiben) |
 | `content/01_startplan.md` | `01_Marketing/Startplan_Instagram` |
 | `content/learnings.md` | `01_Marketing/Learnings_Instagram` |
 | `marketing/brand/…` | `01_Marketing/Brand/…` |
@@ -190,6 +190,8 @@ Apps • Automatisierung • digitale Produkte
 **Stand 20.10.2026 – meine Werte gerade:**
 
 Macht · Mut · Pragmatismus · Risiko · Entwicklung · Erfolg · Flow · Fokus · Freiheit · Herausforderung · Innovation · Inspiration · Intuition · Kreativität · Selbstvertrauen · Sinnhaftigkeit · Spontaneität · Struktur · Tiefe · Unabhängigkeit · Verlässlichkeit · Visionen · Wachstum · Wahrheit · Weiterentwicklung · Zuverlässigkeit
+
+Kurzform (aus Maiks eigener Fassung in Drive, 21.10.2026): **Frei sein. Ideen verwirklichen. Einfach machen. Echt bleiben. Wachsen. Etwas bewegen.** Seine ausführlichen Werte (Freiheit & Selbstbestimmung · Kreativität, Vision & Schaffenskraft · Einfachheit, Pragmatismus & Fokus · Authentizität, Ehrlichkeit & echte Verbindung · Wachstum, Mut & Selbstvertrauen · Sinnhaftigkeit & Wirksamkeit) und sein Persönlichkeitsprofil (strategischer Visionär, kreativer Erfinder, pragmatischer Umsetzer) stehen **nur in Drive** (`01_Marketing/Persoenlichkeitsprofil_und_Werte_Maik`) – dort nachlesen, nicht ins öffentliche Repo kopieren.
 
 Ausformulierung:
 - **Freiheit:** Ich möchte selbst entscheiden, wie ich arbeite und was ich erschaffe – und anderen mit KI mehr Freiheit ermöglichen.
