@@ -1,9 +1,9 @@
 ---
 name: creative-director
-description: Der Creative Director für @flow.media.ai – Maiks Instagram-Kanal für Flow Media AI (KI, Apps, Websites, Automatisierung; Personenmarke, Build in public). Vereint Positionierung, Stil, Themen, Reel-Handwerk, virales Wissen und den Post-Ablauf. Bei JEDEM Post, Reel, Karussell, Story, Caption, Bio-Text oder jeder Kampagne für @flow.media.ai zuerst laden.
+description: Der Creative Director für @flow.media.ai – Maiks Instagram-Kanal für Flow Media AI (Maik als persönlicher KI-Sparrings- und Umsetzungspartner: „Viele Ideen? Mach sie mit KI real.“; Apps, Websites, Automatisierung, digitale Produkte; Personenmarke, Build in public). Vereint Positionierung, Stil, Themen, Reel-Handwerk, virales Wissen und den Post-Ablauf. Bei JEDEM Post, Reel, Karussell, Story, Caption, Bio-Text oder jeder Kampagne für @flow.media.ai zuerst laden.
 ---
 
-# Creative Director @flow.media.ai (Stand 23.10.2026)
+# Creative Director @flow.media.ai (Stand 23.10.2026, Positionierung 06.11.2026)
 
 Einziger Skill für alle kreativen Instagram-Aufgaben von Flow Media AI. Neue Vorgaben von Maik **hier** eintragen (mit Datum).
 
@@ -15,7 +15,11 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - **Maßgeblich ist `CLAUDE.md` im Root dieses Repos** (Wer ich bin, Mission, Positionierung, Zielgruppe, Werte, Tonalität, Post-Regeln). Vor jedem Post lesen. Dieser Skill ergänzt nur, was für Instagram dazukommt.
 - Content-Plan: `content/01_startplan.md` · Learnings: `content/learnings.md`.
 - Kanal: **@flow.media.ai**, neuer Account (angelegt 18.10.2026). Der *alte* Account mit diesem Namen heißt seit 13.10. @natuerlich.du.ms – dessen Zahlen und Follower gehören nicht hierher.
-- Kernsatz: **„Ideen umsetzen. Arbeit vereinfachen. Möglichkeiten schaffen.“**
+- **Positionierung (Maik, 06.11.2026):** Maik ist der **persönliche KI-Sparrings- und Umsetzungspartner** für Gründer, Selbstständige und kreative Unternehmer, die viele Ideen haben, aber nicht wissen, wie sie sie umsetzen. Kein Tool-Trainer, keine IT-Agentur. Details: `CLAUDE.md` §1–7.
+- Markenversprechen: **„We build your ideas.“** · Einstieg: **„Viele Ideen? Mach sie mit KI real.“** · Rolle: „Dein persönlicher KI-Partner.“ · Arbeitsweise: „Gemeinsam Ideen verwirklichen.“ · Nutzen: „Weniger suchen. Mehr erschaffen.“
+- Drei Leistungsbereiche als roter Faden: **Enable** (1:1-Sparring, Masterclasses, Begleitung) · **Build** (Websites, Apps, digitale Produkte, Workflows) · **Connect** (Community, Workshops). Jeder Post zahlt auf mindestens einen davon ein.
+- Bio @flow.media.ai: „Viele Ideen? Mach sie mit KI real. / Dein persönlicher KI-Partner / Sparring für Gründer & Selbstständige / Apps • Automatisierung • digitale Produkte / ↓ Jetzt starten“
+- Früherer Kernsatz (bis 06.11.2026): „Ideen umsetzen. Arbeit vereinfachen. Möglichkeiten schaffen.“
 
 ## 2. Haltung
 - Personenmarke: **Maik ist das Marketing**, nicht ein anonymer Agentur-Account.
@@ -37,7 +41,8 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - Musik nur mit freier Lizenz (z. B. Mixkit); Quelle notieren.
 
 ## 5. CTA
-- Nicht in jeden Post. Wenn, dann leise: „Folg mir, wenn du sehen willst, wie's weitergeht“ · „Schreib mir, wenn du so was für deinen Betrieb willst“ · bei Reels eine echte Frage für die Kommentare.
+- Nicht in jeden Post. Wenn, dann leise: „Folg mir, wenn du sehen willst, wie's weitergeht“ · „Du hast eine Idee, die du umsetzen willst? Schreib mir.“ · „Kostenloses Erstgespräch – Link in der Bio“ · bei Reels eine echte Frage für die Kommentare.
+- Verkaufs-CTAs zeigen auf Sparring/Begleitung, Masterclass oder Workshop – nicht auf einzelne Tools. Preise nur, wenn Maik sie für den Post freigibt.
 - Kein Keyword-Funnel („Kommentiere X“), solange es keine Auto-DM für diesen Account gibt.
 
 ## 6. Harte Regeln

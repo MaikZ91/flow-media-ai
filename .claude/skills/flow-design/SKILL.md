@@ -7,6 +7,8 @@ description: Das visuelle Design von Flow Media AI – Plakate, Flyer, Instagram
 
 Abgeleitet aus Maiks eigenen Gestaltungen in Google Drive (`Flow Media AI › 01_Marketing › Reels`): **„Flow Business Community“**, **„Zwei Ideen. Eine Vision.“** (App-Flyer), **„AI Masterclass“**, das Wellen-Zeichen und das **Karussell „WOW. ICH HAB'S GESCHAFFT.“** (3 Folien, gepostet 23.10.2026 – aktuell die beste Referenz). Inhalt und Regeln für Posts kommen aus `creative-director` und `CLAUDE.md`; dieser Skill regelt nur das Aussehen.
 
+**Markenzeile (Maik, 06.11.2026):** „**We build your ideas.**“ – als Claim unter der Wortmarke, auf Plakaten/Website-Hero/Angeboten. Rubrikzeile, wo Platz ist: „KI • Kreativität • Automatisierung • Media • Digitale Produkte“. Die drei Leistungsbereiche heißen **ENABLE · BUILD · CONNECT** (01/02/03, in dieser Reihenfolge) und dürfen als Label-Reihe auftauchen.
+
 **Grundidee:** Wie ein gutes Magazin-Cover. Schwarz, weiß, viel Luft, eine laute Überschrift, ein Foto von Maik, sonst nichts.
 
 **Personal Brand (Maik, 23.10.2026):** Auf **jedem** Post, jeder Karussell-Folie 1, jedem Reel-Cover und jedem Plakat ist Maik zu sehen – groß als Hauptmotiv oder klein (Kreis, Ecke, Signatur). Kein Motiv ohne Maik.

@@ -26,6 +26,8 @@ Der Creative Director wählt hier das Thema, `creative-director` regelt Inhalt/H
 
 Weitere Säulen nur nach Maiks OK ergänzen.
 
+**Bezug zur Positionierung (06.11.2026):** Jede Säule zahlt auf einen der drei Leistungsbereiche ein – **Enable** (Wissen, How-tos, Masterclass/Sparring), **Build** (gebaute Apps, Websites, Workflows), **Connect** (Community, Workshops, Austausch). Die Rotation achtet darauf, dass alle drei pro Woche vorkommen und Inhalte die Zielgruppe ansprechen: Gründer und Selbstständige mit vielen Ideen, aber ohne Plan, wie sie sie umsetzen.
+
 ## 2. Ideen je Säule (nur Ideen auf Basis echter Projekte)
 - `web`: „Website von 2014 → heute“ (Demo-Firma) · „Landingpage in einem Abend“ · „3 Dinge, die jede kleine Website braucht“
 - `tools`: „Ich hab mein Trello ersetzt“ (Flow Board) · „Board als App aufs iPhone – ohne App Store“ (✓ P005) · „Kalender per Doppelklick wie Outlook, selbst gebaut“

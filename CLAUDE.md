@@ -64,119 +64,145 @@ Ordner-IDs (für `parentId`): 01_Marketing `1dE9gJaTmDR0yIFP6rQBiMXr4m29L4vZh` �
 
 # FLOW MEDIA AI – Brand Identity & Positionierungsprofil
 
+**Stand 06.11.2026 – neue Positionierung (Maik).** Markenversprechen: **We build your ideas.**
+KI • Kreativität • Automatisierung • Media • Digitale Produkte
+
+**Die Positionierung in einem Satz (strategische Leitlinie für alles, was Flow Media AI anbietet):**
+Flow Media AI begleitet Gründer und Selbstständige als persönlicher KI-Sparrings- und Umsetzungspartner dabei, Ideen in konkrete digitale Produkte, smarte Prozesse und neue Geschäftsmöglichkeiten zu verwandeln.
+
 ## 1. Wer ich bin
 
-Ich bin Maik und beschäftige mich mit den Möglichkeiten von künstlicher Intelligenz, digitaler Produktentwicklung, Automatisierung und kreativer Umsetzung.
+Ich bin Maik, kreativer KI-Sparrings- und Umsetzungspartner für Gründer, Selbstständige und kreative Unternehmer.
 
-Mich fasziniert, wie schnell man heute aus einer Idee etwas Reales machen kann. Was früher viel Zeit, verschiedene Dienstleister oder umfangreiche technische Kenntnisse erforderte, lässt sich mit den richtigen KI-Tools oft deutlich schneller umsetzen.
+Ich unterstütze Menschen dabei, ihre Ideen weiterzuentwickeln, mit KI neue Möglichkeiten zu entdecken und daraus konkrete Projekte, digitale Produkte und funktionierende Lösungen zu erschaffen. Dabei verbinde ich strategisches Denken, Kreativität und technische Umsetzung.
 
-Ich entwickle selbst Apps, Websites, Tools und Automatisierungen und experimentiere damit, wie sich KI sinnvoll in reale Projekte integrieren lässt. Ein Beispiel dafür ist THE TRIBE, meine Community für echte Begegnungen in Bielefeld und Münster, für die ich digitale Lösungen entwickle.
+Ich zeige nicht einfach nur, welche KI-Tools es gibt. Ich arbeite gemeinsam mit meinen Kunden an ihren individuellen Vorhaben – von der ersten Idee bis zum fertigen Ergebnis. Ich bin dabei Sparringspartner, Ideengeber, Coach und technischer Umsetzer.
 
-Ich möchte nicht nur über KI reden. Ich möchte Dinge damit bauen, ausprobieren und zeigen, was tatsächlich möglich ist.
+Ich baue selbst Apps, Websites, Tools und Automatisierungen und probiere aus, wie sich KI sinnvoll in reale Projekte integrieren lässt. Ein Beispiel ist THE TRIBE, meine Community für echte Begegnungen in Bielefeld und Münster, für die ich digitale Lösungen entwickle.
+
+KI ist mein Werkzeug und Beschleuniger – nicht der eigentliche Zweck. Mein eigentliches Produkt ist die Verbindung aus:
+- kreativem Sparring,
+- strategischer Orientierung,
+- technischer Umsetzung,
+- Wissenstransfer und Befähigung.
 
 ## 2. Mein persönliches Why
 
-Ich möchte meine Kreativität und meine Fähigkeiten mit KI nutzen, um Ideen umzusetzen, echte Probleme zu lösen und mir ein unabhängiges, selbstbestimmtes Leben aufzubauen.
+Ich liebe es, Ideen zu entdecken, Möglichkeiten zu erkennen, Dinge zu erschaffen und andere Menschen dazu zu befähigen.
 
-Ich möchte selbst entscheiden, mit wem ich arbeite, welche Projekte ich umsetze, wo ich lebe und welchen Wert ich schaffe.
+Ich möchte meine Kreativität und meine Fähigkeiten mit KI nutzen, um Ideen umzusetzen, echte Probleme zu lösen und mir ein unabhängiges, selbstbestimmtes Leben aufzubauen. Ich möchte selbst entscheiden, mit wem ich arbeite, welche Projekte ich umsetze und welchen Wert ich schaffe – und meine Fähigkeiten nicht ausschließlich gegen Arbeitszeit eintauschen, sondern Lösungen schaffen, deren Wert sich am Ergebnis orientiert.
 
-Mich motiviert die Möglichkeit, innerhalb kurzer Zeit etwas zu entwickeln, das Menschen begeistert, Unternehmen weiterbringt oder Arbeit spürbar erleichtert.
+Flow Media AI verbindet meine Kreativität, meine Begeisterung für Technologie und meinen Wunsch nach Freiheit.
 
-Ich möchte meine Fähigkeiten nicht ausschließlich gegen Arbeitszeit eintauschen. Ich möchte Lösungen schaffen, deren Wert sich am Ergebnis orientiert.
+## 3. Für wen ich das mache (Zielgruppe)
 
-Gleichzeitig macht es mir Spaß, andere Menschen für die Möglichkeiten von KI zu begeistern und ihnen zu zeigen, dass sie eigene Ideen umsetzen können, die sie sich vorher vielleicht nicht zugetraut hätten.
+- Gründer und Business Starter
+- Solo-Selbstständige und Solopreneure
+- Coaches und Dienstleister
+- Kreative Unternehmer
+- Kleine Unternehmen und Start-ups
 
-Flow Media AI ist für mich deshalb mehr als ein Business. Es ist die Möglichkeit, meine Kreativität, meine Begeisterung für Technologie und meinen Wunsch nach Freiheit miteinander zu verbinden.
+Besonders Menschen, die **viele Ideen haben, aber nicht genau wissen, wie sie diese umsetzen sollen.**
 
-## 3. Meine Mission
+Ihr Problem:
+- Viele Ideen, aber keine klare Richtung.
+- Zu viele KI-Tools und Möglichkeiten.
+- Keine Lust, sich durch unzählige YouTube-Videos und Tutorials zu kämpfen.
+- Fehlendes technisches Know-how.
+- Sie brauchen jemanden, der mitdenkt, Feedback gibt und gemeinsam mit ihnen umsetzt.
 
-Ich helfe Menschen und Unternehmen dabei, die Möglichkeiten von KI praktisch zu nutzen, eigene Ideen schneller umzusetzen und unnötigen Aufwand zu reduzieren.
+Wichtiger als eine Branche ist die Haltung: neugierig, offen, bereit, Neues auszuprobieren und selbst etwas zu bewegen.
 
-Dabei geht es mir nicht darum, KI um ihrer selbst willen einzusetzen. Entscheidend ist, was am Ende entsteht:
+## 4. Mein Versprechen
 
-- weniger manuelle Arbeit
-- effizientere Prozesse
-- schnellere Umsetzung von Ideen
-- neue digitale Produkte und Möglichkeiten
-- mehr Zeit für die Dinge, die wirklich wichtig sind
+**Viele Ideen? Mach sie mit KI real.**
 
-Ich verbinde technologische Möglichkeiten mit kreativem Denken und pragmatischer Umsetzung.
+Ich schließe die Lücke zwischen Idee und Umsetzung. Nicht noch mehr Informationen konsumieren, sondern ins Machen kommen:
+- Ideen konkretisieren.
+- Möglichkeiten erkennen.
+- Lösungen entwickeln.
+- Prototypen bauen.
+- Prozesse automatisieren.
+- Selbstständiger mit KI arbeiten.
 
-## 4. Meine Positionierung
+Das Ziel: **Mehr Freiheit, Kreativität und Unabhängigkeit durch KI.**
 
-**Flow Media AI – Ideen umsetzen. Arbeit vereinfachen. Möglichkeiten schaffen.**
+## 5. Meine drei Leistungsbereiche
 
-Ich verbinde KI, Automatisierung und digitale Produktentwicklung, um aus Ideen konkrete Lösungen zu machen.
+**01 – ENABLE** · Menschen befähigen, KI zu verstehen und selbst einzusetzen.
+- Persönliches 1:1-Sparring
+- KI-Beratung und Masterclasses
+- Ideenentwicklung und Strategie
+- Individuelle Begleitung (z. B. Langzeit-Sparring über 3 oder 6 Monate: wöchentlich 1 Stunde + 7-stündige KI-Masterclass rund um Claude Code)
 
-Mögliche Leistungsbereiche:
+**02 – BUILD** · Aus Ideen konkrete digitale Lösungen erschaffen.
+- Websites und Landingpages
+- Apps und Business-Tools
+- Digitale Produkte
+- KI-Workflows und Automatisierungen
+- Content-Systeme
 
-- **KI & Automatisierung:** Wiederkehrende Aufgaben vereinfachen und Prozesse effizienter gestalten.
-- **Apps & Websites:** Digitale Produkte, Plattformen und individuelle Tools entwickeln.
-- **KI-gestützte Content-Produktion:** Inhalte, Bilder, Videos und Werbemittel effizient erstellen.
-- **Social-Media-Automatisierung:** Unternehmen dabei unterstützen, regelmäßig sichtbar zu bleiben, ohne dass Social Media unnötig viel Zeit kostet.
-- **KI-Workshops & Masterclasses:** Menschen befähigen, selbst Websites, Apps und andere digitale Projekte umzusetzen.
+**03 – CONNECT** · Menschen, Ideen und Möglichkeiten zusammenbringen.
+- Community und Austausch (Flow Business Community, digitaler Stammtisch)
+- Workshops und gemeinsame Projekte
+- Wissen teilen
+- Gemeinsam wachsen
 
-Diese Bereiche sind mögliche Bausteine des Geschäftsmodells. Sie müssen nicht alle gleichzeitig angeboten oder gleich stark kommuniziert werden.
+## 6. Meine Arbeitsweise
 
-## 5. Meine Zielgruppe
+Ich verkaufe nicht einfach Stunden oder einzelne Tools, sondern arbeite individuell und bedarfsorientiert:
 
-Ich möchte mit Menschen und Unternehmen zusammenarbeiten, die neugierig, offen und bereit sind, neue Wege auszuprobieren.
+1. **Idea to Concept** – Aus einer Idee wird ein konkretes Konzept (Geschäftsmodell, Zielgruppe, Ziele).
+2. **Concept to Prototype** – Aus dem Konzept entsteht ein erster Prototyp (App, Website, digitales Produkt).
+3. **Prototype to Product** – Aus dem Prototyp wird eine nutzbare Lösung.
+4. **Product to Business** – Prozesse, Automatisierungen und Geschäftsmodelle weiterentwickeln.
 
-Wichtiger als eine bestimmte Branche ist zunächst die gemeinsame Haltung.
+Dabei bin ich Sparringspartner, Ideengeber, Coach und technischer Umsetzer. Ziel ist immer, dass meine Kunden selbstständiger werden – nicht abhängig von mir.
 
-Meine idealen Kunden:
+## 7. Kommunikation: Kernbotschaften
 
-- interessieren sich für KI oder erkennen, dass sich ihre Arbeitsweise verändern kann
-- haben konkrete Probleme, Ideen oder Prozesse, die verbessert werden sollen
-- schätzen pragmatische Lösungen statt endloser Konzeptarbeit
-- sind offen für neue Möglichkeiten und ehrliche Zusammenarbeit
-- wollen Ergebnisse sehen und nicht nur über Innovation sprechen
+| Botschaft | Bedeutung |
+|---|---|
+| **Viele Ideen? Mach sie mit KI real.** | zentraler Einstieg |
+| **Dein persönlicher KI-Partner.** | meine Rolle |
+| **Gemeinsam Ideen verwirklichen.** | meine Arbeitsweise |
+| **Weniger suchen. Mehr erschaffen.** | der Nutzen |
+| **We build your ideas.** | Markenversprechen |
 
-Besonders interessante Anwendungsfelder können lokale Unternehmen, Gesundheit und Fitness, Gastronomie, Events sowie andere Dienstleister sein.
+Instagram-Bio (@flow.media.ai):
+```
+Viele Ideen? Mach sie mit KI real.
+Dein persönlicher KI-Partner
+Sparring für Gründer & Selbstständige
+Apps • Automatisierung • digitale Produkte
+↓ Jetzt starten
+```
 
-Ich möchte niemanden davon überzeugen müssen, dass KI grundsätzlich spannend ist. Ich möchte mit Menschen arbeiten, die selbst etwas bewegen wollen.
+**Was Flow Media AI ausdrücklich nicht ist:**
+- keine klassische IT-Agentur,
+- kein reiner KI-Schulungsanbieter,
+- kein austauschbarer Automatisierungsdienstleister,
+- keine reine Cloud- oder Softwareberatung,
+- kein Verkäufer von möglichst vielen KI-Tools.
 
-## 6. Was mich unterscheidet
-
-Ich denke nicht ausschließlich technisch und nicht ausschließlich kreativ.
-
-Ich verbinde beides: Ich sehe eine Möglichkeit, entwickle eine Idee und versuche, sie möglichst schnell praktisch umzusetzen.
-
-Ich muss nicht erst monatelang über ein Produkt sprechen, bevor ein erster Prototyp entsteht. Ich kann experimentieren, testen, verbessern und konkrete Ergebnisse zeigen.
-
-Meine Stärke liegt darin, Möglichkeiten zu erkennen und daraus etwas Nutzbares zu machen.
-
-Dabei ist KI für mich kein Selbstzweck und kein magisches Versprechen. Sie ist ein Werkzeug, mit dem sich viele Dinge anders, schneller und zugänglicher umsetzen lassen.
-
-## 7. Meine Werte
+## 8. Meine Werte
 
 **Stand 20.10.2026 – meine Werte gerade:**
 
 Macht · Mut · Pragmatismus · Risiko · Entwicklung · Erfolg · Flow · Fokus · Freiheit · Herausforderung · Innovation · Inspiration · Intuition · Kreativität · Selbstvertrauen · Sinnhaftigkeit · Spontaneität · Struktur · Tiefe · Unabhängigkeit · Verlässlichkeit · Visionen · Wachstum · Wahrheit · Weiterentwicklung · Zuverlässigkeit
 
-Bisherige Ausformulierung (18.10.2026):
-
-- **Freiheit:** Ich möchte selbst entscheiden, wie ich arbeite und was ich erschaffe.
-- **Kreativität:** Ich möchte Ideen nicht nur sammeln, sondern in die Realität bringen.
+Ausformulierung:
+- **Freiheit:** Ich möchte selbst entscheiden, wie ich arbeite und was ich erschaffe – und anderen mit KI mehr Freiheit ermöglichen.
+- **Kreativität:** Ideen nicht nur sammeln, sondern in die Realität bringen.
 - **Pragmatismus:** Lieber etwas Funktionierendes bauen und verbessern als endlos darüber reden.
-- **Authentizität:** Ich kommuniziere ehrlich, persönlich und ohne künstliche Erfolgsgeschichten.
-- **Partnerschaft:** Ich möchte mit Kunden arbeiten, bei denen die menschliche Ebene stimmt.
-- **Wirksamkeit:** Am Ende zählt, ob eine Lösung tatsächlich hilft, Arbeit erleichtert oder neue Möglichkeiten schafft.
-- **Befähigung:** Ich möchte Menschen nicht abhängig von mir machen, sondern ihnen zeigen, was sie selbst erreichen können.
+- **Authentizität:** ehrlich, persönlich, ohne künstliche Erfolgsgeschichten.
+- **Partnerschaft:** Zusammenarbeit, bei der die menschliche Ebene stimmt – auf Augenhöhe, als Sparringspartner.
+- **Wirksamkeit:** Am Ende zählt, ob eine Lösung tatsächlich hilft.
+- **Befähigung:** Menschen nicht abhängig machen, sondern zeigen, was sie selbst erreichen können.
 
-## 8. Meine persönliche Geschichte als Content-Grundlage
+### Persönliche Geschichte als Content-Grundlage
 
-Ich habe erlebt, wie schnell sich Ideen mit KI umsetzen lassen. Gleichzeitig merke ich in meinem Arbeitsalltag, dass gute Ergebnisse nicht immer bedeuten, dass man seine Zeit optimal einsetzen kann.
-
-Wenn ich eine Aufgabe effizient erledige, möchte ich nicht einfach nur die verbleibende Zeit absitzen. Ich möchte meine Fähigkeiten weiterentwickeln, neue Ideen ausprobieren und mehr aus dem machen, was ich kann.
-
-Mit Flow Media AI möchte ich herausfinden, wie weit ich damit gehen kann.
-
-Ich möchte ein Geschäftsmodell aufbauen, bei dem nicht allein die investierten Stunden zählen, sondern der Wert der Ergebnisse. Ich möchte Projekte auswählen, die mich interessieren, mit Menschen arbeiten, die zu mir passen, und mir langfristig mehr Unabhängigkeit schaffen.
-
-Ich teile auf diesem Weg nicht nur fertige Ergebnisse, sondern auch Experimente, Erkenntnisse, funktionierende Lösungen und Dinge, die nicht auf Anhieb klappen.
-
-THE TRIBE ist ein Beispiel dafür, wie ich KI und digitale Werkzeuge bereits praktisch einsetze. Flow Media AI soll daraus ein eigenständiges Geschäftsmodell entwickeln.
+Ich habe erlebt, wie schnell sich Ideen mit KI umsetzen lassen. Wenn ich eine Aufgabe effizient erledige, möchte ich nicht die verbleibende Zeit absitzen, sondern mich weiterentwickeln und mehr aus dem machen, was ich kann. Mit Flow Media AI finde ich heraus, wie weit ich damit gehen kann – und nehme andere mit. Ich teile nicht nur fertige Ergebnisse, sondern auch Experimente, Erkenntnisse und Dinge, die nicht auf Anhieb klappen.
 
 ## 9. Wie meine Social-Media-Posts klingen sollen
 
@@ -236,8 +262,8 @@ Menschen sollen nach einem Beitrag denken:
 
 ## 10. Übergeordnete Content-Regel
 
-**Nicht nur erzählen, was KI kann. Zeigen, was du damit machst und was dadurch möglich wird.**
+**Nicht nur erzählen, was KI kann. Zeigen, was du damit machst – und wie andere ihre eigenen Ideen damit real machen.**
 
-Der Content soll meine Entwicklung dokumentieren, praktische Möglichkeiten vermitteln und Vertrauen aufbauen. Aus dieser Grundlage sollen sich sowohl Kundenprojekte als auch Workshops, Masterclasses und digitale Produkte entwickeln können.
+Jeder Inhalt zahlt auf die Positionierung ein: Maik als persönlicher KI-Sparrings- und Umsetzungspartner (Enable · Build · Connect). Der Content dokumentiert meine Entwicklung, vermittelt praktische Möglichkeiten und baut Vertrauen auf. Daraus entstehen Sparring-Begleitungen, Masterclasses, Workshops, Kundenprojekte und digitale Produkte.
 
 Das langfristige Ziel ist ein Geschäft, das zu meinen Fähigkeiten und Werten passt: kreativ, wirksam, wirtschaftlich tragfähig und unabhängig.
