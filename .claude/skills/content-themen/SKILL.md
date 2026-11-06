@@ -64,12 +64,13 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Di 03.11. 12–13 Uhr | ✓ gesendet (Routine 03.11.) · P006 Chat, Web oder Terminal? | Karussell (Saves) |
 | Mi 04.11. 18–20 Uhr | ✓ gesendet (Routine 04.11.) · R021 How-to Storyboard → Seedance | Bertrand-Auftritt, Prompt zum Speichern |
 | Do 05.11. 18–19 Uhr | ✓ gesendet (Routine 05.11.) · **R031 Workshop-Promo** statt R025 (Workshop Fr 06.11.); R025 rutscht nach hinten · R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
-| Fr 06.11. 18–20 Uhr | R024 (Q&A-Version) | Vergleich als Reel, Abstand zu P006 |
+| Fr 06.11. 18–20 Uhr | ✓ gesendet (Routine 06.11., dazu Story P008) · R024 (Q&A-Version) | Vergleich als Reel, Abstand zu P006 |
 | laufend | R020 Ad AI Community | nur als bezahlte Anzeige, nicht im Feed |
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 06.11.2026 | P008 | `lernen` | Story | „Heute. 17 Uhr.“ – Workshop-Tag „Mit KI zur Personal Brand“ (15 €, Support bis 31.12.), Countdown-Sticker | `format = event-reminder` |
 | 05.11.2026 | R031 | `lernen` | Reel (Talking Head, Farbe + Animationen) | „Morgen: Mit KI zur Personal Brand“ – Workshop-Promo Fr 06.11. 17 Uhr, Brand-Skill → gleicher Look, nicht generisch, Workflows | `format = talkinghead-animiert-farbe` |
 | 04.11.2026 | R030 | `lernen` / `weg` | Reel (Talking Head, Farbe + Animationen) | „Das Skill-Experiment“ – Masterclass 2 h → Workflow als Skill (app-in-varianten) → heute in 1 h? Update folgt; CTA Workshop Fr 06.11. 17 Uhr | `format = talkinghead-animiert-farbe` |
 | 04.11.2026 | R029 | `kreativ` / `lernen` | Reel (How-to Bild → Video) | „Dieses Video war ein Plakat.“ – Selfie + Plakat-Referenz → Stil-Bild → Maik als Figur → Seedance 2.5, Prompts sinngemäß in der Caption | `format = howto-pipeline-bild-video` |
