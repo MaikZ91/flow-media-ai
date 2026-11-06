@@ -9,6 +9,8 @@ Abgeleitet aus Maiks eigenen Gestaltungen in Google Drive (`Flow Media AI › 01
 
 **Markenzeile (Maik, 06.11.2026):** „**We build your ideas.**“ – als Claim unter der Wortmarke, auf Plakaten/Website-Hero/Angeboten. Rubrikzeile, wo Platz ist: „KI • Kreativität • Automatisierung • Media • Digitale Produkte“. Die drei Leistungsbereiche heißen **ENABLE · BUILD · CONNECT** (01/02/03, in dieser Reihenfolge) und dürfen als Label-Reihe auftauchen.
 
+**FLOW-Methode im Design (Maik, 06.11.2026):** Die vier Phasen erscheinen immer als Reihe **F · L · O · W** – großer Buchstabe in Oswald 700 und Blau `#2F5BFF` (der einzige Akzent des Motivs), darunter der deutsche Phasenname in weißen Oswald-Versalien (FOKUSSIEREN · LOSBAUEN · OPTIMIEREN · WACHSEN) und klein die englische Zeile mit „2“ in Montserrat, normal geschrieben (Idea2Concept · Concept2Prototype · Prototype2Product · Product2Business). Felder gleich breit, durch 1-px-Linien getrennt; auf dem Handy untereinander. Im Karussell: eine Folie je Buchstabe, der Buchstabe riesig (40–60 % der Bildhöhe) als Bildelement. Reihenfolge Enable · Build · Connect bei den drei Leistungsbereichen.
+
 **Grundidee:** Wie ein gutes Magazin-Cover. Schwarz, weiß, viel Luft, eine laute Überschrift, ein Foto von Maik, sonst nichts.
 
 **Personal Brand (Maik, 23.10.2026):** Auf **jedem** Post, jeder Karussell-Folie 1, jedem Reel-Cover und jedem Plakat ist Maik zu sehen – groß als Hauptmotiv oder klein (Kreis, Ecke, Signatur). Kein Motiv ohne Maik.

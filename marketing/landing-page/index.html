@@ -138,6 +138,14 @@ section { position: relative; padding-block: clamp(90px, 12vw, 160px) }
 .offer.small h3 { font: 700 44px/.95 var(--f-head); text-transform: uppercase; margin: 16px 0 0 }
 .offer .grow { flex: 1 }
 .offer.long { margin-top: 0; padding: 44px 40px }
+.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px }
+.fit .card { padding: 34px 32px }
+.fit .ticks { margin: 20px 0 0 }
+.fit .ticks li { align-items: flex-start; font-size: 17px; line-height: 1.4 }
+.fit-yes { border-color: rgba(47,91,255,.45) }
+.fit-yes .ticks svg { stroke: var(--blue); opacity: 1 }
+.fit-no .ticks li { color: rgba(255,255,255,.7) }
+@media (max-width: 900px) { .fit { grid-template-columns: minmax(0, 1fr) } }
 .offer.long.featured { border-color: rgba(47,91,255,.55); box-shadow: 0 0 90px rgba(47,91,255,.16), inset 0 0 0 1px rgba(47,91,255,.25) }
 .offer .n.blue { color: var(--blue) }
 .pathline { display: flex; align-items: center; gap: 16px; margin: 26px 4px; font: 500 12px var(--f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--muted) }
@@ -382,9 +390,9 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   </div>
 </header>
 
-<div class="marquee" aria-label="Build. Connect. Enable."><div class="track" aria-hidden="true">
-  <span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em>
-  <span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em>
+<div class="marquee" aria-label="Enable. Build. Connect."><div class="track" aria-hidden="true">
+  <span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em>
+  <span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em><span class="b">Enable</span><em>✦</em><span class="f">Build</span><em>✦</em><span>Connect</span><em>✦</em>
 </div></div>
 
 <main>
@@ -484,17 +492,44 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 <svg id="flowpath" aria-hidden="true"><defs><linearGradient id="fpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F5BFF" stop-opacity=".1"/><stop offset=".5" stop-color="#2F5BFF" stop-opacity=".55"/><stop offset="1" stop-color="#8aa4ff" stop-opacity=".7"/></linearGradient></defs><path class="base"/><path class="prog"/><circle r="3.5"/></svg>
 
 
-<section id="werte" class="vals" aria-label="Werte: Build, Connect, Enable">
+<section id="fuer-wen" style="padding-top:0"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="label eyebrow rv">Passt das zu dir?</span><h2 class="display rv d1">Für wen ich<br><span class="blue">das mache.</span></h2></div>
+    <p class="rv d2">Ich arbeite am liebsten mit Menschen, die selbst etwas bewegen wollen. Ehrlich gesagt: nicht mit allen.</p>
+  </div>
+  <div class="fit">
+    <article class="card fit-yes rv">
+      <span class="n blue">Für dich, wenn du …</span>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>viele Ideen hast, aber nicht weißt, wo du anfangen sollst</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>als Gründer, Selbstständige oder Coach etwas Eigenes aufbaust</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>lieber machst, als noch ein Tutorial zu schauen</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>selbstständiger mit KI arbeiten willst</li>
+      </ul>
+    </article>
+    <article class="card fit-no rv d1">
+      <span class="n">Nicht für dich, wenn du …</span>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>nur eine Liste der neuesten KI-Tools suchst</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>alles abgeben willst, ohne selbst mitzudenken</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>eine klassische IT-Agentur suchst</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Wunder ohne eigenen Einsatz erwartest</li>
+      </ul>
+    </article>
+  </div>
+</div></section>
+
+<section id="werte" class="vals" aria-label="Werte: Enable, Build, Connect">
   <div class="vals-pin">
-    <div class="vals-bgword" aria-hidden="true"><span id="vbg">Build</span></div>
+    <div class="vals-bgword" aria-hidden="true"><span id="vbg">Enable</span></div>
     <div class="wrap vals-grid">
       <div class="vals-copy">
         <span class="label">Wofür Flow Media AI steht</span>
         <div class="vals-count"><b id="vnum">01</b><span>/ 03</span></div>
         <div class="vals-texts">
-          <article class="vt on" data-i="0"><h3>Build<span>.</span></h3><p>Ideen in echte Tools, Apps und Websites verwandeln – mit KI, schnell und pragmatisch. Lieber etwas Funktionierendes als ein weiteres Konzept.</p></article>
-          <article class="vt" data-i="1"><h3>Connect<span>.</span></h3><p>Menschen zusammenbringen, die etwas aufbauen wollen – in der Community, beim Stammtisch und im Workshop. Austausch statt Einzelkampf.</p></article>
-          <article class="vt" data-i="2"><h3>Enable<span>.</span></h3><p>Dich befähigen, es selbst zu können. Ich mache dich nicht abhängig von mir – ich zeige dir, wie es geht.</p></article>
+          <article class="vt on" data-i="0"><h3>Enable<span>.</span></h3><p>Dich befähigen, es selbst zu können. Ich mache dich nicht abhängig von mir – ich zeige dir, wie es geht.</p></article>
+          <article class="vt" data-i="1"><h3>Build<span>.</span></h3><p>Ideen in echte Tools, Apps und Websites verwandeln – mit KI, schnell und pragmatisch. Lieber etwas Funktionierendes als ein weiteres Konzept.</p></article>
+          <article class="vt" data-i="2"><h3>Connect<span>.</span></h3><p>Menschen zusammenbringen, die etwas aufbauen wollen – in der Community, beim Stammtisch und im Workshop. Austausch statt Einzelkampf.</p></article>
         </div>
         <div class="vals-steps" aria-hidden="true"><i><b id="vb0"></b></i><i><b id="vb1"></b></i><i><b id="vb2"></b></i></div>
       </div>
@@ -755,11 +790,11 @@ function tick() {
 }
 tick();
 
-// ---- Values scene: scroll drives Build -> Connect -> Enable, canvas draws each value ----
+// ---- Values scene: scroll drives Enable -> Build -> Connect, canvas draws each value ----
 (function () {
   const sec = document.querySelector(".vals"), cv = document.getElementById("vcanvas"), ctx = cv.getContext("2d");
   const texts = [...document.querySelectorAll(".vt")], num = document.getElementById("vnum"), bg = document.getElementById("vbg");
-  const bars = [0, 1, 2].map(i => document.getElementById("vb" + i)), NAMES = ["Build", "Connect", "Enable"];
+  const bars = [0, 1, 2].map(i => document.getElementById("vb" + i)), NAMES = ["Enable", "Build", "Connect"];
   const av = new Image(); av.src = "img/maik_avatar.jpg";
   let W = 0, H = 0, cur = -1, time = 0, vis = false;
   const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
@@ -871,7 +906,7 @@ tick();
     ctx.globalAlpha = 1;
   }
 
-  const DRAW = [build, connect, enable];
+  const DRAW = [enable, build, connect];
   function loop() {
     requestAnimationFrame(loop);
     if (!vis) return;
