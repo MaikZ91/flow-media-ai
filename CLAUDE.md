@@ -154,12 +154,12 @@ Ich verkaufe nicht einfach Stunden oder einzelne Tools, sondern arbeite individu
 
 | | Phase | Was passiert |
 |---|---|---|
-| **F** | **Fokussieren** | Idea to Concept: Idee schärfen, Ziele, Zielgruppe, Geschäftsmodell – aus einer Idee wird ein konkretes Konzept. |
-| **L** | **Losbauen** | Concept to Prototype: erste App, Website oder digitales Produkt – aus dem Konzept entsteht ein Prototyp. |
-| **O** | **Optimieren** | Prototype to Product: testen, verbessern, nutzbar machen – aus dem Prototyp wird eine Lösung. |
-| **W** | **Wachsen** | Product to Business: Prozesse, Automatisierungen und Geschäftsmodell weiterentwickeln. |
+| **F** | **Fokussieren** | Idea2Concept: Idee schärfen, Ziele, Zielgruppe, Geschäftsmodell – aus einer Idee wird ein konkretes Konzept. |
+| **L** | **Losbauen** | Concept2Prototype: erste App, Website oder digitales Produkt – aus dem Konzept entsteht ein Prototyp. |
+| **O** | **Optimieren** | Prototype2Product: testen, verbessern, nutzbar machen – aus dem Prototyp wird eine Lösung. |
+| **W** | **Wachsen** | Product2Business: Prozesse, Automatisierungen und Geschäftsmodell weiterentwickeln. |
 
-Die FLOW-Methode ist Marke und Methode zugleich: Sie steht im Sparring, in Masterclasses, Workshops, auf der Website und im Content immer gleich (Reihenfolge F · L · O · W, deutsche Phasennamen, englische Untertitel optional).
+Die FLOW-Methode ist Marke und Methode zugleich: Sie steht im Sparring, in Masterclasses, Workshops, auf der Website und im Content immer gleich (Reihenfolge F · L · O · W, deutsche Phasennamen; die englischen Untertitel immer mit „2“ geschrieben: Idea2Concept · Concept2Prototype · Prototype2Product · Product2Business – Maik, 06.11.2026).
 
 Dabei bin ich Sparringspartner, Ideengeber, Coach und technischer Umsetzer. Ziel ist immer, dass meine Kunden selbstständiger werden – nicht abhängig von mir.
 
