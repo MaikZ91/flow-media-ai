@@ -133,7 +133,7 @@ Das Ziel: **Mehr Freiheit, Kreativität und Unabhängigkeit durch KI.**
 - Persönliches 1:1-Sparring
 - KI-Beratung und Masterclasses
 - Ideenentwicklung und Strategie
-- Individuelle Begleitung (z. B. Langzeit-Sparring über 3 oder 6 Monate: wöchentlich 1 Stunde + 7-stündige KI-Masterclass rund um Claude Code)
+- Individuelle Begleitung nach der FLOW-Methode (Langzeit-Sparring über 3 oder 6 Monate: wöchentlich 1 Stunde + 7-stündige KI-Masterclass rund um Claude Code)
 
 **02 – BUILD** · Aus Ideen konkrete digitale Lösungen erschaffen.
 - Websites und Landingpages
@@ -148,14 +148,18 @@ Das Ziel: **Mehr Freiheit, Kreativität und Unabhängigkeit durch KI.**
 - Wissen teilen
 - Gemeinsam wachsen
 
-## 6. Meine Arbeitsweise
+## 6. Meine Arbeitsweise: die FLOW-Methode
 
-Ich verkaufe nicht einfach Stunden oder einzelne Tools, sondern arbeite individuell und bedarfsorientiert:
+Ich verkaufe nicht einfach Stunden oder einzelne Tools, sondern arbeite individuell und bedarfsorientiert – nach der **FLOW-Methode** (Maik, 06.11.2026). Jeder Buchstabe ist eine Phase:
 
-1. **Idea to Concept** – Aus einer Idee wird ein konkretes Konzept (Geschäftsmodell, Zielgruppe, Ziele).
-2. **Concept to Prototype** – Aus dem Konzept entsteht ein erster Prototyp (App, Website, digitales Produkt).
-3. **Prototype to Product** – Aus dem Prototyp wird eine nutzbare Lösung.
-4. **Product to Business** – Prozesse, Automatisierungen und Geschäftsmodelle weiterentwickeln.
+| | Phase | Was passiert |
+|---|---|---|
+| **F** | **Fokussieren** | Idea to Concept: Idee schärfen, Ziele, Zielgruppe, Geschäftsmodell – aus einer Idee wird ein konkretes Konzept. |
+| **L** | **Losbauen** | Concept to Prototype: erste App, Website oder digitales Produkt – aus dem Konzept entsteht ein Prototyp. |
+| **O** | **Optimieren** | Prototype to Product: testen, verbessern, nutzbar machen – aus dem Prototyp wird eine Lösung. |
+| **W** | **Wachsen** | Product to Business: Prozesse, Automatisierungen und Geschäftsmodell weiterentwickeln. |
+
+Die FLOW-Methode ist Marke und Methode zugleich: Sie steht im Sparring, in Masterclasses, Workshops, auf der Website und im Content immer gleich (Reihenfolge F · L · O · W, deutsche Phasennamen, englische Untertitel optional).
 
 Dabei bin ich Sparringspartner, Ideengeber, Coach und technischer Umsetzer. Ziel ist immer, dass meine Kunden selbstständiger werden – nicht abhängig von mir.
 
@@ -168,6 +172,8 @@ Dabei bin ich Sparringspartner, Ideengeber, Coach und technischer Umsetzer. Ziel
 | **Gemeinsam Ideen verwirklichen.** | meine Arbeitsweise |
 | **Weniger suchen. Mehr erschaffen.** | der Nutzen |
 | **We build your ideas.** | Markenversprechen |
+| **Die FLOW-Methode: Fokussieren · Losbauen · Optimieren · Wachsen.** | meine Methode |
+| **Komm in den Flow.** | Aufruf am Ende |
 
 Instagram-Bio (@flow.media.ai):
 ```
@@ -266,6 +272,6 @@ Menschen sollen nach einem Beitrag denken:
 
 **Nicht nur erzählen, was KI kann. Zeigen, was du damit machst – und wie andere ihre eigenen Ideen damit real machen.**
 
-Jeder Inhalt zahlt auf die Positionierung ein: Maik als persönlicher KI-Sparrings- und Umsetzungspartner (Enable · Build · Connect). Der Content dokumentiert meine Entwicklung, vermittelt praktische Möglichkeiten und baut Vertrauen auf. Daraus entstehen Sparring-Begleitungen, Masterclasses, Workshops, Kundenprojekte und digitale Produkte.
+Jeder Inhalt zahlt auf die Positionierung ein: Maik als persönlicher KI-Sparrings- und Umsetzungspartner (Enable · Build · Connect) mit der FLOW-Methode. Der Content dokumentiert meine Entwicklung, vermittelt praktische Möglichkeiten und baut Vertrauen auf. Daraus entstehen Sparring-Begleitungen, Masterclasses, Workshops, Kundenprojekte und digitale Produkte.
 
 Das langfristige Ziel ist ein Geschäft, das zu meinen Fähigkeiten und Werten passt: kreativ, wirksam, wirtschaftlich tragfähig und unabhängig.
