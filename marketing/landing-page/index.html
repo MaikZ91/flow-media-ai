@@ -452,12 +452,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       <p>Jede Woche ein konkretes Thema, live und zum Mitmachen.</p>
       <div class="topic"><span class="label">Nächster Termin</span><b>Mit KI zur Personal Brand</b><span>Wie dein Content immer gleich aussieht: Stil definieren, eigenen KI-Skill bauen, Workflow für deinen Account.</span></div>
       <div class="facts">
-        <div><em>Wann</em><strong>Mo 26.10.</strong></div>
+        <div><em>Wann</em><strong id="ws-date">Mo</strong></div>
         <div><em>Uhrzeit</em><strong>18:00</strong></div>
         <div><em>Dauer</em><strong>60 Min</strong></div>
-        <div><em>Pro Person</em><strong class="blue">15 €</strong></div>
+        <div><em>Format</em><strong>Live</strong></div>
       </div>
-      <div class="countdown" id="countdown" data-start="2026-10-26T18:00:00+01:00" aria-live="off"></div>
+      <div class="countdown" id="countdown" aria-live="off"></div>
       <div class="grow"></div>
       <a class="btn primary" data-cta="offer_workshop" data-wa="workshop" href="#">Platz sichern <span class="ar">→</span></a>
     </article>
@@ -733,11 +733,23 @@ function frame() {
 addEventListener("load", () => { buildPath(); requestAnimationFrame(frame) });
 addEventListener("resize", () => { clearTimeout(window.__bp); window.__bp = setTimeout(buildPath, 150) });
 
-// Workshop countdown (real date from data-start)
-const cd = document.getElementById("countdown"), start = new Date(cd.dataset.start);
+// Workshop countdown: always the coming Monday, 18:00 Berlin time (during the workshop: "läuft gerade")
+const cd = document.getElementById("countdown");
+function berlinWall(d) { const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).formatToParts(d).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) }
+function nextWorkshop() {
+  const now = new Date(), wall = new Date(berlinWall(now)), off = wall - now;
+  let t = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate(), 18, 0, 0);
+  const dow = wall.getUTCDay(); let add = (1 - dow + 7) % 7;
+  if (add === 0 && wall.getTime() >= t + 3600e3) add = 7;   // Monday after 19:00 -> next week
+  t += add * 864e5;
+  const dt = new Date(t);
+  document.getElementById("ws-date").textContent = "Mo " + String(dt.getUTCDate()).padStart(2, "0") + "." + String(dt.getUTCMonth() + 1).padStart(2, "0") + ".";
+  return new Date(t - off);
+}
+const start = nextWorkshop();
 function tick() {
   const ms = start - new Date();
-  if (ms <= 0) { cd.className = "countdown done"; cd.textContent = ms > -3600e3 ? "Läuft gerade – live dabei sein" : "Nächster Termin folgt – schreib mir für Infos"; return }
+  if (ms <= 0) { cd.className = "countdown done"; cd.textContent = "Läuft gerade – live dabei sein"; return }
   const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60, z = n => String(n).padStart(2, "0");
   cd.innerHTML = `<div><b>${d}</b><small>Tage</small></div><div><b>${z(h)}</b><small>Std</small></div><div><b>${z(m)}</b><small>Min</small></div><div><b>${z(s)}</b><small>Sek</small></div>`;
   setTimeout(tick, 1000);
