@@ -136,6 +136,17 @@ section { position: relative; padding-block: clamp(90px, 12vw, 160px) }
 .offer .n { font: 500 12px var(--f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--muted) }
 .offer.small h3 { font: 700 44px/.95 var(--f-head); text-transform: uppercase; margin: 16px 0 0 }
 .offer .grow { flex: 1 }
+.offer.long { margin-top: 18px; padding: 44px 40px }
+.offer.long h3 { font: 700 56px/.95 var(--f-head); text-transform: uppercase; margin: 16px 0 0 }
+.phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 30px; counter-reset: ph }
+.phases div { background: var(--bg); padding: 22px 20px; position: relative }
+.phases div::before { counter-increment: ph; content: "0" counter(ph); display: block; font: 700 30px var(--f-head); color: var(--blue) }
+.phases b { display: block; font: 700 22px/1.05 var(--f-head); text-transform: uppercase; color: var(--white); margin-top: 10px }
+.phases span { display: block; font-size: 15px; margin-top: 8px }
+.offer.long .row2 { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; margin-top: 30px }
+.offer.long .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0; flex: 1 1 520px }
+@media (max-width: 900px) { .phases { grid-template-columns: repeat(2, minmax(0, 1fr)) } .offer.long { padding: 32px 22px } .offer.long h3 { font-size: 40px } }
+@media (max-width: 600px) { .phases, .offer.long .facts { grid-template-columns: minmax(0, 1fr) } .offer.long h3 { font-size: 30px; overflow-wrap: anywhere } .offer.long .facts strong { font-size: 22px } .offer.long .row2 .btn { width: 100%; justify-content: center } }
 .offer.small .btn { margin-top: 30px; align-self: flex-start }
 .topic { margin-top: 22px; padding: 18px 20px; border-radius: 14px; border: 1px solid rgba(47,91,255,.35); background: rgba(47,91,255,.07) }
 .topic b { display: block; font: 700 24px/1.05 var(--f-head); text-transform: uppercase; color: var(--white); margin-top: 6px }
@@ -394,7 +405,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 <section id="angebote" style="padding-top:0"><div class="wrap">
   <div class="sec-head">
     <div><span class="label eyebrow rv">Angebote</span><h2 class="display rv d1">So bist du<br><span class="blue">dabei.</span></h2></div>
-    <p class="rv d2">Vier Wege, je nachdem, was du gerade brauchst. Der einfachste Einstieg ist die Community – kostenlos und ohne Haken.</p>
+    <p class="rv d2">Fünf Wege, je nachdem, was du gerade brauchst. Der einfachste Einstieg ist die Community – kostenlos und ohne Haken.</p>
   </div>
 
   <article class="card offer community rv">
@@ -457,6 +468,31 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       <a class="btn primary" data-cta="offer_erstgespraech" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Kostenloses Erstgespräch <span class="ar">→</span></a>
     </article>
   </div>
+
+  <article class="card offer long rv" id="sparring">
+    <span class="n">05 · Langfristige Begleitung</span>
+    <h3>Dein persönlicher<br><span class="blue">KI-Sparringspartner</span></h3>
+    <p>Statt einzelner Workshops oder kleiner Stundenpakete: Ich begleite dich über Monate, bis aus deiner Idee ein laufendes Business wird. Wir konkretisieren deine Ideen, definieren Ziele und finden heraus, wo die größten Potenziale liegen. Dann bauen wir Schritt für Schritt konkrete Lösungen.</p>
+    <div class="phases">
+      <div><b>Idea to Concept</b><span>Ideen entwickeln, Geschäftsmodell und Zielgruppe schärfen.</span></div>
+      <div><b>Concept to Prototype</b><span>Erste Apps, Websites und digitale Produkte gemeinsam bauen.</span></div>
+      <div><b>Prototype to Business</b><span>KI-Workflows, Automatisierungen und Prozesse integrieren.</span></div>
+      <div><b>Optimize &amp; Grow</b><span>Ergebnisse reflektieren, Feedback geben, kontinuierlich weiterentwickeln.</span></div>
+    </div>
+    <ul class="ticks" style="margin-bottom:0">
+      <li><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/></svg>KI-Masterclass: 7 Stunden rund um Claude Code und KI-gestützte Entwicklung</li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Jede Woche 1 Stunde Sparring: Strategie, Technik, neue Ideen, deine nächsten Ziele</li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Ziel: Du setzt deine Ideen wirklich um und arbeitest selbstständiger mit KI</li>
+    </ul>
+    <div class="row2">
+      <div class="facts">
+        <div><em>Laufzeit</em><strong>3 oder 6 Monate</strong></div>
+        <div><em>Sparring</em><strong>1× pro Woche</strong></div>
+        <div><em>Masterclass</em><strong class="blue">7 Std.</strong></div>
+      </div>
+      <a class="btn primary" data-cta="offer_sparring" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Kostenloses Erstgespräch <span class="ar">→</span></a>
+    </div>
+  </article>
 </div></section>
 
 <section id="tool" style="padding-top:0"><div class="wrap tool">
