@@ -72,6 +72,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 06.11.2026 | P009 | `lernen` / `weg` | Karussell (6 Folien) | „Die FLOW-Methode“ – Fokussieren · Losbauen · Optimieren · Wachsen (Idea2Concept …), CTA „Welche Phase? F, L, O oder W“ | `format = methoden-karussell` |
 | 06.11.2026 | P008 | `lernen` | Story | „Heute. 17 Uhr.“ – Workshop-Tag „Mit KI zur Personal Brand“ (15 €, Support bis 31.12.), Countdown-Sticker | `format = event-reminder` |
 | 05.11.2026 | R031 | `lernen` | Reel (Talking Head, Farbe + Animationen) | „Morgen: Mit KI zur Personal Brand“ – Workshop-Promo Fr 06.11. 17 Uhr, Brand-Skill → gleicher Look, nicht generisch, Workflows | `format = talkinghead-animiert-farbe` |
 | 04.11.2026 | R030 | `lernen` / `weg` | Reel (Talking Head, Farbe + Animationen) | „Das Skill-Experiment“ – Masterclass 2 h → Workflow als Skill (app-in-varianten) → heute in 1 h? Update folgt; CTA Workshop Fr 06.11. 17 Uhr | `format = talkinghead-animiert-farbe` |

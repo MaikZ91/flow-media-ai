@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--grey:#9A9A9A;--line:rgba(255,255,255,.16);--blue:#2F5BFF;--card:#141519}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--black);color:#fff;font-family:Inter,sans-serif;overflow:hidden}
+.s{display:none;position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--black)}
+.grain{position:absolute;inset:0;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.pg{position:absolute;right:76px;top:84px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a}
+.swipe{position:absolute;right:76px;bottom:72px;font:500 22px Montserrat;letter-spacing:.2em;color:#9a9a9a;text-transform:uppercase}
+.swipe i{font-style:normal;color:var(--blue)}
+.k{font:500 26px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{font:700 124px/.92 Oswald;text-transform:uppercase}
+.b{color:var(--blue)}
+.ph{position:absolute;background:url(img/portrait_front.jpg) center top/cover;filter:grayscale(1) contrast(1.12) brightness(.9)}
+.row{display:flex;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.row div{flex:1;padding:18px 0;text-align:center;font:700 64px/1 Oswald;color:#fff;border-left:1px solid var(--line)}
+.row div:first-child{border-left:0}
+.row div.on{color:var(--blue)}
+/* letter slides */
+.big{position:absolute;right:60px;top:620px;font:700 620px/.8 Oswald;color:var(--blue);letter-spacing:-.02em}
+.box{position:absolute;left:76px;width:880px}
+.ph-name{font:700 120px/.92 Oswald;text-transform:uppercase}
+.en{margin-top:18px;font:600 32px Montserrat;color:var(--blue)}
+.p{margin-top:34px;font:400 36px/1.42 Inter;color:#d6d6d6}
+.p b{color:#fff;font-weight:600}
+.av{position:absolute;left:76px;bottom:66px;width:96px;height:96px;border-radius:50%;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1);border:3px solid var(--blue)}
+.mini{position:absolute;left:190px;bottom:92px;font:500 22px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#9a9a9a}
+.dots{position:absolute;left:76px;top:1010px;display:flex;gap:14px}
+.dots span{font:700 40px Oswald;color:#3a3a3a}
+.dots span.on{color:#fff}
+</style></head>
+<body>
+
+<section class="s" id="s1">
+  <div class="ph" style="left:440px;right:-140px;top:250px;height:1150px"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 34%,rgba(11,11,11,0) 60%),linear-gradient(180deg,#0B0B0B 18%,rgba(11,11,11,0) 34%,rgba(11,11,11,0) 72%,#0B0B0B 96%)"></div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">1 / 6</div>
+  <div style="position:absolute;left:76px;top:200px;width:820px">
+    <div class="k">Die FLOW-Methode</div>
+    <div class="h" style="margin-top:20px">Viele Ideen?<br>So werden<br>sie <span class="b">real.</span></div>
+  </div>
+  <div style="position:absolute;left:76px;top:780px;width:520px;font:400 34px/1.42 Inter;color:#d6d6d6">Vier Phasen, mit denen ich Gründer und Selbstständige von der Idee bis zum Business begleite.</div>
+  <div class="row" style="position:absolute;left:76px;width:520px;top:1060px"><div class="on">F</div><div>L</div><div>O</div><div>W</div></div>
+  <div class="swipe">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<section class="s" id="s2">
+  <div class="big">F</div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">2 / 6</div>
+  <div class="box" style="top:230px">
+    <div class="k">Phase 1 von 4</div>
+    <div class="ph-name" style="margin-top:20px">Fokussieren.</div>
+    <div class="en">Idea2Concept</div>
+    <p class="p">Aus einer Idee wird ein <b>Konzept</b>. Was genau soll entstehen? Für wen? Und woran merkst du, dass es funktioniert?</p>
+  </div>
+  <div class="dots"><span class="on">F</span><span class="">L</span><span class="">O</span><span class="">W</span></div>
+  <div class="av"></div><div class="mini">Maik · Flow Media AI</div>
+  <div class="swipe">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<section class="s" id="s3">
+  <div class="big">L</div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">3 / 6</div>
+  <div class="box" style="top:230px">
+    <div class="k">Phase 2 von 4</div>
+    <div class="ph-name" style="margin-top:20px">Losbauen.</div>
+    <div class="en">Concept2Prototype</div>
+    <p class="p">Mit KI entsteht ein <b>erster Prototyp</b> – eine App, eine Website oder ein Tool. Nicht perfekt, aber zum Anfassen.</p>
+  </div>
+  <div class="dots"><span class="">F</span><span class="on">L</span><span class="">O</span><span class="">W</span></div>
+  <div class="av"></div><div class="mini">Maik · Flow Media AI</div>
+  <div class="swipe">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<section class="s" id="s4">
+  <div class="big">O</div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">4 / 6</div>
+  <div class="box" style="top:230px">
+    <div class="k">Phase 3 von 4</div>
+    <div class="ph-name" style="margin-top:20px">Optimieren.</div>
+    <div class="en">Prototype2Product</div>
+    <p class="p">Testen, Feedback holen, verbessern. Bis aus dem Prototyp eine <b>Lösung</b> wird, die man wirklich nutzt.</p>
+  </div>
+  <div class="dots"><span class="">F</span><span class="">L</span><span class="on">O</span><span class="">W</span></div>
+  <div class="av"></div><div class="mini">Maik · Flow Media AI</div>
+  <div class="swipe">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+<section class="s" id="s5">
+  <div class="big">W</div>
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">5 / 6</div>
+  <div class="box" style="top:230px">
+    <div class="k">Phase 4 von 4</div>
+    <div class="ph-name" style="margin-top:20px">Wachsen.</div>
+    <div class="en">Product2Business</div>
+    <p class="p">Abläufe automatisieren, Prozesse vereinfachen, das <b>Geschäftsmodell</b> weiterentwickeln.</p>
+  </div>
+  <div class="dots"><span class="">F</span><span class="">L</span><span class="">O</span><span class="on">W</span></div>
+  <div class="av"></div><div class="mini">Maik · Flow Media AI</div>
+  <div class="swipe">Wischen <i>→</i></div>
+  <div class="grain"></div>
+</section>
+
+
+
+<section class="s" id="s6">
+  <img class="logo" src="img/logo_flow.png" alt=""><div class="pg">6 / 6</div>
+  <div style="position:absolute;left:76px;top:210px;width:930px">
+    <div class="k">Und du?</div>
+    <div class="h" style="margin-top:20px;font-size:116px">In welcher Phase<br>steckst du <span class="b">gerade?</span></div>
+  </div>
+  <div class="row" style="position:absolute;left:76px;right:76px;top:610px"><div>F</div><div>L</div><div>O</div><div>W</div></div>
+  <p style="position:absolute;left:76px;right:76px;top:770px;font:400 36px/1.42 Inter;color:#d6d6d6">Schreib mir deinen Buchstaben in die Kommentare. Ich begleite dich durch alle vier – als dein persönlicher KI-Partner.</p>
+  <div style="position:absolute;left:76px;right:76px;top:1010px;display:flex;align-items:center;gap:30px">
+    <div style="width:140px;height:140px;border-radius:50%;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1) contrast(1.1);border:3px solid var(--blue);flex:none"></div>
+    <div style="font:700 72px/1 Oswald;text-transform:uppercase">Komm in den <span class="b">Flow.</span></div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<script>document.getElementById(location.hash.slice(1) || "s1").style.display = "block";</script>
+</body></html>
