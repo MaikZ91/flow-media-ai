@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="fonts/fonts.css">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="../../../content/posts/P009-flow-methode/fonts/fonts.css">
 <style>*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1350px;overflow:hidden;background:#0B0B0B;color:#fff}
 .bg{position:absolute;left:0;right:0;top:0;bottom:0;background-size:cover;background-position:center}
 .bg.top{bottom:auto;height:810px;background-size:1080px 810px}
@@ -14,6 +14,7 @@
 <div class="k" id="k"></div><div class="h" id="h"></div>
 <script>
 const V={holo:["maik_hololens_ar_2017.jpg","2017 · Studienprojekt","Augmented Reality<br>in der <span>Medizin.</span>","Personal"],
+hki:["maik_hololens_ki.jpg","Studienprojekt · AR · mit KI bearbeitet","Ideen real machen.<br><span>Schon immer.</span>","Personal"],
 robo:["maik_roboter_teststand.jpg","Studienprojekt · Robotik","Wo alles<br><span>angefangen hat.</span>","Personal"]};
 const key=location.hash.slice(1)||"holo",v=V[key];if(key==="holo")document.getElementById("bg").className="bg top";document.getElementById("bg").style.backgroundImage=`url(${v[0]})`;
 document.getElementById("k").textContent=v[1];document.getElementById("h").innerHTML=v[2];document.getElementById("tag").textContent="We build your ideas";
