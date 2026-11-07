@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--line:rgba(255,255,255,.16);--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+.grain{position:absolute;inset:0;opacity:.07;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.ph{position:absolute;right:-60px;top:0;width:560px;height:760px;background:url(img/portrait_laptop.jpg) center top/cover;filter:grayscale(1) contrast(1.12) brightness(.9)}
+.fade{position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 42%,rgba(11,11,11,0) 70%),linear-gradient(180deg,rgba(11,11,11,0) 40%,#0B0B0B 57%)}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.k{position:absolute;left:76px;top:200px;font:500 26px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{position:absolute;left:76px;top:250px;width:640px;font:700 120px/.92 Oswald;text-transform:uppercase}
+.h span{color:var(--blue)}
+.cols{position:absolute;left:76px;right:76px;top:790px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.c{border:1.5px solid var(--line);border-radius:22px;padding:28px 28px}
+.c.yes{border-color:rgba(47,91,255,.6)}
+.c b{display:block;font:600 22px Montserrat;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.c.yes b{color:var(--blue)} .c.no b{color:#9a9a9a}
+.c li{list-style:none;display:flex;gap:12px;font:400 26px/1.35 Inter;padding:7px 0}
+.c li i{font-style:normal;flex:none;width:26px}
+.c.yes li i{color:var(--blue)} .c.no li{color:rgba(255,255,255,.7)}
+.c ul{padding:0}
+.foot{position:absolute;left:76px;right:76px;bottom:62px;display:flex;justify-content:space-between;font:500 22px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#9a9a9a}
+.foot em{font-style:normal;color:#fff}
+</style></head><body>
+<div class="ph"></div><div class="fade"></div>
+<img class="logo" src="img/logo_flow.png" alt="">
+<div class="k">Ehrlich gesagt</div>
+<div class="h">Ist das<br>was für<br><span>dich?</span></div>
+<div class="cols">
+  <div class="c yes"><b>Ja, wenn du …</b><ul>
+    <li><i>✓</i>viele Ideen hast, aber nicht weißt, wo du anfängst</li>
+    <li><i>✓</i>lieber machst als Tutorials schaust</li>
+    <li><i>✓</i>selbst mit KI arbeiten willst</li></ul></div>
+  <div class="c no"><b>Nein, wenn du …</b><ul>
+    <li><i>✕</i>nur eine KI-Tool-Liste suchst</li>
+    <li><i>✕</i>alles abgeben willst, ohne mitzudenken</li>
+    <li><i>✕</i>Wunder ohne Einsatz erwartest</li></ul></div>
+</div>
+<div class="foot"><span>Maik · We build your ideas</span><em>Komm in den Flow.</em></div>
+<div class="grain"></div>
+</body></html>
