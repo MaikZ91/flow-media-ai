@@ -15,6 +15,7 @@
 <script>
 const V={holo:["maik_hololens_ar_2017.jpg","2017 · Studienprojekt","Augmented Reality<br>in der <span>Medizin.</span>","Personal"],
 hki:["maik_hololens_ki.jpg","Studienprojekt · AR · mit KI bearbeitet","Ideen real machen.<br><span>Schon immer.</span>","Personal"],
+rki:["maik_roboter_ki.jpg","Studienprojekt · Robotik · mit KI bearbeitet","Wo alles<br><span>angefangen hat.</span>","Personal"],
 robo:["maik_roboter_teststand.jpg","Studienprojekt · Robotik","Wo alles<br><span>angefangen hat.</span>","Personal"]};
 const key=location.hash.slice(1)||"holo",v=V[key];if(key==="holo")document.getElementById("bg").className="bg top";document.getElementById("bg").style.backgroundImage=`url(${v[0]})`;
 document.getElementById("k").textContent=v[1];document.getElementById("h").innerHTML=v[2];document.getElementById("tag").textContent="We build your ideas";
