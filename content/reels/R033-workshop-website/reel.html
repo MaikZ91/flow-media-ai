@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--card:#141519;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--black);color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#d0d0d0}
+.k b{color:var(--blue);font-weight:600}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}
+.h span,.blue{color:var(--blue)}
+.grain{position:absolute;inset:0;opacity:.06;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");z-index:90}
+.logo{left:70px;top:90px;width:190px;opacity:1;z-index:50}
+/* hook */
+#ph{inset:0;background:url(img/portrait_front.jpg) center 20%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.55),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 45%,rgba(11,11,11,.95) 70%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1220px}
+/* timer */
+#timer{right:70px;top:84px;z-index:60;display:flex;align-items:center;gap:14px;background:rgba(11,11,11,.85);border:2px solid var(--blue);border-radius:40px;padding:10px 26px 10px 18px}
+#timer .dot{width:18px;height:18px;border-radius:50%;background:var(--blue);box-shadow:0 0 16px var(--blue)}
+#timer b{font:700 54px/1 Oswald;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+/* tiles */
+#have{left:70px;right:70px;top:300px}
+.tile{position:absolute;width:420px;height:300px;border-radius:28px;background:var(--card);border:2px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;opacity:0}
+.tile .t{font:700 64px/1 Oswald;text-transform:uppercase}
+.tile .ic{position:absolute;left:30px;top:30px;right:30px;height:150px;border-radius:16px;overflow:hidden}
+#skill{left:240px;top:1460px;width:600px;height:150px;border-radius:30px;background:var(--blue);display:flex;align-items:center;justify-content:center;gap:20px;font:700 66px/1 Oswald;text-transform:uppercase;box-shadow:0 0 90px rgba(47,91,255,.6)}
+/* browser */
+#br{left:70px;top:520px;width:940px;height:900px;border-radius:26px;background:#16171A;border:2px solid #2a2b30;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+#br .bar{height:70px;background:#1d1e22;display:flex;align-items:center;gap:12px;padding:0 24px}
+#br .bar i{width:16px;height:16px;border-radius:50%;background:#444}
+#url{margin-left:18px;flex:1;height:42px;border-radius:21px;background:#0f1013;font:500 24px/42px Inter;color:#aaa;padding:0 22px}
+#url b{color:#fff;font-weight:600}
+#vp{position:absolute;left:0;right:0;top:72px;bottom:0;overflow:hidden}
+#site{position:absolute;left:0;top:0;width:940px}
+#wire{position:absolute;inset:0;padding:40px}
+.wb{background:#24252b;border-radius:12px;margin-bottom:24px;transform-origin:left}
+#cover{position:absolute;left:0;right:0;bottom:0;background:#16171A}
+#scan{position:absolute;left:0;right:0;height:6px;background:var(--blue);box-shadow:0 0 30px var(--blue)}
+/* phases */
+#ph4{left:70px;right:70px;top:1460px}
+.phase{display:flex;align-items:center;gap:30px;margin-bottom:18px;opacity:.18}
+.phase .L{width:96px;height:96px;flex:none;border-radius:20px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 64px/1 Oswald}
+.phase .n{font:700 50px/1 Oswald;text-transform:uppercase}
+.phase .d{font:500 30px/1.25 Inter;color:#cfcfcf;margin-top:6px}
+.phase.on{opacity:1}.phase.on .L{background:var(--blue);border-color:var(--blue);box-shadow:0 0 40px rgba(47,91,255,.6)}
+/* live */
+#live{left:540px;top:430px;transform:translate(-50%,-50%);font:700 120px/1 Oswald;background:var(--blue);padding:16px 50px;border-radius:30px;z-index:40;box-shadow:0 0 100px rgba(47,91,255,.7)}
+#phone{left:690px;top:900px;width:330px;height:690px;border-radius:52px;background:#000;border:10px solid #222;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7);z-index:30}
+#phone img{position:absolute;left:0;top:0;width:100%}
+#bsp{left:70px;top:1450px;font:500 24px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}
+#flash{inset:0;background:#fff;z-index:80}
+/* offer */
+#offer{left:70px;right:70px;top:250px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
+.fact{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:26px 30px;opacity:0}
+.fact em{display:block;font:500 24px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#9a9a9a;font-style:normal}
+.fact strong{display:block;font:700 76px/1.05 Oswald;margin-top:8px}
+.fact.price{background:var(--blue);border-color:var(--blue)}
+.fact.price em{color:#e2e7ff}
+.pts{margin-top:40px}
+.pts div{font:500 36px/1.35 Inter;color:#e6e6e6;margin-bottom:14px;opacity:0}
+.pts div:before{content:"→ ";color:var(--blue);font-weight:700}
+#cta{left:70px;right:70px;top:1560px}
+#cta .btn{display:inline-block;background:var(--blue);border-radius:60px;padding:28px 46px;font:700 52px/1 Oswald;text-transform:uppercase;box-shadow:0 0 60px rgba(47,91,255,.5)}
+#cta .f{margin-top:30px;font:700 46px/1 Oswald;text-transform:uppercase;color:#cfcfcf}
+#cta .f span{color:var(--blue)}
+</style></head><body>
+<img class="l logo" src="img/logo_flow.png" style="opacity:1">
+<div class="l" id="timer"><div class="dot"></div><b id="tv">60:00</b></div>
+
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="k">Workshop · <b>Mo 18 Uhr</b></div><div class="h" style="margin-top:20px">Dein Content.<br>Deine <span>Website.</span></div><div style="font:500 42px/1.3 Inter;color:#ddd;margin-top:26px">Live in 60 Minuten.</div></div>
+
+<div class="l" id="have"><div class="k">Was du schon hast</div><div class="h" style="font-size:120px;margin-top:16px">Du hast schon <span>alles.</span></div></div>
+<div class="tile" id="tl0" style="left:70px;top:720px"><div class="ic" style="background:url(img/portrait_front.jpg) center 25%/cover;filter:grayscale(1)"></div><div class="t">Bilder</div></div>
+<div class="tile" id="tl1" style="left:590px;top:720px"><div class="ic" style="background:#0b0b0b;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-left:60px solid var(--blue);border-top:38px solid transparent;border-bottom:38px solid transparent;margin-left:14px"></div></div><div class="t">Videos</div></div>
+<div class="tile" id="tl2" style="left:70px;top:1060px"><div class="ic" style="padding:18px 0"><div style="height:16px;background:#3a3b40;border-radius:8px;width:90%;margin-bottom:16px"></div><div style="height:16px;background:#3a3b40;border-radius:8px;width:75%;margin-bottom:16px"></div><div style="height:16px;background:#3a3b40;border-radius:8px;width:84%;margin-bottom:16px"></div><div style="height:16px;background:var(--blue);border-radius:8px;width:40%"></div></div><div class="t">Texte</div></div>
+<div class="tile" id="tl3" style="left:590px;top:1060px"><div class="ic" style="display:flex;gap:14px;align-items:center"><div style="width:70px;height:70px;border-radius:50%;background:#0B0B0B;border:2px solid #444"></div><div style="width:70px;height:70px;border-radius:50%;background:#F4F4F1"></div><div style="width:70px;height:70px;border-radius:50%;background:var(--blue)"></div><div style="font:700 70px/1 Oswald;margin-left:10px">Aa</div></div><div class="t">Dein Stil</div></div>
+<div class="l" id="skill">＋ Website-Skill</div>
+
+<div class="l" id="br"><div class="bar"><i></i><i></i><i></i><div id="url">https://<b>deine-website.de</b></div></div>
+  <div id="vp"><img id="site" src="img/site_desktop.jpg"><div id="cover"><div id="wire"></div></div><div id="scan" style="opacity:0"></div></div></div>
+<div class="l" id="ph4">
+  <div class="phase" id="p0"><div class="L">F</div><div><div class="n">Fokussieren</div><div class="d">Deine Inhalte und dein Stil</div></div></div>
+  <div class="phase" id="p1"><div class="L">L</div><div><div class="n">Losbauen</div><div class="d">Der Website-Skill baut deine Seite</div></div></div>
+  <div class="phase" id="p2"><div class="L">O</div><div><div class="n">Optimieren</div><div class="d">Mit KI anpassen: Texte, Bilder, Farben</div></div></div>
+  <div class="phase" id="p3"><div class="L">W</div><div><div class="n">Wachsen</div><div class="d">Live gehen – und weiterbauen</div></div></div>
+</div>
+<div class="l" id="live">LIVE ✓</div>
+<div class="l" id="phone"><img id="mob" src="img/site_mobile.jpg"></div>
+<div class="l" id="bsp">Beispiel: meine eigene Website</div>
+
+<div class="l" id="offer"><div class="k">Workshop · Mit KI zur Personal Brand</div><div class="h" style="font-size:132px;margin-top:18px">Deine Website.<br><span>In 60 Minuten.</span></div>
+  <div class="facts"><div class="fact" id="f0"><em>Wann</em><strong>Mo 09.11.</strong></div><div class="fact" id="f1"><em>Uhrzeit</em><strong>18–19 Uhr</strong></div><div class="fact" id="f2"><em>Format</em><strong>Live</strong></div><div class="fact price" id="f3"><em>Investition</em><strong>59 €</strong></div></div>
+  <div class="pts"><div id="q0">Von deinem Content zur eigenen Website</div><div id="q1">Mit der FLOW-Methode und unserem Website-Skill</div><div id="q2">Danach bearbeitest du sie selbst mit KI weiter</div></div>
+</div>
+<div class="l" id="cta"><div class="btn">Schreib mir „WORKSHOP“</div><div class="f">Komm in den <span>Flow.</span></div></div>
+<div class="l" id="flash"></div>
+<div class="grain"></div>
+
+<script>
+const $=id=>document.getElementById(id), C=x=>Math.max(0,Math.min(1,x)), E=x=>1-Math.pow(1-C(x),3);
+const T={hook:0,have:2.6,build:6.0,live:14.4,offer:17.8,end:24.0};
+window.TOTAL=T.end;
+// wireframe blocks
+const wf=$('wire');[[60,90],[90,60],[80,60],[100,240],[45,40],[70,40],[100,200]].forEach(([w,h])=>{const d=document.createElement('div');d.className='wb';d.style.width=w+'%';d.style.height=h+'px';wf.appendChild(d)});
+function vis(el,t,a,b,dy=50,fi=.3,fo=.2){const e=E((t-a)/fi),o=Math.min(e,C((b-t)/fo));el.style.opacity=o;el.style.transform=(el.dataset.base||'')+` translateY(${(1-e)*dy}px)`;return e}
+$('live').dataset.base='translate(-50%,-50%)';
+window.DRAW=t=>{
+  // hook
+  const zh=1+.06*C(t/T.have);
+  $('ph').style.opacity=t<T.have?1:0;$('ph').style.transform=`scale(${zh})`;$('phs').style.opacity=t<T.have?1:0;
+  vis($('hook'),t,.15,T.have);
+  // timer: 60:00 -> 00:00 between build start and live
+  const tm=$('timer');tm.style.opacity=(t>=.4&&t<T.offer)?1:0;
+  const rem=t<T.build?3600:Math.max(0,3600*(1-(t-T.build)/(T.live-T.build)));
+  const r=Math.ceil(rem/60)*60, mm=Math.floor(rem/60), ss=Math.floor(rem%60);
+  $('tv').textContent=t>=T.live?'LIVE':String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+  // have
+  vis($('have'),t,T.have+.05,T.build);
+  for(let i=0;i<4;i++){const el=$('tl'+i),a=T.have+.35+i*.32;const e=E((t-a)/.3);
+    const g=E((t-(T.build-.75))/.55); // fly into skill
+    const tx=(540-(i%2?800:280))*g, ty=(1535-(i<2?870:1210))*g;
+    el.style.opacity=t<T.build?Math.min(e,1-g*.9):0; el.style.transform=`translate(${tx}px,${ty+(1-e)*60}px) scale(${(.8+.2*e)*(1-.6*g)})`;}
+  const sk=$('skill');const se=E((t-(T.have+1.8))/.3);sk.style.opacity=t<T.build?se:0;sk.style.transform=`scale(${.9+.1*se+ .08*E((t-(T.build-.25))/.15)*(t<T.build?1:0)})`;
+  // build
+  const br=$('br'),inB=t>=T.build&&t<T.offer;br.style.opacity=inB?E((t-T.build)/.35):0;
+  const prog=C((t-(T.build+2.2))/(T.live-T.build-2.6)); // site reveal under the scan line
+  const vpH=828;$('cover').style.height=(vpH*(1-prog))+'px';$('cover').style.top='auto';
+  $('scan').style.opacity=(prog>0&&prog<1)?1:0;$('scan').style.top=(vpH*prog-3)+'px';
+  $('wire').querySelectorAll('.wb').forEach((b,i)=>{b.style.transform=`scaleX(${E((t-T.build-.3-i*.18)/.35)})`});
+  // after live: scroll the site
+  const sc=E((t-T.live-.4)/3.2)*1500; $('site').style.transform=`translateY(${-sc}px)`;
+  $('url').style.borderColor='';
+  const ph=$('ph4');ph.style.opacity=(t>=T.build&&t<T.live)?E((t-T.build-.2)/.3):0;
+  const step=Math.floor((t-T.build)/((T.live-T.build)/4));for(let i=0;i<4;i++)$('p'+i).className='phase'+(i<=step?' on':'');
+  // live
+  const le=vis($('live'),t,T.live,T.offer,0,.18);$('live').style.transform=`translate(-50%,-50%) scale(${1.4-.4*le})`;
+  const pe=vis($('phone'),t,T.live+.5,T.offer,0,.4);$('phone').style.transform=`translateX(${(1-pe)*300}px) rotate(${-4*pe}deg)`;
+  $('mob').style.transform=`translateY(${-E((t-T.live-.9)/2.6)*1300}px)`;
+  vis($('bsp'),t,T.live+.6,T.offer,20);
+  // flash
+  let f=0;[[T.have,.3],[T.build,.3],[T.live,.95],[T.offer,.4]].forEach(([c,m])=>{const d=t-c;if(d>=0&&d<.15)f=Math.max(f,(1-d/.15)*m)});$('flash').style.opacity=f;
+  // offer
+  vis($('offer'),t,T.offer+.05,99,60);
+  for(let i=0;i<4;i++)vis($('f'+i),t,T.offer+.5+i*.18,99,40);
+  for(let i=0;i<3;i++)vis($('q'+i),t,T.offer+1.4+i*.3,99,30);
+  vis($('cta'),t,T.offer+2.6,99,40);
+  const pulse=t>T.offer+3?1+.03*Math.sin((t-T.offer)*6):1;$('cta').querySelector('.btn').style.transform=`scale(${pulse})`;
+};
+DRAW(0);
+</script></body></html>
