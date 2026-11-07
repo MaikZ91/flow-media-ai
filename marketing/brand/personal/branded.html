@@ -1,0 +1,20 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="fonts/fonts.css">
+<style>*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1350px;overflow:hidden;background:#0B0B0B;color:#fff}
+.bg{position:absolute;left:0;right:0;top:0;bottom:0;background-size:cover;background-position:center}
+.bg.top{bottom:auto;height:810px;background-size:1080px 810px}
+.sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,0) 22%,rgba(11,11,11,0) 58%,rgba(11,11,11,.92) 86%,#0B0B0B 100%)}
+.logo{position:absolute;left:76px;top:72px;width:170px}
+.k{position:absolute;left:76px;bottom:290px;font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+.h{position:absolute;left:76px;right:76px;bottom:96px;font:700 88px/.95 Oswald;text-transform:uppercase}
+.h span{color:#2F5BFF}
+.tag{position:absolute;right:76px;top:84px;font:500 20px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#d8d8d8}
+</style></head><body>
+<div class="bg" id="bg"></div><div class="sh"></div>
+<img class="logo" src="src/logo_flow.png" alt=""><div class="tag" id="tag"></div>
+<div class="k" id="k"></div><div class="h" id="h"></div>
+<script>
+const V={holo:["maik_hololens_ar_2017.jpg","2017 · Studienprojekt","Augmented Reality<br>in der <span>Medizin.</span>","Personal"],
+robo:["maik_roboter_teststand.jpg","Studienprojekt · Robotik","Wo alles<br><span>angefangen hat.</span>","Personal"]};
+const key=location.hash.slice(1)||"holo",v=V[key];if(key==="holo")document.getElementById("bg").className="bg top";document.getElementById("bg").style.backgroundImage=`url(${v[0]})`;
+document.getElementById("k").textContent=v[1];document.getElementById("h").innerHTML=v[2];document.getElementById("tag").textContent="We build your ideas";
+</script></body></html>
