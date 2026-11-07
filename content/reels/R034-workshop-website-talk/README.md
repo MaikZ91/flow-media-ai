@@ -34,6 +34,8 @@ Daraus entsteht eine komplett neue Website. Wir stellen sie live, sie ist erreic
 
 🎁 Dazu bekommst du meinen Website-Skill gratis. Damit baust du so viele Websites, wie du willst – dein Leben lang.
 
+🛠️ Und bis 31.12.26 bekommst du kostenlosen Tech-Support und Q&A in unserem Tech-Support-Channel – du stehst beim Umsetzen also nicht allein da.
+
 Dabei? Schreib mir „WORKSHOP“ per DM. 👇
 
 🎵 „Deep Urban“ – Mixkit

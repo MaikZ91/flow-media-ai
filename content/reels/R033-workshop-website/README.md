@@ -27,6 +27,8 @@ Wir machen daraus deine eigene Website – nach der FLOW-Methode und mit unserem
 
 Und sie bleibt nicht stehen: Du bearbeitest sie danach selbst mit KI weiter – neue Texte, neue Bilder, neue Seiten.
 
+🛠️ Und bis 31.12.26 bekommst du kostenlosen Tech-Support und Q&A in unserem Tech-Support-Channel – du stehst beim Umsetzen also nicht allein da.
+
 Kein Baukasten. Kein Programmieren. Kein „mach ich irgendwann“.
 
 Platz sichern: Schreib mir „WORKSHOP“ per DM. 👇
