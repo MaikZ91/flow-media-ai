@@ -224,6 +224,8 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .appt { display: block; border-radius: 4px; padding: 3px 6px; font-size: 12px; line-height: 1.25; background: var(--ink); color: var(--card); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none }
 .appt b { font-family: var(--f-mono); font-weight: 500; margin-right: 4px }
 .appt.past { opacity: .5 }
+button.appt { font-family: inherit; text-align: left; cursor: pointer; border: 0; width: auto }
+.cal button.appt { width: 100% }
 .undated { display: flex; flex-direction: column; gap: 6px }
 .undated h3 { margin: 0; font-size: 14px }
 .undated p { margin: 0; color: var(--muted); font-size: 12.5px }
@@ -512,7 +514,10 @@ let readOnly = false, loaded = false;
 let composerFor = null;
 // files: board uploads (kind "asset"), links (kind "link", Google Drive in the web version) and legacy Dropbox links (kind "dropbox"), optionally attached to a card via taskId
 let files = [], filesCol = null, assetsApi = null, mcpApi = null, usage = null;
-let calEvents = [], calStatus = "";  // WEB: booked Calendly meetings, read through the flow-board gateway
+let calEvents = [], calStatus = "";
+// Calendly meetings can be hidden in the board (meta.calHidden, synced); cancelling stays in Calendly
+const calKey = ev => ev.start + "|" + (ev.invitee || ev.name);
+const calVisible = () => calEvents.filter(ev => !(meta.calHidden || []).includes(calKey(ev)));  // WEB: booked Calendly meetings, read through the flow-board gateway
 const DBX_ROOT = "/Flow Media AI";
 const dbx = { path: DBX_ROOT, entries: null, loading: false, error: null, retry: false };
 const MAX_BYTES = (WEB ? 50 : 20) * 1024 * 1024;
@@ -784,8 +789,8 @@ function renderWeek() {
   const cols = days.map(d => { const key = ymd(d);
     const items = tasks.filter(t => t.due === key && t.time).map(t => { const s0 = toMin(t.time), e0 = t.endTime ? Math.max(toMin(t.endTime), s0 + 15) : s0 + 45;
       return `<div class="wev ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%;--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc(`${t.time}${t.endTime ? "–" + t.endTime : ""} · ${t.title}`)}"><b>${t.time}${t.endTime ? "–" + t.endTime : ""}</b> ${esc(t.title)}${readOnly ? "" : `<span class="wev-rs" aria-hidden="true"></span>`}</div>` });
-    const appts = calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes(), e0 = en.getHours() * 60 + en.getMinutes(), tm = fromMin(s0);
-      return `<a class="wev appt" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm}–${fromMin(e0)} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}`)}"><b>${tm}</b> ${esc(ev.invitee || ev.name)}</a>` });
+    const appts = calVisible().filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes(), e0 = en.getHours() * 60 + en.getMinutes(), tm = fromMin(s0);
+      return `<button type="button" class="wev appt" style="top:${pct(s0)}%;height:${Math.max(pct(e0) - pct(s0), 2.2)}%" data-cal="${esc(calKey(ev))}" title="${esc(`${tm}–${fromMin(e0)} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}`)}"><b>${tm}</b> ${esc(ev.invitee || ev.name)}</button>` });
     const nowLine = key === today && nowMin >= H0 * 60 && nowMin <= H1 * 60 ? `<span class="now" style="top:${pct(nowMin)}%"></span>` : "";
     const slot = calSlot && calSlot.day === key && calSlot.m != null ? `<span class="slot" style="top:${pct(calSlot.m)}%;height:${pct(calSlot.m + 30) - pct(calSlot.m)}%"></span>` : "";
     return `<div class="wcol ${key === today ? "today" : ""}" data-drop="wday:${key}" data-day="${key}">${slot}${appts.join("")}${items.join("")}${nowLine}</div>` }).join("");
@@ -810,8 +815,8 @@ function renderAgenda() {
     const items = [
       ...sortByPrio(tasks.filter(t => t.due === key && !t.time)).map(t => ({ m: -1, html: `<button type="button" class="ag-item ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" data-id="${t.id}"><span class="ag-time">ganztags</span><span class="ag-title">${esc(t.title)}</span></button>` })),
       ...tasks.filter(t => t.due === key && t.time).map(t => ({ m: toMin(t.time), html: `<button type="button" class="ag-item ${t.status === "done" ? "done" : ""}" style="--pc:var(${PCOL[prio(t)]})" data-id="${t.id}"><span class="ag-time">${t.time}${t.endTime ? "–" + t.endTime : ""}</span><span class="ag-title">${esc(t.title)}</span></button>` })),
-      ...calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes();
-        return { m: s0, html: `<a class="ag-item appt" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener"><span class="ag-time">${fromMin(s0)}–${fromMin(en.getHours() * 60 + en.getMinutes())}</span><span class="ag-title">${esc(ev.invitee || ev.name)} · Calendly</span></a>` } }),
+      ...calVisible().filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), en = new Date(ev.end), s0 = st.getHours() * 60 + st.getMinutes();
+        return { m: s0, html: `<button type="button" class="ag-item appt" data-cal="${esc(calKey(ev))}"><span class="ag-time">${fromMin(s0)}–${fromMin(en.getHours() * 60 + en.getMinutes())}</span><span class="ag-title">${esc(ev.invitee || ev.name)} · Calendly</span></button>` } }),
     ].sort((a, b) => a.m - b.m);
     return `<div class="ag-day ${key === today ? "today" : ""}"><h3>${DOW[i]} ${d.getDate()}. ${MON_S[d.getMonth()]}${motto(i) ? ` <span class="ag-motto">${esc(motto(i))}</span>` : ""}</h3>
       ${items.map(x => x.html).join("") || `<div class="ag-empty">Nichts geplant</div>`}${readOnly ? "" : `<button type="button" class="ag-add" data-new-due="${key}">+ Termin</button>`}</div>`;
@@ -837,8 +842,8 @@ function renderCal() {
       const key = ymd(d), items = sortByPrio(tasks.filter(t => t.due === key)).sort((a, b) => (a.time || "99") .localeCompare(b.time || "99"));
       cells += `<div class="day ${d.getMonth() !== m ? "out" : ""} ${key === today ? "today" : ""} ${calSlot && calSlot.day === key && calSlot.m == null ? "slot-sel" : ""}" data-drop="due:${key}" data-day="${key}">
         <div class="dn"><span>${d.getDate()}</span>${readOnly ? "" : `<button class="dadd" data-new-due="${key}" aria-label="Karte am ${d.getDate()}. ${MONTHS[d.getMonth()]} anlegen">+</button>`}</div>
-        ${calEvents.filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), tm = st.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
-          return `<a class="appt ${new Date(ev.end) < new Date() ? "past" : ""}" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener" title="${esc(`${tm} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}${ev.location ? " · " + ev.location : ""}`)}"><b>${tm}</b>${esc(ev.invitee || ev.name)}</a>` }).join("")}
+        ${calVisible().filter(ev => ymd(new Date(ev.start)) === key).map(ev => { const st = new Date(ev.start), tm = st.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+          return `<button type="button" class="appt ${new Date(ev.end) < new Date() ? "past" : ""}" data-cal="${esc(calKey(ev))}" title="${esc(`${tm} · ${ev.name}${ev.invitee ? " · " + ev.invitee : ""}${ev.location ? " · " + ev.location : ""}`)}"><b>${tm}</b>${esc(ev.invitee || ev.name)}</button>` }).join("")}
         ${items.map(t => `<div class="pill ${t.status === "done" ? "done" : ""} ${calSel === t.id ? "sel" : ""}" style="--pc:var(${PCOL[prio(t)]})" role="button" tabindex="0" data-id="${t.id}" title="${esc((t.time ? t.time + (t.endTime ? "–" + t.endTime : "") + " · " : "") + t.title)}">${t.time ? `<b class="ptime">${t.time}</b>` : ""}${esc(t.title)}</div>`).join("")}</div>`;
       d.setDate(d.getDate() + 1);
     }
@@ -1649,6 +1654,21 @@ function openCard(t, isNew = false) {
     saveTask(n); closeModal(); toast(isNew ? "Karte angelegt" : "Gespeichert");
   };
 }
+function openCalEvent(k) {
+  const ev = calEvents.find(e => calKey(e) === k); if (!ev) return;
+  const st = new Date(ev.start), en = new Date(ev.end), hm = d => d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+  $("#layer").innerHTML = `<div class="scrim" data-close-modal>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cal-h" style="grid-template-columns:minmax(0,1fr);width:min(460px,100%)">
+    <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
+    <div style="min-width:0">
+      <h2 id="cal-h" style="margin:0 34px 4px 0">${esc(ev.invitee || ev.name)}</h2>
+      <p class="in-list">${esc(ev.name)} · Calendly</p>
+      <div class="stat">${st.toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit" })} · ${hm(st)}–${hm(en)}${ev.location ? " · " + esc(ev.location) : ""}</div>
+      <p class="stat" style="margin-top:10px">„Ausblenden“ nimmt den Termin nur aus dem Board. Absagen oder verschieben geht in Calendly – dann bekommt die Person eine Nachricht.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">${readOnly ? "" : `<button type="button" class="danger" data-cal-hide="${esc(k)}">Im Board ausblenden</button>`}<a class="ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener">In Calendly öffnen</a></div>
+    </div>
+  </div></div>`;
+}
 function closeModal() { $("#layer").innerHTML = "" }
 function blank(extra = {}) {
   return { id: newId(), title: "", notes: "", important: false, urgent: false, status: "backlog", due: "", area: "", members: [], comments: [],
@@ -1670,7 +1690,7 @@ function openMenu(btn) {
     <div class="swatches">${Object.entries(BGS).map(([k, b]) => b.plain ? `<button class="sw plain" data-bg="${k}" aria-pressed="${meta.bg === k}">${b.name}</button>` : `<button class="sw" data-bg="${k}" aria-pressed="${meta.bg === k}" style="background-image:url(${bgCache[k] || (bgCache[k] = makeBackground(k))})">${b.name}</button>`).join("")}</div>
     <h3>Überblick</h3>
     <div class="stat">${open.length} offene Karten · ${open.filter(t => prio(t) === 1).length} mit P1 · ${late} überfällig</div>
-    ${WEB ? `<h3>Calendly</h3><div class="stat">${calStatus === "ok" ? `Verbunden · ${calEvents.length} Termine im Kalender (letzte 30 Tage und nächste 90 Tage)` : calStatus === "no_token" ? "Noch nicht verbunden: Calendly-Schlüssel fehlt in Supabase." : calStatus === "error" ? "Calendly ist gerade nicht erreichbar." : "Wird geladen …"}</div>` : ""}
+    ${WEB ? `<h3>Calendly</h3><div class="stat">${calStatus === "ok" ? `Verbunden · ${calEvents.length} Termine im Kalender (letzte 30 Tage und nächste 90 Tage)` : calStatus === "no_token" ? "Noch nicht verbunden: Calendly-Schlüssel fehlt in Supabase." : calStatus === "error" ? "Calendly ist gerade nicht erreichbar." : "Wird geladen …"}</div>${(meta.calHidden || []).length ? `<div class="stat">${meta.calHidden.length} im Board ausgeblendet</div><button type="button" class="ghost" id="cal-unhide">Alle wieder einblenden</button>` : ""}` : ""}
     ${WEB && creds ? `<h3>Andere Geräte</h3><div class="stat">Öffne dein Board überall mit deinem persönlichen Link. Wer den Link hat, kann das Board bearbeiten – nicht weitergeben.</div>
       <button type="button" class="ghost" id="web-copy">Board-Link kopieren</button><input id="web-link" hidden readonly value="${esc(shareLink())}" style="width:100%">
       <button type="button" class="ghost" id="web-forget">Auf diesem Gerät abmelden</button>` : ""}
@@ -1700,6 +1720,9 @@ document.addEventListener("click", e => {
     return;
   }
   if (tgt.closest("[data-close-menu]")) { closeModal(); return }
+  const calHide = tgt.closest("[data-cal-hide]"); if (calHide) { if (!readOnly) { saveMeta({ calHidden: [...new Set([...(meta.calHidden || []), calHide.dataset.calHide])] }); render(); toast("Termin im Board ausgeblendet") } closeModal(); return }
+  if (tgt.closest("#cal-unhide")) { if (!readOnly) { saveMeta({ calHidden: [] }); render(); toast("Calendly-Termine wieder eingeblendet") } closeModal(); return }
+  const calOpen = !tgt.closest("#layer") && tgt.closest("[data-cal]"); if (calOpen) { openCalEvent(calOpen.dataset.cal); return }
   const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
   if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
   if (tgt.closest("#layer")) return;
