@@ -84,6 +84,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | 07.11.2026 | P011 | `weg` | Karussell (5) | „Mein Weg“ – Robotik (Studium) → AR/HoloLens 2017 → heute KI; „Ich baue nicht erst seit KI.“, CTA Idee in die Kommentare | `format = mein-weg-karussell` |
 | 07.11.2026 | R032 | `weg` / `engineering` | Reel 25 s | „Mein Weg“ – Roboterarm 2017 → HoloLens 2017 → KI-Video (Kamera kreist), CTA Idee in die Kommentare | `format = origin-montage` |
 | 07.11.2026 | R033 | `web` / `lernen` | Reel 24 s | Workshop „Deine Website“ Mo 09.11. 18–19 Uhr, 59 € – Content → Website-Skill → LIVE (FLOW-Phasen, Timer 60:00), CTA „WORKSHOP“ | `format = countdown-build` |
+| 07.11.2026 | R034 | `web` / `lernen` | Reel 44 s (Talking Head, Farbe) | Workshop „Deine Website“ Mo 09.11. 18–19 Uhr, Website-Skill gratis; Animationen pro Satz, ohne Preis | `musik = deep-house` |
 | 06.11.2026 | P009 | `lernen` / `weg` | Karussell (6 Folien) | „Die FLOW-Methode“ – Fokussieren · Losbauen · Optimieren · Wachsen (Idea2Concept …), CTA „Welche Phase? F, L, O oder W“ | `format = methoden-karussell` |
 | 06.11.2026 | P008 | `lernen` | Story | „Heute. 17 Uhr.“ – Workshop-Tag „Mit KI zur Personal Brand“ (15 €, Support bis 31.12.), Countdown-Sticker | `format = event-reminder` |
 | 05.11.2026 | R031 | `lernen` | Reel (Talking Head, Farbe + Animationen) | „Morgen: Mit KI zur Personal Brand“ – Workshop-Promo Fr 06.11. 17 Uhr, Brand-Skill → gleicher Look, nicht generisch, Workflows | `format = talkinghead-animiert-farbe` |

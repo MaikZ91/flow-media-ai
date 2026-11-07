@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--black:#0B0B0B;--blue:#2F5BFF;--grey:#9A9A9A;--line:rgba(255,255,255,.16)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent;color:#fff;font-family:Inter,sans-serif}
+.top{position:absolute;left:60px;right:60px;top:110px;z-index:10;opacity:0}
+.pill{display:inline-flex;align-items:center;gap:16px;background:rgba(11,11,11,.9);border-radius:22px;padding:18px 28px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pill .t{font:700 66px/1 Oswald;text-transform:uppercase}
+.pill .k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.b{color:var(--blue)}
+.row{display:flex;gap:14px;margin-top:14px;align-items:center;flex-wrap:wrap}
+.chip{font:600 44px Inter;background:rgba(11,11,11,.9);border:2px solid rgba(255,255,255,.25);border-radius:40px;padding:12px 24px;opacity:0}
+.chip.on{border-color:var(--blue);background:var(--blue)}
+.arrow{font:700 44px Oswald;color:var(--blue);opacity:0}
+.layer{position:absolute;inset:0;opacity:0;background:var(--black)}
+.lab{position:absolute;left:0;right:0;text-align:center;font:700 100px/1 Oswald;text-transform:uppercase}
+.sub{position:absolute;left:0;right:0;text-align:center;font:500 30px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+svg{position:absolute;left:0;top:0}
+.file{position:absolute;left:190px;right:190px;top:760px;border-radius:24px;background:#141519;border:3px solid var(--blue);box-shadow:0 0 90px rgba(47,91,255,.45);padding:36px 40px;opacity:0}
+.file .fn{font:600 30px 'JetBrains Mono',monospace;color:#8fa4ff}
+.file .ti{margin-top:14px;font:700 76px/1 Oswald;text-transform:uppercase}
+.file .ln{height:14px;border-radius:7px;background:rgba(255,255,255,.18);margin-top:18px}
+.bars{position:absolute;left:90px;right:90px;top:780px}
+.bars .r{margin-bottom:70px}
+.bars .nm{display:flex;justify-content:space-between;font:700 54px Oswald;text-transform:uppercase;margin-bottom:16px}
+.bars .nm b{font-family:'JetBrains Mono',monospace;color:#fff}
+.bars .tr{height:56px;border-radius:28px;background:rgba(255,255,255,.12);overflow:hidden}
+.bars .tr i{display:block;height:100%;width:0;border-radius:28px;background:#fff}
+.bars .r.b .tr i{background:var(--blue)}
+.ws{position:absolute;left:70px;right:70px;top:120px;opacity:0;z-index:10;background:rgba(11,11,11,.92);border:3px solid var(--blue);border-radius:28px;padding:26px 32px;box-shadow:0 0 70px rgba(47,91,255,.35)}
+.ws .k{font:500 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+.ws .t{margin-top:8px;font:700 74px/1 Oswald;text-transform:uppercase}
+.ws .d{margin-top:14px;font:600 36px Inter}
+.ws .d span{display:inline-block;background:var(--blue);border-radius:12px;padding:6px 16px;margin-right:10px}
+.ws li{list-style:none;font:500 32px/1.35 Inter;padding:8px 0;border-top:1px solid var(--line);opacity:0}
+.ws ul{margin-top:14px;padding:0}
+#cap{position:absolute;left:50px;right:50px;top:1600px;text-align:center;z-index:30;font:800 64px/1.12 Inter;text-shadow:0 4px 0 #000,0 0 26px rgba(0,0,0,.9)}
+#cap span{display:inline-block;margin:0 8px}
+#cap span.on{color:var(--blue)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+.prog{position:absolute;left:76px;right:76px;top:64px;height:4px;background:rgba(0,0,0,.25);z-index:31}
+.prog i{display:block;height:100%;background:#fff;width:0}
+
+.cal{display:inline-flex;flex-direction:column;align-items:center;width:150px;border-radius:20px;overflow:hidden;background:#fff;color:#0B0B0B;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cal .m{width:100%;text-align:center;background:var(--blue);color:#fff;font:700 30px Oswald;padding:6px 0}
+.cal .d{font:700 84px/1 Oswald;padding:6px 0 2px}
+.cal .w{font:600 22px Montserrat;letter-spacing:.14em;padding-bottom:8px}
+.posts{display:flex;gap:14px;margin-top:14px}
+.posts div{flex:1;height:260px;border-radius:18px;background:#0B0B0B;border:3px solid #fff;position:relative;overflow:hidden;opacity:0}
+.posts div:before{content:"";position:absolute;left:16px;right:16px;top:18px;height:110px;border-radius:10px;background:linear-gradient(135deg,#2F5BFF,#0B0B0B)}
+.posts div i{position:absolute;left:16px;top:144px;font:700 34px/1 Oswald;font-style:normal;text-transform:uppercase}
+.posts div b{position:absolute;right:12px;bottom:10px;width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font:700 26px Inter}
+.vs{display:flex;gap:14px;margin-top:14px}
+.vs div{flex:1;border-radius:20px;padding:20px;font:700 50px/1.05 Oswald;text-transform:uppercase;opacity:0}
+.vs .no{background:rgba(11,11,11,.9);color:#888;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:#C0392B}
+.vs .yes{background:var(--blue)}
+.stack{display:flex;flex-direction:column-reverse;gap:8px;margin-top:14px;width:600px}
+.stack div{border-radius:14px;background:rgba(11,11,11,.9);border:2px solid var(--blue);font:700 40px Oswald;text-transform:uppercase;padding:10px 20px;opacity:0}
+.stack div.base{background:var(--blue)}
+
+.browser{width:960px;border-radius:22px;overflow:hidden;background:#141519;border:3px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.45);margin-top:14px}
+.browser .bar{height:56px;background:#1d1e22;display:flex;align-items:center;gap:10px;padding:0 20px}
+.browser .bar i{width:14px;height:14px;border-radius:50%;background:#555}
+.browser .url{margin-left:12px;flex:1;height:36px;border-radius:18px;background:#0B0B0B;font:500 24px/36px Inter;color:#bbb;padding:0 18px}
+.browser .url b{color:#fff}
+.browser .bd{position:relative;height:250px;padding:22px}
+.wb{background:rgba(255,255,255,.14);border-radius:10px;margin-bottom:18px;transform-origin:0 0}
+.wb.blue{background:var(--blue)}
+.livebadge{display:inline-flex;align-items:center;gap:14px;background:var(--blue);border-radius:22px;padding:14px 28px;font:700 72px/1 Oswald;box-shadow:0 0 70px rgba(47,91,255,.6)}
+.livebadge .dot{width:22px;height:22px;border-radius:50%;background:#fff}
+.loop{width:120px;height:120px;border-radius:50%;border:8px solid var(--blue);border-top-color:transparent;display:inline-block;vertical-align:middle}
+.ws .d span.p{background:#fff;color:#0B0B0B}
+.gratis{position:absolute;right:30px;top:-30px;transform:rotate(8deg);background:#fff;color:#0B0B0B;font:700 56px/1 Oswald;padding:10px 22px;border-radius:14px;opacity:0;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.inf{display:flex;align-items:center;gap:18px;margin-top:14px}
+.inf .sym{font:700 120px/1 Oswald;color:var(--blue)}
+</style></head><body>
+<div class="prog"><i id="prog"></i></div>
+
+<div class="top" id="t_intro"><div class="pill"><span style="font-size:60px;display:inline-block" id="wave">👋</span><span class="t">Hallo <span class="b">Flow</span> Community</span></div></div>
+<div class="top" id="t_montag"><div style="display:flex;gap:18px;align-items:center"><div class="cal" id="cal"><div class="m">NOV</div><div class="d">09</div><div class="w">MONTAG</div></div><div class="pill"><span class="k">Neuer</span><span class="t">Workshop <span class="b">18 Uhr</span></span></div></div></div>
+
+<div class="layer" id="l_thema"><div class="sub" style="top:690px">Oberthema</div><div class="lab" style="top:750px;font-size:150px">Mit KI zur<br><span class="b">Personal Brand.</span></div><div class="sub" id="thsub" style="top:1250px;font-size:40px;color:#fff">Diesmal: <span class="b">Deine Website</span></div></div>
+<div class="top" id="t_thema2"><div class="pill"><span class="k">Diesmal</span><span class="t">Deine <span class="b">Website</span></span></div></div>
+
+<div class="top" id="t_content"><div class="pill"><span class="t">Dein Content</span></div><div class="row"><span class="chip" id="c1">📸 Fotos</span><span class="chip" id="c2">🎬 Videos</span><span class="chip" id="c3">🎨 Branding</span><span class="chip" id="c4">🌐 alte Website</span></div></div>
+<div class="top" id="t_neu"><div class="pill"><span class="k">daraus</span><span class="t">Neue <span class="b">Website</span></span></div>
+  <div class="browser"><div class="bar"><i></i><i></i><i></i><div class="url">https://<b>deine-website.de</b></div></div><div class="bd" id="wire"><div class="wb blue" style="width:55%;height:70px"></div><div class="wb" style="width:80%;height:26px"></div><div class="wb" style="width:65%;height:26px"></div><div class="wb blue" style="width:30%;height:52px;border-radius:26px"></div><div style="display:flex;gap:16px"><div class="wb" style="flex:1;height:60px"></div><div class="wb" style="flex:1;height:60px"></div><div class="wb" style="flex:1;height:60px"></div></div></div></div></div>
+<div class="top" id="t_live"><div class="livebadge" id="lb"><span class="dot" id="ldot"></span>LIVE</div><div class="row"><span class="chip on" id="url2" style="font-size:40px">🌐 deine-website.de · erreichbar ✓</span></div></div>
+<div class="top" id="t_pflegen"><div class="pill"><span class="loop" id="loop"></span><span class="t">Mit KI <span class="b">weiterbauen</span></span></div><div class="row"><span class="chip" id="p1">✎ Texte</span><span class="chip" id="p2">🖼 Bilder</span><span class="chip" id="p3">＋ Seiten</span></div></div>
+
+<div class="ws" id="ws"><div class="k">Workshop · Mit KI zur Personal Brand</div><div class="t">Deine <span class="b">Website</span><br>in 60 Minuten</div>
+  <div class="d"><span>Mo 09.11.</span><span>18–19 Uhr</span></div>
+  <ul><li>Aus deinem Content wird deine Website</li><li>Live gestellt – erreichbar für alle</li><li>Danach selbst mit KI weiterbauen</li></ul></div>
+
+<div class="top" id="t_skill"><div class="file" id="file" style="position:relative;left:auto;right:auto;top:auto;opacity:1;padding:24px 30px"><div class="gratis" id="grat">GRATIS</div><div class="fn">skills/website/SKILL.md</div><div class="ti" style="font-size:64px">Der <span class="b">Website-Skill</span></div><div class="ln" style="width:80%"></div><div class="ln" style="width:60%"></div></div>
+  <div class="inf" id="inf" style="opacity:0"><span class="sym">∞</span><div class="pill"><span class="t">Websites · ein Leben lang</span></div></div></div>
+<div class="top" id="t_bye"><div class="pill"><span class="t">Bis Montag 👋</span></div><div class="row"><span class="chip on" id="cta">Schreib mir „WORKSHOP“</span></div></div>
+
+<div id="cap"></div>
+<div id="flash"></div>
+<script>
+const CUTS = __CUTS__, CAPS = __CAPS__, VEND = __TOTAL__;
+const TOTAL = VEND + 0.6; window.TOTAL = TOTAL;
+const S = {}; CUTS.forEach(c => { if (!(c.sec in S)) S[c.sec] = c.t });
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), eo = x => 1 - Math.pow(1 - cl(x), 3);
+const $ = id => document.getElementById(id);
+const win = (t, a, b, f = .22) => t < a || t >= b ? 0 : Math.min(eo((t - a) / f), eo((b - t) / f));
+const wt = (word, after) => { const w = CAPS.find(c => c[0] >= after - .01 && c[2].toLowerCase().startsWith(word)); return w ? w[0] : after };
+const W = { intro: [0.05, S.montag], montag: [S.montag, S.thema], thema: [S.thema, S.thema + 1.7], thema2: [S.thema + 1.7, S.content], content: [S.content, S.neu], neu: [S.neu, S.live],
+  live: [S.live, S.pflegen], pflegen: [S.pflegen, S.termin], termin: [S.termin, S.skill], skill: [S.skill, S.bye], bye: [S.bye, TOTAL + 1] };
+const tF = wt("foto", S.content), tV = wt("video", S.content), tB = wt("branding", S.content), tA = wt("alte", S.content), tL = wt("live", S.live), tG = wt("gratis", S.skill), tLe = wt("leben", S.skill),
+      tT = wt("texte", S.pflegen), tPf = wt("pflegen", S.pflegen), tVb = wt("verbessern", S.pflegen);
+const GR = []; let g = [];
+CAPS.forEach((w, i) => { g.push(w); const nx = CAPS[i + 1]; if (g.length >= 3 || /[.?!,:]$/.test(w[2]) || !nx || nx[0] - w[1] > .3) { GR.push(g); g = [] } });
+let lastG = -1;
+const pop = (el, x) => { const a = eo(x / .25); el.style.opacity = a; el.style.transform = `scale(${1.25 - .25 * a})` };
+window.DRAW = t => {
+  const on = k => win(t, W[k][0], W[k][1], k === "thema" ? .1 : .22);
+  $("prog").style.width = Math.min(100, t / TOTAL * 100) + "%";
+  ["intro", "montag", "thema2", "content", "neu", "live", "pflegen", "skill", "bye"].forEach(k => { const el = $("t_" + k), a = on(k); el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * -30}px)` });
+  $("wave").style.transform = `rotate(${Math.sin(t * 9) * 18}deg)`;
+  if (on("montag")) { const x = t - W.montag[0]; $("cal").style.transform = `perspective(600px) rotateX(${(1 - eo((x - .2) / .5)) * 90}deg)` }
+  $("l_thema").style.opacity = on("thema"); $("l_thema").querySelector(".lab").style.transform = `scale(${1.3 - .3 * eo((t - W.thema[0]) / .25)})`;
+  $("thsub").style.opacity = eo((t - W.thema[0] - .6) / .3);
+  let fl = 0; [[W.thema[0], .6], [tL, .45]].forEach(([c, m]) => { const d = t - c; if (d >= 0 && d < .12) fl = Math.max(fl, m * (1 - d / .12)) }); $("flash").style.opacity = fl;
+  if (on("content")) { [["c1", tF], ["c2", tV], ["c3", tB], ["c4", tA]].forEach(([id, d]) => { pop($(id), t - d + .05); $(id).className = "chip" + (t > d + .3 ? " on" : "") }) }
+  if (on("neu")) { const x = t - W.neu[0]; $("wire").querySelectorAll(".wb").forEach((b, i) => b.style.transform = `scaleX(${eo((x - .25 - i * .22) / .35)})`) }
+  if (on("live")) { const x = t - tL; const a = eo(x / .2); $("lb").style.transform = `scale(${1.4 - .4 * a})`; $("ldot").style.opacity = .4 + .6 * Math.abs(Math.sin(t * 5)); pop($("url2"), t - wt("erreichbar", S.live)) }
+  if (on("pflegen")) { $("loop").style.transform = `rotate(${t * 300}deg)`; const x = t - W.pflegen[0]; [["p1", x - .6], ["p2", x - 1.6], ["p3", x - 2.6]].forEach(([id, d]) => pop($(id), d)) }
+  const wa = on("termin"); $("ws").style.opacity = wa; $("ws").style.transform = `translateY(${(1 - wa) * -40}px)`;
+  [...document.querySelectorAll("#ws li")].forEach((li, i) => { const a = eo((t - W.termin[0] - [1.0, 2.0, 3.0][i]) / .3); li.style.opacity = a; li.style.transform = `translateX(${(1 - a) * -30}px)` });
+  if (on("skill")) { const x = t - W.skill[0]; $("file").style.transform = `scale(${1.15 - .15 * eo(x / .3)})`; [...$("file").querySelectorAll(".ln")].forEach((l, i) => { l.style.transformOrigin = "0 0"; l.style.transform = `scaleX(${eo((x - .5 - i * .3) / .4)})` });
+    const ga = eo((t - tG) / .2); $("grat").style.opacity = ga; $("grat").style.transform = `rotate(8deg) scale(${1.8 - .8 * ga})`; const ia = eo((t - wt("viele", S.skill)) / .3); $("inf").style.opacity = ia; $("inf").style.transform = `translateY(${(1 - ia) * 30}px)` }
+  if (on("bye")) pop($("cta"), t - W.bye[0] - .4);
+  const gi = GR.findIndex(gr => t >= gr[0][0] - .05 && t < gr[gr.length - 1][1] + .15), cap = $("cap");
+  if (gi >= 0 && !on("thema")) { if (gi !== lastG) { cap.innerHTML = GR[gi].map(w => `<span>${w[2].replace(/[,:]$/, "")}</span>`).join(""); lastG = gi } let cur = 0; GR[gi].forEach((w, i) => { if (t >= w[0] - .03) cur = i }); [...cap.children].forEach((el, i) => el.className = i === cur ? "on" : ""); cap.style.opacity = 1 } else cap.style.opacity = 0;
+};
+</script>
+</body></html>

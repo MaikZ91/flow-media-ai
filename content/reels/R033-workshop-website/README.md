@@ -9,7 +9,7 @@ Musik: „Uplifting Bass“ (Mixkit, Stock Music Free License) ab 0 s, Drop bei 
 | 2,6–6 s | „Du hast schon alles.“ Bilder · Videos · Texte · Dein Stil fliegen in den „Website-Skill“ |
 | 6–14,4 s | Browser: Wireframe → Seite baut sich unter der Scanlinie auf; FLOW-Phasen F·L·O·W leuchten nacheinander; Timer läuft 60:00 → 0 |
 | 14,4–17,8 s | Drop: LIVE ✓, Seite scrollt, Handy-Ansicht – Label „Beispiel: meine eigene Website“ |
-| 17,8–24 s | Angebot: Mo 09.11. · 18–19 Uhr · Live · 59 € · CTA „Schreib mir ‚WORKSHOP‘“ |
+| 17,8–24 s | Angebot: Mo 09.11. · 18–19 Uhr · Live · 60 Min (Preis bewusst nicht im Reel, nur in der Caption – Maik, 07.11.2026) · CTA „Schreib mir ‚WORKSHOP‘“ |
 
 Die gezeigte Website ist Maiks echte Landingpage (Screenshot), als Beispiel gekennzeichnet; der Timer ist eine Visualisierung der Workshop-Stunde.
 Bauen: `node frames.js $PWD` → `video_only.mp4`, dann ffmpeg mit Musik (siehe Verlauf/Chat).
