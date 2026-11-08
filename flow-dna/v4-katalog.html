@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="kern.css">
 <style>
-:root{--dna-card:#FFFFFF;--dna-ink:#0B0B0B;--dna-muted:rgba(11,11,11,.55);--dna-line:rgba(11,11,11,.14)}
+:root{--dna-x-ink:#0B0B0B;--dna-x-line:rgba(11,11,11,.18);--dna-card:#FFFFFF;--dna-ink:#0B0B0B;--dna-muted:rgba(11,11,11,.55);--dna-line:rgba(11,11,11,.14)}
 .dna-b-basis{color:#0B0B0B;border-color:#0B0B0B}.dna-modal input,.dna-modal textarea,.dna-modal select{background:#f4f4f1}.dna-x{color:#0B0B0B}
 *{box-sizing:border-box}body{margin:0;background:#F4F4F1;color:#2b2b2b;font:400 16px/1.55 Inter,sans-serif}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
@@ -32,16 +32,16 @@ h1{font:700 clamp(70px,13vw,170px)/.82 Oswald;text-transform:uppercase;color:#0B
 .box>div{background:#0B0B0B;color:#ddd;padding:28px;border-radius:4px}.box h3{font:700 34px Oswald;text-transform:uppercase;color:#fff;margin:6px 0 10px}
 .box .blue{background:#2F5BFF;color:#fff}
 footer{padding:30px 0 50px;font-size:13px;color:#777;border-top:2px solid #0B0B0B}
-</style></head><body>
+h2,h3{overflow-wrap:anywhere;hyphens:auto}</style></head><body>
 <div class="wrap">
 <header><img src="img/logo_flow.png" alt="Flow Media AI"><span class="k">Katalog · Ausgabe 01 · November 2026</span></header>
-<section class="mast"><div><h1>Flow<br><span>DNA</span></h1><p>Der Skill-Katalog für dein Business. Jeder Eintrag ist eine fertige Anleitung für deine KI – getestet in echten Projekten, sortiert nach dem, was ein Business jeden Tag braucht.</p></div>
+<section class="mast"><div><h1>Flow<br><span>DNA</span></h1><p style="font:600 20px Montserrat;color:#0B0B0B">Your Business. Your AI. Your Flow.</p><p>The Skill Marketplace by Flow Media AI – der Katalog für dein Business. Jeder Eintrag ist eine fertige Anleitung für deine KI – getestet in echten Projekten, sortiert nach dem, was ein Business jeden Tag braucht.</p></div>
 <div><img src="img/maik_front.jpg" alt="Maik"><div class="cap">Kuratiert von Maik · Flow Media AI</div></div></section>
-<div class="ctl"><input id="q" type="search" placeholder="Im Katalog suchen …" aria-label="Katalog durchsuchen"><div class="tier" id="tier"><button data-st="alle" class="on">Alle</button><button data-st="basis">Kostenlos</button><button data-st="premium">Premium</button></div></div>
+<div class="ctl"><input id="q" type="search" placeholder="Im Katalog suchen …" aria-label="Katalog durchsuchen"><div class="tier" id="tier"><button data-st="alle" class="on">Alle</button><button data-st="basis">Free</button><button data-st="premium">Premium</button></div></div>
 <div id="list"></div>
 <div class="box"><div class="blue"><span style="font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase">Paket</span><h3 id="pkn"></h3><p id="pkt"></p></div>
 <div><span style="font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#2F5BFF">Community</span><h3>Dein Skill im Katalog</h3><p>Reich ein, was dir hilft – nach Prüfung steht er in der nächsten Ausgabe.</p><p style="margin-top:14px"><button class="dna-btn" data-submit>Skill einreichen</button></p></div></div>
-<footer>Flow DNA ist ein Prototyp. Preise für Premium-Skills folgen. · <a href="../marketing/landing-page/">flowmedia.ai</a></footer>
+<div id="dna-extra"></div><footer>Flow DNA ist ein Prototyp. Preise sind Richtwerte. · <a href="../marketing/landing-page/">flowmedia.ai</a></footer>
 </div>
 <script src="daten.js"></script><script src="kern.js"></script>
 <script>

@@ -18,10 +18,10 @@ h1 span{color:#2F5BFF;text-shadow:0 0 40px rgba(47,91,255,.6)}
 .strand{position:relative;max-width:900px;margin:30px auto 40px;padding:0 16px}
 #helix{position:absolute;left:50%;top:0;transform:translateX(-50%);width:140px;height:100%;pointer-events:none}
 .pair{position:relative;display:grid;grid-template-columns:1fr 140px 1fr;align-items:center;min-height:150px}
-.node{grid-column:1;justify-self:end;text-align:right;max-width:330px;cursor:pointer;padding:16px 18px;border-radius:18px;background:rgba(18,18,22,.9);border:1px solid rgba(255,255,255,.1);transition:transform .25s,border-color .25s;opacity:0;transform:translateY(20px)}
+.node{min-width:0;grid-column:1;justify-self:end;text-align:right;max-width:330px;cursor:pointer;padding:16px 18px;border-radius:18px;background:rgba(18,18,22,.9);border:1px solid rgba(255,255,255,.1);transition:transform .25s,border-color .25s;opacity:0;transform:translateY(20px)}
 .pair:nth-child(even) .node{grid-column:3;justify-self:start;text-align:left}
 .node.in{opacity:1;transform:none}.node:hover{border-color:#2F5BFF}
-.node .ic{font-size:30px}.node h3{font:700 28px/1 Oswald;text-transform:uppercase;color:#fff;margin:6px 0}.node p{margin:0;font-size:14px}
+.node .ic{font-size:30px}.node h3{overflow-wrap:anywhere;hyphens:auto;font:700 28px/1 Oswald;text-transform:uppercase;color:#fff;margin:6px 0}.node p{margin:0;font-size:14px}
 .node .dna-badges{margin-top:8px}.pair:nth-child(odd) .node .dna-badges{justify-content:flex-end}
 .dot{grid-column:2;grid-row:1;justify-self:center;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 0 18px #fff;z-index:2}
 .dot.premium{background:#2F5BFF;box-shadow:0 0 26px #2F5BFF}.dot.geplant{background:transparent;border:2px dashed #888;box-shadow:none}
@@ -30,11 +30,11 @@ h1 span{color:#2F5BFF;text-shadow:0 0 40px rgba(47,91,255,.6)}
 .pk{max-width:640px;margin:0 auto 30px;border:1px solid rgba(47,91,255,.5);border-radius:22px;padding:22px;background:linear-gradient(160deg,#121a3d,#0B0B0B)}
 </style></head><body>
 <div class="top"><img src="img/logo_flow.png" alt="Flow Media AI"><button data-submit>+ Skill einreichen</button></div>
-<section class="hero"><div class="k">Skill Store · Flow Media AI</div><h1>Flow<br><span>DNA.</span></h1>
+<section class="hero"><div class="k">The Skill Marketplace by Flow Media AI</div><h1>Flow<br><span>DNA.</span></h1><p style="font:600 22px Montserrat;color:#fff;margin:0 0 12px">Your Business. Your AI. Your Flow.</p>
 <p>Die DNA eines Business, das mit KI arbeitet: jeder Skill ein Baustein. Weiß = kostenlos, Blau = Premium, gestrichelt = kommt bald.</p>
-<div class="legend" id="lg"><button data-st="alle" class="on">Ganzer Strang</button><button data-st="basis">Kostenlos</button><button data-st="premium">Premium</button></div></section>
+<div class="legend" id="lg"><button data-st="alle" class="on">Ganzer Strang</button><button data-st="basis">Free</button><button data-st="premium">Premium</button></div></section>
 <section class="strand" id="strand"><svg id="helix" preserveAspectRatio="none"></svg><div id="pairs"></div></section>
-<section class="end"><div id="pk"></div><h2>Füg deinen Baustein hinzu</h2><p>Community-Skills werden geprüft und dann für alle freigeschaltet.</p><p style="margin-top:16px"><button class="dna-btn" data-submit>Skill einreichen</button></p></section>
+<section class="end"><div id="pk"></div></section><section style="max-width:900px;margin:0 auto;padding:0 20px 40px" id="dna-extra"></section>
 <script src="daten.js"></script><script src="kern.js"></script>
 <script>
 const st={stufe:"alle"};

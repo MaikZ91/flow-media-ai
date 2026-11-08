@@ -8,7 +8,7 @@
 @keyframes dna-up { from { transform: translateY(40px); opacity: 0 } }
 .dna-x { position: absolute; right: 14px; top: 12px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); font-size: 24px; cursor: pointer }
 .dna-ic { font-size: 40px; line-height: 1; margin-bottom: 12px }
-.dna-modal h2 { font: 700 40px/1 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; margin: 10px 0 8px }
+.dna-modal h2 { overflow-wrap: anywhere; hyphens: auto; font: 700 40px/1 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; margin: 10px 0 8px }
 .dna-modal h3 { font: 600 12px Montserrat, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--dna-muted); margin: 18px 0 6px }
 .dna-modal ul { margin: 0; padding-left: 18px; line-height: 1.6 }
 .dna-modal p { margin: 0; line-height: 1.55 }
@@ -27,3 +27,29 @@
 .dna-modal label { display: block; margin-top: 14px; font: 600 13px Inter, sans-serif; color: var(--dna-muted) }
 .dna-modal input, .dna-modal textarea, .dna-modal select { display: block; width: 100%; margin-top: 6px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--dna-line); background: rgba(255,255,255,.04); color: var(--dna-ink); font: 400 16px Inter, sans-serif; box-sizing: border-box }
 .dna-modal select option { color: #000 }
+
+.dna-acts { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end }
+.dna-save { min-height: 48px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); font: 600 14px Inter, sans-serif; cursor: pointer }
+.dna-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 0 }
+.dna-facts div { border: 1px solid var(--dna-line); border-radius: 12px; padding: 10px 12px }
+.dna-facts dt { font: 600 11px Montserrat, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--dna-muted) }
+.dna-facts dd { margin: 4px 0 0; font-size: 14px }
+/* extras */
+#dna-extra { color: inherit }
+.dna-x-sec { margin: 46px 0 }
+.dna-x-h { font: 700 34px/1 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; margin: 0 0 12px; color: var(--dna-x-ink, #fff) }
+.dna-x-p { margin: 0; max-width: 680px; line-height: 1.6 }
+.dna-x-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 14px }
+.dna-x-card { border: 1px solid var(--dna-x-line, rgba(255,255,255,.14)); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px }
+.dna-x-card b { font: 700 18px Oswald, sans-serif; text-transform: uppercase; color: var(--dna-x-ink, #fff); margin-bottom: 4px }
+.dna-x-card.now { border-color: #2F5BFF; box-shadow: 0 0 30px rgba(47,91,255,.25) }
+.dna-x-mine { display: flex; flex-wrap: wrap; gap: 8px }
+.dna-x-mine button { border: 1px solid #2F5BFF; background: transparent; color: var(--dna-x-ink, #fff); border-radius: 999px; padding: 10px 14px; font: 500 14px Inter, sans-serif; cursor: pointer }
+.dna-x-creator { display: flex; align-items: center; gap: 12px; margin-top: 16px }
+.dna-x-creator img { width: 52px; height: 52px; border-radius: 50%; filter: grayscale(1); border: 2px solid #2F5BFF }
+.dna-x-creator b { display: block; color: var(--dna-x-ink, #fff) }
+.dna-x-creator span { font-size: 14px; opacity: .75 }
+.dna-x-end { text-align: center; padding: 30px 0 }
+.dna-x-big { font: 700 clamp(36px, 7vw, 72px)/.95 Oswald, sans-serif; text-transform: uppercase; color: var(--dna-x-ink, #fff); margin-bottom: 12px }
+.dna-x-end .dna-x-p { margin: 0 auto }
+.dna-x-pw { margin-top: 10px; font: 600 12px Montserrat, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: #2F5BFF }
