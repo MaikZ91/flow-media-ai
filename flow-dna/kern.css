@@ -1,0 +1,29 @@
+/* Flow DNA – gemeinsame Bausteine (Detail-Fenster, Badges). Varianten setzen --dna-* selbst. */
+:root { --dna-bg: #0B0B0B; --dna-card: #141519; --dna-ink: #FFFFFF; --dna-muted: rgba(255,255,255,.62); --dna-line: rgba(255,255,255,.14); --dna-blue: #2F5BFF; --dna-r: 20px }
+.dna-lock { overflow: hidden }
+.dna-scrim { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); display: flex; align-items: flex-end; justify-content: center; padding: 0 }
+@media (min-width: 700px) { .dna-scrim { align-items: center; padding: 24px } }
+.dna-modal { position: relative; width: min(560px, 100%); max-height: 92vh; overflow: auto; background: var(--dna-card); color: var(--dna-ink); border: 1px solid var(--dna-line); border-radius: var(--dna-r) var(--dna-r) 0 0; padding: 26px 22px 22px; font-family: Inter, system-ui, sans-serif; animation: dna-up .28s cubic-bezier(.2,.7,.2,1) }
+@media (min-width: 700px) { .dna-modal { border-radius: var(--dna-r); padding: 30px } }
+@keyframes dna-up { from { transform: translateY(40px); opacity: 0 } }
+.dna-x { position: absolute; right: 14px; top: 12px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); font-size: 24px; cursor: pointer }
+.dna-ic { font-size: 40px; line-height: 1; margin-bottom: 12px }
+.dna-modal h2 { font: 700 40px/1 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; margin: 10px 0 8px }
+.dna-modal h3 { font: 600 12px Montserrat, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--dna-muted); margin: 18px 0 6px }
+.dna-modal ul { margin: 0; padding-left: 18px; line-height: 1.6 }
+.dna-modal p { margin: 0; line-height: 1.55 }
+.dna-kurz { font-size: 17px; color: var(--dna-ink) }
+.dna-her { margin-top: 16px !important; font-size: 13px; color: var(--dna-muted) }
+.dna-pk { margin-top: 12px !important; font-size: 14px; border-left: 3px solid var(--dna-blue); padding-left: 10px }
+.dna-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--dna-line) }
+.dna-preis { font: 700 22px Oswald, sans-serif; text-transform: uppercase }
+.dna-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--dna-blue); color: #fff; font: 600 15px Inter, sans-serif; text-decoration: none; border: 0; cursor: pointer }
+.dna-badges { display: flex; flex-wrap: wrap; gap: 6px }
+.dna-b { display: inline-block; font: 600 11px Montserrat, sans-serif; letter-spacing: .12em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; border: 1px solid var(--dna-line); color: var(--dna-muted) }
+.dna-b-basis { color: #fff; border-color: rgba(255,255,255,.5) }
+.dna-b-premium { background: var(--dna-blue); border-color: var(--dna-blue); color: #fff }
+.dna-b-community { border-color: var(--dna-blue); color: var(--dna-blue) }
+.dna-b-st { border-style: dashed }
+.dna-modal label { display: block; margin-top: 14px; font: 600 13px Inter, sans-serif; color: var(--dna-muted) }
+.dna-modal input, .dna-modal textarea, .dna-modal select { display: block; width: 100%; margin-top: 6px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--dna-line); background: rgba(255,255,255,.04); color: var(--dna-ink); font: 400 16px Inter, sans-serif; box-sizing: border-box }
+.dna-modal select option { color: #000 }

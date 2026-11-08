@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flow DNA · App</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="kern.css">
+<style>
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:#000;color:rgba(255,255,255,.82);font:400 16px/1.5 Inter,sans-serif;display:flex;justify-content:center}
+.app{position:relative;width:100%;max-width:480px;height:100dvh;display:flex;flex-direction:column;background:#0A0A0A;overflow:hidden}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 6px}.hd img{height:22px}
+.hd .t{font:700 22px Oswald;text-transform:uppercase;color:#fff}.hd .t span{color:#2F5BFF}
+.count{font:600 12px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#888;padding:0 18px}
+.deck{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:12px 18px 16px;scrollbar-width:none}
+.deck::-webkit-scrollbar{display:none}
+.sc{flex:0 0 100%;scroll-snap-align:center;border-radius:28px;padding:24px 22px;display:flex;flex-direction:column;position:relative;overflow:hidden;background:#141519;border:1px solid rgba(255,255,255,.1)}
+.sc.premium{background:linear-gradient(170deg,#1a2a6c 0%,#0f1430 45%,#0B0B0B 100%);border-color:rgba(47,91,255,.6)}
+.sc .ic{font-size:84px;line-height:1;margin:10px 0 18px}
+.sc h2{font:700 50px/.92 Oswald;text-transform:uppercase;color:#fff;margin:12px 0 10px}
+.sc .kurz{font-size:18px;color:#fff}
+.sc ul{margin:16px 0 0;padding:0;list-style:none}.sc li{padding:9px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px}
+.sc li:before{content:"→ ";color:#2F5BFF;font-weight:700}
+.sc .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:16px}
+.sc .pr{font:700 22px Oswald;text-transform:uppercase;color:#fff}
+.sc .more{background:none;border:0;color:#aaa;font:500 14px Inter;text-decoration:underline;cursor:pointer;padding:0}
+.sc.add{align-items:center;justify-content:center;text-align:center;border:2px dashed rgba(47,91,255,.7);background:#0B0B0B}
+.dots{display:flex;justify-content:center;gap:6px;padding:0 0 10px}.dots i{width:6px;height:6px;border-radius:50%;background:#333}.dots i.on{background:#2F5BFF;width:18px;border-radius:3px}
+nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.1);padding-bottom:env(safe-area-inset-bottom);background:#0A0A0A}
+nav button{background:none;border:0;color:#888;font:600 12px Inter;padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button b{font-size:20px;font-weight:400}nav button.on{color:#fff}nav button.on b{filter:drop-shadow(0 0 8px #2F5BFF)}
+</style></head><body>
+<div class="app">
+  <div class="hd"><img src="img/logo_flow.png" alt="Flow Media AI"><div class="t">Flow <span>DNA</span></div></div>
+  <div class="count" id="cnt"></div>
+  <div class="deck" id="deck"></div>
+  <div class="dots" id="dots"></div>
+  <nav id="nav"><button data-st="alle" class="on"><b>✦</b>Entdecken</button><button data-st="basis"><b>○</b>Kostenlos</button><button data-st="premium"><b>◆</b>Premium</button><button data-add><b>＋</b>Einreichen</button></nav>
+</div>
+<script src="daten.js"></script><script src="kern.js"></script>
+<script>
+const st={stufe:"alle"};const deck=document.getElementById("deck");
+function draw(){const L=DNA.filter(st);document.getElementById("cnt").textContent=`${L.length} Skills · wischen →`;
+ deck.innerHTML=L.map(s=>{const a=DNA.action(s);return `<article class="sc ${s.stufe}"><div class="dna-badges">${DNA.badges(s)}</div><div class="ic">${s.icon}</div><h2>${DNA.esc(s.name)}</h2><p class="kurz">${DNA.esc(s.kurz)}</p><ul>${s.kann.map(k=>`<li>${DNA.esc(k)}</li>`).join("")}</ul><div class="ft"><div><div class="pr">${DNA.preis(s)}</div><button class="more" data-skill="${s.id}">Details</button></div><a class="dna-btn" href="${a.href}" target="_blank" rel="noopener">${a.label}</a></div></article>`}).join("")+
+ `<article class="sc add"><div class="ic">🧬</div><h2>Dein Skill?</h2><p class="kurz">Teil ihn mit der Community.</p><p style="margin-top:20px"><button class="dna-btn" data-submit>Skill einreichen</button></p></article>`;
+ deck.scrollLeft=0;dots()}
+function dots(){const n=deck.children.length,i=Math.round(deck.scrollLeft/(deck.clientWidth-22));document.getElementById("dots").innerHTML=[...Array(n)].map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}
+deck.addEventListener("scroll",()=>requestAnimationFrame(dots));
+document.getElementById("nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.hasAttribute("data-add")){DNA.openSubmit();return}st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));draw()};
+draw();
+</script></body></html>

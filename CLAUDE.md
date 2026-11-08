@@ -27,6 +27,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 - `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
+- `flow-dna/` – Flow DNA, der Skill Store (Prototyp in 5 Varianten, 08.11.2026): Katalog in `daten.js`, Logik in `kern.js`, Auswahl unter https://maikz91.github.io/flow-media-ai/flow-dna/
 - `coaching/<kunde>/` – Apps aus Coachings, die öffentlich laufen dürfen (über GitHub Pages). `coaching/adil/`: Cocktail-App für Adil, live unter https://maikz91.github.io/flow-media-ai/coaching/adil/. Kundenunterlagen (Anforderungen, Angebote) bleiben in Drive.
 
 ## Google-Drive-Spiegel (Pflicht, Maik 19.10.2026)

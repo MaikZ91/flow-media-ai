@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flow DNA · Terminal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Oswald:wght@700&family=Montserrat:wght@600&family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="kern.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050506;color:#cfd3dc;font:400 14px/1.6 "JetBrains Mono",monospace}
+.win{max-width:1100px;margin:24px auto;border:1px solid #23252b;border-radius:14px;overflow:hidden;background:#0B0B0D;box-shadow:0 30px 120px rgba(47,91,255,.15)}
+@media(max-width:700px){.win{margin:0;border-radius:0;border:0}}
+.tb{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#121318;border-bottom:1px solid #23252b}
+.tb i{width:12px;height:12px;border-radius:50%;background:#3a3c44}.tb span{margin-left:10px;color:#8b90a0;font-size:13px}
+.body{padding:20px 18px 30px}
+.p{color:#2F5BFF}.c{color:#fff}.dim{color:#6c7180}.ok{color:#7ee787}
+.ascii{font:700 clamp(40px,10vw,88px)/.9 Oswald,sans-serif;color:#fff;text-transform:uppercase;letter-spacing:.01em;margin:10px 0 4px}
+.ascii span{color:#2F5BFF}
+.line{white-space:pre-wrap;margin:2px 0}
+.cmd{display:flex;align-items:center;gap:8px;margin:18px 0 10px;flex-wrap:wrap}
+.cmd input{flex:1 1 220px;background:transparent;border:0;border-bottom:1px dashed #3a3c44;color:#fff;font:inherit;padding:6px 2px;outline:none}
+.flags{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.flags button{background:#14161c;border:1px solid #2a2d35;color:#aab;font:inherit;font-size:13px;padding:6px 10px;border-radius:6px;cursor:pointer}
+.flags button.on{border-color:#2F5BFF;color:#fff;background:rgba(47,91,255,.15)}
+table{width:100%;border-collapse:collapse}
+td,th{padding:10px 8px;border-bottom:1px solid #1b1d23;text-align:left;vertical-align:top}
+th{color:#6c7180;font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+tr[data-skill]{cursor:pointer}tr[data-skill]:hover td{background:#10121a}
+td.n{color:#fff;font-weight:600;white-space:nowrap}td.n small{display:block;color:#8b90a0;font-weight:400;white-space:normal;max-width:380px}
+.tier{font-size:12px;padding:2px 8px;border-radius:4px;border:1px solid #3a3c44;white-space:nowrap}.tier.premium{background:#2F5BFF;border-color:#2F5BFF;color:#fff}.tier.basis{color:#7ee787;border-color:#2f5d36}
+.inst{font:inherit;font-size:13px;color:#2F5BFF;text-decoration:none;white-space:nowrap}
+@media(max-width:700px){.hide-m{display:none}td.n small{max-width:none}}
+.cur{display:inline-block;width:9px;height:17px;background:#fff;vertical-align:-3px;animation:b 1s steps(1) infinite}@keyframes b{50%{opacity:0}}
+.btnx{background:none;border:1px solid #2F5BFF;color:#fff;font:inherit;padding:10px 14px;border-radius:8px;cursor:pointer;margin-top:18px}
+</style></head><body>
+<div class="win"><div class="tb"><i></i><i></i><i></i><span>flow-dna — skill store</span></div>
+<div class="body">
+  <div class="line dim">Flow Media AI · Skill Store · kuratiert von Maik</div>
+  <div class="ascii">Flow <span>DNA</span></div>
+  <div class="line">Skills für dein Business. Laden, in <span class="c">.claude/skills/</span> ablegen, fertig – läuft mit Claude Code &amp; Codex.</div>
+  <div class="cmd"><span class="p">maik@flow</span><span class="dim">:~$</span><span class="c">flow dna search</span><input id="q" placeholder="website, instagram, rechnung …" aria-label="Skills durchsuchen"><span class="cur"></span></div>
+  <div class="flags" id="f1"><button data-st="alle" class="on">--alle</button><button data-st="basis">--kostenlos</button><button data-st="premium">--premium</button><button data-st="community">--community</button></div>
+  <div class="flags" id="f2"></div>
+  <div class="line dim" id="cnt"></div>
+  <table><thead><tr><th>Skill</th><th class="hide-m">Bereich</th><th>Stufe</th><th class="hide-m">Status</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+  <div class="line" style="margin-top:22px"><span class="p">maik@flow</span><span class="dim">:~$</span> <span class="c">flow dna bundle</span></div>
+  <div id="pk"></div>
+  <div class="line" style="margin-top:22px"><span class="p">maik@flow</span><span class="dim">:~$</span> <span class="c">flow dna submit</span></div>
+  <div class="line dim">Eigenen Skill teilen – wird geprüft und für die Community freigeschaltet.</div>
+  <button class="btnx" data-submit>&gt; Skill einreichen</button>
+</div></div>
+<script src="daten.js"></script><script src="kern.js"></script>
+<script>
+const st={stufe:"alle",kat:"alle",q:""};
+document.getElementById("f2").innerHTML=`<button data-kat="alle" class="on">--bereich=alle</button>`+DNA.kategorien.map(k=>`<button data-kat="${k.id}">--bereich=${k.id}</button>`).join("");
+function draw(){const L=DNA.filter(st);document.getElementById("cnt").textContent=`${L.length} Skill${L.length===1?"":"s"} gefunden`;
+ document.getElementById("rows").innerHTML=L.map(s=>{const a=DNA.action(s);return `<tr data-skill="${s.id}"><td class="n">${s.icon} ${s.id}<small>${DNA.esc(s.kurz)}</small></td><td class="hide-m">${DNA.esc(DNA.katName(s.kat))}</td><td><span class="tier ${s.stufe}">${DNA.stufen[s.stufe].name}</span></td><td class="hide-m ${s.status==="bereit"?"ok":"dim"}">${DNA.status[s.status]}</td><td><a class="inst" href="${a.href}" target="_blank" rel="noopener">${a.typ==="laden"?"install":a.typ==="anfragen"?"anfragen":a.typ==="vormerken"?"vormerken":"wünschen"} →</a></td></tr>`}).join("")||`<tr><td colspan="5" class="dim">${st.stufe==="community"?"// noch keine Community-Skills – reich den ersten ein":"// nichts gefunden"}</td></tr>`}
+document.getElementById("pk").innerHTML=DNA.pakete.map(p=>`<div class="line"><span class="ok">✓</span> <span class="c">${p.name}</span> <span class="dim">= ${p.skills.join(" + ")}</span></div><div class="line dim">  ${p.kurz}</div>`).join("");
+document.getElementById("f1").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));draw()};
+document.getElementById("f2").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.kat=b.dataset.kat;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));draw()};
+document.getElementById("q").oninput=e=>{st.q=e.target.value;draw()};draw();
+</script></body></html>
