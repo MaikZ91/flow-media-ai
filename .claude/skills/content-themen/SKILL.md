@@ -70,11 +70,13 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | laufend | R020 Ad AI Community | nur als bezahlte Anzeige, nicht im Feed |
 | **Plan ab 07.11. (neue Positionierung zuerst)** | | |
 | Sa 07.11. 11–13 Uhr | ✓ gesendet (Routine 07.11.) · P009 Die FLOW-Methode | erster Post zur neuen Positionierung, danach anpinnen |
-| So 08.11. 19–20 Uhr | R028 Community-Update „3 Dinge“ | Connect, Wochenend-Ton |
+| So 08.11. 18–19 Uhr | ✓ gesendet (Routine 08.11.) · **R033 Workshop „Deine Website“** statt R028 (Workshop Mo 09.11. + Di 10.11.); R028 → Fr 13.11. | Build + Workshop-Promo, Story mit Countdown |
 | Mo 09.11. morgens + 18–19 Uhr | Story „Heute 18 Uhr“ (Workshop, nur wenn er stattfindet) · R026 Deine erste App in 5 Schritten | Enable, CTA Sparring/Erstgespräch |
 | Di 10.11. 18–20 Uhr | R027 120 Minuten. Deine Website. | Build + Offer |
 | Mi 11.11. 18–20 Uhr | R029 Dieses Video war ein Plakat | Kreativ/How-to |
 | Do 12.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
+| Fr 13.11. 18–20 Uhr | R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
+| Sa 14.11. 11–13 / 18–20 Uhr | P011 Karussell „Mein Weg“ · R032 Reel „Mein Weg“ (falls noch nicht gepostet) | Weg/Personal |
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 
 ## 6. Verlauf (neueste oben)
