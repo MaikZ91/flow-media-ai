@@ -91,6 +91,8 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .code{margin:12px 0 4px}.code label{display:block;font:600 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
 .code div{display:flex;gap:8px}.code input{flex:1;min-width:0;border:2px solid var(--ink);padding:12px;font:600 17px "JetBrains Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:#fff;color:var(--ink);border-radius:0}
 .code button{border:0;background:var(--ink);color:#fff;font:600 14px Inter;padding:0 14px;cursor:pointer}.code button:disabled{opacity:.5}
+.wsv{display:flex;justify-content:center;margin:18px 0 4px}.wsv video{width:min(240px,70%);aspect-ratio:9/16;object-fit:cover;background:#000;box-shadow:0 18px 50px rgba(47,91,255,.3)}
+.wsk{margin:4px 0 6px;padding-left:18px;font-size:15px;line-height:1.5;color:var(--ink)}.wsk li{margin-bottom:4px}
 .code button.big{width:100%;padding:18px 14px;font:600 18px Inter}
 .code .msg{font-size:15px;line-height:1.45;color:var(--mute);margin:12px 0 0;min-height:1em}.code .msg.ok{color:#1d7a3e}.code .msg.err{color:#c0392b}
 .ws .bonus{margin-top:10px;font-size:13px;color:var(--ink);border-left:3px solid var(--blue);padding-left:8px}
@@ -133,10 +135,16 @@ function list(){const L=DNA.filter(st);let n=0;
  if(!L.length){view.innerHTML=`<div class="empty">${st.stufe==="community"?"Noch keine Community-Skills. Sei der oder die Erste – Tab „Verkaufen“.":"Nichts gefunden."}</div>`;return}
  const sigOn=!st.q&&st.kat==="alle"&&(st.stufe==="alle"||st.stufe==="premium"),H=DNA.skills.filter(s=>s.highlight);
  const sig=sigOn?`<div class="sig"><div class="sig-h"><i>★</i>Signature-Skills<em>Maiks stärkste Systeme</em></div><div class="sig-row">${H.map(s=>`<div class="sc" data-skill="${s.id}">${s.video?`<span class="vid">▶ VIDEO</span>`:""}<div class="top"><span>${s.icon}</span><b>${DNA.esc(s.name)}</b></div><p>${DNA.esc(s.kurz)}</p><div class="mini">${s.ablauf.map((a,i)=>`<span style="--i:${i}" title="${DNA.esc(a[1])}">${a[0]}</span>`).join("")}</div></div>`).join("")}</div></div>`:"";
+ const WSK=DNA.skills.find(s=>s.id==="website");
  const wsBox=WS?`<div class="ws"><div class="wb">
   <div class="k2">Workshop · Deine Website</div>
   <h2>Dein <span>Website-Skill.</span></h2>
   <form class="code" id="wscode" onsubmit="claim(event)"><input type="hidden" name="code" value="WEBSITE"><button type="submit" class="big">⬇ Skill herunterladen</button><p class="msg"></p></form>
+  <div class="wsv"><video src="media/r006.mp4" poster="media/r006.jpg" autoplay muted loop playsinline></video></div>
+  <div class="k2" style="margin-top:16px">So funktioniert's</div>
+  <div class="wst">${WSK.ablauf.map((a,i)=>`<span style="--i:${i}"><b>${a[0]}</b>${DNA.esc(a[1])}</span>`).join("")}</div>
+  <div class="k2" style="margin-top:16px">Was er kann</div>
+  <ul class="wsk">${WSK.kann.map(k=>`<li>${DNA.esc(k)}</li>`).join("")}</ul>
  </div></div>`:"";
  view.innerHTML=(st.q?"":wsBox)+sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);
