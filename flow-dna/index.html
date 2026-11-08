@@ -91,6 +91,7 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .code{margin:12px 0 4px}.code label{display:block;font:600 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
 .code div{display:flex;gap:8px}.code input{flex:1;min-width:0;border:2px solid var(--ink);padding:12px;font:600 17px "JetBrains Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;background:#fff;color:var(--ink);border-radius:0}
 .code button{border:0;background:var(--ink);color:#fff;font:600 14px Inter;padding:0 14px;cursor:pointer}.code button:disabled{opacity:.5}
+.code button.big{width:100%;padding:18px 14px;font:600 18px Inter}
 .code .msg{font-size:15px;line-height:1.45;color:var(--mute);margin:12px 0 0;min-height:1em}.code .msg.ok{color:#1d7a3e}.code .msg.err{color:#c0392b}
 .ws .bonus{margin-top:10px;font-size:13px;color:var(--ink);border-left:3px solid var(--blue);padding-left:8px}
 .legal{font-size:13px;color:var(--mute);margin:10px 0 0}.legal a{color:var(--ink)}
@@ -135,7 +136,7 @@ function list(){const L=DNA.filter(st);let n=0;
  const wsBox=WS?`<div class="ws"><div class="wb">
   <div class="k2">Workshop · Deine Website</div>
   <h2>Dein <span>Website-Skill.</span></h2>
-  <form class="code" id="wscode" onsubmit="claim(event)"><div><input id="wsc" name="code" placeholder="Code eingeben" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Workshop-Code"><button type="submit">Herunterladen</button></div><p class="msg"></p></form>
+  <form class="code" id="wscode" onsubmit="claim(event)"><input type="hidden" name="code" value="WEBSITE"><button type="submit" class="big">⬇ Skill herunterladen</button><p class="msg"></p></form>
  </div></div><p class="wsfoot"><a href="./">Zum Flow DNA Store</a></p>`:"";
  if(WS){view.innerHTML=wsBox;return}
  view.innerHTML=sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
