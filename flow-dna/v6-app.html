@@ -15,25 +15,27 @@ body{margin:0;background:#E9E9E4;color:#2b2b2b;font:400 15px/1.5 Inter,sans-seri
 @media(min-width:840px){.app{border-left:2px solid var(--ink);border-right:2px solid var(--ink)}}
 h2,h3{overflow-wrap:anywhere;hyphens:auto}
 /* header */
-.hd{padding:14px 18px 10px;border-bottom:2px solid var(--ink)}
+.hd{padding:10px 16px 8px;border-bottom:2px solid var(--ink)}
 .hd .row1{display:flex;align-items:center;gap:12px}
 .hd img{height:20px;filter:invert(1)}
 .hd .sp{flex:1}
-.word{display:flex;align-items:center;gap:8px;font:700 30px/1 Oswald;text-transform:uppercase;color:var(--ink)}.word span{color:var(--blue)}
-#helix{width:84px;height:30px;display:block}
-.claim{font:600 11px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+.word{display:flex;align-items:center;gap:8px;font:700 24px/1 Oswald;text-transform:uppercase;color:var(--ink)}.word span{color:var(--blue)}
+#helix{width:64px;height:24px;display:block}
+.claim{font:600 10px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:4px}@media(max-width:600px){.claim{display:none}}
 /* controls */
-.ctl{padding:10px 18px 8px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--rule)}
-.ctl input{width:100%;min-height:42px;border:0;border-bottom:2px solid var(--ink);background:transparent;font:500 16px Inter;padding:0 2px;outline:none;color:var(--ink)}
-.seg{display:flex}.seg button{flex:1;border:2px solid var(--ink);background:#fff;font:600 13px Inter;padding:8px 4px;cursor:pointer;margin-left:-2px;color:var(--ink)}.seg button:first-child{margin-left:0}
+.ctl{padding:8px 16px 7px;display:flex;flex-direction:column;gap:7px;border-bottom:1px solid var(--rule)}
+.ctl .top{display:flex;gap:8px;align-items:center}
+.ctl.min .chips{display:none}
+.ctl input{flex:1;min-width:0;width:auto;min-height:34px;font-size:15px!important;border:0;border-bottom:2px solid var(--ink);background:transparent;font:500 16px Inter;padding:0 2px;outline:none;color:var(--ink)}
+.seg{display:flex;flex:none}.seg button{border:1.5px solid var(--ink);background:#fff;font:600 11px Inter;padding:6px 7px;cursor:pointer;margin-left:-1.5px;color:var(--ink)}.seg button:first-child{margin-left:0}
 .seg button.on{background:var(--ink);color:#fff}
 .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
-.chips button{flex:none;border:1px solid var(--rule);background:transparent;font:600 12px Montserrat;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;cursor:pointer;color:var(--ink)}
+.chips button{flex:none;border:1px solid var(--rule);background:transparent;font:600 10.5px Montserrat;letter-spacing:.05em;text-transform:uppercase;padding:5px 8px;cursor:pointer;color:var(--ink)}
 .chips button.on{border-color:var(--ink);background:var(--ink);color:#fff}
 .meta{display:flex;justify-content:space-between;font:600 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:8px 18px 4px}
 /* compact list */
 .view{flex:1;overflow:auto;-webkit-overflow-scrolling:touch}
-.cat{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;gap:8px;align-items:baseline;padding:10px 18px 6px;border-bottom:2px solid var(--ink);font:700 12px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.cat{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;gap:8px;align-items:baseline;padding:8px 16px 5px;border-bottom:2px solid var(--ink);font:700 12px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
 .cat i{font-style:normal;color:var(--blue)}.cat em{font-style:normal;margin-left:auto;color:var(--mute);font-weight:600}
 .r{display:grid;grid-template-columns:30px 26px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 18px;border-bottom:1px solid var(--rule);cursor:pointer}
 .r:hover{background:#fff}.r .no{font:700 15px Oswald;color:#b9b9b3}.r:hover .no{color:var(--blue)}
@@ -60,8 +62,8 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
     <div class="claim">Your Business. Your AI. Your Flow. · The Skill Marketplace</div>
   </header>
   <div class="ctl" id="ctl">
-    <input id="q" type="search" placeholder="Skill suchen – Website, Reel, Rechnung …" aria-label="Skills durchsuchen">
-    <div class="seg" id="seg"><button data-st="alle" class="on">Alle</button><button data-st="basis">Free</button><button data-st="premium">Premium</button><button data-st="community">Community</button></div>
+    <div class="top"><input id="q" type="search" placeholder="Skill suchen …" aria-label="Skills durchsuchen">
+    <div class="seg" id="seg"><button data-st="alle" class="on">Alle</button><button data-st="basis">Free</button><button data-st="premium">Pro</button><button data-st="community" title="Community">Comm.</button></div></div>
     <div class="chips" id="chips"></div>
   </div>
   <div class="meta" id="meta"></div>
@@ -74,7 +76,7 @@ const st={stufe:"alle",kat:"alle",q:""};let tab="list";const view=document.getEl
 document.getElementById("chips").innerHTML=`<button data-kat="alle" class="on">Alle</button>`+DNA.kategorien.map(k=>`<button data-kat="${k.id}">${k.nr} ${k.name}</button>`).join("");
 const row=(s,n)=>`<div class="r ${s.stufe} ${s.status==="geplant"?"geplant":""} ${s.flagship?"flag":""}" data-skill="${s.id}"><span class="no">${String(n).padStart(2,"0")}</span><span class="ic">${s.icon}</span><span class="t"><b>${DNA.esc(s.name)}</b><span>${DNA.esc(s.kurz)}</span></span><span class="rt"><span class="pr">${DNA.preis(s)}</span><span class="st ${s.status==="geplant"?"geplant":s.stufe}">${s.status==="geplant"?"Geplant":s.status==="vorbereitung"?DNA.stufen[s.stufe].name+" · bald":DNA.stufen[s.stufe].name}</span></span></div>`;
 function list(){const L=DNA.filter(st);let n=0;
- document.getElementById("meta").innerHTML=`<span>${L.length} Skills</span><span>${L.filter(s=>s.status==="bereit").length} verfügbar</span>`;
+ document.getElementById("meta").innerHTML="";
  if(!L.length){view.innerHTML=`<div class="empty">${st.stufe==="community"?"Noch keine Community-Skills. Sei der oder die Erste – Tab „Verkaufen“.":"Nichts gefunden."}</div>`;return}
  view.innerHTML=DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);
@@ -83,7 +85,7 @@ function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filte
 function more(){document.getElementById("meta").innerHTML=`<span>Über Flow DNA</span><span>Roadmap · Creator</span>`;
  view.innerHTML=`<div class="pane"><p style="margin:16px 0 0;font-size:16px;color:#0B0B0B">${DNA.esc(DNA.marke.idee)}</p><div id="dna-extra"></div></div>`;DNA.renderExtras();
  const m=document.querySelector("#dna-extra .dna-x-sec");if(m)m.remove()}  // "Meine Skills" hat einen eigenen Tab
-function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";tab==="list"?list():tab==="mine"?mine():more();
+function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}
 document.getElementById("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
 document.getElementById("chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.kat=b.dataset.kat;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
@@ -98,5 +100,6 @@ function helix(t){let a="",b="",r="";for(let x=0;x<=84;x+=3){const p=x/11+t/700,
  hx.innerHTML=r+`<path d="${a}" fill="none" stroke="#2F5BFF" stroke-width="2.6"/><path d="${b}" fill="none" stroke="#0B0B0B" stroke-width="2"/>`;
  if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(helix)}
 requestAnimationFrame(helix);
+view.addEventListener("scroll",()=>{if(tab==="list")document.getElementById("ctl").classList.toggle("min",view.scrollTop>40)});
 render();
 </script></body></html>
