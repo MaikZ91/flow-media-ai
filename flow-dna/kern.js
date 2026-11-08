@@ -20,7 +20,7 @@
 
   // what the main button does for a skill
   function action(s) {
-    if (s.stufe === "basis" && s.status === "bereit" && s.quelle) return { label: "Kostenlos laden", href: s.quelle, typ: "laden" };
+    if (s.stufe === "basis" && s.status === "bereit" && s.quelle) return { label: s.quelle.endsWith(".zip") ? "⬇ Kostenlos herunterladen" : "Kostenlos laden", href: s.quelle, typ: "laden" };
     if (s.stufe === "basis" && s.status === "vorbereitung") return { label: "Vormerken", href: wa(`Hi Maik, merk mich für den ${s.name} vor (Flow DNA).`), typ: "vormerken" };
     if (s.status === "geplant") return { label: "Will ich haben", href: wa(`Hi Maik, ich hätte gern den Skill „${s.name}“ im Flow-DNA-Store.`), typ: "wunsch" };
     if (s.stufe === "premium") return { label: "Anfragen", href: wa(`Hi Maik, ich interessiere mich für den Premium-Skill „${s.name}“ aus Flow DNA.`), typ: "anfragen" };
@@ -54,7 +54,7 @@
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
       ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
-      <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
+      <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
     startStages(layer());
