@@ -2,6 +2,9 @@
 
 Live: https://maikz91.github.io/flow-media-ai/flow-dna/ · Entwürfe: `varianten.html`
 
+## Workshop-Edition (Maik, 08.11.2026)
+`/flow-dna/workshop/` → `/flow-dna/?workshop=website`: Website Builder oben angepinnt und für Teilnehmende kostenlos (Download aus Drive `04_Coachings/Workshops/… (Workshop-Freigabe)/SKILL.md`, Datei-ID `1fU9kfhb4xpcQdizXtRzyWsHnVNVH4_wJ`), Ablauf-Animation, 3-Schritte-Anleitung, Personal-Brand-Skill, Bonus Tech-Support bis 31.12.26. **Die Drive-Datei muss Maik auf „Jeder mit dem Link: Betrachter“ stellen**, sonst greift der Download-Link nicht. Im normalen Store bleibt der Website Builder Premium.
+
 ## Signature-Skills, Animationen, Videos (Maik, 08.11.2026)
 - **Signature** (★, Verlauf-Badge, blaue Leiste, schwarze Leiste ganz oben in der Liste): Lead Agent · Website (39 €/Mon. · 399 € · 799 €), Lead Agent · Business (49 · 499 · 999), Social Content System (49 · 449 · 899), Creative Director, Agentensystem. Landingpage Generator dafür auf 19 · 149 · 349 (Baustein des Lead Agents).
 - Neue Premium-Skills in Drive: `lead-agent-website`, `lead-agent-business`, `social-content-system` (aus `the-tribe-bot/lead_agent_deepseek` und `instagram_autopilot`, neutralisiert; Versand nur rechtssicher: Entwurf / auf Anfrage / mit Einwilligung).
