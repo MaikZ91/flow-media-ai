@@ -9,8 +9,8 @@ Live: https://maikz91.github.io/flow-media-ai/flow-dna/ · Entwürfe: `varianten
 Projekt `ykleosfvtqcmqxqihnod`, Edge Function **`flow-dna`** (verify_jwt aus, prüft selbst den Code), Tabellen `flow_dna_skills` (geheime Anleitung), `flow_dna_licenses` (Code, Skill, gültig bis, max. Einlösungen/Nutzungen), `flow_dna_license_log`; RLS ohne Policies, Zugriff nur über die Funktion `flow_dna_license_take` (atomar, zählt hoch).
 - `POST /functions/v1/flow-dna/claim {code}` → persönlicher **Lade-Skill** `SKILL.md` (Code einmal einlösbar).
 - `GET /functions/v1/flow-dna/skill?code=…` → eigentliche Anleitung, nur solange gültig und Nutzungen übrig; sonst 403 mit Hinweis auf den Store.
-- Die Anleitung liegt nie beim Teilnehmer als Datei; nach Ablauf (Standard: Di 10.11.2026 23:59, 3 Abrufe) ist der Skill nutzlos. Grenze: Was während der Laufzeit geladen wurde, könnte jemand mitkopieren.
-- Codes: 20 × `WEB-XXXX-XXXX` (Liste privat in Drive bei der Workshop-Freigabe). Neue Codes, Verlängern, Sperren: per SQL (`insert/update flow_dna_licenses`) – auf Zuruf erledigt Claude das.
+- Die Anleitung liegt nie beim Teilnehmer als Datei; nach Ablauf (Workshop: Mi 11.11.2026 23:59) ist der Skill nutzlos. Grenze: Was während der Laufzeit geladen wurde, könnte jemand mitkopieren.
+- **Workshop 09.–11.11.2026: ein gemeinsamer Code `WEBSITE`** (bis Mi 11.11. 23:59, 200 Einlösungen, 1000 Abrufe; Maik: „Code ist nur für den Workshop und Code ist dann Website“). Die 20 Einzelcodes `WEB-XXXX-XXXX` sind deaktiviert. Workshop-Seite auf Code-Feld + Download reduziert (Maik: „so easy wie möglich“). Neue Codes, Verlängern, Sperren: per SQL – auf Zuruf erledigt Claude das.
 
 ## Signature-Skills, Animationen, Videos (Maik, 08.11.2026)
 - **Signature** (★, Verlauf-Badge, blaue Leiste, schwarze Leiste ganz oben in der Liste): Lead Agent · Website (39 €/Mon. · 399 € · 799 €), Lead Agent · Business (49 · 499 · 999), Social Content System (49 · 449 · 899), Creative Director, Agentensystem. Landingpage Generator dafür auf 19 · 149 · 349 (Baustein des Lead Agents).
