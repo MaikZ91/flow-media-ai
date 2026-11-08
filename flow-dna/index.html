@@ -55,8 +55,8 @@ h2,h3{overflow-wrap:anywhere;hyphens:auto}
 .empty{padding:30px 18px;color:var(--mute)}
 .pane{padding:6px 18px 30px}
 /* tabbar */
-nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
-nav button{position:relative;background:none;border:0;color:var(--mute);font:600 11px Montserrat;letter-spacing:.08em;text-transform:uppercase;padding:9px 0 11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
+nav button{position:relative;background:none;border:0;color:var(--mute);font:600 9.5px Montserrat;letter-spacing:.02em;min-width:0;text-transform:uppercase;padding:9px 0 11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
 nav button b{font:400 18px Inter;line-height:1}nav button.on{color:var(--ink)}nav button.on b{color:var(--blue)}
 nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);color:#fff;border-radius:9px;font:600 10px Inter;padding:1px 5px}
 /* Signature */
@@ -80,6 +80,10 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws{margin:28px 16px 14px;border:2px solid var(--blue);background:#fff;box-shadow:0 10px 40px rgba(47,91,255,.18)}
 .ws .wh{background:var(--blue);color:#fff;padding:8px 12px;font:700 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
 .ws .wb{padding:14px}
+.cm{margin:18px 16px 30px}.cm .hero{background:#0B0B0B;color:#fff;padding:22px 18px}.cm .hero small{font:600 11px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a}.cm h2{font:700 44px/.95 Oswald;text-transform:uppercase;margin:8px 0 12px}.cm h2 span{color:#2F5BFF}.cm .hero p{font-size:15px;line-height:1.5;color:#ddd;margin:0 0 14px}
+.cm ul{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:8px}.cm li{display:flex;gap:10px;font-size:15px}.cm li::before{content:"✦";color:#2F5BFF}
+.cm .join{display:flex;align-items:center;justify-content:center;min-height:54px;background:#2F5BFF;color:#fff;font:700 20px Oswald;text-transform:uppercase;letter-spacing:.04em;text-decoration:none}
+.cm .tiles{display:grid;gap:10px;margin-top:12px}.cm .tile{display:block;border:2px solid #0B0B0B;background:#fff;padding:14px 16px;text-decoration:none;color:#0B0B0B;cursor:pointer;text-align:left;font:inherit;width:100%}.cm .tile b{display:block;font:700 22px Oswald;text-transform:uppercase}.cm .tile span{font-size:14px;color:#555}.cm .tile em{font-style:normal;float:right;font:700 18px Oswald;color:#2F5BFF}
 .inst{margin:14px 16px 0;display:flex;align-items:center;gap:12px;padding:12px 14px;background:#0B0B0B;color:#fff}.inst img{width:44px;height:44px}.inst div{flex:1;font-size:13px;line-height:1.35}.inst b{display:block;font:700 15px Oswald;letter-spacing:.04em;text-transform:uppercase}.inst button{border:0;background:#2F5BFF;color:#fff;font:600 13px Inter;padding:10px 12px;cursor:pointer}.inst .x{background:transparent;color:#fff;opacity:.6;padding:6px;font-size:18px}
 .ios{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.6);display:flex;align-items:flex-end}.ios div{background:#fff;color:#0B0B0B;width:100%;padding:22px 20px 34px;font-size:16px;line-height:1.5}.ios b{font:700 24px Oswald;text-transform:uppercase;display:block;margin-bottom:8px}.ios ol{padding-left:20px;margin:8px 0 16px}.ios button{width:100%;min-height:48px;border:0;background:#0B0B0B;color:#fff;font:600 15px Inter}
 .wsg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(min-width:600px){.wsg{grid-template-columns:repeat(4,1fr)}}.wsg a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);font-size:12px;line-height:1.3}.wsg img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border:1.5px solid var(--rule);margin-bottom:4px}.wsg b{font:600 13px Inter}.wsg span{color:var(--mute)}.wsgn{font-size:12px;color:var(--mute);margin:8px 0 0;text-align:center}
@@ -116,7 +120,7 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
   </div>
   <div class="meta" id="meta"></div>
   <main class="view" id="view"></main>
-  <nav id="nav"><button data-tab="list" class="on"><b>☰</b>Entdecken</button><button data-tab="mine"><b>☆</b>Meine<span class="n" id="mc" hidden></span></button><button data-tab="sell"><b>＋</b>Verkaufen</button><button data-tab="more"><b>◎</b>Mehr</button></nav>
+  <nav id="nav"><button data-tab="list" class="on"><b>☰</b>Entdecken</button><button data-tab="mine"><b>☆</b>Meine<span class="n" id="mc" hidden></span></button><button data-tab="sell"><b>＋</b>Verkaufen</button><button data-tab="community"><b>✦</b>Community</button><button data-tab="more"><b>◎</b>Mehr</button></nav>
 </div>
 <script src="daten.js"></script><script src="kern.js"></script>
 <script>
@@ -171,7 +175,17 @@ function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filte
 function more(){document.getElementById("meta").innerHTML=`<span>Über Flow DNA</span><span>Roadmap · Creator</span>`;
  view.innerHTML=`<div class="pane"><p style="margin:16px 0 0;font-size:16px;color:#0B0B0B">${DNA.esc(DNA.marke.idee)}</p><p style="margin:14px 0 0"><button type="button" onclick="installApp()" style="border:2px solid #0B0B0B;background:#0B0B0B;color:#fff;font:600 14px Inter;padding:12px 16px;cursor:pointer">📲 Als App installieren (Android & iPhone)</button></p><div id="dna-extra"></div><p class="legal"><a href="skills/INSTALLATION.md" target="_blank" rel="noopener">Installation</a> · <a href="../marketing/landing-page/">Flow Media AI</a> · <a href="../marketing/landing-page/impressum.html">Impressum</a> · <a href="../marketing/landing-page/datenschutz.html">Datenschutz</a></p></div>`;DNA.renderExtras();
  const m=document.querySelector("#dna-extra .dna-x-sec");if(m)m.remove()}  // "Meine Skills" hat einen eigenen Tab
-function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():more();
+// Community-Tab: Link zur Flow Business Community (COMMUNITY_URL eintragen; bis dahin Anfrage per WhatsApp an Maik)
+const COMMUNITY_URL="";
+const communityHref=()=>COMMUNITY_URL||DNA.wa("Hi Maik, ich möchte in die Flow Business Community (über die Flow-DNA-App).");
+function community(){document.getElementById("meta").innerHTML=`<span>Flow Business Community</span><span>kostenlos</span>`;
+ view.innerHTML=`<div class="cm"><div class="hero"><small>Kostenlos · Einstieg</small><h2>Flow Business <span>Community</span></h2><p>Für Gründer, Selbstständige und Macher. Ideen teilen, Feedback bekommen, gemeinsam ins Machen kommen – in Bielefeld, Münster und digital.</p>
+ <ul><li>Business & Marketing</li><li>KI & digitale Tools</li><li>Austausch & Umsetzung</li><li>Digitaler Stammtisch · digital & live</li><li>Workshops & Zugang zum Flow DNA Skill Store</li></ul>
+ <a class="join" href="${communityHref()}" target="_blank" rel="noopener" data-cta="app_community">Community beitreten →</a></div>
+ <div class="tiles"><a class="tile" href="?workshop=website"><em>→</em><b>Workshop: Deine Website</b><span>Mit KI zur Personal Brand · live · Website-Skill für Teilnehmende kostenlos</span></a>
+ <button type="button" class="tile" onclick="DNA.openSubmit()"><em>＋</em><b>Eigenen Skill teilen</b><span>Dein Wissen als Skill – geprüft und für die Community freigeschaltet</span></button>
+ <a class="tile" href="../marketing/landing-page/" target="_blank" rel="noopener"><em>↗</em><b>Flow Media AI</b><span>Sparring, Masterclass und Begleitung nach der FLOW-Methode</span></a></div></div>`}
+function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():tab==="community"?community():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}
 document.getElementById("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
 document.getElementById("chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.kat=b.dataset.kat;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
