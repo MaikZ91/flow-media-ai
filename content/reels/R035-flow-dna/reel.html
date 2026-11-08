@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#0B0B0B;--paper:#F4F4F1;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#d0d0d0}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}
+.h span,.b{color:var(--blue)}
+.grain{position:absolute;inset:0;opacity:.06;pointer-events:none;z-index:90;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#paper{inset:0;background:var(--paper)}
+.logo{left:70px;top:90px;width:190px;z-index:60}
+/* hook */
+#ph{inset:0;background:url(img/portrait_front.jpg) center 18%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 45%,rgba(11,11,11,.95) 70%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1180px}
+#count{font:700 330px/.8 Oswald;color:var(--blue)}
+/* brand */
+#brand{left:0;right:0;top:640px;text-align:center;color:var(--ink)}
+#brand .w{font:700 230px/.85 Oswald;text-transform:uppercase}
+#brand .w span{color:var(--blue)}
+#brand .c{font:600 34px Montserrat;letter-spacing:.2em;text-transform:uppercase;margin-top:30px}
+#brand .s{font:600 26px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#6b6b66;margin-top:16px}
+#hx{left:140px;top:420px;width:800px;height:180px}
+/* phone */
+#phone{left:260px;top:720px;width:560px;height:1150px;border-radius:70px;background:#000;border:14px solid #111;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.35);z-index:20}
+#phone .scr{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;background:var(--paper)}
+#phone img{position:absolute;left:0;top:0;width:100%;display:block}
+.tt{left:70px;right:70px;top:150px;color:var(--ink);z-index:30}
+.tt .k{color:#555}
+.tt .h{font-size:116px;margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.chips span{font:600 28px Inter;border:2px solid var(--ink);padding:8px 18px;background:#fff;opacity:0}
+.chips span.on{background:var(--ink);color:#fff}
+.tag{left:70px;top:1500px;z-index:40;font:700 64px Oswald;text-transform:uppercase;background:var(--blue);color:#fff;padding:14px 30px;box-shadow:0 30px 80px rgba(47,91,255,.4)}
+.opts{left:60px;right:60px;top:1800px;display:flex;gap:14px;z-index:40}
+.opts div{flex:1;text-align:center;font:700 40px Oswald;text-transform:uppercase;border:3px solid var(--ink);background:#fff;color:var(--ink);padding:14px 0;opacity:0}
+.opts div.on{background:var(--blue);border-color:var(--blue);color:#fff}
+/* cta */
+#cta{left:70px;right:70px;top:560px;text-align:left;color:var(--ink);z-index:30}
+#cta .w{font:700 210px/.85 Oswald;text-transform:uppercase}#cta .w span{color:var(--blue)}
+#cta .c{font:600 36px Montserrat;letter-spacing:.16em;text-transform:uppercase;margin-top:26px}
+#cta .url{display:inline-block;margin-top:60px;font:700 60px Oswald;background:var(--ink);color:#fff;padding:18px 36px}
+#cta .f{margin-top:50px;display:flex;align-items:center;gap:26px;font:700 64px Oswald;text-transform:uppercase}
+#cta .av{width:150px;height:150px;border-radius:50%;background:url(img/portrait_front.jpg) center 22%/cover;filter:grayscale(1);border:5px solid var(--blue)}
+#flash{inset:0;background:#fff;z-index:80}
+#dark{inset:0;background:#0B0B0B;z-index:85}
+</style></head><body>
+<div class="l" id="paper"></div>
+<svg class="l" id="hx" viewBox="0 0 800 180"></svg>
+<img class="l logo" id="logo" src="img/logo_flow.png">
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="k">Build in public</div><div class="h" style="margin-top:14px">Ich hab <span id="count">30</span><br>KI-Skills gebaut.</div></div>
+
+<div class="l" id="brand"><div class="w">Flow <span>DNA</span></div><div class="c">Your Business. Your AI. Your Flow.</div><div class="s">The Skill Marketplace</div></div>
+
+<div class="l" id="phone"><div class="scr"><img id="shot" src="img/store_list.jpg"></div></div>
+<div class="l tt" id="t1"><div class="k">30 Skills · 5 Bereiche</div><div class="h">Alles, was dein<br>Business <span>braucht.</span></div>
+  <div class="chips" id="ch1"><span>Content</span><span>Branding</span><span>Websites</span><span>Apps</span><span>Automation</span><span>Agenten</span></div></div>
+<div class="l tt" id="t2"><div class="k">Free</div><div class="h"><span>11</span> Skills.<br>Kostenlos.</div></div>
+<div class="l tt" id="t3"><div class="k">Premium · auf Anfrage</div><div class="h">Die <span>Profi-Skills.</span></div>
+  <div class="chips" id="ch3"><span>Creative Director</span><span>Lead-Landingpages</span><span>Agentensystem</span><span>App Builder</span></div></div>
+<div class="l opts" id="opts"><div>Mieten</div><div>Kaufen</div><div>Eingerichtet</div></div>
+<div class="l tt" id="t4"><div class="k">Community</div><div class="h">Bau deinen Skill.<br><span>Verkauf ihn.</span></div></div>
+<div class="l tag" id="tag"></div>
+
+<div class="l" id="cta"><div class="w">Flow<br><span>DNA.</span></div><div class="c">Ideas become Skills.<br>Skills become Possibilities.</div><div class="url">Link in Bio → /flow-dna</div>
+  <div class="f"><div class="av"></div><div>Komm in den <span class="b">Flow.</span></div></div></div>
+<div class="l" id="flash"></div><div class="l" id="dark" style="opacity:1"></div>
+<div class="grain"></div>
+<script>
+const B=0.62,T=n=>n*B,S={hook:0,brand:4,list:8,free:14,prem:19,comm:27,cta:32,end:38};
+window.TOTAL=T(S.end);
+const $=id=>document.getElementById(id),C=x=>Math.max(0,Math.min(1,x)),E=x=>1-Math.pow(1-C(x),3);
+const t0=k=>T(S[k]);
+function vis(el,t,a,b,dy=40,fi=.3,fo=.2){const e=E((t-a)/fi),o=Math.min(e,C((b-t)/fo));el.style.opacity=o;el.style.transform=`translateY(${(1-e)*dy}px)`;return e}
+function helix(t,amp){let a="",b="",r="";for(let x=0;x<=800;x+=8){const p=x/70+t*2.4,y1=90+Math.sin(p)*amp,y2=90-Math.sin(p)*amp;a+=(x?"L":"M")+x+","+y1.toFixed(1);b+=(x?"L":"M")+x+","+y2.toFixed(1);if(x%40===0)r+=`<line x1="${x}" y1="${y1.toFixed(1)}" x2="${x}" y2="${y2.toFixed(1)}" stroke="rgba(11,11,11,.25)" stroke-width="4"/>`}
+ $("hx").innerHTML=r+`<path d="${a}" fill="none" stroke="#2F5BFF" stroke-width="9"/><path d="${b}" fill="none" stroke="#0B0B0B" stroke-width="7"/>`}
+const pops=(id,t,start,step)=>[...$(id).children].forEach((c,i)=>{const e=E((t-start-i*step)/.2);c.style.opacity=e;c.style.transform=`scale(${1.2-.2*e})`;c.className=t>start+i*step+.25?"on":""});
+window.DRAW=t=>{
+  $("dark").style.opacity=1-E(t/.15);
+  // hook
+  const inH=t<t0("brand");$("ph").style.opacity=inH?1:0;$("phs").style.opacity=inH?1:0;$("ph").style.transform=`scale(${1+.05*C(t/t0("brand"))})`;
+  vis($("hook"),t,.1,t0("brand"),50);$("count").textContent=Math.round(30*E((t-.3)/1.3));
+  $("paper").style.opacity=t>=t0("brand")?1:0;
+  $("logo").style.opacity=1;$("logo").style.filter=t>=t0("brand")?"invert(1)":"none";
+  // brand + helix
+  const hb=t>=t0("brand")&&t<t0("list");$("hx").style.opacity=t>=t0("brand")&&t<t0("cta")+99?(t<t0("list")?E((t-t0("brand"))/.3):(t>=t0("cta")?1:0)):0;
+  if(t>=t0("brand")&&t<t0("list")){$("hx").style.top="420px";helix(t,70*E((t-t0("brand"))/.6))}
+  else if(t>=t0("cta")){$("hx").style.top="1720px";helix(t,60)}
+  const be=vis($("brand"),t,t0("brand")+.15,t0("list"),0,.25);$("brand").querySelector(".w").style.transform=`scale(${1.35-.35*be})`;
+  // phone
+  const inP=t>=t0("list")&&t<t0("cta");const pe=E((t-t0("list"))/.45);$("phone").style.opacity=inP?1:0;$("phone").style.transform=`translateY(${(1-pe)*500}px) rotate(${(1-pe)*4}deg)`;
+  const shot=$("shot");let src="img/store_list.jpg",y=0,ph=1228;
+  if(t<t0("free")){y=-E((t-t0("list")-1.6)/2.0)*1500}
+  else if(t<t0("prem")){src="img/store_free.jpg";y=-E((t-t0("free")-.5)/2.2)*500}
+  else if(t<t0("comm")){src="img/store_cd.jpg";y=-E((t-t0("prem")-2.5)/2)*260}
+  else{src="img/store_creator.jpg";y=0}
+  if(!shot.src.endsWith(src))shot.src=src;shot.style.transform=`translateY(${y}px)`;
+  vis($("t1"),t,t0("list")+.3,t0("free"));pops("ch1",t,t0("list")+1.2,.32);
+  vis($("t2"),t,t0("free")+.1,t0("prem"));
+  vis($("t3"),t,t0("prem")+.1,t0("comm"));pops("ch3",t,t0("prem")+.7,.4);
+  const oe=vis($("opts"),t,t0("prem")+2.3,t0("comm"),30);pops("opts",t,t0("prem")+2.4,.45);$("opts").style.top="1700px";
+  vis($("t4"),t,t0("comm")+.1,t0("cta"));
+  const tag=$("tag");let tg="";if(t>=t0("free")&&t<t0("prem"))tg="0 € · Download";else if(t>=t0("comm")&&t<t0("cta"))tg="Free oder dein Preis";
+  tag.textContent=tg;tag.style.opacity=tg?E((t-(tg[0]==="0"?t0("free"):t0("comm"))-.6)/.25):0;tag.style.top=(tg[0]==="0"?1560:1560)+"px";
+  // cta
+  const ce=vis($("cta"),t,t0("cta")+.1,99,50);
+  // flash on scene cuts
+  let f=0;[["brand",.9],["list",.4],["free",.35],["prem",.5],["comm",.35],["cta",.6]].forEach(([k,m])=>{const d=t-t0(k);if(d>=0&&d<.14)f=Math.max(f,m*(1-d/.14))});$("flash").style.opacity=f;
+};
+DRAW(0);
+</script></body></html>

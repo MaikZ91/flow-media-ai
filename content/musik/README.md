@@ -50,3 +50,4 @@ Energieverläufe (eine Stelle = 1 s, `@` = am lautesten):
 | `upbeat-jazz.mp3` | „Upbeat Jazz“, Mixkit – Stock Music Free License (256 kbps) | Jazz, locker, Erklärformat mit Humor; ~110 BPM, Raster ab 20,271 s; R024 |
 | `cat-walk.mp3` | „Cat Walk“ (Arulo), Mixkit – Stock Music Free License (256 kbps) | House, locker, gut unter Sprache; ~129 BPM, laut ab ~28 s; R025 |
 | `deep-urban.mp3` | „Deep Urban“, Mixkit – Stock Music Free License (Lizenz laut mixkit.co #musicFree) | Deep House, modern, ruhig-treibend, sehr gut unter Sprache; ~124 BPM, voll ab ~16 s; R034 |
+| `hip-hop-02.mp3` | „Hip Hop 02“, Mixkit – Stock Music Free License (#musicFree) | Hip-Hop, kräftig ab Sekunde 0, Launch/Promo; ~97 BPM (Beat 0,62 s); R035 |

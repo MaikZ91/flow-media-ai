@@ -73,7 +73,8 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | So 08.11. 18–19 Uhr | ✓ gesendet (Routine 08.11.) · **R033 Workshop „Deine Website“** statt R028 (Workshop Mo 09.11. + Di 10.11.); R028 → Fr 13.11. | Build + Workshop-Promo, Story mit Countdown |
 | Mo 09.11. morgens + 18–19 Uhr | Story „Heute 18 Uhr“ (Workshop, nur wenn er stattfindet) · R026 Deine erste App in 5 Schritten | Enable, CTA Sparring/Erstgespräch |
 | Di 10.11. 18–20 Uhr | R027 120 Minuten. Deine Website. | Build + Offer |
-| Mi 11.11. 18–20 Uhr | R029 Dieses Video war ein Plakat | Kreativ/How-to |
+| Mi 11.11. 18–20 Uhr | **R035 Flow DNA Launch** (vorher Bio-Link setzen) · R029 rutscht auf So 15.11. | Tools/Agentic, Launch |
+| So 15.11. 18–20 Uhr | R029 Dieses Video war ein Plakat | Kreativ/How-to |
 | Do 12.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
 | Fr 13.11. 18–20 Uhr | R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
 | Sa 14.11. 11–13 / 18–20 Uhr | P011 Karussell „Mein Weg“ · R032 Reel „Mein Weg“ (falls noch nicht gepostet) | Weg/Personal |
@@ -82,6 +83,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 08.11.2026 | R035 | `tools` / `agentic` | Reel 24 s | Flow DNA Launch – „Ich hab 30 KI-Skills gebaut.“ Store-Demo (Free, Premium mieten/kaufen/eingerichtet, Community), ohne Preise | `format = launch-store-demo` |
 | 07.11.2026 | P010 | `weg` / `lernen` | Einzelpost | „Ist das was für dich?“ – Für wen / nicht für wen (Positionierung), CTA „FLOW“ per DM | `format = fuer-wen-post` |
 | 07.11.2026 | P011 | `weg` | Karussell (5) | „Mein Weg“ – Robotik (Studium) → AR/HoloLens 2017 → heute KI; „Ich baue nicht erst seit KI.“, CTA Idee in die Kommentare | `format = mein-weg-karussell` |
 | 07.11.2026 | R032 | `weg` / `engineering` | Reel 25 s | „Mein Weg“ – Roboterarm 2017 → HoloLens 2017 → KI-Video (Kamera kreist), CTA Idee in die Kommentare | `format = origin-montage` |
