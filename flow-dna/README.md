@@ -27,6 +27,10 @@ Stand 08.11.2026 · Idee von Maik: ein „App Store für Skills“ neben der Web
 ## Aufbau
 `daten.js` (Katalog) · `kern.js` / `kern.css` (Filter, Suche, Detail- und Einreichen-Fenster) · `v1-store` · `v2-terminal` · `v3-helix` · `v4-katalog` · `v5-swipe` · `index.html` (Auswahl).
 
+## Rückmeldung Maik (08.11.2026) → v6
+„Design vom Katalog (weiß, minimalistische Kacheln), Übersicht vom Terminal (kompakt, nicht ewig scrollen), Animation vom DNA-Strang (schlicht, klein), das Ganze in der App.“
+→ `v6-app.html`: helles Katalog-Design, kompakte Liste (eine Zeile pro Skill, Kategorie-Köpfe bleiben stehen), kleiner animierter DNA-Strang neben dem Namen, App mit Tab-Leiste (Entdecken · Meine · Verkaufen · Mehr).
+
 ## Offen
 - Welche Variante (oder Mischung)?
 - Zugang: öffentlich oder nur für Community-Mitglieder (Login)?
