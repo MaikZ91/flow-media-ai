@@ -57,6 +57,22 @@ nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--
 nav button{position:relative;background:none;border:0;color:var(--mute);font:600 11px Montserrat;letter-spacing:.08em;text-transform:uppercase;padding:9px 0 11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
 nav button b{font:400 18px Inter;line-height:1}nav button.on{color:var(--ink)}nav button.on b{color:var(--blue)}
 nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);color:#fff;border-radius:9px;font:600 10px Inter;padding:1px 5px}
+/* Signature */
+.r.hl{background:linear-gradient(90deg,rgba(47,91,255,.12),rgba(47,91,255,0) 70%);box-shadow:inset 4px 0 0 var(--blue)}
+.r.hl .no{color:var(--blue)}.r.hl .t b::after{content:" ★";color:var(--blue)}
+.sig{padding:12px 0 6px;background:var(--ink);border-bottom:2px solid var(--ink)}
+.sig-h{display:flex;align-items:baseline;gap:8px;padding:0 16px 10px;font:700 12px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.sig-h i{font-style:normal;color:var(--blue)}@media(max-width:430px){.sig-h em{display:none}}.sig-h em{font-style:normal;margin-left:auto;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.08em}
+.sig-row{display:flex;gap:10px;overflow-x:auto;padding:0 16px 10px;scroll-snap-type:x mandatory;scrollbar-width:none}.sig-row::-webkit-scrollbar{display:none}
+.sc{flex:0 0 78%;max-width:300px;scroll-snap-align:start;background:#16171A;border:1px solid rgba(47,91,255,.55);box-shadow:0 0 30px rgba(47,91,255,.18);padding:14px;cursor:pointer;color:#fff;position:relative;overflow:hidden}
+.sc::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 60% at 100% 0,rgba(47,91,255,.35),transparent 60%);pointer-events:none}
+.sc .top{display:flex;align-items:center;gap:8px;position:relative}.sc .top span{font-size:22px}
+.sc b{font:700 20px/1.05 Oswald;text-transform:uppercase}.sc p{margin:8px 0 10px;font-size:13px;line-height:1.4;color:rgba(255,255,255,.75);position:relative}
+.sc .vid{position:absolute;right:10px;top:10px;font:600 10px Montserrat;letter-spacing:.1em;background:var(--blue);padding:3px 6px}
+.mini{display:flex;align-items:center;gap:4px;position:relative}
+.mini span{flex:1;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);animation:mini 3.6s infinite;animation-delay:calc(var(--i)*.55s)}
+@keyframes mini{0%,100%{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);transform:none}12%{background:rgba(47,91,255,.55);border-color:#2F5BFF;transform:translateY(-2px)}30%{background:rgba(47,91,255,.18);border-color:rgba(47,91,255,.6);transform:none}}
+@media(prefers-reduced-motion:reduce){.mini span{animation:none}}
 .legal{font-size:13px;color:var(--mute);margin:10px 0 0}.legal a{color:var(--ink)}
 .hd a{display:flex}
 </style></head><body>
@@ -78,11 +94,13 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 <script>
 const st={stufe:"alle",kat:"alle",q:""};let tab="list";const view=document.getElementById("view");
 document.getElementById("chips").innerHTML=`<button data-kat="alle" class="on">Alle</button>`+DNA.kategorien.map(k=>`<button data-kat="${k.id}">${k.nr} ${k.name}</button>`).join("");
-const row=(s,n)=>`<div class="r ${s.stufe} ${s.status==="geplant"?"geplant":""} ${s.flagship?"flag":""}" data-skill="${s.id}"><span class="no">${String(n).padStart(2,"0")}</span><span class="ic">${s.icon}</span><span class="t"><b>${DNA.esc(s.name)}</b><span>${DNA.esc(s.kurz)}</span></span><span class="rt"><span class="pr">${DNA.preis(s)}</span><span class="st ${s.status==="geplant"?"geplant":s.stufe}">${s.status==="geplant"?"Geplant":s.status==="vorbereitung"?DNA.stufen[s.stufe].name+" · bald":DNA.stufen[s.stufe].name}</span></span></div>`;
+const row=(s,n)=>`<div class="r ${s.stufe} ${s.status==="geplant"?"geplant":""} ${s.flagship?"flag":""} ${s.highlight?"hl":""}" data-skill="${s.id}"><span class="no">${String(n).padStart(2,"0")}</span><span class="ic">${s.icon}</span><span class="t"><b>${DNA.esc(s.name)}</b><span>${DNA.esc(s.kurz)}</span></span><span class="rt"><span class="pr">${DNA.preis(s)}</span><span class="st ${s.status==="geplant"?"geplant":s.stufe}">${s.status==="geplant"?"Geplant":s.status==="vorbereitung"?DNA.stufen[s.stufe].name+" · bald":DNA.stufen[s.stufe].name}</span></span></div>`;
 function list(){const L=DNA.filter(st);let n=0;
  document.getElementById("meta").innerHTML="";
  if(!L.length){view.innerHTML=`<div class="empty">${st.stufe==="community"?"Noch keine Community-Skills. Sei der oder die Erste – Tab „Verkaufen“.":"Nichts gefunden."}</div>`;return}
- view.innerHTML=DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
+ const sigOn=!st.q&&st.kat==="alle"&&(st.stufe==="alle"||st.stufe==="premium"),H=DNA.skills.filter(s=>s.highlight);
+ const sig=sigOn?`<div class="sig"><div class="sig-h"><i>★</i>Signature-Skills<em>Maiks stärkste Systeme</em></div><div class="sig-row">${H.map(s=>`<div class="sc" data-skill="${s.id}">${s.video?`<span class="vid">▶ VIDEO</span>`:""}<div class="top"><span>${s.icon}</span><b>${DNA.esc(s.name)}</b></div><p>${DNA.esc(s.kurz)}</p><div class="mini">${s.ablauf.map((a,i)=>`<span style="--i:${i}" title="${DNA.esc(a[1])}">${a[0]}</span>`).join("")}</div></div>`).join("")}</div></div>`:"";
+ view.innerHTML=sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);
  document.getElementById("meta").innerHTML=`<span>Meine Skills</span><span>${M.length} gemerkt</span>`;
  view.innerHTML=M.length?`<div class="cat"><i>☆</i>Gemerkt</div>`+M.map((s,i)=>row(s,i+1)).join("")+`<p class="empty">Mit Konto stehen hier später auch deine gekauften Skills.</p>`:`<div class="empty">Noch nichts gemerkt. Tipp einen Skill an und drück „Merken“.</div>`}

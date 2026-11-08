@@ -30,22 +30,23 @@
   const optHref = (s, o) => wa(`Hi Maik, ich möchte den Premium-Skill „${s.name}“ aus Flow DNA – Option „${o.name}“ (${s.preise[o.id]} € ${o.einheit}). Wie geht's weiter?`);
 
   function badges(s) {
-    return `<span class="dna-b dna-b-${s.stufe}">${esc(D.stufen[s.stufe].name)}</span>` +
+    return (s.highlight ? `<span class="dna-b dna-b-hl">★ Signature</span>` : "") + `<span class="dna-b dna-b-${s.stufe}">${esc(D.stufen[s.stufe].name)}</span>` +
       (s.status !== "bereit" ? `<span class="dna-b dna-b-st">${esc(D.status[s.status])}</span>` : "");
   }
 
   function layer() { let l = document.getElementById("dna-layer"); if (!l) { l = document.createElement("div"); l.id = "dna-layer"; document.body.appendChild(l) } return l }
-  function close() { layer().innerHTML = ""; document.body.classList.remove("dna-lock") }
+  function close() { stopStages(); layer().innerHTML = ""; document.body.classList.remove("dna-lock") }
 
   function openDetail(id) {
     const s = D.skills.find(x => x.id === id); if (!s) return;
     const a = action(s), pk = D.pakete.find(p => p.skills.includes(s.id));
     layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-h">
       <button class="dna-x" data-dna-close aria-label="Schließen">×</button>
-      <div class="dna-ic">${s.icon}</div>
+      ${s.video ? `<video class="dna-vid" src="${esc(s.video)}.mp4" poster="${esc(s.video)}.jpg" autoplay muted loop playsinline></video><p class="dna-vcap">So läuft's in echt · aus Maiks Projekt</p>` : `<div class="dna-ic">${s.icon}</div>`}
       <div class="dna-badges">${badges(s)}<span class="dna-b">${esc(katName(s.kat))}</span></div>
       <h2 id="dna-h">${esc(s.name)}</h2>
       <p class="dna-kurz">${esc(s.kurz)}</p>
+      ${s.ablauf ? `<h3>So funktioniert's</h3>${stage(s.ablauf, s.highlight)}` : ""}
       <h3>Was er kann</h3><ul>${s.kann.map(k => `<li>${esc(k)}</li>`).join("")}</ul>
       <h3>Für wen</h3><p>${esc(s.fuer)}</p>
       ${s.demo ? `<h3>Beispiel aus der Praxis</h3><p>${esc(s.demo)}</p>` : ""}
@@ -56,7 +57,22 @@
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}" target="_blank" rel="noopener">${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
+    startStages(layer());
   }
+
+  // Ablauf-Animation: Schritte leuchten nacheinander auf, ein Impuls läuft durch, am Ende "fertig"
+  function stage(steps, hl) {
+    return `<div class="dna-stage${hl ? " hl" : ""}" data-n="${steps.length}"><div class="dna-track"><i></i></div>${steps.map(([ic, t], i) => `<div class="dna-step" style="--i:${i}"><span class="dna-dot">${ic}</span><span class="dna-lbl">${esc(t)}</span></div>`).join("")}</div>`;
+  }
+  let timers = [];
+  function startStages(root) {
+    root.querySelectorAll(".dna-stage").forEach(st => {
+      const n = +st.dataset.n, steps = [...st.querySelectorAll(".dna-step")], bar = st.querySelector(".dna-track i"); let k = 0;
+      const tick = () => { steps.forEach((el, i) => { el.classList.toggle("on", i <= k); el.classList.toggle("now", i === k) }); bar.style.width = (n > 1 ? (Math.min(k, n - 1) / (n - 1)) * 100 : 100) + "%"; st.classList.toggle("done", k >= n - 1); k = k >= n - 1 + 2 ? 0 : k + 1; if (k > n - 1) { steps.forEach(el => el.classList.remove("now")) } };
+      tick(); timers.push(setInterval(tick, 750));
+    });
+  }
+  function stopStages() { timers.forEach(clearInterval); timers = [] }
 
   function openSubmit() {
     layer().innerHTML = `<div class="dna-scrim" data-dna-close><form class="dna-modal" id="dna-submit" role="dialog" aria-modal="true" aria-labelledby="dna-sh">
@@ -100,6 +116,6 @@
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close() });
 
-  window.DNA = { ...D, esc, filter, action, preis, optHref, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();

@@ -63,3 +63,24 @@
 .dna-opt em { font-style: normal; font-size: 12px; color: var(--dna-muted) }
 .dna-opt span { font-size: 13px; line-height: 1.4; margin-top: 4px }
 .dna-opt i { font-style: normal; font: 600 13px Inter, sans-serif; color: var(--dna-blue); margin-top: 6px }
+
+/* Signature + Ablauf-Animation */
+.dna-b-hl { background: linear-gradient(90deg, #2F5BFF, #7A5CFF); border-color: transparent; color: #fff }
+.dna-vid { display: block; width: 100%; max-width: 280px; aspect-ratio: 9/16; object-fit: cover; border-radius: 16px; margin: 4px auto 6px; background: #000; box-shadow: 0 20px 60px rgba(47,91,255,.35) }
+.dna-vcap { text-align: center; font: 600 11px Montserrat, sans-serif !important; letter-spacing: .14em; text-transform: uppercase; color: var(--dna-muted); margin-bottom: 10px !important }
+.dna-stage { position: relative; display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); gap: 6px; padding: 18px 8px 12px; border: 1px solid var(--dna-line); border-radius: 16px; overflow: hidden }
+.dna-stage[data-n="3"] { --n: 3 } .dna-stage[data-n="4"] { --n: 4 } .dna-stage[data-n="5"] { --n: 5 }
+.dna-stage.hl { background: #0B0B0B; border-color: #2F5BFF; box-shadow: 0 0 40px rgba(47,91,255,.25) }
+.dna-track { position: absolute; left: 12%; right: 12%; top: 40px; height: 3px; background: var(--dna-line) }
+.dna-stage.hl .dna-track { background: rgba(255,255,255,.15) }
+.dna-track i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #2F5BFF; box-shadow: 0 0 12px #2F5BFF; transition: width .6s cubic-bezier(.2,.7,.2,1) }
+.dna-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; z-index: 1 }
+.dna-dot { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; background: var(--dna-card); border: 2px solid var(--dna-line); transition: transform .3s, border-color .3s, box-shadow .3s; filter: grayscale(1); opacity: .55 }
+.dna-stage.hl .dna-dot { background: #16171A; border-color: rgba(255,255,255,.2) }
+.dna-step.on .dna-dot { filter: none; opacity: 1; border-color: #2F5BFF }
+.dna-step.now .dna-dot { transform: scale(1.18); box-shadow: 0 0 0 6px rgba(47,91,255,.18), 0 0 24px rgba(47,91,255,.6) }
+.dna-lbl { font: 600 11px/1.25 Inter, sans-serif; color: var(--dna-muted) }
+.dna-step.on .dna-lbl { color: var(--dna-ink) }
+.dna-stage.hl .dna-lbl { color: rgba(255,255,255,.55) } .dna-stage.hl .dna-step.on .dna-lbl { color: #fff }
+.dna-stage.done::after { content: "✓ Fertig"; position: absolute; right: 10px; top: 6px; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; color: #2F5BFF }
+@media (prefers-reduced-motion: reduce) { .dna-track i, .dna-dot { transition: none } }

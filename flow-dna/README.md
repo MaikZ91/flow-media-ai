@@ -2,6 +2,12 @@
 
 Live: https://maikz91.github.io/flow-media-ai/flow-dna/ · Entwürfe: `varianten.html`
 
+## Signature-Skills, Animationen, Videos (Maik, 08.11.2026)
+- **Signature** (★, Verlauf-Badge, blaue Leiste, schwarze Leiste ganz oben in der Liste): Lead Agent · Website (39 €/Mon. · 399 € · 799 €), Lead Agent · Business (49 · 499 · 999), Social Content System (49 · 449 · 899), Creative Director, Agentensystem. Landingpage Generator dafür auf 19 · 149 · 349 (Baustein des Lead Agents).
+- Neue Premium-Skills in Drive: `lead-agent-website`, `lead-agent-business`, `social-content-system` (aus `the-tribe-bot/lead_agent_deepseek` und `instagram_autopilot`, neutralisiert; Versand nur rechtssicher: Entwurf / auf Anfrage / mit Einwilligung).
+- Jeder Skill hat `ablauf` (Schritte) → animierter Ablauf im Detail („So funktioniert's“), Signature-Karten mit Mini-Animation.
+- Videos (`media/`, ohne Ton, 540×960): R017 Lead-Pipeline (Lead Agent · Website), R016 Content-Pipeline (Social Content System, Autopilot), R006 Website-Tour (Website Builder).
+
 ## Preise Premium (Maik, 08.11.2026)
 Drei Optionen je Premium-Skill, Bezug **auf Anfrage** (WhatsApp mit vorausgefüllter Option): **Mieten** (€/Monat, inkl. Updates & Support, monatlich kündbar) · **Kaufen** (allgemeine Version) · **Mit Einrichtung** (angepasst, von Maik eingerichtet). Preise in `daten.js` (`preise: { miete, kauf, setup }`); Landingpage Generator 399 € Kauf (Maiks Vorgabe), der Rest von Claude vorgeschlagen.
 Miete technisch: vorerst per Absprache (Zugang zu Updates/Support); echtes Abo später z. B. über Stripe.
