@@ -178,7 +178,7 @@ window.FLOW_DNA = {
     skills: ["lead-agent-web", "lead-seiten", "website"],
     seiten: [
       { name: "Bäckerei Musterbrot", art: "Bäckerei · Speisekarte & Öffnungszeiten", url: "demos/baeckerei/", bild: "demos/baeckerei/vorschau.jpg" },
-      { name: "Physio Beispiel", art: "Praxis · Terminbuchung in 3 Schritten", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },
+      { name: "Physio Beispiel", art: "Praxis · Team mit Telefon & Termin", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },
       { name: "Friseur Beispiel", art: "Salon · Online-Termin & Galerie", url: "demos/friseur/", bild: "demos/friseur/vorschau.jpg" }
     ]
   },

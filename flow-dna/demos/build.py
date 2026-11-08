@@ -32,6 +32,8 @@ DEMOS = {
   leistungen=[("Manuelle Therapie", "Gezielte Mobilisation von Gelenken und Wirbelsäule."), ("Krankengymnastik", "Aktive Übungen, die dich langfristig stark machen."), ("Massage", "Lockert Verspannungen und fördert die Durchblutung.")],
   feature="booking", services=["Erstbefund (45 Min)", "Krankengymnastik", "Manuelle Therapie", "Massage"],
   hours=[("Mo–Do", "7:30", "20:00"), ("Fr", "7:30", "16:00")],
+  team=[("AM","Anna Muster","Physiotherapeutin · Manuelle Therapie"),("JB","Jonas Beispiel","Physiotherapeut · Sportphysio")],
+  rezept=[("📄","Verordnung","Rezept vom Arzt – Kasse oder privat."),("📞","Anrufen","Wir finden zusammen deinen Termin."),("🩺","Erstbefund","45 Minuten Zeit für dich und deinen Plan.")],
   quote=("Wir behandeln nicht nur Symptome – wir zeigen dir, wie du selbst dranbleibst.", "Praxisteam Physio Beispiel"),
   gal=["g1", "g2"]),
  "friseur": dict(
@@ -45,6 +47,7 @@ DEMOS = {
   leistungen=[("Haarschnitt", "Waschen, Schneiden, Styling – mit Beratung."), ("Farbe", "Natürliche Töne, Strähnen, Balayage."), ("Bart", "Konturen, Rasur mit heißem Tuch.")],
   feature="booking", services=["Herrenschnitt", "Damenschnitt", "Farbe & Strähnen", "Bartpflege"],
   hours=[("Di–Fr", "9:00", "19:00"), ("Sa", "9:00", "15:00")],
+  team=[("LM","Lea Muster","Inhaberin · Farbe & Balayage"),("TB","Tom Beispiel","Barber · Schnitt & Bart")],
   quote=("Ein guter Schnitt fängt mit Zuhören an.", "Team Friseur Beispiel"),
   gal=["g1", "g2", "g3"]),
 }
@@ -64,6 +67,12 @@ def page(key, d):
 <div class="steps" id="steps"><div class="st on" data-s="1"><b>1 · Leistung</b><div class="opts">{opts}</div></div>
 <div class="st" data-s="2"><b>2 · Wunschtermin</b><div class="row"><input type="date" id="dt"><select id="tm"><option>Vormittag</option><option>Mittag</option><option>Nachmittag</option><option>Abend</option></select></div><button type="button" class="btn small" id="n2">Weiter</button></div>
 <div class="st" data-s="3"><b>3 · Kontakt</b><div class="row"><input id="nm" placeholder="Dein Name"><input id="ph" placeholder="Telefon"></div><button type="button" class="btn small sheen" id="send">Anfrage senden</button><p class="ok" id="ok"></p></div></div></div></section>'''
+    team = ""
+    if d.get("team"):
+        team = '<div class="team">' + "".join(f'<div class="av reveal" style="--d:{i*90}ms"><span class="ini">{E(ini)}</span><div><b>{E(n)}</b><small>{E(r)}</small><a class="tel" href="tel:+490000000000">📞 Anrufen</a></div></div>' for i, (ini, n, r) in enumerate(d["team"])) + '</div>'
+    rez = ""
+    if d.get("rezept"):
+        rez = '<section class="sec" style="padding-top:0"><div class="wrap"><p class="kick reveal">Mit Rezept zu uns</p><h2 class="reveal">So einfach <em>geht’s</em>.</h2><div class="cards">' + "".join(f'<article class="card reveal lift" style="--d:{i*90}ms"><span class="no">{ic} Schritt {i+1}</span><h3>{E(t)}</h3><p>{E(x)}</p></article>' for i, (ic, t, x) in enumerate(d["rezept"])) + '</div></div></section>'
     hours = "".join(f'<tr data-d="{E(dd)}" data-a="{a}" data-b="{b}"><td>{E(dd)}</td><td>{a}–{b} Uhr</td></tr>' for dd, a, b in d["hours"])
     credits = " · ".join(f'<a href="{E(x["src"])}" target="_blank" rel="noopener">{E(x["file"])}</a> ({E(x["lic"].upper())}{", " + E(x["creator"]) if x["creator"] else ""})' for x in cr)
     return f'''<!doctype html>
@@ -130,6 +139,9 @@ h2{{font-size:clamp(34px,4.4vw,56px);margin-bottom:22px}}
 .contact{{display:grid;grid-template-columns:1fr 1fr;gap:30px}}@media(max-width:760px){{.contact{{grid-template-columns:1fr}}}}
 table{{width:100%;border-collapse:collapse}}td{{padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}}td:last-child{{text-align:right;font-weight:600}}
 tr.now td{{color:var(--acc)}}.open{{display:inline-block;margin-top:12px;font-weight:700;color:var(--acc)}}
+.team{{display:grid;gap:10px;margin-top:22px}}.av{{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:18px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}}
+.ini{{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:600 20px var(--serif);box-shadow:0 0 0 4px var(--card),0 0 0 6px color-mix(in srgb,var(--acc) 35%,transparent)}}
+.av b{{display:block;font-size:17px}}.av small{{display:block;color:var(--mute);font-size:14px}}.tel{{display:inline-block;margin-top:6px;font-weight:700;color:var(--acc);text-decoration:none}}
 footer{{padding:40px 0 120px;color:var(--mute);font-size:13px}}footer a{{color:var(--mute)}}
 .mcta{{position:fixed;left:14px;right:14px;bottom:14px;z-index:55;display:none}}@media(max-width:760px){{.mcta{{display:block}}}}
 .mcta .btn{{width:100%;justify-content:center;animation:pulse 2.6s infinite}}@keyframes pulse{{0%,100%{{box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 45%,transparent)}}70%{{box-shadow:0 0 0 14px transparent}}}}
@@ -143,11 +155,11 @@ footer{{padding:40px 0 120px;color:var(--mute);font-size:13px}}footer a{{color:v
 <div class="stage reveal" style="--d:120ms"><img src="img/hero.jpg" alt="{E(d["branche"])}"><div class="badge"><b>{E(d["ort"])}</b>{E(d["branche"])}</div></div></div></section>
 <div class="wrap"><ul class="usps">{usps}</ul></div>
 <section id="leistungen" class="sec"><div class="wrap"><p class="kick reveal">Leistungen</p><h2 class="reveal">Was wir <em>besonders</em> gut können.</h2><div class="cards">{lst}</div></div></section>
-{feat}
+{rez}{feat}
 <section class="sec" style="padding-top:0"><div class="wrap"><div class="gal">{gal}</div></div></section>
 <section class="sec"><div class="wrap quote reveal"><p>„{E(d["quote"][0])}“</p><span>– {E(d["quote"][1])}</span></div></section>
 <div class="band reveal"><img src="img/cta.jpg" alt="" loading="lazy"><div><h2>Wir freuen uns <em>auf dich</em>.</h2><a class="btn sheen" href="#feature">{E(d["cta"])} →</a></div></div>
-<section id="kontakt" class="sec"><div class="wrap contact"><div class="reveal"><p class="kick">Kontakt</p><h2>So findest du <em>uns</em>.</h2><p class="muted">Musterstraße 1 · 00000 {E(d["ort"])}<br>Telefon: 0000 000000 (Beispiel)<br>E-Mail: hallo@beispiel.de</p></div>
+<section id="kontakt" class="sec"><div class="wrap contact"><div class="reveal"><p class="kick">Kontakt</p><h2>So findest du <em>uns</em>.</h2><p class="muted">Musterstraße 1 · 00000 {E(d["ort"])}<br>Telefon: 0000 000000 (Beispiel)<br>E-Mail: hallo@beispiel.de</p>{team}</div>
 <div class="reveal" style="--d:100ms"><p class="kick">Öffnungszeiten</p><table id="hours">{hours}</table><span class="open" id="open"></span></div></div></section>
 <footer><div class="wrap">Demo-Konzeptseite für einen <b>erfundenen</b> Betrieb – alle Namen, Daten und Preise sind Beispiele. Gebaut mit dem Flow DNA Landingpage Generator · Flow Media AI.<br>Fotos (CC0/frei): {credits}</div></footer>
 <div class="mcta"><a class="btn" href="#feature">{E(d["cta"])}</a></div>
