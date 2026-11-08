@@ -193,6 +193,17 @@ h3.more { font: 500 12px var(--f-label); letter-spacing: .2em; text-transform: u
 .play span { display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; border-radius: 999px; background: rgba(10,10,10,.6); border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(10px); font: 500 15px var(--f-body); transition: transform .3s var(--ease), background .3s }
 .play:hover span { transform: scale(1.04); background: var(--blue); border-color: var(--blue) }
 .play b { width: 0; height: 0; border-left: 11px solid #fff; border-block: 7px solid transparent }
+.dna-sec { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 72px); align-items: center }
+.dna-sec h2 { font-size: clamp(48px, 6vw, 90px); margin-top: 0 }
+.dna-sec p { max-width: 46ch }
+.dna-sig { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px }
+.dna-sig li { display: flex; gap: 12px; align-items: baseline; padding: 12px 14px; border: 1px solid rgba(47,91,255,.45); background: rgba(47,91,255,.08); border-radius: 14px; color: var(--text) }
+.dna-sig li b { display: block; color: var(--white); font-weight: 600 }
+.dna-sig li i { font-style: normal; color: var(--blue) }
+.dna-phone { position: relative; width: min(360px, 100%); aspect-ratio: 9 / 18.5; margin: 0 auto; border-radius: 44px; border: 10px solid #151517; background: #F4F4F1; overflow: hidden; box-shadow: 0 40px 120px rgba(47,91,255,.25), 0 0 0 1px rgba(255,255,255,.08) }
+.dna-phone iframe { position: absolute; left: 0; top: 0; width: 390px; height: 800px; border: 0; transform-origin: 0 0 }
+.dna-phone .lbl { position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%); white-space: nowrap; font: 600 12px var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--muted) }
+@media (max-width: 900px) { .dna-sec { grid-template-columns: minmax(0, 1fr) } .dna-phone { width: min(300px, 100%) } }
 .tool-note { margin-top: 14px; font-size: 14px; color: var(--muted) }
 .tool-note a { color: var(--white) }
 
@@ -368,6 +379,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <ul>
     <li><a href="#angebote">Community</a></li>
     <li><a href="#sparring">Sparring</a></li>
+    <li><a href="#flow-dna">Skill Store</a></li>
     <li><a href="#werte">Werte</a></li>
     <li><a href="#ueber-mich">Über mich</a></li>
   </ul>
@@ -418,6 +430,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         <li><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>KI & digitale Tools</li>
         <li><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg>Austausch & Umsetzung</li>
         <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg>Digitaler Stammtisch · digital & live</li>
+        <li><svg viewBox="0 0 24 24"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6M8 7h8M8 17h8"/></svg>Zugang zum Flow DNA Skill Store</li>
       </ul>
       <a class="btn primary" data-cta="offer_community" data-wa="community" href="#">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
@@ -538,6 +551,24 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   </div>
 </section>
 
+
+<section id="flow-dna" style="padding-top:0"><div class="wrap dna-sec">
+  <div>
+    <span class="label eyebrow rv">Enable · Skill Store</span>
+    <h2 class="display rv d1">Flow<br><span class="blue">DNA.</span></h2>
+    <p class="rv d2">Mein Skill Marketplace: fertige KI-Skills, Agenten und Workflows, mit denen deine KI arbeitet wie ein Team – Content, Branding, Websites, Apps, Automatisierung. Free-Skills direkt zum Download, Premium-Skills zum Mieten, Kaufen oder direkt mit Einrichtung. Für Claude Code und Codex.</p>
+    <p class="rv d2">Als Mitglied der Flow Business Community hast du Zugang zum Store – und kannst eigene Skills einreichen.</p>
+    <ul class="dna-sig rv d2">
+      <li><i>★</i><span><b>Lead Agent</b>Betriebe finden, analysieren, neue Website bauen</span></li>
+      <li><i>★</i><span><b>Social Content System</b>Creative Director, Auto-Post und Daten-Lernen in einem</span></li>
+      <li><i>★</i><span><b>Agentensystem</b>ein Prüfagent kontrolliert jedes Ergebnis</span></li>
+    </ul>
+    <div class="cta-row rv d3"><a class="btn primary" data-cta="dna_store" href="../../flow-dna/">Zum Skill Store <span class="ar">→</span></a><a class="btn" data-cta="dna_community" data-wa="community" href="#">Community beitreten</a></div>
+  </div>
+  <div class="rv d1">
+    <div class="dna-phone" id="dna-phone" data-lenis-prevent><iframe title="Flow DNA Skill Store" src="../../flow-dna/" loading="lazy"></iframe><span class="lbl">Live · zum Durchklicken</span></div>
+  </div>
+</div></section>
 
 <section id="tool" style="padding-top:0"><div class="wrap tool">
   <div>
@@ -934,6 +965,8 @@ document.addEventListener("click", e => {
   const a = e.target.closest("[data-cta]");
   if (a && window.posthog) posthog.capture("cta_click", { cta: a.dataset.cta, target: a.getAttribute("href") });
 });
+// Flow DNA preview: scale the 390px store into the phone frame
+(function(){const ph=document.getElementById("dna-phone");if(!ph)return;const f=ph.querySelector("iframe");const fit=()=>{const k=ph.clientWidth/390;f.style.transform=`scale(${k})`;f.style.height=(ph.clientHeight/k)+"px"};fit();addEventListener("resize",fit)})();
 </script>
 </body>
 </html>
