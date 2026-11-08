@@ -31,6 +31,11 @@ Stand 08.11.2026 · Idee von Maik: ein „App Store für Skills“ neben der Web
 „Design vom Katalog (weiß, minimalistische Kacheln), Übersicht vom Terminal (kompakt, nicht ewig scrollen), Animation vom DNA-Strang (schlicht, klein), das Ganze in der App.“
 → `v6-app.html`: helles Katalog-Design, kompakte Liste (eine Zeile pro Skill, Kategorie-Köpfe bleiben stehen), kleiner animierter DNA-Strang neben dem Namen, App mit Tab-Leiste (Entdecken · Meine · Verkaufen · Mehr).
 
+## Stand 08.11.2026 – alle Skills mit Inhalt
+- **Free (11, öffentlich):** `skills/<id>/SKILL.md` – Personal Brand (= Brand-Builder aus dem Workshop), Blindspot-Analyse, Content Style Analyzer, Brainstorming, Social Media Post Analyzer, Caption & Copywriting, Angebot & Rechnung, Meeting Summary, E-Mail Assistant, Business Idea Validator, Prompt Optimizer. Installation: `skills/INSTALLATION.md`. Download-Knopf im Store verlinkt den Ordner.
+- **Premium (19, privat):** nur in Drive `07_KI/flow-dna-premium/<id>.SKILL.md` (das Repo ist öffentlich!). Neutralisiert aus Maiks Skills: Creative Director, Design System, Content Calendar, Instagram-Autopilot, Wettbewerbsanalyse, App Builder, Landingpage Generator, Flow Agentensystem; neu: Website Builder, Brand Identity Generator, Reel Script Generator, Business Process Analyzer, Workflow Builder, Customer Support Agent, Lead Qualification, UI/UX Design, Research Agent, Business Assistant, Knowledge Management. Auslieferung nach Kauf: Datei als `SKILL.md` in einen Ordner mit dem Skill-Namen legen.
+- v6: Auswahlleiste kompakter (Suche + Stufe in einer Zeile, Bereiche klappen beim Scrollen weg).
+
 ## Offen
 - Welche Variante (oder Mischung)?
 - Zugang: öffentlich oder nur für Community-Mitglieder (Login)?
