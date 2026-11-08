@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-08T14:52+00:00",
+ "stand": "2026-11-08T15:02+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -246,6 +246,110 @@
    "l": "https://www.heise.de/news/Nach-US-Zwischenwahlen-Skepsis-zum-KI-Boom-loest-heftigen-Boersenabsturz-aus-11514310.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "d": "2026-11-06T06:03:00+00:00",
    "lang": "de"
+  }
+ ],
+ "kanaele": [
+  "Anthropic",
+  "OpenAI",
+  "Google DeepMind",
+  "Two Minute Papers"
+ ],
+ "videos": [
+  {
+   "id": "GJ6PMUm5oTA",
+   "t": "OpenAI's Astra Just Opened The Black Box Of AI",
+   "q": "Two Minute Papers",
+   "d": "2026-11-07T16:24:47+00:00"
+  },
+  {
+   "id": "hJOwOkLHRN0",
+   "t": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
+   "q": "OpenAI",
+   "d": "2026-11-06T21:11:34+00:00"
+  },
+  {
+   "id": "XgC1QTs6A2U",
+   "t": "The Future of AI Is Absolutely Incredible (Spencer Huang)",
+   "q": "Two Minute Papers",
+   "d": "2026-11-06T07:27:02+00:00"
+  },
+  {
+   "id": "pXRZyOxbDL4",
+   "t": "How Mozilla strengthens Firefox security with GPT-6 Cyber",
+   "q": "OpenAI",
+   "d": "2026-11-05T17:14:11+00:00"
+  },
+  {
+   "id": "bJldMYfRvMQ",
+   "t": "Introducing ChatGPT Images 2.6",
+   "q": "OpenAI",
+   "d": "2026-11-05T02:32:21+00:00"
+  },
+  {
+   "id": "9ZxCOHkfn_8",
+   "t": "GPT-Image-2.6: Faster image generation with Flare and Sunburst",
+   "q": "OpenAI",
+   "d": "2026-11-04T23:42:40+00:00"
+  },
+  {
+   "id": "6IttBmI4P9M",
+   "t": "Messi asks ChatGPT to reimagine his room",
+   "q": "OpenAI",
+   "d": "2026-11-04T19:25:46+00:00"
+  },
+  {
+   "id": "0LDs5rvx1EI",
+   "t": "How Figma Is Building Self-Serve Analytics with OpenAI",
+   "q": "OpenAI",
+   "d": "2026-11-04T17:33:11+00:00"
+  },
+  {
+   "id": "CWdTBLsbaQs",
+   "t": "OpenAI Claims It Just Did The Impossible",
+   "q": "Two Minute Papers",
+   "d": "2026-10-30T15:57:16+00:00"
+  },
+  {
+   "id": "pryCaGv8wuo",
+   "t": "DeepSeek's New AI Is An Absolute Monster",
+   "q": "Two Minute Papers",
+   "d": "2026-10-28T17:32:40+00:00"
+  },
+  {
+   "id": "sFfPkUJd_Jk",
+   "t": "Genie 4: A new generation of world simulation",
+   "q": "Google DeepMind",
+   "d": "2026-10-27T16:00:41+00:00"
+  },
+  {
+   "id": "LWxX6vvHfrc",
+   "t": "Gemini 4 Argon Is Not What I Expected",
+   "q": "Two Minute Papers",
+   "d": "2026-10-19T08:49:21+00:00"
+  },
+  {
+   "id": "LVEfFyijQ2c",
+   "t": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T16:38:17+00:00"
+  },
+  {
+   "id": "ftkic7Tdpcg",
+   "t": "Using Gemini 4 Argon to protect against Cyber attackers",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T16:38:14+00:00"
+  },
+  {
+   "id": "9PICEmtfpWU",
+   "t": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T15:58:20+00:00"
+  },
+  {
+   "id": "9jQA7IgPhBE",
+   "t": "Untangling 500-page chemistry patents with Gemini 4",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T15:58:17+00:00"
   }
  ]
 }
