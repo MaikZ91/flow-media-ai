@@ -10,11 +10,14 @@ FEEDS = [
     ("heise", "https://www.heise.de/rss/heise-atom.xml", "KI", "de"),
     ("OpenAI", "https://openai.com/news/rss.xml", None, "en"),
 ]
-YT = [  # YouTube-Kanäle (RSS ohne API-Key) – Kanal-ID hier ergänzen
-    ("Anthropic", "UCrDwWp7EBBv4NwvScIpBDOA"),
-    ("OpenAI", "UCXZCJLdBC09xxGZ6gcdrc6A"),
-    ("Google DeepMind", "UCP7jMXSY2xbc3KCAE0MHQ-A"),
-    ("Two Minute Papers", "UCbfYPyITQ-7l4upoX8nvctg"),
+YT = [  # YouTube-Kanäle (RSS ohne API-Key): (Name, Kanal-ID, Sprache) – hier ergänzen
+    ("Everlast AI", "UC8T5gQ4U4GbI2h8kYCkEcvg", "de"),
+    ("Everlast Robotics", "UCrsjdqXseSxCpRgeSbdimTg", "de"),
+    ("Everlast AI Clips", "UCMSjKPOf6yQc746Ka1tZwfQ", "de"),
+    ("Anthropic", "UCrDwWp7EBBv4NwvScIpBDOA", "en"),
+    ("OpenAI", "UCXZCJLdBC09xxGZ6gcdrc6A", "en"),
+    ("Google DeepMind", "UCP7jMXSY2xbc3KCAE0MHQ-A", "en"),
+    ("Two Minute Papers", "UCbfYPyITQ-7l4upoX8nvctg", "en"),
 ]
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "flow-dna")
 def clean(s, n=220):
@@ -58,15 +61,15 @@ for x in items:
 out = out[:30]
 vids = []
 YNS = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015", "media": "http://search.yahoo.com/mrss/"}
-for name, cid in YT:
+for name, cid, lang in YT:
     try: root = ET.fromstring(fetch("https://www.youtube.com/feeds/videos.xml?channel_id=" + cid))
     except Exception as e: print("skip", name, e, file=sys.stderr); continue
-    for en in root.findall("a:entry", YNS)[:6]:
+    for en in root.findall("a:entry", YNS)[:5]:
         vid = en.findtext("yt:videoId", namespaces=YNS); t = en.findtext("a:title", namespaces=YNS) or ""
         d = when(en.findtext("a:published", namespaces=YNS))
         if not vid or not d or "#shorts" in t.lower(): continue
-        vids.append({"id": vid, "t": clean(t, 140), "q": name, "d": d.isoformat()})
-vids.sort(key=lambda x: x["d"], reverse=True); vids = vids[:16]
+        vids.append({"id": vid, "t": clean(t, 140), "q": name, "d": d.isoformat(), "lang": lang})
+vids.sort(key=lambda x: x["d"], reverse=True); vids = vids[:40]
 data = {"stand": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "quellen": [f[0] for f in FEEDS], "items": out, "kanaele": [y[0] for y in YT], "videos": vids}
 open(os.path.join(OUT, "news.json"), "w", encoding="utf-8").write(json.dumps(data, ensure_ascii=False, indent=1))
 open(os.path.join(OUT, "news.js"), "w", encoding="utf-8").write("window.NEWS = " + json.dumps(data, ensure_ascii=False) + ";\n")

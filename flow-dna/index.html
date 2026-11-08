@@ -213,7 +213,8 @@ function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote ·
 const NEWS=window.NEWS||{items:[],quellen:[]};let newsQ="alle";
 function ago(iso){const m=Math.round((Date.now()-new Date(iso))/6e4);return m<60?`vor ${Math.max(1,m)} Min.`:m<1440?`vor ${Math.round(m/60)} Std.`:new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}
 let newsMode="artikel";
-function videos(){const V=NEWS.videos||[];return `<p class="st">Neue Videos von ${(NEWS.kanaele||[]).join(", ")} · automatisch aktualisiert. Antippen spielt das Video hier ab.</p>${V.map(v=>`<div class="yv" data-yt="${DNA.esc(v.id)}"><div class="th"><img src="https://i.ytimg.com/vi/${DNA.esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><i>▶</i></div><small><b>${DNA.esc(v.q)}</b> · ${ago(v.d)} · englisch</small><strong>${DNA.esc(v.t)}</strong></div>`).join("")||`<p class="st">Gerade keine Videos.</p>`}`}
+let vidQ="alle";
+function videos(){const V=(NEWS.videos||[]).filter(v=>vidQ==="alle"||v.q===vidQ);return `<p class="st">Neue Videos · automatisch aktualisiert. Antippen spielt das Video hier ab.</p><div class="fl">${["alle",...(NEWS.kanaele||[])].map(q=>`<button type="button" data-vq="${DNA.esc(q)}" class="${q===vidQ?"on":""}">${q==="alle"?"Alle":DNA.esc(q)}</button>`).join("")}</div>${V.map(v=>`<div class="yv" data-yt="${DNA.esc(v.id)}"><div class="th"><img src="https://i.ytimg.com/vi/${DNA.esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><i>▶</i></div><small><b>${DNA.esc(v.q)}</b> · ${ago(v.d)}${v.lang==="en"?" · englisch":""}</small><strong>${DNA.esc(v.t)}</strong></div>`).join("")||`<p class="st">Gerade keine Videos.</p>`}`}
 function news(){if(newsMode==="videos"){document.getElementById("meta").innerHTML=`<span>KI-News · Videos</span><span>${(NEWS.videos||[]).length} Videos</span>`;view.innerHTML=`<div class="nw">${modeBar()}${videos()}</div>`;return}
 document.getElementById("meta").innerHTML=`<span>KI-News</span><span>${NEWS.items.length} Meldungen</span>`;
  const L=NEWS.items.filter(x=>newsQ==="alle"||x.q===newsQ);
@@ -221,7 +222,8 @@ document.getElementById("meta").innerHTML=`<span>KI-News</span><span>${NEWS.item
  <div class="fl">${["alle",...NEWS.quellen].map(q=>`<button type="button" data-nq="${q}" class="${q===newsQ?"on":""}">${q==="alle"?"Alle":q}</button>`).join("")}</div>
  ${L.map(x=>`<a class="ni" href="${DNA.esc(x.l)}" target="_blank" rel="noopener"><small><b>${DNA.esc(x.q)}</b> · ${ago(x.d)}${x.lang==="en"?" · englisch":""}</small><strong>${DNA.esc(x.t)}</strong><span>${DNA.esc(x.s)}</span></a>`).join("")||`<p class="st">Gerade keine Meldungen.</p>`}</div>`}
 const modeBar=()=>`<div class="seg2"><button type="button" data-nm="artikel" class="${newsMode==="artikel"?"on":""}">Artikel</button><button type="button" data-nm="videos" class="${newsMode==="videos"?"on":""}">▶ Videos</button></div>`;
-document.addEventListener("click",e=>{const m=e.target.closest("[data-nm]");if(m){newsMode=m.dataset.nm;news();return}
+document.addEventListener("click",e=>{const vq=e.target.closest("[data-vq]");if(vq){vidQ=vq.dataset.vq;news();return}
+ const m=e.target.closest("[data-nm]");if(m){newsMode=m.dataset.nm;news();return}
  const y=e.target.closest("[data-yt]");if(y&&!y.querySelector("iframe")){const th=y.querySelector(".th");th.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${y.dataset.yt}?autoplay=1&playsinline=1&rel=0" title="YouTube-Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;return}
  const b=e.target.closest("[data-nq]");if(!b)return;newsQ=b.dataset.nq;news()});
 function supportHTML(){const S=A.support;return `<h3 style="font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#6B6B66;margin:24px 0 6px;padding-bottom:8px;border-bottom:2px solid #0B0B0B"><i style="font-style:normal;color:#2F5BFF;margin-right:8px">🛠</i>Tech-Support</h3>
