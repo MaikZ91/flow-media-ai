@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-08T15:06+00:00",
+ "stand": "2026-11-08T19:00+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,38 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Anything LLM im Praxistest: Lokale KI für Chatbot, Websuche und Dokumentenwissen",
+   "s": "Agentische Fähigkeiten, Websuche und integrierter Wissensspeicher: Anything LLM ist ein Allrounder für den lokalen KI‑Einsatz. Wir haben uns angeschaut, wie sic",
+   "q": "t3n",
+   "l": "https://t3n.de/news/anything-llm-lokale-ki-chatbot-websuche-dokumentenwissen-1768974",
+   "d": "2026-11-08T18:15:00+00:00",
+   "lang": "de"
+  },
+  {
+   "t": "KI-Agenten sollen eine Zivilisation in Minecraft aufbauen – und verlieren sich in Bürokratie",
+   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ki-agenten-minecraft-experiment-buerokratie-1771070",
+   "d": "2026-11-08T16:55:00+00:00",
+   "lang": "de"
+  },
+  {
+   "t": "Was Napoleon verheimlichte: KI entschlüsselt bisher unlesbare Briefe",
+   "s": "Eine KI hat einen verschlüsselten Brief von Napoleon Bonaparte nach 217 Jahren geknackt. Ein Entwickler ließ GPT-6 Astra sechs Stunden lang rechnen. So ging das Model von OpenAI vor.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/napoleon-brief-ki-entschluesselt-geheimcode-astra-1766406",
+   "d": "2026-11-08T15:50:00+00:00",
+   "lang": "de"
+  },
+  {
+   "t": "KI-Agenten im Mittelstand: Junge Entscheider:innen machen es vor",
+   "s": "Während viele mittelständische Unternehmen KI-Agenten noch vorsichtig prüfen, zeigt Accio, Alibaba.coms agentische KI-Plattform für KMU und Solopreneurs, wie Agentic AI im B2B-Alltag entlasten kann: bei Recherche, …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ki-agenten-mittelstand-junge-entscheider-1764951",
+   "d": "2026-11-08T15:30:00+00:00",
+   "lang": "de"
+  },
   {
    "t": "Warum KI-Texte immer gleich klingen: Die Lieblingswörter von GPT & Claude",
    "s": "Unternehmen wie OpenAI und Anthropic arbeiten hart daran, typische Muster aus ihren Sprachmodellen zu entfernen. Trotzdem gibt es weiterhin Lieblingsphrasen, die sie deutlich häufiger als Menschen benutzen.",
@@ -64,43 +96,11 @@
    "lang": "de"
   },
   {
-   "t": "Von Überbevölkerung zur KI: Die erstaunliche Prognose von 1960",
-   "s": "Weltuntergang am 13. November 2026? Eine 1960 in Science veröffentlichte Formel, die für 2026 eine katastrophale Überbevölkerung vorhersagte, hat sich nicht bes",
-   "q": "t3n",
-   "l": "https://t3n.de/news/doomsday-formel-1960-prognose-ki-singularitaet-1771528",
-   "d": "2026-11-08T10:45:00+00:00",
-   "lang": "de"
-  },
-  {
-   "t": "Mathe-Professor kapituliert: Warum Hausaufgaben durch KI sinnlos sind",
-   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu studieren.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ki-mathe-studium-zukunft-hausaufgaben-kapitulation-1769844",
-   "d": "2026-11-08T09:35:00+00:00",
-   "lang": "de"
-  },
-  {
    "t": "Coding-Agenten liefern viel, aber selten fertig",
    "s": "Der KI-Agenten-Benchmark Co-Design Bench von Alibaba konfrontiert Coding-Agenten mit echten, schwierigen Nutzeranfragen und zeigt ernüchternde Ergebnisse: Selbst GPT-6 Astra als Spitzenreiter löst nur 26,4 Prozent der …",
    "q": "The Decoder",
    "l": "https://the-decoder.de/coding-agenten-liefern-viel-aber-selten-fertig/",
    "d": "2026-11-08T09:10:59+00:00",
-   "lang": "de"
-  },
-  {
-   "t": "KI-Workflow: Wie du mit Diktieren und Claude Code deine Produktivität verdoppelst",
-   "s": "Produktmanager Jan Werner nutzt in seinem Arbeitsalltag nahezu rund um die Uhr die KI-Diktier-App Freeflow. Warum er von Wispr Flow auf die Open-Source-Lösung u",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ki-workflow-diktieren-claude-code-produktivitaet-1770271",
-   "d": "2026-11-08T09:00:00+00:00",
-   "lang": "de"
-  },
-  {
-   "t": "Gemini für CarPlay: Google Maps bekommt KI-Upgrade im Auto",
-   "s": "Wer Carplay in Kombination mit Google Maps nutzt, darf sich über eine Neuerung freuen. Google gibt seine KI auch für das Apple-Ökosystem frei. Was mit Gemini möglich ist.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/google-maps-carplay-gemini-ki-upgrade-1769471",
-   "d": "2026-11-08T08:35:00+00:00",
    "lang": "de"
   },
   {
@@ -252,6 +252,7 @@
   "Everlast AI",
   "Everlast Robotics",
   "Everlast AI Clips",
+  "Cinetiq",
   "Anthropic",
   "OpenAI",
   "Google DeepMind",
@@ -270,6 +271,13 @@
    "t": "„Mars-Siedlungen sind absoluter BLÖDSINN!“ Chip-Professor rechnet mit Elon Musk ab",
    "q": "Everlast AI Clips",
    "d": "2026-11-08T10:15:00+00:00",
+   "lang": "de"
+  },
+  {
+   "id": "6wWnbZu4oxI",
+   "t": "Motion Graphics OHNE After Effects: Claude baut alles KOMPLETT alleine!",
+   "q": "Cinetiq",
+   "d": "2026-11-08T10:00:37+00:00",
    "lang": "de"
   },
   {
@@ -371,6 +379,13 @@
    "lang": "de"
   },
   {
+   "id": "lytWc30v4Jo",
+   "t": "6x GÜNSTIGER als Seedance 2.5? Kling 4.0: Alles, was du wissen musst (16 Praxistests)",
+   "q": "Cinetiq",
+   "d": "2026-11-01T10:15:22+00:00",
+   "lang": "de"
+  },
+  {
    "id": "VOYccAKu7Zg",
    "t": "Platzt jetzt die KI-Blase? DAS wird ALLE überraschen! Anthropics Börsengang | KI-NEWS",
    "q": "Everlast AI",
@@ -413,6 +428,13 @@
    "lang": "en"
   },
   {
+   "id": "--9ZTpDQfNw",
+   "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
+   "q": "Cinetiq",
+   "d": "2026-10-25T13:00:27+00:00",
+   "lang": "de"
+  },
+  {
    "id": "4xnzufXKM2o",
    "t": "Wahnsinn: Diese Roboter-Finger fühlen 160x besser als Menschen! DAS baut China gerade",
    "q": "Everlast Robotics",
@@ -425,6 +447,13 @@
    "q": "Two Minute Papers",
    "d": "2026-10-19T08:49:21+00:00",
    "lang": "en"
+  },
+  {
+   "id": "owzZaTsBLhg",
+   "t": "Schau das BEVOR du KI-Avatare postest! (4 Ideen, mit denen du herausstichst)",
+   "q": "Cinetiq",
+   "d": "2026-10-18T09:00:13+00:00",
+   "lang": "de"
   },
   {
    "id": "YkGuQXXOwMQ",
@@ -460,6 +489,13 @@
    "q": "Google DeepMind",
    "d": "2026-10-13T15:58:17+00:00",
    "lang": "en"
+  },
+  {
+   "id": "ylUTLJTkMDY",
+   "t": "12 ikonische Animationsstile, die du kennen musst (inkl. Seedance 2.5 Prompts)",
+   "q": "Cinetiq",
+   "d": "2026-10-11T09:00:26+00:00",
+   "lang": "de"
   },
   {
    "id": "HuE0A5ylKJk",

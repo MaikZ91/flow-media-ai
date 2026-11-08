@@ -14,6 +14,7 @@ YT = [  # YouTube-Kanäle (RSS ohne API-Key): (Name, Kanal-ID, Sprache) – hier
     ("Everlast AI", "UC8T5gQ4U4GbI2h8kYCkEcvg", "de"),
     ("Everlast Robotics", "UCrsjdqXseSxCpRgeSbdimTg", "de"),
     ("Everlast AI Clips", "UCMSjKPOf6yQc746Ka1tZwfQ", "de"),
+    ("Cinetiq", "UC6Y1kbmjgVozhs41nQ6QT8A", "de"),
     ("Anthropic", "UCrDwWp7EBBv4NwvScIpBDOA", "en"),
     ("OpenAI", "UCXZCJLdBC09xxGZ6gcdrc6A", "en"),
     ("Google DeepMind", "UCP7jMXSY2xbc3KCAE0MHQ-A", "en"),
