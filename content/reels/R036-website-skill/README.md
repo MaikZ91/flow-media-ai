@@ -1,23 +1,24 @@
-# R036 · Website-Skill zeigen – Workshop „Deine Website“ (Mo 09.11. + Di 10.11., 18–19 Uhr)
+# R036 · Website-Skill – Maik spricht + 3 Demo-Seiten (Workshop Mo 09.11. + Di 10.11., 18–19 Uhr)
 
-Stand: 08.11.2026 · Reel 1080×1920, 23,6 s · Status: **fertig (`R036.mp4`)** · Säule `web` / `lernen` · Test-Variable `format = ergebnis-galerie` (drei fertige Seiten statt Bau-Prozess wie R033)
-Musik: „Talent in the Air“ (Diego Nava, Mixkit – Stock Music Free License) ab 15,766 s, Schnitte auf dem 0,49-s-Raster (122 BPM).
+Stand: 08.11.2026 · Reel 1080×1920, 34,8 s · Status: **fertig (`R036.mp4`)** · Säule `web` / `lernen` · Test-Variable `format = talk + split-screen-demo`
+Rohvideo: IMG_1407 (Drive RAW), schon geschnitten und farbkorrigiert aus R034 (`edit.mp4` + `voice.wav`), daraus 4 Abschnitte neu zusammengesetzt (`talk.json`).
+Musik: „Talent in the Air“ (Diego Nava, Mixkit – Stock Music Free License) ab 15,766 s, unter der Stimme per Sidechain abgesenkt, loudnorm −14 LUFS.
+Kurzfassung ohne Rohvideo (nur Grafik + Demo-Seiten, 23,6 s): `R036-kurz.mp4` / `reel-kurz.html`.
 
-| Zeit | Szene |
-|---|---|
-| 0–2,5 s | Maik (Porträt s/w): „3 Websites. 1 Skill.“ – Bäckerei · Praxis · Salon |
-| 2,5–11,3 s | Handy scrollt echt durch die drei Demo-Seiten aus dem Flow DNA Store (Bäckerei, Praxis, Salon), Label je Branche, „Demo-Betriebe · frei erfunden“ |
-| 11,3–14,3 s | Maik am Laptop: „Ich zeig dir live, wie's geht.“ |
-| 14,3–17,7 s | MO 09.11. / DI 10.11. · 18–19 Uhr · Live · 60 Min · Dein Content |
-| 17,7–20,7 s | Workshop-Karte im Flow DNA Store: „Der Skill. Kostenlos.“ – „Für alle Teilnehmer“ |
-| 20,7–23,6 s | „Deine Website. Selbst gebaut.“ · Schreib mir „WORKSHOP“ · Komm in den Flow. |
+| Zeit | Ton (Maik) | Bild |
+|---|---|---|
+| 0–3,0 s | „Am Montag ist es wieder so weit: Wir starten in den nächsten Workshop.“ | Maik Vollbild, Titel „Deine Website.“ + Mo 09.11. + Di 10.11. · 18 Uhr |
+| 3,0–17,3 s | „Oberthema … Mit KI zur Personal Brand, und diesmal erzeugen wir aus deinem ganzen Content … eine komplett neue Webseite.“ | Slam „Mit KI zur Personal Brand.“, dann geteilter Bildschirm: Maik oben, Handy scrollt durch Bäckerei, Praxis, Salon (Demo-Betriebe, markiert) |
+| 17,3–22,9 s | „Schalten die live, erreichbar, du kannst die mit KI dann immer weiter pflegen.“ | Maik Vollbild, LIVE + Erreichbar ✓, Texte · Bilder · Seiten |
+| 22,9–31,9 s | „Du bekommst gleichzeitig auch einen Skill von mir, den Website-Skill, den gibt es gratis dazu … dein Leben lang.“ | geteilter Bildschirm: Maik oben, Workshop-Karte im Flow DNA Store, Stempel GRATIS, „∞ Websites · ein Leben lang“ |
+| 31,9–34,8 s | Musik | Endkarte: MO 09.11. / DI 10.11. · 18–19 Uhr · live · Schreib mir „WORKSHOP“ · Komm in den Flow. |
 
-Echt: Die Seiten sind die Demo-Seiten unter `flow-dna/demos/` (gebaut nach den Regeln des Website-Skills, Betriebe klar als erfunden markiert), die Store-Karte ist ein echter Screenshot. Kein Preis im Reel (Maik, 07.11.2026).
-Bauen: `node shots.js` → `node frames.js $PWD` → ffmpeg mit Musik (Befehl siehe Verlauf).
+Untertitel wortgenau (3 Wörter, aktives Wort blau). Kein Preis im Reel.
+Neu bauen: `node shots.js` → Abschnitte aus R034 schneiden (`talk.json`) → Frames nach Scratchpad (`words.js` → `FRAMES`) → `node frames.js $PWD` → ffmpeg-Mix (Stimme + Musik mit Sidechain, wie R034 `make.sh`). `talk.mov` wird nicht eingecheckt.
 
 ## Caption
 ```
-3 Websites. 1 Skill. Und morgen zeig ich dir, wie du damit deine eigene baust. 👇
+Am Montag bauen wir deine Website. Und Dienstag gleich nochmal. 👇
 
 Bäckerei, Praxis, Salon – jede Seite sieht anders aus, weil der Skill zuerst erkennt, für wen sie ist: Speisekarte für die Bäckerei, Team mit Telefon und Terminanfrage für die Praxis, Preisliste und Galerie für den Salon. (Die drei Betriebe sind Demo-Beispiele, frei erfunden.)
 

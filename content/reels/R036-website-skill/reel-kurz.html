@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#0B0B0B;--paper:#F4F4F1;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#d0d0d0}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}
+.h span{color:var(--blue)}
+#paper{inset:0;background:var(--paper)}
+.logo{left:70px;top:90px;width:190px;z-index:60}
+#ph{inset:0;background:url(img/portrait_front.jpg) center 18%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 42%,rgba(11,11,11,.95) 68%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1170px}
+#hook .h{font-size:176px}
+#hook .k{margin-top:26px}
+/* phone */
+#phone{left:250px;top:560px;width:580px;height:1180px;border-radius:72px;background:#000;border:14px solid #111;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.45);z-index:20}
+#phone .scr{position:absolute;inset:0;overflow:hidden;background:#fff}
+#phone img{position:absolute;left:0;top:0;width:100%;display:block;opacity:0}
+.tt{left:70px;right:70px;top:150px;z-index:30}
+.tt .h{font-size:104px;margin-top:12px}
+.tag{left:70px;top:1560px;z-index:40;font:700 70px Oswald;text-transform:uppercase;background:var(--blue);color:#fff;padding:12px 30px;box-shadow:0 30px 80px rgba(47,91,255,.45)}
+.demo{left:0;right:0;top:1820px;text-align:center;font:600 24px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a;z-index:40}
+/* live */
+#lp{inset:0;background:url(img/portrait_laptop.jpg) center/cover;filter:grayscale(1) contrast(1.1) brightness(.7)}
+#lps{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.3),rgba(11,11,11,.1) 35%,rgba(11,11,11,.92) 70%,#0B0B0B)}
+#live{left:70px;right:70px;top:1180px}
+#live .h{font-size:132px}
+#live .k{margin-bottom:22px;color:#fff}
+/* dates */
+#dates{left:70px;right:70px;top:300px;color:var(--ink)}
+#dates .k{color:#555}
+#dates .h{font-size:120px;margin:16px 0 50px}
+.dt{display:flex;align-items:center;gap:34px;border-top:4px solid var(--ink);padding:34px 0;opacity:0}
+.dt b{font:700 180px/.8 Oswald;color:var(--blue);min-width:250px}
+.dt div{font:700 64px/1.05 Oswald;text-transform:uppercase}
+.dt small{display:block;font:600 30px Montserrat;letter-spacing:.14em;color:#666;margin-top:8px}
+.facts{display:flex;gap:14px;margin-top:20px}
+.facts span{flex:1;text-align:center;font:700 48px Oswald;text-transform:uppercase;border:3px solid var(--ink);padding:14px 0;opacity:0}
+.facts span.on{background:var(--ink);color:#fff}
+/* store */
+#st .tt{color:var(--ink)}
+#st .tt .k{color:#555}
+.url{left:70px;right:70px;top:1790px;text-align:center;font:600 32px "JetBrains Mono",monospace;color:var(--ink);z-index:40}
+.free{left:600px;top:1480px;z-index:45;font:700 66px/1 Oswald;text-transform:uppercase;background:var(--ink);color:#fff;padding:22px 30px;transform:rotate(-4deg)}
+.free span{color:var(--blue)}
+/* end */
+#end{left:70px;right:70px;top:560px;text-align:center}
+#end .h{font-size:150px}
+#end .cta{display:inline-block;margin-top:60px;font:700 74px Oswald;text-transform:uppercase;background:var(--blue);padding:20px 40px}
+#end .k{margin-top:44px}
+#me{left:440px;top:1450px;width:200px;height:200px;border-radius:50%;background:url(img/portrait_front.jpg) center 20%/cover;filter:grayscale(1);border:6px solid var(--blue)}
+.bar{left:0;top:0;height:10px;background:var(--blue);z-index:80;opacity:1}
+</style></head><body>
+<div class="l" id="paper"></div>
+<img class="l logo" id="logoW" src="img/logo_flow.png">
+<!-- hook -->
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="h">3 Websites.<br><span>1 Skill.</span></div><div class="k">Bäckerei · Praxis · Salon</div></div>
+<!-- demos -->
+<div class="l tt" id="dt1" style="color:var(--ink)"><div class="k" style="color:#555">Gebaut mit dem Website-Skill</div><div class="h">Jede Branche.<br><span>Eigener Look.</span></div></div>
+<div class="l" id="phone"><div class="scr"><img id="i1" src="img/baeckerei.jpg"><img id="i2" src="img/physio.jpg"><img id="i3" src="img/friseur.jpg"><img id="i4" src="img/store_ws.jpg"></div></div>
+<div class="l tag" id="tag"></div>
+<div class="l demo" id="demo">Demo-Betriebe · frei erfunden</div>
+<!-- live -->
+<div class="l" id="lp"></div><div class="l" id="lps"></div>
+<div class="l" id="live"><div class="k">Workshop · Deine Website</div><div class="h">Ich zeig dir<br><span>live,</span> wie's geht.</div></div>
+<!-- dates -->
+<div class="l" id="dates"><div class="k">Workshop · Mit KI zur Personal Brand</div><div class="h">Deine <span>Website.</span></div>
+ <div class="dt" id="d1"><b>MO</b><div>09.11.<small>18–19 Uhr</small></div></div>
+ <div class="dt" id="d2"><b>DI</b><div>10.11.<small>18–19 Uhr</small></div></div>
+ <div class="facts"><span id="f1">Live</span><span id="f2">60 Min</span><span id="f3" class="on">Dein Content</span></div></div>
+<!-- store -->
+<div id="st"><div class="l tt" id="st1"><div class="k">Danach gehört er dir</div><div class="h">Der Skill.<br><span>Kostenlos.</span></div></div></div>
+<div class="l free" id="free">Für alle<br><span>Teilnehmer</span></div>
+<div class="l url" id="url">Flow DNA Store · Workshop</div>
+<!-- end -->
+<div class="l" id="end"><div class="h">Deine Website.<br><span>Selbst gebaut.</span></div><div class="cta">Schreib mir „WORKSHOP“</div><div class="k">Komm in den Flow.</div></div>
+<div class="l" id="me"></div>
+<div class="l bar" id="bar"></div>
+<script>
+const B=0.4918, T=[0,5*B,11*B,17*B,23*B,29*B,36*B,42*B,48*B]; window.TOTAL=T[8];
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, out=x=>1-Math.pow(1-x,3);
+function vis(id,a,b,dy=40,f=.22){const e=$(id),t=window._t;if(t<a||t>=b){e.style.opacity=0;return 0}
+ const i=out(cl((t-a)/f)),o=1-cl((t-(b-.12))/.12);e.style.opacity=Math.min(i,o);e.style.transform=`translateY(${(1-i)*dy}px)`;return 1}
+window.DRAW=t=>{window._t=t;
+ // backgrounds
+ const paper=(t>=T[1]&&t<T[4])||(t>=T[5]&&t<T[7]); $('paper').style.opacity=paper?1:0;
+ // hook
+ vis('ph',0,T[1],0,.01); $('ph').style.transform=`scale(${1.06-0.06*t/T[1]})`; vis('phs',0,T[1],0,.01); vis('hook',0,T[1],60,.25);
+ $('logoW').style.opacity=t<T[1]||(t>=T[4]&&t<T[5])||t>=T[7]?1:0;
+ // phone scenes
+ const ph=$('phone'); const inPh=(t>=T[1]&&t<T[4])||(t>=T[6]&&t<T[7]); ph.style.opacity=inPh?1:0;
+ if(inPh){const k=t<T[4]?Math.floor((t-T[1])/(6*B)):3, a=k<3?T[1]+k*6*B:T[6], d=6*B;
+  const p=cl((t-a)/d); ph.style.transform=`translateY(${(1-out(cl((t-a)/.25)))*120}px) scale(${1+0.02*Math.sin(p*3.14)})`;
+  for(let j=0;j<4;j++){$('i'+(j+1)).style.opacity=j===k?1:0}
+  const img=$('i'+(k+1)), H=img.getBoundingClientRect().height||0, vh=1152;
+  const travel=k<3?Math.min(H-vh,3300):0; img.style.transform=`translateY(${-travel*ease(cl((p-.12)/.8))}px)`;
+  $('tag').textContent=['Bäckerei','Praxis','Salon','Website-Skill'][k];}
+ vis('dt1',T[1],T[4],30,.3); vis('tag',T[1],T[4],30,.15); vis('demo',T[1],T[4],0,.2);
+ // tag pops each switch
+ if(t>=T[1]&&t<T[4]){const s=((t-T[1])%(6*B));$('tag').style.transform=`scale(${1+0.25*Math.max(0,1-s/.18)})`;}
+ // live
+ vis('lp',T[4],T[5],0,.01); $('lp').style.transform=`scale(${1.04+0.05*cl((t-T[4])/(6*B))})`; vis('lps',T[4],T[5],0,.01); vis('live',T[4],T[5],70,.3);
+ // dates
+ vis('dates',T[5],T[6],30,.25);
+ [['d1',0],['d2',2],['f1',4],['f2',5],['f3',6]].forEach(([id,n])=>{const e=$(id),x=cl((t-T[5]-n*B*.95)/.18);e.style.opacity=t>=T[5]&&t<T[6]?x:0;e.style.transform=`translateX(${(1-out(x))*-60}px)`});
+ // store
+ vis('st1',T[6],T[7],30,.3); vis('free',T[6]+2*B,T[7],0,.15); if(t>=T[6]+2*B&&t<T[7]){$('free').style.transform=`rotate(-4deg) scale(${1+0.3*Math.max(0,1-(t-T[6]-2*B)/.2)})`}
+ vis('url',T[6],T[7],0,.2);
+ // end
+ vis('end',T[7],T[8]+1,50,.3); vis('me',T[7]+B,T[8]+1,0,.2);
+ $('bar').style.width=(1080*t/T[8])+'px';
+};
+DRAW(0);
+</script></body></html>
