@@ -78,7 +78,7 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws{margin:28px 16px 14px;border:2px solid var(--blue);background:#fff;box-shadow:0 10px 40px rgba(47,91,255,.18)}
 .ws .wh{background:var(--blue);color:#fff;padding:8px 12px;font:700 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
 .ws .wb{padding:14px}
-.wsg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.wsg a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);font-size:12px;line-height:1.3}.wsg img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border:1.5px solid var(--rule);margin-bottom:4px}.wsg b{font:600 13px Inter}.wsg span{color:var(--mute)}.wsgn{font-size:12px;color:var(--mute);margin:8px 0 0;text-align:center}
+.wsg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(min-width:600px){.wsg{grid-template-columns:repeat(4,1fr)}}.wsg a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);font-size:12px;line-height:1.3}.wsg img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border:1.5px solid var(--rule);margin-bottom:4px}.wsg b{font:600 13px Inter}.wsg span{color:var(--mute)}.wsgn{font-size:12px;color:var(--mute);margin:8px 0 0;text-align:center}
 .ws h2{font:700 30px/1 Oswald;text-transform:uppercase;color:var(--ink);margin:0}
 .ws h2 span{color:var(--blue)}
 .ws .sub{font-size:14px;color:var(--mute);margin:6px 0 12px}
@@ -146,9 +146,9 @@ function list(){const L=DNA.filter(st);let n=0;
   <div class="wst">${WSK.ablauf.map((a,i)=>`<span style="--i:${i}"><b>${a[0]}</b>${DNA.esc(a[1])}</span>`).join("")}</div>
   <div class="k2" style="margin-top:16px">Was er kann</div>
   <ul class="wsk">${WSK.kann.map(k=>`<li>${DNA.esc(k)}</li>`).join("")}</ul>
-  <div class="k2" style="margin-top:16px">So sehen die Seiten aus · Demo</div>
+  <div class="k2" style="margin-top:16px">So sehen die Seiten aus</div>
   <div class="wsg">${DNA.beispiele.seiten.map(b=>`<a href="${DNA.esc(b.url)}" target="_blank" rel="noopener"><img src="${DNA.esc(b.bild)}" alt="${DNA.esc(b.name)}" loading="lazy"><b>${DNA.esc(b.name)}</b><span>${DNA.esc(b.art)}</span></a>`).join("")}</div>
-  <p class="wsgn">Frei erfundene Demo-Betriebe · antippen zum Ansehen</p>
+  <p class="wsgn">Betriebe frei erfunden · Flow Media AI ist echt · antippen zum Ansehen</p>
  </div></div>`:"";
  view.innerHTML=(st.q?"":wsBox)+sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);

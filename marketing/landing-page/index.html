@@ -285,6 +285,8 @@ main { position: relative; isolation: isolate }
 #flowpath .prog { fill: none; stroke: url(#fpg); stroke-width: 1.6; stroke-linecap: round }
 #flowpath circle { fill: #fff; filter: drop-shadow(0 0 8px var(--blue)) drop-shadow(0 0 18px var(--blue)) }
 
+/* workshop examples */
+.wsx{margin:18px 0 6px}.wsx .label{display:block;margin-bottom:10px}.wsx-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.wsx-g a{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;font-size:12px;font-weight:600}.wsx-g img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border-radius:10px;border:1px solid rgba(127,127,127,.25);transition:transform .3s}.wsx-g a:hover img{transform:translateY(-3px)}.wsx small{display:block;margin-top:10px;font-size:12px;opacity:.7}.wsx small a{color:inherit}
 /* workshop countdown */
 .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 14px }
 .countdown div { text-align: center; padding: 12px 4px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.025) }
@@ -481,6 +483,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         <div><em>Dauer</em><strong>60 Min</strong></div>
         <div><em>Format</em><strong>Live</strong></div>
       </div>
+      <div class="wsx"><span class="label">So können die Seiten aussehen</span><div class="wsx-g">
+        <a href="../../flow-dna/demos/baeckerei/" target="_blank" rel="noopener"><img src="../../flow-dna/demos/baeckerei/vorschau.jpg" alt="Demo-Seite Bäckerei" loading="lazy"><span>Bäckerei</span></a>
+        <a href="../../flow-dna/demos/physio/" target="_blank" rel="noopener"><img src="../../flow-dna/demos/physio/vorschau.jpg" alt="Demo-Seite Physio-Praxis" loading="lazy"><span>Praxis</span></a>
+        <a href="../../flow-dna/demos/friseur/" target="_blank" rel="noopener"><img src="../../flow-dna/demos/friseur/vorschau.jpg" alt="Demo-Seite Friseur" loading="lazy"><span>Salon</span></a>
+        <a href="#top"><img src="../../flow-dna/demos/vorschau-flow-media-ai.jpg" alt="Personal-Brand-Seite Flow Media AI" loading="lazy"><span>Coach</span></a>
+      </div><small>Betriebe frei erfunden · alle Beispiele im <a href="../../flow-dna/?workshop=website">Flow DNA Store</a></small></div>
       <div class="countdown" id="countdown" aria-live="off"></div>
       <div class="grow"></div>
       <a class="btn primary" data-cta="offer_workshop" data-wa="workshop" href="#">Platz sichern <span class="ar">→</span></a>

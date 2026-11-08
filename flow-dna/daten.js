@@ -93,6 +93,8 @@ window.FLOW_DNA = {
       kurz: "Vom Thema zum Drehplan: Hook, Szenen, Sprechtext, Text im Bild.", kann: ["Hook-Varianten zum Testen", "Szenen und Sprechtext in deiner Stimme", "Drehplan zum Abhaken"], fuer: "Creator und Selbstständige mit Reels" },
     { id: "copywriting", ablauf: [["🧬", "Stimme laden"], ["🎯", "Brief"], ["✍️", "Text"], ["✨", "2 Varianten"]], version: "1.0", quelle: "downloads/copywriting.zip", name: "Caption & Copywriting", kat: "marketing", stufe: "basis", status: "bereit", icon: "✍️",
       kurz: "Captions, Newsletter und Angebotstexte in deinem Ton.", kann: ["Schreibt in deiner Tonalität", "Ohne typische KI-Floskeln", "Mit passendem Call-to-Action"], fuer: "Alle, die regelmäßig schreiben" },
+    { id: "website-performance", ablauf: [["🔌", "PostHog verbinden"], ["📈", "Zahlen lesen"], ["🔎", "Engpass finden"], ["🛠️", "Verbessern"]], preise: { miete: 19, kauf: 149, setup: 349 }, version: "1.0", name: "Website-Performance (PostHog)", kat: "marketing", stufe: "premium", status: "bereit", icon: "📈",
+      kurz: "Liest die Zahlen deiner Website aus PostHog und sagt dir, was du ändern solltest, damit mehr Anfragen kommen.", kann: ["Besucher, Quellen und Klicks auf deine Buttons verständlich erklärt", "Findet, wo Besucher abspringen (Trichter, Scrolltiefe, Handy vs. Desktop)", "Wochenbericht mit 3 konkreten Änderungen – und baut sie auf Wunsch direkt ein", "Richtet PostHog datenschutzfreundlich ein (EU, ohne Cookies)"], fuer: "Selbstständige, Coaches und Betriebe mit eigener Website" },
     // 03 Automation & Business
     { id: "autopilot", video: "media/r016", ablauf: [["🗂️", "Warteschlange"], ["🎬", "Rendern"], ["📲", "Posten"], ["📊", "Kennzahlen"]], preise: { miete: 29, kauf: 249, setup: 599 }, version: "1.0", name: "Automatisierungspost (Instagram-Autopilot)", kat: "automation", stufe: "premium", status: "bereit", icon: "🤖",
       kurz: "Beiträge planen, rendern und automatisch posten – ohne bezahlte Tools.",
@@ -179,6 +181,7 @@ window.FLOW_DNA = {
     seiten: [
       { name: "Bäckerei Musterbrot", art: "Bäckerei · Speisekarte & Öffnungszeiten", url: "demos/baeckerei/", bild: "demos/baeckerei/vorschau.jpg" },
       { name: "Physio Beispiel", art: "Praxis · Team mit Telefon & Termin", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },
+      { name: "Flow Media AI", art: "Coach · Personal Brand · echte Seite", url: "../marketing/landing-page/", bild: "demos/vorschau-flow-media-ai.jpg", echt: true },
       { name: "Friseur Beispiel", art: "Salon · Online-Termin & Galerie", url: "demos/friseur/", bild: "demos/friseur/vorschau.jpg" }
     ]
   },
