@@ -54,6 +54,7 @@
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
       ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
+      ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem><label>Schon gekauft? Lizenz-Code einlösen</label><div><input name="code" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
@@ -115,6 +116,20 @@
     if (e.target.closest("[data-submit]")) openSubmit();
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close() });
+  // Lizenz-Code einlösen (Supabase Edge Function flow-dna): lädt den persönlichen Lade-Skill als SKILL.md
+  const LIC = "https://ykleosfvtqcmqxqihnod.supabase.co/functions/v1/flow-dna";
+  document.addEventListener("submit", async e => {
+    const f = e.target.closest("[data-redeem]"); if (!f) return; e.preventDefault();
+    const msg = f.querySelector(".dna-rmsg"), btn = f.querySelector("button"), code = f.code.value.trim(); if (!code) return;
+    btn.disabled = true; msg.className = "dna-rmsg"; msg.textContent = "…";
+    try {
+      const res = await fetch(LIC + "/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code }) }); const d = await res.json();
+      if (!d.ok) { msg.className = "dna-rmsg err"; msg.textContent = d.error || "Code ungültig."; btn.disabled = false; return }
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([d.content], { type: "text/markdown" })); a.download = "SKILL.md"; document.body.appendChild(a); a.click(); a.remove();
+      msg.className = "dna-rmsg ok"; msg.innerHTML = `✓ <b>${esc(d.name)}</b> geladen. Leg die Datei als <b>SKILL.md</b> in den Ordner <b>skills/${esc(d.folder)}</b> deines Projekts.` + (d.unbefristet ? "" : ` Gültig bis ${new Date(d.valid_until).toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" })}.`);
+      btn.disabled = false;
+    } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
+  });
 
   window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);

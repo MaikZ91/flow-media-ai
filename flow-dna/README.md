@@ -12,6 +12,11 @@ Projekt `ykleosfvtqcmqxqihnod`, Edge Function **`flow-dna`** (verify_jwt aus, pr
 - Die Anleitung liegt nie beim Teilnehmer als Datei; nach Ablauf (Workshop: Mi 11.11.2026 23:59) ist der Skill nutzlos. Grenze: Was während der Laufzeit geladen wurde, könnte jemand mitkopieren.
 - **Workshop 09.–11.11.2026: ein gemeinsamer Code `WEBSITE`** (bis Mi 11.11. 23:59, 200 Einlösungen, 1000 Abrufe; Maik: „Code ist nur für den Workshop und Code ist dann Website“). Die 20 Einzelcodes `WEB-XXXX-XXXX` sind deaktiviert. Workshop-Seite auf Code-Feld + Download reduziert (Maik: „so easy wie möglich“). Neue Codes, Verlängern, Sperren: per SQL – auf Zuruf erledigt Claude das.
 
+## Free-Download & Premium-Lizenzen (Maik, 08.11.2026)
+- **Free:** Knopf „⬇ Kostenlos herunterladen“ lädt direkt `downloads/<id>.zip` (Ordner mit SKILL.md + Dateien + INSTALLATION.md). Neu bauen nach Änderungen: `python3 build-downloads.py`.
+- **Premium:** alle 25 Anleitungen liegen in Supabase `flow_dna_skills` (IDs = Store-IDs, Website = `website-builder`). Verkauf: Anfrage per WhatsApp → Claude stellt einen Code aus (`select flow_dna_issue('<skill>','<Kunde>','kauf'|'setup'|'miete', <Tage>)`; Kauf/Einrichtung unbefristet, Miete standardmäßig 31 Tage) → Kunde gibt den Code im Detailfenster unter „Schon gekauft? Lizenz-Code einlösen“ ein und bekommt den Lade-Skill. Miete verlängern: `valid_until` hochsetzen; sperren: `active = false`.
+- Premium-Dateien in Drive (`07_KI/flow-dna-premium`) bleiben die Arbeitsfassung; Änderungen dort auch in `flow_dna_skills` übernehmen.
+
 ## Signature-Skills, Animationen, Videos (Maik, 08.11.2026)
 - **Signature** (★, Verlauf-Badge, blaue Leiste, schwarze Leiste ganz oben in der Liste): Lead Agent · Website (39 €/Mon. · 399 € · 799 €), Lead Agent · Business (49 · 499 · 999), Social Content System (49 · 449 · 899), Creative Director, Agentensystem. Landingpage Generator dafür auf 19 · 149 · 349 (Baustein des Lead Agents).
 - Neue Premium-Skills in Drive: `lead-agent-website`, `lead-agent-business`, `social-content-system` (aus `the-tribe-bot/lead_agent_deepseek` und `instagram_autopilot`, neutralisiert; Versand nur rechtssicher: Entwurf / auf Anfrage / mit Einwilligung).

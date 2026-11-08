@@ -85,3 +85,9 @@
 .dna-stage.done::after { content: "✓ Fertig"; position: absolute; right: 10px; top: 6px; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; color: #2F5BFF }
 @media (prefers-reduced-motion: reduce) { .dna-track i, .dna-dot { transition: none } }
 .dna-img { display: block; width: 100%; border-radius: 14px; margin: 4px 0 6px; box-shadow: 0 16px 40px rgba(0,0,0,.18) }
+.dna-redeem { margin-top: 18px; padding: 14px; border: 1px dashed var(--dna-line); border-radius: 14px }
+.dna-redeem label { margin: 0 0 8px !important }
+.dna-redeem div { display: flex; gap: 8px }
+.dna-redeem input { flex: 1; min-width: 0; margin: 0 !important; font-family: "JetBrains Mono", Menlo, monospace !important; text-transform: uppercase; letter-spacing: .05em }
+.dna-redeem button { border: 0; border-radius: 12px; background: var(--dna-ink); color: var(--dna-card); font: 600 14px Inter, sans-serif; padding: 0 14px; cursor: pointer }
+.dna-rmsg { font-size: 13px; margin-top: 8px !important; color: var(--dna-muted) } .dna-rmsg.ok { color: #1d7a3e } .dna-rmsg.err { color: #c0392b }
