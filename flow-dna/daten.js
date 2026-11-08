@@ -46,6 +46,21 @@ window.FLOW_DNA = {
       fuer: "Personenmarken und Teams, die regelmäßig posten und aus Daten lernen wollen",
       demo: "Maiks eigenes System – Creative Director, Autopilot und Auswertung.", herkunft: "Maiks Content-System (Flow Media AI + eigene Kanäle)",
       ablauf: [["📊","Daten"],["🧠","Briefing"],["🎬","Produktion"],["📲","Auto-Post"],["🔁","Lernen"]] },
+    { id: "fotoshoot", version: "1.0", preise: { miete: 12, kauf: 99, setup: 249 }, name: "Fotoshoot Workflow", kat: "creative", stufe: "premium", status: "bereit", icon: "📷",
+      kurz: "Vom Shooting zur Bildserie: planen, hunderte Fotos sichten, die besten auswählen und sortieren.",
+      kann: ["Shotlist und Posen passend zu deiner Marke", "Sichtet automatisch: Schärfe, Augen offen, Belichtung, Dubletten", "Kuratiert die Favoriten je Verwendung (Website, Feed, Story, Profil)", "Kontaktbogen zur Freigabe"],
+      fuer: "Personenmarken, Coaches, Gründer nach dem Fotoshooting", herkunft: "aus Maiks Bild-Workflow",
+      ablauf: [["🗒️","Shotlist"],["📥","Fotos einlesen"],["🔍","Automatisch sichten"],["⭐","Beste auswählen"],["🗂️","Nach Verwendung sortieren"]] },
+    { id: "bildbearbeitung", version: "1.0", preise: { miete: 15, kauf: 129, setup: 299 }, name: "Bildbearbeitung", kat: "creative", stufe: "premium", status: "bereit", icon: "🪄", bild: "media/bild_vorher_nachher.jpg",
+      kurz: "Fotos verbessern im eigenen Look: Hautton, Licht, Hintergrund unscharf, Zuschnitt für jedes Format.",
+      kann: ["Belichtung, Farbe und natürlicher Hautton", "Hintergrund weichzeichnen, Person hebt sich ab", "Fremde Gesichter und Wasserzeichen unkenntlich bzw. weg", "Zuschnitt 4:5, 9:16, 1:1, Hero – plus gebrandete Varianten"],
+      fuer: "Alle, die eigene Fotos für Website und Social Media nutzen", demo: "Vorher/Nachher aus Maiks eigenem Video: Rötung raus, Hautton natürlich.", herkunft: "Maiks Grading- und Foto-Skripte",
+      ablauf: [["🖼️","Foto"],["☀️","Licht & Hautton"],["🌫️","Hintergrund unscharf"],["✂️","Zuschnitt"],["✨","Im Markenlook"]] },
+    { id: "video-cutting", version: "1.0", preise: { miete: 29, kauf: 249, setup: 549 }, name: "Video Cutting", kat: "marketing", stufe: "premium", status: "bereit", icon: "🎬", highlight: true, video: "media/r028",
+      kurz: "Aus deinem Selfie-Video ein fertiges Reel: Ähms raus, Untertitel, B-Roll, Animationen, Musik.",
+      kann: ["Transkript mit Wortzeiten – Ähms, Pausen, Versprecher raus", "Farbe und Hautton natürlich, Hochformat-Zuschnitt", "Wort-für-Wort-Untertitel und Animationen genau zum gesprochenen Wort", "B-Roll, lizenzfreie Musik unter der Stimme, Social-Lautheit"],
+      fuer: "Alle, die selbst filmen, aber nicht schneiden wollen", demo: "So entstehen Maiks Talking-Head-Reels.", herkunft: "Maiks Reel-Pipeline",
+      ablauf: [["🎙️","Transkript"],["✂️","Ähms raus"],["🎨","Farbe"],["💬","Untertitel"],["🎞️","B-Roll & Musik"]] },
     // 01 Creative & Branding
     { id: "personal-brand", ablauf: [["🎥", "Video über dich"], ["🧬", "Analyse"], ["📝", "4 Skills"], ["✅", "Post in deiner Stimme"]], version: "1.0", quelle: "https://github.com/MaikZ91/flow-media-ai/tree/main/flow-dna/skills/personal-brand", name: "Flow DNA Personal Brand", kat: "creative", stufe: "basis", status: "bereit", icon: "🧬", flagship: true,
       kurz: "Dein Stil und deine Marke als Skill – übertragbar auf Content, Websites, Apps und digitale Produkte.",
@@ -140,7 +155,7 @@ window.FLOW_DNA = {
       kurz: "Macht aus einem schnellen Prompt einen, der zuverlässig liefert.", kann: ["Ergänzt Ziel, Kontext und Format", "Zeigt vorher und nachher", "Speichert gute Prompts als Vorlage"], fuer: "Alle, die mit KI arbeiten" }
   ],
   pakete: [
-    { id: "content-engine", name: "Content-Engine", skills: ["social-content-system", "creative-director", "design-system", "content-planer", "autopilot"], kurz: "Das komplette Content-System: planen, gestalten, produzieren, posten, lernen." }
+    { id: "content-engine", name: "Content-Engine", skills: ["social-content-system", "creative-director", "video-cutting", "design-system", "content-planer", "autopilot"], kurz: "Das komplette Content-System: planen, gestalten, produzieren, posten, lernen." }
   ],
   paketAufbau: [
     ["SKILL.md", "Name, Beschreibung und die eigentliche Anleitung für die KI"],

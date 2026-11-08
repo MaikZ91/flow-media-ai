@@ -42,7 +42,7 @@
     const a = action(s), pk = D.pakete.find(p => p.skills.includes(s.id));
     layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-h">
       <button class="dna-x" data-dna-close aria-label="Schließen">×</button>
-      ${s.video ? `<video class="dna-vid" src="${esc(s.video)}.mp4" poster="${esc(s.video)}.jpg" autoplay muted loop playsinline></video><p class="dna-vcap">So läuft's in echt · aus Maiks Projekt</p>` : `<div class="dna-ic">${s.icon}</div>`}
+      ${s.bild ? `<img class="dna-img" src="${esc(s.bild)}" alt="Vorher / Nachher"><p class="dna-vcap">Vorher / Nachher · echtes Beispiel</p>` : s.video ? `<video class="dna-vid" src="${esc(s.video)}.mp4" poster="${esc(s.video)}.jpg" autoplay muted loop playsinline></video><p class="dna-vcap">So läuft's in echt · aus Maiks Projekt</p>` : `<div class="dna-ic">${s.icon}</div>`}
       <div class="dna-badges">${badges(s)}<span class="dna-b">${esc(katName(s.kat))}</span></div>
       <h2 id="dna-h">${esc(s.name)}</h2>
       <p class="dna-kurz">${esc(s.kurz)}</p>

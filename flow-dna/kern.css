@@ -84,3 +84,4 @@
 .dna-stage.hl .dna-lbl { color: rgba(255,255,255,.55) } .dna-stage.hl .dna-step.on .dna-lbl { color: #fff }
 .dna-stage.done::after { content: "✓ Fertig"; position: absolute; right: 10px; top: 6px; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; color: #2F5BFF }
 @media (prefers-reduced-motion: reduce) { .dna-track i, .dna-dot { transition: none } }
+.dna-img { display: block; width: 100%; border-radius: 14px; margin: 4px 0 6px; box-shadow: 0 16px 40px rgba(0,0,0,.18) }
