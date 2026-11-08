@@ -53,3 +53,13 @@
 .dna-x-big { font: 700 clamp(36px, 7vw, 72px)/.95 Oswald, sans-serif; text-transform: uppercase; color: var(--dna-x-ink, #fff); margin-bottom: 12px }
 .dna-x-end .dna-x-p { margin: 0 auto }
 .dna-x-pw { margin-top: 10px; font: 600 12px Montserrat, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: #2F5BFF }
+
+.dna-opts { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px }
+@media (min-width: 520px) { .dna-opts { grid-template-columns: repeat(3, 1fr) } }
+.dna-opt { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--dna-line); border-radius: 14px; text-decoration: none; color: var(--dna-ink) }
+.dna-opt.best { border: 2px solid var(--dna-blue) }
+.dna-opt b { font: 600 11px Montserrat, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--dna-muted) }
+.dna-opt strong { font: 700 28px/1.1 Oswald, sans-serif }
+.dna-opt em { font-style: normal; font-size: 12px; color: var(--dna-muted) }
+.dna-opt span { font-size: 13px; line-height: 1.4; margin-top: 4px }
+.dna-opt i { font-style: normal; font: 600 13px Inter, sans-serif; color: var(--dna-blue); margin-top: 6px }

@@ -1,4 +1,10 @@
-# Flow DNA – Skill Store (Prototyp)
+# Flow DNA – Skill Store (live seit 08.11.2026)
+
+Live: https://maikz91.github.io/flow-media-ai/flow-dna/ · Entwürfe: `varianten.html`
+
+## Preise Premium (Maik, 08.11.2026)
+Drei Optionen je Premium-Skill, Bezug **auf Anfrage** (WhatsApp mit vorausgefüllter Option): **Mieten** (€/Monat, inkl. Updates & Support, monatlich kündbar) · **Kaufen** (allgemeine Version) · **Mit Einrichtung** (angepasst, von Maik eingerichtet). Preise in `daten.js` (`preise: { miete, kauf, setup }`); Landingpage Generator 399 € Kauf (Maiks Vorgabe), der Rest von Claude vorgeschlagen.
+Miete technisch: vorerst per Absprache (Zugang zu Updates/Support); echtes Abo später z. B. über Stripe.
 
 Stand 08.11.2026 · Idee von Maik: ein „App Store für Skills“ neben der Website. Alle Skills, die ein Business für die Arbeit mit KI braucht – Basis kostenlos, Premium zum Kaufen oder Mieten, dazu Skills aus der Community.
 

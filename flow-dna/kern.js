@@ -23,11 +23,11 @@
     if (s.stufe === "basis" && s.status === "bereit" && s.quelle) return { label: "Kostenlos laden", href: s.quelle, typ: "laden" };
     if (s.stufe === "basis" && s.status === "vorbereitung") return { label: "Vormerken", href: wa(`Hi Maik, merk mich für den ${s.name} vor (Flow DNA).`), typ: "vormerken" };
     if (s.status === "geplant") return { label: "Will ich haben", href: wa(`Hi Maik, ich hätte gern den Skill „${s.name}“ im Flow-DNA-Store.`), typ: "wunsch" };
-    if (s.stufe === "premium" && s.status === "vorbereitung") return { label: "Vorbestellen", href: wa(`Hi Maik, ich möchte den Premium-Skill „${s.name}“ aus Flow DNA vorbestellen.`), typ: "anfragen" };
-    if (s.stufe === "premium") return { label: "Kaufen", href: wa(`Hi Maik, ich möchte den Premium-Skill „${s.name}“ aus Flow DNA kaufen.`), typ: "anfragen" };
+    if (s.stufe === "premium") return { label: "Anfragen", href: wa(`Hi Maik, ich interessiere mich für den Premium-Skill „${s.name}“ aus Flow DNA.`), typ: "anfragen" };
     return { label: "Ansehen", href: s.quelle || "#", typ: "laden" };
   }
-  const preis = s => s.stufe === "basis" ? "0 €" : s.stufe === "premium" ? (s.preis || "Preis folgt") : (s.preis || "0 €");
+  const preis = s => s.stufe === "basis" ? "0 €" : s.preise ? `ab ${s.preise.miete} €/Mon.` : (s.preis || "auf Anfrage");
+  const optHref = (s, o) => wa(`Hi Maik, ich möchte den Premium-Skill „${s.name}“ aus Flow DNA – Option „${o.name}“ (${s.preise[o.id]} € ${o.einheit}). Wie geht's weiter?`);
 
   function badges(s) {
     return `<span class="dna-b dna-b-${s.stufe}">${esc(D.stufen[s.stufe].name)}</span>` +
@@ -52,6 +52,7 @@
       <dl class="dna-facts"><div><dt>Kompatibel</dt><dd>Claude Code · Codex</dd></div><div><dt>Version</dt><dd>${esc(s.version || (s.status === "geplant" ? "–" : "in Arbeit"))}</dd></div><div><dt>Creator</dt><dd>${esc(s.creator || D.standardCreator)}</dd></div><div><dt>Status</dt><dd>${esc(D.status[s.status])}</dd></div></dl>
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
+      ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}" target="_blank" rel="noopener">${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
@@ -99,6 +100,6 @@
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close() });
 
-  window.DNA = { ...D, esc, filter, action, preis, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();
