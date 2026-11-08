@@ -97,3 +97,13 @@
 .dna-bsp img { width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--dna-line); margin-bottom: 4px; transition: transform .3s }
 .dna-bsp a:hover img { transform: translateY(-3px) }
 .dna-bsp b { font: 600 13px Inter, sans-serif } .dna-bsp span { color: var(--dna-muted) }
+.dna-use { margin-top: 16px; padding: 14px; border: 1px solid var(--dna-line); border-radius: 14px }
+.dna-use > b { display: block; font: 600 12px Montserrat, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--dna-muted); margin-bottom: 8px }
+.dna-use div { display: flex; flex-wrap: wrap; gap: 8px }
+.dna-u { flex: 1 1 140px; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); font: 600 14px Inter, sans-serif; text-decoration: none; cursor: pointer }
+.dna-u.claude { background: #D97757; border-color: #D97757; color: #fff } .dna-u.gpt { background: var(--dna-ink); border-color: var(--dna-ink); color: var(--dna-card) }
+.dna-use small { display: block; margin-top: 8px; font-size: 12px; color: var(--dna-muted); line-height: 1.4 }
+.dna-rmsg .dna-use { margin-top: 10px }
+.dna-use { display: block !important; text-align: left }
+.dna-use > div { display: flex !important; flex-wrap: wrap; gap: 8px; flex-direction: row !important }
+.dna-use .dna-u { width: auto; white-space: nowrap }

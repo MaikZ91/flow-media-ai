@@ -4,6 +4,8 @@
 <meta name="description" content="KI-Skills, Agenten und Workflows für dein Business – Free zum Download, Premium zum Mieten, Kaufen oder mit Einrichtung. Für Claude Code und Codex.">
 <meta property="og:title" content="Flow DNA – The Skill Marketplace"><meta property="og:description" content="Your Business. Your AI. Your Flow."><meta property="og:image" content="img/maik_front.jpg">
 <meta name="theme-color" content="#F4F4F1">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="app/icon-192.png"><link rel="apple-touch-icon" href="app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Flow DNA"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="kern.css">
 <style>
@@ -78,6 +80,8 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws{margin:28px 16px 14px;border:2px solid var(--blue);background:#fff;box-shadow:0 10px 40px rgba(47,91,255,.18)}
 .ws .wh{background:var(--blue);color:#fff;padding:8px 12px;font:700 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
 .ws .wb{padding:14px}
+.inst{margin:14px 16px 0;display:flex;align-items:center;gap:12px;padding:12px 14px;background:#0B0B0B;color:#fff}.inst img{width:44px;height:44px}.inst div{flex:1;font-size:13px;line-height:1.35}.inst b{display:block;font:700 15px Oswald;letter-spacing:.04em;text-transform:uppercase}.inst button{border:0;background:#2F5BFF;color:#fff;font:600 13px Inter;padding:10px 12px;cursor:pointer}.inst .x{background:transparent;color:#fff;opacity:.6;padding:6px;font-size:18px}
+.ios{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.6);display:flex;align-items:flex-end}.ios div{background:#fff;color:#0B0B0B;width:100%;padding:22px 20px 34px;font-size:16px;line-height:1.5}.ios b{font:700 24px Oswald;text-transform:uppercase;display:block;margin-bottom:8px}.ios ol{padding-left:20px;margin:8px 0 16px}.ios button{width:100%;min-height:48px;border:0;background:#0B0B0B;color:#fff;font:600 15px Inter}
 .wsg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(min-width:600px){.wsg{grid-template-columns:repeat(4,1fr)}}.wsg a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);font-size:12px;line-height:1.3}.wsg img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border:1.5px solid var(--rule);margin-bottom:4px}.wsg b{font:600 13px Inter}.wsg span{color:var(--mute)}.wsgn{font-size:12px;color:var(--mute);margin:8px 0 0;text-align:center}
 .ws h2{font:700 30px/1 Oswald;text-transform:uppercase;color:var(--ink);margin:0}
 .ws h2 span{color:var(--blue)}
@@ -122,12 +126,22 @@ const WS=new URLSearchParams(location.search).get("workshop")==="website";
 // Lizenz-Gateway (Supabase Edge Function flow-dna): Code → persönlicher Lade-Skill, Anleitung nur solange die Lizenz gilt
 const LIC="https://ykleosfvtqcmqxqihnod.supabase.co/functions/v1/flow-dna";
 if(WS){const w=DNA.skills.find(s=>s.id==="website");Object.assign(w,{stufe:"basis",quelle:"#wscode",hinweis:"Workshop-Edition: für Teilnehmende des Workshops „Deine Website“ mit persönlichem Code kostenlos."});document.title="Flow DNA · Workshop „Deine Website“"}
+// Als App installieren (Android: Installations-Dialog, iPhone: Anleitung „Zum Home-Bildschirm“)
+const STANDALONE=matchMedia("(display-mode: standalone)").matches||navigator.standalone;let instEvt=null;
+const IOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();instEvt=e;if(typeof render==="function")render()});
+function instHidden(){try{return STANDALONE||localStorage.getItem("dna-inst-x")==="1"}catch(e){return STANDALONE}}
+function instBox(){if(instHidden()||(!instEvt&&!IOS&&!/android/i.test(navigator.userAgent)))return"";return `<div class="inst"><img src="app/icon-192.png" alt=""><div><b>Flow DNA als App</b>Aufs Handy holen – öffnet wie eine App, ohne Store.</div><button type="button" onclick="installApp()">Installieren</button><button type="button" class="x" aria-label="Ausblenden" onclick="try{localStorage.setItem('dna-inst-x','1')}catch(e){};this.parentNode.remove()">×</button></div>`}
+async function installApp(){if(instEvt){instEvt.prompt();await instEvt.userChoice;instEvt=null;document.querySelectorAll(".inst").forEach(x=>x.remove());return}
+ const o=document.createElement("div");o.className="ios";o.innerHTML=IOS?`<div><b>Auf den Home-Bildschirm</b>So holst du Flow DNA aufs iPhone:<ol><li>Unten in Safari auf <b style="display:inline;font:inherit;text-transform:none">Teilen</b> (Quadrat mit Pfeil) tippen</li><li><b style="display:inline;font:inherit;text-transform:none">„Zum Home-Bildschirm“</b> wählen</li><li>Oben rechts <b style="display:inline;font:inherit;text-transform:none">„Hinzufügen“</b></li></ol><button type="button">Verstanden</button></div>`:`<div><b>App installieren</b>Öffne das Browser-Menü (⋮) und tippe auf <b style="display:inline;font:inherit;text-transform:none">„App installieren“</b> bzw. „Zum Startbildschirm hinzufügen“.<br><br><button type="button">Verstanden</button></div>`;
+ o.onclick=e=>{if(e.target===o||e.target.tagName==="BUTTON")o.remove()};document.body.appendChild(o)}
+if("serviceWorker"in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js");
 async function claim(ev){ev.preventDefault();const f=ev.target,msg=f.querySelector(".msg"),btn=f.querySelector("button");const code=f.code.value.trim();if(!code)return;
  btn.disabled=true;msg.className="msg";msg.textContent="…";
  try{const res=await fetch(LIC+"/claim",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({code})});const d=await res.json();
   if(!d.ok){msg.className="msg err";msg.textContent=d.error||"Code ungültig.";btn.disabled=false;return}
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([d.content],{type:"text/markdown"}));a.download="SKILL.md";document.body.appendChild(a);a.click();a.remove();
-  msg.className="msg ok";msg.innerHTML=`✓ Geladen. Leg einen Projektordner mit deinem Content an und lege den Skill in den Ordner <b>skills</b>.`;btn.disabled=false;
+  msg.className="msg ok";msg.innerHTML=`✓ Geladen. Leg einen Projektordner mit deinem Content an und lege den Skill in den Ordner <b>skills</b>.`+DNA.useBox(LIC+"/skill?code="+encodeURIComponent(code),"Website Builder");btn.disabled=false;
  }catch(e){msg.className="msg err";msg.textContent="Keine Verbindung – bitte nochmal versuchen.";btn.disabled=false}}let tab="list";const view=document.getElementById("view");
 document.getElementById("chips").innerHTML=`<button data-kat="alle" class="on">Alle</button>`+DNA.kategorien.map(k=>`<button data-kat="${k.id}">${k.nr} ${k.name}</button>`).join("");
 const row=(s,n)=>`<div class="r ${s.stufe} ${s.status==="geplant"?"geplant":""} ${s.flagship?"flag":""} ${s.highlight?"hl":""}" data-skill="${s.id}"><span class="no">${String(n).padStart(2,"0")}</span><span class="ic">${s.icon}</span><span class="t"><b>${DNA.esc(s.name)}</b><span>${DNA.esc(s.kurz)}</span></span><span class="rt"><span class="pr">${DNA.preis(s)}</span><span class="st ${s.status==="geplant"?"geplant":s.stufe}">${s.status==="geplant"?"Geplant":s.status==="vorbereitung"?DNA.stufen[s.stufe].name+" · bald":DNA.stufen[s.stufe].name}</span></span></div>`;
@@ -150,12 +164,12 @@ function list(){const L=DNA.filter(st);let n=0;
   <div class="wsg">${DNA.beispiele.seiten.map(b=>`<a href="${DNA.esc(b.url)}" target="_blank" rel="noopener"><img src="${DNA.esc(b.bild)}" alt="${DNA.esc(b.name)}" loading="lazy"><b>${DNA.esc(b.name)}</b><span>${DNA.esc(b.art)}</span></a>`).join("")}</div>
   <p class="wsgn">Betriebe frei erfunden · Flow Media AI ist echt · antippen zum Ansehen</p>
  </div></div>`:"";
- view.innerHTML=(st.q?"":wsBox)+sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
+ view.innerHTML=(st.q?"":instBox()+wsBox)+sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);
  document.getElementById("meta").innerHTML=`<span>Meine Skills</span><span>${M.length} gemerkt</span>`;
  view.innerHTML=M.length?`<div class="cat"><i>☆</i>Gemerkt</div>`+M.map((s,i)=>row(s,i+1)).join("")+`<p class="empty">Mit Konto stehen hier später auch deine gekauften Skills.</p>`:`<div class="empty">Noch nichts gemerkt. Tipp einen Skill an und drück „Merken“.</div>`}
 function more(){document.getElementById("meta").innerHTML=`<span>Über Flow DNA</span><span>Roadmap · Creator</span>`;
- view.innerHTML=`<div class="pane"><p style="margin:16px 0 0;font-size:16px;color:#0B0B0B">${DNA.esc(DNA.marke.idee)}</p><div id="dna-extra"></div><p class="legal"><a href="skills/INSTALLATION.md" target="_blank" rel="noopener">Installation</a> · <a href="../marketing/landing-page/">Flow Media AI</a> · <a href="../marketing/landing-page/impressum.html">Impressum</a> · <a href="../marketing/landing-page/datenschutz.html">Datenschutz</a></p></div>`;DNA.renderExtras();
+ view.innerHTML=`<div class="pane"><p style="margin:16px 0 0;font-size:16px;color:#0B0B0B">${DNA.esc(DNA.marke.idee)}</p><p style="margin:14px 0 0"><button type="button" onclick="installApp()" style="border:2px solid #0B0B0B;background:#0B0B0B;color:#fff;font:600 14px Inter;padding:12px 16px;cursor:pointer">📲 Als App installieren (Android & iPhone)</button></p><div id="dna-extra"></div><p class="legal"><a href="skills/INSTALLATION.md" target="_blank" rel="noopener">Installation</a> · <a href="../marketing/landing-page/">Flow Media AI</a> · <a href="../marketing/landing-page/impressum.html">Impressum</a> · <a href="../marketing/landing-page/datenschutz.html">Datenschutz</a></p></div>`;DNA.renderExtras();
  const m=document.querySelector("#dna-extra .dna-x-sec");if(m)m.remove()}  // "Meine Skills" hat einen eigenen Tab
 function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}

@@ -40,6 +40,8 @@ Das Design kommt aus den Produktanforderungen und dem Mitgelieferten, nicht aus 
 - Die fünf Varianten bewegen sich **innerhalb dieses Rahmens** und unterscheiden sich in Aufbau, Bedienidee und Ton. Mindestens eine Variante darf mutig daraus ausbrechen.
 - Ist nichts geliefert und nichts erkennbar: fünf deutlich verschiedene Richtungen zeigen, dann Maik wählen lassen.
 
+- **Websites und Landingpages:** zusätzlich `premium-web.md` in diesem Ordner lesen und befolgen – Vollbild-Foto-Hero zuerst, Seitenaufbau wie die Lead-Agent-Seiten, Branche erkennen mit Pflicht-Modulen (Restaurant → Speisekarte + Reservierung, Praxis → Avatar mit Telefon + Termin …), eigener Abschnitt für Selbstständige und Coaches (großes Porträt, Pakete, Erstgespräch). Alle fünf Varianten starten mit einem Vollbild-Foto-Hero.
+
 ### 4. Fünf Varianten bauen
 - **Fünf Dateien** (`v1-….html` bis `v5-….html`), jede **eigenständig lauffähig** und per Doppelklick offen.
 - **Gemeinsamer Kern** statt fünfmal derselbe Code: Daten in einer eigenen Datei als `<script>` (nicht per `fetch`, damit `file://` geht), gemeinsame Logik in `kern.js` und `kern.css`. Die Varianten unterscheiden sich in Aufbau und Stimmung, nicht in der Datenlage.

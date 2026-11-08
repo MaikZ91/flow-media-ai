@@ -18,6 +18,14 @@
   const isSaved = id => saved().includes(id);
   function toggleSave(id) { const l = saved(), i = l.indexOf(id); i < 0 ? l.push(id) : l.splice(i, 1); try { localStorage.setItem(LS, JSON.stringify(l)) } catch {} renderExtras() }
 
+  // Direkt nutzen: Skill-Link als Prompt in Claude oder ChatGPT/Codex öffnen
+  const BASE = "https://maikz91.github.io/flow-media-ai/flow-dna/";
+  const usePrompt = (url, name) => `Nutze den Skill „${name}“ aus dem Flow DNA Store: ${url}\nLies die Anleitung unter dem Link vollständig und arbeite danach mit mir. Starte mit dem ersten Schritt.`;
+  function useBox(url, name) {
+    const q = encodeURIComponent(usePrompt(url, name));
+    return `<div class="dna-use"><b>Direkt nutzen</b><div><a class="dna-u claude" href="https://claude.ai/new?q=${q}" target="_blank" rel="noopener">In Claude öffnen</a><a class="dna-u gpt" href="https://chatgpt.com/?q=${q}" target="_blank" rel="noopener">In ChatGPT / Codex öffnen</a><button type="button" class="dna-u" data-copy="${esc(usePrompt(url, name))}">Prompt kopieren</button></div><small>Für Claude Code oder Codex: Prompt kopieren und im Projektordner einfügen – oder ZIP laden und in den Ordner skills legen.</small></div>`;
+  }
+  document.addEventListener("click", e => { const b = e.target.closest("[data-copy]"); if (!b) return; navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(() => { const t = b.textContent; b.textContent = "✓ Kopiert"; setTimeout(() => b.textContent = t, 1600) }) });
   // what the main button does for a skill
   function action(s) {
     if (s.stufe === "basis" && s.status === "bereit" && s.quelle) return { label: s.quelle.endsWith(".zip") ? "⬇ Kostenlos herunterladen" : "Kostenlos laden", href: s.quelle, typ: "laden" };
@@ -55,6 +63,7 @@
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
       ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
+      ${s.stufe === "basis" && s.quelle && s.quelle.endsWith(".zip") ? useBox(BASE + "skills/" + s.id + "/SKILL.md", s.name) : ""}
       ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem><label>Schon gekauft? Lizenz-Code einlösen</label><div><input name="code" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
@@ -127,11 +136,11 @@
       const res = await fetch(LIC + "/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code }) }); const d = await res.json();
       if (!d.ok) { msg.className = "dna-rmsg err"; msg.textContent = d.error || "Code ungültig."; btn.disabled = false; return }
       const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([d.content], { type: "text/markdown" })); a.download = "SKILL.md"; document.body.appendChild(a); a.click(); a.remove();
-      msg.className = "dna-rmsg ok"; msg.innerHTML = `✓ <b>${esc(d.name)}</b> geladen. Leg die Datei als <b>SKILL.md</b> in den Ordner <b>skills/${esc(d.folder)}</b> deines Projekts.` + (d.unbefristet ? "" : ` Gültig bis ${new Date(d.valid_until).toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" })}.`);
+      msg.className = "dna-rmsg ok"; msg.innerHTML = `✓ <b>${esc(d.name)}</b> geladen. Leg die Datei als <b>SKILL.md</b> in den Ordner <b>skills/${esc(d.folder)}</b> deines Projekts.` + (d.unbefristet ? "" : ` Gültig bis ${new Date(d.valid_until).toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" })}.`) + useBox(LIC + "/skill?code=" + encodeURIComponent(code), d.name);
       btn.disabled = false;
     } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
   });
 
-  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();
