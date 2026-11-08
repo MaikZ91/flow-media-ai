@@ -54,7 +54,7 @@
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
       ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
-      <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}" target="_blank" rel="noopener">${esc(a.label)}</a></span></div>
+      <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
     startStages(layer());
