@@ -287,6 +287,7 @@ main { position: relative; isolation: isolate }
 #flowpath circle { fill: #fff; filter: drop-shadow(0 0 8px var(--blue)) drop-shadow(0 0 18px var(--blue)) }
 
 /* workshop examples */
+.ws-links{display:grid;gap:6px;margin-top:14px}.ws-links a{font-size:14px;color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:3px}.ws-links a:hover{opacity:1}
 .wsx{margin:18px 0 6px}.wsx .label{display:block;margin-bottom:10px}.wsx-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.wsx-g a{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;font-size:12px;font-weight:600}.wsx-g img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border-radius:10px;border:1px solid rgba(127,127,127,.25);transition:transform .3s}.wsx-g a:hover img{transform:translateY(-3px)}.wsx small{display:block;margin-top:10px;font-size:12px;opacity:.7}.wsx small a{color:inherit}
 /* workshop countdown */
 .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 14px }
@@ -495,6 +496,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       <div class="countdown" id="countdown" aria-live="off"></div>
       <div class="grow"></div>
       <a class="btn primary" data-cta="offer_workshop" data-wa="workshop" href="#">Platz sichern <span class="ar">→</span></a>
+      <div class="ws-links"><a data-cta="ws_gruppe" href="https://chat.whatsapp.com/KZkXQMCsoxrJygPYgfrqB2" target="_blank" rel="noopener">Workshop-Gruppe beitreten →</a><a data-cta="ws_kalender" href="../../flow-dna/?tab=community#kal">Alle Termine im Community-Kalender →</a><a data-cta="ws_support" href="https://chat.whatsapp.com/KnRP9BMgQxZ6V5lcO0KnvQ" target="_blank" rel="noopener">Tech-Support-Gruppe →</a></div>
     </article>
 
     <article class="card offer small rv d2" id="projektanfrage">

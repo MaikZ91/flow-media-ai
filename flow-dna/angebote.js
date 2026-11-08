@@ -1,5 +1,6 @@
 // Angebote von Flow Media AI für die Flow-DNA-App (Tab „Angebote“). Nur echte Angaben – Stand 08.11.2026.
-// Workshop-Termine: vergangene Termine blendet die App automatisch aus. Neue Termine hier eintragen.
+// Workshop-Termine: vergangene Termine blendet die App automatisch aus. Neue Termine hier eintragen –
+// sie erscheinen im Tab „Angebote“ und im Community-Kalender. Weitere Termine (z. B. Stammtisch) in `termine` mit art, titel, datum, ende, ort.
 window.FLOW_ANGEBOTE = {
   calendly: "https://calendly.com/flow_media_ai/1-kennenlernen",
   workshopGruppe: "https://chat.whatsapp.com/KZkXQMCsoxrJygPYgfrqB2",
@@ -12,6 +13,7 @@ window.FLOW_ANGEBOTE = {
       text: "Zweiter Termin mit demselben Inhalt – such dir den passenden Abend aus.",
       extra: "Bis 31.12.26 kostenloser Tech-Support und Q&A im Tech-Support-Channel." }
   ],
+  termine: [],
   angebote: [
     { id: "erstgespraech", nr: "01", art: "Kostenlos", name: "Erstgespräch", kurz: "Wir sprechen über deine Idee und schauen, wie ich dich am besten unterstützen kann.",
       punkte: ["Kostenlos und unverbindlich", "Termin direkt online wählen"], cta: "Termin wählen", typ: "calendly" },

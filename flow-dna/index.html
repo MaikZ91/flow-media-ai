@@ -80,6 +80,10 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws{margin:28px 16px 14px;border:2px solid var(--blue);background:#fff;box-shadow:0 10px 40px rgba(47,91,255,.18)}
 .ws .wh{background:var(--blue);color:#fff;padding:8px 12px;font:700 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
 .ws .wb{padding:14px}
+.kal{margin-top:22px}.kal h3{font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#6B6B66;margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid #0B0B0B}.kal h3 i{font-style:normal;color:#2F5BFF;margin-right:8px}
+.mg{background:#fff;border:2px solid #0B0B0B;padding:12px}.mg .mh{display:flex;justify-content:space-between;align-items:center;font:700 20px Oswald;text-transform:uppercase;margin-bottom:8px}.mg .mh button{border:1.5px solid #0B0B0B;background:#fff;width:34px;height:34px;font:700 16px Inter;cursor:pointer}
+.mg .gr{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}.mg .gr span{font:600 10px Montserrat;color:#6B6B66;padding:4px 0}.mg .gr b{position:relative;font:500 14px Inter;padding:8px 0;color:#0B0B0B}.mg .gr b.o{color:#c4c4bf}.mg .gr b.t{outline:1.5px solid #0B0B0B}.mg .gr b.e{background:#2F5BFF;color:#fff;font-weight:700;cursor:pointer}
+.ev{display:flex;gap:12px;background:#fff;border:2px solid #0B0B0B;padding:12px;margin-top:8px}.ev .dt{flex:none;width:58px;text-align:center;background:#0B0B0B;color:#fff;padding:6px 0}.ev .dt b{display:block;font:700 30px/1 Oswald}.ev .dt small{font:600 10px Montserrat;letter-spacing:.1em;text-transform:uppercase}.ev .bd{flex:1;min-width:0}.ev .bd em{font:600 10px Montserrat;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#2F5BFF}.ev .bd b{display:block;font:700 19px/1.1 Oswald;text-transform:uppercase;margin:3px 0}.ev .bd span{font-size:13px;color:#555}.ev .ac{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.ev .ac a,.ev .ac button{border:1.5px solid #0B0B0B;background:#fff;color:#0B0B0B;font:600 12px Inter;padding:7px 10px;text-decoration:none;cursor:pointer}.ev .ac a.p{background:#2F5BFF;border-color:#2F5BFF;color:#fff}.ev.hl{border-color:#2F5BFF;box-shadow:0 0 0 2px #2F5BFF}
 .ag{margin:14px 16px 30px}.ag h3{font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#6B6B66;margin:22px 0 10px;padding-bottom:8px;border-bottom:2px solid #0B0B0B}.ag h3 i{font-style:normal;color:#2F5BFF;margin-right:8px}
 .wk{background:#0B0B0B;color:#fff;padding:18px;margin-bottom:10px}.wk small{font:600 11px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:#9a9a9a}.wk b{display:block;font:700 30px/1 Oswald;text-transform:uppercase;margin:8px 0}.wk .when{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.wk .when span{border:1.5px solid rgba(255,255,255,.35);padding:6px 10px;font:600 13px Inter}.wk .when span.d{background:#2F5BFF;border-color:#2F5BFF}.wk p{font-size:14px;line-height:1.5;color:#ddd;margin:6px 0}.wk .cd{font:700 15px Oswald;letter-spacing:.06em;color:#2F5BFF;margin:6px 0 10px}
 .btnx{display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 16px;font:700 18px Oswald;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:2px solid #0B0B0B;background:#0B0B0B;color:#fff;cursor:pointer;width:100%}.btnx.b{background:#2F5BFF;border-color:#2F5BFF}.btnx.o{background:#fff;color:#0B0B0B}.btnrow{display:grid;gap:8px;margin-top:12px}
@@ -216,6 +220,29 @@ function supportHTML(){const S=A.support;return `<h3 style="font:600 12px Montse
  <div class="faq">${S.faq.map(f=>`<details><summary>${DNA.esc(f[0])}</summary><p>${DNA.esc(f[1])}</p></details>`).join("")}</div>
  ${A.supportGruppe?`<a class="btnx b" style="margin-top:12px" href="${A.supportGruppe}" target="_blank" rel="noopener" data-cta="app_support_gruppe">Tech-Support-Gruppe beitreten →</a>`:""}<form class="spf" onsubmit="sendSupport(event)"><p>${DNA.esc(S.hinweis)} Oder direkt an Maik:</p><select name="t" aria-label="Thema">${S.themen.map(t=>`<option>${DNA.esc(t)}</option>`).join("")}</select><textarea name="m" placeholder="Was klappt nicht? Was hast du schon probiert?" aria-label="Beschreibung" required></textarea><button class="btnx b" type="submit">Frage per WhatsApp senden →</button></form>`}
 function sendSupport(e){e.preventDefault();const f=e.target;window.open(DNA.wa(`Tech-Support (Flow-DNA-App) · ${f.t.value}:\n${f.m.value}`),"_blank","noopener")}
+// ---- Community-Kalender: alle kommenden Termine (Workshops + termine aus angebote.js) ----
+function events(){const ws=A.workshops.map(w=>({art:"Workshop",titel:w.titel,datum:w.datum,ende:w.ende,info:`${w.format} · ${w.preis}`,book:wsBook(w),w}));
+ const t=(A.termine||[]).map(x=>({art:x.art||"Termin",titel:x.titel,datum:x.datum,ende:x.ende,info:x.ort||"",book:x.link||communityHref()}));
+ return ws.concat(t).filter(e=>new Date(e.datum).getTime()+36e5>Date.now()).sort((a,b)=>new Date(a.datum)-new Date(b.datum))}
+const berlin=d=>new Date(d.toLocaleString("en-US",{timeZone:"Europe/Berlin"}));
+let kalM=null;
+function kalGrid(E){const now=berlin(new Date());if(!kalM){const f=E[0]?berlin(new Date(E[0].datum)):now;kalM=new Date(f.getFullYear(),f.getMonth(),1)}
+ const y=kalM.getFullYear(),m=kalM.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate();
+ const ev={};E.forEach((e,i)=>{const d=berlin(new Date(e.datum));if(d.getFullYear()===y&&d.getMonth()===m)ev[d.getDate()]=ev[d.getDate()]??i});
+ let c="";for(let i=0;i<first;i++)c+=`<b class="o"></b>`;
+ for(let d=1;d<=days;d++){const today=now.getFullYear()===y&&now.getMonth()===m&&now.getDate()===d;c+=`<b class="${d in ev?"e":""}${today?" t":""}" ${d in ev?`data-ev="${ev[d]}"`:""}>${d}</b>`}
+ return `<div class="mg"><div class="mh"><button type="button" data-km="-1" aria-label="Voriger Monat">‹</button>${kalM.toLocaleDateString("de-DE",{month:"long",year:"numeric"})}<button type="button" data-km="1" aria-label="Nächster Monat">›</button></div><div class="gr">${["Mo","Di","Mi","Do","Fr","Sa","So"].map(x=>`<span>${x}</span>`).join("")}${c}</div></div>`}
+function icsFor(e){const d=new Date(e.datum),[h,mi]=(e.ende||"").split(":");const end=new Date(d);if(h){const b=berlin(d);end.setTime(d.getTime()+((+h*60+ +mi)-(b.getHours()*60+b.getMinutes()))*6e4)}else end.setTime(d.getTime()+36e5);
+ const f=x=>x.toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+ return `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Flow Media AI//Flow DNA//DE\r\nBEGIN:VEVENT\r\nUID:${f(d)}-${e.art}@flow-media-ai\r\nDTSTAMP:${f(new Date())}\r\nDTSTART:${f(d)}\r\nDTEND:${f(end)}\r\nSUMMARY:${e.art}: ${e.titel}\r\nDESCRIPTION:Flow Media AI · ${e.info}\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n`}
+function kalender(){const E=events();window._E=E;
+ const list=E.length?E.map((e,i)=>{const d=new Date(e.datum);return `<div class="ev${i===0?" hl":""}" id="ev${i}"><div class="dt"><small>${d.toLocaleDateString("de-DE",{weekday:"short",timeZone:"Europe/Berlin"})}</small><b>${d.toLocaleDateString("de-DE",{day:"2-digit",timeZone:"Europe/Berlin"})}</b><small>${d.toLocaleDateString("de-DE",{month:"short",timeZone:"Europe/Berlin"})}</small></div>
+  <div class="bd"><em>${DNA.esc(e.art)}${i===0?" · als Nächstes":""}</em><b>${DNA.esc(e.titel)}</b><span>${fmtTime(d)}${e.ende?`–${DNA.esc(e.ende)}`:""} Uhr · ${DNA.esc(e.info)}</span>
+  <div class="ac"><a class="p" href="${e.book}" target="_blank" rel="noopener" data-cta="app_kal_book">Dabei sein</a><button type="button" data-ics="${i}">📅 In meinen Kalender</button></div></div></div>`}).join(""):`<p style="font-size:14px;color:#555">Gerade keine Termine eingetragen – neue Workshops erscheinen hier und in der Workshop-Gruppe.</p>`;
+ return `<div class="kal" id="kal"><h3><i>📅</i>Community-Kalender</h3>${kalGrid(E)}${list}${A.workshopGruppe?`<a class="btnx o" style="margin-top:10px;color:#0B0B0B;background:#fff" href="${A.workshopGruppe}" target="_blank" rel="noopener" data-cta="app_kal_gruppe">Workshop-Gruppe beitreten →</a>`:""}</div>`}
+document.addEventListener("click",e=>{const km=e.target.closest("[data-km]");if(km){kalM=new Date(kalM.getFullYear(),kalM.getMonth()+ +km.dataset.km,1);document.getElementById("kal").outerHTML=kalender();return}
+ const ev=e.target.closest("[data-ev]");if(ev){const el=document.getElementById("ev"+ev.dataset.ev);el&&el.scrollIntoView({behavior:"smooth",block:"center"});return}
+ const ic=e.target.closest("[data-ics]");if(ic){const x=window._E[+ic.dataset.ics];const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([icsFor(x)],{type:"text/calendar"}));a.download=`flow-${x.art.toLowerCase()}-${x.datum.slice(0,10)}.ics`;document.body.appendChild(a);a.click();a.remove()}});
 // Community-Tab: Link zur Flow Business Community (COMMUNITY_URL eintragen; bis dahin Anfrage per WhatsApp an Maik)
 const COMMUNITY_URL="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";
 const communityHref=()=>COMMUNITY_URL||DNA.wa("Hi Maik, ich möchte in die Flow Business Community (über die Flow-DNA-App).");
@@ -223,6 +250,7 @@ function community(){document.getElementById("meta").innerHTML=`<span>Flow Busin
  view.innerHTML=`<div class="cm"><div class="hero"><small>Kostenlos · Einstieg</small><h2>Flow Business <span>Community</span></h2><p>Für Gründer, Selbstständige und Macher. Ideen teilen, Feedback bekommen, gemeinsam ins Machen kommen – in Bielefeld, Münster und digital.</p>
  <ul><li>Business & Marketing</li><li>KI & digitale Tools</li><li>Austausch & Umsetzung</li><li>Digitaler Stammtisch · digital & live</li><li>Workshops & Zugang zum Flow DNA Skill Store</li></ul>
  <a class="join" href="${communityHref()}" target="_blank" rel="noopener" data-cta="app_community">Community beitreten →</a></div>
+ ${kalender()}
  <div class="tiles"><a class="tile" href="?workshop=website"><em>→</em><b>Workshop: Deine Website</b><span>Mit KI zur Personal Brand · live · Website-Skill für Teilnehmende kostenlos</span></a>
  <button type="button" class="tile" onclick="DNA.openSubmit()"><em>＋</em><b>Eigenen Skill teilen</b><span>Dein Wissen als Skill – geprüft und für die Community freigeschaltet</span></button>
  <a class="tile" href="../marketing/landing-page/" target="_blank" rel="noopener"><em>↗</em><b>Flow Media AI</b><span>Sparring, Masterclass und Begleitung nach der FLOW-Methode</span></a></div>${supportHTML()}</div>`}
@@ -243,5 +271,5 @@ function helix(t){let a="",b="",r="";for(let x=0;x<=84;x+=3){const p=x/11+t/700,
  if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(helix)}
 requestAnimationFrame(helix);
 view.addEventListener("scroll",()=>{if(tab==="list")document.getElementById("ctl").classList.toggle("min",view.scrollTop>40)});
-render();
+{const t0=new URLSearchParams(location.search).get("tab");if(["angebote","news","community","more"].includes(t0)){goTab(t0);if(t0==="community"&&location.hash==="#kal")setTimeout(()=>{const k=document.getElementById("kal");k&&k.scrollIntoView()},50)}else render()}
 </script></body></html>
