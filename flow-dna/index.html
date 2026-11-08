@@ -124,7 +124,7 @@ async function claim(ev){ev.preventDefault();const f=ev.target,msg=f.querySelect
  try{const res=await fetch(LIC+"/claim",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({code})});const d=await res.json();
   if(!d.ok){msg.className="msg err";msg.textContent=d.error||"Code ungültig.";btn.disabled=false;return}
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([d.content],{type:"text/markdown"}));a.download="SKILL.md";document.body.appendChild(a);a.click();a.remove();
-  msg.className="msg ok";msg.innerHTML=`✓ Fertig! Leg die Datei in einen Ordner <b>website-builder</b> und sag in Claude: „Bau mir meine Website.“`;btn.disabled=false;
+  msg.className="msg ok";msg.innerHTML=`✓ Geladen. Leg einen Projektordner mit deinem Content an und lege den Skill in den Ordner <b>skills</b>.`;btn.disabled=false;
  }catch(e){msg.className="msg err";msg.textContent="Keine Verbindung – bitte nochmal versuchen.";btn.disabled=false}}let tab="list";const view=document.getElementById("view");
 document.getElementById("chips").innerHTML=`<button data-kat="alle" class="on">Alle</button>`+DNA.kategorien.map(k=>`<button data-kat="${k.id}">${k.nr} ${k.name}</button>`).join("");
 const row=(s,n)=>`<div class="r ${s.stufe} ${s.status==="geplant"?"geplant":""} ${s.flagship?"flag":""} ${s.highlight?"hl":""}" data-skill="${s.id}"><span class="no">${String(n).padStart(2,"0")}</span><span class="ic">${s.icon}</span><span class="t"><b>${DNA.esc(s.name)}</b><span>${DNA.esc(s.kurz)}</span></span><span class="rt"><span class="pr">${DNA.preis(s)}</span><span class="st ${s.status==="geplant"?"geplant":s.stufe}">${s.status==="geplant"?"Geplant":s.status==="vorbereitung"?DNA.stufen[s.stufe].name+" · bald":DNA.stufen[s.stufe].name}</span></span></div>`;
@@ -137,16 +137,15 @@ function list(){const L=DNA.filter(st);let n=0;
   <div class="k2">Workshop · Deine Website</div>
   <h2>Dein <span>Website-Skill.</span></h2>
   <form class="code" id="wscode" onsubmit="claim(event)"><input type="hidden" name="code" value="WEBSITE"><button type="submit" class="big">⬇ Skill herunterladen</button><p class="msg"></p></form>
- </div></div><p class="wsfoot"><a href="./">Zum Flow DNA Store</a></p>`:"";
- if(WS){view.innerHTML=wsBox;return}
- view.innerHTML=sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
+ </div></div>`:"";
+ view.innerHTML=(st.q?"":wsBox)+sig+DNA.kategorien.map(k=>{const K=L.filter(s=>s.kat===k.id);if(!K.length)return"";return `<div class="cat"><i>${k.nr}</i>${k.name}<em>${K.length}</em></div>`+K.map(s=>row(s,++n)).join("")}).join("")}
 function mine(){const M=DNA.saved().map(id=>DNA.skills.find(s=>s.id===id)).filter(Boolean);
  document.getElementById("meta").innerHTML=`<span>Meine Skills</span><span>${M.length} gemerkt</span>`;
  view.innerHTML=M.length?`<div class="cat"><i>☆</i>Gemerkt</div>`+M.map((s,i)=>row(s,i+1)).join("")+`<p class="empty">Mit Konto stehen hier später auch deine gekauften Skills.</p>`:`<div class="empty">Noch nichts gemerkt. Tipp einen Skill an und drück „Merken“.</div>`}
 function more(){document.getElementById("meta").innerHTML=`<span>Über Flow DNA</span><span>Roadmap · Creator</span>`;
  view.innerHTML=`<div class="pane"><p style="margin:16px 0 0;font-size:16px;color:#0B0B0B">${DNA.esc(DNA.marke.idee)}</p><div id="dna-extra"></div><p class="legal"><a href="skills/INSTALLATION.md" target="_blank" rel="noopener">Installation</a> · <a href="../marketing/landing-page/">Flow Media AI</a> · <a href="../marketing/landing-page/impressum.html">Impressum</a> · <a href="../marketing/landing-page/datenschutz.html">Datenschutz</a></p></div>`;DNA.renderExtras();
  const m=document.querySelector("#dna-extra .dna-x-sec");if(m)m.remove()}  // "Meine Skills" hat einen eigenen Tab
-function render(){if(WS){document.getElementById("ctl").style.display="none";document.getElementById("meta").style.display="none";document.getElementById("nav").style.display="none";list();return}document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():more();
+function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}
 document.getElementById("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
 document.getElementById("chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.kat=b.dataset.kat;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
