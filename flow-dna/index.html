@@ -197,12 +197,13 @@ function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote ·
  const W=A.workshops.filter(w=>new Date(w.datum).getTime()+36e5>Date.now());
  const ws=W.length?W.map(w=>{const d=new Date(w.datum);return `<div class="wk"><small>Workshop · ${DNA.esc(w.format)}</small><b>${DNA.esc(w.titel)}</b>
   <div class="when"><span class="d">${fmtDay(d)}</span><span>${fmtTime(d)}–${DNA.esc(w.ende)} Uhr</span><span>${DNA.esc(w.preis)}</span></div>
-  <div class="cd">⏱ ${countdown(d)}</div><p>${DNA.esc(w.text)}</p>${w.extra?`<p>🛠️ ${DNA.esc(w.extra)}</p>`:""}
-  <div class="btnrow"><a class="btnx b" href="${wsBook(w)}" target="_blank" rel="noopener" data-cta="app_workshop">Platz sichern →</a><a class="btnx o" style="color:#0B0B0B;background:#fff" href="?workshop=website">Website-Skill ansehen</a></div></div>`}).join(""):`<div class="of"><b>Neue Termine folgen</b><p>Workshops laufen live, meist montags um 18 Uhr. Tritt der Community bei, dann verpasst du keinen Termin.</p>${offerBtns({id:"ws_comm",typ:"community",cta:"Community beitreten"})}</div>`;
+  <div class="cd">⏱ ${countdown(d)}</div><p>${DNA.esc(w.text)}</p>${w.extra?`<p>🛠️ ${A.supportGruppe?`<a href="${A.supportGruppe}" target="_blank" rel="noopener" style="color:#fff">${DNA.esc(w.extra)}</a>`:DNA.esc(w.extra)}</p>`:""}
+  <div class="btnrow"><a class="btnx b" href="${wsBook(w)}" target="_blank" rel="noopener" data-cta="app_workshop">Platz sichern →</a><a class="btnx o" style="color:#0B0B0B;background:#fff" href="?workshop=website">Website-Skill ansehen</a></div></div>`}).join(""):`<div class="of"><b>Neue Termine folgen</b><p>Workshops laufen live, meist montags um 18 Uhr. In der Workshop-Gruppe verpasst du keinen Termin.</p></div>`;
  const of=A.angebote.map(o=>`<div class="of"><div class="top"><i>${o.nr}</i><em>${DNA.esc(o.art)}</em></div><b>${DNA.esc(o.name)}</b><p>${DNA.esc(o.kurz)}</p>
   ${o.phasen?`<div class="ph4">${o.phasen.map(p=>`<div><b>${p[0]}</b>${p[1]}<br><span style="color:#6B6B66">${p[2]}</span></div>`).join("")}</div>`:""}
   <ul>${o.punkte.map(x=>`<li>${DNA.esc(x)}</li>`).join("")}</ul>${offerBtns(o)}</div>`).join("");
- view.innerHTML=`<div class="ag"><h3><i>01</i>Workshops buchen</h3>${ws}<h3><i>02</i>Zusammenarbeiten</h3>${of}</div>`}
+ const wg=A.workshopGruppe?`<a class="btnx o" style="margin-bottom:10px" href="${A.workshopGruppe}" target="_blank" rel="noopener" data-cta="app_ws_gruppe">Workshop-Gruppe beitreten →</a>`:"";
+ view.innerHTML=`<div class="ag"><h3><i>01</i>Workshops buchen</h3>${ws}${wg}<h3><i>02</i>Zusammenarbeiten</h3>${of}</div>`}
 const NEWS=window.NEWS||{items:[],quellen:[]};let newsQ="alle";
 function ago(iso){const m=Math.round((Date.now()-new Date(iso))/6e4);return m<60?`vor ${Math.max(1,m)} Min.`:m<1440?`vor ${Math.round(m/60)} Std.`:new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}
 function news(){document.getElementById("meta").innerHTML=`<span>KI-News</span><span>${NEWS.items.length} Meldungen</span>`;
@@ -213,7 +214,7 @@ function news(){document.getElementById("meta").innerHTML=`<span>KI-News</span><
 document.addEventListener("click",e=>{const b=e.target.closest("[data-nq]");if(!b)return;newsQ=b.dataset.nq;news()});
 function supportHTML(){const S=A.support;return `<h3 style="font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#6B6B66;margin:24px 0 6px;padding-bottom:8px;border-bottom:2px solid #0B0B0B"><i style="font-style:normal;color:#2F5BFF;margin-right:8px">🛠</i>Tech-Support</h3>
  <div class="faq">${S.faq.map(f=>`<details><summary>${DNA.esc(f[0])}</summary><p>${DNA.esc(f[1])}</p></details>`).join("")}</div>
- <form class="spf" onsubmit="sendSupport(event)"><p>${DNA.esc(S.hinweis)}</p><select name="t" aria-label="Thema">${S.themen.map(t=>`<option>${DNA.esc(t)}</option>`).join("")}</select><textarea name="m" placeholder="Was klappt nicht? Was hast du schon probiert?" aria-label="Beschreibung" required></textarea><button class="btnx b" type="submit">Frage per WhatsApp senden →</button></form>`}
+ ${A.supportGruppe?`<a class="btnx b" style="margin-top:12px" href="${A.supportGruppe}" target="_blank" rel="noopener" data-cta="app_support_gruppe">Tech-Support-Gruppe beitreten →</a>`:""}<form class="spf" onsubmit="sendSupport(event)"><p>${DNA.esc(S.hinweis)} Oder direkt an Maik:</p><select name="t" aria-label="Thema">${S.themen.map(t=>`<option>${DNA.esc(t)}</option>`).join("")}</select><textarea name="m" placeholder="Was klappt nicht? Was hast du schon probiert?" aria-label="Beschreibung" required></textarea><button class="btnx b" type="submit">Frage per WhatsApp senden →</button></form>`}
 function sendSupport(e){e.preventDefault();const f=e.target;window.open(DNA.wa(`Tech-Support (Flow-DNA-App) · ${f.t.value}:\n${f.m.value}`),"_blank","noopener")}
 // Community-Tab: Link zur Flow Business Community (COMMUNITY_URL eintragen; bis dahin Anfrage per WhatsApp an Maik)
 const COMMUNITY_URL="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";

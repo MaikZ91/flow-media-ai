@@ -2,6 +2,8 @@
 // Workshop-Termine: vergangene Termine blendet die App automatisch aus. Neue Termine hier eintragen.
 window.FLOW_ANGEBOTE = {
   calendly: "https://calendly.com/flow_media_ai/1-kennenlernen",
+  workshopGruppe: "https://chat.whatsapp.com/KZkXQMCsoxrJygPYgfrqB2",
+  supportGruppe: "https://chat.whatsapp.com/KnRP9BMgQxZ6V5lcO0KnvQ",
   workshops: [
     { titel: "Mit KI zur Personal Brand: Deine Website", tag: "Montag", datum: "2026-11-09T18:00:00+01:00", ende: "19:00", preis: "59 €", format: "Live · 60 Min",
       text: "Aus deinen Bildern, Videos, Texten und deinem Stil wird deine eigene Website – mit der FLOW-Methode und dem Website-Skill. Den Skill bekommst du als Teilnehmer kostenlos, danach bearbeitest du deine Seite selbst mit KI weiter.",
