@@ -3,7 +3,7 @@ name: flow-design
 description: Das visuelle Design von Flow Media AI – Plakate, Flyer, Instagram-Posts, Karussells, Story-Grafiken, Reel-Texte, Angebote und Seiten im Flow-Look (schwarz-weiß, minimalistisch, große schmale Versal-Überschriften, ein blauer Akzent). Laden, sobald für Flow Media AI etwas Visuelles gestaltet oder Content mit Layout gebaut wird; zusammen mit `creative-director` (Inhalt) – dieser Skill regelt das Aussehen.
 ---
 
-# Flow Design (Stand 23.10.2026, aus Maiks Plakaten)
+# Flow Design (Stand 23.10.2026, aus Maiks Plakaten · weiße Variante 08.11.2026)
 
 Abgeleitet aus Maiks eigenen Gestaltungen in Google Drive (`Flow Media AI › 01_Marketing › Reels`): **„Flow Business Community“**, **„Zwei Ideen. Eine Vision.“** (App-Flyer), **„AI Masterclass“**, das Wellen-Zeichen und das **Karussell „WOW. ICH HAB'S GESCHAFFT.“** (3 Folien, gepostet 23.10.2026 – aktuell die beste Referenz). Inhalt und Regeln für Posts kommen aus `creative-director` und `CLAUDE.md`; dieser Skill regelt nur das Aussehen.
 
@@ -26,7 +26,24 @@ Abgeleitet aus Maiks eigenen Gestaltungen in Google Drive (`Flow Media AI › 01
 
 - **Warme Variante (Karussell 23.10.2026):** Foto leicht warm getönt (Sepia-Hauch), Text cremeweiß `#F2EDE4`, kurze Trennlinien in Sand `#E8CFA8` (2 px, ca. 40 px lang: unter der Wortmarke, über Info-Blöcken, über „SWIPE“). Sand nur als feine Linie, nie als Fläche oder Schrift, und **nie zusammen mit Blau** in einem Motiv. Offen bei Maik: Ist die warme Variante der neue Standard (dann wird Sand der Akzent statt Blau) oder bleibt Blau? Bis zur Antwort beides erlaubt, pro Post/Serie eines.
 - Pro Motiv höchstens **ein** blaues Element. Keine zweite Akzentfarbe, keine Verläufe in Bunt. „Primärfarben“ heißt bei Flow: Schwarz, Weiß, Blau.
-- Hell (`--paper` + `--black`) nur für Dokumente/Angebote und wenn ein Motiv bewusst kontrastieren soll.
+- Hell (`--paper` + `--black`) für Dokumente/Angebote **und als gleichwertige Post-Variante** (siehe „Weiße Variante“).
+
+### Weiße Variante „Paper“ (Maik, 08.11.2026 – aus dem Flow-DNA-Katalog)
+„Ich finde das auch ganz geil zur Abwechslung, so weiße Sachen und nicht nur schwarze zu posten.“ Gleichwertig zur schwarzen Variante, Vorbild: Flow-DNA-Store (`flow-dna/index.html`) und Katalog-Entwurf `flow-dna/v4-katalog.html`, Reel R035.
+| Token | Wert | Einsatz |
+|---|---|---|
+| `--paper` | `#F4F4F1` | Hintergrund (Papierweiß, nie reines `#FFF` als Fläche) |
+| `--ink` | `#0B0B0B` | Headlines, Text, dicke Linien (2–3 px), aktive Felder (schwarz gefüllt, Schrift weiß) |
+| `--mute` | `#6B6B66` | Labels, Nebentext |
+| `--rule` | `rgba(11,11,11,.14)` | feine Trennlinien (1 px) zwischen Zeilen/Kacheln |
+| `--card` | `#FFFFFF` | Kacheln/Karten auf Papier, Hover-Zeilen |
+| `--blue` | `#2F5BFF` | weiterhin **einziger** Akzent |
+- **Look:** Katalog/Magazin statt Nachtclub – schwarze Oswald-Versalien auf Papier, dicke schwarze Linie unter Kopf und Rubriken, feine Linien zwischen Einträgen, **eckige** Kacheln und Buttons (Radius 0, Rahmen 1,5–2 px schwarz), nummerierte Einträge (01, 02 … in Oswald, hellgrau, aktiv blau), kompakte Listen.
+- **Rubrik-Köpfe:** Montserrat 600 gesperrt, Nummer in Blau („01 CREATIVE & BRANDING“), dicke Linie darunter.
+- **Fotos:** bleiben schwarz-weiß; die Wortmarke wird schwarz (Logo-PNG mit `filter: invert(1)`).
+- **Motiv-Element:** kleiner DNA-Strang (blau + schwarz) als Signatur/Animation – sparsam, nicht in jedem Post.
+- **Rhythmus:** abwechseln statt mischen – z. B. jeder 3. Post oder eine ganze Serie (Karussell, Story-Reihe) in Weiß. Innerhalb eines Motivs nicht Schwarz und Weiß als gleich große Flächen kombinieren (Ausnahme: Handy/Screenshot auf Papier).
+- Die warme Sand-Variante gilt nur für Schwarz, nicht für Paper.
 
 ## 2. Schrift
 | Rolle | Schrift (Google Fonts, frei) | Stil |
@@ -100,4 +117,4 @@ Abgeleitet aus Maiks eigenen Gestaltungen in Google Drive (`Flow Media AI › 01
 - Vor Abgabe: Checkliste unten.
 
 ## 9. Checkliste
-1. Schwarz/Weiß, höchstens ein blaues Element? 2. Eine Headline, groß, Versalien, max. 4 Wörter pro Zeile? 3. Wortmarke klein und mit Luft? 4. Genug Leerraum, Rand 6–8 %? 5. Ist Maik im Motiv (groß oder klein), mit freigegebenem Porträt, Gesicht frei von Text? Andere Pose als im letzten Post? 6. Keine erfundenen Zahlen/Versprechen? 7. Unten 20 % frei (bei 9:16)? 8. Keine fremden Wasserzeichen, kein Tribe-/Dating-Look? 9. Format 4:5 bzw. bei 2:3 Rand eingerückt; letzte Karussell-Folie mit Frage/CTA statt „SWIPE“?
+1. Schwarz/Weiß (dunkel **oder** Paper-Variante, nicht gemischt), höchstens ein blaues Element? 2. Eine Headline, groß, Versalien, max. 4 Wörter pro Zeile? 3. Wortmarke klein und mit Luft? 4. Genug Leerraum, Rand 6–8 %? 5. Ist Maik im Motiv (groß oder klein), mit freigegebenem Porträt, Gesicht frei von Text? Andere Pose als im letzten Post? 6. Keine erfundenen Zahlen/Versprechen? 7. Unten 20 % frei (bei 9:16)? 8. Keine fremden Wasserzeichen, kein Tribe-/Dating-Look? 9. Format 4:5 bzw. bei 2:3 Rand eingerückt; letzte Karussell-Folie mit Frage/CTA statt „SWIPE“?
