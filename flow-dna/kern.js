@@ -47,6 +47,7 @@
       <h2 id="dna-h">${esc(s.name)}</h2>
       <p class="dna-kurz">${esc(s.kurz)}</p>
       ${s.ablauf ? `<h3>So funktioniert's</h3>${stage(s.ablauf, s.highlight)}` : ""}
+      ${D.beispiele && D.beispiele.skills.includes(s.id) ? `<h3>Beispielseiten · Demo</h3><div class="dna-bsp">${D.beispiele.seiten.map(b => `<a href="${esc(b.url)}" target="_blank" rel="noopener"><img src="${esc(b.bild)}" alt="${esc(b.name)}" loading="lazy"><b>${esc(b.name)}</b><span>${esc(b.art)}</span></a>`).join("")}</div><p class="dna-vcap" style="margin-top:6px!important">Frei erfundene Demo-Betriebe · so sehen die Seiten aus</p>` : ""}
       <h3>Was er kann</h3><ul>${s.kann.map(k => `<li>${esc(k)}</li>`).join("")}</ul>
       <h3>Für wen</h3><p>${esc(s.fuer)}</p>
       ${s.demo ? `<h3>Beispiel aus der Praxis</h3><p>${esc(s.demo)}</p>` : ""}

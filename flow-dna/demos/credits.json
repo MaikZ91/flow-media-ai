@@ -1,0 +1,113 @@
+{
+ "baeckerei": [
+  {
+   "file": "hero.jpg",
+   "title": "Free front bakery shop image",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/5918528/image-public-domain-food-free"
+  },
+  {
+   "file": "g1.jpg",
+   "title": "Bread Bakery",
+   "lic": "cc0 1.0",
+   "creator": "Drew Coffman",
+   "src": "https://stocksnap.io/photo/bread-bakery-EA1243E167"
+  },
+  {
+   "file": "g2.jpg",
+   "title": "Baking Bread",
+   "lic": "cc0 1.0",
+   "creator": "Igor Trepeshchenok",
+   "src": "https://stocksnap.io/photo/baking-bread-XXNL0MZLOR"
+  },
+  {
+   "file": "g3.jpg",
+   "title": "Bread Grains",
+   "lic": "cc0 1.0",
+   "creator": "Pawel Kadysz",
+   "src": "https://stocksnap.io/photo/bread-grains-JWIWR3ZV0O"
+  },
+  {
+   "file": "g4.jpg",
+   "title": "Bread Food",
+   "lic": "cc0 1.0",
+   "creator": "fireskystudios.com",
+   "src": "https://stocksnap.io/photo/bread-food-P7JB9GA027"
+  },
+  {
+   "file": "cta.jpg",
+   "title": "Bread Basket",
+   "lic": "cc0 1.0",
+   "creator": "JESHOOTS.com",
+   "src": "https://stocksnap.io/photo/bread-basket-912FD6384D"
+  }
+ ],
+ "physio": [
+  {
+   "file": "hero.jpg",
+   "title": "Massage Therapy",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/5969862/massage-therapy"
+  },
+  {
+   "file": "g1.jpg",
+   "title": "Physiotherapy hospital",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/6038567/photo-image-public-domain-house-person"
+  },
+  {
+   "file": "g2.jpg",
+   "title": "Spa Concept",
+   "lic": "cc0 1.0",
+   "creator": "Healthy Living",
+   "src": "https://stocksnap.io/photo/spa-concept-ZCLKDUY2CZ"
+  },
+  {
+   "file": "cta.jpg",
+   "title": "Aromatherapy Spa",
+   "lic": "cc0 1.0",
+   "creator": "Marina Pershina",
+   "src": "https://stocksnap.io/photo/aromatherapy-spa-5A5JLDXM4R"
+  }
+ ],
+ "friseur": [
+  {
+   "file": "hero.jpg",
+   "title": "Hairdresser Cut",
+   "lic": "cc0 1.0",
+   "creator": "Matt Moloney",
+   "src": "https://stocksnap.io/photo/hairdresser-cut-S7UEWWIRTD"
+  },
+  {
+   "file": "g1.jpg",
+   "title": "barber shop interior Shawnee Town",
+   "lic": "cc0 1.0",
+   "creator": "Carol M Highsmith",
+   "src": "https://www.rawpixel.com/image/8067152/photo-image-wood-art-living-room"
+  },
+  {
+   "file": "g2.jpg",
+   "title": "Free hairdresser image",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/5923938/photo-image-public-domain-black-person"
+  },
+  {
+   "file": "g3.jpg",
+   "title": "Man getting haircut barber",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/6036967/photo-image-public-domain-hand-black"
+  },
+  {
+   "file": "cta.jpg",
+   "title": "Old barber shop",
+   "lic": "cc0 1.0",
+   "creator": "",
+   "src": "https://www.rawpixel.com/image/5939531/old-barber-shop"
+  }
+ ]
+}

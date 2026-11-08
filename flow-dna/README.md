@@ -69,3 +69,7 @@ Stand 08.11.2026 · Idee von Maik: ein „App Store für Skills“ neben der Web
 - Premium: Einmalkauf, Abo oder beides – und Preise.
 - Dürfen Community-Mitglieder gleich verkaufen (dann Marktplatz: Auszahlungen, AGB, Steuern) oder zuerst nur kostenlos teilen?
 - Store-Versionen der Premium-Skills neutralisieren (Brand-Daten beim ersten Start abfragen).
+
+## Beispielseiten (Demo-Galerie)
+
+`demos/<betrieb>/` – drei Konzeptseiten für **frei erfundene** Demo-Betriebe (Bäckerei Musterbrot, Physio Beispiel, Friseur Beispiel), gebaut nach den Premium-Design-Regeln. Jede Seite trägt oben ein Demo-Banner, `noindex` und die Bildnachweise (CC0, `demos/credits.json`). Neu bauen: `python3 demos/build.py`. Im Store erscheinen sie im Detail von Lead Agent · Website, Landingpage Generator und Website Builder (`beispiele` in `daten.js`). Echte Betriebe kommen hier nur mit Einwilligung rein.

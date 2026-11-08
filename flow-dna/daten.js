@@ -173,5 +173,14 @@ window.FLOW_DNA = {
     { id: "kauf", name: "Kaufen", einheit: "einmalig", text: "Die allgemeine Version für immer – du richtest ihn mit der Anleitung selbst ein." },
     { id: "setup", name: "Mit Einrichtung", einheit: "einmalig", text: "Auf dein Business angepasst und von Maik mit dir eingerichtet – inkl. Probelauf." }
   ],
+  // Demo-Konzeptseiten (frei erfundene Betriebe, CC0-Fotos) – Galerie im Detail der Web-Skills
+  beispiele: {
+    skills: ["lead-agent-web", "lead-seiten", "website"],
+    seiten: [
+      { name: "Bäckerei Musterbrot", art: "Bäckerei · Speisekarte & Öffnungszeiten", url: "demos/baeckerei/", bild: "demos/baeckerei/vorschau.jpg" },
+      { name: "Physio Beispiel", art: "Praxis · Terminbuchung in 3 Schritten", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },
+      { name: "Friseur Beispiel", art: "Salon · Online-Termin & Galerie", url: "demos/friseur/", bild: "demos/friseur/vorschau.jpg" }
+    ]
+  },
   kontakt: { whatsapp: "4917645961547" }
 };
