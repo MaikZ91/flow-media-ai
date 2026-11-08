@@ -113,9 +113,9 @@ window.FLOW_DNA = {
     { id: "lead-qualification", ablauf: [["📥", "Anfrage"], ["🎯", "Punkte"], ["🔥", "Heiß / warm"], ["📅", "Gespräch"]], preise: { miete: 12, kauf: 99, setup: 249 }, version: "1.0", name: "Lead Qualification", kat: "automation", stufe: "premium", status: "bereit", icon: "🎯",
       kurz: "Bewertet Anfragen und sagt dir, mit wem sich ein Gespräch lohnt.", kann: ["Fragt Bedarf, Budget und Zeitrahmen ab", "Sortiert nach Passung", "Bereitet das Erstgespräch vor"], fuer: "Coaches und Dienstleister mit Anfragen" },
     // 04 Web & App Development
-    { id: "website", video: "media/r006", ablauf: [["📂", "Dein Content"], ["🎯", "Fokussieren"], ["🛠️", "Losbauen"], ["🌐", "Live"]], preise: { miete: 19, kauf: 149, setup: 399 }, version: "1.0", name: "Website Builder", kat: "web", stufe: "premium", status: "bereit", icon: "🌐", hinweis: "Für Workshop-Teilnehmer gratis",
-      kurz: "Aus deinem Content wird deine Website – live und selbst weiter bearbeitbar.",
-      kann: ["Nimmt Fotos, Videos, Texte und deinen Stil", "Baut eine komplette Website im eigenen Look", "Stellt sie live – danach mit KI weiterpflegen"],
+    { id: "website", video: "media/r006", ablauf: [["📂","Content auslesen"],["🧪","5 Varianten"],["👆","Auswahl"],["✨","Finale Version"],["🌐","Launch"]], preise: { miete: 19, kauf: 149, setup: 399 }, version: "1.0", name: "Website Builder", kat: "web", stufe: "premium", status: "bereit", icon: "🌐", hinweis: "Für Workshop-Teilnehmer gratis",
+      kurz: "Liest deinen Content, baut fünf Website-Varianten, du wählst – dann geht die beste live.",
+      kann: ["Liest Fotos, Videos, Texte, Branding und deine alte Website aus", "Baut fünf deutlich verschiedene Website-Varianten zum Durchklicken", "Du wählst und mischst – daraus entsteht die finale Version", "Launch nach Rückfrage: eigener GitHub-Account, anderer Account oder nur lokal"],
       fuer: "Alle, die eine eigene Website wollen – ohne Baukasten", demo: "Die Website von Flow Media AI ist so entstanden.", herkunft: "Workshop „Deine Website“ (09.11.)" },
     { id: "app-builder", ablauf: [["📋", "Anforderungen"], ["🧪", "5 Varianten"], ["👆", "Auswahl"], ["📱", "App live"]], preise: { miete: 19, kauf: 179, setup: 449 }, version: "1.0", name: "App Builder", kat: "web", stufe: "premium", status: "bereit", icon: "📱",
       kurz: "Erst fünf klickbare Entwürfe, dann die beste – so entsteht jede App.",
