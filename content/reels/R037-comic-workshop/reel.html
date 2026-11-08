@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Bangers;src:url(fonts/bangers.woff2) format("woff2")}
+@font-face{font-family:Hand;src:url(fonts/patrick.woff2) format("woff2")}
+@font-face{font-family:Oswald;src:url(fonts/Oswald700.ttf)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#1a120c}
+#stage{position:absolute;inset:0}
+.bub{position:absolute;opacity:0;background:#FFFDF6;border:7px solid #1A120C;border-radius:46px;padding:26px 34px;font:400 58px/1.05 Hand;color:#1A120C;text-align:center;box-shadow:10px 12px 0 rgba(26,18,12,.35);transform-origin:var(--ox,50%) 100%}
+.bub b{font-family:Bangers;font-weight:400;letter-spacing:.02em;color:#2F5BFF}
+.bub::after{content:"";position:absolute;bottom:-46px;left:var(--tx,50%);width:0;height:0;border:26px solid transparent;border-top:30px solid #1A120C;transform:translateX(-50%) skewX(var(--sk,-20deg))}
+.bub::before{content:"";position:absolute;bottom:-30px;left:var(--tx,50%);width:0;height:0;border:17px solid transparent;border-top:22px solid #FFFDF6;transform:translateX(-50%) skewX(var(--sk,-20deg));z-index:2}
+.bub.b{border-color:#1A120C;background:#1A120C;color:#FFFDF6}.bub.b::before{border-top-color:#1A120C}
+.cap{position:absolute;left:60px;right:60px;top:150px;text-align:center;font:400 54px Bangers;letter-spacing:.06em;color:#1A120C;opacity:0}
+#fx{position:absolute;inset:0;pointer-events:none}
+#iris{position:absolute;inset:0;pointer-events:none}
+#end{position:absolute;inset:0;opacity:0;text-align:center;color:#1A120C}
+</style></head><body>
+<svg id="stage" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+<div class="cap" id="cap"></div>
+<div class="bub" id="b1"></div><div class="bub b" id="b2"></div>
+<svg id="fx" viewBox="0 0 1080 1920" width="1080" height="1920"><defs><filter id="grain"><feTurbulence id="turb" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="1"/><feColorMatrix values="0 0 0 0 0.1  0 0 0 0 0.07  0 0 0 0 0.04  0 0 0 .55 0"/></filter>
+<radialGradient id="vig" cx="50%" cy="48%" r="72%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#1a0f05" stop-opacity=".55"/></radialGradient></defs>
+<rect width="1080" height="1920" filter="url(#grain)" opacity=".5"/><rect width="1080" height="1920" fill="url(#vig)"/><rect id="flick" width="1080" height="1920" fill="#fff" opacity="0"/>
+<g id="scratch"></g></svg>
+<div id="iris"></div>
+<script>
+const INK="#1A120C",CREAM="#F3E4C6",BLUE="#2F5BFF";
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), out=x=>1-Math.pow(1-x,3), io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const pk=(t,a,d=.35)=>t<a?0:back(cl((t-a)/d));
+const S=6; // stroke
+// ---------- characters ----------
+function arm(sx,sy,ang,len,col,glove,bend=1){ // rubber-hose arm from shoulder, ang in deg (0 = down)
+ const r=ang*Math.PI/180, ex=sx+Math.sin(r)*len, ey=sy+Math.cos(r)*len, mx=(sx+ex)/2+Math.cos(r)*30*bend, my=(sy+ey)/2-Math.sin(r)*30*bend;
+ const hand=glove?`<circle cx="${ex}" cy="${ey}" r="34" fill="#FFFDF6" stroke="${INK}" stroke-width="${S}"/><path d="M${ex-22} ${ey-6} q-18 -8 -10 -24" fill="#FFFDF6" stroke="${INK}" stroke-width="${S}"/><path d="M${ex-14} ${ey+10} h28 M${ex-14} ${ey+20} h22" stroke="${INK}" stroke-width="3"/>`
+  :`<ellipse cx="${ex}" cy="${ey}" rx="30" ry="34" fill="#C89B76" stroke="${INK}" stroke-width="${S}"/><path d="M${ex-12} ${ey+8} q12 10 24 0" stroke="${INK}" stroke-width="4" fill="none"/>`;
+ return `<path d="M${sx} ${sy} Q${mx} ${my} ${ex} ${ey}" stroke="${INK}" stroke-width="40" fill="none" stroke-linecap="round"/><path d="M${sx} ${sy} Q${mx} ${my} ${ex} ${ey}" stroke="${col}" stroke-width="27" fill="none" stroke-linecap="round"/>${hand}`}
+function legs(ph,col,shoe){const a=Math.sin(ph)*16,b=-a;const L=(x,an)=>{const r=an*Math.PI/180,ex=x+Math.sin(r)*120,ey=-20+Math.cos(r)*0;return `<path d="M${x} -140 Q${x+an*.6} -80 ${ex} ${ey}" stroke="${INK}" stroke-width="40" fill="none" stroke-linecap="round"/><path d="M${x} -140 Q${x+an*.6} -80 ${ex} ${ey}" stroke="${col}" stroke-width="27" fill="none" stroke-linecap="round"/><ellipse cx="${ex+18}" cy="${ey+6}" rx="62" ry="30" fill="${shoe}" stroke="${INK}" stroke-width="${S}"/><ellipse cx="${ex+30}" cy="${ey-4}" rx="16" ry="7" fill="#fff" opacity=".35"/>`};return L(-48,a)+L(48,b)}
+function pupil(cx,cy,lx,ly,r=13){return `<ellipse cx="${cx+lx}" cy="${cy+ly}" rx="${r}" ry="${r*1.5}" fill="${INK}"/><path d="M${cx+lx+2} ${cy+ly-r*1.4} l${r*.7} ${r*.9} l-${r*.9} ${r*.3}z" fill="#FFFDF6"/>`}
+function mouthPath(m,cx,cy){return {smile:`M${cx-38} ${cy} Q${cx} ${cy+38} ${cx+38} ${cy}`,grin:`M${cx-46} ${cy-6} Q${cx} ${cy+56} ${cx+46} ${cy-6} Z`,worry:`M${cx-34} ${cy+14} Q${cx} ${cy-14} ${cx+34} ${cy+14}`,open:`M${cx-26} ${cy-4} Q${cx} ${cy+70} ${cx+26} ${cy-4} Z`,flat:`M${cx-30} ${cy+6} L${cx+30} ${cy+6}`,smirk:`M${cx-30} ${cy+8} Q${cx+6} ${cy+20} ${cx+36} ${cy-10}`}[m]}
+function maik(o){const {x,y,s=1,mouth="smile",aL=20,aR=-20,lx=0,ly=0,sq=0,ph=0,brow=0,sweat=0,jaw=0,tilt=0}=o;
+ const sx=s*(1+sq),sy=s*(1-sq);
+ const mp=mouthPath(mouth,0,-392+jaw);const mfill=(mouth==="grin"||mouth==="open")?`fill="#7A2B1E"`:`fill="none"`;
+ let sw="";if(sweat){for(let i=0;i<3;i++){const ph2=(sweat*1.6+i*.33)%1;sw+=`<path d="M${(i-1)*120+ (i===1?150:0)} ${-560+ph2*120} q-14 26 0 34 q14 -8 0 -34z" fill="#9CC9F0" stroke="${INK}" stroke-width="4" opacity="${1-ph2}"/>`}}
+ return `<g transform="translate(${x} ${y}) scale(${sx} ${sy}) rotate(${tilt} 0 -300)">
+ <ellipse cx="0" cy="8" rx="170" ry="26" fill="${INK}" opacity=".18"/>
+ ${legs(ph,"#2B3A55","#5B3A22")}
+ ${arm(-92,-300,-aL,170,"#3B3E45",1,1)}
+ <path d="M-100 -330 Q-118 -200 -128 -150 Q0 -118 128 -150 Q118 -200 100 -330 Q0 -356 -100 -330Z" fill="#3B3E45" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-40 -336 Q0 -312 40 -336" fill="none" stroke="#2A2C31" stroke-width="10"/>
+ ${arm(92,-300,-aR,170,"#3B3E45",1,-1)}
+ <g transform="translate(0 0)">
+ <ellipse cx="-112" cy="-470" rx="20" ry="26" fill="#F2C9A5" stroke="${INK}" stroke-width="${S}"/><ellipse cx="112" cy="-470" rx="20" ry="26" fill="#F2C9A5" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-108 -500 Q-112 -380 -60 -350 Q0 -330 60 -350 Q112 -380 108 -500 Q100 -590 0 -592 Q-100 -590 -108 -500Z" fill="#F2C9A5" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-92 -420 Q-80 -350 0 -342 Q80 -350 92 -420 Q60 -380 0 -378 Q-60 -380 -92 -420Z" fill="#C4925E" opacity=".55"/>
+ <path d="M-112 -505 Q-120 -600 -40 -630 Q-20 -655 10 -636 Q40 -660 70 -630 Q120 -610 112 -505 Q96 -560 40 -566 Q-10 -556 -60 -566 Q-100 -556 -112 -505Z" fill="#E7B34B" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-46 ${-536-brow} q24 -12 46 0 M14 ${-536-brow} q24 -12 46 0" stroke="#A8762A" stroke-width="9" fill="none" stroke-linecap="round"/>
+ <circle cx="-44" cy="-482" r="40" fill="#FFFDF6" stroke="${INK}" stroke-width="9"/><circle cx="44" cy="-482" r="40" fill="#FFFDF6" stroke="${INK}" stroke-width="9"/><path d="M-4 -486 q4 -8 8 0" stroke="${INK}" stroke-width="7" fill="none"/>
+ ${pupil(-44,-480,lx,ly)}${pupil(44,-480,lx,ly)}
+ <ellipse cx="0" cy="-432" rx="20" ry="15" fill="#E59E7C" stroke="${INK}" stroke-width="4"/>
+ <path d="${mp}" ${mfill} stroke="${INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+ ${sw}</g></g>`}
+function bertrand(o){const {x,y,s=1,mouth="smirk",aL=20,aR=-20,glass=0,sq=0,ph=0,lx=0,tilt=0,shine=0}=o;
+ const sx=s*(1+sq),sy=s*(1-sq);const mp=mouthPath(mouth,6,-395);const mfill=(mouth==="grin"||mouth==="open")?`fill="#5A1E14"`:`fill="none"`;
+ const gy=glass*40;
+ const eyes=glass>.25?`<ellipse cx="-42" cy="-488" rx="24" ry="26" fill="#FFFDF6" stroke="${INK}" stroke-width="5"/><ellipse cx="42" cy="-488" rx="24" ry="26" fill="#FFFDF6" stroke="${INK}" stroke-width="5"/>${pupil(-42,-486,lx,0,10)}${pupil(42,-486,lx,0,10)}`:"";
+ return `<g transform="translate(${x} ${y}) scale(${sx} ${sy}) rotate(${tilt} 0 -300)">
+ <ellipse cx="0" cy="8" rx="160" ry="26" fill="${INK}" opacity=".18"/>
+ ${legs(ph,"#151515","#2A2A2A")}
+ ${arm(-92,-300,-aL,175,"#151515",0,1)}
+ <path d="M-108 -300 Q-160 -420 -96 -470 L96 -470 Q160 -420 108 -300Z" fill="#232323" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-104 -330 Q-120 -200 -130 -150 Q0 -118 130 -150 Q120 -200 104 -330 Q0 -350 -104 -330Z" fill="#151515" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-26 -326 v70 M26 -326 v64" stroke="#EDEDED" stroke-width="7" stroke-linecap="round"/><circle cx="-26" cy="-254" r="7" fill="#EDEDED"/><circle cx="26" cy="-260" r="7" fill="#EDEDED"/>
+ <text x="0" y="-195" text-anchor="middle" font-family="Bangers" font-size="54" fill="${BLUE}">KI</text>
+ ${arm(92,-300,-aR,175,"#151515",0,-1)}
+ <circle cx="-122" cy="-478" r="40" fill="#5A3B28" stroke="${INK}" stroke-width="${S}"/><circle cx="-122" cy="-478" r="22" fill="#C89B76"/>
+ <circle cx="122" cy="-478" r="40" fill="#5A3B28" stroke="${INK}" stroke-width="${S}"/><circle cx="122" cy="-478" r="22" fill="#C89B76"/>
+ <path d="M-112 -480 Q-118 -600 0 -606 Q118 -600 112 -480 Q112 -370 0 -352 Q-112 -370 -112 -480Z" fill="#5A3B28" stroke="${INK}" stroke-width="${S}"/>
+ <path d="M-86 -500 Q-90 -540 -44 -540 Q0 -548 44 -540 Q90 -540 86 -500 Q80 -470 50 -462 Q0 -470 -50 -462 Q-80 -470 -86 -500Z" fill="#D9AE85"/>
+ <path d="M-76 -440 Q-80 -470 0 -470 Q80 -470 76 -440 Q74 -372 0 -366 Q-74 -372 -76 -440Z" fill="#D9AE85" stroke="${INK}" stroke-width="5"/>
+ <path d="M-50 -556 q50 -22 100 0" stroke="#3A2618" stroke-width="10" fill="none" stroke-linecap="round"/>
+ ${eyes}
+ <circle cx="-12" cy="-438" r="6" fill="${INK}"/><circle cx="12" cy="-438" r="6" fill="${INK}"/>
+ <path d="${mp}" ${mfill} stroke="${INK}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+ <g transform="translate(0 ${gy}) rotate(${glass>0?glass*-6:0} 0 -488)">
+  <path d="M-96 -514 h82 q8 0 6 10 l-8 34 q-4 14 -22 14 h-40 q-18 0 -22 -14 l-6 -34 q-2 -10 10 -10z" fill="#0B0B0B" stroke="${INK}" stroke-width="4"/>
+  <path d="M96 -514 h-82 q-8 0 -6 10 l8 34 q4 14 22 14 h40 q18 0 22 -14 l6 -34 q2 -10 -10 -10z" fill="#0B0B0B" stroke="${INK}" stroke-width="4"/>
+  <path d="M-12 -506 q12 -8 24 0" stroke="#0B0B0B" stroke-width="8" fill="none"/><path d="M-96 -508 l-26 6 M96 -508 l26 6" stroke="#0B0B0B" stroke-width="8"/>
+  <path d="M-80 -504 l20 0 l-26 34z M30 -504 l20 0 l-26 34z" fill="#fff" opacity="${.35+shine*.5}"/>
+ </g>
+ ${shine>0?`<g transform="translate(96 -520) scale(${shine}) rotate(${shine*90})"><path d="M0 -40 L9 -9 L40 0 L9 9 L0 40 L-9 9 L-40 0 L-9 -9Z" fill="#FFFDF6" stroke="${INK}" stroke-width="4"/></g>`:""}
+ </g>`}
+// ---------- props ----------
+function office(t){return `<rect width="1080" height="1920" fill="${CREAM}"/>
+ <path d="M0 1360 H1080" stroke="${INK}" stroke-width="8"/><rect y="1364" width="1080" height="556" fill="#D8B98A"/>
+ ${Array.from({length:9},(_,i)=>`<path d="M${i*135-40} 1364 L${i*135-160} 1920" stroke="${INK}" stroke-width="4" opacity=".35"/>`).join("")}
+ <rect x="640" y="360" width="330" height="300" rx="10" fill="#BFD7EA" stroke="${INK}" stroke-width="8"/><path d="M805 360 v300 M640 510 h330" stroke="${INK}" stroke-width="8"/>
+ <circle cx="900" cy="430" r="34" fill="#F7E7A8" stroke="${INK}" stroke-width="5"/>
+ <path d="M660 600 q40 -30 80 0 q30 -20 60 0" fill="none" stroke="${INK}" stroke-width="5"/>
+ ${calendar(t)}`}
+function calendar(t){const pages=["JULI","AUG.","SEPT.","OKT.","NOV."];const k=Math.min(4,Math.floor(cl((t-3.6)/3.6)*5));const fly=((t-3.6)/0.72)%1;
+ return `<g transform="translate(150 420)"><rect x="-90" y="-20" width="180" height="210" fill="#FFFDF6" stroke="${INK}" stroke-width="7"/><rect x="-90" y="-20" width="180" height="56" fill="#C0392B" stroke="${INK}" stroke-width="7"/>
+ <text x="0" y="26" text-anchor="middle" font-family="Bangers" font-size="44" fill="#FFFDF6">${pages[k]}</text><text x="0" y="150" text-anchor="middle" font-family="Bangers" font-size="100" fill="${INK}">${[1,1,1,1,8][k]}</text>
+ ${t>3.6&&t<7.2&&k<4?`<g transform="translate(${fly*260} ${-fly*180}) rotate(${fly*160})" opacity="${1-fly}"><rect x="-90" y="36" width="180" height="150" fill="#FFFDF6" stroke="${INK}" stroke-width="6"/></g>`:""}</g>`}
+function desk(t,screen,cx=540,sc=1){return `<g transform="translate(${cx} 1100) scale(${sc}) translate(-540 -1100)"><rect x="80" y="1090" width="920" height="40" rx="8" fill="#8B5E3C" stroke="${INK}" stroke-width="8"/><rect x="130" y="1130" width="40" height="350" fill="#7A5234" stroke="${INK}" stroke-width="7"/><rect x="910" y="1130" width="40" height="350" fill="#7A5234" stroke="${INK}" stroke-width="7"/>
+ <g transform="translate(540 1090)"><path d="M-230 0 L-200 -40 H200 L230 0Z" fill="#9AA3AE" stroke="${INK}" stroke-width="7"/><rect x="-190" y="-330" width="380" height="290" rx="16" fill="#5C6670" stroke="${INK}" stroke-width="8"/><rect x="-168" y="-310" width="336" height="250" rx="6" fill="${screen.bg||"#EAF2FF"}" stroke="${INK}" stroke-width="5"/>${screen.svg||""}</g></g>`}
+function paper(i,t){const x=200+i*170+Math.sin(t*3+i)*40,y=1000-((t*260+i*170)%900),r=t*120+i*50;return `<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-55" y="-70" width="110" height="140" fill="#FFFDF6" stroke="${INK}" stroke-width="5"/><path d="M-35 -40h70M-35 -15h70M-35 10h50M-35 35h60" stroke="${INK}" stroke-width="4" opacity=".6"/></g>`}
+function siteCard(i,x,y,sc,rot,flip=0){const cols=["#2F5BFF","#C0392B","#E7B34B","#2E8B57","#7A4BC2"];const c=cols[i];
+ const banana=i===2?`<path d="M-40 40 q40 50 90 -10 q-46 24 -90 10z" fill="#F7D443" stroke="${INK}" stroke-width="5"/><text x="0" y="-16" text-anchor="middle" font-family="Bangers" font-size="30" fill="${INK}">BANANA.COM</text>`:`<rect x="-60" y="-34" width="120" height="16" fill="${INK}" opacity=".7"/><rect x="-60" y="-8" width="80" height="12" fill="${INK}" opacity=".35"/><rect x="-60" y="18" width="70" height="26" rx="13" fill="${c}"/>`;
+ return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${sc*(1-2*flip>0?1-2*flip:2*flip-1)} ${sc})"><rect x="-90" y="-120" width="180" height="250" rx="14" fill="#FFFDF6" stroke="${INK}" stroke-width="7"/><rect x="-90" y="-120" width="180" height="60" rx="14" fill="${c}" stroke="${INK}" stroke-width="7"/><text x="-70" y="-74" font-family="Bangers" font-size="40" fill="#FFFDF6">${i+1}</text>${banana}</g>`}
+function starburst(t,cx,cy,col1,col2,n=24){let s="";for(let i=0;i<n;i++){const a=(i/n)*Math.PI*2+t*.25,b=a+Math.PI/n;s+=`<path d="M${cx} ${cy} L${cx+Math.cos(a)*2400} ${cy+Math.sin(a)*2400} L${cx+Math.cos(b)*2400} ${cy+Math.sin(b)*2400}Z" fill="${i%2?col1:col2}"/>`}return s}
+function sign(t,y){return `<g transform="translate(540 ${y})"><path d="M-300 -560 v-400 M300 -560 v-400" stroke="${INK}" stroke-width="8"/><rect x="-420" y="-560" width="840" height="470" rx="18" fill="#FFFDF6" stroke="${INK}" stroke-width="10"/><rect x="-400" y="-540" width="800" height="430" rx="12" fill="none" stroke="${BLUE}" stroke-width="6"/>
+ <text x="0" y="-468" text-anchor="middle" font-family="Bangers" font-size="62" fill="${BLUE}" letter-spacing="3">WORKSHOP</text>
+ <text x="0" y="-372" text-anchor="middle" font-family="Bangers" font-size="104" fill="${INK}">DEINE WEBSITE</text>
+ <text x="0" y="-282" text-anchor="middle" font-family="Bangers" font-size="66" fill="${INK}">MORGEN · 18 UHR · LIVE</text>
+ <text x="0" y="-200" text-anchor="middle" font-family="Hand" font-size="50" fill="${INK}">auch Di 10.11. · Website-Skill gratis</text></g>`}
+function confetti(t,t0){if(t<t0)return"";let s="";const cols=[BLUE,"#C0392B","#E7B34B","#2E8B57","#FFFDF6"];for(let i=0;i<60;i++){const k=(t-t0),x=540+Math.sin(i*12.9)*480*Math.min(1,k*1.4)+Math.sin(k*3+i)*30,y=420+Math.cos(i*7.3)*200+k*k*260*(.6+(i%5)*.15);s+=`<rect x="${x}" y="${y}" width="22" height="12" fill="${cols[i%5]}" stroke="${INK}" stroke-width="2" transform="rotate(${k*300+i*40} ${x} ${y})"/>`}return s}
+// ---------- bubbles ----------
+function bub(id,a,b,html,x,y,w,o={}){const e=document.getElementById(id),t=window._t;if(t<a||t>b){e.style.opacity=0;return}
+ const p=pk(t,a,.28),q=cl((b-t)/.15);e.innerHTML=html;e.style.left=x+"px";e.style.top=y+"px";e.style.width=w+"px";e.style.opacity=Math.min(1,q);
+ e.style.transform=`scale(${p*Math.min(1,q*1.2)}) rotate(${o.rot||0}deg)`;e.style.setProperty("--tx",(o.tx||50)+"%");e.style.setProperty("--ox",(o.tx||50)+"%");e.style.setProperty("--sk",(o.sk||-20)+"deg")}
+// ---------- timeline ----------
+window.TOTAL=36;
+window.DRAW=t=>{window._t=t;let g="";const st=document.getElementById("stage");const cap=document.getElementById("cap");cap.style.opacity=0;
+ const bob=Math.sin(t*9)*.025;
+ if(t<3.2){ // title card
+  g+=`<rect width="1080" height="1920" fill="${CREAM}"/>`+starburst(t,540,880,"#E9D3A6",CREAM);
+  const p=pk(t,.25,.6);g+=`<g transform="translate(540 880) scale(${p})"><circle r="400" fill="#FFFDF6" stroke="${INK}" stroke-width="14"/><circle r="372" fill="none" stroke="${BLUE}" stroke-width="8"/>
+   <text y="-150" text-anchor="middle" font-family="Bangers" font-size="70" fill="${INK}" letter-spacing="4">FLOW MEDIA AI zeigt</text>
+   <text y="-30" text-anchor="middle" font-family="Bangers" font-size="128" fill="${INK}">MAIK &amp;</text><text y="100" text-anchor="middle" font-family="Bangers" font-size="128" fill="${BLUE}">BERTRAND</text>
+   <text y="200" text-anchor="middle" font-family="Hand" font-size="64" fill="${INK}">in: „Die Website“</text></g>`;
+  g+=maik({x:250,y:1700+ (1-pk(t,1.1,.5))*700,s:.72,mouth:"grin",aL:150,aR:-40,sq:bob});
+  g+=bertrand({x:830,y:1700+(1-pk(t,1.4,.5))*700,s:.72,mouth:"smirk",aL:30,aR:-150,sq:-bob});
+ } else if(t<9){ // Maik struggles
+  const k=t-3.2;g+=office(t);for(let i=0;i<5;i++)g+=paper(i,t);
+  g+=desk(t,{bg:"#FFF3F0",svg:`<text x="0" y="-210" text-anchor="middle" font-family="Bangers" font-size="58" fill="#C0392B">FEHLER 404</text><text x="0" y="-130" text-anchor="middle" font-family="Hand" font-size="40" fill="${INK}">index_final_v7_neu.html</text>`},790,.62);
+  g+=maik({x:330,y:1760,s:1.25,mouth:k<3?"worry":"open",aL:k<3?150+Math.sin(t*10)*20:170,aR:k<3?-150-Math.sin(t*10+1)*20:-170,lx:Math.sin(t*4)*8,ly:4,brow:k<3?-8:14,sweat:t,sq:Math.sin(t*14)*.03,tilt:Math.sin(t*6)*3});
+  bub("b1",3.7,6.4,"Meine Website ist seit 3 Monaten <b>„fast fertig“</b> …",60,640,640,{tx:42});
+  bub("b2",-1,-1,"",0,0,0);
+  if(t>6.5)bub("b1",6.5,8.9,"Wo fang ich<br>nur an?!",80,700,520,{tx:42});
+ } else if(t<14.5){ // Bertrand enters
+  const k=t-9;g+=office(t);
+  const bx=1500-out(cl(k/1.0))*690;
+  g+=maik({x:290,y:1760,s:1.15,mouth:k<3.2?"worry":k<4.4?"open":"flat",aL:20,aR:k>3.2&&k<4.4?-120:-20,lx:14,ly:0,brow:k>3.2&&k<4.4?18:0,sq:bob});
+  const glass=k>1.1&&k<2.6?Math.sin(cl((k-1.1)/1.5)*Math.PI):0;
+  g+=bertrand({x:bx,y:1760,s:1.15,mouth:k>4.4?"grin":"smirk",aL:k>4.4?150:20,aR:k<1.0?-60:-25,glass,ph:k<1?k*14:0,shine:k>4.4&&k<5.3?Math.sin(cl((k-4.4)/.9)*Math.PI):0,tilt:k<1?-8*(1-k):0,sq:-bob});
+  bub("b2",10.2,12.1,"Gib mal her.",560,700,420,{tx:62});
+  bub("b1",12.2,13.5,"Du bist ein <b>AFFE!</b>",40,700,520,{tx:45});
+  if(t>13.5)bub("b2",13.5,14.5,"Ich bin <b>die KI.</b>",540,700,460,{tx:60});
+ } else if(t<21.5){ // Bertrand builds
+  const k=t-14.5;g+=office(t);
+  const prog=cl((k-2.2)/2.2);
+  const fan=cl((k-4.3)/1.0);
+  const scr=k<2.2?{svg:`<rect x="-130" y="-280" width="260" height="60" fill="#FFFDF6" stroke="${INK}" stroke-width="4"/><text x="-116" y="-238" font-family="Hand" font-size="40" fill="${INK}">${"Bau meine Website".slice(0,Math.floor(cl(k/1.6)*17))}|</text><text x="0" y="-150" text-anchor="middle" font-family="Bangers" font-size="40" fill="${BLUE}">WEBSITE-SKILL</text>`}
+   :{svg:`<text x="0" y="-240" text-anchor="middle" font-family="Bangers" font-size="46" fill="${INK}">${prog<1?"BAUE 5 VERSIONEN …":"FERTIG!"}</text><rect x="-130" y="-190" width="260" height="34" fill="#FFFDF6" stroke="${INK}" stroke-width="4"/><rect x="-126" y="-186" width="${252*prog}" height="26" fill="${BLUE}"/>`};
+  g+=desk(t,scr,560,.9);
+  g+=maik({x:190,y:1790,s:1.0,mouth:fan>0?"open":"flat",aL:20,aR:-20,lx:18,ly:fan>0?-14:0,brow:fan>0?16:0,sq:bob});
+  g+=bertrand({x:860,y:1790,s:1.05,mouth:"smirk",aL:k<2.2?120+Math.sin(t*30)*10:20,aR:k<2.2?-60+Math.sin(t*30+1)*10:-20,glass:0,sq:-bob*.5});
+  // content flying in
+  const items=[["📷","FOTOS"],["🎬","VIDEOS"],["✍","TEXTE"]];
+  if(k<2.4)items.forEach((it,i)=>{const p=cl((k-.2-i*.35)/.9);if(p<=0)return;const x=150+i*260+(540-150-i*260)*io(p),y=360+(820-360)*io(p)-Math.sin(p*Math.PI)*200;g+=`<g transform="translate(${x} ${y}) scale(${1-p*.6}) rotate(${p*360})" opacity="${1-p*.3}"><rect x="-100" y="-70" width="200" height="140" rx="16" fill="#FFFDF6" stroke="${INK}" stroke-width="7"/><text y="10" text-anchor="middle" font-family="Bangers" font-size="52" fill="${BLUE}">${it[1]}</text></g>`});
+  if(k<2.4){cap.style.opacity=cl(k/.3)*cl((2.4-k)/.3);cap.innerHTML="DEIN CONTENT REIN …";}
+  if(fan>0)for(let i=0;i<5;i++){const a=(i-2)*16*out(fan),x=540+(i-2)*175*out(fan),y=620-Math.abs(i-2)*-40*out(fan);g+=siteCard(i,x,y,out(fan)*.95+.05,a)}
+  bub("b2",18.6,21.4,"Fünf Versionen.<br>Du suchst aus.",560,880,460,{tx:62});
+ } else if(t<26.5){ // Maik picks banana
+  const k=t-21.5;g+=office(t);
+  const pick=cl((k-.5)/.6),zoom=cl((k-3.2)/.7);
+  g+=desk(t,{svg:`<text x="0" y="-180" text-anchor="middle" font-family="Bangers" font-size="50" fill="${BLUE}">WÄHL EINE!</text>`},560,.8);
+  for(let i=0;i<5;i++){if(i===2&&zoom>0)continue;const x=540+(i-2)*175,y=620+Math.abs(i-2)*40;let sc=.95;let yy=y;if(i===2){yy=y+pick*240;sc=.95+pick*.2}g+=siteCard(i,x,yy,i!==2&&k>1.2?.95*(1-cl((k-1.2)/.4)):sc,(i-2)*16*(i===2?1-pick:1))}
+  g+=maik({x:270,y:1790,s:1.1,mouth:k<1.4?"grin":k<3.2?"smile":"open",aL:20,aR:k<1.4?-150+pick*30:-30,lx:12,ly:-10,brow:zoom>0?18:0,sq:bob,jaw:zoom>0?6:0});
+  g+=bertrand({x:840,y:1790,s:1.1,mouth:k>1.3&&k<3.2?"worry":"smirk",aL:20,aR:k>1.3&&k<3.2?155:-20,glass:0,tilt:k>1.3&&k<3.2?-6:0,sq:-bob});
+  if(zoom>0){const z=out(zoom);g+=`<g transform="translate(540 ${760-z*40}) scale(${.6+z*.9}) rotate(${(1-z)*20})"><rect x="-210" y="-330" width="420" height="640" rx="40" fill="${INK}"/><rect x="-190" y="-300" width="380" height="580" rx="24" fill="#FFFBE8"/>
+   <rect x="-190" y="-300" width="380" height="200" rx="24" fill="#F7D443"/><path d="M-120 -150 q110 110 230 -20 q-120 50 -230 20z" fill="#F7D443" stroke="${INK}" stroke-width="6"/><text y="-60" text-anchor="middle" font-family="Bangers" font-size="54" fill="${INK}">BANANA.COM</text>
+   <rect x="-150" y="-20" width="300" height="20" fill="${INK}" opacity=".5"/><rect x="-150" y="20" width="220" height="16" fill="${INK}" opacity=".3"/><rect x="-110" y="80" width="220" height="64" rx="32" fill="${BLUE}"/><text y="124" text-anchor="middle" font-family="Bangers" font-size="40" fill="#fff">BESTELLEN</text>
+   <g transform="translate(120 -330) scale(${pk(t,24.9,.3)})"><rect x="-90" y="-40" width="180" height="80" rx="40" fill="#C0392B" stroke="${INK}" stroke-width="6"/><text y="16" text-anchor="middle" font-family="Bangers" font-size="54" fill="#fff">● LIVE</text></g></g>`;g+=confetti(t,24.9)}
+  bub("b2",22.7,24.6,"Ernsthaft?<br>Die <b>Bananen</b>-Version?",500,900,520,{tx:68});
+  bub("b1",25.0,26.5,"Die ist ja <b>LIVE?!</b>",40,1240,470,{tx:40});
+ } else if(t<32.6){ // sign
+  const k=t-26.5;g+=office(t);
+  const sy=-200+out(cl(k/.6))*1280+Math.sin(cl(k/.6)*Math.PI)*30;
+  g+=sign(t,sy);
+  g+=maik({x:280,y:1800,s:1.05,mouth:k>1.5?"grin":"open",aL:k>1.5?160:20,aR:-20,lx:10,ly:-16,sq:bob+(k>1.5?Math.abs(Math.sin(t*8))*.05:0)});
+  g+=bertrand({x:820,y:1800,s:1.05,mouth:"smirk",aL:20,aR:-120,glass:k>4&&k<5.6?Math.sin(cl((k-4)/1.6)*Math.PI)*.6:0,shine:k>4.2&&k<5?Math.sin(cl((k-4.2)/.8)*Math.PI):0,sq:-bob});
+  bub("b1",27.9,30.0,"Ich bin <b>dabei!</b>",40,1010,440,{tx:42});
+  bub("b2",30.2,32.5,"Ich weiß.",640,1010,340,{tx:56});
+ } else { // end card
+  g+=`<rect width="1080" height="1920" fill="${CREAM}"/>`+starburst(t,540,760,"#E9D3A6",CREAM);
+  const p=pk(t,32.8,.5);
+  g+=`<g transform="translate(540 760) scale(${p})"><circle r="360" fill="#FFFDF6" stroke="${INK}" stroke-width="14"/><circle r="334" fill="none" stroke="${BLUE}" stroke-width="8"/>
+   <text y="-120" text-anchor="middle" font-family="Bangers" font-size="64" fill="${INK}">BIS MORGEN,</text><text y="10" text-anchor="middle" font-family="Bangers" font-size="150" fill="${BLUE}">18 UHR!</text>
+   <text y="110" text-anchor="middle" font-family="Hand" font-size="54" fill="${INK}">Workshop · Deine Website</text><text y="180" text-anchor="middle" font-family="Hand" font-size="46" fill="${INK}">auch Di 10.11. · live</text></g>`;
+  g+=`<g transform="translate(540 1400) scale(${pk(t,33.4,.4)})"><rect x="-420" y="-70" width="840" height="140" fill="${BLUE}" stroke="${INK}" stroke-width="8"/><text y="26" text-anchor="middle" font-family="Bangers" font-size="76" fill="#fff" letter-spacing="2">SCHREIB MIR „WORKSHOP“</text></g>`;
+  g+=maik({x:230,y:1830,s:.55,mouth:"grin",aL:20,aR:-150,sq:bob});g+=bertrand({x:850,y:1830,s:.55,mouth:"smirk",aL:150,aR:-20,sq:-bob});
+  g+=`<text x="540" y="1890" text-anchor="middle" font-family="Hand" font-size="30" fill="${INK}" opacity=".7">Comic-Animation · Bertrand verkörpert die KI</text>`;
+ }
+ st.innerHTML=g;
+ if(t<3.2||t>=32.6||!(t>3.7&&t<9))document.getElementById("b1").style.opacity=document.getElementById("b1").style.opacity;
+ // hide bubbles outside their scenes
+ if(t<3.7||t>=32.6){["b1","b2"].forEach(i=>document.getElementById(i).style.opacity=0)}
+ // film fx
+ document.getElementById("turb").setAttribute("seed",Math.floor(t*24)%97);
+ document.getElementById("flick").setAttribute("opacity",(Math.sin(t*61)*.5+.5)*.035);
+ const sx=Math.floor(t*12)%7===0?`<path d="M${(t*997)%1080} 0 v1920" stroke="#3a2a1a" stroke-width="2" opacity=".35"/>`:"";document.getElementById("scratch").innerHTML=sx;
+ // iris: open at start, close at scene changes, close at end
+ const cuts=[3.2,9,14.5,21.5,26.5,32.6];let r=1500;
+ if(t<.6)r=out(t/.6)*1500;
+ cuts.forEach(c=>{const d=Math.abs(t-c);if(d<.22)r=Math.min(r,30+d/.22*1500)});
+ if(t>35.2)r=Math.max(0,(36-t)/.8*1500);
+ const ix=t>35.2?540:540,iy=t>35.2?760:900;
+ document.getElementById("iris").style.background=`radial-gradient(circle at ${ix}px ${iy}px, transparent ${r}px, #120a04 ${r+2}px)`;
+};
+DRAW(0);
+</script></body></html>

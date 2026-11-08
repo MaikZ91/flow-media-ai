@@ -72,6 +72,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Sa 07.11. 11–13 Uhr | ✓ gesendet (Routine 07.11.) · P009 Die FLOW-Methode | erster Post zur neuen Positionierung, danach anpinnen |
 | So 08.11. 18–19 Uhr | ✓ gesendet (Routine 08.11.) · **R033 Workshop „Deine Website“** statt R028 (Workshop Mo 09.11. + Di 10.11.); R028 → Fr 13.11. | Build + Workshop-Promo, Story mit Countdown |
 | So 08.11. 18–20 Uhr | **R036 Website-Skill: 3 Websites, 1 Skill** (Workshop Mo/Di, Skill kostenlos für Teilnehmende) + Community-Post | Build + Connect, Workshop |
+| So 08.11. abends / Mo 09.11. morgens | **R037 Comic „Maik & Bertrand in: Die Website“** (Workshop-Promo, gezeichnete Animation) | Build + Connect, Workshop |
 | Mo 09.11. morgens + 18–19 Uhr | Story „Heute 18 Uhr“ (Workshop, nur wenn er stattfindet) · R026 Deine erste App in 5 Schritten | Enable, CTA Sparring/Erstgespräch |
 | Di 10.11. 18–20 Uhr | R027 120 Minuten. Deine Website. | Build + Offer |
 | Mi 11.11. 18–20 Uhr | **R035 Flow DNA Launch** (vorher Bio-Link setzen) · R029 rutscht auf So 15.11. | Tools/Agentic, Launch |
