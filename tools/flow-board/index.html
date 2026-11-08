@@ -1134,11 +1134,14 @@ function monthChart(txs) {
     <div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Einnahmen und Ausgaben pro Monat">${grid}${bars}</svg><div class="tip" hidden></div></div>`;
 }
 const yearTxs = () => fin.filter(e => e.type === "tx" && (e.date || "").startsWith(String(finUi.year)));
+// offBook: shown in the list (e.g. barter / Tausch) but not counted in sums, chart or exports
+const bookTxs = () => yearTxs().filter(t => !t.offBook);
 const yearSelect = () => {
   const years = [...new Set([new Date().getFullYear(), ...fin.filter(e => e.type === "tx" && e.date).map(e => Number(e.date.slice(0, 4)))])].sort((a, b) => b - a);
   return `<label class="mini">Jahr <select data-fin-year>${years.map(v => `<option ${v === finUi.year ? "selected" : ""}>${v}</option>`).join("")}</select></label>`;
 };
 function statusChip(t) {
+  if (t.offBook) return `<span class="chipbtn" title="Steht nur zur Info in der Liste und zählt nicht in Summen, Diagramm und Export">Tausch · nicht gebucht</span>`;
   if (t.kind !== "in") return "";
   return t.status === "open" ? `<button type="button" class="chipbtn open" data-fin-paid="${t.id}" title="Als bezahlt markieren">offen</button>` : `<span class="chipbtn">bezahlt</span>`;
 }
@@ -1148,8 +1151,8 @@ function receiptChip(t) {
   return f ? `<a class="chipbtn" href="${esc(blobUrl(f))}" target="_blank" rel="noopener" title="${esc(f.name)}" style="text-decoration:none">✓ Beleg öffnen</a>` : `<span class="chipbtn" title="Beleg vorhanden">✓ Beleg</span>`;
 }
 function finBusiness() {
-  const y = String(finUi.year), txs = yearTxs();
-  const inc = txs.filter(t => t.kind === "in"), out = txs.filter(t => t.kind === "out");
+  const y = String(finUi.year), txs = yearTxs(), book = txs.filter(t => !t.offBook);
+  const inc = book.filter(t => t.kind === "in"), out = book.filter(t => t.kind === "out");
   const sum = a => a.reduce((n, t) => n + (Number(t.amount) || 0), 0), sumNet = a => a.reduce((n, t) => n + netOf(t), 0);
   // Kleinunternehmer cannot reclaim input VAT, so expenses count gross
   const small = invProfile().small !== false;
@@ -1161,7 +1164,7 @@ function finBusiness() {
       <td>${statusChip(t)}</td>
       <td>${t.receipt ? receiptChip(t) : `<button type="button" class="chipbtn miss" data-fin-receipt="${t.id}" title="Beleg als vorhanden markieren">fehlt</button>`}</td>
       <td class="num">${t.vat ? `${t.vat} %` : ""}</td>
-      <td class="num ${t.kind === "in" ? "pos" : "neg"}">${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
+      <td class="num ${t.offBook ? "" : t.kind === "in" ? "pos" : "neg"}" ${t.offBook ? 'style="opacity:.5;text-decoration:line-through"' : ""}>${t.kind === "in" ? "+" : "−"} ${eur2(t.amount)}</td>
       <td><div class="ract">${t.inv ? `<button type="button" class="mini" data-inv-view="${t.id}">Rechnung</button>` : ""}${delBtn(t.id)}</div></td></tr>`).join("");
   return `<div class="fin-tools">${yearSelect()}
       ${WEB ? `<button type="button" class="mini" data-fin-xlsx>EÜR-Tabelle (Excel)</button><button type="button" class="mini" data-fin-csv>CSV</button>` : ""}
@@ -1174,7 +1177,7 @@ function finBusiness() {
       ${finKpi("Offene Rechnungen", eur(open), `${inc.filter(t => t.status === "open").length} offen`)}
     </div>
     <div class="sgrid">
-      <div class="panel spanel wide"><h3>Pro Monat ${y}</h3>${monthChart(txs)}</div>
+      <div class="panel spanel wide"><h3>Pro Monat ${y}</h3>${monthChart(book)}</div>
       <div class="panel spanel"><h3>Grenzen im Blick</h3>
         ${meter("Kleinunternehmer (Umsatz)", sumNet(inc), 25000, "Bis 25.000 € im Vorjahr und 100.000 € im laufenden Jahr keine Umsatzsteuer.")}
         ${meter("Gewerbesteuer-Freibetrag (Gewinn)", Math.max(0, profit), 24500, "Nur bei Gewerbe relevant – darüber fällt Gewerbesteuer an.")}
@@ -1411,7 +1414,7 @@ function renderFin() {
 /* exports (web only: the artifact viewer cannot hand out files) */
 function saveBlob(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000) }
 function finCsv() {
-  const y = String(finUi.year), rows = yearTxs().sort((a, b) => a.date.localeCompare(b.date));
+  const y = String(finUi.year), rows = bookTxs().sort((a, b) => a.date.localeCompare(b.date));
   const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`, num = n => String(n).replace(".", ",");
   const csv = ["Buchungsdatum;Einnahme/Ausgabe;Beschreibung;Kunde/Lieferant;Kategorie;Status;USt %;Brutto;Netto;Beleg vorhanden;Info"].concat(rows.map(t => [deDate(t.date), t.kind === "in" ? "Einnahme" : "Ausgabe", q(t.title), q(t.party), q(t.category),
     t.kind === "in" ? (t.status === "open" ? "offen" : "bezahlt") : "", t.vat || 0, num((t.kind === "in" ? 1 : -1) * t.amount), num((t.kind === "in" ? 1 : -1) * netOf(t)), t.receipt ? "ja" : "nein", q(t.note)].join(";"))).join("\n");
@@ -1422,7 +1425,7 @@ const loadXlsx = () => xlsxLib || (xlsxLib = new Promise((ok, fail) => { const s
 // same layout as the course's EÜR template: summary sheet + one sheet per month (expenses negative so the month sums give the result)
 async function finXlsx() {
   let X; try { X = await loadXlsx() } catch { toast("Excel-Export konnte nicht geladen werden. Prüfe die Internetverbindung."); return }
-  const y = finUi.year, txs = yearTxs(), me = invProfile().company || "Flow Media AI", wb = X.utils.book_new();
+  const y = finUi.year, txs = bookTxs(), me = invProfile().company || "Flow Media AI", wb = X.utils.book_new();
   const sign = t => t.kind === "in" ? 1 : -1, sums = [];
   const sheets = MONTHS.map((name, k) => {
     const rows = txs.filter(t => Number(t.date.slice(5, 7)) === k + 1).sort((a, b) => a.date.localeCompare(b.date)).map(t => [
