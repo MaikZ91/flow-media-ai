@@ -131,6 +131,24 @@ nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius
 .kp .dn.ok{background:#2F5BFF;border-color:#2F5BFF;color:#fff}
 .kp .opt{border:2px dashed #0B0B0B;padding:10px 12px;margin:4px 0 8px}
 .kp .lb ol{list-style:decimal;border-top:0}
+.kp .pm{display:flex;align-items:stretch;border:2px solid #0B0B0B;background:#0B0B0B;margin:8px 0 10px}
+.kp .pm code{flex:1;background:none;color:#F4F4F1;padding:10px 12px;font:400 12.5px/1.5 "JetBrains Mono",monospace}
+.kp .pm button{border:0;border-left:2px solid #333;background:#2F5BFF;color:#fff;font:700 11px Montserrat;letter-spacing:.1em;text-transform:uppercase;padding:0 12px;cursor:pointer}
+.kp .sh{font:700 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;margin:12px 0 2px}
+.kp h3{font:700 24px/1 Oswald;text-transform:uppercase;margin:26px 0 10px;padding-bottom:8px;border-bottom:2px solid #0B0B0B}
+.kp .sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.kp .sp div{border:2px solid #0B0B0B;background:#fff}
+.kp .sp b{display:block;font:700 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;padding:8px 10px}
+.kp .sp pre{margin:0;background:#0B0B0B;color:#F4F4F1;padding:10px;font:400 12px/1.55 "JetBrains Mono",monospace;white-space:pre-wrap}
+.kp details{border-bottom:1px solid rgba(11,11,11,.14);padding:10px 0;font-size:14px;line-height:1.5}
+.kp summary{font-weight:600;cursor:pointer}
+.kp details p{margin:6px 0 0;color:#333}
+.kp .end{background:#0B0B0B;color:#fff;padding:22px 18px;margin-top:26px}
+.kp .end h4{font:700 34px/1 Oswald;text-transform:uppercase;margin:6px 0 10px}
+.kp .end h4 span{color:#2F5BFF}
+.kp .end p{font-size:14px;line-height:1.5;color:#ddd;margin:0 0 14px}
+.kp .end .tag{font:700 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#9a9a95}
+.kp .end .btnx{margin-top:8px}
 .kp .lb ol.opt{border-top:2px dashed #0B0B0B}
 .tt{margin:6px 0 4px}.tt>b{display:block;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#6B6B66;margin-bottom:6px}.tt .fl button small{font-weight:500;color:#6B6B66;margin-left:4px}.tt .fl button.on small{color:#cfd8ff}
 .srt{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.srt button{border:1.5px solid #0B0B0B;background:#fff;font:600 13px Inter;padding:8px;cursor:pointer}.srt button.on{background:#2F5BFF;border-color:#2F5BFF;color:#fff}
@@ -342,10 +360,18 @@ function kursPlayer(k){const D=kDone(k.id),L=k.lektionen;const nD=D.length;
    return `<li class="${on?"on":""}"><button type="button" class="lh" data-klek="${i}"><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em class="${dn?"ok":""}">${st}</em></button>
    ${on?`<div class="lb">${l.text?`<p>${l.text}</p>`:""}
     ${l.videos&&l.videos.length>1?`<div class="vs">${l.videos.map((v,j)=>`<button type="button" class="${j===kVid?"on":""}" data-kvid="${j}">▶ ${DNA.esc(v[2])}</button>`).join("")}</div>`:""}
+    ${l.prompt?`<div class="pm"><code>${DNA.esc(l.prompt)}</code><button type="button" data-kcopy="${i}">Kopieren</button></div>`:""}
     ${l.punkte?`<${l.optional?"ol":"ul"}${l.optional?' class="opt" style="padding-left:30px"':""}>${l.punkte.map(x=>`<li>${x}</li>`).join("")}</${l.optional?"ol":"ul"}>`:""}
     ${l.links?`<div class="ln">${l.links.map(([t,u,n])=>`<a href="${u}"${u[0]==="?"?"":` target="_blank" rel="noopener"`}><b>${DNA.esc(t)} ↗</b><span>${DNA.esc(n)}</span></a>`).join("")}</div>`:""}
+    ${l.beispiele?`<p class="sh">So sieht das Ergebnis aus</p><div class="ln">${l.beispiele.map(([t,u,n])=>`<a href="${u}" target="_blank" rel="noopener"><b>${DNA.esc(t)} ↗</b><span>${DNA.esc(n)}</span></a>`).join("")}</div>`:""}
     ${l.aufgabe?`<div class="tk"><small>Deine Aufgabe</small>${DNA.esc(l.aufgabe)}</div>`:""}
-    ${l.folgt?"":`<button type="button" class="dn ${dn?"ok":""}" data-kdone="${i}">${dn?"✓ Erledigt":"Als erledigt markieren"}</button>`}</div>`:""}</li>`}).join("")}</ol></div>`}
+    ${l.folgt?"":`<button type="button" class="dn ${dn?"ok":""}" data-kdone="${i}">${dn?"✓ Erledigt":"Als erledigt markieren"}</button>`}</div>`:""}</li>`}).join("")}</ol>
+  ${k.spick?`<h3>Spickzettel</h3><div class="sp">${k.spick.map(([t,c])=>`<div><b>${DNA.esc(t)}</b><pre>${DNA.esc(c)}</pre></div>`).join("")}</div>`:""}
+  ${k.faq?`<h3>Häufige Stolpersteine</h3>${k.faq.map(([q,a])=>`<details><summary>${DNA.esc(q)}</summary><p>${a}</p></details>`).join("")}`:""}
+  ${k.ende?(()=>{const req=L.map((l,i)=>l.optional?-1:i).filter(i=>i>=0);const fertig=req.every(i=>D.includes(i));const t=k.ende.titel.split(" ");const last=t.pop();
+   return `<div class="end"><span class="tag">${fertig?"✓ Kurs abgeschlossen":"Am Ende des Kurses"}</span><h4>${DNA.esc(t.join(" "))} <span>${DNA.esc(last)}</span></h4><p>${DNA.esc(k.ende.text)}</p>
+   ${A.supportGruppe?`<a class="btnx b" href="${A.supportGruppe}" target="_blank" rel="noopener">Tech-Support-Gruppe</a>`:""}
+   <a class="btnx o" style="color:#0B0B0B" href="${DNA.wa(`Hi Maik, ich habe den Kurs „${k.titel}“ ${fertig?"abgeschlossen":"gemacht"} – hier ist meine Website: `)}" target="_blank" rel="noopener">Zeig Maik deine Website</a></div>`})():""}</div>`}
 function kurse(){const M=kVorgemerkt();
  if(kursId){const k=K.kurse.find(x=>x.id===kursId);if(k&&kOffen(k)&&k.lektionen){kursPlayer(k);return}if(k){const lk=k.status==="live";document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>${lk?"Mit Kurs-Code":"Coming soon"}</span>`;
   view.innerHTML=`<div class="kd"><button type="button" class="back" data-kurs="">← Alle Kurse</button><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>${lk?"Fertig · mit Code":"Coming soon"}</span></div>
@@ -356,7 +382,9 @@ function kurse(){const M=kVorgemerkt();
  document.getElementById("meta").innerHTML=`<span>Online-Kurse</span><span>${K.kurse.filter(x=>x.status==="live").length} live · ${K.kurse.filter(x=>x.status!=="live").length} in Planung</span>`;
  view.innerHTML=`<div class="ku"><p class="in">${DNA.esc(K.hinweis||"")}</p>${K.kurse.map(k=>`<button type="button" class="kc" data-kurs="${k.id}"><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"></div><div class="tx" style="position:relative;margin-top:-150px;height:150px;padding:14px"><i>${k.nr}</i><b>${DNA.esc(k.titel)}</b><span>${DNA.esc(k.untertitel)}</span></div>
   <div class="ft"><span>${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</span><em class="${k.status==="live"||M.includes(k.id)?"vm":""}">${kOffen(k)?"▶ Jetzt ansehen":k.status==="live"?"🔒 Mit Code":M.includes(k.id)?"✓ Vorgemerkt":"Coming soon"}</em></div></button>`).join("")}</div>`}
-document.addEventListener("click",e=>{const kl2=e.target.closest("[data-klek]");if(kl2){const i=+kl2.dataset.klek;kLek=(i===kLek&&i>=0)?-1:i;kVid=0;kurse();return}
+document.addEventListener("click",e=>{const kcp=e.target.closest("[data-kcopy]");if(kcp){const k=K.kurse.find(x=>x.id===kursId);const t=k&&k.lektionen[+kcp.dataset.kcopy].prompt;const ok=()=>{kcp.textContent="✓ Kopiert";setTimeout(()=>kcp.textContent="Kopieren",1500)};
+  try{navigator.clipboard.writeText(t).then(ok,()=>{})}catch(err){};return}
+ const kl2=e.target.closest("[data-klek]");if(kl2){const i=+kl2.dataset.klek;kLek=(i===kLek&&i>=0)?-1:i;kVid=0;kurse();return}
  const kv=e.target.closest("[data-kvid]");if(kv){kVid=+kv.dataset.kvid;kurse();const v=document.getElementById("kvid");v&&v.play().catch(()=>{});return}
  const kd=e.target.closest("[data-kdone]");if(kd){const i=+kd.dataset.kdone;let D=kDone(kursId);D=D.includes(i)?D.filter(x=>x!==i):D.concat(i);try{localStorage.setItem("dna-kurs-done-"+kursId,JSON.stringify(D))}catch(err){};kurse();return}
  const kb=e.target.closest("[data-kurs]");if(kb){kLek=-1;kVid=0;kursId=kb.dataset.kurs;view.scrollTop=0;kurse();return}
