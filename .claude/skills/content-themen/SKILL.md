@@ -73,7 +73,6 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | So 08.11. 18–19 Uhr | ✓ gesendet (Routine 08.11.) · **R033 Workshop „Deine Website“** statt R028 (Workshop Mo 09.11. + Di 10.11.); R028 → Fr 13.11. | Build + Workshop-Promo, Story mit Countdown |
 | So 08.11. 18–20 Uhr | **R036 Website-Skill: 3 Websites, 1 Skill** (Workshop Mo/Di, Skill kostenlos für Teilnehmende) + Community-Post | Build + Connect, Workshop |
 | So 08.11. abends / Mo 09.11. morgens | **R037 Comic „Maik & Bertrand in: Die Website“** (Workshop-Promo, gezeichnete Animation) | Build + Connect, Workshop |
-| Mo 09.11. morgens + 18–19 Uhr | Story „Heute 18 Uhr“ (Workshop, nur wenn er stattfindet) · R026 Deine erste App in 5 Schritten | Enable, CTA Sparring/Erstgespräch |
 | Di 10.11. 18–20 Uhr | R027 120 Minuten. Deine Website. | Build + Offer |
 | Mi 11.11. 18–20 Uhr | **R035 Flow DNA Launch** (vorher Bio-Link setzen) · R029 rutscht auf So 15.11. | Tools/Agentic, Launch |
 | So 15.11. 18–20 Uhr | R029 Dieses Video war ein Plakat | Kreativ/How-to |
@@ -89,6 +88,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | 07.11.2026 | P010 | `weg` / `lernen` | Einzelpost | „Ist das was für dich?“ – Für wen / nicht für wen (Positionierung), CTA „FLOW“ per DM | `format = fuer-wen-post` |
 | 07.11.2026 | P011 | `weg` | Karussell (5) | „Mein Weg“ – Robotik (Studium) → AR/HoloLens 2017 → heute KI; „Ich baue nicht erst seit KI.“, CTA Idee in die Kommentare | `format = mein-weg-karussell` |
 | 07.11.2026 | R032 | `weg` / `engineering` | Reel 25 s | „Mein Weg“ – Roboterarm 2017 → HoloLens 2017 → KI-Video (Kamera kreist), CTA Idee in die Kommentare | `format = origin-montage` |
+| 09.11.2026 | P012 + R037 | `web` / `lernen` | Story 9:16 + Comic-Reel 36 s | Workshop-Tag: Story „Heute 18 Uhr“ (Countdown-Sticker) + Comic „Maik & Bertrand in: Die Website“ (Bertrand = KI baut 5 Versionen, Maik nimmt BANANA.COM) | `format = story-countdown` / `format = cartoon` |
 | 07.11.2026 | R033 | `web` / `lernen` | Reel 24 s | Workshop „Deine Website“ Mo 09.11. 18–19 Uhr, 59 € – Content → Website-Skill → LIVE (FLOW-Phasen, Timer 60:00), CTA „WORKSHOP“ | `format = countdown-build` |
 | 07.11.2026 | R034 | `web` / `lernen` | Reel 44 s (Talking Head, Farbe) | Workshop „Deine Website“ Mo 09.11. 18–19 Uhr, Website-Skill gratis; Animationen pro Satz, ohne Preis | `musik = deep-house` |
 | 06.11.2026 | P009 | `lernen` / `weg` | Karussell (6 Folien) | „Die FLOW-Methode“ – Fokussieren · Losbauen · Optimieren · Wachsen (Idea2Concept …), CTA „Welche Phase? F, L, O oder W“ | `format = methoden-karussell` |
