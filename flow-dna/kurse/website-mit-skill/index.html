@@ -102,6 +102,15 @@ pre .k{color:#8FA6FF}
 .end h2{font-size:clamp(44px,8vw,96px);margin:14px 0 20px}
 .end p{max-width:520px;font-size:17px}
 .end .row{justify-content:flex-start}
+#gate{position:fixed;inset:0;z-index:50;background:var(--paper);display:none;align-items:center;justify-content:center;padding:24px}
+#gate.on{display:flex}
+#gate .box{width:100%;max-width:440px;border:2px solid var(--ink);background:var(--card);padding:32px 28px}
+#gate h2{font-size:52px;margin:12px 0 10px}
+#gate form{display:flex;margin-top:20px;border:2px solid var(--ink)}
+#gate input{flex:1;min-width:0;border:0;padding:14px;font:600 16px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--ink)}
+#gate button{border:0;border-left:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:0 18px;font:600 12px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+#gate .msg{min-height:22px;margin-top:10px;font-size:14px}
+#gate a{color:var(--ink)}
 footer{border-top:3px solid var(--ink)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:18px;padding-bottom:28px}
 
@@ -114,6 +123,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 </style>
 </head>
 <body>
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+  <div class="box">
+    <span class="label">Videokurs · 03</span>
+    <h2 id="gate-h">Kurs-<span class="blue">Code.</span></h2>
+    <p>Gib deinen Kurs-Code ein, um „Bau deine Website mit Skill“ freizuschalten.</p>
+    <form id="gate-f"><input name="c" placeholder="KURS-CODE" aria-label="Kurs-Code" autocomplete="off"><button type="submit">Freischalten</button></form>
+    <p class="msg" id="gate-m"></p>
+    <p class="label" style="margin-top:8px"><a href="../../?tab=kurse">← Zur Kursübersicht</a></p>
+  </div>
+</div>
 <header>
   <div class="wrap">
     <a class="mark" href="../../?tab=kurse" aria-label="Zurück zur Flow-DNA-App">
@@ -170,6 +189,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 </footer>
 
 <script>
+/* ===== Freischaltung per Kurs-Code (gleicher Merker wie in der Flow-DNA-App) ===== */
+(function(){
+  const ID = 'website', CODE = 'WEBSITE', KEY = 'dna-kurse-frei';
+  const get = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e) { return []; } };
+  const g = document.getElementById('gate');
+  if (get().includes(ID)) return;
+  g.classList.add('on');
+  document.getElementById('gate-f').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = e.target.c.value.trim().toUpperCase(), m = document.getElementById('gate-m');
+    if (v !== CODE) { m.textContent = v ? 'Der Code passt nicht.' : 'Bitte einen Code eingeben.'; return; }
+    const F = get(); F.push(ID); try { localStorage.setItem(KEY, JSON.stringify(F)); } catch(err) {}
+    g.classList.remove('on');
+  });
+})();
+
 /* ===== Kursdaten: hier anpassen ===== */
 const COURSE = {
   id: 'website-mit-skill',

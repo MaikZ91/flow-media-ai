@@ -102,6 +102,36 @@ nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius
 .kd h2{font:700 38px/1 Oswald;text-transform:uppercase;margin:12px 0 4px}.kd .sub{font-size:15px;color:#444;margin:0 0 6px}.kd .meta{font:600 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#6B6B66;margin-bottom:10px}
 .kd ol{list-style:none;padding:0;margin:0 0 12px;border-top:2px solid #0B0B0B}.kd li{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(11,11,11,.14);font-size:15px}.kd li i{font-style:normal;font:700 18px Oswald;color:#c7c7c2;min-width:26px}.kd li em{margin-left:auto;font-style:normal;color:#9a9a95}
 .kd form{display:flex;gap:6px;margin-top:8px}.kd form input{flex:1;min-width:0;border:2px solid #0B0B0B;padding:12px;font:600 15px "JetBrains Mono",monospace;text-transform:uppercase}.kd form button{border:0;background:#0B0B0B;color:#fff;font:600 14px Inter;padding:0 14px;cursor:pointer}.kd .msg{font-size:13px;color:#555;margin:6px 0 0}
+.kp video{display:block;width:100%;aspect-ratio:16/10;background:#0B0B0B;border:2px solid #0B0B0B;margin:4px 0 6px}
+.kp .now{font:600 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#6B6B66;margin:0 0 12px}
+.kp .hz{font:600 12px Inter;color:#6B6B66;margin:0 0 10px}
+.kp ol li{display:block;padding:0}
+.kp .lh{all:unset;box-sizing:border-box;display:flex;gap:10px;align-items:center;width:100%;padding:12px 0;cursor:pointer;font-size:15px}
+.kp .lh i{font-style:normal;font:700 18px Oswald;color:#c7c7c2;min-width:26px}
+.kp .lh em{margin-left:auto;font-style:normal;font:700 11px Montserrat;letter-spacing:.1em;text-transform:uppercase;color:#9a9a95;white-space:nowrap}
+.kp .lh em.ok{color:#0B0B0B}
+.kp li.on .lh{box-shadow:inset 4px 0 0 #2F5BFF;padding-left:10px}
+.kp li.on .lh i{color:#2F5BFF}
+.kp li.on .lh b{font-weight:700}
+.kp .lb{padding:2px 0 16px 36px;font-size:14px;line-height:1.55}
+.kp .lb p{margin:0 0 8px}
+.kp .lb ul{margin:6px 0 10px;padding-left:18px}
+.kp .lb li{display:list-item;border:0;padding:3px 0;font-size:14px}
+.kp .lb code{font:400 12.5px "JetBrains Mono",monospace;background:#ecece7;padding:1px 4px}
+.kp .vs{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.kp .vs button{border:2px solid #0B0B0B;background:#fff;font:600 12px Inter;padding:7px 10px;cursor:pointer}
+.kp .vs button.on{background:#0B0B0B;color:#fff}
+.kp .ln{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px;margin:8px 0 10px}
+.kp .ln a{display:block;border:2px solid #0B0B0B;padding:9px 10px;color:#0B0B0B;text-decoration:none;background:#fff}
+.kp .ln a b{display:block;font:700 15px Oswald;text-transform:uppercase}
+.kp .ln a span{display:block;font-size:11.5px;color:#6B6B66}
+.kp .tk{border:2px solid #0B0B0B;padding:10px 12px;margin:8px 0;background:#fff}
+.kp .tk small{display:block;font:700 11px Montserrat;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.kp .dn{border:2px solid #0B0B0B;background:#fff;font:700 12px Montserrat;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;cursor:pointer}
+.kp .dn.ok{background:#2F5BFF;border-color:#2F5BFF;color:#fff}
+.kp .opt{border:2px dashed #0B0B0B;padding:10px 12px;margin:4px 0 8px}
+.kp .lb ol{list-style:decimal;border-top:0}
+.kp .lb ol.opt{border-top:2px dashed #0B0B0B}
 .tt{margin:6px 0 4px}.tt>b{display:block;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#6B6B66;margin-bottom:6px}.tt .fl button small{font-weight:500;color:#6B6B66;margin-left:4px}.tt .fl button.on small{color:#cfd8ff}
 .srt{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.srt button{border:1.5px solid #0B0B0B;background:#fff;font:600 13px Inter;padding:8px;cursor:pointer}.srt button.on{background:#2F5BFF;border-color:#2F5BFF;color:#fff}
 .hot{display:inline-block;margin:4px 0 0;font:700 11px Montserrat;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#0B0B0B;padding:3px 7px}
@@ -296,19 +326,42 @@ document.addEventListener("click",e=>{const km=e.target.closest("[data-km]");if(
 // ---- Kurse (Daten: kurse.js) ----
 const K=window.FLOW_KURSE||{kurse:[]};let kursId="";
 const kVorgemerkt=()=>{try{return JSON.parse(localStorage.getItem("dna-kurse")||"[]")}catch(e){return[]}};
+const kFrei=()=>{try{return JSON.parse(localStorage.getItem("dna-kurse-frei")||"[]")}catch(e){return[]}};
+const kOffen=k=>k.status==="live"&&(!k.code||kFrei().includes(k.id));
+let kLek=-1,kVid=0;
+const kDone=id=>{try{return JSON.parse(localStorage.getItem("dna-kurs-done-"+id)||"[]")}catch(e){return[]}};
+function kursPlayer(k){const D=kDone(k.id),L=k.lektionen;const nD=D.length;
+ const cur=kLek<0?{src:k.intro.video,poster:k.intro.poster,t:"Intro · "+k.intro.titel}:(()=>{const l=L[kLek];const v=l.videos&&l.videos[kVid];return v?{src:v[0],poster:v[1],t:`Lektion ${String(kLek+1).padStart(2,"0")} · ${v[2]}`}:null})();
+ document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>${nD} / ${L.length} erledigt</span>`;
+ view.innerHTML=`<div class="kd kp"><button type="button" class="back" data-kurs="">← Alle Kurse</button>
+  <h2>${DNA.esc(k.titel)}</h2><p class="sub">${DNA.esc(k.untertitel)}</p><div class="meta">${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${L.length} Lektionen</div>
+  ${cur?`<video id="kvid" controls playsinline preload="metadata" poster="${cur.poster}" src="${cur.src}"></video><p class="now">▶ ${DNA.esc(cur.t)}</p>`:`<div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>Folgt</span></div><p class="now">&nbsp;</p>`}
+  ${k.hinweis?`<p class="hz">${DNA.esc(k.hinweis)}</p>`:""}
+  <ol><li class="${kLek<0?"on":""}"><button type="button" class="lh" data-klek="-1"><i>00</i><span>Intro: ${DNA.esc(k.intro.titel)}</span><em>▶</em></button></li>${L.map((l,i)=>{const on=i===kLek,dn=D.includes(i);
+   const st=l.folgt?"Folgt":l.optional?(dn?"✓ Optional":"Optional"):dn?"✓":"▶";
+   return `<li class="${on?"on":""}"><button type="button" class="lh" data-klek="${i}"><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em class="${dn?"ok":""}">${st}</em></button>
+   ${on?`<div class="lb">${l.text?`<p>${l.text}</p>`:""}
+    ${l.videos&&l.videos.length>1?`<div class="vs">${l.videos.map((v,j)=>`<button type="button" class="${j===kVid?"on":""}" data-kvid="${j}">▶ ${DNA.esc(v[2])}</button>`).join("")}</div>`:""}
+    ${l.punkte?`<${l.optional?"ol":"ul"}${l.optional?' class="opt" style="padding-left:30px"':""}>${l.punkte.map(x=>`<li>${x}</li>`).join("")}</${l.optional?"ol":"ul"}>`:""}
+    ${l.links?`<div class="ln">${l.links.map(([t,u,n])=>`<a href="${u}"${u[0]==="?"?"":` target="_blank" rel="noopener"`}><b>${DNA.esc(t)} ↗</b><span>${DNA.esc(n)}</span></a>`).join("")}</div>`:""}
+    ${l.aufgabe?`<div class="tk"><small>Deine Aufgabe</small>${DNA.esc(l.aufgabe)}</div>`:""}
+    ${l.folgt?"":`<button type="button" class="dn ${dn?"ok":""}" data-kdone="${i}">${dn?"✓ Erledigt":"Als erledigt markieren"}</button>`}</div>`:""}</li>`}).join("")}</ol></div>`}
 function kurse(){const M=kVorgemerkt();
- if(kursId){const k=K.kurse.find(x=>x.id===kursId);if(k){document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>Coming soon</span>`;
-  view.innerHTML=`<div class="kd"><button type="button" class="back" data-kurs="">← Alle Kurse</button><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>Coming soon</span></div>
+ if(kursId){const k=K.kurse.find(x=>x.id===kursId);if(k&&kOffen(k)&&k.lektionen){kursPlayer(k);return}if(k){const lk=k.status==="live";document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>${lk?"Mit Kurs-Code":"Coming soon"}</span>`;
+  view.innerHTML=`<div class="kd"><button type="button" class="back" data-kurs="">← Alle Kurse</button><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>${lk?"Fertig · mit Code":"Coming soon"}</span></div>
   <h2>${DNA.esc(k.titel)}</h2><p class="sub">${DNA.esc(k.untertitel)}</p><div class="meta">${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</div>
   <ol>${k.module.map((m,i)=>`<li><i>${String(i+1).padStart(2,"0")}</i>${DNA.esc(m)}<em>🔒</em></li>`).join("")}</ol>
-  <div class="btnrow"><button type="button" class="btnx b" data-kvm="${k.id}">${M.includes(k.id)?"✓ Vorgemerkt":"Vormerken"}</button><a class="btnx o" style="color:#0B0B0B;background:#fff" href="${DNA.wa(`Hi Maik, sag mir Bescheid, wenn der Kurs „${k.titel}“ startet (Flow-DNA-App).`)}" target="_blank" rel="noopener">Per WhatsApp Bescheid bekommen</a></div>
+  <div class="btnrow"><button type="button" class="btnx b" data-kvm="${k.id}">${M.includes(k.id)?"✓ Vorgemerkt":"Vormerken"}</button><a class="btnx o" style="color:#0B0B0B;background:#fff" href="${DNA.wa(lk?`Hi Maik, ich hätte gern den Kurs-Code für „${k.titel}“ (Flow-DNA-App).`:`Hi Maik, sag mir Bescheid, wenn der Kurs „${k.titel}“ startet (Flow-DNA-App).`)}" target="_blank" rel="noopener">${lk?"Code per WhatsApp anfragen":"Per WhatsApp Bescheid bekommen"}</a></div>
   <form data-kcode="${k.id}"><input name="c" placeholder="KURS-CODE" aria-label="Kurs-Code" autocomplete="off"><button type="submit">Freischalten</button></form><p class="msg" id="kmsg"></p></div>`;return}}
  document.getElementById("meta").innerHTML=`<span>Online-Kurse</span><span>${K.kurse.filter(x=>x.status==="live").length} live · ${K.kurse.filter(x=>x.status!=="live").length} in Planung</span>`;
  view.innerHTML=`<div class="ku"><p class="in">${DNA.esc(K.hinweis||"")}</p>${K.kurse.map(k=>`<button type="button" class="kc" data-kurs="${k.id}"><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"></div><div class="tx" style="position:relative;margin-top:-150px;height:150px;padding:14px"><i>${k.nr}</i><b>${DNA.esc(k.titel)}</b><span>${DNA.esc(k.untertitel)}</span></div>
-  <div class="ft"><span>${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</span><em class="${k.status==="live"||M.includes(k.id)?"vm":""}">${k.status==="live"?"▶ Jetzt ansehen":M.includes(k.id)?"✓ Vorgemerkt":"Coming soon"}</em></div></button>`).join("")}</div>`}
-document.addEventListener("click",e=>{const kb=e.target.closest("[data-kurs]");if(kb){const kl=K.kurse.find(x=>x.id===kb.dataset.kurs);if(kl&&kl.status==="live"&&kl.url){location.href=kl.url;return}kursId=kb.dataset.kurs;view.scrollTop=0;kurse();return}
+  <div class="ft"><span>${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</span><em class="${k.status==="live"||M.includes(k.id)?"vm":""}">${kOffen(k)?"▶ Jetzt ansehen":k.status==="live"?"🔒 Mit Code":M.includes(k.id)?"✓ Vorgemerkt":"Coming soon"}</em></div></button>`).join("")}</div>`}
+document.addEventListener("click",e=>{const kl2=e.target.closest("[data-klek]");if(kl2){const i=+kl2.dataset.klek;kLek=(i===kLek&&i>=0)?-1:i;kVid=0;kurse();return}
+ const kv=e.target.closest("[data-kvid]");if(kv){kVid=+kv.dataset.kvid;kurse();const v=document.getElementById("kvid");v&&v.play().catch(()=>{});return}
+ const kd=e.target.closest("[data-kdone]");if(kd){const i=+kd.dataset.kdone;let D=kDone(kursId);D=D.includes(i)?D.filter(x=>x!==i):D.concat(i);try{localStorage.setItem("dna-kurs-done-"+kursId,JSON.stringify(D))}catch(err){};kurse();return}
+ const kb=e.target.closest("[data-kurs]");if(kb){kLek=-1;kVid=0;kursId=kb.dataset.kurs;view.scrollTop=0;kurse();return}
  const vm=e.target.closest("[data-kvm]");if(vm){let M=kVorgemerkt();const id=vm.dataset.kvm;M=M.includes(id)?M.filter(x=>x!==id):M.concat(id);try{localStorage.setItem("dna-kurse",JSON.stringify(M))}catch(err){};kurse()}});
-document.addEventListener("submit",e=>{const f=e.target.closest("[data-kcode]");if(!f)return;e.preventDefault();const m=document.getElementById("kmsg");m.textContent=f.c.value.trim()?"Dieser Kurs ist noch in Produktion. Dein Code wird gültig, sobald er startet – merk ihn dir vor, dann bekommst du Bescheid.":"Bitte einen Code eingeben."});
+document.addEventListener("submit",e=>{const f=e.target.closest("[data-kcode]");if(!f)return;e.preventDefault();const m=document.getElementById("kmsg");const kc=K.kurse.find(x=>x.id===f.dataset.kcode);const val=f.c.value.trim().toUpperCase();if(kc&&kc.status==="live"&&kc.code){if(val===kc.code){const F=kFrei();if(!F.includes(kc.id))F.push(kc.id);try{localStorage.setItem("dna-kurse-frei",JSON.stringify(F))}catch(err){};m.textContent="✓ Freigeschaltet – los geht’s.";setTimeout(()=>{kLek=-1;kVid=0;kurse()},500)}else m.textContent=val?"Der Code passt nicht. Frag Maik nach deinem Kurs-Code.":"Bitte einen Code eingeben.";return}m.textContent=f.c.value.trim()?"Dieser Kurs ist noch in Produktion. Dein Code wird gültig, sobald er startet – merk ihn dir vor, dann bekommst du Bescheid.":"Bitte einen Code eingeben."});
 // ---- Frag Maik: KI-Coach (Beta, Antworten aus coach.js – noch ohne KI-Modell) ----
 const CO=window.FLOW_COACH||{wissen:[],vorschlaege:[]};let chat=[];
 const norm=t=>t.toLowerCase().replace(/[^a-zäöüß0-9.:\- ]/g," ");
