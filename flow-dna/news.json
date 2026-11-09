@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-09T14:45+00:00",
+ "stand": "2026-11-09T14:55+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -29,7 +29,18 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.9
+   "r": 7.8
+  },
+  {
+   "t": "Gehirndaten von Neurotech-Nutzern werden heimlich für KI-Training genutzt",
+   "s": "Eine Recherche zeigt: Gehirnaktivitäten von Neurotech-Nutzern werden ohne deren Wissen für das Training von KIs verwendet.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Gehirndaten-von-Neurotech-Nutzern-werden-heimlich-fuer-KI-Training-genutzt-11513876.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-09T14:00:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.8
   },
   {
    "t": "KI-Update kompakt: Rechenzentren, Propaganda, Siri AI, Minecraft",
@@ -42,18 +53,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 11.9
-  },
-  {
-   "t": "Gehirndaten von Neurotech-Nutzern werden heimlich für KI-Training genutzt",
-   "s": "Eine Recherche zeigt: Gehirnaktivitäten von Neurotech-Nutzern werden ohne deren Wissen für das Training von KIs verwendet.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Gehirndaten-von-Neurotech-Nutzern-werden-heimlich-fuer-KI-Training-genutzt-11513876.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T14:00:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 7.9
+   "r": 11.8
   },
   {
    "t": "Auswirkungen von KI auf den Arbeitsmarkt: Berufseinsteiger spüren die Veränderung als Erstes",
@@ -134,7 +134,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 15.3
+   "r": 15.2
   },
   {
    "t": "Anthropic vor dem Mega-Börsengang: Was Anleger jetzt wissen müssen",
@@ -161,7 +161,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 11.2
+   "r": 11.1
   },
   {
    "t": "Samsung plant offenbar kostenpflichtigen Galaxy-AI-Tarif",
@@ -187,7 +187,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 9.0
+   "r": 8.9
   },
   {
    "t": "Erfahrungen mit KI-Agenten: Warum Jens Polomski den ersten wieder abgeschaltet hat",
@@ -201,7 +201,7 @@
     "Jobs & Arbeit"
    ],
    "n": 2,
-   "r": 22.9
+   "r": 22.8
   },
   {
    "t": "Wie groß ist die Abhängigkeit von US-KI tatsächlich? Expertin analysiert Europas Startups",
@@ -214,7 +214,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 10.9
+   "r": 10.8
   },
   {
    "t": "KI-Forscher Andrej Karpathy filtert 43 Millionen Hacker-News-Kommentare zu einer kuratierten Video-Plattform",
@@ -269,7 +269,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 37.1
+   "r": 37.0
   },
   {
    "t": "Missing Link: Wenn die KI zuhört, wo Menschen es nicht mehr tun",
@@ -316,7 +316,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 0.3
+   "r": 0.2
   },
   {
    "t": "Je gründlicher KI nach KI-Fehlverhalten sucht, desto mehr harmlose Fälle meldet sie als verdächtig",
@@ -331,7 +331,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 26.2
+   "r": 26.1
   },
   {
    "t": "Mini-PC VZMore AX9 Max im Test: Für wen sich der teure Ryzen-AI-9-Rechner lohnt",
@@ -553,7 +553,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 7.2
   },
   {
    "id": "jkeB74nI-cs",
@@ -614,7 +614,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.3
+   "r": 6.2
   },
   {
    "id": "8jfH4hFtAbQ",
@@ -1049,6 +1049,219 @@
    "name": "DeepSeek & China",
    "meldungen": 3,
    "quellen": 2
+  }
+ ],
+ "aktien": [
+  {
+   "name": "SpaceX",
+   "sym": "SPCX",
+   "info": "Raumfahrt · KI-Rechenzentren",
+   "preis": 141.9,
+   "cur": "USD",
+   "d1": 5.68,
+   "m1": -12.7,
+   "spark": [
+    162.57,
+    163.42,
+    156.54,
+    152.16,
+    148.62,
+    146.03,
+    147.96,
+    147.79,
+    159.31,
+    144.75,
+    147.49,
+    146.9,
+    148.58,
+    145.23,
+    143.89,
+    134.72,
+    136.37,
+    141.31,
+    135.92,
+    123.62,
+    134.27,
+    141.9
+   ],
+   "t": "2026-11-09T14:53+00:00"
+  },
+  {
+   "name": "UBTech Robotics",
+   "sym": "9880.HK",
+   "info": "Humanoide Roboter",
+   "preis": 70.3,
+   "cur": "HKD",
+   "d1": 8.99,
+   "m1": -2.0,
+   "spark": [
+    71.75,
+    67.7,
+    67.4,
+    67.2,
+    62.65,
+    64.55,
+    68.45,
+    67.35,
+    63.9,
+    68.2,
+    68.5,
+    63.3,
+    69.1,
+    65.3,
+    63.45,
+    64.45,
+    62.1,
+    63.65,
+    66.95,
+    64.5,
+    70.3
+   ],
+   "t": "2026-11-09T08:08+00:00"
+  },
+  {
+   "name": "Tesla",
+   "sym": "TSLA",
+   "info": "Optimus-Roboter · KI",
+   "preis": 376.57,
+   "cur": "USD",
+   "d1": 5.12,
+   "m1": -1.6,
+   "spark": [
+    382.7,
+    378.03,
+    375.23,
+    367.16,
+    362.44,
+    354.72,
+    368.06,
+    373.71,
+    386.47,
+    374.58,
+    372.22,
+    391.62,
+    407.46,
+    404.22,
+    403.3,
+    399.81,
+    403.82,
+    398.5,
+    385.19,
+    343.69,
+    358.22,
+    376.57
+   ],
+   "t": "2026-11-09T14:55+00:00"
+  },
+  {
+   "name": "Nvidia",
+   "sym": "NVDA",
+   "info": "KI-Chips",
+   "preis": 177.3,
+   "cur": "USD",
+   "d1": -5.0,
+   "m1": -22.7,
+   "spark": [
+    229.28,
+    226.32,
+    228.52,
+    221.3,
+    217.23,
+    214.13,
+    217.09,
+    216.47,
+    221.97,
+    212.21,
+    210.96,
+    216.0,
+    217.94,
+    215.38,
+    213.66,
+    204.64,
+    202.06,
+    206.69,
+    200.13,
+    181.6,
+    186.64,
+    177.3
+   ],
+   "t": "2026-11-09T14:55+00:00"
+  },
+  {
+   "name": "Alphabet",
+   "sym": "GOOGL",
+   "info": "Google · Gemini",
+   "preis": 293.32,
+   "cur": "USD",
+   "d1": 3.0,
+   "m1": -16.6,
+   "spark": [
+    351.66,
+    352.72,
+    353.78,
+    347.64,
+    349.22,
+    340.59,
+    344.18,
+    340.28,
+    334.76,
+    324.22,
+    320.21,
+    316.8,
+    320.58,
+    324.89,
+    283.82,
+    279.84,
+    278.99,
+    280.03,
+    288.93,
+    282.57,
+    284.78,
+    293.32
+   ],
+   "t": "2026-11-09T14:55+00:00"
+  },
+  {
+   "name": "Microsoft",
+   "sym": "MSFT",
+   "info": "Copilot · OpenAI-Partner",
+   "preis": 540.1,
+   "cur": "USD",
+   "d1": 1.79,
+   "m1": 0.9,
+   "spark": [
+    535.07,
+    541.15,
+    543.45,
+    533.69,
+    539.44,
+    529.05,
+    533.52,
+    531.87,
+    532.95,
+    521.08,
+    524.51,
+    532.6,
+    531.33,
+    531.01,
+    530.14,
+    521.91,
+    507.12,
+    520.99,
+    555.8,
+    535.93,
+    530.61,
+    540.1
+   ],
+   "t": "2026-11-09T14:55+00:00"
+  },
+  {
+   "name": "Anthropic",
+   "info": "Claude – noch nicht an der Börse"
+  },
+  {
+   "name": "OpenAI",
+   "info": "ChatGPT – noch nicht an der Börse"
   }
  ]
 }

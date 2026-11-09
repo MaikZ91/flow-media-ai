@@ -105,7 +105,36 @@ for kind, x, _t in pool:
 themen = sorted(cnt.values(), key=lambda c: (len(c["quellen"]), c["meldungen"]), reverse=True)[:8]
 themen = [{"name": c["name"], "meldungen": c["meldungen"], "quellen": len(c["quellen"])} for c in themen]
 for _, x, _t in pool: x.pop("_w", None)
-data = {"stand": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "quellen": [f[0] for f in FEEDS], "items": out, "kanaele": [y[0] for y in YT], "videos": vids, "themen": themen}
+
+# ---- Aktienkurse KI & Robotik (Yahoo-Finance-Chart, verzögert, ohne API-Key) ----
+AKTIEN = [  # (Name, Symbol oder None = nicht börsennotiert, Zusatz)
+    ("SpaceX", "SPCX", "Raumfahrt · KI-Rechenzentren"), ("UBTech Robotics", "9880.HK", "Humanoide Roboter"), ("Tesla", "TSLA", "Optimus-Roboter · KI"),
+    ("Nvidia", "NVDA", "KI-Chips"), ("Alphabet", "GOOGL", "Google · Gemini"), ("Microsoft", "MSFT", "Copilot · OpenAI-Partner"),
+    ("Anthropic", None, "Claude – noch nicht an der Börse"), ("OpenAI", None, "ChatGPT – noch nicht an der Börse"),
+]
+aktien = []
+import time
+try: alt = {a.get("sym"): a for a in json.load(open(os.path.join(OUT, "news.json"), encoding="utf-8")).get("aktien", []) if a.get("preis")}
+except Exception: alt = {}
+def chart(sym):
+    for k, host in enumerate(("query1", "query2", "query1")):
+        try: return json.loads(fetch(f"https://{host}.finance.yahoo.com/v8/finance/chart/{sym}?range=1mo&interval=1d"))["chart"]["result"][0]
+        except Exception as e: print("kurs", sym, host, e, file=sys.stderr); time.sleep(4 + 4 * k)
+    return None
+for name, sym, info in AKTIEN:
+    if not sym: aktien.append({"name": name, "info": info}); continue
+    time.sleep(1.5); d = chart(sym)
+    try:
+        closes = [c for c in d["indicators"]["quote"][0]["close"] if c is not None]
+        price = d["meta"].get("regularMarketPrice") or closes[-1]
+        prev = closes[-2] if len(closes) > 1 else price
+        aktien.append({"name": name, "sym": sym, "info": info, "preis": round(price, 2), "cur": d["meta"].get("currency", ""),
+                       "d1": round((price / prev - 1) * 100, 2), "m1": round((price / closes[0] - 1) * 100, 1),
+                       "spark": [round(c, 2) for c in closes[-22:]], "t": dt.datetime.fromtimestamp(d["meta"].get("regularMarketTime", 0), dt.timezone.utc).isoformat(timespec="minutes")})
+    except Exception as e:
+        print("skip", sym, e, file=sys.stderr)
+        aktien.append(alt[sym] if sym in alt else {"name": name, "sym": sym, "info": info, "fehler": True})
+data = {"stand": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "quellen": [f[0] for f in FEEDS], "items": out, "kanaele": [y[0] for y in YT], "videos": vids, "themen": themen, "aktien": aktien}
 open(os.path.join(OUT, "news.json"), "w", encoding="utf-8").write(json.dumps(data, ensure_ascii=False, indent=1))
 open(os.path.join(OUT, "news.js"), "w", encoding="utf-8").write("window.NEWS = " + json.dumps(data, ensure_ascii=False) + ";\n")
 print(len(out), "News")
