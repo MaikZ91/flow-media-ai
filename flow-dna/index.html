@@ -55,7 +55,7 @@ h2,h3{overflow-wrap:anywhere;hyphens:auto}
 .empty{padding:30px 18px;color:var(--mute)}
 .pane{padding:6px 18px 30px}
 /* tabbar */
-nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
+nav{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
 nav button{position:relative;background:none;border:0;color:var(--mute);font:600 9.5px Montserrat;letter-spacing:.02em;min-width:0;text-transform:uppercase;padding:9px 0 11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
 nav button b{font:400 18px Inter;line-height:1}nav button.on{color:var(--ink)}nav button.on b{color:var(--blue)}
 nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);color:#fff;border-radius:9px;font:600 10px Inter;padding:1px 5px}
@@ -80,6 +80,19 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws{margin:28px 16px 14px;border:2px solid var(--blue);background:#fff;box-shadow:0 10px 40px rgba(47,91,255,.18)}
 .ws .wh{background:var(--blue);color:#fff;padding:8px 12px;font:700 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
 .ws .wb{padding:14px}
+.ku{margin:12px 16px 30px}.ku .in{font-size:14px;line-height:1.5;color:#444;margin:4px 0 12px}
+.kc{display:block;width:100%;text-align:left;border:2px solid #0B0B0B;background:#0B0B0B;color:#fff;padding:0;margin-bottom:10px;cursor:pointer;font:inherit}
+.kc .cv{position:relative;height:150px;background-size:cover;background-position:center 30%;filter:grayscale(1)}.kc .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,11,.92) 0%,rgba(11,11,11,.55) 55%,rgba(11,11,11,.2))}
+.kc .tx{position:absolute;left:14px;right:14px;top:14px;z-index:1}.kc i{font:700 46px/1 Oswald;font-style:normal;color:#2F5BFF}.kc b{display:block;font:700 26px/1 Oswald;text-transform:uppercase;margin-top:6px}.kc .tx span{display:block;font-size:13px;color:#ddd;margin-top:4px;max-width:78%}.kc .ft span{color:#0B0B0B}
+.kc .ft{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:#fff;color:#0B0B0B;font:600 12px Inter}.kc .ft em{white-space:nowrap;font-style:normal;font:700 11px Montserrat;letter-spacing:.12em;text-transform:uppercase;background:#2F5BFF;color:#fff;padding:4px 8px}.kc .ft em.vm{background:#0B0B0B}
+.kd{margin:0 16px 30px}.kd .back{border:0;background:none;font:600 14px Inter;padding:12px 0;cursor:pointer}.kd .cv{height:200px;background-size:cover;background-position:center 30%;filter:grayscale(1);position:relative;border:2px solid #0B0B0B}
+.kd .cv span{position:absolute;right:10px;top:10px;font:700 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;background:#2F5BFF;color:#fff;padding:5px 9px;filter:none}
+.kd h2{font:700 38px/1 Oswald;text-transform:uppercase;margin:12px 0 4px}.kd .sub{font-size:15px;color:#444;margin:0 0 6px}.kd .meta{font:600 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#6B6B66;margin-bottom:10px}
+.kd ol{list-style:none;padding:0;margin:0 0 12px;border-top:2px solid #0B0B0B}.kd li{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(11,11,11,.14);font-size:15px}.kd li i{font-style:normal;font:700 18px Oswald;color:#c7c7c2;min-width:26px}.kd li em{margin-left:auto;font-style:normal;color:#9a9a95}
+.kd form{display:flex;gap:6px;margin-top:8px}.kd form input{flex:1;min-width:0;border:2px solid #0B0B0B;padding:12px;font:600 15px "JetBrains Mono",monospace;text-transform:uppercase}.kd form button{border:0;background:#0B0B0B;color:#fff;font:600 14px Inter;padding:0 14px;cursor:pointer}.kd .msg{font-size:13px;color:#555;margin:6px 0 0}
+.tt{margin:6px 0 4px}.tt>b{display:block;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#6B6B66;margin-bottom:6px}.tt .fl button small{font-weight:500;color:#6B6B66;margin-left:4px}.tt .fl button.on small{color:#cfd8ff}
+.srt{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}.srt button{border:1.5px solid #0B0B0B;background:#fff;font:600 13px Inter;padding:8px;cursor:pointer}.srt button.on{background:#2F5BFF;border-color:#2F5BFF;color:#fff}
+.hot{display:inline-block;margin:4px 0 0;font:700 11px Montserrat;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#0B0B0B;padding:3px 7px}
 .seg2{display:grid;grid-template-columns:1fr 1fr;border:2px solid #0B0B0B;margin:4px 0 8px}.seg2 button{border:0;background:#fff;font:700 16px Oswald;text-transform:uppercase;padding:10px;cursor:pointer}.seg2 button.on{background:#0B0B0B;color:#fff}
 .yv{padding:12px 0;border-bottom:1px solid rgba(11,11,11,.14);cursor:pointer}.yv .th{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}.yv .th img{width:100%;height:100%;object-fit:cover;display:block}.yv .th i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:#2F5BFF;color:#fff;font-style:normal;display:grid;place-items:center;font-size:22px}.yv .th iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.yv small{display:block;font:600 11px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#6B6B66;margin-top:8px}.yv small b{color:#2F5BFF;font-weight:600}.yv strong{display:block;font:600 16px/1.3 Inter;margin-top:3px}.ytl{display:inline-block;margin-top:6px;font:600 13px Inter;color:#0B0B0B}
 .kal{margin-top:22px}.kal h3{font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#6B6B66;margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid #0B0B0B}.kal h3 i{font-style:normal;color:#2F5BFF;margin-right:8px}
@@ -136,9 +149,9 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
   </div>
   <div class="meta" id="meta"></div>
   <main class="view" id="view"></main>
-  <nav id="nav"><button data-tab="list" class="on"><b>☰</b>Entdecken</button><button data-tab="news"><b>⚡</b>KI-News</button><button data-tab="community"><b>✦</b>Community</button><button data-tab="more"><b>◎</b>Mehr<span class="n" id="mc" hidden></span></button></nav>
+  <nav id="nav"><button data-tab="list" class="on"><b>☰</b>Entdecken</button><button data-tab="news"><b>⚡</b>KI-News</button><button data-tab="community"><b>✦</b>Community</button><button data-tab="kurse"><b>▶</b>Kurse</button><button data-tab="more"><b>◎</b>Mehr<span class="n" id="mc" hidden></span></button></nav>
 </div>
-<script src="daten.js"></script><script src="angebote.js"></script><script src="news.js"></script><script src="kern.js"></script>
+<script src="daten.js"></script><script src="angebote.js"></script><script src="kurse.js"></script><script src="news.js"></script><script src="kern.js"></script>
 <script>
 const st={stufe:"alle",kat:"alle",q:""};
 // Workshop-Edition (?workshop=website): Website Builder für Teilnehmende kostenlos, oben angepinnt
@@ -212,17 +225,23 @@ function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote ·
  view.innerHTML=`<div class="ag"><h3><i>01</i>Workshops buchen</h3>${ws}${wg}<h3><i>02</i>Zusammenarbeiten</h3>${of}</div>`}
 const NEWS=window.NEWS||{items:[],quellen:[]};let newsQ="alle";
 function ago(iso){const m=Math.round((Date.now()-new Date(iso))/6e4);return m<60?`vor ${Math.max(1,m)} Min.`:m<1440?`vor ${Math.round(m/60)} Std.`:new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}
-let newsMode="artikel";
+let newsMode="artikel",newsSort="relevanz",newsTheme="";
+const sortN=L=>L.slice().sort((a,b)=>newsSort==="relevanz"?(b.r||0)-(a.r||0)||b.d.localeCompare(a.d):b.d.localeCompare(a.d));
+const byTheme=x=>!newsTheme||(x.tags||[]).includes(newsTheme);
+const hot=x=>x.n>1?`<span class="hot">🔥 ${x.n} Quellen</span>`:"";
+function topBar(){const T=NEWS.themen||[];return `<div class="tt"><b>Top-Themen gerade</b><div class="fl">${T.map(t=>`<button type="button" data-nt="${DNA.esc(t.name)}" class="${t.name===newsTheme?"on":""}">${DNA.esc(t.name)} <small>${t.quellen} Quellen</small></button>`).join("")}${newsTheme?`<button type="button" data-nt="">✕ alle Themen</button>`:""}</div></div><div class="srt"><button type="button" data-ns="relevanz" class="${newsSort==="relevanz"?"on":""}">Nach Relevanz</button><button type="button" data-ns="neu" class="${newsSort==="neu"?"on":""}">Neueste zuerst</button></div><p class="st" style="margin-top:4px">Relevanz: Wie viele Quellen (Artikel und Videos) gerade über dasselbe berichten, wie wichtig das Thema ist und wie frisch die Meldung ist.</p>`}
 let vidQ="alle";
-function videos(){const V=(NEWS.videos||[]).filter(v=>vidQ==="alle"||v.q===vidQ);return `<p class="st">Neue Videos · automatisch aktualisiert. Bild antippen lädt den Player, dann ▶ drücken. Klappt es nicht: „Auf YouTube öffnen“.</p><div class="fl">${["alle",...(NEWS.kanaele||[])].map(q=>`<button type="button" data-vq="${DNA.esc(q)}" class="${q===vidQ?"on":""}">${q==="alle"?"Alle":DNA.esc(q)}</button>`).join("")}</div>${V.map(v=>`<div class="yv" data-yt="${DNA.esc(v.id)}"><div class="th"><img src="https://i.ytimg.com/vi/${DNA.esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><i>▶</i></div><small><b>${DNA.esc(v.q)}</b> · ${ago(v.d)}${v.lang==="en"?" · englisch":""}</small><strong>${DNA.esc(v.t)}</strong><a class="ytl" href="https://www.youtube.com/watch?v=${DNA.esc(v.id)}" target="_blank" rel="noopener">Auf YouTube öffnen ↗</a></div>`).join("")||`<p class="st">Gerade keine Videos.</p>`}`}
-function news(){if(newsMode==="videos"){document.getElementById("meta").innerHTML=`<span>KI-News · Videos</span><span>${(NEWS.videos||[]).length} Videos</span>`;view.innerHTML=`<div class="nw">${modeBar()}${videos()}</div>`;return}
+function videos(){const V=sortN((NEWS.videos||[]).filter(v=>(vidQ==="alle"||v.q===vidQ)&&byTheme(v)));return `<p class="st">Neue Videos · automatisch aktualisiert. Bild antippen lädt den Player, dann ▶ drücken. Klappt es nicht: „Auf YouTube öffnen“.</p><div class="fl">${["alle",...(NEWS.kanaele||[])].map(q=>`<button type="button" data-vq="${DNA.esc(q)}" class="${q===vidQ?"on":""}">${q==="alle"?"Alle":DNA.esc(q)}</button>`).join("")}</div>${V.map(v=>`<div class="yv" data-yt="${DNA.esc(v.id)}"><div class="th"><img src="https://i.ytimg.com/vi/${DNA.esc(v.id)}/hqdefault.jpg" alt="" loading="lazy"><i>▶</i></div><small><b>${DNA.esc(v.q)}</b> · ${ago(v.d)}${v.lang==="en"?" · englisch":""}</small>${hot(v)}<strong>${DNA.esc(v.t)}</strong><a class="ytl" href="https://www.youtube.com/watch?v=${DNA.esc(v.id)}" target="_blank" rel="noopener">Auf YouTube öffnen ↗</a></div>`).join("")||`<p class="st">Gerade keine Videos.</p>`}`}
+function news(){if(newsMode==="videos"){document.getElementById("meta").innerHTML=`<span>KI-News · Videos</span><span>${(NEWS.videos||[]).length} Videos</span>`;view.innerHTML=`<div class="nw">${modeBar()}${topBar()}${videos()}</div>`;return}
 document.getElementById("meta").innerHTML=`<span>KI-News</span><span>${NEWS.items.length} Meldungen</span>`;
- const L=NEWS.items.filter(x=>newsQ==="alle"||x.q===newsQ);
- view.innerHTML=`<div class="nw">${modeBar()}<p class="st">Automatisch aus offenen Quellen (${NEWS.quellen.join(", ")}) · alle 3 Std. aktualisiert · Stand ${NEWS.stand?ago(NEWS.stand):"–"}. Antippen öffnet den Artikel beim Verlag.</p>
+ const L=sortN(NEWS.items.filter(x=>(newsQ==="alle"||x.q===newsQ)&&byTheme(x)));
+ view.innerHTML=`<div class="nw">${modeBar()}${topBar()}<p class="st">Automatisch aus offenen Quellen (${NEWS.quellen.join(", ")}) · alle 3 Std. aktualisiert · Stand ${NEWS.stand?ago(NEWS.stand):"–"}. Antippen öffnet den Artikel beim Verlag.</p>
  <div class="fl">${["alle",...NEWS.quellen].map(q=>`<button type="button" data-nq="${q}" class="${q===newsQ?"on":""}">${q==="alle"?"Alle":q}</button>`).join("")}</div>
- ${L.map(x=>`<a class="ni" href="${DNA.esc(x.l)}" target="_blank" rel="noopener"><small><b>${DNA.esc(x.q)}</b> · ${ago(x.d)}${x.lang==="en"?" · englisch":""}</small><strong>${DNA.esc(x.t)}</strong><span>${DNA.esc(x.s)}</span></a>`).join("")||`<p class="st">Gerade keine Meldungen.</p>`}</div>`}
+ ${L.map(x=>`<a class="ni" href="${DNA.esc(x.l)}" target="_blank" rel="noopener"><small><b>${DNA.esc(x.q)}</b> · ${ago(x.d)}${x.lang==="en"?" · englisch":""}</small>${hot(x)}<strong>${DNA.esc(x.t)}</strong><span>${DNA.esc(x.s)}</span></a>`).join("")||`<p class="st">Gerade keine Meldungen.</p>`}</div>`}
 const modeBar=()=>`<div class="seg2"><button type="button" data-nm="artikel" class="${newsMode==="artikel"?"on":""}">Artikel</button><button type="button" data-nm="videos" class="${newsMode==="videos"?"on":""}">▶ Videos</button></div>`;
-document.addEventListener("click",e=>{const vq=e.target.closest("[data-vq]");if(vq){vidQ=vq.dataset.vq;news();return}
+document.addEventListener("click",e=>{const nt=e.target.closest("[data-nt]");if(nt){newsTheme=nt.dataset.nt;news();return}
+ const ns=e.target.closest("[data-ns]");if(ns){newsSort=ns.dataset.ns;news();return}
+ const vq=e.target.closest("[data-vq]");if(vq){vidQ=vq.dataset.vq;news();return}
  const m=e.target.closest("[data-nm]");if(m){newsMode=m.dataset.nm;news();return}
  const y=e.target.closest("[data-yt]");if(y&&!e.target.closest("a")&&!y.querySelector("iframe")){const th=y.querySelector(".th");th.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${y.dataset.yt}?playsinline=1&rel=0&origin=${encodeURIComponent(location.origin)}" title="YouTube-Video" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;return}
  const b=e.target.closest("[data-nq]");if(!b)return;newsQ=b.dataset.nq;news()});
@@ -253,6 +272,22 @@ function kalender(){const E=events();window._E=E;
 document.addEventListener("click",e=>{const km=e.target.closest("[data-km]");if(km){kalM=new Date(kalM.getFullYear(),kalM.getMonth()+ +km.dataset.km,1);document.getElementById("kal").outerHTML=kalender();return}
  const ev=e.target.closest("[data-ev]");if(ev){const el=document.getElementById("ev"+ev.dataset.ev);el&&el.scrollIntoView({behavior:"smooth",block:"center"});return}
  const ic=e.target.closest("[data-ics]");if(ic){const x=window._E[+ic.dataset.ics];const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([icsFor(x)],{type:"text/calendar"}));a.download=`flow-${x.art.toLowerCase()}-${x.datum.slice(0,10)}.ics`;document.body.appendChild(a);a.click();a.remove()}});
+// ---- Kurse (Daten: kurse.js) ----
+const K=window.FLOW_KURSE||{kurse:[]};let kursId="";
+const kVorgemerkt=()=>{try{return JSON.parse(localStorage.getItem("dna-kurse")||"[]")}catch(e){return[]}};
+function kurse(){const M=kVorgemerkt();
+ if(kursId){const k=K.kurse.find(x=>x.id===kursId);if(k){document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>Coming soon</span>`;
+  view.innerHTML=`<div class="kd"><button type="button" class="back" data-kurs="">← Alle Kurse</button><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>Coming soon</span></div>
+  <h2>${DNA.esc(k.titel)}</h2><p class="sub">${DNA.esc(k.untertitel)}</p><div class="meta">${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</div>
+  <ol>${k.module.map((m,i)=>`<li><i>${String(i+1).padStart(2,"0")}</i>${DNA.esc(m)}<em>🔒</em></li>`).join("")}</ol>
+  <div class="btnrow"><button type="button" class="btnx b" data-kvm="${k.id}">${M.includes(k.id)?"✓ Vorgemerkt":"Vormerken"}</button><a class="btnx o" style="color:#0B0B0B;background:#fff" href="${DNA.wa(`Hi Maik, sag mir Bescheid, wenn der Kurs „${k.titel}“ startet (Flow-DNA-App).`)}" target="_blank" rel="noopener">Per WhatsApp Bescheid bekommen</a></div>
+  <form data-kcode="${k.id}"><input name="c" placeholder="KURS-CODE" aria-label="Kurs-Code" autocomplete="off"><button type="submit">Freischalten</button></form><p class="msg" id="kmsg"></p></div>`;return}}
+ document.getElementById("meta").innerHTML=`<span>Online-Kurse</span><span>${K.kurse.length} in Planung</span>`;
+ view.innerHTML=`<div class="ku"><p class="in">${DNA.esc(K.hinweis||"")}</p>${K.kurse.map(k=>`<button type="button" class="kc" data-kurs="${k.id}"><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"></div><div class="tx" style="position:relative;margin-top:-150px;height:150px;padding:14px"><i>${k.nr}</i><b>${DNA.esc(k.titel)}</b><span>${DNA.esc(k.untertitel)}</span></div>
+  <div class="ft"><span>${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</span><em class="${M.includes(k.id)?"vm":""}">${M.includes(k.id)?"✓ Vorgemerkt":"Coming soon"}</em></div></button>`).join("")}</div>`}
+document.addEventListener("click",e=>{const kb=e.target.closest("[data-kurs]");if(kb){kursId=kb.dataset.kurs;view.scrollTop=0;kurse();return}
+ const vm=e.target.closest("[data-kvm]");if(vm){let M=kVorgemerkt();const id=vm.dataset.kvm;M=M.includes(id)?M.filter(x=>x!==id):M.concat(id);try{localStorage.setItem("dna-kurse",JSON.stringify(M))}catch(err){};kurse()}});
+document.addEventListener("submit",e=>{const f=e.target.closest("[data-kcode]");if(!f)return;e.preventDefault();const m=document.getElementById("kmsg");m.textContent=f.c.value.trim()?"Dieser Kurs ist noch in Produktion. Dein Code wird gültig, sobald er startet – merk ihn dir vor, dann bekommst du Bescheid.":"Bitte einen Code eingeben."});
 // Community-Tab: Link zur Flow Business Community (COMMUNITY_URL eintragen; bis dahin Anfrage per WhatsApp an Maik)
 const COMMUNITY_URL="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";
 const communityHref=()=>COMMUNITY_URL||DNA.wa("Hi Maik, ich möchte in die Flow Business Community (über die Flow-DNA-App).");
@@ -265,7 +300,7 @@ function community(){document.getElementById("meta").innerHTML=`<span>Flow Busin
  <button type="button" class="tile" onclick="DNA.openSubmit()"><em>＋</em><b>Eigenen Skill teilen</b><span>Dein Wissen als Skill – geprüft und für die Community freigeschaltet</span></button>
  <a class="tile" href="../marketing/landing-page/" target="_blank" rel="noopener"><em>↗</em><b>Flow Media AI</b><span>Sparring, Masterclass und Begleitung nach der FLOW-Methode</span></a></div>${supportHTML()}</div>`}
 function goTab(t){tab=t;[...document.getElementById("nav").children].forEach(x=>x.classList.toggle("on",x.dataset.tab===(t==="mine"||t==="angebote"?"more":t)));view.scrollTop=0;render()}
-function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():tab==="community"?community():tab==="angebote"?angebote():tab==="news"?news():more();
+function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():tab==="community"?community():tab==="angebote"?angebote():tab==="news"?news():tab==="kurse"?kurse():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}
 document.getElementById("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
 document.getElementById("chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.kat=b.dataset.kat;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
@@ -281,5 +316,5 @@ function helix(t){let a="",b="",r="";for(let x=0;x<=84;x+=3){const p=x/11+t/700,
  if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(helix)}
 requestAnimationFrame(helix);
 view.addEventListener("scroll",()=>{if(tab==="list")document.getElementById("ctl").classList.toggle("min",view.scrollTop>40)});
-{const t0=new URLSearchParams(location.search).get("tab");if(["angebote","news","community","more"].includes(t0)){goTab(t0);if(t0==="community"&&location.hash==="#kal")setTimeout(()=>{const k=document.getElementById("kal");k&&k.scrollIntoView()},50)}else render()}
+{const t0=new URLSearchParams(location.search).get("tab");if(["angebote","news","community","kurse","more"].includes(t0)){goTab(t0);if(t0==="community"&&location.hash==="#kal")setTimeout(()=>{const k=document.getElementById("kal");k&&k.scrollIntoView()},50)}else render()}
 </script></body></html>
