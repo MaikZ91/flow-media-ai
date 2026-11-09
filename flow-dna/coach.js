@@ -6,9 +6,9 @@ window.FLOW_COACH = {
   hallo: "Hey, ich bin Maik – bzw. meine digitale Version. Frag mich alles rund um KI, Websites, Apps, Skills und deine Ideen. Ich antworte aus dem, was ich selbst so mache. Wenn ich nicht weiterweiß, schick ich dich in die Tech-Support-Gruppe.",
   vorschlaege: ["Wie läuft der Website-Kurs ab?", "Wie fange ich mit KI an?", "Welches KI-Tool soll ich nehmen?", "Wie baue ich meine Website?", "Wohin kommt ein Skill?", "Wie schreibe ich gute Prompts?", "Was ist die FLOW-Methode?"],
   wissen: [
-    // Kurs 03 „Bau deine Website mit Skill“ (09.11.2026) – vorne, damit Kursfragen vor allgemeinen Antworten greifen
+    // Kurs 03 „Bau deine Premium-Website mit Skill“ (09.11.2026) – vorne, damit Kursfragen vor allgemeinen Antworten greifen
     { k: ["website kurs", "website-kurs", "kurs 03", "bau deine website", "kurs website", "welche lektionen", "kursinhalt", "kurs ab"],
-      a: "Im Kurs „Bau deine Website mit Skill“ gehst du in sechs kurzen Lektionen von null zur eigenen Seite: 01 Content-Ordner anlegen, 02 Website-Skill einrichten, 03 fünf Varianten bauen und auswählen, 04 Premium-Look, 05 optional live stellen auf GitHub Pages, 06 mit KI weiterpflegen. Rund 4 Minuten Video, dann ca. 30 Minuten Umsetzen – jede Lektion endet mit einer Aufgabe.",
+      a: "Im Kurs „Bau deine Premium-Website mit Skill“ gehst du in sechs kurzen Lektionen von null zur eigenen Seite: 01 Content-Ordner anlegen, 02 Website-Skill einrichten, 03 fünf Varianten bauen und auswählen, 04 Premium-Look, 05 optional live stellen auf GitHub Pages, 06 mit KI weiterpflegen. Rund 4 Minuten Video, dann ca. 30 Minuten Umsetzen – jede Lektion endet mit einer Aufgabe.",
       go: [["kurs", "website", "Zum Kurs 03"]] },
     { k: ["kurs code", "kurscode", "kurs freischalten", "code website", "kurs öffnen", "kurs gesperrt"],
       a: "Der Website-Kurs ist mit einem Kurs-Code gesperrt. Öffne unter Kurse die Karte 03, gib deinen Code ins Feld „Kurs-Code“ ein und tipp auf Freischalten – danach startet der Kurs direkt hier in der App. Keinen Code? Schreib mir kurz.",
