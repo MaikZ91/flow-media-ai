@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-09T14:18+00:00",
+ "stand": "2026-11-09T14:45+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -18,7 +18,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 14.0
+   "r": 13.9
   },
   {
    "t": "heise+ | KI in der Softwareentwicklung: Open Source zwischen Slop und Merge-Rekorden",
@@ -66,7 +66,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 9.9
+   "r": 9.8
   },
   {
    "t": "Galaxy AI: Samsung will für KI-Funktionen offenbar Geld sehen – das steckt im geplanten Abo",
@@ -77,7 +77,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 7.7
   },
   {
    "t": "Google erweitert TPU-Portfolio um vier Systeme in einem Jahr und nimmt Nvidia stärker ins Visier",
@@ -91,7 +91,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 17.8
+   "r": 17.7
   },
   {
    "t": "heise+ | So sichern Sie KI-Anwendungen und Agenten ab: Jenseits der Testpyramide",
@@ -104,7 +104,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.7
+   "r": 11.6
   },
   {
    "t": "KI-Coding-Agenten verfrachten Zugangsdaten in öffentliche Repositories",
@@ -120,7 +120,7 @@
     "Bildung & Schule"
    ],
    "n": 3,
-   "r": 39.7
+   "r": 39.6
   },
   {
    "t": "Nvidia-Spionageaffäre liefert US-Demokraten die perfekte Vorlage für schärfere KI-Chip-Exportkontrollen",
@@ -148,7 +148,7 @@
     "KI-Blase & Geld"
    ],
    "n": 2,
-   "r": 25.3
+   "r": 25.2
   },
   {
    "t": "Trotz teurer Lizenz: Apple verlangt für Logic-Pro-KI-Assistenz ein Abo",
@@ -174,7 +174,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 9.2
+   "r": 9.1
   },
   {
    "t": "\"Mein Second Brain diktiert mir, wie ich zu arbeiten habe\": So verändern KI-Wissenssysteme die Arbeit",
@@ -201,7 +201,7 @@
     "Jobs & Arbeit"
    ],
    "n": 2,
-   "r": 23.0
+   "r": 22.9
   },
   {
    "t": "Wie groß ist die Abhängigkeit von US-KI tatsächlich? Expertin analysiert Europas Startups",
@@ -230,7 +230,7 @@
     "KI-Video & Bild"
    ],
    "n": 2,
-   "r": 32.0
+   "r": 31.9
   },
   {
    "t": "KI mit Bewusstsein: Chatbots sind Spiegel der Trainingsdaten, keine fühlenden Wesen",
@@ -241,7 +241,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.7
+   "r": 3.6
   },
   {
    "t": "Erfinder der \"bitteren Lektion\" warnt: KI-Wissenschaft ist noch lange nicht am Ziel",
@@ -254,7 +254,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.5
+   "r": 9.4
   },
   {
    "t": "Coding-Agenten liefern viel, aber selten fertig",
@@ -280,7 +280,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.8
+   "r": 2.7
   },
   {
    "t": "heise+ | Schlankes E-Bike mit KI-Unterstützung: Lemmo One Collab.Ride im Test",
@@ -291,7 +291,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.8
+   "r": 2.7
   },
   {
    "t": "Anthropic will trotz Tech-Ausverkauf noch vor Thanksgiving an die Börse",
@@ -305,7 +305,7 @@
     "KI-Blase & Geld"
    ],
    "n": 2,
-   "r": 18.5
+   "r": 18.4
   },
   {
    "t": "\"FUCK. NOTHING WORKS.\" - KI-Modell Inkling 2 Small flucht in seinen Denkprotokollen",
@@ -342,7 +342,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 0.1
+   "r": 0.0
   },
   {
    "t": "KI-Agenten können laut Benchmark eigenständig in Firmennetzwerke einbrechen",
@@ -565,7 +565,7 @@
     "Bildung & Schule"
    ],
    "n": 1,
-   "r": 6.0
+   "r": 5.9
   },
   {
    "id": "s0nZrVoedcE",
@@ -578,7 +578,7 @@
     "xAI / Grok"
    ],
    "n": 1,
-   "r": 11.3
+   "r": 11.2
   },
   {
    "id": "6wWnbZu4oxI",
@@ -590,7 +590,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 9.3
+   "r": 9.2
   },
   {
    "id": "v0q266zAQ9M",
@@ -602,7 +602,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 5.2
+   "r": 5.1
   },
   {
    "id": "GJ6PMUm5oTA",
@@ -614,7 +614,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.4
+   "r": 6.3
   },
   {
    "id": "8jfH4hFtAbQ",
