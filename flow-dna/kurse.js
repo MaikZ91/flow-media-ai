@@ -9,6 +9,7 @@ window.FLOW_KURSE = {
     { id: "personal-brand", nr: "02", titel: "Mit KI zur Personal Brand", untertitel: "Deine Marke, deine Stimme, dein Look – mit KI geschärft", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "img/maik_avatar.jpg",
       module: ["Brand DNA: Wer bist du, für wen, warum?", "Deine Stimme als Skill festhalten", "Look & Design-System ohne Designer", "Fotos und Porträts richtig nutzen", "Dein Brand-Paket für jede KI"] },
     { id: "website", nr: "03", titel: "Bau deine Website mit Skill", untertitel: "Aus deinem Content wird deine eigene Website", level: "Einsteiger", dauer: "ca. 4 Min. Video · 30 Min. Umsetzen", status: "live", code: "WEBSITE", bild: "media/r006.jpg",
+      preis: { normal: 249, early: 59, gratis: "Für Workshop-Teilnehmer gratis" },
       intro: { video: "kurse/website-mit-skill/videos/L00.mp4", poster: "kurse/website-mit-skill/videos/L00.jpg", titel: "Hallo – das baust du heute" },
       hinweis: "Videos mit KI-Stimme, teils als Animation. Jede Lektion endet mit einer Aufgabe.",
       module: ["Content-Ordner anlegen", "Website-Skill einrichten", "5 Varianten bauen und auswählen", "Premium-Look: Hero, Branche, Pflicht-Bausteine", "Live stellen auf GitHub Pages", "Mit KI weiterpflegen"],
