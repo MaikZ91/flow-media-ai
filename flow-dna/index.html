@@ -236,6 +236,8 @@ function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote ·
  const wg=A.workshopGruppe?`<a class="btnx o" style="margin-bottom:10px" href="${A.workshopGruppe}" target="_blank" rel="noopener" data-cta="app_ws_gruppe">Workshop-Gruppe beitreten →</a>`:"";
  view.innerHTML=`<div class="ag"><h3><i>01</i>Workshops buchen</h3>${ws}${wg}<h3><i>02</i>Zusammenarbeiten</h3>${of}</div>`}
 const NEWS=window.NEWS||{items:[],quellen:[]};let newsQ="alle";
+// frische News/Kurse immer direkt vom Server holen (umgeht Browser- und App-Cache von news.js)
+fetch("news.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{if(d&&d.stand&&(!NEWS.stand||d.stand>=NEWS.stand)){Object.assign(NEWS,d);if(tab==="news")news()}}).catch(()=>{});
 function ago(iso){const m=Math.round((Date.now()-new Date(iso))/6e4);return m<60?`vor ${Math.max(1,m)} Min.`:m<1440?`vor ${Math.round(m/60)} Std.`:new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}
 let newsMode="artikel",newsSort="relevanz",newsTheme="";
 const sortN=L=>L.slice().sort((a,b)=>newsSort==="relevanz"?(b.r||0)-(a.r||0)||b.d.localeCompare(a.d):b.d.localeCompare(a.d));
@@ -248,7 +250,7 @@ function sparkSvg(v,up){if(!v||v.length<2)return"";const mn=Math.min(...v),mx=Ma
 const pct=n=>`${n>0?"+":""}${n.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:2})} %`;
 function aktienView(){const L=NEWS.aktien||[];const t=L.find(a=>a.t);
  return `<p class="st">KI- & Robotik-Aktien · Kurse verzögert${t?` · Stand ${new Date(t.t).toLocaleString("de-DE",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"})} Uhr`:""} · keine Anlageberatung</p>
- ${L.map(a=>a.preis?`<div class="ak"><div><b>${DNA.esc(a.name)}</b><small>${DNA.esc(a.sym)} · ${DNA.esc(a.info)}</small></div>${sparkSvg(a.spark,a.m1>=0)}<div class="kv"><strong>${a.preis.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})} ${DNA.esc(a.cur)}</strong><span class="${a.d1>=0?"up":"dn"}">${pct(a.d1)} heute</span><em>${pct(a.m1)} 1 Monat</em></div></div>`
+ ${L.length?"":`<p class="st">Kurse werden geladen … Falls nichts erscheint: App einmal schließen und neu öffnen.</p>`}${L.map(a=>a.preis?`<div class="ak"><div><b>${DNA.esc(a.name)}</b><small>${DNA.esc(a.sym)} · ${DNA.esc(a.info)}</small></div>${sparkSvg(a.spark,a.m1>=0)}<div class="kv"><strong>${a.preis.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})} ${DNA.esc(a.cur)}</strong><span class="${a.d1>=0?"up":"dn"}">${pct(a.d1)} heute</span><em>${pct(a.m1)} 1 Monat</em></div></div>`
   :`<div class="ak off"><div><b>${DNA.esc(a.name)}</b><small>${DNA.esc(a.info)}</small></div><div class="kv"><span class="na">${a.sym?"Kurs gerade nicht abrufbar":"nicht börsennotiert"}</span></div></div>`).join("")}`}
 function news(){if(newsMode==="aktien"){document.getElementById("meta").innerHTML=`<span>KI-News · Aktien</span><span>${(NEWS.aktien||[]).filter(a=>a.preis).length} Kurse</span>`;view.innerHTML=`<div class="nw">${modeBar()}${aktienView()}</div>`;return}
 if(newsMode==="videos"){document.getElementById("meta").innerHTML=`<span>KI-News · Videos</span><span>${(NEWS.videos||[]).length} Videos</span>`;view.innerHTML=`<div class="nw">${modeBar()}${topBar()}${videos()}</div>`;return}
