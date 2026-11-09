@@ -34,7 +34,12 @@ header .wrap{display:flex;justify-content:space-between;align-items:center;heigh
 /* Hero */
 .hero{padding:clamp(40px,8vw,88px) 0 clamp(28px,5vw,48px)}
 .hero h1{font-size:clamp(52px,10.5vw,128px);margin:18px 0 22px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end}
 .hero p.lead{max-width:560px;font-size:18px;color:var(--ink)}
+.coach{margin:0}
+.coach img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border:2px solid var(--ink);filter:grayscale(1) contrast(1.1)}
+.coach figcaption{margin-top:10px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:28px}.coach{max-width:220px}}
 .meta{display:flex;flex-wrap:wrap;gap:0;margin-top:28px;border-top:1px solid var(--rule)}
 .meta div{padding:14px 28px 0 0;margin-right:28px}
 .meta b{display:block;font:700 28px/1 var(--head)}
@@ -121,10 +126,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 
 <main id="top">
   <section class="hero wrap">
+    <div>
     <div class="label">Ein Skill. Eine Website. Dein Stil.</div>
     <h1>Bau deine Website<br>mit <span class="blue">Skill.</span></h1>
     <p class="lead" id="lead"></p>
     <div class="meta" id="meta"></div>
+    </div>
+    <figure class="coach"><img src="img/maik_front.jpg" alt="Maik Zschach, Flow Media AI" width="720" height="1280"><figcaption class="label">Dein Coach · Maik Zschach</figcaption></figure>
   </section>
 
   <section class="wrap" aria-label="Kurs">
@@ -182,9 +190,9 @@ const COURSE = {
       task:'Öffne die Beispielseiten im Flow DNA Store und notier dir, welche dir gefällt und warum, in einem Satz.' },
     { title:'Einrichten', short:'Werkzeug, Ordner, Skill', dur:'0:29', anim:true, video:'videos/L03.mp4', poster:'videos/L03.jpg',
       goal:'Einmal einrichten, dann nie wieder: Werkzeug installieren, Projektordner anlegen, Skill hineinlegen.',
-      points:['Claude Code oder Codex installieren und anmelden','Projektordner mit <code>Media</code> (Fotos, Videos) und <code>Texte</code> (alles über dich)','Auf der Workshop-Seite „Skill herunterladen“ und die ZIP in den Ordner <code>skills</code> legen'],
+      points:['Claude Code oder Codex installieren und anmelden','Projektordner mit <code>Media</code> (Fotos, Videos) und <code>Texte</code> (alles über dich)','Auf der Workshop-Seite (Link unten) „Skill herunterladen“ und die ZIP in den Ordner <code>skills</code> legen'],
       task:'Leg deinen Ordner an, pack 5 Fotos und einen Text über dich hinein und öffne ihn in Claude Code oder Codex.',
-      links:[['Claude Code','https://claude.com/download','Claude App mit Claude Code'],['Codex','https://openai.com/codex/','Codex App von OpenAI'],['GitHub','https://github.com/signup','Nur für den optionalen Launch']] },
+      links:[['Website-Skill','../../?workshop=website','Workshop-Seite mit Download'],['Claude Code','https://claude.com/download','Claude App mit Claude Code'],['Codex','https://openai.com/codex/','Codex App von OpenAI'],['GitHub','https://github.com/signup','Nur für den optionalen Launch']] },
     { title:'Live bauen', short:'Prompt, Varianten, Launch', dur:'0:31', anim:true, video:'videos/L04.mp4', poster:'videos/L04.jpg',
       goal:'Ein Satz startet alles: Der Skill liest deinen Content, baut fünf Varianten, du wählst, und die finale Version geht live.',
       points:['Start-Prompt schicken (siehe Spickzettel)','Varianten durchklicken und mischen, z. B. Layout von 03, Farben von 05','Erst mal lokal ansehen: Die Seite läuft auf deinem Rechner'],
