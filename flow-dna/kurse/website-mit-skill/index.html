@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website mit Skill</title>
+<meta name="description" content="Videokurs 01 von Flow DNA: In wenigen Lektionen baust du mit einem KI-Skill deine eigene Website.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --paper:#F4F4F1; --ink:#0B0B0B; --mute:#6B6B66; --rule:rgba(11,11,11,.14);
+  --card:#FFFFFF; --blue:#2F5BFF;
+  --head:'Oswald',Impact,sans-serif; --label:'Montserrat',system-ui,sans-serif;
+  --text:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#0B0B0B; --ink:#F4F4F1; --mute:#9A9A9A; --rule:rgba(244,244,241,.16); --card:#151515; }
+}
+:root[data-theme="dark"]{ --paper:#0B0B0B; --ink:#F4F4F1; --mute:#9A9A9A; --rule:rgba(244,244,241,.16); --card:#151515; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--text);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px)}
+.label{font:600 11px/1.3 var(--label);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:-.005em}
+.blue{color:var(--blue)}
+
+/* Kopf */
+header{border-bottom:3px solid var(--ink)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.mark{display:flex;align-items:center;gap:10px;font:700 22px/1 var(--head);letter-spacing:.02em;text-decoration:none;color:var(--ink)}
+.mark svg{width:34px;height:14px}
+.mark small{font:600 10px/1 var(--label);letter-spacing:.3em;color:var(--mute);margin-left:4px}
+
+/* Hero */
+.hero{padding:clamp(40px,8vw,88px) 0 clamp(28px,5vw,48px)}
+.hero h1{font-size:clamp(52px,10.5vw,128px);margin:18px 0 22px}
+.hero p.lead{max-width:560px;font-size:18px;color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:0;margin-top:28px;border-top:1px solid var(--rule)}
+.meta div{padding:14px 28px 0 0;margin-right:28px}
+.meta b{display:block;font:700 28px/1 var(--head)}
+
+/* Player */
+.course{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0;border:2px solid var(--ink);background:var(--card)}
+.stage{border-right:2px solid var(--ink);min-width:0}
+video{display:block;width:100%;aspect-ratio:16/10;background:#0B0B0B}
+.lesson{padding:28px clamp(18px,3vw,36px) 32px}
+.lesson h2{font-size:clamp(34px,4.6vw,52px);margin:10px 0 12px}
+.lesson .goal{font-size:17px;max-width:620px}
+.lesson ul{list-style:none;margin:22px 0;border-top:1px solid var(--rule)}
+.lesson li{padding:11px 0 11px 28px;border-bottom:1px solid var(--rule);position:relative}
+.lesson li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:2px;background:var(--ink)}
+.task{border:2px solid var(--ink);padding:18px 20px;margin-top:8px}
+.task p{margin-top:6px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:22px}
+.btn{font:600 12px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;padding:14px 18px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn.fill{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+
+.list{display:flex;flex-direction:column}
+.list .head{padding:18px 20px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;align-items:center}
+.progress{height:3px;background:var(--rule);margin:0 20px 0}
+.progress i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+.item{all:unset;box-sizing:border-box;display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:start;padding:16px 20px;border-bottom:1px solid var(--rule);cursor:pointer}
+.item:hover{background:var(--paper)}
+.item .n{font:700 26px/1 var(--head);color:var(--mute)}
+.item .t{font:700 17px/1.1 var(--head);text-transform:uppercase}
+.item .d{font:500 12px/1.4 var(--text);color:var(--mute);margin-top:4px}
+.item .ok{font:600 10px/1 var(--label);letter-spacing:.15em;color:var(--mute);padding-top:4px}
+.item.active{box-shadow:inset 4px 0 0 var(--blue)}
+.item.active .n{color:var(--blue)}
+.item.done .ok{color:var(--ink)}
+.item:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+
+/* Spickzettel */
+section.block{padding:clamp(48px,8vw,88px) 0 0}
+.block-head{display:flex;gap:14px;align-items:baseline;border-bottom:3px solid var(--ink);padding-bottom:12px;margin-bottom:24px}
+.block-head .label{color:var(--ink)}
+.block-head .label b{color:var(--blue);font-weight:600}
+.cheat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--ink);background:var(--card)}
+.cheat > div{padding:22px;border-right:1px solid var(--rule)}
+.cheat > div:last-child{border-right:0}
+.cheat h3{font-size:22px;margin-bottom:10px}
+pre{font:400 13px/1.6 var(--mono);white-space:pre-wrap;word-break:break-word;background:#0B0B0B;color:#F4F4F1;padding:16px;margin-top:12px}
+pre .k{color:#8FA6FF}
+
+/* Abschluss */
+.end{padding:clamp(56px,9vw,104px) 0;text-align:left}
+.end h2{font-size:clamp(44px,8vw,96px);margin:14px 0 20px}
+.end p{max-width:520px;font-size:17px}
+.end .row{justify-content:flex-start}
+footer{border-top:3px solid var(--ink)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:18px;padding-bottom:28px}
+
+@media (max-width:900px){
+  .course{grid-template-columns:1fr}
+  .stage{border-right:0;border-bottom:2px solid var(--ink)}
+  .cheat{grid-template-columns:1fr}
+  .cheat > div{border-right:0;border-bottom:1px solid var(--rule)}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="mark" href="../../?tab=kurse" aria-label="Zurück zur Flow-DNA-App">
+      <svg viewBox="0 0 34 14" aria-hidden="true"><path d="M1 7c4-8 8-8 12 0s8 8 12 0 6-6 8-4" fill="none" stroke="#2F5BFF" stroke-width="2"/><path d="M1 7c4 8 8 8 12 0s8-8 12 0 6 6 8 4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      FLOW DNA<small>KURSE</small>
+    </a>
+    <span class="label">Videokurs · 01</span>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="label">Ein Skill. Eine Website. Dein Stil.</div>
+    <h1>Bau deine Website<br>mit <span class="blue">Skill.</span></h1>
+    <p class="lead" id="lead"></p>
+    <div class="meta" id="meta"></div>
+  </section>
+
+  <section class="wrap" aria-label="Kurs">
+    <div class="course">
+      <div class="stage">
+        <video id="player" controls preload="metadata" playsinline></video>
+        <article class="lesson" id="lesson" aria-live="polite"></article>
+      </div>
+      <nav class="list" aria-label="Lektionen">
+        <div class="head"><span class="label" style="color:var(--ink)">Lektionen</span><span class="label" id="count"></span></div>
+        <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+        <div id="items"></div>
+      </nav>
+    </div>
+  </section>
+
+  <section class="block wrap" aria-label="Spickzettel">
+    <div class="block-head"><span class="label"><b>02</b>&nbsp;&nbsp;Spickzettel</span></div>
+    <div class="cheat" id="cheat"></div>
+  </section>
+
+  <section class="end wrap">
+    <div class="label">Geschafft?</div>
+    <h2>Deine Website.<br>Dein <span class="blue">Flow.</span></h2>
+    <p>Du hast jetzt einen Skill, der deinen Stil kennt. Jede neue Seite, jedes Update: einmal erklären, immer wieder nutzen.</p>
+    <div class="row"><a class="btn fill" href="../../">Mehr Skills im Flow DNA Store</a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Flow Media AI · We build your ideas.</span>
+    <span class="label">Komm in den Flow.</span>
+  </div>
+</footer>
+
+<script>
+/* ===== Kursdaten: hier anpassen ===== */
+const COURSE = {
+  id: 'website-mit-skill',
+  lead: 'Einmal festhalten, wer du bist und wie du aussiehst. Danach baut die KI jede Seite in deinem Stil. Sechs kurze Lektionen, eine Aufgabe pro Lektion.',
+  meta: [['Lektionen','6'],['Video','3 Min'],['Level','Einsteiger'],['Du brauchst','Claude oder Codex']],
+  lessons: [
+    { title:'Hallo', short:'Das baust du heute', dur:'0:18', anim:true, video:'videos/L00.mp4', poster:'videos/L00.jpg',
+      goal:'Willkommen. In sechs kurzen Lektionen baust du deine eigene Website mit einem KI-Skill: verstehen, einrichten, bauen.',
+      points:['Was ein Skill ist und warum er nach dir klingt','Wie du Claude Code oder Codex einrichtest','Wie aus deinem Content fünf Varianten und eine Live-Seite werden'],
+      task:'Überleg dir, für wen deine Website ist, und schreib es in einem Satz auf.' },
+    { title:'Was ist ein Skill?', short:'Name, Anleitung, Dateien', dur:'0:40', video:'videos/L01.mp4', poster:'videos/L01.jpg',
+      goal:'Ein Skill ist eine Anleitung, die die KI liest und immer wieder nutzt. Du erklärst einmal, sie wendet es jedes Mal an.',
+      points:['<b>Name &amp; Beschreibung</b>: wann die KI den Skill nutzt','<b>Anleitung</b>: wie sie arbeitet, mit Schritten, Regeln und Ton','<b>Dateien</b>: Vorlagen, Fotos, Beispiele'],
+      task:'Schreib drei Zeilen über deine Stimme: Wie sprichst du? Was sagst du nie? Das ist der Anfang deines eigenen Skills.' },
+    { title:'Fünf Varianten statt einer', short:'Der Website Builder', dur:'0:28', video:'videos/L02.mp4', poster:'videos/L02.jpg',
+      goal:'Der Website Builder rät nicht eine Lösung. Er baut fünf deutlich verschiedene Varianten, du wählst und mischst.',
+      points:['Content auslesen: Fotos, Videos, Texte, Branding, alte Website','Fünf Varianten zum Durchklicken, dann deine Auswahl','Finale Version und Launch: eigener GitHub-Account, anderer Account oder nur lokal'],
+      task:'Öffne die Beispielseiten im Flow DNA Store und notier dir, welche dir gefällt und warum, in einem Satz.' },
+    { title:'Einrichten', short:'Werkzeug, Ordner, Skill', dur:'0:29', anim:true, video:'videos/L03.mp4', poster:'videos/L03.jpg',
+      goal:'Einmal einrichten, dann nie wieder: Werkzeug installieren, Projektordner anlegen, Skill hineinlegen.',
+      points:['Claude Code oder Codex installieren und anmelden','Projektordner mit <code>Media</code> (Fotos, Videos) und <code>Texte</code> (alles über dich)','Auf der Workshop-Seite „Skill herunterladen“ und die ZIP in den Ordner <code>skills</code> legen'],
+      task:'Leg deinen Ordner an, pack 5 Fotos und einen Text über dich hinein und öffne ihn in Claude Code oder Codex.' },
+    { title:'Live bauen', short:'Prompt, Varianten, Launch', dur:'0:31', anim:true, video:'videos/L04.mp4', poster:'videos/L04.jpg',
+      goal:'Ein Satz startet alles: Der Skill liest deinen Content, baut fünf Varianten, du wählst, und die finale Version geht live.',
+      points:['Start-Prompt schicken (siehe Spickzettel)','Varianten durchklicken und mischen, z. B. Layout von 03, Farben von 05','Veröffentlichen: GitHub Pages oder erst mal lokal'],
+      task:'Schick den Start-Prompt, wähl deine Lieblingsvariante und bring sie online.' },
+    { title:'Der Skill von innen', short:'Und dein eigener Skill', dur:'0:30', video:'videos/L05.mp4', poster:'videos/L05.jpg',
+      goal:'So sieht die SKILL.md hinter dem Builder aus. Mit dem gleichen Aufbau schreibst du deinen eigenen Skill.',
+      points:['Input einsammeln: Anforderungen, Fotos und Videos, mitgelieferte Designs','Fehlendes beschaffen (Fotos nur mit freier Lizenz) und passendes Design ableiten','Fünf Varianten bauen, nachfragen, neue Version bauen, dokumentieren, veröffentlichen'],
+      task:'Mach aus deinen drei Zeilen aus Lektion 01 eine eigene <code>SKILL.md</code> mit Name, Beschreibung und Anleitung.' }
+  ],  cheat: [
+    { label:'01 · Aufbau', title:'Ein Skill-Ordner', text:'Eine SKILL.md plus alles, was die KI dafür braucht.',
+      code:'deine-website/\n  skills/\n    website-builder/\n      SKILL.md\n  Media/   ← Fotos, Videos\n  Texte/   ← Über dich, Angebot' },
+    { label:'02 · Kopf der SKILL.md', title:'Name und Beschreibung', text:'Daran erkennt die KI, wann sie den Skill nutzt.',
+      code:'<span class="k">name:</span> deine-brand\n<span class="k">description:</span> Nutzen bei jedem\n  Post, jeder Caption, jeder Seite.\n\n# Deine Stimme\n- du, kurz, direkt\n- keine KI-Floskeln' },
+    { label:'03 · Start-Prompt', title:'Ein Satz reicht', text:'Beispiel. Im Projektordner in Claude Code oder Codex einfügen.',
+      code:'Nutze den Website-Skill.\nLies meinen Ordner Media und Texte\nund bau mir fünf Varianten.' }
+  ]
+};
+/* ===== Ende Kursdaten ===== */
+
+const $ = s => document.querySelector(s);
+const store = {
+  get(){ try{ return JSON.parse(localStorage.getItem('kurs:'+COURSE.id)) || {}; }catch(e){ return {}; } },
+  set(v){ try{ localStorage.setItem('kurs:'+COURSE.id, JSON.stringify(v)); }catch(e){} }
+};
+let state = store.get(); state.done = state.done || {};
+let current = Math.min(state.current || 0, COURSE.lessons.length - 1);
+
+$('#lead').textContent = COURSE.lead;
+$('#meta').innerHTML = COURSE.meta.map(([k,v]) => `<div><b>${v}</b><span class="label">${k}</span></div>`).join('');
+$('#cheat').innerHTML = COURSE.cheat.map(c => `<div><span class="label">${c.label}</span><h3>${c.title}</h3><p>${c.text}</p>${c.code ? `<pre>${c.code}</pre>` : ''}</div>`).join('');
+
+function renderList(){
+  const n = COURSE.lessons.length, d = Object.values(state.done).filter(Boolean).length;
+  $('#count').textContent = `${d} / ${n} erledigt`;
+  $('#bar').style.width = (n ? d / n * 100 : 0) + '%';
+  $('#items').innerHTML = COURSE.lessons.map((l,i) => `
+    <button class="item${i===current?' active':''}${state.done[i]?' done':''}" data-i="${i}" ${i===current?'aria-current="true"':''}>
+      <span class="n">${String(i).padStart(2,'0')}</span>
+      <span><span class="t">${l.title}</span><span class="d" style="display:block">${l.dur} · ${l.short}</span></span>
+      <span class="ok">${state.done[i] ? '✓' : ''}</span>
+    </button>`).join('');
+  document.querySelectorAll('.item').forEach(b => b.onclick = () => show(+b.dataset.i, true));
+}
+function show(i, play){
+  current = i; state.current = i; store.set(state);
+  const l = COURSE.lessons[i], v = $('#player');
+  v.poster = l.poster; v.src = l.video;
+  if (play) v.play().catch(()=>{});
+  const last = i === COURSE.lessons.length - 1;
+  $('#lesson').innerHTML = `
+    <span class="label">Lektion ${String(i).padStart(2,"0")} · ${l.dur}${l.anim?' · Animation':''} · Sprecher: KI-Stimme</span>
+    <h2>${l.title}</h2>
+    <p class="goal">${l.goal}</p>
+    <ul>${l.points.map(p => `<li>${p}</li>`).join('')}</ul>
+    <div class="task"><span class="label" style="color:var(--ink)">Deine Aufgabe</span><p>${l.task}</p></div>
+    <div class="row">
+      <button class="btn" id="done" aria-pressed="${!!state.done[i]}">${state.done[i] ? '✓ Erledigt' : 'Als erledigt markieren'}</button>
+      ${last ? '' : '<button class="btn fill" id="next">Nächste Lektion →</button>'}
+    </div>`;
+  $('#done').onclick = () => { state.done[i] = !state.done[i]; store.set(state); show(i, false); };
+  if (!last) $('#next').onclick = () => { state.done[i] = true; store.set(state); show(i+1, true); scrollTo({top: $('.course').offsetTop - 12, behavior:'smooth'}); };
+  renderList();
+}
+if (COURSE.lessons.length) show(current, false);
+</script>
+</body>
+</html>

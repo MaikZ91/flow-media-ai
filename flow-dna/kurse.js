@@ -1,4 +1,4 @@
-// Online-Kurse von Flow Media AI (Tab „Kurse“ in der Flow-DNA-App). Stand 09.11.2026: alle in Planung („Coming soon“).
+// Online-Kurse von Flow Media AI (Tab „Kurse“ in der Flow-DNA-App). Stand 09.11.2026: Kurs 03 live, Rest in Planung („Coming soon“).
 // status: "bald" = geplant/in Produktion · "live" = freigeschaltet (dann video/lektionen ergänzen).
 // Themen aus Maiks echtem Content: Workshops, Masterclass, FLOW-Methode, eigene Skills und Systeme.
 window.FLOW_KURSE = {
@@ -8,8 +8,8 @@ window.FLOW_KURSE = {
       module: ["Was KI kann – und was nicht", "ChatGPT, Claude, Gemini: Welches Tool wofür?", "Gute Prompts in 5 Minuten", "Deine ersten 10 Alltagsaufgaben mit KI", "Datenschutz und Grenzen"] },
     { id: "personal-brand", nr: "02", titel: "Mit KI zur Personal Brand", untertitel: "Deine Marke, deine Stimme, dein Look – mit KI geschärft", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "img/maik_avatar.jpg",
       module: ["Brand DNA: Wer bist du, für wen, warum?", "Deine Stimme als Skill festhalten", "Look & Design-System ohne Designer", "Fotos und Porträts richtig nutzen", "Dein Brand-Paket für jede KI"] },
-    { id: "website", nr: "03", titel: "Deine Website mit KI", untertitel: "Aus deinem Content wird deine eigene Website", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "media/r006.jpg",
-      module: ["Content-Ordner anlegen", "Website-Skill einrichten", "5 Varianten bauen und auswählen", "Premium-Look: Hero, Branche, Pflicht-Bausteine", "Live stellen auf GitHub Pages", "Mit KI weiterpflegen"] },
+    { id: "website", nr: "03", titel: "Deine Website mit KI", untertitel: "Aus deinem Content wird deine eigene Website", level: "Einsteiger", dauer: "ca. 3 Min. Video", status: "live", url: "kurse/website-mit-skill/", bild: "media/r006.jpg",
+      module: ["Hallo – das baust du heute", "Was ist ein Skill?", "Fünf Varianten statt einer", "Einrichten: Werkzeug, Ordner, Skill", "Live bauen: Prompt, Varianten, Launch", "Der Skill von innen – und dein eigener"] },
     { id: "erste-app", nr: "04", titel: "Deine erste App", untertitel: "In 5 Schritten von der Idee zur App auf dem Handy", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "media/r016.jpg",
       module: ["Die Idee schärfen: Problem, Nutzer, Funktion", "Anforderungen und Content sammeln", "5 Versionen bauen lassen", "Die beste wählen und verbessern", "Als App installierbar machen und teilen"] },
     { id: "claude-code", nr: "05", titel: "Claude Code für Einsteiger", untertitel: "Die KI, die für dich programmiert – Schritt für Schritt", level: "Fortgeschritten", dauer: "ca. 3 Std.", status: "bald", bild: "img/maik_front.jpg",
