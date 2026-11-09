@@ -50,6 +50,14 @@ video{display:block;width:100%;aspect-ratio:16/10;background:#0B0B0B}
 .lesson li{padding:11px 0 11px 28px;border-bottom:1px solid var(--rule);position:relative}
 .lesson li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:2px;background:var(--ink)}
 .task{border:2px solid var(--ink);padding:18px 20px;margin-top:8px}
+.dl{margin:4px 0 22px}
+.dl .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px}
+.dl a{display:block;border:2px solid var(--ink);padding:14px 16px;color:var(--ink);text-decoration:none}
+.dl a b{display:block;font:700 20px/1.1 var(--head);text-transform:uppercase}
+.dl a span{display:block;font-size:13px;color:var(--mute);margin-top:4px}
+.dl a:hover{background:var(--ink);color:var(--paper)} .dl a:hover span{color:var(--paper)}
+.opt{border:2px dashed var(--ink);padding:18px 20px;margin-top:14px}
+.opt ol{margin:10px 0 0 22px;border:0} .opt li{padding:5px 0 5px 4px;border:0} .opt li::before{display:none} .opt a{color:var(--blue)}
 .task p{margin-top:6px}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:22px}
 .btn{font:600 12px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;padding:14px 18px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
@@ -175,11 +183,14 @@ const COURSE = {
     { title:'Einrichten', short:'Werkzeug, Ordner, Skill', dur:'0:29', anim:true, video:'videos/L03.mp4', poster:'videos/L03.jpg',
       goal:'Einmal einrichten, dann nie wieder: Werkzeug installieren, Projektordner anlegen, Skill hineinlegen.',
       points:['Claude Code oder Codex installieren und anmelden','Projektordner mit <code>Media</code> (Fotos, Videos) und <code>Texte</code> (alles über dich)','Auf der Workshop-Seite „Skill herunterladen“ und die ZIP in den Ordner <code>skills</code> legen'],
-      task:'Leg deinen Ordner an, pack 5 Fotos und einen Text über dich hinein und öffne ihn in Claude Code oder Codex.' },
+      task:'Leg deinen Ordner an, pack 5 Fotos und einen Text über dich hinein und öffne ihn in Claude Code oder Codex.',
+      links:[['Claude Code','https://claude.com/download','Claude App mit Claude Code'],['Codex','https://openai.com/codex/','Codex App von OpenAI'],['GitHub','https://github.com/signup','Nur für den optionalen Launch']] },
     { title:'Live bauen', short:'Prompt, Varianten, Launch', dur:'0:31', anim:true, video:'videos/L04.mp4', poster:'videos/L04.jpg',
       goal:'Ein Satz startet alles: Der Skill liest deinen Content, baut fünf Varianten, du wählst, und die finale Version geht live.',
-      points:['Start-Prompt schicken (siehe Spickzettel)','Varianten durchklicken und mischen, z. B. Layout von 03, Farben von 05','Veröffentlichen: GitHub Pages oder erst mal lokal'],
-      task:'Schick den Start-Prompt, wähl deine Lieblingsvariante und bring sie online.' },
+      points:['Start-Prompt schicken (siehe Spickzettel)','Varianten durchklicken und mischen, z. B. Layout von 03, Farben von 05','Erst mal lokal ansehen: Die Seite läuft auf deinem Rechner'],
+      task:'Schick den Start-Prompt und wähl deine Lieblingsvariante.',
+      optional:{ title:'Launch auf GitHub', text:'Wenn deine Seite für alle erreichbar sein soll:',
+        steps:['Kostenlosen Account anlegen auf <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>','Dem Skill sagen: „Stell die Seite auf GitHub Pages online.“ Er fragt nach deinem Account','Nach ein bis zwei Minuten ist sie erreichbar unter <code>deinname.github.io</code>'] } },
     { title:'Der Skill von innen', short:'Und dein eigener Skill', dur:'0:30', video:'videos/L05.mp4', poster:'videos/L05.jpg',
       goal:'So sieht die SKILL.md hinter dem Builder aus. Mit dem gleichen Aufbau schreibst du deinen eigenen Skill.',
       points:['Input einsammeln: Anforderungen, Fotos und Videos, mitgelieferte Designs','Fehlendes beschaffen (Fotos nur mit freier Lizenz) und passendes Design ableiten','Fünf Varianten bauen, nachfragen, neue Version bauen, dokumentieren, veröffentlichen'],
@@ -230,7 +241,9 @@ function show(i, play){
     <h2>${l.title}</h2>
     <p class="goal">${l.goal}</p>
     <ul>${l.points.map(p => `<li>${p}</li>`).join('')}</ul>
+    ${l.links ? `<div class="dl"><span class="label" style="color:var(--ink)">Downloads</span><div class="links">${l.links.map(([t,u,n]) => `<a href="${u}" target="_blank" rel="noopener"><b>${t} ↗</b><span>${n}</span></a>`).join('')}</div></div>` : ''}
     <div class="task"><span class="label" style="color:var(--ink)">Deine Aufgabe</span><p>${l.task}</p></div>
+    ${l.optional ? `<div class="opt"><span class="label" style="color:var(--ink)">Optional · ${l.optional.title}</span><p style="margin-top:6px">${l.optional.text}</p><ol>${l.optional.steps.map(x=>`<li>${x}</li>`).join('')}</ol></div>` : ''}
     <div class="row">
       <button class="btn" id="done" aria-pressed="${!!state.done[i]}">${state.done[i] ? '✓ Erledigt' : 'Als erledigt markieren'}</button>
       ${last ? '' : '<button class="btn fill" id="next">Nächste Lektion →</button>'}
