@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#0B0B0B;--paper:#F4F4F1;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#cfcfcf}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}
+.h span{color:var(--blue)}
+.logo{left:70px;top:90px;width:190px;z-index:60}
+#ph{inset:0;background:url(img/portrait_front.jpg) center 18%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 42%,rgba(11,11,11,.95) 66%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1130px}
+#hook .h{font-size:200px}
+#hook .k{margin-bottom:20px}
+#hook .s{font:700 60px Oswald;text-transform:uppercase;margin-top:20px}
+/* demos */
+#dt{left:70px;right:70px;top:230px}
+#dt .h{font-size:118px;margin-top:14px}
+#grid{left:70px;top:640px;width:940px;height:940px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tile{position:relative;border:2px solid rgba(255,255,255,.22);background:#101114;overflow:hidden;opacity:0}
+.tile svg{position:absolute;inset:0;width:100%;height:100%}
+.tile b{position:absolute;left:16px;bottom:14px;font:600 24px Montserrat;letter-spacing:.14em;text-transform:uppercase;background:#0B0B0B;padding:6px 10px}
+#src{left:70px;right:70px;top:1620px;font:500 26px/1.4 Inter;color:#9a9a9a}
+/* models */
+#mt{left:70px;right:70px;top:230px}
+#mt .h{font-size:118px;margin-top:14px}
+#rows{left:70px;right:70px;top:640px}
+.row{display:flex;align-items:center;gap:30px;border-top:3px solid rgba(255,255,255,.25);padding:30px 0;opacity:0}
+.row b{font:700 96px/.9 Oswald;text-transform:uppercase;min-width:400px}
+.row div{font:700 50px/1.05 Oswald;text-transform:uppercase}
+.row small{display:block;font:500 28px/1.3 Inter;text-transform:none;color:#bdbdbd;margin-top:6px}
+.row.hl b{color:var(--blue)}
+/* new */
+#nt{left:70px;right:70px;top:230px}
+#nt .h{font-size:118px;margin-top:14px}
+#facts{left:70px;right:70px;top:680px;display:grid;gap:22px}
+.f{display:flex;align-items:baseline;gap:26px;border:3px solid #fff;padding:26px 30px;opacity:0}
+.f b{font:700 120px/.85 Oswald;color:var(--blue);min-width:330px}
+.f span{font:700 52px/1.05 Oswald;text-transform:uppercase}
+#fs{left:70px;right:70px;top:1500px;font:500 26px Inter;color:#9a9a9a}
+/* end */
+#lp{inset:0;background:url(img/portrait_laptop.jpg) center/cover;filter:grayscale(1) contrast(1.1) brightness(.6)}
+#lps{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.4),rgba(11,11,11,.2) 30%,rgba(11,11,11,.94) 62%,#0B0B0B)}
+#end{left:70px;right:70px;top:1010px}
+#end .h{font-size:128px}
+#end .e{font:700 56px/1.15 Oswald;text-transform:uppercase;margin-top:30px}
+#end .e i{font-style:normal;color:var(--blue)}
+#end .fl{margin-top:34px}
+.bar{left:0;top:0;height:10px;background:var(--blue);z-index:80;opacity:1}
+</style></head><body>
+<img class="l logo" id="logo" src="img/logo_flow.png" style="opacity:1">
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="k">KI-News · 09.11.2026</div><div class="h">Fable <span>5.2</span></div><div class="s">ist da. Und das kann es.</div></div>
+
+<div class="l" id="dt"><div class="k">Aus einem Prompt gebaut</div><div class="h">10 Minuten.<br><span>30 Cent.</span></div></div>
+<div class="l" id="grid">
+ <div class="tile" id="t0"><svg viewBox="0 0 460 460" id="s0"></svg><b>Schwarzes Loch</b></div>
+ <div class="tile" id="t1"><svg viewBox="0 0 460 460" id="s1"></svg><b>Musikstudio</b></div>
+ <div class="tile" id="t2"><svg viewBox="0 0 460 460" id="s2"></svg><b>Strömung</b></div>
+ <div class="tile" id="t3"><svg viewBox="0 0 460 460" id="s3"></svg><b>Physik-Labor</b></div>
+</div>
+<div class="l" id="src">Demos im Video von Niklas Steenfatt (YouTube) – hier als eigene Animation nachgestellt.</div>
+
+<div class="l" id="mt"><div class="k">Welches Modell wofür?</div><div class="h">Nimm das <span>richtige.</span></div></div>
+<div class="l" id="rows">
+ <div class="row" id="r0"><b>Haiku 5.5</b><div>Speed<small>schnelle, einfache Aufgaben</small></div></div>
+ <div class="row" id="r1"><b>Opus 5.5</b><div>Alltag<small>Websites, Apps, Skills, Content</small></div></div>
+ <div class="row hl" id="r2"><b>Fable 5.2</b><div>High-End<small>komplexe Projekte, Agentensysteme</small></div></div>
+ <div class="row" id="r3"><b>Mythos 5.2</b><div>Spezialist<small>Security & Forschung, Zugang beschränkt</small></div></div>
+</div>
+
+<div class="l" id="nt"><div class="k">Neu bei Fable 5.2</div><div class="h">Schneller.<br><span>Länger.</span> Günstiger.</div></div>
+<div class="l" id="facts">
+ <div class="f" id="f0"><b>30 %</b><span>schnellere Ausgabe als Fable 5.1 (bis zu)</span></div>
+ <div class="f" id="f1"><b>1.000+</b><span>KI-Agenten koordinieren</span></div>
+ <div class="f" id="f2"><b>API</b><span>günstiger als der Vorgänger</span></div>
+</div>
+<div class="l" id="fs">Angaben laut Anthropic / Video von Niklas Steenfatt.</div>
+
+<div class="l" id="lp"></div><div class="l" id="lps"></div>
+<div class="l" id="end"><div class="h">Nicht das stärkste.<br><span>Das richtige.</span></div><div class="e">Haiku für <i>Speed</i>. Opus für den <i>Alltag</i>.<br>Fable für <i>harte Brocken</i>.</div><div class="k fl">Komm in den Flow.</div></div>
+<div class="l bar" id="bar"></div>
+<script>
+const B=0.4651,T=[0,6*B,20*B,35*B,48*B,58*B];window.TOTAL=T[5];
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),out=x=>1-Math.pow(1-x,3);
+const BL="#2F5BFF";
+function vis(id,a,b,dy=40,f=.22){const e=$(id),t=window._t;if(t<a||t>=b){e.style.opacity=0;return 0}const i=out(cl((t-a)/f)),o=1-cl((t-(b-.12))/.12);e.style.opacity=Math.min(i,o);e.style.transform=`translateY(${(1-i)*dy}px)`;return 1}
+function pop(id,a,b){const e=$(id),t=window._t;if(t<a||t>=b){e.style.opacity=0;return}const i=out(cl((t-a)/.2));e.style.opacity=i*(1-cl((t-(b-.12))/.12));e.style.transform=`translateX(${(1-i)*-70}px)`}
+const rnd=i=>{const x=Math.sin(i*127.1)*43758.5453;return x-Math.floor(x)};
+function blackhole(t){let s="";for(let i=0;i<70;i++){const a=rnd(i)*6.283+t*.05*(1+rnd(i+9)),r=120+rnd(i+3)*230;s+=`<circle cx="${230+Math.cos(a)*r}" cy="${230+Math.sin(a)*r*.9}" r="${1+rnd(i+5)*2}" fill="#fff" opacity="${.3+rnd(i+7)*.6}"/>`}
+ for(let k=0;k<7;k++){const rx=70+k*17,ry=22+k*6;s+=`<ellipse cx="230" cy="230" rx="${rx}" ry="${ry}" fill="none" stroke="${k%2?BL:"#fff"}" stroke-width="${6-k*.5}" opacity="${.9-k*.1}" stroke-dasharray="${40+k*20} ${18+k*6}" stroke-dashoffset="${-t*(140-k*14)}" transform="rotate(-14 230 230)"/>`}
+ return s+`<circle cx="230" cy="222" r="56" fill="#000" stroke="#fff" stroke-width="3"/>`}
+function seq(t){const cols=12,rows=5,step=Math.floor(t/(B/2))%cols;let s="";const pat=[[0,4,8],[2,6,10],[1,3,5,7,9,11],[4,10],[0,3,6,9]];
+ for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const on=pat[r].includes(c),hit=on&&c===step;s+=`<rect x="${34+c*33}" y="${230+r*34}" width="28" height="28" rx="5" fill="${hit?"#fff":on?BL:"#22242a"}"/>`}
+ s+=`<rect x="${32+step*33}" y="222" width="32" height="184" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/>`;
+ const beat=1-((t/(B))%1);for(let k=0;k<3;k++)s+=`<circle cx="230" cy="120" r="${36+k*22+beat*10}" fill="${k?"none":BL}" stroke="${BL}" stroke-width="3" opacity="${k?.6-k*.18:.9}"/>`;return s}
+function fluid(t){let s=`<defs><filter id="bl"><feGaussianBlur stdDeviation="26"/></filter></defs><g filter="url(#bl)">`;
+ for(let i=0;i<9;i++){const x=230+Math.sin(t*.5+i*1.7)*150+Math.cos(t*.3+i)*40,y=230+Math.cos(t*.42+i*2.3)*150;s+=`<circle cx="${x}" cy="${y}" r="${60+rnd(i)*50}" fill="${i%3===0?"#fff":BL}" opacity="${i%3===0?.55:.8}"/>`}
+ s+="</g>";for(let i=0;i<6;i++){const y=60+i*68;s+=`<path d="M0 ${y} Q115 ${y+Math.sin(t+i)*40} 230 ${y} T460 ${y}" fill="none" stroke="#fff" stroke-width="1.5" opacity=".25"/>`}return s}
+function pend(t){let s=`<line x1="40" y1="60" x2="420" y2="60" stroke="#fff" stroke-width="4"/>`;
+ for(let i=0;i<6;i++){const x0=80+i*60,L=250+i*14,a=Math.sin(t*(2.6-i*.18))*.55,x=x0+Math.sin(a)*L,y=60+Math.cos(a)*L;
+  for(let k=1;k<5;k++){const a2=Math.sin((t-k*.04)*(2.6-i*.18))*.55;s+=`<circle cx="${x0+Math.sin(a2)*L}" cy="${60+Math.cos(a2)*L}" r="22" fill="${i%2?BL:"#fff"}" opacity="${.12-k*.02}"/>`}
+  s+=`<line x1="${x0}" y1="60" x2="${x}" y2="${y}" stroke="#fff" stroke-width="2" opacity=".7"/><circle cx="${x}" cy="${y}" r="22" fill="${i%2?BL:"#fff"}"/>`}return s}
+window.DRAW=t=>{window._t=t;
+ vis('ph',0,T[1],0,.01);$('ph').style.transform=`scale(${1.08-.08*t/T[1]})`;vis('phs',0,T[1],0,.01);vis('hook',0,T[1],60,.25);
+ // demos
+ vis('dt',T[1],T[2],30,.25);const g=$('grid');g.style.opacity=t>=T[1]&&t<T[2]?1:0;
+ if(t>=T[1]&&t<T[2]){[blackhole,seq,fluid,pend].forEach((fn,i)=>{const a=T[1]+.25+i*2*B,e=$('t'+i),p=out(cl((t-a)/.25));e.style.opacity=p*(1-cl((t-(T[2]-.12))/.12));e.style.transform=`scale(${.85+.15*p})`;e.style.borderColor=(Math.floor((t-T[1])/(3.5*B))%4===i&&t>a+1)?BL:"rgba(255,255,255,.22)";$('s'+i).innerHTML=fn(t)})}
+ vis('src',T[1]+1,T[2],0,.3);
+ // models
+ vis('mt',T[2],T[3],30,.25);$('rows').style.opacity=t>=T[2]&&t<T[3]?1:0;[0,1,2,3].forEach(i=>pop('r'+i,T[2]+.4+i*2.6*B,T[3]));
+ // new
+ vis('nt',T[3],T[4],30,.25);$('facts').style.opacity=t>=T[3]&&t<T[4]?1:0;[0,1,2].forEach(i=>pop('f'+i,T[3]+.5+i*3*B,T[4]));vis('fs',T[3]+1,T[4],0,.3);
+ // end
+ vis('lp',T[4],99,0,.01);$('lp').style.transform=`scale(${1.04+.05*cl((t-T[4])/(T[5]-T[4]))})`;vis('lps',T[4],99,0,.01);vis('end',T[4]+.05,99,50,.3);
+ $('bar').style.width=(1080*t/T[5])+'px'};
+DRAW(0);
+</script></body></html>
