@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-09T22:26+00:00",
+ "stand": "2026-11-10T07:25+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,47 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Dienstag: Klage wegen EU-Grenzkontrollsystem, Anthropic kauft Gasgeneratoren",
+   "s": "EU verklagt Firmenkonsortium + Anthropic sichert sich Gasturbinen + Frankreich beschuldigt Iran + NASA sucht Astronauten + Outlook streikt bei bestimmten Mails",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Dienstag-Klage-wegen-EU-Grenzkontrollsystem-Anthropic-kauft-Gasgeneratoren-11518084.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T05:15:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Mistral & Europa"
+   ],
+   "n": 1,
+   "r": 17.6
+  },
+  {
+   "t": "Cyberangriffe auf Tiefkühltruhen: Warum alte Technik im KI-Zeitalter die größte Gefahr ist",
+   "s": "Hacker heizen Supermarkt-Kühltruhen in ganz Europa hoch, KI-Agenten greifen Hunderte Firmen an. Was KI an der Cyberkriminalität wirklich verändert und warum die",
+   "q": "t3n",
+   "l": "https://t3n.de/news/cyberangriffe-tiefkuehltruhen-ki-zeitalter-1761327",
+   "d": "2026-11-10T05:00:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Mistral & Europa",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 15.6
+  },
+  {
+   "t": "Anthropic Claude Fable 5.2 ist günstiger, aber Tempo kostet extra",
+   "s": "Anthropic veröffentlicht Claude Fable 5.2 und Claude Mythos 5.2 veröffentlicht. Wer schnellere Ausgaben wünscht, darf das Doppelte zahlen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Anthropic-Claude-Fable-5-2-ist-guenstiger-aber-Tempo-kostet-extra-11518102.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T04:45:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 23.6
+  },
   {
    "t": "Zurück an die KI-Spitze: Anthropic stellt Claude Fable 5.2 und Mythos 5.2 vor",
    "s": "Anthropic veröffentlicht mit Claude Fable 5.2 und Mythos 5.2 sein bisher stärkstes Modell in zwei Varianten: eine frei verfügbar, eine nur für geprüfte Organisationen. Die Modelle lösen laut Anthropic offene …",
@@ -17,8 +58,8 @@
    "tags": [
     "Claude / Anthropic"
    ],
-   "n": 1,
-   "r": 13.7
+   "n": 2,
+   "r": 22.2
   },
   {
    "t": "Milliarden-Deal für Gasturbinen: Anthropic sichert sich Energiekapazitäten",
@@ -32,8 +73,8 @@
     "Coding mit KI",
     "KI-Blase & Geld"
    ],
-   "n": 3,
-   "r": 39.6
+   "n": 2,
+   "r": 28.1
   },
   {
    "t": "Meta stellt Muse Ember vor: Kleinstes Modell soll KI-Agenten günstiger und effizienter machen",
@@ -47,7 +88,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 15.4
+   "r": 13.9
   },
   {
    "t": "ChatGPT Enterprise now available in AWS Marketplace",
@@ -60,7 +101,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 13.4
+   "r": 11.9
   },
   {
    "t": "Seedream 5.5: Bytedance will mit stabilem Multi-Edit und Transparenz professionelle Workflows bedienen",
@@ -73,7 +114,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 9.4
+   "r": 7.9
   },
   {
    "t": "Telekom rüstet KI-Fabrik in München nach, Gigafactory bleibt Option",
@@ -84,7 +125,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.1
+   "r": 5.6
   },
   {
    "t": "Disney und Adobe entwickeln gemeinsam KI-Modelle für Parks, Studios und ESPN",
@@ -95,7 +136,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.1
+   "r": 5.6
   },
   {
    "t": "Warum Tencents KI-Chef vor KI-Biowaffen warnt, aber trotzdem weiter auf offene Modelle setzt",
@@ -106,7 +147,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.8
+   "r": 5.3
   },
   {
    "t": "OpenAI: So findest du bald heraus, wie oft dein Unternehmen in ChatGPT auftaucht",
@@ -119,7 +160,18 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.6
+   "r": 11.1
+  },
+  {
+   "t": "Gehirndaten von Neurotech-Nutzern werden heimlich für KI-Training genutzt",
+   "s": "Eine Recherche zeigt: Gehirnaktivitäten von Neurotech-Nutzern werden ohne deren Wissen für das Training von KIs verwendet.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Gehirndaten-von-Neurotech-Nutzern-werden-heimlich-fuer-KI-Training-genutzt-11513876.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-09T14:00:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 5.1
   },
   {
    "t": "KI-Update kompakt: Rechenzentren, Propaganda, Siri AI, Minecraft",
@@ -132,18 +184,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 10.6
-  },
-  {
-   "t": "Gehirndaten von Neurotech-Nutzern werden heimlich für KI-Training genutzt",
-   "s": "Eine Recherche zeigt: Gehirnaktivitäten von Neurotech-Nutzern werden ohne deren Wissen für das Training von KIs verwendet.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Gehirndaten-von-Neurotech-Nutzern-werden-heimlich-fuer-KI-Training-genutzt-11513876.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T14:00:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 6.6
+   "r": 9.1
   },
   {
    "t": "Auswirkungen von KI auf den Arbeitsmarkt: Berufseinsteiger spüren die Veränderung als Erstes",
@@ -156,7 +197,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 8.5
+   "r": 7.0
   },
   {
    "t": "Galaxy AI: Samsung will für KI-Funktionen offenbar Geld sehen – das steckt im geplanten Abo",
@@ -167,7 +208,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 4.9
   },
   {
    "t": "Control Room: A central system to track and stop model workloads across our research infrastructure",
@@ -180,7 +221,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.4
+   "r": 10.9
   },
   {
    "t": "Google erweitert TPU-Portfolio um vier Systeme in einem Jahr und nimmt Nvidia stärker ins Visier",
@@ -194,7 +235,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 16.4
+   "r": 14.9
   },
   {
    "t": "KI-Coding-Agenten verfrachten Zugangsdaten in öffentliche Repositories",
@@ -210,7 +251,7 @@
     "Bildung & Schule"
    ],
    "n": 2,
-   "r": 28.3
+   "r": 26.8
   },
   {
    "t": "Nvidia-Spionageaffäre liefert US-Demokraten die perfekte Vorlage für schärfere KI-Chip-Exportkontrollen",
@@ -224,21 +265,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 14.0
-  },
-  {
-   "t": "Anthropic vor dem Mega-Börsengang: Was Anleger jetzt wissen müssen",
-   "s": "Anthropic steht vor einem historischen Börsengang. Doch das rasante Wachstum hat seinen Preis: Milliardenverluste stehen einer ambitionierten Bewertung gegenübe",
-   "q": "t3n",
-   "l": "https://t3n.de/news/anthropic-vor-dem-mega-boersengang-was-anleger-jetzt-wissen-muessen-1772164",
-   "d": "2026-11-09T10:00:54+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "KI-Blase & Geld"
-   ],
-   "n": 2,
-   "r": 23.9
+   "r": 12.5
   },
   {
    "t": "Trotz teurer Lizenz: Apple verlangt für Logic-Pro-KI-Assistenz ein Abo",
@@ -251,7 +278,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 9.9
+   "r": 8.4
   },
   {
    "t": "Samsung plant offenbar kostenpflichtigen Galaxy-AI-Tarif",
@@ -264,20 +291,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 7.9
-  },
-  {
-   "t": "\"Mein Second Brain diktiert mir, wie ich zu arbeiten habe\": So verändern KI-Wissenssysteme die Arbeit",
-   "s": "Führungskräfte setzen auf das Second Brain, ein KI-gestütztes Wissenssystem, um sich die Arbeitsorganisation zu erleichtern. Gleichzeitig kann ein solches Syste",
-   "q": "t3n",
-   "l": "https://t3n.de/news/mein-second-brain-diktiert-mir-wie-ich-zu-arbeiten-habe-so-veraendern-ki-wissenssysteme-die-arbeitsweise-von-fuehrungskraeften-1771451",
-   "d": "2026-11-09T08:30:40+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 7.7
+   "r": 6.4
   },
   {
    "t": "CodeRabbit scales agentic software development and ships 20x more",
@@ -292,7 +306,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 39.6
+   "r": 38.1
   },
   {
    "t": "Kuken Industries searches 70 years of drawings in minutes",
@@ -305,7 +319,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.6
+   "r": 10.1
   },
   {
    "t": "KI-Forscher Andrej Karpathy filtert 43 Millionen Hacker-News-Kommentare zu einer kuratierten Video-Plattform",
@@ -321,7 +335,7 @@
     "KI-Video & Bild"
    ],
    "n": 3,
-   "r": 40.6
+   "r": 39.1
   },
   {
    "t": "KI mit Bewusstsein: Chatbots sind Spiegel der Trainingsdaten, keine fühlenden Wesen",
@@ -332,7 +346,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.3
+   "r": 0.8
   },
   {
    "t": "Erfinder der \"bitteren Lektion\" warnt: KI-Wissenschaft ist noch lange nicht am Ziel",
@@ -345,7 +359,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.1
+   "r": 6.6
   },
   {
    "t": "Missing Link: Wenn die KI zuhört, wo Menschen es nicht mehr tun",
@@ -356,7 +370,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 1.5
+   "r": 0.0
   },
   {
    "t": "Mini-PC VZMore AX9 Max im Test: Für wen sich der teure Ryzen-AI-9-Rechner lohnt",
@@ -381,30 +395,6 @@
    ],
    "n": 1,
    "r": 2.0
-  },
-  {
-   "t": "Sichere Architektur für KI-Agenten im Backoffice",
-   "s": "KI-Agenten lassen sich nur sicher in Systeme einbinden, wenn die Architektur für eine Trennung von Daten und Handlungen sorgt.",
-   "q": "heise",
-   "l": "https://www.heise.de/hintergrund/Sichere-Architektur-fuer-KI-Agenten-im-Backoffice-11514414.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-07T07:21:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "t": "Lokale KI: Das läuft auf deinem Rechner",
-   "s": "Lokale KI wird immer besser, die dafür benötigte Hardware immer teurer. c’t 3003 gibt Kaufberatung und Praxistipps.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Lokale-KI-Das-laeuft-auf-deinem-Rechner-11515316.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-06T16:27:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
   },
   {
    "t": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
@@ -524,481 +514,17 @@
   "Google DeepMind",
   "Two Minute Papers"
  ],
- "videos": [
-  {
-   "id": "RcvjZlq12kU",
-   "t": "Unser gesamtes Firmenwissen! (Stand 2026)",
-   "q": "Everlast AI",
-   "d": "2026-11-09T16:15:35+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 7.0
-  },
-  {
-   "id": "Tt-il3EZfhA",
-   "t": "„Ich unterhalte mich mit KRÄHEN!“ Was Tiere uns über KI verraten (Prof. Klaus Mainzer)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-09T10:15:20+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "jkeB74nI-cs",
-   "t": "„Sie haben KEINE Freizeit mehr!“ So brutal ist Chinas Schulsystem (Wolfgang Röhr)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-08T14:15:19+00:00",
-   "lang": "de",
-   "tags": [
-    "Bildung & Schule"
-   ],
-   "n": 1,
-   "r": 4.6
-  },
-  {
-   "id": "s0nZrVoedcE",
-   "t": "„Mars-Siedlungen sind absoluter BLÖDSINN!“ Chip-Professor rechnet mit Elon Musk ab",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-08T10:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips",
-    "xAI / Grok"
-   ],
-   "n": 1,
-   "r": 10.0
-  },
-  {
-   "id": "6wWnbZu4oxI",
-   "t": "Motion Graphics OHNE After Effects: Claude baut alles KOMPLETT alleine!",
-   "q": "Cinetiq",
-   "d": "2026-11-08T10:00:37+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 7.9
-  },
-  {
-   "id": "v0q266zAQ9M",
-   "t": "Es ist passiert: Die KI-Blase platzt in Amerika! DAS musst du jetzt wissen | KI-NEWS",
-   "q": "Everlast AI",
-   "d": "2026-11-08T09:27:52+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 3.8
-  },
-  {
-   "id": "GJ6PMUm5oTA",
-   "t": "OpenAI's Astra Just Opened The Black Box Of AI",
-   "q": "Two Minute Papers",
-   "d": "2026-11-07T16:24:47+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "8jfH4hFtAbQ",
-   "t": "„Merz hat eine 180-Grad-WENDE gemacht!“ Ex-Diplomat über Deutschlands China-Politik",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-07T14:15:01+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "tHcXDDWCjh4",
-   "t": "KI entschlüsselt Krähen: „Sie sprechen über DICH und warnen ihre Kinder!“ (Prof. Rainer Waser)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-07T10:16:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "hJOwOkLHRN0",
-   "t": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
-   "q": "OpenAI",
-   "d": "2026-11-06T21:11:34+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "XgC1QTs6A2U",
-   "t": "The Future of AI Is Absolutely Incredible (Spencer Huang)",
-   "q": "Two Minute Papers",
-   "d": "2026-11-06T07:27:02+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "pXRZyOxbDL4",
-   "t": "How Mozilla strengthens Firefox security with GPT-6 Cyber",
-   "q": "OpenAI",
-   "d": "2026-11-05T17:14:11+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "YajzUoRKSNQ",
-   "t": "Astronaut: Was bis 2030 kommt, wird keiner glauben! Roboter, Mond-Hotels, Dyson-Sphären & Aliens",
-   "q": "Everlast AI",
-   "d": "2026-11-05T16:15:04+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "bJldMYfRvMQ",
-   "t": "Introducing ChatGPT Images 2.6",
-   "q": "OpenAI",
-   "d": "2026-11-05T02:32:21+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "9ZxCOHkfn_8",
-   "t": "GPT-Image-2.6: Faster image generation with Flare and Sunburst",
-   "q": "OpenAI",
-   "d": "2026-11-04T23:42:40+00:00",
-   "lang": "en",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "6IttBmI4P9M",
-   "t": "Messi asks ChatGPT to reimagine his room",
-   "q": "OpenAI",
-   "d": "2026-11-04T19:25:46+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "LWLTLHiDtlw",
-   "t": "„DAS ist unsere letzte Chance!“ Deutschlands größtes Roboter-Projekt startet JETZT in München",
-   "q": "Everlast Robotics",
-   "d": "2026-11-04T16:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "6Q0X-yk52w0",
-   "t": "Es beginnt: KI hat jetzt eine eigene Sprache, die kein Mensch versteht",
-   "q": "Everlast AI",
-   "d": "2026-11-03T16:15:13+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "lytWc30v4Jo",
-   "t": "6x GÜNSTIGER als Seedance 2.5? Kling 4.0: Alles, was du wissen musst (16 Praxistests)",
-   "q": "Cinetiq",
-   "d": "2026-11-01T10:15:22+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "VOYccAKu7Zg",
-   "t": "Platzt jetzt die KI-Blase? DAS wird ALLE überraschen! Anthropics Börsengang | KI-NEWS",
-   "q": "Everlast AI",
-   "d": "2026-11-01T09:15:03+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "CWdTBLsbaQs",
-   "t": "OpenAI Claims It Just Did The Impossible",
-   "q": "Two Minute Papers",
-   "d": "2026-10-30T15:57:16+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "pryCaGv8wuo",
-   "t": "DeepSeek's New AI Is An Absolute Monster",
-   "q": "Two Minute Papers",
-   "d": "2026-10-28T17:32:40+00:00",
-   "lang": "en",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "PAFZUpDMY64",
-   "t": "Ich bin in Chinas Zukunftsstadt: Hier sind Roboter schon ÜBERALL! | VLOG",
-   "q": "Everlast Robotics",
-   "d": "2026-10-28T14:15:06+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "sFfPkUJd_Jk",
-   "t": "Genie 4: A new generation of world simulation",
-   "q": "Google DeepMind",
-   "d": "2026-10-27T16:00:41+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "--9ZTpDQfNw",
-   "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
-   "q": "Cinetiq",
-   "d": "2026-10-25T13:00:27+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "4xnzufXKM2o",
-   "t": "Wahnsinn: Diese Roboter-Finger fühlen 160x besser als Menschen! DAS baut China gerade",
-   "q": "Everlast Robotics",
-   "d": "2026-10-21T15:15:24+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China",
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 8.0
-  },
-  {
-   "id": "LWxX6vvHfrc",
-   "t": "Gemini 4 Argon Is Not What I Expected",
-   "q": "Two Minute Papers",
-   "d": "2026-10-19T08:49:21+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 2,
-   "r": 16.0
-  },
-  {
-   "id": "owzZaTsBLhg",
-   "t": "Schau das BEVOR du KI-Avatare postest! (4 Ideen, mit denen du herausstichst)",
-   "q": "Cinetiq",
-   "d": "2026-10-18T09:00:13+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "YkGuQXXOwMQ",
-   "t": "Weltneuheit: Erste \"Underground\" Roboter-Kämpfe in USA! DAS passiert hier wirklich",
-   "q": "Everlast Robotics",
-   "d": "2026-10-14T15:18:24+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "LVEfFyijQ2c",
-   "t": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T16:38:17+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "ftkic7Tdpcg",
-   "t": "Using Gemini 4 Argon to protect against Cyber attackers",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T16:38:14+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 2,
-   "r": 16.0
-  },
-  {
-   "id": "9PICEmtfpWU",
-   "t": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T15:58:20+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini",
-    "Robotik"
-   ],
-   "n": 2,
-   "r": 20.0
-  },
-  {
-   "id": "9jQA7IgPhBE",
-   "t": "Untangling 500-page chemistry patents with Gemini 4",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T15:58:17+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 2,
-   "r": 16.0
-  },
-  {
-   "id": "ylUTLJTkMDY",
-   "t": "12 ikonische Animationsstile, die du kennen musst (inkl. Seedance 2.5 Prompts)",
-   "q": "Cinetiq",
-   "d": "2026-10-11T09:00:26+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "HuE0A5ylKJk",
-   "t": "Ich teste Chinas KI-Alltag: Smarte Betten, Exoskelette & Roboter! Was WIRKLICH taugt",
-   "q": "Everlast Robotics",
-   "d": "2026-10-07T13:15:36+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "DdCEmlAydcw",
-   "t": "Inside Anthropic's molecular biology lab",
-   "q": "Anthropic",
-   "d": "2026-09-23T18:01:32+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "uVS88gnaxcg",
-   "t": "Meet Claude Fable 5.1",
-   "q": "Anthropic",
-   "d": "2026-09-01T19:21:24+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "ROF2Nv_KjOM",
-   "t": "Introducing Claude Fable 5.1",
-   "q": "Anthropic",
-   "d": "2026-09-01T18:02:31+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "UxJZrCFzTHY",
-   "t": "Model Hardware Standard: AI operating physical equipment",
-   "q": "Anthropic",
-   "d": "2026-08-28T00:40:16+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "djVUCj5i4sw",
-   "t": "We're building a way for AI models to connect to any device and run real experiments.",
-   "q": "Anthropic",
-   "d": "2026-08-27T19:42:35+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  }
- ],
+ "videos": [],
  "themen": [
   {
-   "name": "OpenAI",
-   "meldungen": 8,
+   "name": "KI-Agenten",
+   "meldungen": 4,
    "quellen": 4
   },
   {
-   "name": "Claude / Anthropic",
-   "meldungen": 5,
-   "quellen": 4
+   "name": "OpenAI",
+   "meldungen": 7,
+   "quellen": 3
   },
   {
    "name": "Coding mit KI",
@@ -1006,18 +532,8 @@
    "quellen": 3
   },
   {
-   "name": "KI-Agenten",
-   "meldungen": 4,
-   "quellen": 3
-  },
-  {
-   "name": "KI-Blase & Geld",
-   "meldungen": 3,
-   "quellen": 3
-  },
-  {
-   "name": "Jobs & Arbeit",
-   "meldungen": 4,
+   "name": "Claude / Anthropic",
+   "meldungen": 5,
    "quellen": 2
   },
   {
@@ -1026,9 +542,19 @@
    "quellen": 2
   },
   {
-   "name": "Nvidia & Chips",
+   "name": "Jobs & Arbeit",
    "meldungen": 3,
    "quellen": 2
+  },
+  {
+   "name": "Mistral & Europa",
+   "meldungen": 2,
+   "quellen": 2
+  },
+  {
+   "name": "Apple",
+   "meldungen": 2,
+   "quellen": 1
   }
  ],
  "aktien": [
@@ -1069,12 +595,11 @@
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 70.3,
+   "preis": 75.05,
    "cur": "HKD",
-   "d1": 8.99,
-   "m1": -2.0,
+   "d1": 6.76,
+   "m1": 10.9,
    "spark": [
-    71.75,
     67.7,
     67.4,
     67.2,
@@ -1094,9 +619,10 @@
     63.65,
     66.95,
     64.5,
-    70.3
+    70.3,
+    75.05
    ],
-   "t": "2026-11-09T08:08+00:00"
+   "t": "2026-11-10T07:10+00:00"
   },
   {
    "name": "Tesla",
