@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-10T07:25+00:00",
+ "stand": "2026-11-10T17:06+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -8,45 +8,320 @@
  ],
  "items": [
   {
-   "t": "Dienstag: Klage wegen EU-Grenzkontrollsystem, Anthropic kauft Gasgeneratoren",
-   "s": "EU verklagt Firmenkonsortium + Anthropic sichert sich Gasturbinen + Frankreich beschuldigt Iran + NASA sucht Astronauten + Outlook streikt bei bestimmten Mails",
+   "t": "AMD Zen 6 soll agentische KI beflügeln: Erste Leistungswerte",
+   "s": "AMDs Epyc-Prozessoren mit Zen-6-Architektur sind da. Erste Messungen bescheinigen ihnen deutlich mehr Leistung, von der laut AMD agentische KI profitieren soll.",
    "q": "heise",
-   "l": "https://www.heise.de/news/Dienstag-Klage-wegen-EU-Grenzkontrollsystem-Anthropic-kauft-Gasgeneratoren-11518084.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-10T05:15:00+00:00",
+   "l": "https://www.heise.de/news/AMD-Zen-6-soll-agentische-KI-befluegeln-Erste-Leistungswerte-11518546.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T17:00:00+00:00",
    "lang": "de",
    "tags": [
-    "Claude / Anthropic",
-    "Mistral & Europa"
-   ],
-   "n": 1,
-   "r": 17.6
-  },
-  {
-   "t": "Cyberangriffe auf Tiefkühltruhen: Warum alte Technik im KI-Zeitalter die größte Gefahr ist",
-   "s": "Hacker heizen Supermarkt-Kühltruhen in ganz Europa hoch, KI-Agenten greifen Hunderte Firmen an. Was KI an der Cyberkriminalität wirklich verändert und warum die",
-   "q": "t3n",
-   "l": "https://t3n.de/news/cyberangriffe-tiefkuehltruhen-ki-zeitalter-1761327",
-   "d": "2026-11-10T05:00:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Mistral & Europa",
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 15.6
+   "r": 12.0
   },
   {
-   "t": "Anthropic Claude Fable 5.2 ist günstiger, aber Tempo kostet extra",
-   "s": "Anthropic veröffentlicht Claude Fable 5.2 und Claude Mythos 5.2 veröffentlicht. Wer schnellere Ausgaben wünscht, darf das Doppelte zahlen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Anthropic-Claude-Fable-5-2-ist-guenstiger-aber-Tempo-kostet-extra-11518102.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-10T04:45:00+00:00",
+   "t": "Google Deepmind schickt neues Robotik-Modell auf die Mercedes-Benz-Produktionslinie",
+   "s": "Google Deepmind hat mit Gemini Robotics 2.5 ein neues Steuerungsmodell für Roboter vorgestellt und gemeinsam mit Apptronik auf aktiven Mercedes-Benz-Produktionslinien in Ungarn und Deutschland getestet. Der humanoide …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/google-deepmind-schickt-neues-robotik-modell-auf-die-mercedes-benz-produktionslinie/",
+   "d": "2026-11-10T16:44:10+00:00",
    "lang": "de",
    "tags": [
-    "Claude / Anthropic"
+    "Google Gemini",
+    "Robotik"
    ],
    "n": 2,
-   "r": 23.6
+   "r": 27.9
+  },
+  {
+   "t": "Strom für die KI: Anthropic sichert sich eigene Erdgasturbinen – für 3,4 Milliarden Dollar",
+   "s": "Anthropic investiert mehrere Milliarden US-Dollar in eigene Erdgasturbinen – bisher mietete das Unternehmen seine Strominfrastruktur. Warum es jetzt anders verfährt.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/strom-fuer-die-ki-anthropic-sichert-sich-eigene-erdgasturbinen-fuer-34-milliarden-dollar-1772744",
+   "d": "2026-11-10T16:30:24+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Blase & Geld"
+   ],
+   "n": 3,
+   "r": 35.9
+  },
+  {
+   "t": "Wer schickt dir KI-generierte E-Mails? Mit diesem neuen Pangram-Detektor findest du es heraus",
+   "s": "Pangram bietet jetzt einen neuen KI-Detektor für Gmail-Postfächer. Dadurch lassen sich Nachrichten, die mithilfe von Tools wie ChatGPT geschrieben wurden, auf einen Blick entlarven.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/wer-schickt-dir-ki-generierte-e-mails-mit-diesem-neuen-pangram-detektor-findest-du-es-heraus-1772654",
+   "d": "2026-11-10T16:00:23+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.8
+  },
+  {
+   "t": "Omnissa: Virtuelle Desktops als Sicherheitszone für KI",
+   "s": "Souveräner Betrieb und sichere KI-Agenten: Omnissa erweitert sein Angebot und setzt auf virtuelle Desktops als kontrollierte Umgebung für Agenten.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Omnissa-Virtuelle-Desktops-als-Sicherheitszone-fuer-KI-11518404.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T15:49:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 11.8
+  },
+  {
+   "t": "Adobe Max: KI-Agenten sollen Photoshop, Premiere Pro und Co. steuern",
+   "s": "Mehr KI für die Creative Cloud: Ein KI-Agent übernimmt in Adobe Firefly künftig komplexe Aufgaben. Per MCP soll KI von Dritten Photoshop-Dokumente bearbeiten.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Adobe-Max-KI-Agenten-sollen-Photoshop-Premiere-Pro-und-Co-steuern-11517366.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T15:19:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 11.7
+  },
+  {
+   "t": "Anthropic-Börsengang: Was Anleger zum KI-Giganten wissen müssen",
+   "s": "Das KI-Unternehmen Anthropic bereitet seinen Börsengang an der Nasdaq vor. Trotz hoher Bewertung und prominenter Investoren bleibt die Macht bei den Gründern.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KI-Unternehmen-Anthropic-plant-Boersengang-an-der-Nasdaq-11519526.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T14:37:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Blase & Geld"
+   ],
+   "n": 3,
+   "r": 35.6
+  },
+  {
+   "t": "ITU-Vollversammlung: Länder des Südens fordern Teilhabe bei KI",
+   "s": "In Doha kommt in dieser Woche die Vollversammlung der Internationalen Fernmeldeunion zusammen. Dabei stehen Themen wie KI und Satellitendienste auf der Agenda.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/ITU-Vollversammlung-Satelliten-Teilhabe-und-immer-wieder-KI-11519470.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T14:04:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.5
+  },
+  {
+   "t": "Nicht bindend, kaum konkret: Auch die Weltklimakonferenz geht die Umweltfolgen des KI-Booms nicht an",
+   "s": "Auch bei der Weltklimakonferenz geht es um den steigenden Ressourcenverbrauch von KI‑Rechenzentren. Doch die dort zirkulierende Selbstverpflichtung ist das Papi",
+   "q": "t3n",
+   "l": "https://t3n.de/news/nicht-bindend-kaum-konkret-auch-die-weltklimakonferenz-geht-die-umweltfolgen-des-ki-booms-nicht-an-1772649",
+   "d": "2026-11-10T14:00:53+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.5
+  },
+  {
+   "t": "Acht Staaten sowie OpenAI, Anthropic und Mistral unterzeichnen \"Pariser Aufruf zur KI-Sicherheit\"",
+   "s": "Auf Initiative von Emmanuel Macron haben acht Staaten sowie Vertreter von OpenAI, Anthropic, Microsoft und Mistral AI den \"Pariser Aufruf für KI-Sicherheit\" unterzeichnet. Die Unternehmen verpflichten sich zu …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/acht-staaten-sowie-openai-anthropic-und-mistral-unterzeichnen-pariser-aufruf-zur-ki-sicherheit/",
+   "d": "2026-11-10T13:20:16+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "Microsoft Copilot",
+    "Mistral & Europa"
+   ],
+   "n": 1,
+   "r": 27.4
+  },
+  {
+   "t": "Apple-CEO Ternus drängt auf mehr Tempo bei KI-Entwicklung",
+   "s": "Apples neuer CEO John Ternus drängt laut einem Bericht auf schnellere Fortschritte bei der künstlichen Intelligenz.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Apple-CEO-Ternus-draengt-auf-mehr-Tempo-bei-KI-Entwicklung-11519012.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T12:16:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Apple"
+   ],
+   "n": 1,
+   "r": 11.2
+  },
+  {
+   "t": "Anthropic startet Börsengang: Aktie kostet zwischen 70 und 78 US-Dollar bei einer Billionen-Bewertung",
+   "s": "Anthropic startet die Roadshow für seinen Börsengang und strebt eine Bewertung von bis zu 1,02 Billionen US-Dollar an. Neben dem öffentlichen Angebot von bis zu 64,4 Milliarden US-Dollar sichert sich das Unternehmen 26 …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/anthropic-startet-boersengang-aktie-kostet-zwischen-70-und-78-us-dollar-bei-einer-billionen-bewertung/",
+   "d": "2026-11-10T12:07:03+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Blase & Geld"
+   ],
+   "n": 3,
+   "r": 35.2
+  },
+  {
+   "t": "Helping caregivers use AI in everyday life",
+   "s": "OpenAI Academy is bringing free, hands-on ChatGPT workshops to caregivers in five U.S. cities, helping them build practical AI skills for everyday life.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+   "d": "2026-11-10T12:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.1
+  },
+  {
+   "t": "Anthropics Fable 5.2 erledigt über 40 Prozent echter Freelance-Aufträge in Profiqualität",
+   "s": "Anthropics Fable 5.2 schließt im Remote Labor Index 41,3 Prozent realer Freelance-Aufträge in Profiqualität ab – mehr als doppelt so viel wie die nächstbesten Systeme Opus 5.5 und GPT 6 Astra. Vor einem Jahr lag der …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/anthropics-fable-5-2-erledigt-ueber-40-prozent-echter-freelance-auftraege-in-profiqualitaet/",
+   "d": "2026-11-10T11:37:47+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.1
+  },
+  {
+   "t": "KIT testet CO₂-Abscheidung in Müllverbrennungsanlage",
+   "s": "Aus den Abgasen einer Müllverbrennungsanlage soll das CO₂ abgeschieden und daraus Kohlenstoffpulver gewonnen werden. Das soll in der Industrie genutzt werden.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KIT-testet-CO-Abscheidung-in-Muellverbrennungsanlage-11518946.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T11:15:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.0
+  },
+  {
+   "t": "KI-Regulierung: Macron drängt auf internationale Sicherheitsstandards",
+   "s": "Frankreichs Präsident Emmanuel Macron hat internationale Akteure zu einer Initiative für mehr Sicherheit und Transparenz bei KI-Modellen zusammengerufen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KI-Regulierung-Macron-draengt-auf-internationale-Sicherheitsstandards-11518762.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T10:27:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Regulierung & AI Act"
+   ],
+   "n": 1,
+   "r": 10.9
+  },
+  {
+   "t": "Meta Muse Ember: Neues KI-Modell soll Agenten günstiger machen",
+   "s": "Metas kleinstes KI-Modell Muse Ember erreicht im Intelligence Index das Niveau von Claude Haiku 5.5, kostet pro Benchmark-Aufgabe aber nur etwa ein Drittel.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Meta-Muse-Ember-Neues-KI-Modell-soll-Agenten-guenstiger-machen-11518746.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T10:25:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Meta / Llama",
+    "KI-Agenten"
+   ],
+   "n": 2,
+   "r": 30.9
+  },
+  {
+   "t": "Das kann iOS 27.3 Beta: Apple bringt Health-App und KI-Tools",
+   "s": "Apple hat die erste Beta-Version von iOS 27.3 veröffentlicht. Sie bringt ein Feature zurück, das aus der Vorversion gestrichen wurde. Auch das iPhone Duo bekommt neue Funktionen.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ios-27-3-beta-funktionen-health-ki-1771753",
+   "d": "2026-11-10T09:55:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Apple"
+   ],
+   "n": 1,
+   "r": 10.8
+  },
+  {
+   "t": "heise+ | Lehren aus einem produktiven Review-Agenten-Workflow",
+   "s": "Wie viel Autonomie verträgt eine Testsuite? Ein Agenten-Workflow zeigt, wie man durch unabhängige Review-Instanzen KI-Halluzinationen in der QA beherrscht.",
+   "q": "heise",
+   "l": "https://www.heise.de/hintergrund/Lehren-aus-einem-produktiven-Review-Agenten-Workflow-11510195.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "d": "2026-11-10T09:30:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 10.7
+  },
+  {
+   "t": "Australien verschärft KI-Regularien nach OpenAI-Angriffen",
+   "s": "Nach einem Vorfall mit einem OpenAI-Agenten verschärft Australien die Sicherheitsvorschriften für KI-Entwickler. Melden von Vorfällen wird Pflicht.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Australien-verschaerft-KI-Regularien-nach-OpenAI-Angriffen-11518320.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T09:03:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "KI-Agenten",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 30.7
+  },
+  {
+   "t": "One UI 9.5: Wie Samsung Bixby in einen KI-Agenten verwandeln will",
+   "s": "Samsung arbeitet schon am nächsten Update für seine Galaxy-Smartphones. One UI 9.5 könnte nach ersten Informationen noch mehr KI in Form des Sprachassistenten Bixby auf die Geräte bringen.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/one-ui-9-5-wie-samsung-bixby-in-einen-ki-agenten-verwandeln-will-1772528",
+   "d": "2026-11-10T09:00:22+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten",
+    "Jobs & Arbeit"
+   ],
+   "n": 1,
+   "r": 12.6
+  },
+  {
+   "t": "Closing the AI guidance gap in education",
+   "s": "New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/closing-ai-guidance-gap-education",
+   "d": "2026-11-10T09:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.6
+  },
+  {
+   "t": "Alexa+: Amazons KI-Assistentin läuft jetzt auch in Deutschland im Browser",
+   "s": "Amazons KI-Assistentin Alexa+ lässt sich in Deutschland nun über Alexa.com im Browser nutzen. Zugriff haben vorerst nur Teilnehmer des Early Access.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Alexa-Amazons-KI-Assistentin-laeuft-jetzt-auch-in-Deutschland-im-Browser-11518366.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-10T08:44:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.6
+  },
+  {
+   "t": "Work at the Frontier: AI’s effect on freelance work",
+   "s": "New research from OpenAI and Upwork finds shifting demand for freelance work, new skill combinations, and larger budgets and more hours for AI-related projects.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/ai-effect-on-freelance-work",
+   "d": "2026-11-10T07:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.3
   },
   {
    "t": "Zurück an die KI-Spitze: Anthropic stellt Claude Fable 5.2 und Mythos 5.2 vor",
@@ -58,23 +333,8 @@
    "tags": [
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 22.2
-  },
-  {
-   "t": "Milliarden-Deal für Gasturbinen: Anthropic sichert sich Energiekapazitäten",
-   "s": "Angesichts des rasant steigenden Energiebedarfs für KI-Infrastruktur investiert der Claude-Entwickler erstmals direkt in Anlagen zur Stromerzeugung.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Milliarden-Deal-fuer-Gasturbinen-Anthropic-sichert-sich-Energiekapazitaeten-11518056.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T20:13:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "Coding mit KI",
-    "KI-Blase & Geld"
-   ],
-   "n": 2,
-   "r": 28.1
+   "n": 1,
+   "r": 10.6
   },
   {
    "t": "Meta stellt Muse Ember vor: Kleinstes Modell soll KI-Agenten günstiger und effizienter machen",
@@ -87,8 +347,8 @@
     "Meta / Llama",
     "KI-Agenten"
    ],
-   "n": 1,
-   "r": 13.9
+   "n": 2,
+   "r": 22.3
   },
   {
    "t": "ChatGPT Enterprise now available in AWS Marketplace",
@@ -101,7 +361,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.9
+   "r": 10.3
   },
   {
    "t": "Seedream 5.5: Bytedance will mit stabilem Multi-Edit und Transparenz professionelle Workflows bedienen",
@@ -114,18 +374,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 7.9
-  },
-  {
-   "t": "Telekom rüstet KI-Fabrik in München nach, Gigafactory bleibt Option",
-   "s": "Mit viel Politprominenz hat die Telekom am Montag den Startschuss für ihre „KI-Fabrik 2.0“ gegeben. Zu einer möglichen Gigafactory blieb Tim Höttges vage.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Telekom-ruestet-KI-Fabrik-in-Muenchen-nach-Gigafactory-bleibt-Option-11517926.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T17:17:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 5.6
+   "r": 6.3
   },
   {
    "t": "Disney und Adobe entwickeln gemeinsam KI-Modelle für Parks, Studios und ESPN",
@@ -136,7 +385,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.6
+   "r": 4.0
   },
   {
    "t": "Warum Tencents KI-Chef vor KI-Biowaffen warnt, aber trotzdem weiter auf offene Modelle setzt",
@@ -147,68 +396,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.3
-  },
-  {
-   "t": "OpenAI: So findest du bald heraus, wie oft dein Unternehmen in ChatGPT auftaucht",
-   "s": "Eine Betaversion für ein ChatGPT-Tool deutet darauf hin, dass User mit diesem bald Impressions und Klicks auf ChatGPT aus erster Hand tracken und selbst Angaben zum Unternehmen machen und dessen Wahrnehmung im KI-Dienst …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/openai-so-findest-du-bald-heraus-wie-oft-dein-unternehmen-in-chatgpt-auftaucht-1772409",
-   "d": "2026-11-09T14:10:37+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 11.1
-  },
-  {
-   "t": "Gehirndaten von Neurotech-Nutzern werden heimlich für KI-Training genutzt",
-   "s": "Eine Recherche zeigt: Gehirnaktivitäten von Neurotech-Nutzern werden ohne deren Wissen für das Training von KIs verwendet.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Gehirndaten-von-Neurotech-Nutzern-werden-heimlich-fuer-KI-Training-genutzt-11513876.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T14:00:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 5.1
-  },
-  {
-   "t": "KI-Update kompakt: Rechenzentren, Propaganda, Siri AI, Minecraft",
-   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/KI-Update-kompakt-Rechenzentren-Propaganda-Siri-AI-Minecraft-11515563.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T14:00:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Apple"
-   ],
-   "n": 1,
-   "r": 9.1
-  },
-  {
-   "t": "Auswirkungen von KI auf den Arbeitsmarkt: Berufseinsteiger spüren die Veränderung als Erstes",
-   "s": "Etliche Fachleute sehen KI als eine epochale Entwicklung, die Arbeitswelt und Gesellschaft fundamental verändern wird. Auf dem Arbeitsmarkt gibt es laut Ifo eine erste auffällige Entwicklung.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/auswirkungen-von-ki-auf-den-arbeitsmarkt-berufseinsteiger-spueren-die-veraenderung-als-erstes-1772398",
-   "d": "2026-11-09T13:30:37+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 7.0
-  },
-  {
-   "t": "Galaxy AI: Samsung will für KI-Funktionen offenbar Geld sehen – das steckt im geplanten Abo",
-   "s": "Bisher sind die KI-Funktionen auf Samsung-Smartphones gratis. Einem Bericht zufolge testet der Hersteller nun ein Bezahlmodell – samt Limits für die kostenlosen Funktionen.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/galaxy-ai-samsung-will-fuer-ki-funktionen-offenbar-geld-sehen-das-steckt-im-geplanten-abo-1772363",
-   "d": "2026-11-09T13:00:42+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.9
+   "r": 3.7
   },
   {
    "t": "Control Room: A central system to track and stop model workloads across our research infrastructure",
@@ -221,7 +409,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.9
+   "r": 9.3
   },
   {
    "t": "Google erweitert TPU-Portfolio um vier Systeme in einem Jahr und nimmt Nvidia stärker ins Visier",
@@ -235,63 +423,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 14.9
-  },
-  {
-   "t": "KI-Coding-Agenten verfrachten Zugangsdaten in öffentliche Repositories",
-   "s": "Wer mit KI-Coding-Agenten arbeitet, kann Zugangsdaten in öffentliche Repositories ausleiten. Schuld ist eine Komfortfunktion.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/KI-Coding-Agenten-verfrachten-Zugangsdaten-in-oeffentliche-Repositories-11517278.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T12:23:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten",
-    "Coding mit KI",
-    "Jobs & Arbeit",
-    "Bildung & Schule"
-   ],
-   "n": 2,
-   "r": 26.8
-  },
-  {
-   "t": "Nvidia-Spionageaffäre liefert US-Demokraten die perfekte Vorlage für schärfere KI-Chip-Exportkontrollen",
-   "s": "Nvidia-CEO Jensen Huang hat eine außereheliche Beziehung mit einer Frau eingeräumt, die US-Geheimdienste als mutmaßliche chinesische Informantin einstufen. Der Vorstand leitet eine unabhängige Untersuchung ein. Die …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/nvidia-spionageaffaere-liefert-us-demokraten-die-perfekte-vorlage-fuer-schaerfere-ki-chip-exportkontrollen/",
-   "d": "2026-11-09T10:17:43+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips",
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 12.5
-  },
-  {
-   "t": "Trotz teurer Lizenz: Apple verlangt für Logic-Pro-KI-Assistenz ein Abo",
-   "s": "Ähnlich wie bei Pixelmator Pro macht Apple auch bei Logic Pro ernst: Nur Abonnenten von Creator Studio kriegen den neuen „Intelligent Assistant“.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Trotz-teurer-Lizenz-Apple-verlangt-fuer-Logic-Pro-KI-Assistenz-ein-Abo-11516228.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T09:43:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Apple"
-   ],
-   "n": 1,
-   "r": 8.4
-  },
-  {
-   "t": "Samsung plant offenbar kostenpflichtigen Galaxy-AI-Tarif",
-   "s": "Samsung arbeitet offenbar daran, einen Teil seiner Galaxy-AI-Funktionen hinter eine Bezahlschranke zu packen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Samsung-soll-an-Abo-fuer-Galaxy-AI-Funktionen-arbeiten-11516987.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-09T09:37:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 6.4
+   "r": 13.3
   },
   {
    "t": "CodeRabbit scales agentic software development and ships 20x more",
@@ -305,8 +437,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 3,
-   "r": 38.1
+   "n": 2,
+   "r": 26.5
   },
   {
    "t": "Kuken Industries searches 70 years of drawings in minutes",
@@ -319,82 +451,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.1
-  },
-  {
-   "t": "KI-Forscher Andrej Karpathy filtert 43 Millionen Hacker-News-Kommentare zu einer kuratierten Video-Plattform",
-   "s": "Der OpenAI-Mitgründer und KI-Forscher Andrej Karpathy hat mit Anthropics Claude Code an einem Wochenende HackerTube gebaut: eine Video-Plattform, die aus 43 Millionen Hacker-News-Kommentaren 6.454 kuratierte Videos …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/ki-forscher-andrej-karpathy-filtert-43-millionen-hacker-news-kommentare-zu-einer-kuratierten-video-plattform/",
-   "d": "2026-11-08T14:07:00+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "Claude / Anthropic",
-    "Coding mit KI",
-    "KI-Video & Bild"
-   ],
-   "n": 3,
-   "r": 39.1
-  },
-  {
-   "t": "KI mit Bewusstsein: Chatbots sind Spiegel der Trainingsdaten, keine fühlenden Wesen",
-   "s": "Die drei prominenten Bewusstseinsforscher Anil Seth, Ned Block und Giulio Tononi argumentieren in einem Nature-Kommentar, dass heutige KI-Systeme nicht bewusst sind und es auf Silizium-Hardware auch nicht werden. Sie …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/ki-mit-bewusstsein-chatbots-sind-spiegel-der-trainingsdaten-keine-fuehlenden-wesen/",
-   "d": "2026-11-08T12:31:21+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.8
-  },
-  {
-   "t": "Erfinder der \"bitteren Lektion\" warnt: KI-Wissenschaft ist noch lange nicht am Ziel",
-   "s": "Turing-Preisträger Richard Sutton bekräftigt: Rohe Rechenkraft allein reiche nicht für Intelligenz, es benötige grundlegend neue Lernverfahren. Ex-OpenAI-Forscher Tworek pflichtet bei: Blinde Transformer-Skalierung habe …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/erfinder-der-bitteren-lektion-warnt-ki-wissenschaft-ist-noch-lange-nicht-am-ziel/",
-   "d": "2026-11-08T11:05:41+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.6
-  },
-  {
-   "t": "Missing Link: Wenn die KI zuhört, wo Menschen es nicht mehr tun",
-   "s": "Vier Menschen, vier KI-Partner: Die Doku „Finding Connection“ zeigt, was Companion-Apps über eine Gesellschaft verraten, in der kaum noch jemand zuhört.",
-   "q": "heise",
-   "l": "https://www.heise.de/hintergrund/Missing-Link-Wenn-die-KI-zuhoert-wo-Menschen-es-nicht-mehr-tun-11516378.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-08T07:12:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "Mini-PC VZMore AX9 Max im Test: Für wen sich der teure Ryzen-AI-9-Rechner lohnt",
-   "s": "Der Vzmore AX9 Max kombiniert den Ryzen AI 9 HX 470 mit starker iGPU, moderner Ausstattung und effizienter Kühlung. Im Test überzeugt vieles, aber nicht alles.",
-   "q": "heise",
-   "l": "https://www.heise.de/bestenlisten/testbericht/mini-pc-vzmore-ax9-max-im-test-fuer-wen-sich-der-teure-ryzen-ai-9-rechner-lohnt/xg3ztdw?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-07T15:00:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "Drohnen-Vorfall in Leipzig: BKA fahndet mit KI-Bild",
-   "s": "Nachdem im August am Flughafen Leipzig/Halle eine Drohne mit Sprengstoff gefunden wurde, fahndet das BKA nun mit KI-Bildern von Verdächtigen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/BKA-fahndet-nach-Drohnen-Vorfall-in-Leipzig-mit-KI-Bild-11516328.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-07T11:37:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
+   "r": 8.5
   },
   {
    "t": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
@@ -420,8 +477,8 @@
     "OpenAI",
     "KI-Agenten"
    ],
-   "n": 1,
-   "r": 10.0
+   "n": 2,
+   "r": 20.0
   },
   {
    "t": "Cult.fit builds operational muscle with Codex",
@@ -459,49 +516,8 @@
     "OpenAI",
     "KI-Agenten"
    ],
-   "n": 1,
-   "r": 10.0
-  },
-  {
-   "t": "Merge builds product and business tools with OpenAI technology",
-   "s": "Merge uses GPT-6 Astra, ChatGPT, and Codex to review product code and support marketing. Its teams also use AI to plan executive dinners and prepare sales updates.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/merge-builds-with-openai",
-   "d": "2026-11-05T08:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "Coding mit KI"
-   ],
    "n": 2,
    "r": 20.0
-  },
-  {
-   "t": "Setting a new standard for responsible AI infrastructure",
-   "s": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
-   "d": "2026-11-05T02:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 8.0
-  },
-  {
-   "t": "Flipsnack grows product signups with conversion optimization",
-   "s": "Flipsnack focused its ChatGPT Ads campaigns on getting people to try its product, growing registrations while lowering the cost per signup.",
-   "q": "OpenAI",
-   "l": "https://openai.com/ads/customers/flipsnack",
-   "d": "2026-11-05T00:45:15+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
   }
  ],
  "kanaele": [
@@ -514,47 +530,510 @@
   "Google DeepMind",
   "Two Minute Papers"
  ],
- "videos": [],
+ "videos": [
+  {
+   "id": "BajLtMHISQU",
+   "t": "„Verbot für Superintelligenz“ USA stoppen Rechenzentren, Claude RSI, Starfall & Merz' KI-Steuer",
+   "q": "Everlast AI",
+   "d": "2026-11-10T16:15:31+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.9
+  },
+  {
+   "id": "sSyzj08Cy2U",
+   "t": "Greg Brockman on how OpenAI uses frontier models for cyber defense",
+   "q": "OpenAI",
+   "d": "2026-11-10T16:07:53+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.8
+  },
+  {
+   "id": "vdEGZYIvFiI",
+   "t": "Greg Brockman on how OpenAI uses frontier models for cyber defense",
+   "q": "OpenAI",
+   "d": "2026-11-10T16:02:15+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.8
+  },
+  {
+   "id": "ZTxzWJeGFAA",
+   "t": "How CodeRabbit uses OpenAI to review AI-generated code",
+   "q": "OpenAI",
+   "d": "2026-11-10T15:05:40+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 27.7
+  },
+  {
+   "id": "vug73goPJaM",
+   "t": "Is Software Over?",
+   "q": "Two Minute Papers",
+   "d": "2026-11-10T10:15:57+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 6.9
+  },
+  {
+   "id": "xwDJI3AhyWM",
+   "t": "KI-Pionier: „Die meisten Ökonomen liegen FALSCH! Es kommen KEINE neuen Jobs“ (Marcus Hutter)",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-10T10:15:21+00:00",
+   "lang": "de",
+   "tags": [
+    "Jobs & Arbeit"
+   ],
+   "n": 1,
+   "r": 8.9
+  },
+  {
+   "id": "FNTz0CdqL6g",
+   "t": "Kuken Industries searches 70 years of drawings in minutes",
+   "q": "OpenAI",
+   "d": "2026-11-10T02:41:23+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 5.6
+  },
+  {
+   "id": "RcvjZlq12kU",
+   "t": "Unser gesamtes Firmenwissen! (Stand 2026)",
+   "q": "Everlast AI",
+   "d": "2026-11-09T16:15:35+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 3.9
+  },
+  {
+   "id": "Tt-il3EZfhA",
+   "t": "„Ich unterhalte mich mit KRÄHEN!“ Was Tiere uns über KI verraten (Prof. Klaus Mainzer)",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-09T10:15:20+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 2.9
+  },
+  {
+   "id": "jkeB74nI-cs",
+   "t": "„Sie haben KEINE Freizeit mehr!“ So brutal ist Chinas Schulsystem (Wolfgang Röhr)",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-08T14:15:19+00:00",
+   "lang": "de",
+   "tags": [
+    "Bildung & Schule"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "s0nZrVoedcE",
+   "t": "„Mars-Siedlungen sind absoluter BLÖDSINN!“ Chip-Professor rechnet mit Elon Musk ab",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-08T10:15:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Nvidia & Chips",
+    "xAI / Grok"
+   ],
+   "n": 1,
+   "r": 8.0
+  },
+  {
+   "id": "6wWnbZu4oxI",
+   "t": "Motion Graphics OHNE After Effects: Claude baut alles KOMPLETT alleine!",
+   "q": "Cinetiq",
+   "d": "2026-11-08T10:00:37+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "v0q266zAQ9M",
+   "t": "Es ist passiert: Die KI-Blase platzt in Amerika! DAS musst du jetzt wissen | KI-NEWS",
+   "q": "Everlast AI",
+   "d": "2026-11-08T09:27:52+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Blase & Geld"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "GJ6PMUm5oTA",
+   "t": "OpenAI's Astra Just Opened The Black Box Of AI",
+   "q": "Two Minute Papers",
+   "d": "2026-11-07T16:24:47+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "8jfH4hFtAbQ",
+   "t": "„Merz hat eine 180-Grad-WENDE gemacht!“ Ex-Diplomat über Deutschlands China-Politik",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-07T14:15:01+00:00",
+   "lang": "de",
+   "tags": [
+    "DeepSeek & China"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "hJOwOkLHRN0",
+   "t": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
+   "q": "OpenAI",
+   "d": "2026-11-06T21:11:34+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "XgC1QTs6A2U",
+   "t": "The Future of AI Is Absolutely Incredible (Spencer Huang)",
+   "q": "Two Minute Papers",
+   "d": "2026-11-06T07:27:02+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "YajzUoRKSNQ",
+   "t": "Astronaut: Was bis 2030 kommt, wird keiner glauben! Roboter, Mond-Hotels, Dyson-Sphären & Aliens",
+   "q": "Everlast AI",
+   "d": "2026-11-05T16:15:04+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "LWLTLHiDtlw",
+   "t": "„DAS ist unsere letzte Chance!“ Deutschlands größtes Roboter-Projekt startet JETZT in München",
+   "q": "Everlast Robotics",
+   "d": "2026-11-04T16:15:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "6Q0X-yk52w0",
+   "t": "Es beginnt: KI hat jetzt eine eigene Sprache, die kein Mensch versteht",
+   "q": "Everlast AI",
+   "d": "2026-11-03T16:15:13+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "lytWc30v4Jo",
+   "t": "6x GÜNSTIGER als Seedance 2.5? Kling 4.0: Alles, was du wissen musst (16 Praxistests)",
+   "q": "Cinetiq",
+   "d": "2026-11-01T10:15:22+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "CWdTBLsbaQs",
+   "t": "OpenAI Claims It Just Did The Impossible",
+   "q": "Two Minute Papers",
+   "d": "2026-10-30T15:57:16+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "pryCaGv8wuo",
+   "t": "DeepSeek's New AI Is An Absolute Monster",
+   "q": "Two Minute Papers",
+   "d": "2026-10-28T17:32:40+00:00",
+   "lang": "en",
+   "tags": [
+    "DeepSeek & China"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "PAFZUpDMY64",
+   "t": "Ich bin in Chinas Zukunftsstadt: Hier sind Roboter schon ÜBERALL! | VLOG",
+   "q": "Everlast Robotics",
+   "d": "2026-10-28T14:15:06+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "sFfPkUJd_Jk",
+   "t": "Genie 4: A new generation of world simulation",
+   "q": "Google DeepMind",
+   "d": "2026-10-27T16:00:41+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "--9ZTpDQfNw",
+   "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
+   "q": "Cinetiq",
+   "d": "2026-10-25T13:00:27+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "4xnzufXKM2o",
+   "t": "Wahnsinn: Diese Roboter-Finger fühlen 160x besser als Menschen! DAS baut China gerade",
+   "q": "Everlast Robotics",
+   "d": "2026-10-21T15:15:24+00:00",
+   "lang": "de",
+   "tags": [
+    "DeepSeek & China",
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 8.0
+  },
+  {
+   "id": "owzZaTsBLhg",
+   "t": "Schau das BEVOR du KI-Avatare postest! (4 Ideen, mit denen du herausstichst)",
+   "q": "Cinetiq",
+   "d": "2026-10-18T09:00:13+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "YkGuQXXOwMQ",
+   "t": "Weltneuheit: Erste \"Underground\" Roboter-Kämpfe in USA! DAS passiert hier wirklich",
+   "q": "Everlast Robotics",
+   "d": "2026-10-14T15:18:24+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "LVEfFyijQ2c",
+   "t": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T16:38:17+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "ftkic7Tdpcg",
+   "t": "Using Gemini 4 Argon to protect against Cyber attackers",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T16:38:14+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "9PICEmtfpWU",
+   "t": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T15:58:20+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini",
+    "Robotik"
+   ],
+   "n": 2,
+   "r": 20.0
+  },
+  {
+   "id": "9jQA7IgPhBE",
+   "t": "Untangling 500-page chemistry patents with Gemini 4",
+   "q": "Google DeepMind",
+   "d": "2026-10-13T15:58:17+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "ylUTLJTkMDY",
+   "t": "12 ikonische Animationsstile, die du kennen musst (inkl. Seedance 2.5 Prompts)",
+   "q": "Cinetiq",
+   "d": "2026-10-11T09:00:26+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "HuE0A5ylKJk",
+   "t": "Ich teste Chinas KI-Alltag: Smarte Betten, Exoskelette & Roboter! Was WIRKLICH taugt",
+   "q": "Everlast Robotics",
+   "d": "2026-10-07T13:15:36+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "DdCEmlAydcw",
+   "t": "Inside Anthropic's molecular biology lab",
+   "q": "Anthropic",
+   "d": "2026-09-23T18:01:32+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "uVS88gnaxcg",
+   "t": "Meet Claude Fable 5.1",
+   "q": "Anthropic",
+   "d": "2026-09-01T19:21:24+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "ROF2Nv_KjOM",
+   "t": "Introducing Claude Fable 5.1",
+   "q": "Anthropic",
+   "d": "2026-09-01T18:02:31+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "UxJZrCFzTHY",
+   "t": "Model Hardware Standard: AI operating physical equipment",
+   "q": "Anthropic",
+   "d": "2026-08-28T00:40:16+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "djVUCj5i4sw",
+   "t": "We're building a way for AI models to connect to any device and run real experiments.",
+   "q": "Anthropic",
+   "d": "2026-08-27T19:42:35+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  }
+ ],
  "themen": [
   {
+   "name": "Claude / Anthropic",
+   "meldungen": 8,
+   "quellen": 5
+  },
+  {
+   "name": "OpenAI",
+   "meldungen": 14,
+   "quellen": 4
+  },
+  {
    "name": "KI-Agenten",
+   "meldungen": 9,
+   "quellen": 4
+  },
+  {
+   "name": "KI-Blase & Geld",
    "meldungen": 4,
    "quellen": 4
   },
   {
-   "name": "OpenAI",
-   "meldungen": 7,
-   "quellen": 3
-  },
-  {
    "name": "Coding mit KI",
-   "meldungen": 4,
-   "quellen": 3
-  },
-  {
-   "name": "Claude / Anthropic",
-   "meldungen": 5,
-   "quellen": 2
-  },
-  {
-   "name": "KI-Video & Bild",
    "meldungen": 3,
-   "quellen": 2
-  },
-  {
-   "name": "Jobs & Arbeit",
-   "meldungen": 3,
-   "quellen": 2
-  },
-  {
-   "name": "Mistral & Europa",
-   "meldungen": 2,
    "quellen": 2
   },
   {
    "name": "Apple",
    "meldungen": 2,
-   "quellen": 1
+   "quellen": 2
+  },
+  {
+   "name": "Meta / Llama",
+   "meldungen": 2,
+   "quellen": 2
+  },
+  {
+   "name": "Jobs & Arbeit",
+   "meldungen": 2,
+   "quellen": 2
   }
  ],
  "aktien": [
@@ -562,10 +1041,10 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 142.07,
+   "preis": 141.26,
    "cur": "USD",
-   "d1": 5.81,
-   "m1": -13.1,
+   "d1": -0.57,
+   "m1": -13.6,
    "spark": [
     163.42,
     156.54,
@@ -587,18 +1066,19 @@
     135.92,
     123.62,
     134.27,
-    142.07
+    142.07,
+    141.26
    ],
-   "t": "2026-11-09T21:00+00:00"
+   "t": "2026-11-10T17:06+00:00"
   },
   {
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 75.05,
+   "preis": 75.15,
    "cur": "HKD",
-   "d1": 6.76,
-   "m1": 10.9,
+   "d1": 16.51,
+   "m1": 11.0,
    "spark": [
     67.7,
     67.4,
@@ -619,19 +1099,18 @@
     63.65,
     66.95,
     64.5,
-    70.3,
-    75.05
+    70.3
    ],
-   "t": "2026-11-10T07:10+00:00"
+   "t": "2026-11-10T08:08+00:00"
   },
   {
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 378.05,
+   "preis": 376.25,
    "cur": "USD",
-   "d1": 5.54,
-   "m1": 0.0,
+   "d1": -0.48,
+   "m1": -0.5,
    "spark": [
     378.03,
     375.23,
@@ -653,18 +1132,19 @@
     385.19,
     343.69,
     358.22,
-    378.05
+    378.05,
+    376.25
    ],
-   "t": "2026-11-09T21:00+00:00"
+   "t": "2026-11-10T17:06+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 178.67,
+   "preis": 167.01,
    "cur": "USD",
-   "d1": -4.27,
-   "m1": -21.1,
+   "d1": -6.53,
+   "m1": -26.2,
    "spark": [
     226.32,
     228.52,
@@ -686,18 +1166,19 @@
     200.13,
     181.6,
     186.64,
-    178.67
+    178.67,
+    167.01
    ],
-   "t": "2026-11-09T21:00+00:00"
+   "t": "2026-11-10T17:06+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 288.15,
+   "preis": 287.23,
    "cur": "USD",
-   "d1": 1.18,
-   "m1": -18.3,
+   "d1": -0.32,
+   "m1": -18.6,
    "spark": [
     352.72,
     353.78,
@@ -719,18 +1200,19 @@
     288.93,
     282.57,
     284.78,
-    288.15
+    288.15,
+    287.23
    ],
-   "t": "2026-11-09T21:00+00:00"
+   "t": "2026-11-10T17:06+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 545.18,
+   "preis": 543.05,
    "cur": "USD",
-   "d1": 2.75,
-   "m1": 0.7,
+   "d1": -0.39,
+   "m1": 0.4,
    "spark": [
     541.15,
     543.45,
@@ -752,9 +1234,10 @@
     555.8,
     535.93,
     530.61,
-    545.18
+    545.18,
+    543.05
    ],
-   "t": "2026-11-09T21:00+00:00"
+   "t": "2026-11-10T17:06+00:00"
   },
   {
    "name": "Anthropic",
