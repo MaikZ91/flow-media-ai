@@ -119,13 +119,16 @@ window.FLOW_DNA = {
     { id: "lead-qualification", ablauf: [["📥", "Anfrage"], ["🎯", "Punkte"], ["🔥", "Heiß / warm"], ["📅", "Gespräch"]], preise: { miete: 12, kauf: 99, setup: 249 }, version: "1.0", name: "Lead Qualification", kat: "automation", stufe: "premium", status: "bereit", icon: "🎯",
       kurz: "Bewertet Anfragen und sagt dir, mit wem sich ein Gespräch lohnt.", kann: ["Fragt Bedarf, Budget und Zeitrahmen ab", "Sortiert nach Passung", "Bereitet das Erstgespräch vor"], fuer: "Coaches und Dienstleister mit Anfragen" },
     // 04 Web & App Development
-    { id: "website", video: "media/r006", ablauf: [["📂","Content auslesen"],["🧪","5 Varianten"],["👆","Auswahl"],["✨","Finale Version"],["🌐","Launch"]], preise: { miete: 19, kauf: 149, setup: 399 }, version: "1.1", name: "Website Builder", kat: "web", stufe: "premium", status: "bereit", icon: "🌐", hinweis: "Für Workshop-Teilnehmer gratis",
-      kurz: "Liest deinen Content, baut fünf Website-Varianten, du wählst – dann geht die beste live.",
-      kann: ["Liest Fotos, Videos, Texte, Branding und deine alte Website aus", "Baut fünf deutlich verschiedene Website-Varianten zum Durchklicken", "Du wählst und mischst – daraus entsteht die finale Version", "Launch nach Rückfrage: eigener GitHub-Account, anderer Account oder nur lokal"],
+    { id: "website", versionen: true, video: "media/r006", ablauf: [["📂","Content auslesen"],["🧪","1–5 Versionen"],["👆","Auswahl"],["✨","Finale Version"],["🌐","Launch"]], preise: { miete: 19, kauf: 149, setup: 399 }, version: "1.1", name: "Website Builder", kat: "web", stufe: "premium", status: "bereit", icon: "🌐", hinweis: "Für Workshop-Teilnehmer gratis",
+      kurz: "Liest deinen Content und baut deine Website – als eine Version oder bis zu fünf zur Auswahl. Dann geht die beste live.",
+      kann: ["Liest Fotos, Videos, Texte, Branding und deine alte Website aus", "Du wählst, wie viele Versionen: 1, 3 oder 5 deutlich verschiedene Entwürfe", "Bei mehreren: du wählst und mischst – daraus entsteht die finale Version", "Launch nach Rückfrage: eigener GitHub-Account, anderer Account oder nur lokal"],
       fuer: "Alle, die eine eigene Website wollen – ohne Baukasten", demo: "Die Website von Flow Media AI ist so entstanden.", herkunft: "Workshop „Deine Website“ (09.11.)" },
-    { id: "app-builder", ablauf: [["📋", "Anforderungen"], ["🧪", "5 Varianten"], ["👆", "Auswahl"], ["📱", "App live"]], preise: { miete: 19, kauf: 179, setup: 449 }, version: "1.0", name: "App Builder", kat: "web", stufe: "premium", status: "bereit", icon: "📱",
-      kurz: "Erst fünf klickbare Entwürfe, dann die beste – so entsteht jede App.",
-      kann: ["Baut fünf echte, klickbare Varianten", "Du wählst aus und mischst", "Neue Version, installierbar als App, veröffentlicht"],
+    { id: "website-transformer", versionen: true, highlight: true, bild: "media/bild_vorher_nachher.jpg", ablauf: [["🔗", "URL rein"], ["🔍", "Alte Seite lesen"], ["🧪", "1–5 Versionen"], ["⚖️", "Vorher/Nachher"], ["🌐", "Live"]], preise: { miete: 19, kauf: 149, setup: 349 }, version: "1.0", name: "Website Transformer", kat: "web", stufe: "premium", status: "bereit", icon: "🔁",
+      kurz: "URL rein, neue Website raus: Aus deiner bestehenden Seite wird eine moderne Premium-Website – eine Version oder bis zu fünf zur Auswahl.",
+      kann: ["Liest deine bestehende Website aus: Texte, Leistungen, Bilder, Kontakt, Farben", "Findet die Schwächen (Handy, Ladezeit, Hauptaktion, SEO) – mit Screenshot", "Baut 1, 3 oder 5 neue Versionen im Branchen-Look mit Vollbild-Foto-Hero", "Vorher/Nachher-Vergleich, dann Umzug und Launch auf deiner Domain"], fuer: "Selbstständige, Coaches und Betriebe mit veralteter Website" },
+    { id: "app-builder", versionen: true, ablauf: [["📋", "Anforderungen"], ["🧪", "1–5 Versionen"], ["👆", "Auswahl"], ["📱", "App live"]], preise: { miete: 19, kauf: 179, setup: 449 }, version: "1.0", name: "App Builder", kat: "web", stufe: "premium", status: "bereit", icon: "📱",
+      kurz: "Aus deiner Idee wird eine App – als eine Version oder bis zu fünf klickbare Entwürfe zur Auswahl.",
+      kann: ["Du wählst, wie viele Versionen: 1, 3 oder 5 echte, klickbare Entwürfe", "Bei mehreren: du wählst aus und mischst", "Neue Version, installierbar als App, veröffentlicht"],
       fuer: "Gründer mit App-Idee, Coaches, Dienstleister", demo: "Cocktail-App aus der AI Masterclass – und dieser Store.", herkunft: "AI Masterclass" },
     { id: "lead-seiten", ablauf: [["🔍", "Seite analysieren"], ["🎨", "Branchen-Design"], ["🛠️", "Konzeptseite"], ["👀", "Vorschau"]], preise: { miete: 19, kauf: 149, setup: 349 }, version: "1.0", name: "Landingpage Generator", kat: "web", stufe: "premium", status: "bereit", icon: "🧲",
       kurz: "Für jeden Betrieb eine branchenpassende Konzept-Website als Vorschau.",
@@ -174,6 +177,7 @@ window.FLOW_DNA = {
     { name: "Phase 2 · Community Marketplace", punkte: ["Skills einreichen", "Creator-Profile", "Freigabeprozess", "Eigene Preise", "Umsatzbeteiligung"] },
     { name: "Phase 3 · Flow DNA Ecosystem", punkte: ["Skill-Abos", "Agenten direkt ausführen", "Skill-Kombinationen", "Persönliche Business-Assistenten", "Teams und Unternehmen"] }
   ],
+  versionen: { optionen: [1, 3, 5], faktor: { 1: 0.6, 3: 0.8, 5: 1 }, text: "Wie viele Versionen soll der Skill bauen? Mehr Versionen = mehr Auswahl." },
   optionen: [
     { id: "miete", name: "Mieten", einheit: "/ Monat", text: "Nutzen, solange du ihn brauchst – inkl. Updates und Support, monatlich kündbar." },
     { id: "kauf", name: "Kaufen", einheit: "einmalig", text: "Die allgemeine Version für immer – du richtest ihn mit der Anleitung selbst ein." },
@@ -181,7 +185,7 @@ window.FLOW_DNA = {
   ],
   // Demo-Konzeptseiten (frei erfundene Betriebe, CC0-Fotos) – Galerie im Detail der Web-Skills
   beispiele: {
-    skills: ["lead-agent-web", "lead-seiten", "website"],
+    skills: ["lead-agent-web", "lead-seiten", "website", "website-transformer"],
     seiten: [
       { name: "Bäckerei Musterbrot", art: "Bäckerei · Speisekarte & Öffnungszeiten", url: "demos/baeckerei/", bild: "demos/baeckerei/vorschau.jpg" },
       { name: "Physio Beispiel", art: "Praxis · Team mit Telefon & Termin", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },

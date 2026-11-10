@@ -107,3 +107,16 @@
 .dna-use { display: block !important; text-align: left }
 .dna-use > div { display: flex !important; flex-wrap: wrap; gap: 8px; flex-direction: row !important }
 .dna-use .dna-u { width: auto; white-space: nowrap }
+.dna-opt { font: inherit; text-align: left; background: transparent; cursor: pointer; width: 100% }
+.dna-vtxt { font-size: 13px; color: var(--dna-muted); margin: 0 0 8px !important }
+.dna-ver { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px }
+.dna-ver button { border: 2px solid var(--dna-line); background: transparent; color: var(--dna-ink); padding: 10px 6px; cursor: pointer; font: 600 12px Inter, sans-serif; border-radius: 12px }
+.dna-ver button b { display: block; font: 700 30px/1 Oswald, sans-serif }
+.dna-ver button.on { border-color: var(--dna-blue); background: var(--dna-blue); color: #fff }
+.dna-cart { margin-top: 12px; border-top: 1px solid var(--dna-line) }
+.dna-ci { display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--dna-line) }
+.dna-ci > div { flex: 1; min-width: 0 } .dna-ci b { display: block; font: 600 15px Inter, sans-serif } .dna-ci small { color: var(--dna-muted); font-size: 13px }
+.dna-ci strong { font: 700 20px Oswald, sans-serif; text-align: right } .dna-ci strong em { display: block; font: 400 11px Inter, sans-serif; color: var(--dna-muted); font-style: normal }
+.dna-ci button { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); cursor: pointer; font-size: 18px }
+.dna-sum { display: grid; gap: 6px; margin-top: 12px } .dna-sum div { display: flex; justify-content: space-between; font-size: 15px } .dna-sum b { font: 700 24px Oswald, sans-serif }
+.dna-clear { border: 0; background: none; color: var(--dna-muted); text-decoration: underline; cursor: pointer; font: inherit; padding: 0 }

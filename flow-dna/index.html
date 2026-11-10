@@ -82,7 +82,7 @@ nav button .n{position:absolute;margin:-4px 0 0 18px;background:var(--blue);colo
 .ws .wb{padding:14px}
 .ak{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(11,11,11,.14)}.ak>div:first-child{flex:1;min-width:0}.ak b{display:block;font:700 20px Oswald;text-transform:uppercase}.ak small{display:block;font-size:12px;color:#6B6B66}.ak svg{flex:none}
 .ak .kv{text-align:right;flex:none;min-width:96px}.ak .kv strong{display:block;font:600 15px Inter}.ak .kv span,.ak .kv em{display:block;font:600 12px Inter;font-style:normal}.ak .up{color:#2E8B57}.ak .dn{color:#C0392B}.ak em{color:#6B6B66}.ak.off b{color:#6B6B66}.ak .na{color:#6B6B66}
-.hmore{position:relative;white-space:nowrap;border:2px solid #0B0B0B;background:#fff;font:700 12px Oswald;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;margin-right:10px;cursor:pointer}.hmore .n{position:absolute;top:-8px;right:-8px;background:#2F5BFF;color:#fff;border-radius:9px;font:600 10px Inter;padding:1px 5px}
+.hcart{margin-right:6px!important}.hmore{position:relative;white-space:nowrap;border:2px solid #0B0B0B;background:#fff;font:700 12px Oswald;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;margin-right:10px;cursor:pointer}.hmore .n{position:absolute;top:-8px;right:-8px;background:#2F5BFF;color:#fff;border-radius:9px;font:600 10px Inter;padding:1px 5px}
 nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:3px solid #2F5BFF;margin-top:-22px;background:#fff;box-shadow:0 6px 18px rgba(47,91,255,.35)}nav button.cbtn.on img{filter:none}nav button.cbtn span{font:600 9.5px Montserrat;letter-spacing:.02em}
 .co{margin:10px 16px 30px}.co .av{display:flex;gap:14px;align-items:center;background:#0B0B0B;color:#fff;padding:14px}.co .av .pic{position:relative;flex:none}.co .av img{width:86px;height:86px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:3px solid #2F5BFF}.co .av .pic i{position:absolute;right:4px;bottom:4px;width:16px;height:16px;border-radius:50%;background:#2ecc71;border:3px solid #0B0B0B}
 .co .av b{display:block;font:700 30px/1 Oswald;text-transform:uppercase}.co .av small{display:block;font:600 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a;margin-top:6px}.co .av p{margin:6px 0 0;font-size:13px;color:#ddd;line-height:1.4}
@@ -213,7 +213,7 @@ nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius
 </style></head><body>
 <div class="app">
   <header class="hd">
-    <div class="row1"><div class="word"><svg id="helix" viewBox="0 0 84 30" aria-hidden="true"></svg>Flow <span>DNA</span></div><span class="sp"></span><button type="button" class="hmore" onclick="goTab('more')" aria-label="Mehr: Angebote, Meine Skills, Verkaufen">☰ Mehr<span class="n" id="mc" hidden></span></button><a href="../marketing/landing-page/" aria-label="Zu Flow Media AI"><img src="img/logo_flow.png" alt="Flow Media AI"></a></div>
+    <div class="row1"><div class="word"><svg id="helix" viewBox="0 0 84 30" aria-hidden="true"></svg>Flow <span>DNA</span></div><span class="sp"></span><button type="button" class="hmore hcart" data-cart-open aria-label="Warenkorb">🛒<span class="n" id="cc" hidden></span></button><button type="button" class="hmore" onclick="goTab('more')" aria-label="Mehr: Angebote, Meine Skills, Verkaufen">☰ Mehr<span class="n" id="mc" hidden></span></button><a href="../marketing/landing-page/" aria-label="Zu Flow Media AI"><img src="img/logo_flow.png" alt="Flow Media AI"></a></div>
     <div class="claim">Your Business. Your AI. Your Flow. · The Skill Marketplace</div>
   </header>
   <div class="ctl" id="ctl">
@@ -444,6 +444,8 @@ function community(){document.getElementById("meta").innerHTML=`<span>Flow Busin
  <button type="button" class="tile" onclick="DNA.openSubmit()"><em>＋</em><b>Eigenen Skill teilen</b><span>Dein Wissen als Skill – geprüft und für die Community freigeschaltet</span></button>
  <a class="tile" href="../marketing/landing-page/" target="_blank" rel="noopener"><em>↗</em><b>Flow Media AI</b><span>Sparring, Masterclass und Begleitung nach der FLOW-Methode</span></a></div>${supportHTML()}</div>`}
 function goTab(t){tab=t;[...document.getElementById("nav").children].forEach(x=>x.classList.toggle("on",x.dataset.tab===t));view.scrollTop=0;render()}
+function cartCount(){const c=DNA.cartGet().length,e=document.getElementById("cc");if(e){e.hidden=!c;e.textContent=c}}
+document.addEventListener("dna-cart",cartCount);
 function render(){document.getElementById("ctl").style.display=tab==="list"?"":"none";document.getElementById("meta").style.display=tab==="list"?"none":"";tab==="list"?list():tab==="mine"?mine():tab==="community"?community():tab==="angebote"?angebote():tab==="news"?news():tab==="kurse"?kurse():tab==="coach"?coach():more();
  const c=DNA.saved().length,mc=document.getElementById("mc");mc.hidden=!c;mc.textContent=c}
 document.getElementById("seg").onclick=e=>{const b=e.target.closest("button");if(!b)return;st.stufe=b.dataset.st;[...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));list()};
@@ -460,5 +462,5 @@ function helix(t){let a="",b="",r="";for(let x=0;x<=84;x+=3){const p=x/11+t/700,
  if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(helix)}
 requestAnimationFrame(helix);
 view.addEventListener("scroll",()=>{if(tab==="list")document.getElementById("ctl").classList.toggle("min",view.scrollTop>40)});
-{const t0=new URLSearchParams(location.search).get("tab");if(["angebote","news","community","kurse","coach","more"].includes(t0)){goTab(t0);if(t0==="community"&&location.hash==="#kal")setTimeout(()=>{const k=document.getElementById("kal");k&&k.scrollIntoView()},50)}else render()}
+cartCount();{const t0=new URLSearchParams(location.search).get("tab");if(["angebote","news","community","kurse","coach","more"].includes(t0)){goTab(t0);if(t0==="community"&&location.hash==="#kal")setTimeout(()=>{const k=document.getElementById("kal");k&&k.scrollIntoView()},50)}else render()}
 </script></body></html>

@@ -34,7 +34,34 @@
     if (s.stufe === "premium") return { label: "Anfragen", href: wa(`Hi Maik, ich interessiere mich für den Premium-Skill „${s.name}“ aus Flow DNA.`), typ: "anfragen" };
     return { label: "Ansehen", href: s.quelle || "#", typ: "laden" };
   }
-  const preis = s => s.stufe === "basis" ? "0 €" : s.preise ? `ab ${s.preise.miete} €/Mon.` : (s.preis || "auf Anfrage");
+  // Preis je Anzahl Versionen (Website Builder, App Builder, Website Transformer)
+  const vRound = v => v < 30 ? Math.round(v) : Math.round(v / 10) * 10 - 1;
+  const vp = (s, oid, n) => s.versionen && D.versionen ? vRound(s.preise[oid] * (D.versionen.faktor[n] || 1)) : s.preise[oid];
+  const verOf = {};  // gewählte Versionen je Skill im Detail-Fenster
+  const preis = s => s.stufe === "basis" ? "0 €" : s.preise ? `ab ${s.versionen ? vp(s, "miete", 1) : s.preise.miete} €/Mon.` : (s.preis || "auf Anfrage");
+  // Warenkorb (nur Anfrage – Bezahlung nach Rückmeldung von Maik)
+  const cartGet = () => { try { return JSON.parse(localStorage.getItem("dna-cart") || "[]") } catch (e) { return [] } };
+  const cartSet = c => { try { localStorage.setItem("dna-cart", JSON.stringify(c)) } catch (e) { } document.dispatchEvent(new Event("dna-cart")) };
+  const cartLine = it => { const s = D.skills.find(x => x.id === it.sid), o = D.optionen.find(x => x.id === it.oid); return s && o ? { s, o, n: it.n, p: vp(s, o.id, it.n) } : null };
+  function cartAdd(sid, oid, n) { const c = cartGet().filter(x => x.sid !== sid); c.push({ sid, oid, n: n || 0 }); cartSet(c) }
+  function openCart() {
+    const L = cartGet().map(cartLine).filter(Boolean);
+    const once = L.filter(x => x.o.id !== "miete").reduce((a, x) => a + x.p, 0), month = L.filter(x => x.o.id === "miete").reduce((a, x) => a + x.p, 0);
+    const msg = `Hi Maik, ich möchte diese Skills aus Flow DNA:\n` + L.map(x => `• ${x.s.name}${x.n ? ` (${x.n} ${x.n === 1 ? "Version" : "Versionen"})` : ""} – ${x.o.name}: ${x.p} € ${x.o.einheit}`).join("\n") + `\n\nSumme: ${once ? once + " € einmalig" : ""}${once && month ? " + " : ""}${month ? month + " €/Monat" : ""}. Wie geht's weiter?`;
+    layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-cart-h"><button class="dna-x" data-dna-close aria-label="Schließen">×</button>
+      <h2 id="dna-cart-h">Warenkorb</h2>${L.length ? `<div class="dna-cart">${L.map(x => `<div class="dna-ci"><div><b>${esc(x.s.icon || "")} ${esc(x.s.name)}</b><small>${x.n ? `${x.n} ${x.n === 1 ? "Version" : "Versionen"} · ` : ""}${esc(x.o.name)}</small></div><strong>${x.p} €<em>${esc(x.o.einheit)}</em></strong><button type="button" data-cart-del="${esc(x.s.id)}" aria-label="Entfernen">×</button></div>`).join("")}</div>
+      <div class="dna-sum">${once ? `<div><span>Einmalig</span><b>${once} €</b></div>` : ""}${month ? `<div><span>Monatlich</span><b>${month} €</b></div>` : ""}</div>
+      <a class="dna-btn" style="width:100%;margin-top:14px" href="${esc(wa(msg))}" target="_blank" rel="noopener">Anfrage per WhatsApp senden →</a><p class="dna-her">Kein Online-Bezahlen: Maik meldet sich mit Rechnung bzw. Lizenz-Code. <button type="button" class="dna-clear" data-cart-clear>Warenkorb leeren</button></p>`
+      : `<p class="dna-kurz" style="margin-top:10px">Noch leer. Öffne einen Premium-Skill und leg eine Option in den Warenkorb.</p>`}</div></div>`;
+    document.body.classList.add("dna-lock");
+  }
+  document.addEventListener("click", e => {
+    const v = e.target.closest("[data-ver]"); if (v) { const [sid, n] = v.dataset.ver.split("|"); verOf[sid] = +n; openDetail(sid); return }
+    const a = e.target.closest("[data-cart-add]"); if (a) { const [sid, oid, n] = a.dataset.cartAdd.split("|"); cartAdd(sid, oid, +n); openCart(); return }
+    const d = e.target.closest("[data-cart-del]"); if (d) { cartSet(cartGet().filter(x => x.sid !== d.dataset.cartDel)); openCart(); return }
+    if (e.target.closest("[data-cart-clear]")) { cartSet([]); openCart(); return }
+    if (e.target.closest("[data-cart-open]")) openCart();
+  });
   const optHref = (s, o) => wa(`Hi Maik, ich möchte den Premium-Skill „${s.name}“ aus Flow DNA – Option „${o.name}“ (${s.preise[o.id]} € ${o.einheit}). Wie geht's weiter?`);
 
   function badges(s) {
@@ -62,7 +89,10 @@
       <dl class="dna-facts"><div><dt>Kompatibel</dt><dd>Claude Code · Codex</dd></div><div><dt>Version</dt><dd>${esc(s.version || (s.status === "geplant" ? "–" : "in Arbeit"))}</dd></div><div><dt>Creator</dt><dd>${esc(s.creator || D.standardCreator)}</dd></div><div><dt>Status</dt><dd>${esc(D.status[s.status])}</dd></div></dl>
       ${s.herkunft ? `<p class="dna-her">Herkunft: ${esc(s.herkunft)}</p>` : ""}${s.hinweis ? `<p class="dna-pk">${esc(s.hinweis)}</p>` : ""}
       ${pk ? `<p class="dna-pk">Teil vom Paket <b>${esc(pk.name)}</b> – ${esc(pk.kurz)}</p>` : ""}
-      ${s.preise ? `<h3>Preise · auf Anfrage</h3><div class="dna-opts">${D.optionen.map(o => `<a class="dna-opt${o.id === "kauf" ? " best" : ""}" href="${esc(optHref(s, o))}" target="_blank" rel="noopener"><b>${esc(o.name)}</b><strong>${s.preise[o.id]} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>Anfragen →</i></a>`).join("")}</div>` : ""}
+      ${s.preise ? (() => { const n = s.versionen ? (verOf[s.id] || 5) : 0;
+        return `${s.versionen ? `<h3>Wie viele Versionen?</h3><p class="dna-vtxt">${esc(D.versionen.text)}</p><div class="dna-ver">${D.versionen.optionen.map(k => `<button type="button" data-ver="${esc(s.id)}|${k}" class="${k === n ? "on" : ""}"><b>${k}</b>${k === 1 ? "Version" : "Versionen"}</button>`).join("")}</div>` : ""}
+        <h3>Preise${n ? ` · ${n} ${n === 1 ? "Version" : "Versionen"}` : ""}</h3><div class="dna-opts">${D.optionen.map(o => `<button type="button" class="dna-opt${o.id === "kauf" ? " best" : ""}" data-cart-add="${esc(s.id)}|${o.id}|${n}"><b>${esc(o.name)}</b><strong>${vp(s, o.id, n || 5)} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>In den Warenkorb +</i></button>`).join("")}</div>
+        <p class="dna-her"><a href="${esc(optHref(s, D.optionen[1]))}" target="_blank" rel="noopener" style="color:inherit">Oder direkt per WhatsApp fragen</a></p>` })() : ""}
       ${s.stufe === "basis" && s.quelle && s.quelle.endsWith(".zip") ? useBox(BASE + "skills/" + s.id + "/SKILL.md", s.name) : ""}
       ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem><label>Schon gekauft? Lizenz-Code einlösen</label><div><input name="code" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
@@ -141,6 +171,6 @@
     } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
   });
 
-  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE, openCart, cartGet, vp };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();
