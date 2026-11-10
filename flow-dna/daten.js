@@ -125,15 +125,11 @@ window.FLOW_DNA = {
       fuer: "Alle, die eine eigene Website wollen – ohne Baukasten", demo: "Die Website von Flow Media AI ist so entstanden.", herkunft: "Workshop „Deine Website“ (09.11.)" },
     { id: "website-transformer", versionen: true, highlight: true, bild: "media/bild_vorher_nachher.jpg", ablauf: [["🔗", "URL rein"], ["🔍", "Alte Seite lesen"], ["🧪", "1–5 Versionen"], ["⚖️", "Vorher/Nachher"], ["🌐", "Live"]], preise: { miete: 19, kauf: 149, setup: 349 }, version: "1.0", name: "Website Transformer", kat: "web", stufe: "premium", status: "bereit", icon: "🔁",
       kurz: "URL rein, neue Website raus: Aus deiner bestehenden Seite wird eine moderne Premium-Website – eine Version oder bis zu fünf zur Auswahl.",
-      kann: ["Liest deine bestehende Website aus: Texte, Leistungen, Bilder, Kontakt, Farben", "Findet die Schwächen (Handy, Ladezeit, Hauptaktion, SEO) – mit Screenshot", "Baut 1, 3 oder 5 neue Versionen im Branchen-Look mit Vollbild-Foto-Hero", "Vorher/Nachher-Vergleich, dann Umzug und Launch auf deiner Domain"], fuer: "Selbstständige, Coaches und Betriebe mit veralteter Website" },
+      kann: ["Liest deine bestehende Website aus: Texte, Leistungen, Bilder, Kontakt, Farben", "Findet die Schwächen (Handy, Ladezeit, Hauptaktion, SEO) – mit Screenshot", "Baut 1, 3 oder 5 neue Versionen im Branchen-Look mit Vollbild-Foto-Hero", "Vorher/Nachher-Vergleich, dann Umzug und Launch auf deiner Domain", "Auch für Kunden: Konzeptseite als Vorschau für die Akquise – klar als Entwurf markiert (ersetzt den Landingpage Generator)"], fuer: "Selbstständige, Coaches, Betriebe mit veralteter Website – und Webdesigner für Kundenvorschauen" },
     { id: "app-builder", versionen: true, ablauf: [["📋", "Anforderungen"], ["🧪", "1–5 Versionen"], ["👆", "Auswahl"], ["📱", "App live"]], preise: { miete: 19, kauf: 179, setup: 449 }, version: "1.0", name: "App Builder", kat: "web", stufe: "premium", status: "bereit", icon: "📱",
       kurz: "Aus deiner Idee wird eine App – als eine Version oder bis zu fünf klickbare Entwürfe zur Auswahl.",
       kann: ["Du wählst, wie viele Versionen: 1, 3 oder 5 echte, klickbare Entwürfe", "Bei mehreren: du wählst aus und mischst", "Neue Version, installierbar als App, veröffentlicht"],
       fuer: "Gründer mit App-Idee, Coaches, Dienstleister", demo: "Cocktail-App aus der AI Masterclass – und dieser Store.", herkunft: "AI Masterclass" },
-    { id: "lead-seiten", ablauf: [["🔍", "Seite analysieren"], ["🎨", "Branchen-Design"], ["🛠️", "Konzeptseite"], ["👀", "Vorschau"]], preise: { miete: 19, kauf: 149, setup: 349 }, version: "1.0", name: "Landingpage Generator", kat: "web", stufe: "premium", status: "bereit", icon: "🧲",
-      kurz: "Für jeden Betrieb eine branchenpassende Konzept-Website als Vorschau.",
-      kann: ["Analysiert die bestehende Seite", "Baut eine branchenpassende Premium-Vorschau", "Fertig zum Zeigen im Erstgespräch"],
-      fuer: "Webdesigner, Agenturen, Freelancer in der Akquise", herkunft: "MZ.9-Lead-Pipeline" },
     { id: "ui-ux", ablauf: [["📸", "Screenshots"], ["✅", "Prüfen"], ["🏆", "Top 5"], ["✨", "Verbessern"]], preise: { miete: 12, kauf: 99, setup: 249 }, version: "1.0", name: "UI/UX Design", kat: "web", stufe: "premium", status: "bereit", icon: "🧩",
       kurz: "Prüft Oberflächen auf Klarheit, Handy-Tauglichkeit und Barrierefreiheit.", kann: ["Checkliste für Layout und Bedienung", "Konkrete Verbesserungen mit Begründung", "Vorher-nachher-Vorschläge"], fuer: "Alle, die Websites oder Apps bauen" },
     // 05 AI Agents & Systems
@@ -185,7 +181,7 @@ window.FLOW_DNA = {
   ],
   // Demo-Konzeptseiten (frei erfundene Betriebe, CC0-Fotos) – Galerie im Detail der Web-Skills
   beispiele: {
-    skills: ["lead-agent-web", "lead-seiten", "website", "website-transformer"],
+    skills: ["lead-agent-web", "website", "website-transformer"],
     seiten: [
       { name: "Bäckerei Musterbrot", art: "Bäckerei · Speisekarte & Öffnungszeiten", url: "demos/baeckerei/", bild: "demos/baeckerei/vorschau.jpg" },
       { name: "Physio Beispiel", art: "Praxis · Team mit Telefon & Termin", url: "demos/physio/", bild: "demos/physio/vorschau.jpg" },

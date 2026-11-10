@@ -125,7 +125,7 @@ def page(key, d):
     return f'''<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>{E(d["name"])} · Demo-Konzeptseite · Flow DNA</title>
-<meta name="description" content="Demo-Konzeptseite für einen erfundenen Betrieb ({E(d["branche"])}) – gebaut mit dem Landingpage Generator von Flow DNA.">
+<meta name="description" content="Demo-Konzeptseite für einen erfundenen Betrieb ({E(d["branche"])}) – gebaut mit dem Website Transformer von Flow DNA.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={d["fonts"]}&display=swap">
 <link rel="preload" as="image" href="img/hero.jpg">
 <style>
@@ -201,7 +201,7 @@ footer{{background:var(--dark);color:rgba(255,255,255,.7);margin-top:110px;paddi
 .reveal{{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0ms),transform .9s var(--ease) var(--d,0ms)}}.reveal.in{{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){{*{{animation:none!important;transition:none!important}}.reveal{{opacity:1;transform:none}}}}
 </style></head><body>
-<div class="demo">DEMO · frei erfundener Betrieb · Konzeptseite gebaut mit dem <a href="../../">Flow DNA Landingpage Generator</a></div>
+<div class="demo">DEMO · frei erfundener Betrieb · Konzeptseite gebaut mit dem <a href="../../">Flow DNA Website Transformer</a></div>
 <header id="hd"><div class="wrap"><a class="brand" href="#">{E(d["name"])}</a><nav><a href="#leistungen">Leistungen</a><a href="#feature">{nav2}</a><a href="#kontakt">Kontakt</a></nav><a class="hp" href="tel:+490000000000">{ic("phone", 16)} 0000 000000</a><a class="btn hb sheen" href="#feature">{E(d["cta"])}</a></div></header>
 <section class="hero"><div class="bg"><img src="img/hero.jpg" alt="{E(d["branche"])} in {E(d["ort"])}"></div><div class="wrap"><div class="in">
 <p class="greet reveal">{E(d["greet"])}</p><h1 class="reveal" style="--d:80ms">{d["h1"]}</h1><p class="lead reveal" style="--d:160ms">{E(d["lead"])}</p>
@@ -218,7 +218,7 @@ footer{{background:var(--dark);color:rgba(255,255,255,.7);margin-top:110px;paddi
 <div class="cc reveal" style="--d:100ms"><div class="cl" style="padding-top:0"><i>{ic("clock",20)}</i><div><small>Öffnungszeiten</small>aktuelle Woche</div></div><table id="hours">{hours}</table><span class="open" id="open"></span></div></div></div></section>
 <div class="ctab reveal"><img src="img/cta.jpg" alt="" loading="lazy"><div><h2>Wir freuen uns <em>auf dich</em>.</h2><a class="btn sheen" href="#feature">{E(d["cta"])} →</a></div></div>
 <footer><div class="wrap"><div class="fg"><div><span class="brand">{E(d["name"])}</span>{E(d["art"])} in {E(d["ort"])}. Demo-Konzeptseite für einen frei erfundenen Betrieb.</div><div><b>Seite</b><a href="#leistungen">Leistungen</a><a href="#feature">{nav2}</a><a href="#kontakt">Kontakt</a></div><div><b>Kontakt</b><a href="tel:+490000000000">0000 000000</a><a href="#">hallo@beispiel.de</a><a href="#">Impressum · Datenschutz</a></div></div>
-<div class="fine">Alle Namen, Daten und Preise sind Beispiele. Gebaut mit dem Flow DNA Landingpage Generator · Flow Media AI. Fotos (CC0/frei): {credits}</div></div></footer>
+<div class="fine">Alle Namen, Daten und Preise sind Beispiele. Gebaut mit dem Flow DNA Website Transformer · Flow Media AI. Fotos (CC0/frei): {credits}</div></div></footer>
 <div class="mcta"><a class="btn" href="#feature">{E(d["cta"])}</a></div>
 <div class="ask" id="ask"><div class="askp"><div class="askh"><span>{E(h[0])}</span><div><b>{E(h[1])}</b><small>● jetzt erreichbar</small></div></div><div class="bub">{E(h[2])}</div><a class="btn small" href="tel:+490000000000">{ic("phone",16)} Anrufen</a><a class="btn small ghost" style="color:var(--acc)" href="#feature">{E(d["cta"])}</a></div><button type="button" aria-label="Kontakt öffnen" onclick="this.parentNode.classList.toggle('open')">{E(h[0])}</button></div>
 <script>

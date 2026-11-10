@@ -73,6 +73,7 @@
   function close() { stopStages(); layer().innerHTML = ""; document.body.classList.remove("dna-lock") }
 
   function openDetail(id) {
+    if (id === "lead-seiten") id = "website-transformer";  // Landingpage Generator ist im Website Transformer aufgegangen
     const s = D.skills.find(x => x.id === id); if (!s) return;
     const a = action(s), pk = D.pakete.find(p => p.skills.includes(s.id));
     layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-h">
