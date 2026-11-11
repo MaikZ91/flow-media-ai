@@ -120,7 +120,7 @@ nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius
 .kp video{display:block;width:100%;aspect-ratio:16/10;background:#0B0B0B;border:2px solid #0B0B0B;margin:4px 0 6px}
 .kp .now{font:600 12px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#6B6B66;margin:0 0 12px}
 .kp .hz{font:600 12px Inter;color:#6B6B66;margin:0 0 10px}
-.kp ol li{display:block;padding:0}
+.kp ol li{display:block;padding:0}.kd ol li.kbh{display:block;padding:18px 0 7px;font:700 12px Montserrat,Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#2F5BFF;border-bottom:2px solid #0B0B0B}
 .kp .lh{all:unset;box-sizing:border-box;display:flex;gap:10px;align-items:center;width:100%;padding:12px 0;cursor:pointer;font-size:15px}
 .kp .lh i{font-style:normal;font:700 18px Oswald;color:#c7c7c2;min-width:26px}
 .kp .lh em{margin-left:auto;font-style:normal;font:700 11px Montserrat;letter-spacing:.1em;text-transform:uppercase;color:#9a9a95;white-space:nowrap}
@@ -373,7 +373,7 @@ function kursPlayer(k){const D=kDone(k.id),L=k.lektionen;const nD=D.length;
   ${k.special&&kLek<0?`<div class="ksp"><small>★ ${DNA.esc(k.special.label)}</small><b>${DNA.esc(k.special.titel)}</b><p>${DNA.esc(k.special.text)}</p><ul>${k.special.punkte.map(x=>`<li>${DNA.esc(x)}</li>`).join("")}</ul></div>`:""}
   <ol><li class="${kLek<0?"on":""}"><button type="button" class="lh" data-klek="-1"><i>00</i><span>Intro: ${DNA.esc(k.intro.titel)}</span><em>▶</em></button></li>${L.map((l,i)=>{const on=i===kLek,dn=D.includes(i);
    const st=l.folgt?"Folgt":l.bonus?(dn?"✓ Bonus":"Bonus"):l.optional?(dn?"✓ Optional":"Optional"):dn?"✓":"▶";
-   return `<li class="${on?"on":""}"><button type="button" class="lh" data-klek="${i}"><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em class="${dn?"ok":""}">${st}</em></button>
+   return `${k.bereiche&&k.bereiche[i]?`<li class="kbh">${DNA.esc(k.bereiche[i])}</li>`:""}<li class="${on?"on":""}"><button type="button" class="lh" data-klek="${i}"><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em class="${dn?"ok":""}">${st}</em></button>
    ${on?`<div class="lb">${l.text?`<p>${l.text}</p>`:""}
     ${l.videos&&l.videos.length>1?`<div class="vs">${l.videos.map((v,j)=>`<button type="button" class="${j===kVid?"on":""}" data-kvid="${j}">▶ ${DNA.esc(v[2])}</button>`).join("")}</div>`:""}
     ${l.prompt?`<div class="pm"><code>${DNA.esc(l.prompt)}</code><button type="button" data-kcopy="${i}">Kopieren</button></div>`:""}
@@ -395,7 +395,7 @@ function kurse(){const M=kVorgemerkt();
   view.innerHTML=`<div class="kd"><button type="button" class="back" data-kurs="">← Alle Kurse</button><div class="cv" style="background-image:url(${DNA.esc(k.bild)})"><span>${lk?"Fertig · mit Code":"Coming soon"}</span></div>
   <h2>${DNA.esc(k.titel)}</h2><p class="sub">${DNA.esc(k.untertitel)}</p><div class="meta">${DNA.esc(k.level)} · ${DNA.esc(k.dauer)} · ${k.module.length} Lektionen</div>
   ${lk&&k.intro?`<div class="kprev"><small>▶ Kostenlose Vorschau · Intro</small><video src="${k.intro.video}" poster="${k.intro.poster}" controls playsinline preload="metadata"></video></div>`:""}
-  <ol>${k.module.map((m,i)=>`<li><i>${String(i+1).padStart(2,"0")}</i>${DNA.esc(m)}<em>🔒</em></li>`).join("")}</ol>
+  <ol>${k.module.map((m,i)=>`${k.bereiche&&k.bereiche[i]?`<li class="kbh">${DNA.esc(k.bereiche[i])}</li>`:""}<li><i>${String(i+1).padStart(2,"0")}</i>${DNA.esc(m)}<em>🔒</em></li>`).join("")}</ol>
   ${lk&&k.preis?`<div class="kpb"><small>Early Bird</small><b>${k.preis.early} € <s>${k.preis.normal} €</s></b><span>${DNA.esc(k.preis.gratis)} – Code einfach unten eingeben.</span>${k.preis.paket?`<ul style="margin:8px 0 0;padding-left:0;list-style:none;border:0">${k.preis.paket.map(x=>`<li style="display:block;border:0;padding:2px 0;font-size:13px">✓ ${DNA.esc(x)}</li>`).join("")}</ul>`:""}</div>`:""}<div class="btnrow">${lk&&k.preis?`<a class="btnx b" href="${DNA.wa(`Hi Maik, ich möchte den Kurs „${k.titel}“ zum Early-Bird-Preis von ${k.preis.early} € (Flow-DNA-App).`)}" target="_blank" rel="noopener">Für ${k.preis.early} € sichern</a>`:""}<button type="button" class="btnx ${lk&&k.preis?"o":"b"}" data-kvm="${k.id}">${M.includes(k.id)?"✓ Vorgemerkt":"Vormerken"}</button><a class="btnx o" style="color:#0B0B0B;background:#fff" href="${DNA.wa(lk?`Hi Maik, ich hätte gern den Kurs-Code für „${k.titel}“ (Flow-DNA-App).`:`Hi Maik, sag mir Bescheid, wenn der Kurs „${k.titel}“ startet (Flow-DNA-App).`)}" target="_blank" rel="noopener">${lk?"Code per WhatsApp anfragen":"Per WhatsApp Bescheid bekommen"}</a></div>
   <form data-kcode="${k.id}"><input name="c" placeholder="KURS-CODE" aria-label="Kurs-Code" autocomplete="off"><button type="submit">Freischalten</button></form><p class="msg" id="kmsg"></p></div>`;return}}
  document.getElementById("meta").innerHTML=`<span>Online-Kurse</span><span>${K.kurse.filter(x=>x.status==="live").length} live · ${K.kurse.filter(x=>x.status!=="live").length} in Planung</span>`;

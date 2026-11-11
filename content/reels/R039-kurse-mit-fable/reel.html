@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#0B0B0B;--paper:#F4F4F1;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#cfcfcf}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}.h span{color:var(--blue)}
+.logo{left:70px;top:90px;width:190px;z-index:60}
+#ph{inset:0;background:url(img/portrait_front.jpg) center 18%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 40%,rgba(11,11,11,.95) 64%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1090px}#hook .h{font-size:170px}#hook .k{margin-bottom:20px}
+#hook .s{font:700 54px Oswald;text-transform:uppercase;margin-top:22px;color:#fff}
+#nt{left:70px;right:70px;top:230px}#nt .h{font-size:112px;margin-top:14px}
+#nums{left:70px;right:70px;top:640px;display:grid;gap:20px}
+.n{display:flex;align-items:baseline;gap:30px;border-top:3px solid rgba(255,255,255,.3);padding-top:22px;opacity:0}
+.n b{font:700 220px/.82 Oswald;color:var(--blue);min-width:330px}.n span{font:700 76px Oswald;text-transform:uppercase}
+#chips{left:70px;right:70px;top:1500px;display:flex;flex-wrap:wrap;gap:12px}
+#chips span{font:600 30px Inter;border:2px solid #fff;padding:8px 18px;opacity:0}
+#pt{left:70px;right:70px;top:230px}#pt .h{font-size:118px;margin-top:14px}
+#win{left:40px;top:650px;width:1000px;border:3px solid #fff;background:#000;box-shadow:0 40px 120px rgba(47,91,255,.35)}
+#win img{display:block;width:100%}
+#lab{left:40px;top:1300px;font:700 46px Oswald;text-transform:uppercase;background:var(--blue);padding:10px 22px}
+#list{left:40px;right:40px;top:1410px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#list span{font:600 26px Inter;border:2px solid rgba(255,255,255,.3);padding:10px 14px;color:#bbb}#list span.on{border-color:var(--blue);color:#fff;background:rgba(47,91,255,.18)}
+#at{left:70px;right:70px;top:170px;color:var(--ink)}#at .k{color:#555}#at .h{font-size:112px;margin-top:12px}
+#paper{inset:0;background:var(--paper)}
+#phone{left:260px;top:620px;width:560px;height:1230px;border-radius:70px;background:#000;border:14px solid #111;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.35)}
+#phone img{position:absolute;left:0;top:0;width:100%}
+#lp{inset:0;background:url(img/portrait_laptop.jpg) center/cover;filter:grayscale(1) contrast(1.1) brightness(.6)}
+#lps{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.4),rgba(11,11,11,.2) 30%,rgba(11,11,11,.94) 60%,#0B0B0B)}
+#end{left:70px;right:70px;top:1000px}#end .h{font-size:136px}
+#end .e{font:700 52px/1.15 Oswald;text-transform:uppercase;margin-top:28px}
+#end .cta{display:inline-block;margin-top:30px;font:700 54px Oswald;text-transform:uppercase;background:var(--blue);padding:14px 28px}
+#end .fl{margin-top:30px}
+.bar{left:0;top:0;height:10px;background:var(--blue);z-index:80;opacity:1}
+</style></head><body>
+<div class="l" id="paper"></div>
+<img class="l logo" id="logo" src="img/logo_flow.png" style="opacity:1">
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="k">Gebaut mit Claude Fable 5.2</div><div class="h">9 Online-<br>Kurse.<br><span>1 Session.</span></div><div class="s">Kein Witz. Schau selbst.</div></div>
+<div class="l" id="nt"><div class="k">Was dabei rauskam</div><div class="h">Komplett <span>fertig.</span></div></div>
+<div class="l" id="nums"><div class="n" id="n0"><b>9</b><span>Kurse</span></div><div class="n" id="n1"><b>60</b><span>Lektionen</span></div><div class="n" id="n2"><b>69</b><span>Videos</span></div></div>
+<div class="l" id="chips"><span>Texte</span><span>Animationen</span><span>Prompts</span><span>Aufgaben</span><span>Spickzettel</span></div>
+<div class="l" id="pt"><div class="k">Vorschau · echte Ausschnitte</div><div class="h">So sehen sie <span>aus.</span></div></div>
+<div class="l" id="win"><img id="clip" src=""></div>
+<div class="l" id="lab"></div>
+<div class="l" id="list"><span>01 KI Basics</span><span>02 Personal Brand</span><span>04 Deine erste App</span><span>05 Claude Code</span><span>06 Content-System</span><span>07 Automatisierung</span><span>08 Skills bauen</span><span>09 FLOW-Methode</span><span>10 Kunden gewinnen</span><span style="border-style:dashed">03 Website · schon live</span></div>
+<div class="l" id="at"><div class="k">Alle zehn an einem Ort</div><div class="h">In der <span>Flow DNA</span> App.</div></div>
+<div class="l" id="phone"><img id="app" src="img/app_kurse.jpg"></div>
+<div class="l" id="lp"></div><div class="l" id="lps"></div>
+<div class="l" id="end"><div class="h">Dein Wissen.<br><span>Dein Kurs.</span></div><div class="e">Ich hab gesagt, was rein soll.<br>Die KI hat gebaut.</div><div class="cta">Intro kostenlos ansehen</div><div class="k fl">Link in der Bio · Komm in den Flow.</div></div>
+<div class="l bar" id="bar"></div>
+<script>
+const B=0.606,T=[0,5*B,12*B,26*B,34*B,42*B];window.TOTAL=T[5];
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),out=x=>1-Math.pow(1-x,3),io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+function vis(id,a,b,dy=40,f=.22){const e=$(id),t=window._t;if(t<a||t>=b){e.style.opacity=0;return 0}const i=out(cl((t-a)/f)),o=1-cl((t-(b-.12))/.12);e.style.opacity=Math.min(i,o);e.style.transform=`translateY(${(1-i)*dy}px)`;return 1}
+const CL=[["Kurs 01 · Prompting",0,0],["Kurs 09 · FLOW-Methode",1,7],["Kurs 05 · CLAUDE.md",2,3],["Kurs 06 · Hooks",3,4]];
+window.DRAW=async t=>{window._t=t;
+ vis('ph',0,T[1],0,.01);$('ph').style.transform=`scale(${1.08-.08*t/T[1]})`;vis('phs',0,T[1],0,.01);vis('hook',0,T[1],60,.25);
+ // numbers
+ vis('nt',T[1],T[2],30,.25);$('nums').style.opacity=t>=T[1]&&t<T[2]?1:0;
+ [[9,0],[60,1],[69,2]].forEach(([v,i])=>{const a=T[1]+.3+i*1.6*B,e=$('n'+i),p=cl((t-a)/.5);e.style.opacity=t>=T[1]&&t<T[2]?out(cl((t-a)/.2)):0;e.firstChild.textContent=Math.round(v*out(p))});
+ $('chips').style.opacity=t>=T[1]&&t<T[2]?1:0;[...$('chips').children].forEach((c,i)=>c.style.opacity=cl((t-T[1]-2.2-i*.25)/.2));
+ // preview
+ vis('pt',T[2],T[3],30,.25);const inP=t>=T[2]&&t<T[3];$('win').style.opacity=inP?1:0;$('lab').style.opacity=inP?1:0;$('list').style.opacity=inP?1:0;
+ if(inP){const d=(T[3]-T[2])/4,k=Math.min(3,Math.floor((t-T[2])/d)),lt=(t-T[2])-k*d,f=Math.min(33,Math.floor(lt/d*33)+1);
+  const src=`${FRAMES}/c${CL[k][1]}_${String(f).padStart(3,'0')}.jpg`,img=$('clip');if(img.dataset.f!==src){img.dataset.f=src;img.src=src;await img.decode().catch(()=>{})}
+  $('lab').textContent=CL[k][0];$('lab').style.transform=`scale(${1+.2*Math.max(0,1-lt/.18)})`;$('lab').style.transformOrigin='left center';
+  $('win').style.transform=`scale(${1+.03*Math.max(0,1-lt/.2)})`;[...$('list').children].forEach((c,i)=>c.classList.toggle('on',i===CL[k][2]))}
+ // app
+ const inA=t>=T[3]&&t<T[4];$('paper').style.opacity=inA?1:0;$('logo').style.filter=inA?'invert(1)':'';vis('at',T[3],T[4],30,.25);
+ $('phone').style.opacity=inA?1:0;if(inA){const p=cl((t-T[3])/(T[4]-T[3]));$('phone').style.transform=`translateY(${(1-out(cl((t-T[3])/.3)))*120}px)`;const H=$('app').getBoundingClientRect().height;$('app').style.transform=`translateY(${-(H-1202)*io(cl((p-.1)/.85))}px)`}
+ // end
+ vis('lp',T[4],99,0,.01);$('lp').style.transform=`scale(${1.04+.05*cl((t-T[4])/(T[5]-T[4]))})`;vis('lps',T[4],99,0,.01);vis('end',T[4]+.05,99,50,.3);
+ $('bar').style.width=(1080*t/T[5])+'px'};
+</script><script>const FRAMES="file:///tmp/claude-0/-home-user/a01ee5cb-df27-59af-9971-bacc4c22168f/scratchpad/r39f";DRAW(0);</script></body></html>

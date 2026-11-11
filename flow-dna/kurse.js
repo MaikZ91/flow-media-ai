@@ -4,7 +4,7 @@
 window.FLOW_KURSE = {
   hinweis: "Die Kurse nehme ich nach und nach auf. Merk dir die vor, die dich interessieren – du bekommst Bescheid, sobald sie starten.",
   kurse: [
-    { id: "ki-basics", nr: "01", titel: "KI Basics", untertitel: "KI verstehen und sofort im Alltag nutzen", level: "Einsteiger", dauer: "ca. 90 Min.", status: "bald", bild: "img/maik_front.jpg",
+    { id: "ki-basics", nr: "01", titel: "KI Basics", untertitel: "KI wie einen Mitarbeiter führen – vom Mindset bis zu Agenten", level: "Einsteiger", dauer: "ca. 90 Min.", status: "bald", bild: "img/maik_front.jpg",
       module: ["Was KI kann – und was nicht", "ChatGPT, Claude, Gemini: Welches Tool wofür?", "Gute Prompts in 5 Minuten", "Deine ersten 10 Alltagsaufgaben mit KI", "Datenschutz und Grenzen"] },
     { id: "personal-brand", nr: "02", titel: "Mit KI zur Personal Brand", untertitel: "Deine Marke, deine Stimme, dein Look – mit KI geschärft", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "img/maik_avatar.jpg",
       module: ["Brand DNA: Wer bist du, für wen, warum?", "Deine Stimme als Skill festhalten", "Look & Design-System ohne Designer", "Fotos und Porträts richtig nutzen", "Dein Brand-Paket für jede KI"] },
