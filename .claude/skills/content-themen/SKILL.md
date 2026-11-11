@@ -86,6 +86,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 11.11.2026 | R040 | `lernen` · Problem `anschluss` | Reel 24 s | Das Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ – 20 Tutorials, nichts gebaut → ein Anfang: 25 kurze Kapitel; Leseprobe kostenlos | `hook = problem-zuerst` |
 | 11.11.2026 | P014 | `build` / `tools` | Einzelpost | „Was ich kann, kannst du auch.“ – 9 Kurse in einer Session + Skill Videokurs Builder in einem Post | `hook = was-ich-kann` |
 | 11.11.2026 | R039 | `build` / `lernen` | Reel 25 s | „9 Online-Kurse. 1 Session.“ – 9 Kurse, 60 Lektionen, 69 Videos mit Claude Fable 5.2 gebaut; echte Ausschnitte + Kurse-Tab der App | `format = build-in-public-zahlen` |
 | 11.11.2026 | P013 | `community` | Karussell 6 Folien | „Du bist Business Starter? Und KI überfordert dich?“ – Community-Werbung, zwei CC0-Symbolbilder, keine Mitgliederzahl | `hook = zielgruppe-ansprache` |
