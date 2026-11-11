@@ -25,9 +25,11 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/01_startplan.md` – Startplan der ersten zwei Wochen
+- `content/strategie/problem-zu-loesung.md` – Content- und Marketingstrategie „Vom Problem zur Lösung“ (11.11.2026): fünf Problem-Säulen, Formel Problem → Aha → Lösung → CTA, Hooks, Reels, Serien, CTAs. Gilt für jeden Post.
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 - `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
 - `flow-dna/` – **Flow DNA, der Skill Store – live** unter https://maikz91.github.io/flow-media-ai/flow-dna/ (08.11.2026): `index.html` (Design aus v6), Katalog in `daten.js`, Logik in `kern.js`, Free-Skills in `skills/` (öffentlich), Premium-Skills nur in Drive `07_KI/flow-dna-premium` (Bezug auf Anfrage per WhatsApp: mieten, kaufen, mit Einrichtung). Entwürfe v1–v6 unter `varianten.html`
+- `flow-dna/buch/` – Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ (25 Kapitel auf Grundlage von KI Basics): öffentlich nur Cover und `Leseprobe.pdf`; das ganze Manuskript liegt privat in Supabase (`flow_dna_docs`, id `buch-deine-ideen-v1`) – nie ins öffentliche Repo.
 - `coaching/<kunde>/` – Apps aus Coachings, die öffentlich laufen dürfen (über GitHub Pages). `coaching/adil/`: Cocktail-App für Adil, live unter https://maikz91.github.io/flow-media-ai/coaching/adil/. Kundenunterlagen (Anforderungen, Angebote) bleiben in Drive.
 
 ## Google-Drive-Spiegel (Pflicht, Maik 19.10.2026)
@@ -65,11 +67,15 @@ Ordner-IDs (für `parentId`): 01_Marketing `1dE9gJaTmDR0yIFP6rQBiMXr4m29L4vZh` �
 
 # FLOW MEDIA AI – Brand Identity & Positionierungsprofil
 
-**Stand 06.11.2026 – neue Positionierung (Maik).** Markenversprechen: **We build your ideas.**
+**Stand 11.11.2026 – Positionierung geschärft (Maik).** Markenversprechen: **We build your ideas.**
+**Kernbotschaft:** Deine Ideen verdienen es, umgesetzt zu werden. Wir zeigen dir, wie KI das möglich macht.
+**Kurzform:** Weniger Aufwand. Mehr Möglichkeiten. Eigene Ideen verwirklichen.
 KI • Kreativität • Automatisierung • Media • Digitale Produkte
 
 **Die Positionierung in einem Satz (strategische Leitlinie für alles, was Flow Media AI anbietet):**
 Flow Media AI begleitet Gründer und Selbstständige als persönlicher KI-Sparrings- und Umsetzungspartner dabei, Ideen in konkrete digitale Produkte, smarte Prozesse und neue Geschäftsmöglichkeiten zu verwandeln.
+
+**Was Flow Media AI verkauft (Schärfung 11.11.2026):** nicht KI-Tools und nicht KI-Schulungen, sondern die Möglichkeit, eigene Ideen umzusetzen, Zeit zu gewinnen und neue digitale Möglichkeiten zu erschließen. Kommuniziert wird **vom Problem zur Lösung**: zuerst die Situation des Menschen (zu wenig Zeit, Idee ohne Umsetzung, Content-Aufwand, alles selbst machen, Angst, den Anschluss zu verlieren), dann KI als Werkzeug dafür. Der Mensch und sein Problem stehen im Mittelpunkt, nicht die Technik. Kein Angst-Marketing – befähigen.
 
 ## 1. Wer ich bin
 
@@ -168,6 +174,8 @@ Dabei bin ich Sparringspartner, Ideengeber, Coach und technischer Umsetzer. Ziel
 
 | Botschaft | Bedeutung |
 |---|---|
+| **Deine Ideen verdienen es, umgesetzt zu werden. Wir zeigen dir, wie KI das möglich macht.** | Kernbotschaft (11.11.2026) |
+| **Weniger Aufwand. Mehr Möglichkeiten. Eigene Ideen verwirklichen.** | der Nutzen in drei Sätzen |
 | **Viele Ideen? Mach sie mit KI real.** | zentraler Einstieg |
 | **Dein persönlicher KI-Partner.** | meine Rolle |
 | **Gemeinsam Ideen verwirklichen.** | meine Arbeitsweise |
@@ -272,6 +280,8 @@ Menschen sollen nach einem Beitrag denken:
 ## 10. Übergeordnete Content-Regel
 
 **Nicht nur erzählen, was KI kann. Zeigen, was du damit machst – und wie andere ihre eigenen Ideen damit real machen.**
+
+**Vom Problem zur Lösung (11.11.2026):** Jeder Beitrag folgt der Formel **Problem → Aha-Moment → Lösung → Call to Action** und gehört zu einer der fünf Problem-Säulen (Zeitmangel · Ideen nicht umsetzen können · Content-Aufwand · alles selbst machen müssen · Angst, den Anschluss zu verlieren). Prüffrage: Würde jemand ohne KI-Interesse beim ersten Satz nicken? Details, Hooks, Serien und CTAs: `content/strategie/problem-zu-loesung.md`.
 
 Jeder Inhalt zahlt auf die Positionierung ein: Maik als persönlicher KI-Sparrings- und Umsetzungspartner (Enable · Build · Connect) mit der FLOW-Methode. Der Content dokumentiert meine Entwicklung, vermittelt praktische Möglichkeiten und baut Vertrauen auf. Daraus entstehen Sparring-Begleitungen, Masterclasses, Workshops, Kundenprojekte und digitale Produkte.
 

@@ -7,6 +7,8 @@ description: Themenpool für @flow.media.ai – woraus der tägliche Content gew
 
 Der Creative Director wählt hier das Thema, `creative-director` regelt Inhalt/Hook/Format, `flow-design` das Aussehen. Neue Themen oder Ideen von Maik **hier** eintragen (mit Datum).
 
+> **Zuerst lesen (Maik, 11.11.2026):** `content/strategie/problem-zu-loesung.md` – jeder Post startet beim Problem des Menschen (fünf Problem-Säulen `zeit` · `idee` · `content` · `allein` · `anschluss`), Formel Problem → Aha → Lösung → CTA. Die Themen-Säulen unten sagen, *woraus* Maik Material hat; die Problem-Säulen sagen, *wofür* der Post steht. Im Verlauf beides notieren.
+
 ## 1. Themen-Säulen (Maik, 23.10.2026)
 
 | Kürzel | Säule | Worum es geht | Echtes Material, das es schon gibt |
