@@ -84,6 +84,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 11.11.2026 | P014 | `build` / `tools` | Einzelpost | „Was ich kann, kannst du auch.“ – 9 Kurse in einer Session + Skill Videokurs Builder in einem Post | `hook = was-ich-kann` |
 | 11.11.2026 | R039 | `build` / `lernen` | Reel 25 s | „9 Online-Kurse. 1 Session.“ – 9 Kurse, 60 Lektionen, 69 Videos mit Claude Fable 5.2 gebaut; echte Ausschnitte + Kurse-Tab der App | `format = build-in-public-zahlen` |
 | 11.11.2026 | P013 | `community` | Karussell 6 Folien | „Du bist Business Starter? Und KI überfordert dich?“ – Community-Werbung, zwei CC0-Symbolbilder, keine Mitgliederzahl | `hook = zielgruppe-ansprache` |
 | 08.11.2026 | R035 | `tools` / `agentic` | Reel 24 s | Flow DNA Launch – „Ich hab 30 KI-Skills gebaut.“ Store-Demo (Free, Premium mieten/kaufen/eingerichtet, Community), ohne Preise | `format = launch-store-demo` |
