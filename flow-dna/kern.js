@@ -42,6 +42,7 @@
   // Warenkorb (nur Anfrage – Bezahlung nach Rückmeldung von Maik)
   const cartGet = () => { try { return JSON.parse(localStorage.getItem("dna-cart") || "[]") } catch (e) { return [] } };
   const cartSet = c => { try { localStorage.setItem("dna-cart", JSON.stringify(c)) } catch (e) { } document.dispatchEvent(new Event("dna-cart")) };
+  const paketCode = () => { try { return localStorage.getItem("dna-paket-code") || "" } catch (e) { return "" } };
   const PAKET = { id: "paket-alles", icon: "🎓", name: "Alle Kurse + alle Skills", preis: 199, text: "Alle Online-Kurse und alle Skills aus dem Flow DNA Store – einmal zahlen." };
   const cartLine = it => { if (it.sid === PAKET.id) return { s: PAKET, o: { id: "kauf", name: "Komplettpaket", einheit: "einmalig" }, n: 0, p: PAKET.preis }; const s = D.skills.find(x => x.id === it.sid), o = D.optionen.find(x => x.id === it.oid); return s && o ? { s, o, n: it.n, p: vp(s, o.id, it.n) } : null };
   function cartAdd(sid, oid, n) { const c = cartGet().filter(x => x.sid !== sid); c.push({ sid, oid, n: n || 0 }); cartSet(c) }
@@ -135,7 +136,7 @@
         <h3>Preise${n ? ` · ${n} ${n === 1 ? "Version" : "Versionen"}` : ""}</h3><div class="dna-opts">${D.optionen.map(o => `<button type="button" class="dna-opt${o.id === "kauf" ? " best" : ""}" data-cart-add="${esc(s.id)}|${o.id}|${n}"><b>${esc(o.name)}</b><strong>${vp(s, o.id, n || 5)} €</strong><em>${esc(o.einheit)}</em><span>${esc(o.text)}</span><i>In den Warenkorb +</i></button>`).join("")}</div>
         <p class="dna-her"><a href="${esc(optHref(s, D.optionen[1]))}" target="_blank" rel="noopener" style="color:inherit">Oder direkt per WhatsApp fragen</a></p>` })() : ""}
       ${s.stufe === "basis" && s.quelle && s.quelle.endsWith(".zip") ? useBox(BASE + "skills/" + s.id + "/SKILL.md", s.name) : ""}
-      ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem><label>Schon gekauft? Lizenz-Code einlösen</label><div><input name="code" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
+      ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem="${esc(s.lizenz || s.id)}"><label>${paketCode() ? "✓ In deinem Komplettpaket enthalten – jetzt laden" : "Schon gekauft? Lizenz- oder Paket-Code einlösen"}</label><div><input name="code" value="${esc(paketCode())}" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
       ${fbBox("skill", s.id, "", "Auffälligkeit oder Idee zu diesem Skill?")}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
@@ -205,10 +206,11 @@
     const msg = f.querySelector(".dna-rmsg"), btn = f.querySelector("button"), code = f.code.value.trim(); if (!code) return;
     btn.disabled = true; msg.className = "dna-rmsg"; msg.textContent = "…";
     try {
-      const res = await fetch(LIC + "/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code }) }); const d = await res.json();
+      const res = await fetch(LIC + "/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code, skill: f.dataset.redeem || "" }) }); const d = await res.json();
       if (!d.ok) { msg.className = "dna-rmsg err"; msg.textContent = d.error || "Code ungültig."; btn.disabled = false; return }
       const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([d.content], { type: "text/markdown" })); a.download = "SKILL.md"; document.body.appendChild(a); a.click(); a.remove();
-      msg.className = "dna-rmsg ok"; msg.innerHTML = `✓ <b>${esc(d.name)}</b> geladen. Leg die Datei als <b>SKILL.md</b> in den Ordner <b>skills/${esc(d.folder)}</b> deines Projekts.` + (d.unbefristet ? "" : ` Gültig bis ${new Date(d.valid_until).toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" })}.`) + useBox(LIC + "/skill?code=" + encodeURIComponent(code), d.name);
+      msg.className = "dna-rmsg ok"; msg.innerHTML = `✓ <b>${esc(d.name)}</b> geladen. Leg die Datei als <b>SKILL.md</b> in den Ordner <b>skills/${esc(d.folder)}</b> deines Projekts.` + (d.unbefristet ? "" : ` Gültig bis ${new Date(d.valid_until).toLocaleDateString("de-DE", { timeZone: "Europe/Berlin" })}.`) + useBox(LIC + "/skill?code=" + encodeURIComponent(code) + (d.paket ? "&skill=" + encodeURIComponent(d.folder) : ""), d.name);
+      if (d.paket) { try { localStorage.setItem("dna-paket-code", code.toUpperCase()) } catch (e2) { } }
       btn.disabled = false;
     } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
   });
