@@ -10,7 +10,7 @@ Musik: „Driving Ambition“ (Mixkit, Stock Music Free License) ab 39 s, Schnit
 | 3–7,3 s | „Komplett fertig.“ – 9 Kurse · 60 Lektionen · 69 Videos; Texte, Animationen, Prompts, Aufgaben, Spickzettel |
 | 7,3–15,8 s | „So sehen sie aus.“ – vier echte Ausschnitte, Kursliste darunter |
 | 15,8–20,6 s | „In der Flow DNA App.“ – Handy scrollt durch den Kurse-Tab |
-| 20,6–25,5 s | Maik: „Dein Wissen. Dein Kurs. Ich hab gesagt, was rein soll. Die KI hat gebaut.“ · Intro kostenlos ansehen · Komm in den Flow. |
+| 20,6–25,5 s | Maik: „Was ich kann, kannst du auch.“ – Neuer Skill · Videokurs Builder · Dein Wissen rein. Dein Online-Kurs raus. · Skill im Flow DNA Store · Komm in den Flow. |
 
 Bauen: `node frames.js $PWD` → ffmpeg mit Musik (die Vorschau-Frames liegen nicht im Repo; aus `flow-dna/kurse/*/videos/` neu ziehen und `FRAMES` in `reel.html` anpassen).
 
@@ -23,7 +23,9 @@ Ehrlich dazu: Die Videos sind Animationen mit KI-Stimme, kein Studio-Dreh. Und d
 
 Was ich daran so verrückt finde: Vor einem Jahr wäre das ein Projekt für Monate gewesen.
 
-Das Intro jedes Kurses kannst du kostenlos ansehen, in der Flow-DNA-App. Link in der Bio.
+Und was ich kann, kannst du auch: Der Ablauf dahinter steckt im Skill „Videokurs Builder“ im Flow DNA Store. Dein Wissen rein, dein Online-Kurs raus.
+
+Das Intro jedes Kurses kannst du in der Flow-DNA-App kostenlos ansehen. Link in der Bio.
 
 Welches Wissen von dir würde als Kurs funktionieren?
 
