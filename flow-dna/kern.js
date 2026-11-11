@@ -42,7 +42,8 @@
   // Warenkorb (nur Anfrage – Bezahlung nach Rückmeldung von Maik)
   const cartGet = () => { try { return JSON.parse(localStorage.getItem("dna-cart") || "[]") } catch (e) { return [] } };
   const cartSet = c => { try { localStorage.setItem("dna-cart", JSON.stringify(c)) } catch (e) { } document.dispatchEvent(new Event("dna-cart")) };
-  const cartLine = it => { const s = D.skills.find(x => x.id === it.sid), o = D.optionen.find(x => x.id === it.oid); return s && o ? { s, o, n: it.n, p: vp(s, o.id, it.n) } : null };
+  const PAKET = { id: "paket-alles", icon: "🎓", name: "Alle Kurse + alle Skills", preis: 199, text: "Alle Online-Kurse und alle Skills aus dem Flow DNA Store – einmal zahlen." };
+  const cartLine = it => { if (it.sid === PAKET.id) return { s: PAKET, o: { id: "kauf", name: "Komplettpaket", einheit: "einmalig" }, n: 0, p: PAKET.preis }; const s = D.skills.find(x => x.id === it.sid), o = D.optionen.find(x => x.id === it.oid); return s && o ? { s, o, n: it.n, p: vp(s, o.id, it.n) } : null };
   function cartAdd(sid, oid, n) { const c = cartGet().filter(x => x.sid !== sid); c.push({ sid, oid, n: n || 0 }); cartSet(c) }
   function openCart() {
     const L = cartGet().map(cartLine).filter(Boolean);
@@ -51,11 +52,50 @@
     layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-cart-h"><button class="dna-x" data-dna-close aria-label="Schließen">×</button>
       <h2 id="dna-cart-h">Warenkorb</h2>${L.length ? `<div class="dna-cart">${L.map(x => `<div class="dna-ci"><div><b>${esc(x.s.icon || "")} ${esc(x.s.name)}</b><small>${x.n ? `${x.n} ${x.n === 1 ? "Version" : "Versionen"} · ` : ""}${esc(x.o.name)}</small></div><strong>${x.p} €<em>${esc(x.o.einheit)}</em></strong><button type="button" data-cart-del="${esc(x.s.id)}" aria-label="Entfernen">×</button></div>`).join("")}</div>
       <div class="dna-sum">${once ? `<div><span>Einmalig</span><b>${once} €</b></div>` : ""}${month ? `<div><span>Monatlich</span><b>${month} €</b></div>` : ""}</div>
-      <a class="dna-btn" style="width:100%;margin-top:14px" href="${esc(wa(msg))}" target="_blank" rel="noopener">Anfrage per WhatsApp senden →</a><p class="dna-her">Kein Online-Bezahlen: Maik meldet sich mit Rechnung bzw. Lizenz-Code. <button type="button" class="dna-clear" data-cart-clear>Warenkorb leeren</button></p>`
+      <button type="button" class="dna-btn" style="width:100%;margin-top:14px" data-checkout>Zur Kasse →</button><p class="dna-her">Bezahlt wird per Rechnung – du bekommst sie zusammen mit deinem Code von Maik. <button type="button" class="dna-clear" data-cart-clear>Warenkorb leeren</button></p>`
       : `<p class="dna-kurz" style="margin-top:10px">Noch leer. Öffne einen Premium-Skill und leg eine Option in den Warenkorb.</p>`}</div></div>`;
     document.body.classList.add("dna-lock");
   }
+  // Kommentare zu Kursen und Skills: gehen direkt in die Datenbank (Tabelle flow_dna_feedback, anonym nur Einfügen)
+  const SB = "https://ykleosfvtqcmqxqihnod.supabase.co", SBK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbGVvc2Z2dHFjbXF4cWlobm9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA5MzQ0NjIsImV4cCI6MjA1NjUxMDQ2Mn0.70wsZ-c7poYFnbTyXbKrG0b6YPSe-BonMN6kjZ2a2Wo";
+  const fbBox = (kind, ref, stelle, titel) => `<form class="dna-fb" data-fb="${esc(kind)}|${esc(ref)}|${esc(stelle || "")}"><b>${esc(titel || "Dein Kommentar")}</b><span>Etwas unklar, falsch oder fehlt etwas? Schreib es hier – Maik liest jeden Kommentar und verbessert damit ${kind === "kurs" ? "den Kurs" : "den Skill"}.</span>
+    <textarea name="text" rows="3" maxlength="2000" required minlength="3" placeholder="Was ist dir aufgefallen?"></textarea><input name="name" maxlength="80" placeholder="Name (optional)" autocomplete="name"><input name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <button type="submit">Kommentar senden</button><p class="dna-fbmsg">Wird gespeichert, damit Maik ihn lesen kann. Bitte keine Passwörter oder Kundendaten.</p></form>`;
+  document.addEventListener("submit", async e => {
+    const f = e.target.closest("[data-fb]"); if (!f) return; e.preventDefault();
+    const [kind, ref, stelle] = f.dataset.fb.split("|"), m = f.querySelector(".dna-fbmsg"), btn = f.querySelector("button"), text = f.text.value.trim();
+    if (f.web.value) return; if (text.length < 3) { m.textContent = "Bitte schreib kurz, was dir aufgefallen ist."; return }
+    btn.disabled = true; m.textContent = "Sende …";
+    try {
+      const r = await fetch(SB + "/rest/v1/flow_dna_feedback", { method: "POST", headers: { "content-type": "application/json", apikey: SBK, Authorization: "Bearer " + SBK, Prefer: "return=minimal" }, body: JSON.stringify({ kind, ref, stelle: stelle || null, text, name: f.name.value.trim() || null }) });
+      if (!r.ok) throw new Error(r.status);
+      f.text.value = ""; m.textContent = "✓ Danke! Dein Kommentar ist bei Maik angekommen."; m.classList.add("ok");
+    } catch (err) { m.textContent = "Das hat nicht geklappt – bitte nochmal versuchen."; }
+    btn.disabled = false;
+  });
+  // Kasse: Daten für die Rechnung, Bestellung geht per WhatsApp an Maik (kein Online-Bezahlen, nichts wird gespeichert)
+  function openCheckout() {
+    const L = cartGet().map(cartLine).filter(Boolean); if (!L.length) return openCart();
+    const once = L.filter(x => x.o.id !== "miete").reduce((a, x) => a + x.p, 0), month = L.filter(x => x.o.id === "miete").reduce((a, x) => a + x.p, 0);
+    layer().innerHTML = `<div class="dna-scrim" data-dna-close><div class="dna-modal" role="dialog" aria-modal="true" aria-labelledby="dna-co-h"><button class="dna-x" data-dna-close aria-label="Schließen">×</button>
+      <h2 id="dna-co-h">Kasse</h2><div class="dna-steps3"><span class="on">1 Warenkorb</span><span class="on">2 Deine Daten</span><span>3 Rechnung &amp; Code</span></div>
+      <div class="dna-cart">${L.map(x => `<div class="dna-ci"><div><b>${esc(x.s.icon || "")} ${esc(x.s.name)}</b><small>${esc(x.o.name)}</small></div><strong>${x.p} €<em>${esc(x.o.einheit)}</em></strong></div>`).join("")}</div>
+      <div class="dna-sum">${once ? `<div><span>Einmalig</span><b>${once} €</b></div>` : ""}${month ? `<div><span>Monatlich</span><b>${month} €</b></div>` : ""}</div>
+      <form class="dna-co" data-checkout-form><label>Name<input name="name" required autocomplete="name"></label><label>E-Mail für Rechnung und Code<input name="mail" type="email" required autocomplete="email"></label><label>Rechnungsadresse <i>(optional)</i><textarea name="adr" rows="2" autocomplete="street-address"></textarea></label>
+      <button type="submit" class="dna-btn" style="width:100%">Bestellung an Maik senden →</button></form>
+      <p class="dna-her">So geht’s weiter: Deine Bestellung öffnet sich als WhatsApp-Nachricht an Maik. Du bekommst die Rechnung und nach Zahlung deinen Freischalt-Code. Deine Daten werden hier nicht gespeichert. <button type="button" class="dna-clear" data-cart-open>← Zurück zum Warenkorb</button></p></div></div>`;
+    document.body.classList.add("dna-lock");
+  }
+  document.addEventListener("submit", e => {
+    const f = e.target.closest("[data-checkout-form]"); if (!f) return; e.preventDefault();
+    const L = cartGet().map(cartLine).filter(Boolean);
+    const once = L.filter(x => x.o.id !== "miete").reduce((a, x) => a + x.p, 0), month = L.filter(x => x.o.id === "miete").reduce((a, x) => a + x.p, 0);
+    const msg = `Hi Maik, ich bestelle aus Flow DNA:\n` + L.map(x => `• ${x.s.name}${x.n ? ` (${x.n} ${x.n === 1 ? "Version" : "Versionen"})` : ""} – ${x.o.name}: ${x.p} € ${x.o.einheit}`).join("\n") + `\n\nSumme: ${once ? once + " € einmalig" : ""}${once && month ? " + " : ""}${month ? month + " €/Monat" : ""}\n\nName: ${f.name.value.trim()}\nE-Mail: ${f.mail.value.trim()}${f.adr.value.trim() ? "\nRechnungsadresse: " + f.adr.value.trim().replace(/\n/g, ", ") : ""}\n\nBitte schick mir Rechnung und Code.`;
+    window.open(wa(msg), "_blank", "noopener");
+    layer().querySelector(".dna-modal").innerHTML = `<button class="dna-x" data-dna-close aria-label="Schließen">×</button><h2>Fast geschafft</h2><p class="dna-kurz" style="margin-top:10px">WhatsApp hat sich mit deiner Bestellung geöffnet – <b>bitte dort auf Senden tippen</b>. Maik schickt dir die Rechnung und nach Zahlung deinen Code. Den gibst du unter „Kurse“ ein.</p><a class="dna-btn" style="width:100%;margin-top:14px" href="${esc(wa(msg))}" target="_blank" rel="noopener">WhatsApp nochmal öffnen</a>`;
+  });
   document.addEventListener("click", e => {
+    if (e.target.closest("[data-checkout]")) { openCheckout(); return }
     const v = e.target.closest("[data-ver]"); if (v) { const [sid, n] = v.dataset.ver.split("|"); verOf[sid] = +n; openDetail(sid); return }
     const a = e.target.closest("[data-cart-add]"); if (a) { const [sid, oid, n] = a.dataset.cartAdd.split("|"); cartAdd(sid, oid, +n); openCart(); return }
     const d = e.target.closest("[data-cart-del]"); if (d) { cartSet(cartGet().filter(x => x.sid !== d.dataset.cartDel)); openCart(); return }
@@ -96,6 +136,7 @@
         <p class="dna-her"><a href="${esc(optHref(s, D.optionen[1]))}" target="_blank" rel="noopener" style="color:inherit">Oder direkt per WhatsApp fragen</a></p>` })() : ""}
       ${s.stufe === "basis" && s.quelle && s.quelle.endsWith(".zip") ? useBox(BASE + "skills/" + s.id + "/SKILL.md", s.name) : ""}
       ${s.stufe === "premium" ? `<form class="dna-redeem" data-redeem><label>Schon gekauft? Lizenz-Code einlösen</label><div><input name="code" placeholder="CODE-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Lizenz-Code"><button type="submit">⬇ Laden</button></div><p class="dna-rmsg"></p></form>` : ""}
+      ${fbBox("skill", s.id, "", "Auffälligkeit oder Idee zu diesem Skill?")}
       <div class="dna-foot"><span class="dna-preis">${esc(preis(s))}</span><span class="dna-acts"><button type="button" class="dna-save" data-dna-save="${s.id}">${isSaved(s.id) ? "★ Gemerkt" : "☆ Merken"}</button><a class="dna-btn" href="${esc(a.href)}"${a.href.startsWith("#") ? " data-dna-close" : a.href.endsWith(".zip") ? " download" : ' target="_blank" rel="noopener"'}>${esc(a.label)}</a></span></div>
     </div></div>`;
     document.body.classList.add("dna-lock");
@@ -172,6 +213,6 @@
     } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
   });
 
-  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE, openCart, cartGet, vp };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE, openCart, cartGet, cartAdd, PAKET, vp, fbBox };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();

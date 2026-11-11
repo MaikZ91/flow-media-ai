@@ -120,3 +120,13 @@
 .dna-ci button { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--dna-line); background: transparent; color: var(--dna-ink); cursor: pointer; font-size: 18px }
 .dna-sum { display: grid; gap: 6px; margin-top: 12px } .dna-sum div { display: flex; justify-content: space-between; font-size: 15px } .dna-sum b { font: 700 24px Oswald, sans-serif }
 .dna-clear { border: 0; background: none; color: var(--dna-muted); text-decoration: underline; cursor: pointer; font: inherit; padding: 0 }
+
+.dna-steps3 { display: flex; gap: 6px; margin: 10px 0 4px } .dna-steps3 span { flex: 1; font: 600 11px Montserrat, Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: 7px 4px; text-align: center; border: 1px solid var(--dna-line); color: var(--dna-muted) } .dna-steps3 span.on { background: #2F5BFF; border-color: #2F5BFF; color: #fff }
+.dna-co { display: grid; gap: 10px; margin-top: 16px } .dna-co label { display: grid; gap: 4px; font: 600 13px Inter, sans-serif } .dna-co label i { font-weight: 400; font-style: normal; color: var(--dna-muted) }
+.dna-co input, .dna-co textarea { font: 16px Inter, sans-serif; padding: 11px 12px; border: 2px solid var(--dna-ink); background: #fff; color: #0B0B0B; border-radius: 0; width: 100%; resize: vertical }
+
+.dna-fb { position: relative; display: grid; gap: 8px; margin: 18px 0 6px; padding: 14px; border: 2px solid currentColor; text-align: left }
+.dna-fb b { font: 700 18px Oswald, sans-serif; text-transform: uppercase } .dna-fb span { font-size: 13px; line-height: 1.45; opacity: .75 }
+.dna-fb textarea, .dna-fb input { font: 16px Inter, sans-serif; padding: 10px 12px; border: 1px solid currentColor; background: #fff; color: #0B0B0B; border-radius: 0; width: 100%; resize: vertical }
+.dna-fb button { font: 700 15px Oswald, sans-serif; text-transform: uppercase; letter-spacing: .04em; min-height: 44px; border: 0; background: #2F5BFF; color: #fff; cursor: pointer } .dna-fb button:disabled { opacity: .5 }
+.dna-fbmsg { font-size: 12px; opacity: .75; margin: 0 } .dna-fbmsg.ok { opacity: 1; color: #1a8f4c; font-weight: 600 }
