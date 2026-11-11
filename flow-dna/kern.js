@@ -43,7 +43,7 @@
   const cartGet = () => { try { return JSON.parse(localStorage.getItem("dna-cart") || "[]") } catch (e) { return [] } };
   const cartSet = c => { try { localStorage.setItem("dna-cart", JSON.stringify(c)) } catch (e) { } document.dispatchEvent(new Event("dna-cart")) };
   const paketCode = () => { try { return localStorage.getItem("dna-paket-code") || "" } catch (e) { return "" } };
-  const PAKET = { id: "paket-alles", icon: "🎓", name: "Alle Kurse + alle Skills", preis: 199, text: "Alle Online-Kurse und alle Skills aus dem Flow DNA Store – einmal zahlen." };
+  const PAKET = { id: "paket-alles", icon: "🎓", name: "Alle Kurse + alle Skills + das Buch", preis: 199, text: "Alle Online-Kurse, alle Skills aus dem Flow DNA Store und das Buch – einmal zahlen." };
   const cartLine = it => { if (it.sid === PAKET.id) return { s: PAKET, o: { id: "kauf", name: "Komplettpaket", einheit: "einmalig" }, n: 0, p: PAKET.preis }; const s = D.skills.find(x => x.id === it.sid), o = D.optionen.find(x => x.id === it.oid); return s && o ? { s, o, n: it.n, p: vp(s, o.id, it.n) } : null };
   function cartAdd(sid, oid, n) { const c = cartGet().filter(x => x.sid !== sid); c.push({ sid, oid, n: n || 0 }); cartSet(c) }
   function openCart() {
@@ -215,6 +215,6 @@
     } catch (err) { msg.className = "dna-rmsg err"; msg.textContent = "Keine Verbindung – bitte nochmal versuchen."; btn.disabled = false }
   });
 
-  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE, openCart, cartGet, cartAdd, PAKET, vp, fbBox };
+  window.DNA = { ...D, esc, filter, action, preis, optHref, stage, startStages, badges, katName, openDetail, openSubmit, close, wa, saved, renderExtras, useBox, BASE, openCart, cartGet, cartAdd, PAKET, paketCode, vp, fbBox };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderExtras); else setTimeout(renderExtras);
 })();
