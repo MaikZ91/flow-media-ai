@@ -60,7 +60,7 @@ def daten():
         for i, l in enumerate(k["lektionen"], 1):
             v = f"L{i:02d}"; secs += dur(v)
             e = {"videos": [[base + v + ".mp4", base + v + ".jpg", l["titel"]]], "text": l["text"], "punkte": l["punkte"], "aufgabe": l["aufgabe"]}
-            for f in ("prompt", "links", "optional", "bonus", "beispiele", "bereich"):
+            for f in ("prompt", "links", "optional", "bonus", "beispiele", "bereich", "frei", "abschnitte"):
                 if l.get(f): e[f] = l[f]
             lek.append(e)
         res[kid] = {"status": "live", "code": k["code"], "dauer": f"ca. {max(1, round(secs/60))} Min. Video · {k['umsetzen']} Umsetzen",
