@@ -464,7 +464,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; 
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
   <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
-  <button class="bbtn" data-view="crm" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg><span class="hide-sm">Kontakte</span></button>
+  <button class="bbtn" data-view="crm" data-web-only hidden aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg><span class="hide-sm">Kontakte</span></button>
   <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
   </nav>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
@@ -476,6 +476,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; 
 <script>
 // DEMO = true builds the shareable example board: sample cards, kept per visitor in their own browser, no shared data, no files, no Dropbox.
 const DEMO = false;
+// Kontakte (CRM) gibt es nur in der Web-Version (GitHub Pages) – nicht in der eingefrorenen Claude-Version und nicht in der Demo.
+document.addEventListener("DOMContentLoaded", () => { if (typeof WEB !== "undefined" && WEB && !DEMO) document.querySelectorAll("[data-web-only]").forEach(e => e.hidden = false) });
 // WEB = true builds the standalone GitHub Pages version: data, login and files in Supabase (project "Liebefeld", tables flow_board_*).
 const WEB = true;
 const SB_URL = "https://ykleosfvtqcmqxqihnod.supabase.co";
@@ -898,7 +900,7 @@ function render() {
   const same = main.dataset.shown === view;
   const scrolls = same ? [...main.querySelectorAll(KEEP_SCROLL)].map(c => c.scrollTop) : [];
   const fields = !same ? [] : [...main.querySelectorAll("form[data-fin-form] [name], form[data-inv-profile] [name]")].map(f => [fieldKey(f), f.type === "checkbox" ? f.checked : f.value]);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : view === "crm" ? renderCrm() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : view === "crm" && WEB && !DEMO ? renderCrm() : renderCal();
   main.dataset.shown = view;
   main.scrollLeft = sx;
   main.querySelectorAll(KEEP_SCROLL).forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
