@@ -9,4 +9,7 @@ def L(h, items, say, kicker=""): return {"k": "list", "h": h, "items": items, "s
 def ST(h, items, say, kicker=""): return {"k": "steps", "h": h, "items": items, "say": say, "kicker": kicker}
 def SP(h, stamp, say, kicker=""): return {"k": "stamp", "h": h, "stamp": stamp, "say": say, "kicker": kicker}
 def N(num, h, say, kicker=""): return {"k": "num", "num": num, "h": h, "say": say, "kicker": kicker}
+def SH(h, img, fx, fy, say, items=(), tag="Hier", src="", bar="", zoom=1.7, ar=1.0, kicker="So sieht's aus"):
+    """Original-Bildschirmfoto im App-Fenster: Zoom auf (fx, fy) in Prozent, blauer Kreis + Marke an der Stelle."""
+    return {"k": "shot", "h": h, "img": img, "fx": fx, "fy": fy, "say": say, "items": list(items), "tag": tag, "src": src, "bar": bar, "zoom": zoom, "ar": ar, "kicker": kicker}
 SUPPORT = ["Ich hänge fest.", "Frag in der Tech-Support-Gruppe (Tab Community) – dort helfen Maik und die Community."]

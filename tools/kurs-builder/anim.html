@@ -50,6 +50,15 @@ html,body{width:1280px;height:800px;overflow:hidden;background:var(--ink);color:
 .stamp{position:absolute;right:40px;top:210px;font:700 74px Oswald;text-transform:uppercase;color:var(--blue);border:7px solid var(--blue);padding:8px 26px;transform:rotate(-8deg)}
 .pic{position:absolute;right:0;top:0;width:330px;height:470px;border:2px solid var(--line);background:url(../../flow-dna/kurse/website-mit-skill/img/maik_front.jpg) center 20%/cover;filter:grayscale(1)}
 .big{font:700 190px/.85 Oswald;color:var(--blue)}
+.shotw{position:absolute;right:0;top:0;border:2px solid var(--line);background:#151515}
+.shotw .bar{display:flex;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(244,244,241,.25);font:400 13px "JetBrains Mono",monospace;color:var(--mute)}
+.shotw .bar u{width:10px;height:10px;border-radius:50%;background:#555;display:block}
+.shotw .vp{position:relative;overflow:hidden}.shotw .im{position:absolute;inset:0;background-size:100% 100%}
+.ring{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border:6px solid var(--blue);border-radius:50%;box-shadow:0 0 0 4000px rgba(11,11,11,0);opacity:0}
+.rtag{position:absolute;background:var(--blue);color:#fff;font:700 24px Oswald;text-transform:uppercase;padding:6px 14px;white-space:nowrap;opacity:0}
+.shotl{position:absolute;left:0;top:0;width:480px}.shotl .h{font-size:56px}
+.shotl .li{font-size:22px;padding:13px 0}.shotl .li i{width:32px;height:32px;font-size:18px}
+.src{position:absolute;right:0;font:400 12px Inter;color:var(--mute)}
 </style></head><body>
 <div id="top"><div id="wm"><svg width="34" height="18" viewBox="0 0 34 18"><path d="M1 9 C6 -3 11 21 17 9 S28 -3 33 9" fill="none" stroke="#2F5BFF" stroke-width="2.4"/><path d="M1 9 C6 21 11 -3 17 9 S28 21 33 9" fill="none" stroke="#F4F4F1" stroke-width="2"/></svg>Flow DNA</div><div id="crumb"></div></div>
 <div id="stage"></div><div id="sub"></div><div id="prog"></div>
@@ -69,6 +78,7 @@ const TPL={
  list:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="h s">${hl(s.h||"")}</div><div class="list">${s.items.map(x=>`<div class="li"><i>✓</i><span>${esc(x)}</span></div>`).join("")}</div>`,
  steps:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="h s">${hl(s.h||"")}</div><div class="track"><u></u></div><div class="steps" style="grid-template-columns:repeat(${s.items.length},1fr)">${s.items.map((x,i)=>`<div class="st"><i>${String(i+1).padStart(2,"0")}</i><b>${esc(x)}</b></div>`).join("")}</div>`,
  stamp:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="h">${hl(s.h)}</div><div class="stamp">${esc(s.stamp)}</div>`,
+ shot:s=>{const H=500,W=Math.round(H*s.ar);return `<div class="shotl"><div class="k">${esc(s.kicker||"")}</div><div class="h">${hl(s.h||"")}</div><div class="list" style="position:static;width:auto;margin-top:26px">${(s.items||[]).map((x,i)=>`<div class="li"><i>${i+1}</i><span>${esc(x)}</span></div>`).join("")}</div></div><div class="shotw" style="width:${W+4}px"><div class="bar"><u></u><u></u><u></u>${esc(s.bar||"")}</div><div class="vp" style="width:${W}px;height:${H}px"><div class="im" style="background-image:url(${s.img});transform-origin:${s.fx}% ${s.fy}%"></div><div class="ring" style="left:${s.fx}%;top:${s.fy}%"></div><div class="rtag" style="left:calc(${s.fx}% ${s.fx>60?"- 70px":"+ 70px"});top:calc(${s.fy}% ${s.fy>75?"- 110px":"+ 64px"});${s.fx>60?"transform:translateX(-100%)":""}">${esc(s.tag||"Hier")}</div></div></div><div class="src" style="top:${H+48}px">Bild: ${esc(s.src||"")}</div>`},
  num:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="big">${esc(s.num)}</div><div class="h s" style="margin-top:18px">${hl(s.h)}</div>`
 };
 const DRAWS={
@@ -81,6 +91,11 @@ const DRAWS={
  list(el,p,s,t,d){inn(el.children[0],t/.3);inn(el.children[1],t/.35);[...el.querySelectorAll(".li")].forEach((c,i)=>{const a=.6+i*(d-1.6)/s.items.length;inn(c,(t-a)/.3,16);c.classList.toggle("on",t>a+.35)})},
  steps(el,p,s,t,d){inn(el.children[0],t/.3);inn(el.children[1],t/.35);const n=s.items.length;el.querySelector(".track u").style.width=(cl((t-.6)/(d-1.6))*100)+"%";[...el.querySelectorAll(".st")].forEach((c,i)=>{const a=.6+i*(d-1.6)/n;inn(c,(t-.3-i*.08)/.3,16);c.classList.toggle("on",t>a)})},
  stamp(el,p,s,t,d){inn(el.children[0],t/.3);inn(el.children[1],t/.4,40);const st=el.querySelector(".stamp"),q=cl((t-d*.5)/.22);st.style.opacity=q;st.style.transform=`rotate(-8deg) scale(${2-back(q)})`},
+ shot(el,p,s,t,d){const L=el.querySelector(".shotl");inn(L.children[0],t/.3);inn(L.children[1],t/.35,30);const w=el.querySelector(".shotw");inn(w,(t-.2)/.4,30);el.querySelector(".src").style.opacity=cl((t-.6)/.4);
+  const li=[...L.querySelectorAll(".li")],n=li.length;li.forEach((c,i)=>{const a=.8+i*(d*.75-.8)/Math.max(1,n);inn(c,(t-a)/.3,14);c.classList.toggle("on",t>a+.3)});
+  const z=1+((s.zoom||1.7)-1)*out(cl((t-.7)/Math.max(1,d*.45)));el.querySelector(".im").style.transform=`scale(${z})`;
+  const rq=cl((t-d*.42)/.3),r=el.querySelector(".ring");r.style.opacity=rq;const pu=1+.06*Math.sin(Math.max(0,t-d*.42)*6);r.style.transform=`scale(${(.4+.6*back(rq))*pu})`;r.style.boxShadow=`0 0 0 4000px rgba(11,11,11,${.45*rq})`;
+  const tg=el.querySelector(".rtag");tg.style.opacity=cl((t-d*.42-.25)/.3)},
  num(el,p,s,t){inn(el.children[0],t/.3);const q=cl(t/.4);el.children[1].style.opacity=q;el.children[1].style.transform=`scale(${.7+.3*back(q)})`;el.children[1].style.transformOrigin="left center";inn(el.children[2],(t-.4)/.4)}
 };
 let S=[],els=[];
