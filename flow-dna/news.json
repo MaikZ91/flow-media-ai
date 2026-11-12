@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-12T11:25+00:00",
+ "stand": "2026-11-12T20:00+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,206 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Google stellt Gemini 4 Hydrogen vor: Schnelles KI-Modell für den Alltag für weniger Geld",
+   "s": "Google bringt mit Gemini 4 Hydrogen ein KI-Modell, das den Vorgänger Flash ablösen soll, aber laut Benchmarks auch das teurere Argon überflüssig macht. Auf dem unabhängigen Artificial Analysis Intelligence Index …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/google-stellt-gemini-4-hydrogen-vor-schnelles-ki-modell-fuer-den-alltag-fuer-weniger-geld/",
+   "d": "2026-11-12T19:25:43+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 13.9
+  },
+  {
+   "t": "Googles KI-Brillen starten im Dezember ab 395 US-Dollar",
+   "s": "Google und Samsung bringen im Dezember ihre ersten gemeinsamen KI-Brillen auf den Markt. Ein Europastart ist noch nicht angekündigt.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Googles-KI-Brillen-starten-im-Dezember-ab-395-US-Dollar-11523374.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T17:08:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 23.5
+  },
+  {
+   "t": "Digitale Medienordnung: Länder wollen Big Tech und KI streng regulieren",
+   "s": "Ein Digital-Staatsvertrag soll journalistische Inhalte in Feeds privilegieren, KI-Systeme in die Pflicht nehmen und das Medienkonzentrationsrecht reformieren.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Digitale-Medienordnung-Laender-wollen-Big-Tech-und-KI-streng-regulieren-11523302.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T16:28:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Regulierung & AI Act"
+   ],
+   "n": 1,
+   "r": 11.4
+  },
+  {
+   "t": "Datum offiziell: Anthropic-Aktien ab 19. November im Handel",
+   "s": "Anthropics Aktien sollen am 19. November in den Handel gehen. Der finale Preis pro Aktie wird einen Tag vorher festgelegt.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Datum-offiziell-Anthropic-Aktien-ab-19-November-im-Handel-11522895.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T16:16:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.4
+  },
+  {
+   "t": "Warum KI-Modelle ihre Gedanken verbergen können und weshalb Gegenmaßnahmen kaum greifen",
+   "s": "OpenAIs Sicherheitsteam hat systematisch untersucht, warum sich die Gedankenketten von Spitzenmodellen wie GPT-6 Astra zunehmend der Überwachung entziehen. Vier Trainingsschritte treiben die Erosion – darunter …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/warum-ki-modelle-ihre-gedanken-verbergen-koennen-und-weshalb-gegenmassnahmen-kaum-greifen/",
+   "d": "2026-11-12T15:14:11+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.2
+  },
+  {
+   "t": "United Airlines untersagt KI-Agenten das Buchen von Flügen",
+   "s": "United Airlines untersagt nicht autorisierten KI-Agenten Flugbuchungen. Neben Sicherheitsbedenken spielen auch wirtschaftliche Interessen eine Rolle.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/United-Airlines-untersagt-KI-Agenten-das-Buchen-von-Fluegen-11523122.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T15:10:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 11.2
+  },
+  {
+   "t": "„Das ist bedauerlich“: Amazon lässt Tausende KI-Agenten programmieren",
+   "s": "Amazon veröffentlicht ein Tool, das komplett von KI-Bots verfasst worden ist. Entwickler sind alles andere als begeistert.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Das-ist-bedauerlich-Amazon-laesst-Tausende-KI-Agenten-programmieren-11523014.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T14:46:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten",
+    "Coding mit KI"
+   ],
+   "n": 3,
+   "r": 35.1
+  },
+  {
+   "t": "Android Auto: Warum Googles neue Gemini-Funktion die meisten Smartphones ausschließt",
+   "s": "Der Funktionsumfang von Google Gemini für das Infotainmentsystem in Kraftfahrzeugen wächst mit einem neuen Update weiter an. Doch für die nächste Ausbaustufe gelten abseits der Software gleich mehrere Hürden bei den …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/android-auto-gemini-funktion-smartphones-1773322",
+   "d": "2026-11-12T14:45:32+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 13.1
+  },
+  {
+   "t": "Nvidia-Chef Huang gestürzt, Finanzchefin Kress übernimmt vorerst",
+   "s": "Jensen Huang ist laut einer Mitteilung am 12. November 2026 mit sofortiger Wirkung als CEO, Präsident und Vorstandsmitglied von Nvidia zurückgetreten. Der Artikel Nvidia-Chef Huang gestürzt, Finanzchefin Kress übernimmt …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/nvidia-chef-huang-gestuerzt-finanzchefin-kress-uebernimmt-vorerst/",
+   "d": "2026-11-12T14:08:40+00:00",
+   "lang": "de",
+   "tags": [
+    "Nvidia & Chips"
+   ],
+   "n": 1,
+   "r": 11.0
+  },
+  {
+   "t": "Elevenlabs Scribe v3 Live: Neue Echtzeit-Spracherkennung soll Anrufer nicht mehr mitten im Satz abwürgen",
+   "s": "Elevenlabs bringt mit Scribe v3 und Scribe v3 Live zwei neue Spracherkennungsmodelle heraus, die bei Hintergrundgeräuschen und Durcheinanderreden präzise transkribieren sollen. Messungen von Artificial Analysis …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/elevenlabs-senkt-mit-scribe-v3-und-v3-live-die-fehlerrate-bei-der-spracherkennung/",
+   "d": "2026-11-12T13:00:19+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.8
+  },
+  {
+   "t": "Angst vor neuen KI-Chip-Exportkontrollen: China sichert sich Rechenkapazitäten",
+   "s": "Chinesische KI-Firmen sichern sich wohl gerade verstärkt Rechenkapazitäten außerhalb Chinas, um US-Exportkontrollen zu umgehen. Neue Gesetze drohen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Angst-vor-neuen-KI-Chip-Exportkontrollen-China-sichert-sich-Rechenkapazitaeten-11522548.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T12:55:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Nvidia & Chips",
+    "DeepSeek & China",
+    "Regulierung & AI Act"
+   ],
+   "n": 1,
+   "r": 18.8
+  },
+  {
+   "t": "Claude zockt GTA 4 und andere Games: Wie sich der KI-Agent dabei anstellt",
+   "s": "Wie schlagen sich KI-Agenten wie Claude in einem Videospiel? Das zeigt jetzt ein Entwickler, indem er der Künstlichen Intelligenz den virtuellen Controller in die Hand drückt und sie unter anderem GTA 4 spielen lässt. …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/claude-zockt-gta-4-1773219",
+   "d": "2026-11-12T12:30:26+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Agenten",
+    "Coding mit KI"
+   ],
+   "n": 3,
+   "r": 40.8
+  },
+  {
+   "t": "Googles AlphaGenome 2 soll zeigen, wie jede Körperzelle ihre DNA liest",
+   "s": "Google DeepMind stellt mit AlphaGenome 2 ein KI-Modell vor, das genetische Varianten nicht mehr pauschal, sondern gezielt für einzelne Zelltypen analysiert. Trainiert mit über 107 Millionen Zellprofilen identifiziert es …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/googles-alphagenome-2-soll-zeigen-wie-jede-koerperzelle-ihre-dna-liest/",
+   "d": "2026-11-12T11:32:43+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 22.6
+  },
+  {
+   "t": "Harbor: Neue App von Apple-Tochter Claris für lokale KI-Modelle",
+   "s": "Die Macher hinter FileMaker beschäftigen sich mit lokalen KI-Modellen auf dem Mac. Die App soll auch das Zusammenschalten von Rechnern erleichtern.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Harbor-Neue-App-von-Apple-Tochter-Claris-fuer-lokale-KI-Modelle-11519932.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T11:26:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Apple"
+   ],
+   "n": 1,
+   "r": 10.6
+  },
+  {
+   "t": "US-Firmen verkaufen wohl KI-Trainingsdaten an China",
+   "s": "US-Firmen, die auch OpenAI und Anthropic beliefern, verkaufen ihre Trainingsdaten und RL-Umgebungen wohl an chinesische KI-Unternehmen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/US-Firmen-verkaufen-wohl-KI-Trainingsdaten-an-China-11521993.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T11:23:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "DeepSeek & China"
+   ],
+   "n": 3,
+   "r": 42.6
+  },
   {
    "t": "KubeCon 2026: Die CNCF will KI-Agenten sicherer und effizienter machen",
    "s": "Die CNCF hat auf der KubeCon + CloudNativeCon NA mehrere Projekte unter ihre Schirmherrschaft gestellt, um einen sicheren Betrieb von KI-Agenten voranzutreiben.",
@@ -18,7 +218,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 12.0
+   "r": 10.5
   },
   {
    "t": "AlphaGenome 2: Googles KI berücksichtigt Zellzustände bei DNA-Prognosen",
@@ -29,31 +229,21 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 8.0
+   "r": 6.5
   },
   {
    "t": "Anthropic-IPO: Banken drängen auf höhere Bewertung",
-   "s": "null",
+   "s": "Der KI-Konzern Anthropic hat seine Roadshow gestartet und könnte beim Börsengang bis zu 90,4 Milliarden Dollar einnehmen. Doch jetzt drängen die begleitenden Banken auf einen höheren Ausgabepreis von 83 Dollar.",
    "q": "t3n",
    "l": "https://t3n.de/news/anthropic-ipo-banken-draengen-auf-hoehere-bewertung-1773181",
    "d": "2026-11-12T11:00:00+00:00",
    "lang": "de",
    "tags": [
-    "Claude / Anthropic"
+    "Claude / Anthropic",
+    "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 13.9
-  },
-  {
-   "t": "heise+ | Große LLMs auf Desktop-Hardware im Test",
-   "s": "Die Inferenz-Engine Strata verspricht schnelle Antwortzeiten selbst auf einem durchschnittlichen Gaming-PC. Unsere Tests zeigen, ob und wie das funktioniert.",
-   "q": "heise",
-   "l": "https://www.heise.de/tests/Grosse-LLMs-auf-Desktop-Hardware-im-Test-11515298.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "d": "2026-11-12T11:00:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 7.9
+   "r": 14.5
   },
   {
    "t": "CEOs drängen zum KI-Einsatz – und ernten \"Work-Slop\" von Mitarbeitenden",
@@ -67,7 +257,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 13.9
+   "r": 12.5
   },
   {
    "t": "Diktieren statt tippen: Diese 3 kostenlosen KI-Tools machen es möglich",
@@ -78,7 +268,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 6.3
   },
   {
    "t": "Australien will Frontier-KI-Firmen zu unabhängigen Prüfungen und Sicherheitskontrollen zwingen",
@@ -91,7 +281,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 11.8
+   "r": 10.3
   },
   {
    "t": "KI in der Justiz: Hilfe für Richter oder Risiko für den Rechtsstaat?",
@@ -102,7 +292,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.7
+   "r": 6.3
   },
   {
    "t": "/Plan oder /Goal? So nutzt du zwei KI-Modi sinnvoll im Büroalltag",
@@ -115,8 +305,8 @@
     "OpenAI",
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 29.7
+   "n": 3,
+   "r": 38.3
   },
   {
    "t": "Holiday Extras is rethinking what it can build with Codex",
@@ -127,7 +317,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 7.7
+   "r": 6.2
   },
   {
    "t": "„The Witcher 3“: KI bearbeitet Geralts polnische Stimme nach Schlaganfall",
@@ -138,76 +328,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.5
-  },
-  {
-   "t": "Stoppen und kappen: CrowdStrike stellt KI-Killswitch vor",
-   "s": "Auf seiner Hausmesse Fal.Con präsentierte CrowdStrike einen Killswitch für seine Falcon-Guardian-Plattform, der wild gewordene Agenten stoppen soll.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Stoppen-und-kappen-CrowdStrike-stellt-KI-Killswitch-vor-11521224.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-12T07:00:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 2,
-   "r": 21.3
-  },
-  {
-   "t": "SpaceX-Strategiewechsel: Anthropic ersetzt NASA als Top-Kunde",
-   "s": "Ein Drittel des SpaceX-Umsatzes stammt inzwischen von der KI-Firma Anthropic. Damit ist die US-Regierung nicht mehr der größte Kunde des Unternehmens.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/spacex-ki-strategie-nasa-abkehr-1770765",
-   "d": "2026-11-12T05:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 13.0
-  },
-  {
-   "t": "Donnerstag: Nvidia-Chef angeblich kurz vor Abschied, KI-Agent auch von ByteDance",
-   "s": "Jensen Huangs weitere Affäre + Muse-Agentenkonkurrent aus China + Meta-Millionenstrafe nach Brasilien-Wahl + Unterschiede chinesischer E-Motoren + #heiseshow",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Donnerstag-Nvidia-Chef-angeblich-kurz-vor-Abschied-KI-Agent-auch-von-ByteDance-11521643.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-12T05:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Meta / Llama",
-    "Nvidia & Chips",
-    "DeepSeek & China",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 23.0
-  },
-  {
-   "t": "#heiseshow: Jensen Huang, US-Wahlergebnisse und KI, Wasserstoff",
-   "s": "In der #heiseshow: Nvidia prüft den Fall Jensen Huang, nach den US-Wahlen bebt die Börse und RWE startet in Lingen die größte Wasserstoffturbine Europas",
-   "q": "heise",
-   "l": "https://www.heise.de/news/heiseshow-Jensen-Huang-US-Wahlergebnisse-und-KI-Wasserstoff-11521417.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-12T05:11:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 13.0
-  },
-  {
-   "t": "30 Stunden Einsamkeit: Was passiert, wenn man KI-Agenten auf einer Insel aussetzt?",
-   "s": "Im Experiment wurden die KI-Agenten 30 Stunden sich selbst überlassen. Um sich die Zeit zu vertreiben, fingen sie an, sich Spiele auszudenken. Laut der Forschungsgruppe gibt das auch einen Einblick in ihr Lernverhalten.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ki-agenten-insel-experiment-30-stunden-1769624",
-   "d": "2026-11-12T04:55:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 10.9
+   "r": 6.1
   },
   {
    "t": "Supporting research on AI and children’s safety",
@@ -220,7 +341,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.1
+   "r": 10.7
   },
   {
    "t": "Gilbert + Tobin rethinks the business of law with AI",
@@ -231,20 +352,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 6.1
-  },
-  {
-   "t": "Bericht: ByteDance plant eigenen KI-Agenten",
-   "s": "ByteDance bereitet einen KI-Agenten nach dem Vorbild von Metas Muse vor und will so den Rückstand im KI-Wettrennen gegenüber US-Unternehmen aufholen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Bericht-ByteDance-plant-eigenen-KI-Agenten-11521573.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-11T20:20:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 9.5
+   "r": 4.7
   },
   {
    "t": "Gemini Decisions: Google bringt spezialisiertes KI-Modell für schnelle Entscheidungen statt Textgenerierung",
@@ -258,7 +366,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 13.4
+   "r": 12.0
   },
   {
    "t": "KI-Ausgaben von US-Firmen wachsen nur noch langsam und neue Konkurrenz verschärft den Druck",
@@ -271,8 +379,8 @@
     "OpenAI",
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 27.3
+   "n": 3,
+   "r": 35.9
   },
   {
    "t": "Google Deepminds AlphaProof Code beweist mathematisch, dass Signals Verschlüsselung sicher ist",
@@ -286,44 +394,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 1,
-   "r": 19.1
-  },
-  {
-   "t": "Schlafanalyse: Wie eine Open-Source-KI deinen Schlaf auf die Sekunde genau auswertet",
-   "s": "In einer halben Minute Schlaf kann eine Menge passieren, was Messungen bisher entgeht. Ein Forschungsteam der FH Aachen hat mit AnySleep jetzt ein Open-Source-Modell entwickelt, das Gehirnströme sekundengenau analysiert.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/schlafanalyse-wie-eine-open-source-ki-deinen-schlaf-auf-die-sekunde-genau-auswertet-1773027",
-   "d": "2026-11-11T17:00:30+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.9
-  },
-  {
-   "t": "Agent Siri AI: Wo Apples holprige KI-Reise hingeht | Mac & i-Podcast",
-   "s": "Lange eine Lachnummer, nun auf dem Sprung zum agentischen KI-System für iPhones. Wir analysieren, wo Siri AI aktuell steht und was Apple als Nächstes plant.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Agent-Siri-AI-Wo-Apples-holprige-KI-Reise-hingeht-Mac-i-Podcast-11521459.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-11T16:55:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Apple",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 12.9
-  },
-  {
-   "t": "Münchner Rüstungs-KI: Helsing stellt Plattform Clarity vor",
-   "s": "Das Münchner Unternehmen Helsing hat mit Clarity eine KI-Plattform für militärische Analysen vorgestellt, die als europäische Alternative zu US-Systemen dient.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Muenchner-Ruestungs-KI-Helsing-stellt-Plattform-Clarity-vor-11521399.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-11T16:52:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.9
+   "n": 3,
+   "r": 37.7
   },
   {
    "t": "Helsings neue KI-Plattform Clarity soll Europas Antwort auf Palantirs Maven werden",
@@ -335,88 +407,8 @@
    "tags": [
     "KI-Agenten"
    ],
-   "n": 2,
-   "r": 18.5
-  },
-  {
-   "t": "CERT-EU warnt: Rapide Zunahme der Angriffe mit Agenten-Frameworks wie Artex",
-   "s": "Autonome KI-Agenten übernehmen komplexe Angriffe weitgehend selbstständig. Experten warnen vor einer neuen Welle automatisierter Attacken.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/CERT-EU-warnt-Rapide-Zunahme-der-Angriffe-mit-Agenten-Frameworks-wie-Artex-11520602.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-11T14:34:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Mistral & Europa",
-    "KI-Agenten"
-   ],
    "n": 1,
-   "r": 12.5
-  },
-  {
-   "t": "DeepL Voice überträgt mit neuem Stimm-Modell auch Tonfall und Sprechtempo in andere Sprachen",
-   "s": "Echtzeit-Übersetzungen von DeepL Voice sollen künftig näher am Original klingen, indem es Tonfall, Emotion, Betonung und Sprechtempo in der Stimme der sprechenden Person in die Zielsprache überträgt. Der Artikel DeepL …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/deepl-voice-uebertraegt-mit-aure-jetzt-auch-tonfall-und-sprechtempo-in-andere-sprachen/",
-   "d": "2026-11-11T13:50:30+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.4
-  },
-  {
-   "t": "Drei Tage statt Monate für AMD-Chip-Wechsel: Laut Anthropic frisst KI Nvidias CUDA-Vorsprung",
-   "s": "Anthropic behauptet, Nvidias CUDA-Burggraben mit KI selbst überwunden zu haben: Das hauseigene Modell Mythos habe Claude in nur drei Tagen auf AMD-GPUs portiert, fast ohne menschliches Zutun. Das Unternehmen betreibt …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/drei-tage-statt-monate-fuer-amd-chip-wechsel-laut-anthropic-frisst-ki-nvidias-cuda-vorsprung/",
-   "d": "2026-11-11T13:47:20+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "Nvidia & Chips"
-   ],
-   "n": 1,
-   "r": 14.4
-  },
-  {
-   "t": "US-Datenhändler verkaufen KI-Trainingsdaten an chinesische Labore für eine halbe Milliarde Dollar",
-   "s": "US-Datenhändler wie Mercor, Surge AI und AfterQuery verkaufen laut einer ChinaTalk-Recherche KI-Trainingsdaten im Wert von rund einer halben Milliarde Dollar an chinesische Labore – darunter dieselben RL-Umgebungen, die …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/us-datenhaendler-verkaufen-ki-trainingsdaten-an-chinesische-labore-fuer-eine-halbe-milliarde-dollar/",
-   "d": "2026-11-11T13:28:11+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 10.3
-  },
-  {
-   "t": "Grok-Apps legen Interna von SpaceXSI und X sowie Patientendaten offen",
-   "s": "Die Sicherheitsfirma Claroc hat über 35.000 mit Grok gebaute Apps gefunden, die ohne Anmeldung für jeden offen waren, darunter Patientendaten und vertrauliche Unterlagen von SpaceXSI selbst. Ursache: Der Zugriff \"Anyone …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/grok-apps-legen-interna-von-spacexsi-und-x-sowie-patientendaten-offen/",
-   "d": "2026-11-11T11:53:07+00:00",
-   "lang": "de",
-   "tags": [
-    "xAI / Grok"
-   ],
-   "n": 1,
-   "r": 8.1
-  },
-  {
-   "t": "Britische Behörde droht Hochschulen mit Sanktionen falls sie keine KI-sicheren Prüfungsformate einführen",
-   "s": "Englands Hochschulaufsicht Office for Students hält es wegen KI für \"nahezu unmöglich\", studentische Hausarbeiten noch fair zu bewerten. Einer Untersuchung zufolge lassen Studierende ganze Arbeiten unentdeckt von …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/britische-behoerde-droht-hochschulen-mit-sanktionen-falls-sie-keine-ki-sicheren-pruefungsformate-einfuehren/",
-   "d": "2026-11-11T11:13:46+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit",
-    "Bildung & Schule"
-   ],
-   "n": 1,
-   "r": 8.0
+   "r": 7.1
   },
   {
    "t": "ChatGPT Plus for veterans and servicemembers",
@@ -429,7 +421,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.4
+   "r": 8.0
   },
   {
    "t": "JioStar’s chief architect on AI discovery at 500M-user scale",
@@ -440,7 +432,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 2.1
+   "r": 0.7
   },
   {
    "t": "Helping caregivers use AI in everyday life",
@@ -453,7 +445,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.1
+   "r": 6.0
   },
   {
    "t": "Introducing Businesses in ChatGPT",
@@ -520,6 +512,19 @@
    ],
    "n": 1,
    "r": 10.0
+  },
+  {
+   "t": "ChatGPT Enterprise now available in AWS Marketplace",
+   "s": "ChatGPT Enterprise is now available through AWS Marketplace, helping organizations simplify procurement through existing AWS purchasing and billing relationships.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+   "d": "2026-11-09T19:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
   }
  ],
  "kanaele": [
@@ -534,6 +539,32 @@
  ],
  "videos": [
   {
+   "id": "SxiYOCPW8_c",
+   "t": "DAS ist die Zukunft der Roboter! Asimovs Gesetze, RSI & Superintelligenz (Ex-DeepMind-Forscher)",
+   "q": "Everlast AI",
+   "d": "2026-11-12T16:15:39+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini",
+    "Robotik",
+    "Regulierung & AI Act"
+   ],
+   "n": 2,
+   "r": 31.4
+  },
+  {
+   "id": "gPNiuyYirfw",
+   "t": "DeepMind’s AI Just Did The Impossible",
+   "q": "Two Minute Papers",
+   "d": "2026-11-12T13:41:41+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 12.9
+  },
+  {
    "id": "QPrdQp9ZqeI",
    "t": "KI-Pionier: „In 2 bis 5 Jahren kann KI ALLE Bürojobs ersetzen!“ (Prof. Marcus Hutter)",
    "q": "Everlast AI Clips",
@@ -541,7 +572,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 6.4
   },
   {
    "id": "vu3YlUMkvyg",
@@ -551,7 +582,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 7.7
+   "r": 6.3
   },
   {
    "id": "NS220dAaRMo",
@@ -561,7 +592,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 5.6
+   "r": 4.2
   },
   {
    "id": "vdBDMj2UhDg",
@@ -571,7 +602,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 5.6
+   "r": 4.2
   },
   {
    "id": "CrrpfvbNyMw",
@@ -583,7 +614,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.6
+   "r": 10.2
   },
   {
    "id": "hUhr0JiVZZs",
@@ -593,7 +624,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 5.6
+   "r": 4.2
   },
   {
    "id": "uND6iY2qp_c",
@@ -603,7 +634,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 5.1
+   "r": 3.7
   },
   {
    "id": "QzIFL1a1y1Y",
@@ -615,7 +646,7 @@
     "Robotik"
    ],
    "n": 1,
-   "r": 8.8
+   "r": 7.4
   },
   {
    "id": "5M6mKitVrDQ",
@@ -625,7 +656,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.5
+   "r": 3.1
   },
   {
    "id": "WG88oXnIl2Y",
@@ -637,7 +668,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 7.8
+   "r": 6.4
   },
   {
    "id": "BajLtMHISQU",
@@ -649,7 +680,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 6.8
+   "r": 6.0
   },
   {
    "id": "vug73goPJaM",
@@ -752,18 +783,6 @@
    "r": 0.0
   },
   {
-   "id": "YajzUoRKSNQ",
-   "t": "Astronaut: Was bis 2030 kommt, wird keiner glauben! Roboter, Mond-Hotels, Dyson-Sphären & Aliens",
-   "q": "Everlast AI",
-   "d": "2026-11-05T16:15:04+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
    "id": "LWLTLHiDtlw",
    "t": "„DAS ist unsere letzte Chance!“ Deutschlands größtes Roboter-Projekt startet JETZT in München",
    "q": "Everlast Robotics",
@@ -798,18 +817,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "id": "pryCaGv8wuo",
-   "t": "DeepSeek's New AI Is An Absolute Monster",
-   "q": "Two Minute Papers",
-   "d": "2026-10-28T17:32:40+00:00",
-   "lang": "en",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 4.0
   },
   {
    "id": "PAFZUpDMY64",
@@ -914,8 +921,8 @@
     "Google Gemini",
     "Robotik"
    ],
-   "n": 1,
-   "r": 10.0
+   "n": 2,
+   "r": 20.0
   },
   {
    "id": "ylUTLJTkMDY",
@@ -988,42 +995,42 @@
  ],
  "themen": [
   {
-   "name": "KI-Agenten",
-   "meldungen": 10,
-   "quellen": 4
+   "name": "Google Gemini",
+   "meldungen": 8,
+   "quellen": 5
   },
   {
    "name": "OpenAI",
-   "meldungen": 11,
-   "quellen": 3
+   "meldungen": 13,
+   "quellen": 4
   },
   {
    "name": "Claude / Anthropic",
-   "meldungen": 6,
-   "quellen": 3
+   "meldungen": 7,
+   "quellen": 4
   },
   {
-   "name": "Jobs & Arbeit",
+   "name": "KI-Agenten",
+   "meldungen": 7,
+   "quellen": 4
+  },
+  {
+   "name": "Regulierung & AI Act",
+   "meldungen": 5,
+   "quellen": 4
+  },
+  {
+   "name": "Coding mit KI",
    "meldungen": 3,
    "quellen": 3
   },
   {
    "name": "DeepSeek & China",
    "meldungen": 3,
-   "quellen": 3
+   "quellen": 2
   },
   {
    "name": "Nvidia & Chips",
-   "meldungen": 3,
-   "quellen": 2
-  },
-  {
-   "name": "Regulierung & AI Act",
-   "meldungen": 2,
-   "quellen": 2
-  },
-  {
-   "name": "KI-Blase & Geld",
    "meldungen": 2,
    "quellen": 2
   }
@@ -1033,12 +1040,11 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 139.75,
+   "preis": 141.33,
    "cur": "USD",
-   "d1": -2.33,
-   "m1": -14.5,
+   "d1": 1.13,
+   "m1": -13.5,
    "spark": [
-    156.54,
     152.16,
     148.62,
     146.03,
@@ -1059,9 +1065,10 @@
     134.27,
     142.07,
     143.09,
-    139.75
+    139.75,
+    141.33
    ],
-   "t": "2026-11-11T21:00+00:00"
+   "t": "2026-11-12T20:00+00:00"
   },
   {
    "name": "UBTech Robotics",
@@ -1069,9 +1076,10 @@
    "info": "Humanoide Roboter",
    "preis": 74.5,
    "cur": "HKD",
-   "d1": -2.74,
+   "d1": -0.86,
    "m1": 10.0,
    "spark": [
+    67.7,
     67.4,
     67.2,
     62.65,
@@ -1092,8 +1100,7 @@
     64.5,
     70.3,
     75.15,
-    76.6,
-    74.5
+    76.6
    ],
    "t": "2026-11-12T08:08+00:00"
   },
@@ -1101,12 +1108,11 @@
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 390.84,
+   "preis": 390.17,
    "cur": "USD",
-   "d1": 2.91,
-   "m1": 3.4,
+   "d1": -0.17,
+   "m1": 3.2,
    "spark": [
-    375.23,
     367.16,
     362.44,
     354.72,
@@ -1127,20 +1133,20 @@
     358.22,
     378.05,
     379.78,
-    390.84
+    390.84,
+    390.17
    ],
-   "t": "2026-11-11T21:00+00:00"
+   "t": "2026-11-12T20:00+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 173.73,
+   "preis": 164.25,
    "cur": "USD",
-   "d1": 2.87,
-   "m1": -23.2,
+   "d1": -5.46,
+   "m1": -27.4,
    "spark": [
-    228.52,
     221.3,
     217.23,
     214.13,
@@ -1161,20 +1167,20 @@
     186.64,
     178.67,
     168.89,
-    173.73
+    173.73,
+    164.24
    ],
-   "t": "2026-11-11T21:00+00:00"
+   "t": "2026-11-12T20:00+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 293.45,
+   "preis": 299.62,
    "cur": "USD",
-   "d1": 2.11,
-   "m1": -16.8,
+   "d1": 2.1,
+   "m1": -15.1,
    "spark": [
-    353.78,
     347.64,
     349.22,
     340.59,
@@ -1195,20 +1201,20 @@
     284.78,
     288.15,
     287.38,
-    293.45
+    293.45,
+    299.62
    ],
-   "t": "2026-11-11T21:00+00:00"
+   "t": "2026-11-12T20:00+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 521.12,
+   "preis": 522.04,
    "cur": "USD",
-   "d1": -2.26,
-   "m1": -3.7,
+   "d1": 0.17,
+   "m1": -3.5,
    "spark": [
-    543.45,
     533.69,
     539.44,
     529.05,
@@ -1229,9 +1235,10 @@
     530.61,
     545.18,
     533.16,
-    521.13
+    521.13,
+    522.04
    ],
-   "t": "2026-11-11T21:00+00:00"
+   "t": "2026-11-12T20:00+00:00"
   },
   {
    "name": "Anthropic",
