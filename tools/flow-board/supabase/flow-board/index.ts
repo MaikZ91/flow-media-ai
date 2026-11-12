@@ -113,7 +113,7 @@ async function seedCrm(board: string) {
   const { data: done } = await db.from("flow_board_finance").select("id").eq("id", marker).maybeSingle();
   if (done) return;
   const list = (typeof raw === "string" ? JSON.parse(raw) : raw) as { id: string; data: Record<string, unknown> }[];
-  const rows = list.map((c) => ({ id: c.id, board_id: board, data: { ...c.data, type: "crm" }, updated_at: new Date().toISOString() }));
+  const rows = list.map((c) => ({ id: c.id, board_id: board, data: { type: "crm", ...c.data }, updated_at: new Date().toISOString() }));
   rows.push({ id: marker, board_id: board, data: { type: "crm-marker", at: Date.now() }, updated_at: new Date().toISOString() });
   await db.from("flow_board_finance").upsert(rows, { onConflict: "id", ignoreDuplicates: true });
 }
