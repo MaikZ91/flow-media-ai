@@ -14,7 +14,7 @@ const json = (body: unknown, status = 200) =>
 
 const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const BUCKET = "flow-board";
-const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files", finance: "flow_board_finance" };
+const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files", finance: "flow_board_finance", crm: "flow_board_crm" };
 
 async function sha256(s: string) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
@@ -120,14 +120,15 @@ Deno.serve(async (req) => {
   try {
     switch (action) {
       case "load": {
-        const [t, f, m, fin] = await Promise.all([
+        const [t, f, m, fin, crm] = await Promise.all([
           db.from("flow_board_tasks").select("id,data").eq("board_id", board),
           db.from("flow_board_files").select("id,data").eq("board_id", board),
           db.from("flow_board_meta").select("data").eq("board_id", board).maybeSingle(),
           db.from("flow_board_finance").select("id,data").eq("board_id", board),
+          db.from("flow_board_crm").select("id,data").eq("board_id", board),
         ]);
         if (t.error || f.error || fin.error) throw t.error || f.error || fin.error;
-        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data });
+        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data, crm: crm.error ? [] : crm.data });
       }
       case "upsert": {
         const table = TABLES[body.table];
@@ -168,6 +169,18 @@ Deno.serve(async (req) => {
       case "remove": {
         if (typeof body.path !== "string" || !body.path.startsWith(prefix)) return json({ error: "denied" }, 403);
         const r = await db.storage.from(BUCKET).remove([body.path]);
+        if (r.error) throw r.error;
+        return json({ ok: true });
+      }
+      case "umfrage": {
+        // Wunschkundenbefragung (flow-dna/umfrage/) – nur fürs Board, nie öffentlich lesbar
+        const r = await db.from("flow_umfrage").select("id,created_at,status,antworten").order("created_at", { ascending: false }).limit(300);
+        if (r.error) throw r.error;
+        return json({ rows: r.data });
+      }
+      case "umfrage_status": {
+        if (typeof body.id !== "number" || !["neu", "gemeldet", "ausgewertet"].includes(body.status)) return json({ error: "bad_request" }, 400);
+        const r = await db.from("flow_umfrage").update({ status: body.status }).eq("id", body.id);
         if (r.error) throw r.error;
         return json({ ok: true });
       }

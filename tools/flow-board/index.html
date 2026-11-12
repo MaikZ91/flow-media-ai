@@ -179,6 +179,21 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .finnote > p { grid-column: 1 / -1 }
 @media (max-width: 900px) { .kpis.five { grid-template-columns: repeat(2, minmax(0, 1fr)) } .finnote { grid-template-columns: minmax(0, 1fr) } [style*="span 2"] { grid-column: auto !important } }
 .stats { flex: 1; align-self: stretch; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 0 }
+.crm-cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 12px }
+.crm-col h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted) } .crm-col h3 span { font-weight: 400 }
+.crm-card { background: var(--list, #f1f1ee); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden }
+.crm-card.on { background: var(--card); border-color: #2F5BFF } .crm-card.sel { outline: 2px solid #2F5BFF } .crm-edit { margin-top: 14px }
+.crm-head { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; text-align: left; background: none; border: 0; padding: 10px 12px; cursor: pointer; font: inherit; color: inherit }
+.crm-src { display: flex; flex-wrap: wrap; gap: 4px } .crm-src i { font-style: normal; font-size: 11px; padding: 1px 7px; border-radius: 99px; border: 1px solid var(--line) } .crm-src i.u { background: #2F5BFF; color: #fff; border-color: #2F5BFF }
+.crm-sub { font-size: 12px; color: var(--muted) } .crm-next { font-size: 12px; font-weight: 600 }
+.crm-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px 12px } .crm-form label { display: grid; gap: 4px; font-size: 12px; font-weight: 600; color: var(--muted) } .crm-form .w, .crm-form fieldset, .crm-form .crm-act, .crm-form .crm-umf { grid-column: 1 / -1 }
+.crm-form input, .crm-form select, .crm-form textarea { font: inherit; font-size: 14px; color: var(--text, inherit); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card) } .crm-form textarea { min-height: 110px }
+.crm-q { border: 1px solid var(--line); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 10px } .crm-q legend { font-size: 12px; font-weight: 600; color: var(--muted) } .crm-q .chk { display: flex; align-items: center; gap: 6px; font-weight: 400; color: inherit }
+.crm-act { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 4px 0 }
+.crm-umf { padding: 0 12px 12px } .crm-umf h4 { margin: 8px 0; font-size: 13px }
+.umf-dl { margin: 0; display: grid; gap: 2px } .umf-dl dt { font-size: 12px; font-weight: 600; color: var(--muted); margin-top: 8px } .umf-dl dd { margin: 0; white-space: pre-wrap; font-size: 14px }
+.crm-ans { display: grid; gap: 8px; margin-top: 10px }
+@media (max-width: 900px) { .crm-cols { grid-template-columns: 1fr } .crm-form { grid-template-columns: 1fr } }
 .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px }
 .kpi { background: var(--card); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px; min-width: 0 }
 .kpi .kl { font-size: 12.5px; color: var(--muted); font-weight: 500 }
@@ -447,6 +462,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; 
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
   <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
+  <button class="bbtn" data-view="crm" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg><span class="hide-sm">Kontakte</span></button>
   <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
   </nav>
   <button class="bbtn plain" id="btn-menu"><svg class="i" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span class="hide-sm">Menü anzeigen</span></button>
@@ -629,8 +645,8 @@ function applyBackground() {
 
 /* ---------- persistence ---------- */
 const LS = DEMO ? "flow-board-demo" : "flow-board-v2";
-function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; fin = d.fin || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
-function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, fin, meta })) } catch {} }
+function lsLoad() { try { const d = JSON.parse(localStorage.getItem(LS) || "{}"); tasks = d.tasks || []; fin = d.fin || []; crm = d.crm || []; meta = { ...meta, ...(d.meta || {}) } } catch {} }
+function lsSave() { try { localStorage.setItem(LS, JSON.stringify({ tasks, fin, crm, meta })) } catch {} }
 function writeErr(e) {
   if (e?.code === "invalid_argument") { readOnly = true; toast("Du kannst dieses Board nur ansehen.") }
   else if (e?.code === "quota_exceeded") toast("Speicher voll – lösche erledigte Karten.");
@@ -880,7 +896,7 @@ function render() {
   const same = main.dataset.shown === view;
   const scrolls = same ? [...main.querySelectorAll(KEEP_SCROLL)].map(c => c.scrollTop) : [];
   const fields = !same ? [] : [...main.querySelectorAll("form[data-fin-form] [name], form[data-inv-profile] [name]")].map(f => [fieldKey(f), f.type === "checkbox" ? f.checked : f.value]);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : view === "crm" ? renderCrm() : renderCal();
   main.dataset.shown = view;
   main.scrollLeft = sx;
   main.querySelectorAll(KEEP_SCROLL).forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
@@ -1575,6 +1591,93 @@ document.addEventListener("mouseover", e => {
 });
 document.addEventListener("mouseleave", e => { if (e.target.classList?.contains("chart")) e.target.querySelector(".tip").hidden = true }, true);
 
+/* ---------- Kontakte (CRM): Leads aus Workshops, Community, Erstgesprächen + Antworten der Wunschkundenbefragung ---------- */
+let crm = [], crmCol = null;
+const CRM_STAGES = [["lead", "Lead"], ["gespraech", "Im Gespräch"], ["test", "Testkunde"], ["kunde", "Kunde"], ["ruhend", "Ruhend"]];
+const CRM_SRC = ["Workshop", "Community", "Erstgespräch", "Umfrage", "Coaching", "Empfehlung", "Instagram"];
+const crmUi = { open: null, stage: "alle" };
+const umf = { rows: [], loaded: false, loading: false, error: "", open: null };
+const UMF_Q = [["q1_name", "1 · Wie heißt du?"], ["q2_alter", "2 · Wie alt bist du?"], ["q3_beruf", "3 · Was machst du beruflich bzw. in welchem Bereich bist du tätig?"], ["q4_situation", "4 · Wo stehst du aktuell beruflich?"], ["q4_situation_sonstiges", "4 · Sonstiges"], ["q5_ki_nutzung", "5 · Wie nutzt du KI aktuell?"], ["q5_ki_nutzung_sonstiges", "5 · Sonstiges"], ["q6_sicherheit", "6 · Wie sicher fühlst du dich im Umgang mit KI? (1–10)"], ["q7_idee", "7 · Konkrete Idee oder Aufgabe, bei der du KI einsetzen würdest"], ["q8_herausforderungen", "8 · Größte Herausforderungen oder Probleme"], ["q9_stoert", "9 · Was stört dich daran besonders oder fällt dir schwer?"], ["q10_groesstes_problem", "10 · Welches Problem ist aktuell das größte – und warum?"], ["q11_auswirkungen", "11 · Auswirkungen auf Alltag, Zeit oder Business"], ["q12_bereit_veraendern", "12 · Bereit, aktiv etwas zu verändern?"], ["q13_unternommen", "13 · Was hast du bisher unternommen?"], ["q14_wunsch", "14 · Was wünschst du dir in Bezug auf KI am meisten?"], ["q15_ziel", "15 · Was möchtest du konkret erreichen oder verändern?"], ["q16_abgehalten", "16 · Was hat dich bisher davon abgehalten?"], ["q17_investieren", "17 · Bereit, Zeit oder Geld zu investieren?"], ["q18_unterstuetzung", "18 · Wobei konkret Unterstützung?"], ["q18_unterstuetzung_sonstiges", "18 · Sonstiges"], ["q19_mehrwert", "19 · Größter Mehrwert, den Flow Media AI bieten könnte"], ["q20_testkunde", "20 · Interesse, als Testkunde mitzumachen?"], ["q21_email", "21 · E-Mail"], ["q21_telefon", "21 · Telefon / WhatsApp"], ["q21_instagram", "21 · Instagram"]];
+async function loadUmfrage() {
+  if (!WEB) return;
+  umf.loading = true; umf.error = ""; if (view === "crm") render();
+  try { const j = await api("umfrage"); umf.rows = j.rows || []; umf.loaded = true }
+  catch { umf.error = "Die Umfrage-Antworten konnten nicht geladen werden." }
+  umf.loading = false; if (view === "crm" && !$("#layer").innerHTML) render();
+}
+async function saveCrm(c) {
+  c.updatedAt = Date.now();
+  const i = crm.findIndex(x => x.id === c.id); if (i >= 0) crm[i] = c; else crm.push(c);
+  render();
+  if (!crmCol) return lsSave();
+  const { id, ...body } = c;
+  try { await crmCol.doc(id).set(body) } catch (err) { writeErr(err) }
+}
+async function removeCrm(id) {
+  const c = crm.find(x => x.id === id); crm = crm.filter(x => x.id !== id); crmUi.open = null; render();
+  if (crmCol) { try { await crmCol.doc(id).delete() } catch (err) { writeErr(err) } } else lsSave();
+  if (c) toast(`„${c.name}“ gelöscht`, { label: "Rückgängig", fn: () => saveCrm(c) });
+}
+const umfVal = v => Array.isArray(v) ? v.join(" · ") : String(v);
+function umfDetail(r) {
+  const a = r.antworten || {};
+  return `<dl class="umf-dl">${UMF_Q.filter(([k]) => a[k] !== undefined && a[k] !== "").map(([k, q]) => `<dt>${esc(q)}</dt><dd>${esc(umfVal(a[k]))}</dd>`).join("")}</dl>`;
+}
+function crmCard(c, full = false) {
+  const open = crmUi.open === c.id, dis = readOnly ? "disabled" : "";
+  const u = c.umfrageId ? umf.rows.find(r => String(r.id) === String(c.umfrageId)) : null;
+  const head = `<button type="button" class="crm-head" data-crm-open="${c.id}"><b>${esc(c.name)}</b><span class="crm-src">${(c.quellen || []).map(q => `<i>${esc(q)}</i>`).join("")}${c.umfrageId ? `<i class="u">Umfrage</i>` : ""}</span><span class="crm-sub">${esc(c.kurz || "")}</span>${c.next ? `<span class="crm-next">→ ${esc(c.next)}</span>` : ""}</button>`;
+  if (!full) return `<div class="crm-card ${open ? "sel" : ""}">${head}</div>`;
+  return `<div class="crm-card on">${head}<form class="crm-form" data-crm-form="${c.id}">
+    <label>Name<input name="name" value="${esc(c.name)}" ${dis} required maxlength="80"></label>
+    <label>Status<select name="stage" ${dis}>${CRM_STAGES.map(([k, n]) => `<option value="${k}" ${c.stage === k ? "selected" : ""}>${n}</option>`).join("")}</select></label>
+    <fieldset class="crm-q"><legend>Woher</legend>${CRM_SRC.map(q => `<label class="chk"><input type="checkbox" name="quellen" value="${q}" ${(c.quellen || []).includes(q) ? "checked" : ""} ${dis}>${q}</label>`).join("")}</fieldset>
+    <label class="w">Kurz (Bereich, Idee)<input name="kurz" value="${esc(c.kurz || "")}" ${dis} maxlength="160"></label>
+    <label class="w">Notizen<textarea name="notes" ${dis} maxlength="6000">${esc(c.notes || "")}</textarea></label>
+    <label class="w">Nächster Schritt<input name="next" value="${esc(c.next || "")}" ${dis} maxlength="160" placeholder="z. B. Nachgespräch anbieten"></label>
+    <label class="w">Kontakt<input name="kontakt" value="${esc(c.kontakt || "")}" ${dis} maxlength="200" placeholder="Telefon, E-Mail, Instagram"></label>
+    ${readOnly ? "" : `<div class="crm-act"><button class="btn" type="submit">Speichern</button><button type="button" class="mini" data-crm-del="${c.id}">Löschen</button></div>`}
+    ${u ? `<div class="crm-umf"><h4>Antworten aus der Umfrage · ${new Date(u.created_at).toLocaleDateString("de-DE")}</h4>${umfDetail(u)}</div>` : c.umfrageId && umf.loading ? `<p class="sub">Lade Umfrage-Antworten …</p>` : ""}
+  </form></div>`;
+}
+function renderCrm() {
+  const list = crm.slice().sort((a, b) => (a.name || "").localeCompare(b.name || "", "de"));
+  const cols = CRM_STAGES.map(([k, n]) => { const items = list.filter(c => (c.stage || "lead") === k);
+    return `<div class="crm-col"><h3>${n} <span>${items.length}</span></h3>${items.map(crmCard).join("") || `<p class="sub">–</p>`}</div>` }).join("");
+  const linked = new Set(crm.map(c => String(c.umfrageId || "")));
+  const ans = umf.rows.map(r => { const a = r.antworten || {}, open = umf.open === r.id, has = linked.has(String(r.id));
+    return `<div class="crm-card ${open ? "on" : ""}"><button type="button" class="crm-head" data-umf-open="${r.id}"><b>${esc(a.q1_name || "Ohne Namen")}</b><span class="crm-src">${r.status === "neu" ? `<i class="u">neu</i>` : ""}${has ? `<i>im CRM</i>` : ""}</span><span class="crm-sub">${esc(a.q4_situation || "")} · KI ${esc(a.q6_sicherheit || "–")}/10 · ${new Date(r.created_at).toLocaleDateString("de-DE")}</span></button>
+      ${open ? `<div class="crm-umf">${umfDetail(r)}${readOnly ? "" : `<div class="crm-act">${has ? "" : `<button type="button" class="btn" data-umf-crm="${r.id}">Als Kontakt anlegen</button>`}${r.status !== "ausgewertet" ? `<button type="button" class="mini" data-umf-done="${r.id}">Als ausgewertet markieren</button>` : `<span class="sub">ausgewertet</span>`}</div>`}</div>` : ""}</div>` }).join("");
+  const umfBody = !WEB ? `<div class="note">Die Umfrage-Antworten gibt es in der Web-Version deines Boards.</div>` : umf.error ? `<div class="note">${esc(umf.error)} <button type="button" class="mini" data-umf-reload>Erneut laden</button></div>` : umf.loading && !umf.loaded ? `<p class="sub">Lade Antworten …</p>` : ans || `<p class="sub">Noch keine Antworten.</p>`;
+  return `<section class="panel stats crm">
+    <div class="cal-head"><h2 style="margin:0">Kontakte</h2><span class="sub">${crm.length} Kontakte · ${umf.rows.length} Umfrage-Antworten</span>${readOnly ? "" : `<button type="button" class="mini" data-crm-new>+ Kontakt</button>`}<a class="mini" href="https://maikz91.github.io/flow-media-ai/flow-dna/umfrage/" target="_blank" rel="noopener">Umfrage öffnen</a></div>
+    <div class="crm-cols">${cols}</div>
+    ${crmUi.open && crm.find(c => c.id === crmUi.open) ? `<div class="crm-edit">${crmCard(crm.find(c => c.id === crmUi.open), true)}</div>` : ""}
+    <div class="cal-head" style="margin-top:22px"><h2 style="margin:0">Wunschkundenbefragung</h2><button type="button" class="mini" data-umf-reload>Aktualisieren</button></div>
+    <div class="crm-ans">${umfBody}</div>
+  </section>`;
+}
+document.addEventListener("click", e => {
+  const t = e.target; if (view !== "crm") return;
+  const o = t.closest("[data-crm-open]"); if (o) { crmUi.open = crmUi.open === o.dataset.crmOpen ? null : o.dataset.crmOpen; render(); return }
+  const uo = t.closest("[data-umf-open]"); if (uo) { const id = Number(uo.dataset.umfOpen); umf.open = umf.open === id ? null : id; render(); return }
+  if (t.closest("[data-umf-reload]")) { loadUmfrage(); return }
+  if (t.closest("[data-crm-new]")) { const c = { id: newId(), name: "Neuer Kontakt", stage: "lead", quellen: [], createdAt: Date.now() }; crmUi.open = c.id; saveCrm(c); return }
+  const d = t.closest("[data-crm-del]"); if (d) { removeCrm(d.dataset.crmDel); return }
+  const uc = t.closest("[data-umf-crm]"); if (uc) { const r = umf.rows.find(x => String(x.id) === uc.dataset.umfCrm); if (!r) return; const a = r.antworten || {};
+    const kontakt = [a.q21_telefon, a.q21_email, a.q21_instagram && "@" + String(a.q21_instagram).replace(/^@/, "")].filter(Boolean).join(" · ");
+    const c = { id: newId(), name: a.q1_name || "Umfrage #" + r.id, stage: a.q20_testkunde?.startsWith("Ja") ? "gespraech" : "lead", quellen: ["Umfrage"], kurz: [a.q3_beruf, a.q7_idee].filter(Boolean).join(" · ").slice(0, 160), kontakt, umfrageId: r.id, next: a.q20_testkunde?.startsWith("Ja") ? "Nachgespräch / Testkunde anbieten" : "", createdAt: Date.now() };
+    crmUi.open = c.id; view = "crm"; saveCrm(c); return }
+  const ud = t.closest("[data-umf-done]"); if (ud) { const id = Number(ud.dataset.umfDone); api("umfrage_status", { id, status: "ausgewertet" }).then(() => { const r = umf.rows.find(x => x.id === id); if (r) r.status = "ausgewertet"; render() }).catch(writeErr); return }
+});
+document.addEventListener("submit", e => {
+  const f = e.target.closest("[data-crm-form]"); if (!f) return; e.preventDefault();
+  const c = crm.find(x => x.id === f.dataset.crmForm); if (!c) return;
+  const fd = new FormData(f);
+  saveCrm({ ...c, name: fd.get("name").trim() || c.name, stage: fd.get("stage"), quellen: fd.getAll("quellen"), kurz: fd.get("kurz").trim(), notes: fd.get("notes").trim(), next: fd.get("next").trim(), kontakt: fd.get("kontakt").trim() });
+  toast("Gespeichert");
+});
+
 /* ---------- card detail ---------- */
 function openCard(t, isNew = false) {
   const col = COLS.find(c => c.id === t.status);
@@ -1729,7 +1832,7 @@ document.addEventListener("click", e => {
   const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
   if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
   if (tgt.closest("#layer")) return;
-  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); return }
+  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); if (view === "crm" && !umf.loaded && !umf.loading) loadUmfrage(); return }
   if (tgt.closest("#btn-menu")) { openMenu(tgt.closest("#btn-menu")); return }
   if (tgt.closest("#btn-star")) { if (!readOnly) saveMeta({ starred: !meta.starred }); return }
   if (tgt.closest("#board-title") && !readOnly) {
@@ -2015,7 +2118,7 @@ async function loadCalendly() {
 }
 async function reloadBoard() {
   const j = await api("load");
-  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask); fin = (j.finance || []).map(rowToTask);
+  tasks = j.tasks.map(rowToTask); files = j.files.map(rowToTask); fin = (j.finance || []).map(rowToTask); crm = (j.crm || []).map(rowToTask);
   if (j.meta) meta = { ...meta, ...j.meta };
   loaded = true; applyBackground();
   if (editingMain()) { deferredRender = true; renderBar() }
@@ -2037,7 +2140,7 @@ async function startBoard() {
     set: data => api("upsert", { table: name, id, data }).then(ping),
     delete: () => api("delete", { table: name, id }).then(ping),
   }) });
-  tasksCol = table("tasks"); filesCol = table("files"); finCol = table("finance");
+  tasksCol = table("tasks"); filesCol = table("files"); finCol = table("finance"); crmCol = table("crm");
   metaDoc = { set: data => api("meta", { data }).then(ping) };
   assetsApi = {
     upload: async (f, { type }) => {
