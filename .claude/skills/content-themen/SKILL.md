@@ -81,11 +81,13 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Do 12.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
 | Fr 13.11. 18–20 Uhr | R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
 | Sa 14.11. 11–13 / 18–20 Uhr | P011 Karussell „Mein Weg“ · R032 Reel „Mein Weg“ (falls noch nicht gepostet) | Weg/Personal |
+| Fr 13.11. – So 15.11. 18–20 Uhr | **R041 Workshop „Von deiner KI-Idee zum digitalen Produkt“** (Mo 16.11., 18–19 Uhr, 69 € – Preis nur in Caption/Link, nicht im Reel) · Story „Heute 18 Uhr“ am Mo 16.11. morgens | Idee + Connect, Workshop-Promo |
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 12.11.2026 | R041 | `build` · Problem `idee` | Reel 25 s | Workshop „Von deiner KI-Idee zum digitalen Produkt“ (Mo 16.11.) – Uhr läuft 60:00 → 00:00 durch F·L·O·W, Preis nur in der Caption | `format = countdown-uhr` |
 | 11.11.2026 | R040 | `lernen` · Problem `anschluss` | Reel 24 s | Das Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ – 20 Tutorials, nichts gebaut → ein Anfang: 25 kurze Kapitel; Leseprobe kostenlos | `hook = problem-zuerst` |
 | 11.11.2026 | P014 | `build` / `tools` | Einzelpost | „Was ich kann, kannst du auch.“ – 9 Kurse in einer Session + Skill Videokurs Builder in einem Post | `hook = was-ich-kann` |
 | 11.11.2026 | R039 | `build` / `lernen` | Reel 25 s | „9 Online-Kurse. 1 Session.“ – 9 Kurse, 60 Lektionen, 69 Videos mit Claude Fable 5.2 gebaut; echte Ausschnitte + Kurse-Tab der App | `format = build-in-public-zahlen` |
