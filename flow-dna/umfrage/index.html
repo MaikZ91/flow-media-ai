@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wunschkundenbefragung – KI & digitale Ideen · Flow Media AI</title>
+<meta name="description" content="Hilf mir zu verstehen, wie ich dich dabei unterstützen kann, deine Ideen mit KI selbst umzusetzen. 7–10 Minuten.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B0B0B;--paper:#F4F4F1;--blue:#2F5BFF;--line:rgba(11,11,11,.16);--mut:#5a5a5a;--err:#C0392B}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,sans-serif}
+.w{max-width:680px;margin:0 auto;padding:0 18px}
+header{background:var(--ink);color:#fff;padding:26px 0 30px}
+header img{width:118px;display:block;margin-bottom:24px}
+.k{font:600 12px Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+header .k{color:#8fa6ff}
+h1{font:700 clamp(38px,9.5vw,60px)/.95 Oswald,sans-serif;text-transform:uppercase;margin:10px 0 14px}h1 span{color:var(--blue)}
+header p{margin:0;color:#d8d8d8}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.meta span{border:1px solid #555;padding:4px 10px;font:600 13px Inter;color:#eee}
+.prog{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:2px solid var(--ink)}
+.prog .w{display:flex;align-items:center;gap:12px;padding:10px 18px}
+.prog .bar{flex:1;height:8px;background:#ddd}.prog .bar i{display:block;height:100%;background:var(--blue);width:0;transition:width .3s}
+.prog b{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+section.sec{display:none;padding:28px 0 10px}section.sec.on{display:block}
+h2{font:700 clamp(30px,7vw,42px)/1 Oswald,sans-serif;text-transform:uppercase;margin:6px 0 12px}h2 span{color:var(--blue)}
+.intro{color:#333;margin:0 0 18px}
+.q{background:#fff;border:2px solid var(--ink);padding:16px;margin:0 0 14px}
+.q.bad{border-color:var(--err)}
+.q>label,.q>.lbl{display:block;font:600 17px/1.35 Inter;margin-bottom:10px}
+.q .nr{font:700 15px Oswald;color:var(--blue);margin-right:6px}
+.q .opt{font-weight:400;color:var(--mut);font-size:14px}
+.q .hint{display:block;font-weight:400;color:var(--mut);font-size:14px;margin-top:3px}
+input[type=text],input[type=email],input[type=tel],textarea,select{width:100%;font:16px Inter,sans-serif;padding:11px 12px;border:1.5px solid #bbb;background:#fafaf8;color:var(--ink);border-radius:0}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--ink)}
+.ch{display:grid;gap:8px}
+.ch label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1.5px solid #ccc;cursor:pointer;font-size:15px;line-height:1.35;background:#fafaf8}
+.ch label:has(input:checked){border-color:var(--blue);background:#eef2ff}
+.ch input[type=radio],.ch input[type=checkbox]{margin:2px 0 0;width:18px;height:18px;accent-color:var(--blue);flex:none}
+.ch .other{margin-top:6px;display:none}.ch .other.on{display:block}
+.scale{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.scale label{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.scale input{position:absolute;opacity:0;pointer-events:none}
+.scale span{display:block;width:100%;text-align:center;padding:10px 0;border:1.5px solid #ccc;font:700 17px Oswald;background:#fafaf8}
+.scale input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff}
+.scale input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.sl{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-top:6px}
+.err{display:none;color:var(--err);font-size:14px;margin-top:8px}.q.bad .err{display:block}
+.priv{font-size:14px;color:#333;border-left:4px solid var(--blue);background:#fff;padding:12px 14px;margin:16px 0}
+.nav{display:flex;gap:10px;margin:20px 0 34px}
+.btn{flex:1;font:700 18px Oswald;text-transform:uppercase;letter-spacing:.04em;padding:14px;border:2px solid var(--ink);cursor:pointer;background:#fff;color:var(--ink)}
+.btn.p{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.5;cursor:default}
+.msg{min-height:22px;font-size:14px;color:var(--err);margin-top:-22px;margin-bottom:24px}
+.done{display:none;padding:40px 0 60px}.done.on{display:block}
+.done h2{font-size:clamp(40px,10vw,64px)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+footer{background:var(--ink);color:#aaa;padding:22px 0;font-size:13px}footer a{color:#8fa6ff}
+@media(max-width:420px){.scale{grid-template-columns:repeat(5,1fr)}}
+</style></head><body>
+
+<header><div class="w">
+ <img src="../img/logo_flow.png" alt="Flow Media AI">
+ <div class="k">Flow Media AI · Befragung</div>
+ <h1>Wunschkunden&shy;befragung – <span>KI &amp; digitale Ideen</span></h1>
+ <p>Hilf mir zu verstehen, wie ich dich dabei unterstützen kann, deine Ideen mit KI selbst umzusetzen.</p>
+ <div class="meta"><span>7–10 Minuten</span><span>3 Abschnitte</span><span>Kontaktangaben freiwillig</span></div>
+</div></header>
+
+<div class="prog" aria-hidden="true"><div class="w"><div class="bar"><i id="pbar"></i></div><b id="ptxt">Abschnitt 1 von 3</b></div></div>
+
+<main class="w">
+<form id="f" novalidate>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+<!-- Abschnitt 1 -->
+<section class="sec on" data-s="1">
+ <div class="k">Abschnitt 1 von 3</div>
+ <h2>Über <span>dich</span></h2>
+ <p class="intro">Ich möchte besser verstehen, wie Selbstständige, Gründer:innen und Menschen mit eigenen Ideen KI einsetzen und wo sie Unterstützung brauchen. Es geht nicht um richtige oder falsche Antworten, sondern um deine ehrliche Erfahrung. Vielen Dank, dass du dir ein paar Minuten Zeit nimmst.</p>
+
+ <div class="q"><label for="q1"><span class="nr">1</span>Wie heißt du? <span class="opt">(freiwillig)</span></label><input type="text" id="q1" name="q1_name" maxlength="80" autocomplete="given-name"></div>
+
+ <div class="q"><label for="q2"><span class="nr">2</span>Wie alt bist du? <span class="opt">(freiwillig)</span></label>
+  <select id="q2" name="q2_alter"><option value="">Bitte wählen</option><option>unter 25</option><option>25–34</option><option>35–44</option><option>45–54</option><option>55–64</option><option>65 oder älter</option><option>möchte ich nicht sagen</option></select></div>
+
+ <div class="q" data-req><label for="q3"><span class="nr">3</span>Was machst du beruflich bzw. in welchem Bereich bist du tätig?</label><input type="text" id="q3" name="q3_beruf" maxlength="200"><div class="err">Bitte kurz ausfüllen.</div></div>
+
+ <div class="q" data-req="radio" data-name="q4_situation"><div class="lbl"><span class="nr">4</span>Wo stehst du aktuell beruflich?</div><div class="ch">
+  <label><input type="radio" name="q4_situation" value="Ich habe eine Geschäftsidee und möchte starten">Ich habe eine Geschäftsidee und möchte starten</label>
+  <label><input type="radio" name="q4_situation" value="Ich bin gerade in der Gründung">Ich bin gerade in der Gründung</label>
+  <label><input type="radio" name="q4_situation" value="Ich bin seit Kurzem selbstständig">Ich bin seit Kurzem selbstständig</label>
+  <label><input type="radio" name="q4_situation" value="Ich bin bereits länger selbstständig">Ich bin bereits länger selbstständig</label>
+  <label><input type="radio" name="q4_situation" value="Ich bin angestellt und entwickle eine eigene Idee">Ich bin angestellt und entwickle eine eigene Idee</label>
+  <label><input type="radio" name="q4_situation" value="Sonstiges" data-other>Sonstiges</label><input type="text" class="other" name="q4_situation_sonstiges" maxlength="200" placeholder="Bitte kurz beschreiben">
+ </div><div class="err">Bitte eine Antwort wählen.</div></div>
+
+ <div class="q" data-req="check" data-name="q5_ki_nutzung"><div class="lbl"><span class="nr">5</span>Wie nutzt du KI aktuell? <span class="hint">Mehrere Antworten möglich.</span></div><div class="ch">
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Ich nutze bisher keine KI">Ich nutze bisher keine KI</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="ChatGPT o. ä. gelegentlich im Chat">Ich nutze ChatGPT oder ähnliche Tools gelegentlich im Chat</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Regelmäßig für Texte und Recherche">Ich nutze KI regelmäßig für Texte und Recherche</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Für Content und Marketing">Ich nutze KI für Content und Marketing</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Ich automatisiere bereits Aufgaben und Abläufe">Ich automatisiere bereits Aufgaben und Abläufe</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Eigene KI-Assistenten, Workflows oder digitale Produkte">Ich entwickle eigene KI-Assistenten, Workflows oder digitale Produkte</label>
+  <label><input type="checkbox" name="q5_ki_nutzung" value="Sonstiges" data-other>Sonstiges</label><input type="text" class="other" name="q5_ki_nutzung_sonstiges" maxlength="200" placeholder="Bitte kurz beschreiben">
+ </div><div class="err">Bitte mindestens eine Antwort wählen.</div></div>
+
+ <div class="q" data-req="radio" data-name="q6_sicherheit"><div class="lbl"><span class="nr">6</span>Wie sicher fühlst du dich im Umgang mit KI?</div>
+  <div class="scale"></div><div class="sl"><span>1 = sehr unsicher</span><span>10 = sehr sicher</span></div><div class="err">Bitte einen Wert wählen.</div></div>
+
+ <div class="q" data-req><label for="q7"><span class="nr">7</span>Gibt es eine konkrete Idee oder Aufgabe in deinem Business, bei der du gerne KI einsetzen würdest?</label><textarea id="q7" name="q7_idee" maxlength="3000"></textarea><div class="err">Bitte kurz ausfüllen – auch „noch keine“ ist eine Antwort.</div></div>
+</section>
+
+<!-- Abschnitt 2 -->
+<section class="sec" data-s="2">
+ <div class="k">Abschnitt 2 von 3</div>
+ <h2>Deine Herausforderungen <span>und Wünsche</span></h2>
+ <p class="intro">Jetzt geht es um deine Erfahrungen, Herausforderungen und Wünsche. Je konkreter du antwortest, desto besser kann ich verstehen, was wirklich gebraucht wird.</p>
+
+ <div class="q" data-req><label for="q8"><span class="nr">8</span>Was sind aktuell deine größten Herausforderungen oder Probleme in deinem Business bzw. bei der Umsetzung deiner Ideen?</label><textarea id="q8" name="q8_herausforderungen" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+ <div class="q" data-req><label for="q9"><span class="nr">9</span>Was stört dich daran besonders oder fällt dir schwer?</label><textarea id="q9" name="q9_stoert" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+ <div class="q" data-req><label for="q10"><span class="nr">10</span>Welches dieser Probleme ist für dich aktuell das größte – und warum?</label><textarea id="q10" name="q10_groesstes_problem" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+ <div class="q"><label for="q11"><span class="nr">11</span>Welche Auswirkungen hat diese Herausforderung auf deinen Alltag, deine Zeit oder dein Business? <span class="opt">(freiwillig)</span></label><textarea id="q11" name="q11_auswirkungen" maxlength="3000"></textarea></div>
+
+ <div class="q" data-req="radio" data-name="q12_bereit_veraendern"><div class="lbl"><span class="nr">12</span>Bist du bereit, daran aktiv etwas zu verändern?</div><div class="ch">
+  <label><input type="radio" name="q12_bereit_veraendern" value="Ja">Ja</label>
+  <label><input type="radio" name="q12_bereit_veraendern" value="Nein">Nein</label>
+  <label><input type="radio" name="q12_bereit_veraendern" value="Noch unentschlossen">Ich bin noch unentschlossen</label>
+ </div><div class="err">Bitte eine Antwort wählen.</div></div>
+
+ <div class="q" data-req><label for="q13"><span class="nr">13</span>Was hast du bisher unternommen, um diese Herausforderung zu lösen?</label><textarea id="q13" name="q13_unternommen" maxlength="3000"></textarea><div class="err">Bitte ausfüllen – auch „noch nichts“ ist eine Antwort.</div></div>
+ <div class="q" data-req><label for="q14"><span class="nr">14</span>Was wünschst du dir in Bezug auf KI und die Umsetzung deiner Ideen am meisten?</label><textarea id="q14" name="q14_wunsch" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+ <div class="q" data-req><label for="q15"><span class="nr">15</span>Was möchtest du konkret erreichen oder verändern?</label><textarea id="q15" name="q15_ziel" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+ <div class="q" data-req><label for="q16"><span class="nr">16</span>Was hat dich bisher davon abgehalten, dieses Ziel zu erreichen?</label><textarea id="q16" name="q16_abgehalten" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+</section>
+
+<!-- Abschnitt 3 -->
+<section class="sec" data-s="3">
+ <div class="k">Abschnitt 3 von 3</div>
+ <h2>Unterstützung <span>&amp; Zusammenarbeit</span></h2>
+ <p class="intro">Zum Schluss interessiert mich, welche Unterstützung für dich hilfreich wäre und wie eine Zusammenarbeit aussehen könnte.</p>
+
+ <div class="q" data-req="radio" data-name="q17_investieren"><div class="lbl"><span class="nr">17</span>Wärst du bereit, Zeit oder Geld in eine Lösung zu investieren oder dich dabei von einer Person bzw. einem Unternehmen unterstützen zu lassen?</div><div class="ch">
+  <label><input type="radio" name="q17_investieren" value="Ja">Ja</label>
+  <label><input type="radio" name="q17_investieren" value="Nein">Nein</label>
+  <label><input type="radio" name="q17_investieren" value="Vielleicht – kommt auf die Lösung an">Vielleicht – kommt auf die Lösung an</label>
+ </div><div class="err">Bitte eine Antwort wählen.</div></div>
+
+ <div class="q" id="q18box" data-name="q18_unterstuetzung"><div class="lbl"><span class="nr">18</span>Wenn ja oder vielleicht: Wobei würdest du dir konkret Unterstützung wünschen? <span class="hint">Mehrere Antworten möglich.</span></div><div class="ch">
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Persönliche 1:1-Beratung zu KI">Persönliche 1:1-Beratung zu KI</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="KI verständlich lernen und selbst anwenden">KI verständlich lernen und selbst anwenden</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Eigene App oder Web-Anwendung entwickeln">Eine eigene App oder Web-Anwendung entwickeln</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Website oder Landingpage erstellen">Eine Website oder Landingpage erstellen</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Aufgaben und Prozesse automatisieren">Wiederkehrende Aufgaben und Prozesse automatisieren</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Content, Videoschnitt, Social Media vereinfachen">Content-Erstellung, Videoschnitt oder Social Media vereinfachen</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Eigene KI-Assistenten, Skills, Workflows">Eigene KI-Assistenten, Skills oder Workflows aufbauen</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Digitales Produkt entwickeln">Ein digitales Produkt entwickeln</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Technische Begleitung und Support">Individuelle technische Begleitung und Support</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Weiß noch nicht, was möglich ist">Ich weiß noch nicht genau, was möglich ist</label>
+  <label><input type="checkbox" name="q18_unterstuetzung" value="Sonstiges" data-other>Sonstiges</label><input type="text" class="other" name="q18_unterstuetzung_sonstiges" maxlength="200" placeholder="Bitte kurz beschreiben">
+ </div><div class="err">Bitte mindestens eine Antwort wählen.</div></div>
+
+ <div class="q" data-req><label for="q19"><span class="nr">19</span>Was wäre für dich der größte Mehrwert, den Flow Media AI dir bieten könnte?</label><textarea id="q19" name="q19_mehrwert" maxlength="3000"></textarea><div class="err">Bitte ausfüllen.</div></div>
+
+ <div class="q" data-req="radio" data-name="q20_testkunde"><div class="lbl"><span class="nr">20</span>Ich werde in nächster Zeit mit 2–3 Personen ausgewählte Ideen oder Herausforderungen gemeinsam praktisch bearbeiten. Dabei entwickeln wir einen ersten konkreten Lösungsansatz. Wäre das grundsätzlich interessant für dich?</div><div class="ch">
+  <label><input type="radio" name="q20_testkunde" value="Ja, das klingt interessant">Ja, das klingt interessant</label>
+  <label><input type="radio" name="q20_testkunde" value="Vielleicht – mehr erfahren">Vielleicht – ich würde gerne mehr erfahren</label>
+  <label><input type="radio" name="q20_testkunde" value="Nein, aktuell nicht">Nein, aktuell nicht</label>
+ </div><div class="err">Bitte eine Antwort wählen.</div></div>
+
+ <div class="q"><div class="lbl"><span class="nr">21</span>Wie kann ich dich für Rückfragen am besten erreichen? <span class="opt">(freiwillig)</span><span class="hint">Deine Kontaktdaten nutze ich nur für Rückfragen zu dieser Befragung bzw. eine mögliche Testzusammenarbeit.</span></div>
+  <div class="ch" style="gap:10px">
+   <input type="email" name="q21_email" maxlength="120" placeholder="E-Mail" autocomplete="email" aria-label="E-Mail">
+   <input type="tel" name="q21_telefon" maxlength="40" placeholder="Telefon / WhatsApp" autocomplete="tel" aria-label="Telefon oder WhatsApp">
+   <input type="text" name="q21_instagram" maxlength="60" placeholder="Instagram-Name" aria-label="Instagram-Name">
+  </div></div>
+
+ <div class="priv"><b>Datenschutz in Kürze:</b> Diese Befragung dient dazu, die Bedürfnisse meiner Zielgruppe besser zu verstehen. Ich frage nur ab, was ich dafür brauche. Name, Alter und Kontaktdaten sind freiwillig. Deine Antworten nutze ich zur Auswertung und – nur wenn du Kontaktdaten angibst – für Rückfragen oder eine mögliche Zusammenarbeit. Antworten werden nicht veröffentlicht. Mehr dazu in der <a href="../../marketing/landing-page/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</div>
+</section>
+
+<div class="nav"><button type="button" class="btn" id="back" hidden>← Zurück</button><button type="button" class="btn p" id="next">Weiter →</button></div>
+<p class="msg" id="msg" role="alert"></p>
+</form>
+
+<section class="done" id="done">
+ <div class="k">Gesendet</div>
+ <h2>Danke <span>dir!</span></h2>
+ <p>Deine Antworten sind angekommen. Sie helfen mir sehr, Flow Media AI so aufzubauen, dass es Menschen wie dir wirklich weiterhilft. Wenn du Kontaktdaten angegeben hast, melde ich mich, falls ich eine Rückfrage habe.</p>
+ <p style="margin-top:18px"><a class="btn p" style="display:inline-block;text-decoration:none;flex:none;padding:14px 20px" href="../">Zur Flow-DNA-App →</a></p>
+</section>
+</main>
+
+<footer><div class="w">Flow Media AI · Maik Zschach · <a href="../../marketing/landing-page/impressum.html">Impressum</a> · <a href="../../marketing/landing-page/datenschutz.html">Datenschutz</a></div></footer>
+
+<script>
+const SB="https://ykleosfvtqcmqxqihnod.supabase.co",SBK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbGVvc2Z2dHFjbXF4cWlobm9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA5MzQ0NjIsImV4cCI6MjA1NjUxMDQ2Mn0.70wsZ-c7poYFnbTyXbKrG0b6YPSe-BonMN6kjZ2a2Wo";
+// Skala 1–10 einsetzen
+document.querySelector(".scale").innerHTML=[...Array(10)].map((_,i)=>`<label><input type="radio" name="q6_sicherheit" value="${i+1}"><span>${i+1}</span></label>`).join("");
+const f=document.getElementById("f"),secs=[...document.querySelectorAll("section.sec")],next=document.getElementById("next"),back=document.getElementById("back"),msg=document.getElementById("msg");
+let cur=0;
+function show(i){secs.forEach((s,j)=>s.classList.toggle("on",j===i));cur=i;back.hidden=i===0;next.textContent=i===secs.length-1?"Absenden":"Weiter →";
+ document.getElementById("pbar").style.width=((i+1)/secs.length*100)+"%";document.getElementById("ptxt").textContent=`Abschnitt ${i+1} von ${secs.length}`;msg.textContent="";scrollTo({top:0,behavior:"smooth"})}
+// "Sonstiges"-Felder ein-/ausblenden
+f.addEventListener("change",e=>{const box=e.target.closest(".ch");if(box){const o=box.querySelector("[data-other]"),t=box.querySelector(".other");if(o&&t){t.classList.toggle("on",o.checked);}}const q=e.target.closest(".q");if(q)q.classList.remove("bad");
+ if(e.target.name==="q17_investieren"){document.getElementById("q18box").style.display=e.target.value==="Nein"?"none":""}});
+f.addEventListener("input",e=>{const q=e.target.closest(".q");if(q)q.classList.remove("bad")});
+function valid(sec){let ok=true,first=null;
+ sec.querySelectorAll(".q[data-req]").forEach(q=>{const t=q.dataset.req;let good;
+  if(t==="radio"||t==="check")good=!!q.querySelector(`input[name="${q.dataset.name}"]:checked`);
+  else{const el=q.querySelector("input,textarea");good=el.value.trim().length>0}
+  q.classList.toggle("bad",!good);if(!good){ok=false;first=first||q}});
+ const q18=document.getElementById("q18box");if(sec.contains(q18)&&q18.style.display!=="none"){const v=f.querySelector('input[name="q17_investieren"]:checked');const need=v&&v.value!=="Nein";const good=!need||!!q18.querySelector("input:checked");q18.classList.toggle("bad",!good);if(!good){ok=false;first=first||q18}}
+ if(first)first.scrollIntoView({behavior:"smooth",block:"center"});return ok}
+function collect(){const a={};const fd=new FormData(f);
+ for(const [k,v] of fd.entries()){if(k==="website")continue;const s=String(v).trim();if(!s)continue;if(k==="q5_ki_nutzung"||k==="q18_unterstuetzung"){(a[k]=a[k]||[]).push(s)}else a[k]=s}
+ if(a.q6_sicherheit)a.q6_sicherheit=+a.q6_sicherheit;if(a.q17_investieren==="Nein")delete a.q18_unterstuetzung;return a}
+next.addEventListener("click",async()=>{if(!valid(secs[cur])){msg.textContent="Bitte die markierten Fragen beantworten.";return}
+ if(cur<secs.length-1){show(cur+1);return}
+ if(f.website.value)return;
+ next.disabled=true;next.textContent="Sende …";msg.textContent="";
+ try{const r=await fetch(SB+"/rest/v1/flow_umfrage",{method:"POST",headers:{"content-type":"application/json",apikey:SBK,Authorization:"Bearer "+SBK,Prefer:"return=minimal"},body:JSON.stringify({umfrage:"wunschkunden-2026-11",antworten:collect()})});
+  if(!r.ok)throw new Error(r.status);
+  f.style.display="none";document.querySelector(".prog").style.display="none";document.getElementById("done").classList.add("on");scrollTo({top:0});
+  try{localStorage.removeItem("flow-umfrage-entwurf")}catch(e){}
+ }catch(err){msg.textContent="Das Senden hat nicht geklappt. Bitte prüf deine Verbindung und versuch es nochmal – deine Antworten bleiben erhalten.";next.disabled=false;next.textContent="Absenden"}});
+back.addEventListener("click",()=>show(Math.max(0,cur-1)));
+// Entwurf im Browser merken (falls die Seite versehentlich geschlossen wird)
+const KEY="flow-umfrage-entwurf";
+try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d)for(const [k,v] of Object.entries(d)){const els=f.querySelectorAll(`[name="${k}"]`);els.forEach(el=>{if(el.type==="radio"||el.type==="checkbox")el.checked=[].concat(v).includes(el.value);else el.value=v})}
+ f.querySelectorAll("[data-other]").forEach(o=>{const t=o.closest(".ch").querySelector(".other");if(t)t.classList.toggle("on",o.checked)})}catch(e){}
+f.addEventListener("input",()=>{try{const a={};for(const [k,v] of new FormData(f).entries()){if(k==="website")continue;if(a[k]!==undefined)a[k]=[].concat(a[k],v);else a[k]=v}localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}});
+show(0);
+</script>
+</body></html>
