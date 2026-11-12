@@ -284,7 +284,17 @@ const A=window.FLOW_ANGEBOTE||{workshops:[],angebote:[],support:{faq:[],themen:[
 const fmtDay=d=>d.toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"});
 const fmtTime=d=>d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"});
 function countdown(d){const ms=d-Date.now();if(ms<=0)return"läuft gerade";const h=Math.floor(ms/36e5),dd=Math.floor(h/24);return dd>0?`noch ${dd} Tag${dd>1?"e":""} ${h%24} Std.`:`noch ${h} Std. ${Math.floor(ms/6e4)%60} Min.`}
-function wsBook(w){const d=new Date(w.datum);return DNA.wa(`Hi Maik, ich möchte beim Workshop „${w.titel}“ am ${w.tag}, ${d.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}., um ${fmtTime(d)} Uhr dabei sein (über die Flow-DNA-App).`)}
+// Eventfrog: veröffentlichte Workshops mit #FlowMediaAI in der Beschreibung erscheinen automatisch, mit Buchungslink
+const EF_URL="https://ykleosfvtqcmqxqihnod.supabase.co/functions/v1/flow-dna-events";
+const WD=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+function efMerge(list){(list||[]).forEach(e=>{const d=new Date(e.datum),k=d.toISOString().slice(0,13);
+ const w=A.workshops.find(x=>new Date(x.datum).toISOString().slice(0,13)===k);
+ const end=e.endeISO?fmtTime(new Date(e.endeISO)):"";
+ if(w){w.url=e.url;if(e.preis)w.preis=e.preis}
+ else A.workshops.push({titel:e.titel,tag:WD[d.getDay()],datum:e.datum,ende:end,preis:e.preis||"",format:"Live",text:e.kurz||"",url:e.url})});
+ A.workshops.sort((a,b)=>new Date(a.datum)-new Date(b.datum))}
+fetch(EF_URL).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.events&&j.events.length){efMerge(j.events);if(tab==="angebote"||tab==="community")render()}}).catch(()=>{});
+function wsBook(w){if(w.url)return w.url;const d=new Date(w.datum);return DNA.wa(`Hi Maik, ich möchte beim Workshop „${w.titel}“ am ${w.tag}, ${d.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",timeZone:"Europe/Berlin"})}., um ${fmtTime(d)} Uhr dabei sein (über die Flow-DNA-App).`)}
 function offerBtns(o){const c=o.typ==="calendly"?`<a class="btnx b" href="${A.calendly}" target="_blank" rel="noopener" data-cta="app_${o.id}">${DNA.esc(o.cta)} →</a>`:o.typ==="community"?`<a class="btnx b" href="${communityHref()}" target="_blank" rel="noopener" data-cta="app_${o.id}">${DNA.esc(o.cta)} →</a>`:"";
  const w=o.wa?`<a class="btnx o" href="${DNA.wa(o.wa)}" target="_blank" rel="noopener">Per WhatsApp fragen</a>`:"";return `<div class="btnrow">${c}${w}</div>`}
 function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote · Flow Media AI</span><span>buchen</span>`;
@@ -292,7 +302,7 @@ function angebote(){document.getElementById("meta").innerHTML=`<span>Angebote ·
  const ws=W.length?W.map(w=>{const d=new Date(w.datum);return `<div class="wk"><small>Workshop · ${DNA.esc(w.format)}</small><b>${DNA.esc(w.titel)}</b>
   <div class="when"><span class="d">${fmtDay(d)}</span><span>${fmtTime(d)}–${DNA.esc(w.ende)} Uhr</span><span>${DNA.esc(w.preis)}</span></div>
   <div class="cd">⏱ ${countdown(d)}</div><p>${DNA.esc(w.text)}</p>${w.extra?`<p>🛠️ ${A.supportGruppe?`<a href="${A.supportGruppe}" target="_blank" rel="noopener" style="color:#fff">${DNA.esc(w.extra)}</a>`:DNA.esc(w.extra)}</p>`:""}
-  <div class="btnrow"><a class="btnx b" href="${wsBook(w)}" target="_blank" rel="noopener" data-cta="app_workshop">Platz sichern →</a><a class="btnx o" style="color:#0B0B0B;background:#fff" href="?workshop=website">Website-Skill ansehen</a></div></div>`}).join(""):`<div class="of"><b>Neue Termine folgen</b><p>Workshops laufen live, meist montags um 18 Uhr. In der Workshop-Gruppe verpasst du keinen Termin.</p></div>`;
+  <div class="btnrow"><a class="btnx b" href="${wsBook(w)}" target="_blank" rel="noopener" data-cta="app_workshop">${w.url?"Jetzt buchen →":"Platz sichern →"}</a>${/website/i.test(w.titel)?`<a class="btnx o" style="color:#0B0B0B;background:#fff" href="?workshop=website">Website-Skill ansehen</a>`:""}</div>${w.url?`<p style="font-size:12px;opacity:.75;margin:8px 0 0">Buchung über Eventfrog · Rabattcode? Einfach beim Buchen eingeben.</p>`:""}</div>`}).join(""):`<div class="of"><b>Neue Termine folgen</b><p>Workshops laufen live, meist montags um 18 Uhr. In der Workshop-Gruppe verpasst du keinen Termin.</p></div>`;
  const of=A.angebote.map(o=>`<div class="of"><div class="top"><i>${o.nr}</i><em>${DNA.esc(o.art)}</em></div><b>${DNA.esc(o.name)}</b><p>${DNA.esc(o.kurz)}</p>
   ${o.phasen?`<div class="ph4">${o.phasen.map(p=>`<div><b>${p[0]}</b>${p[1]}<br><span style="color:#6B6B66">${p[2]}</span></div>`).join("")}</div>`:""}
   <ul>${o.punkte.map(x=>`<li>${DNA.esc(x)}</li>`).join("")}</ul>${offerBtns(o)}</div>`).join("");
