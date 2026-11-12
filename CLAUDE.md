@@ -29,9 +29,23 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 - `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
 - `flow-dna/` – **Flow DNA, der Skill Store – live** unter https://maikz91.github.io/flow-media-ai/flow-dna/ (08.11.2026): `index.html` (Design aus v6), Katalog in `daten.js`, Logik in `kern.js`, Free-Skills in `skills/` (öffentlich), Premium-Skills nur in Drive `07_KI/flow-dna-premium` (Bezug auf Anfrage per WhatsApp: mieten, kaufen, mit Einrichtung). Entwürfe v1–v6 unter `varianten.html`
-- `flow-dna/buch/` – Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ (25 Kapitel auf Grundlage von KI Basics): öffentlich nur Cover und `Leseprobe.pdf`; das ganze Manuskript liegt privat in Supabase (`flow_dna_docs`, id `buch-deine-ideen-v1`), das PDF im privaten Bucket `flow-dna-privat` – nie ins öffentliche Repo. Das Buch gehört zum Komplettpaket (Maik, 11.11.2026): Download nur mit gültigem Paket-Code über die Edge Function `flow-dna-buch`. Daneben gibt es Codes nur fürs Buch (Testleser, Spalte `flow_dna_bundles.umfang = buch`): einlösbar auf der Buch-Karte in der App, schalten keine Kurse oder Skills frei; Codes nie ins Repo oder in die Gruppe, nur per Direktnachricht. Feedback zum Buch landet in `flow_dna_feedback` (kind `buch`).
+- `flow-dna/buch/` – Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ (26 Kapitel auf Grundlage von KI Basics): öffentlich nur Cover und `Leseprobe.pdf`; das ganze Manuskript liegt privat in Supabase (`flow_dna_docs`, id `buch-deine-ideen-v1`), das PDF im privaten Bucket `flow-dna-privat` – nie ins öffentliche Repo. Das Buch gehört zum Komplettpaket (Maik, 11.11.2026): Download nur mit gültigem Paket-Code über die Edge Function `flow-dna-buch`. Daneben gibt es Codes nur fürs Buch (Testleser, Spalte `flow_dna_bundles.umfang = buch`): einlösbar auf der Buch-Karte in der App, schalten keine Kurse oder Skills frei; Codes nie ins Repo oder in die Gruppe, nur per Direktnachricht. Feedback zum Buch landet in `flow_dna_feedback` (kind `buch`).
 - `flow-dna/start/` – Workshop-Vorbereitung „Claude Code & Codex einrichten“ (12.11.2026), live unter https://maikz91.github.io/flow-media-ai/flow-dna/start/ – vor jedem Workshop verschicken. Fokus Desktop-App, Terminal als „fortgeschritten“. Modell-Empfehlung (Tabelle `#modelle`) und Berechtigungsmodi bei jedem neuen Modell aktualisieren.
 - `coaching/<kunde>/` – Apps aus Coachings, die öffentlich laufen dürfen (über GitHub Pages). `coaching/adil/`: Cocktail-App für Adil, live unter https://maikz91.github.io/flow-media-ai/coaching/adil/. Kundenunterlagen (Anforderungen, Angebote) bleiben in Drive.
+
+## Wissen synchron halten (Pflicht, Maik 12.11.2026)
+
+Maiks Wissen steckt an mehreren Stellen. **Kommt neues Wissen dazu oder ändert sich etwas** (neue Rubrik, neue Empfehlung, neues Modell, neuer Ablauf), wird es **überall** nachgezogen – ohne dass Maik es extra sagen muss:
+
+| Ort | Datei / Speicher | Wie |
+|---|---|---|
+| Kurse | `tools/kurs-builder/k01.py` … `k10.py` (Kurs 03 von Hand in `flow-dna/kurse.js`) | Lektion ergänzen oder ändern, Lektionsnummern und Verweise („Lektion 12“) anpassen, `build.py <kurs-id>` neu bauen |
+| Buch | Manuskript privat (Supabase `flow_dna_docs`, Drive `03_Produkt`), Build-Skripte im Scratchpad (`build.py`, `pdf.js`) | Kapitel ergänzen, Kapitelnummern und Verweise („Kapitel 13“) anpassen, Spickzettel und Wörterbuch prüfen, PDF + Leseprobe neu bauen, PDF in den privaten Bucket, Manuskript in Supabase und Drive ersetzen, Kapitelzahl in App-Karte und hier anpassen |
+| KI-Coach „Frag Maik“ | `flow-dna/coach.js` | Stichwörter und Antwort in Maiks Stimme, passende Aktion (`go`) |
+| Workshop-Start | `flow-dna/start/` | bei Installation, Modellen, Berechtigungen |
+| Skills | z. B. `videokurs-builder` in Supabase, Premium-Kopien in Drive | wenn das Wissen einen Ablauf betrifft |
+
+Am Ende in der Antwort kurz auflisten, wo das Wissen jetzt steht. Was nicht nachgezogen werden konnte, ausdrücklich nennen.
 
 ## Google-Drive-Spiegel (Pflicht, Maik 19.10.2026)
 

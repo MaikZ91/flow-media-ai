@@ -4,7 +4,7 @@
 // Neue Antworten einfach unten ergänzen – je genauer die Stichwörter, desto besser trifft der Coach.
 window.FLOW_COACH = {
   hallo: "Hey, ich bin Maik – bzw. meine digitale Version. Frag mich alles rund um KI, Websites, Apps, Skills und deine Ideen. Ich antworte aus dem, was ich selbst so mache. Wenn ich nicht weiterweiß, schick ich dich in die Tech-Support-Gruppe.",
-  vorschlaege: ["Wie läuft der Website-Kurs ab?", "Wie fange ich mit KI an?", "Welches KI-Tool soll ich nehmen?", "Wie baue ich meine Website?", "Wohin kommt ein Skill?", "Wie schreibe ich gute Prompts?", "Was ist die FLOW-Methode?"],
+  vorschlaege: ["Wie installiere ich Claude Code?", "Wie läuft der Website-Kurs ab?", "Wie fange ich mit KI an?", "Welches KI-Tool soll ich nehmen?", "Wie baue ich meine Website?", "Wohin kommt ein Skill?", "Wie schreibe ich gute Prompts?", "Was ist die FLOW-Methode?"],
   wissen: [
     // Kurs 03 „Bau deine Premium-Website mit Skill“ (09.11.2026) – vorne, damit Kursfragen vor allgemeinen Antworten greifen
     { k: ["eigene domain", "domain", "deinname.de", "dns", "domain verbinden", "www adresse"],
@@ -31,12 +31,22 @@ window.FLOW_COACH = {
     { k: ["content-ordner", "content ordner", "projektordner", "media ordner", "ordner anlegen", "texte ordner", "was kommt in den ordner"],
       a: "Leg einen Projektordner an, z. B. „deine-website“. Darin: „Media“ für deine Fotos und Videos und „Texte“ für alles über dich – wer du bist, was du anbietest, für wen. Was du schon hast, hat Vorrang: eigene Fotos, alte Website, Logo, Farben. Fang mit 5 Fotos und einem Text an, das reicht für den Start (Lektion 01).",
       go: [["kurs", "website", "Zum Kurs 03"]] },
-    { k: ["codex", "claude code oder codex", "codex oder claude", "codex installieren", "claude app", "welches werkzeug"],
-      a: "Für den Kurs brauchst du Claude Code oder Codex – beides funktioniert mit dem Website-Skill. Nimm das, wofür du schon ein Abo hast; wenn du keins hast, einfach eins ausprobieren. Die Download-Links stehen in Lektion 01: Claude Code über claude.com/download, Codex über openai.com/codex.",
-      go: [["kurs", "website", "Zum Kurs 03"]] },
-    { k: ["installation", "installiert nicht", "anmelden geht nicht", "login", "einloggen", "download klappt nicht", "lässt sich nicht installieren"],
-      a: "Beim Installieren hängen die meisten – das ist normal. Lade die App immer von der offiziellen Seite (Links in Lektion 01), starte sie neu und melde dich mit dem Konto an, mit dem du dein Abo hast. Klappt es trotzdem nicht: Screenshot in die Tech-Support-Gruppe, dann schauen wir gemeinsam drauf.",
-      go: [["kurs", "website", "Zum Kurs 03"], ["support", "", "Tech-Support-Gruppe"]] },
+    // Installation & Einrichtung (Workshop-Start, 12.11.2026 – Quelle: flow-dna/start/)
+    { k: ["codex", "claude code oder codex", "codex oder claude", "codex installieren", "claude code installieren", "claude app", "welches werkzeug", "installieren claude", "wo bekomme ich"],
+      a: "Du brauchst nur eins von beiden: Claude Code oder Codex. Nimm das, wofür du schon ein bezahltes Abo hast. Am einfachsten ist die Desktop-App: Claude gibt’s unter claude.com/download – nach dem Anmelden oben auf „Code“ klicken. Codex steckt in der ChatGPT-Desktop-App (chatgpt.com/download) – dort auf „Codex“ wechseln und „New chat“ starten. Die ganze Anleitung mit Bildern steht im Workshop-Start.",
+      go: [["url", "start/", "Workshop-Start öffnen"]] },
+    { k: ["desktop", "desktop app", "web oder desktop", "browser", "terminal", "warum desktop", "chat oder agent", "agent", "claude chat", "chatgpt chat"],
+      a: "Es gibt drei Formen: Web (im Browser), Desktop-App und Terminal. Der Chat im Browser beantwortet Fragen – er sieht aber nichts auf deinem Computer. Claude Code und Codex sind Agenten: Sie arbeiten auf deinem PC, in einem Ordner, den du auswählst, legen Dateien an und bauen Websites und Apps. Darum nehmen wir im Workshop die Desktop-App. Das Terminal ist dasselbe für Fortgeschrittene.",
+      go: [["url", "start/#warum", "Mehr dazu"]] },
+    { k: ["modell", "welches modell", "opus", "haiku", "fable", "sonnet", "modellwahl"],
+      a: "Für fast alles nehme ich Opus 5.5 auf Medium – Websites, Apps, Design, Texte. Für schnelle kleine Aufgaben reicht Haiku 5.5. Fable 5.2 hebe ich mir für sehr große, schwierige Projekte auf, weil es länger braucht und mehr Kontingent kostet. Stand November 2026 – die Modelle wechseln alle paar Monate.",
+      go: [["url", "start/#einstellungen", "Modell & Berechtigung"]] },
+    { k: ["berechtigung", "modus", "permission", "auto modus", "accept edits", "bypass", "fragt ständig", "fragt immer"],
+      a: "Stell den Modus auf „Auto“ – dann arbeitet der Agent flüssig und fragt nur bei riskanten Schritten. Gibt es Auto bei dir nicht, nimm „Accept edits“. „Bypass permissions“ bitte nicht verwenden, dann fragt er gar nicht mehr. In Codex lässt du die Voreinstellung einfach so.",
+      go: [["url", "start/#einstellungen", "Mehr dazu"]] },
+    { k: ["installation", "installiert nicht", "anmelden geht nicht", "login", "einloggen", "download klappt nicht", "lässt sich nicht installieren", "git is required", "git"],
+      a: "Beim Installieren hängen die meisten – das ist normal. Lade die App immer von der offiziellen Seite, starte sie neu und melde dich mit dem Konto an, mit dem du dein Abo hast. Unter Windows fragt Claude manchmal nach Git: dann „Git for Windows“ installieren und Claude neu starten. Klappt es trotzdem nicht: Screenshot in die Tech-Support-Gruppe.",
+      go: [["url", "start/", "Workshop-Start öffnen"], ["support", "", "Tech-Support-Gruppe"]] },
     { k: ["website-skill", "website skill", "skill herunterladen", "skill download", "skill zip", "skills ordner", "ordner skills"],
       a: "Den Website-Skill holst du dir auf der Workshop-Seite über „Skill herunterladen“ (Link in Lektion 02). Entpack die ZIP in den Ordner „skills“ in deinem Projektordner – gibt es den noch nicht, leg ihn an. Dann den Projektordner in Claude Code oder Codex öffnen.",
       go: [["kurs", "website", "Zum Kurs 03"], ["ws", "", "Zur Workshop-Seite"]] },
