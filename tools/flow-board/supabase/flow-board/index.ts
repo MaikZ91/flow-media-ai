@@ -14,7 +14,7 @@ const json = (body: unknown, status = 200) =>
 
 const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const BUCKET = "flow-board";
-const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files", finance: "flow_board_finance", crm: "flow_board_crm" };
+const TABLES: Record<string, string> = { tasks: "flow_board_tasks", files: "flow_board_files", finance: "flow_board_finance", crm: "flow_board_finance" };  // Kontakte liegen in der Finanz-Tabelle (data.type = "crm")
 
 async function sha256(s: string) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
@@ -105,6 +105,20 @@ async function githubList(repoReq: unknown, pathReq: unknown) {
   return { repo, repos, path, entries: list.map((e: any) => ({ name: e.name, path: e.path, type: e.type, size: e.size, html_url: e.html_url })) };
 }
 
+// Startkontakte fürs CRM: werden nur aus der Umgebungsvariable CRM_SEED (JSON) einmalig angelegt – nie im Repo.
+async function seedCrm(board: string) {
+  const raw = Deno.env.get("CRM_SEED_" + board.toUpperCase()) ?? (typeof CRM_SEED_INLINE !== "undefined" ? CRM_SEED_INLINE[board] : undefined);
+  if (!raw) return;
+  const marker = "crm-seed-" + board;
+  const { data: done } = await db.from("flow_board_finance").select("id").eq("id", marker).maybeSingle();
+  if (done) return;
+  const list = (typeof raw === "string" ? JSON.parse(raw) : raw) as { id: string; data: Record<string, unknown> }[];
+  const rows = list.map((c) => ({ id: c.id, board_id: board, data: { ...c.data, type: "crm" }, updated_at: new Date().toISOString() }));
+  rows.push({ id: marker, board_id: board, data: { type: "crm-marker", at: Date.now() }, updated_at: new Date().toISOString() });
+  await db.from("flow_board_finance").upsert(rows, { onConflict: "id", ignoreDuplicates: true });
+}
+declare const CRM_SEED_INLINE: Record<string, unknown> | undefined;
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   if (req.method !== "POST") return json({ error: "method" }, 405);
@@ -120,15 +134,16 @@ Deno.serve(async (req) => {
   try {
     switch (action) {
       case "load": {
-        const [t, f, m, fin, crm] = await Promise.all([
+        await seedCrm(board);
+        const [t, f, m, fin] = await Promise.all([
           db.from("flow_board_tasks").select("id,data").eq("board_id", board),
           db.from("flow_board_files").select("id,data").eq("board_id", board),
           db.from("flow_board_meta").select("data").eq("board_id", board).maybeSingle(),
           db.from("flow_board_finance").select("id,data").eq("board_id", board),
-          db.from("flow_board_crm").select("id,data").eq("board_id", board),
         ]);
         if (t.error || f.error || fin.error) throw t.error || f.error || fin.error;
-        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data, crm: crm.error ? [] : crm.data });
+        const isCrm = (r: any) => String(r.data?.type || "").startsWith("crm");
+        return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data.filter((r: any) => !isCrm(r)), crm: fin.data.filter((r: any) => r.data?.type === "crm") });
       }
       case "upsert": {
         const table = TABLES[body.table];

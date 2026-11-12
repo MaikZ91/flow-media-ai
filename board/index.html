@@ -1614,7 +1614,7 @@ async function saveCrm(c) {
   const i = crm.findIndex(x => x.id === c.id); if (i >= 0) crm[i] = c; else crm.push(c);
   render();
   if (!crmCol) return lsSave();
-  const { id, ...body } = c;
+  const { id, ...body } = c; body.type = "crm";
   try { await crmCol.doc(id).set(body) } catch (err) { writeErr(err) }
 }
 async function removeCrm(id) {
