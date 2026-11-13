@@ -130,3 +130,6 @@
 .dna-fb textarea, .dna-fb input { font: 16px Inter, sans-serif; padding: 10px 12px; border: 1px solid currentColor; background: #fff; color: #0B0B0B; border-radius: 0; width: 100%; resize: vertical }
 .dna-fb button { font: 700 15px Oswald, sans-serif; text-transform: uppercase; letter-spacing: .04em; min-height: 44px; border: 0; background: #2F5BFF; color: #fff; cursor: pointer } .dna-fb button:disabled { opacity: .5 }
 .dna-fbmsg { font-size: 12px; opacity: .75; margin: 0 } .dna-fbmsg.ok { opacity: 1; color: #1a8f4c; font-weight: 600 }
+.dna-how { margin: 10px 0 4px; padding-left: 22px; font-size: 14px; line-height: 1.5 }
+.dna-how li { padding: 3px 0 }
+.dna-vid.dna-vid-q { width: 100%; max-width: none; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: #0B0B0B; border-radius: 0; box-shadow: none; border: 2px solid #0B0B0B }

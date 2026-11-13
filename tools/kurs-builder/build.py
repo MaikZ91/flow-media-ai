@@ -16,10 +16,12 @@ def tts(text):
         from edge_tts import communicate
         ca = os.environ.get("KURS_CA")
         if ca: communicate._SSL_CTX = ssl.create_default_context(cafile=ca)
-        for k in range(4):
+        import time
+        for k in range(8):  # der Sprachdienst drosselt gelegentlich: mit wachsender Pause erneut versuchen
             try: asyncio.run(edge_tts.Communicate(text, VOICE, rate=RATE).save(f)); break
             except Exception as e:
-                if k == 3: raise
+                if k == 7: raise
+                time.sleep(6 * (k + 1))
     d = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).decode().strip())
     return f, d
 
