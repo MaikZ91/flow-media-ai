@@ -6,7 +6,7 @@
 <title>Flow Business Community – kostenlos beitreten</title>
 <meta name="description" content="Die kostenlose WhatsApp-Community für Gründer, Selbstständige und Macher: Ideen teilen, Feedback bekommen, mit KI ins Umsetzen kommen. Bielefeld, Münster und digital.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0B0B0B">
+<meta name="theme-color" content="#F4F4F1">
 <meta property="og:title" content="Flow Business Community – kostenlos beitreten">
 <meta property="og:description" content="Mach deine Ideen nicht allein. Austausch, Feedback und KI-Wissen für Gründer und Selbstständige.">
 <meta property="og:image" content="img/community.jpg">
@@ -26,84 +26,94 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 });
 </script>
 <style>
-:root{--black:#0B0B0B;--white:#fff;--grey:#9A9A9A;--blue:#2F5BFF;--soft:rgba(255,255,255,.74);
- --f-head:"Oswald","Arial Narrow",Impact,sans-serif;--f-label:"Montserrat",Arial,sans-serif;--f-body:"Inter","Helvetica Neue",Arial,sans-serif}
+:root{--paper:#F4F4F1;--ink:#0B0B0B;--mute:#6B6B66;--rule:rgba(11,11,11,.14);--card:#fff;--blue:#2F5BFF;
+ --fh:"Oswald","Arial Narrow",Impact,sans-serif;--fl:"Montserrat",Arial,sans-serif;--fb:"Inter","Helvetica Neue",Arial,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--black)}
-body{color:var(--white);font:400 16px/1.5 var(--f-body);-webkit-text-size-adjust:100%}
+html,body{height:100%;overflow:hidden;background:var(--paper)}
+body{color:var(--ink);font:400 16px/1.5 var(--fb);-webkit-text-size-adjust:100%}
 a{color:inherit}
-.page{position:relative;height:100vh;height:100svh;display:flex;flex-direction:column;overflow:hidden}
-.ph{position:absolute;right:0;top:0;bottom:0;width:min(58%,760px);background:url(img/maik_front.jpg) center 12%/cover;filter:grayscale(1) contrast(1.1)}
-.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 0%,rgba(11,11,11,.55) 30%,rgba(11,11,11,0) 68%),linear-gradient(0deg,rgba(11,11,11,.85) 0%,rgba(11,11,11,0) 35%)}
-header,main,footer{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
-header{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(16px,3vh,28px)}
-header img{width:clamp(96px,11vw,124px)}
-.label{font:600 clamp(10px,1.4vh,12px) var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--grey);text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.page{height:100vh;height:100svh;display:flex;flex-direction:column;overflow:hidden}
+header,main,footer{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+header{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(14px,2.6vh,26px)}
+header img{width:clamp(92px,10vw,118px);filter:invert(1)}
+.label{font:600 clamp(10px,1.35vh,12px) var(--fl);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
 .label b{color:var(--blue);font-weight:600}
-main{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
-.box{max-width:600px}
-h1{font:700 clamp(40px,min(11vw,10.5vh),132px)/.92 var(--f-head);text-transform:uppercase;margin:clamp(8px,1.6vh,16px) 0 0}
+main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,64px);align-items:center}
+h1{font:700 clamp(36px,min(9.5vw,8.4vh),104px)/.92 var(--fh);text-transform:uppercase;margin-top:clamp(6px,1.2vh,12px)}
 h1 em{font-style:normal;color:var(--blue)}
-.lead{color:var(--soft);font-size:clamp(15px,2vh,19px);margin-top:clamp(10px,2vh,20px);max-width:520px}
-.liste{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,1.2vh,12px) 22px;margin-top:clamp(12px,2.6vh,26px);max-width:540px}
-.liste li{display:flex;gap:10px;align-items:center;font:600 clamp(13px,1.8vh,15.5px)/1.25 var(--f-body)}
-.liste svg{flex:none;width:clamp(18px,2.4vh,22px);height:clamp(18px,2.4vh,22px);stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:clamp(16px,3.4vh,34px);background:var(--blue);color:#fff;text-decoration:none;font:700 clamp(18px,2.4vh,22px) var(--f-head);text-transform:uppercase;letter-spacing:.03em;padding:clamp(14px,2.2vh,20px) 32px;border-radius:999px;box-shadow:0 24px 60px -18px rgba(47,91,255,.8);animation:puls 2.6s ease-out infinite;transition:transform .2s}
-.cta:hover{transform:translateY(-2px)}.cta svg{width:22px;height:22px}.cta .ar{transition:transform .2s}.cta:hover .ar{transform:translateX(4px)}
-@keyframes puls{0%{box-shadow:0 0 0 0 rgba(47,91,255,.5),0 24px 60px -18px rgba(47,91,255,.8)}70%{box-shadow:0 0 0 16px rgba(47,91,255,0),0 24px 60px -18px rgba(47,91,255,.8)}100%{box-shadow:0 0 0 0 rgba(47,91,255,0),0 24px 60px -18px rgba(47,91,255,.8)}}
-.under{margin-top:10px;font:500 clamp(11px,1.5vh,13px) var(--f-label);letter-spacing:.05em;color:var(--grey)}.under span{color:var(--white)}
-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;padding-bottom:max(14px,env(safe-area-inset-bottom));font:500 11px var(--f-label);color:var(--grey)}
-footer a{color:var(--grey);text-decoration:none}footer a:hover{color:var(--white)}
-.in{animation:rein .8s cubic-bezier(.2,.8,.2,1) both}.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
-@keyframes rein{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.cta,.in{animation:none}}
-/* Handy: Foto oben, Text unten */
-@media (max-width:760px){
- .ph{width:100%;height:56%;bottom:auto;background-position:center 18%}
- .ph::after{background:linear-gradient(0deg,var(--black) 2%,rgba(11,11,11,.45) 45%,rgba(11,11,11,.15) 100%)}
- main{justify-content:flex-end;padding-bottom:clamp(8px,1.6vh,16px)}
- h1{font-size:clamp(34px,min(12.5vw,6.6vh),60px)}
- .lead{font-size:clamp(14px,1.9vh,16px)}
- .liste{grid-template-columns:1fr 1fr;gap:6px 12px}
- .liste li{font-size:clamp(12px,1.7vh,14px)}
- .cta{width:100%}
- footer{justify-content:center;text-align:center}
- footer .claim{display:none}
-}
-/* sehr niedrige Bildschirme */
-@media (max-height:620px){.lead{display:none}.liste{margin-top:8px}}
-@media (max-height:540px){.liste{display:none}}
+.checks{display:grid;gap:clamp(6px,1.2vh,11px);margin-top:clamp(12px,2.4vh,24px);max-width:560px}
+.chk{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:2px solid var(--ink);border-radius:0;padding:clamp(9px,1.6vh,14px) 16px;color:var(--ink);font:600 clamp(14px,1.95vh,17px)/1.3 var(--fb);cursor:pointer;transition:background .2s,color .2s,transform .15s}
+.chk:active{transform:scale(.99)}
+.chk i{flex:none;width:26px;height:26px;border:2px solid var(--ink);display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;transition:all .2s}
+.chk.on{background:var(--ink);color:#fff}.chk.on i{background:var(--blue);border-color:var(--blue)}
+.antwort{margin-top:clamp(10px,1.8vh,16px);font:700 clamp(18px,2.7vh,26px)/1.08 var(--fh);text-transform:uppercase;color:var(--mute);min-height:2.2em;max-width:560px}
+.antwort em{font-style:normal;color:var(--blue)}.antwort.ja{color:var(--ink)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:clamp(8px,1.6vh,16px);background:var(--blue);color:#fff;text-decoration:none;font:700 clamp(18px,2.3vh,22px) var(--fh);text-transform:uppercase;letter-spacing:.03em;padding:clamp(14px,2.1vh,19px) 32px;border-radius:999px;box-shadow:0 18px 44px -14px rgba(47,91,255,.75);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}.cta svg{width:22px;height:22px}
+.cta.go{animation:puls 1.8s ease-out infinite}
+@keyframes puls{0%{box-shadow:0 0 0 0 rgba(47,91,255,.55),0 18px 44px -14px rgba(47,91,255,.75)}70%{box-shadow:0 0 0 16px rgba(47,91,255,0),0 18px 44px -14px rgba(47,91,255,.75)}100%{box-shadow:0 0 0 0 rgba(47,91,255,0),0 18px 44px -14px rgba(47,91,255,.75)}}
+.under{margin-top:9px;font:500 clamp(11px,1.45vh,13px) var(--fl);letter-spacing:.05em;color:var(--mute)}.under span{color:var(--ink)}
+.host{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(10px,2vh,20px);font:500 clamp(12px,1.6vh,14px) var(--fb);color:#3a3a37}
+.host img{width:clamp(34px,4.6vh,44px);height:clamp(34px,4.6vh,44px);border-radius:50%;object-fit:cover;border:2px solid var(--blue);filter:grayscale(1)}.host b{color:var(--ink)}
+/* Bildspalte (nur breite Bildschirme) */
+.bilder{position:relative;height:min(68vh,620px);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.15fr 1fr;gap:12px}
+.bilder div{background-size:cover;background-position:center;filter:grayscale(1) contrast(1.05);border:2px solid var(--ink)}
+.bilder .b1{grid-column:1/3;background-image:url(img/runde.jpg);background-position:35% 35%}
+.bilder .b2{background-image:url(img/ueberfordert.jpg);background-position:62% 30%}
+.bilder .b3{background-image:url(img/maik_laptop.jpg);background-position:center 25%}
+.bilder span{position:absolute;font:700 14px var(--fh);text-transform:uppercase;letter-spacing:.06em;padding:6px 12px;background:var(--ink);color:#fff}
+.bilder .t1{left:12px;top:12px;background:var(--blue)}.bilder .t2{left:12px;bottom:12px}.bilder .t3{right:12px;bottom:12px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));font:500 10.5px var(--fl);color:var(--mute)}
+footer a{color:var(--mute);text-decoration:none}
+.in{animation:rein .8s cubic-bezier(.2,.8,.2,1) both}.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+@keyframes rein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.cta.go,.in{animation:none}}
+@media (max-width:900px){main{grid-template-columns:minmax(0,1fr)}.bilder{display:none}}
+@media (max-width:760px){.cta{width:100%}footer{justify-content:center;text-align:center}footer .x{display:none}}
+@media (max-height:640px){.host{display:none}}
+@media (max-height:560px){.antwort{display:none}}
 </style>
 </head>
 <body>
 <div class="page">
-  <div class="ph" role="img" aria-label="Maik Zschach, Gründer von Flow Media AI"></div>
   <header><img src="img/logo_flow.png" alt="Flow Media AI"><span class="label">Kostenlose Community</span></header>
   <main>
-    <div class="box">
-      <p class="label in">Flow Business Community · <b>Build. Market. Grow.</b></p>
-      <h1 class="in d1">Mach deine Ideen<br><em>nicht allein.</em></h1>
-      <p class="lead in d2">Die kostenlose WhatsApp-Community für Gründer, Selbstständige und Macher – Ideen teilen, Feedback bekommen und mit KI ins Umsetzen kommen.</p>
-      <ul class="liste in d3">
-        <li><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg>Ideen teilen & Feedback</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>KI verständlich erklärt</li>
-        <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg>Digitaler Stammtisch</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 19V9l8-5 8 5v10M9 19v-6h6v6"/></svg>Workshops & Skill Store</li>
-      </ul>
-      <div class="in d4">
-        <a class="cta" data-cta="hero" data-join href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>Kostenlos beitreten <span class="ar">→</span></a>
+    <div>
+      <p class="label in">Kurzer Selbsttest · <b>tipp an, was stimmt</b></p>
+      <h1 class="in d1">Erkennst du<br><em>dich wieder?</em></h1>
+      <div class="checks in d2">
+        <button class="chk" type="button" data-q="zeit"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</button>
+        <button class="chk" type="button" data-q="tools"><i></i>Die vielen KI-Tools überfordern mich.</button>
+        <button class="chk" type="button" data-q="allein"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</button>
+      </div>
+      <p class="antwort in d3" id="antwort">Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em></p>
+      <div class="in d3">
+        <a class="cta" data-cta="hero" data-join href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>Kostenlos beitreten <span>→</span></a>
         <p class="under"><span>Kostenlos</span> · direkt in WhatsApp · Bielefeld, Münster & digital</p>
       </div>
+      <div class="host in d4"><img src="img/maik_avatar.jpg" alt="Maik"><span>Dein Gastgeber: <b>Maik</b> · KI-Sparringspartner für Gründer</span></div>
+    </div>
+    <div class="bilder in d2" aria-hidden="true">
+      <div class="b1"></div><div class="b2"></div><div class="b3"></div>
+      <span class="t1">Gemeinsam</span><span class="t2" style="top:calc(53% + 18px);bottom:auto">Statt allein</span><span class="t3">Maik · Gastgeber</span>
     </div>
   </main>
-  <footer><span class="claim">Flow Media AI · We build your ideas.</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></footer>
+  <footer><span class="x">Flow Media AI · We build your ideas. · Symbolbilder: StockSnap (CC0)</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></footer>
 </div>
 <script>
 // Einladungslink der WhatsApp-Community (wie auf der Website).
 const COMMUNITY_URL = "https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";
+const T = { 0: "Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em>", 1: "Dann bist du hier <em>genau richtig.</em>", 2: "Dann bist du hier <em>genau richtig.</em>", 3: "Genau dafür gibt es <em>diese Community.</em>" };
+const cs = [...document.querySelectorAll(".chk")], an = document.getElementById("antwort"), cta = document.querySelector(".cta");
+const anz = () => cs.filter(x => x.classList.contains("on")).length;
+cs.forEach(c => c.addEventListener("click", () => {
+  c.classList.toggle("on"); c.querySelector("i").textContent = c.classList.contains("on") ? "✓" : "";
+  const n = anz(); an.className = "antwort" + (n ? " ja" : ""); an.innerHTML = T[n]; cta.classList.toggle("go", n > 0);
+  try { posthog.capture("community_quiz", { frage: c.dataset.q, an: c.classList.contains("on"), anzahl: n }); } catch (e) {}
+}));
 document.querySelectorAll("[data-join]").forEach(a => {
   a.href = COMMUNITY_URL; a.target = "_blank"; a.rel = "noopener";
-  a.addEventListener("click", () => { try { posthog.capture("community_join_click", { cta: a.dataset.cta }); } catch (e) {} });
+  a.addEventListener("click", () => { try { posthog.capture("community_join_click", { cta: a.dataset.cta, quiz: anz(), quelle: new URLSearchParams(location.search).get("utm_source") || "" }); } catch (e) {} });
 });
 </script>
 </body>

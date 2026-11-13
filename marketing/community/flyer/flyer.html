@@ -1,0 +1,95 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F4F1;--ink:#0B0B0B;--mute:#6B6B66;--blue:#2F5BFF;--fh:"Oswald",sans-serif;--fl:"Montserrat",sans-serif;--fb:"Inter",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#F4F4F1;font-family:var(--fb);color:var(--ink)}
+.f{position:relative;background:var(--paper);overflow:hidden;margin-bottom:30px}
+.logo{filter:invert(1);display:block}
+.label{font:600 var(--ls) var(--fl);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}.label b{color:var(--blue);font-weight:600}
+h1{font:700 var(--h1)/.92 var(--fh);text-transform:uppercase}h1 em{font-style:normal;color:var(--blue)}
+.chk{display:flex;align-items:center;gap:var(--g);border:var(--bw) solid var(--ink);background:#fff;padding:var(--cp);font:600 var(--cs)/1.25 var(--fb)}
+.chk i{flex:none;width:var(--box);height:var(--box);border:var(--bw) solid var(--ink)}
+.chk.on{background:var(--ink);color:#fff}.chk.on i{background:var(--blue);border-color:var(--blue);position:relative}
+.chk.on i::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:700;font-size:calc(var(--box)*.7)}
+.punch{font:700 var(--ps)/1.05 var(--fh);text-transform:uppercase}.punch em{font-style:normal;color:var(--blue)}
+.ben{display:grid;grid-template-columns:1fr 1fr;gap:var(--g) calc(var(--g)*2)}
+.ben div{display:flex;gap:calc(var(--g)*.7);align-items:center;font:600 var(--bs)/1.25 var(--fb)}
+.ben svg{flex:none;width:var(--ic);height:var(--ic);stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.strip{display:flex;gap:var(--g)}.strip div{flex:1;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.05);border:var(--bw) solid var(--ink)}
+.s1{background-image:url(../img/runde.jpg);background-position:35% 35%!important}.s2{background-image:url(../img/ueberfordert.jpg);background-position:62% 30%!important}.s3{background-image:url(../img/maik_laptop.jpg);background-position:center 22%!important}
+.qrbox{display:flex;align-items:center;gap:calc(var(--g)*1.4);background:var(--ink);color:#fff;padding:var(--qp)}
+.qrbox .qr{flex:none;background:#fff;padding:calc(var(--qs)*.06)}.qrbox .qr img{display:block;width:var(--qs);height:var(--qs)}
+.qrbox b{display:block;font:700 var(--qt)/1 var(--fh);text-transform:uppercase}.qrbox b em{font-style:normal;color:var(--blue)}
+.qrbox span{display:block;font:500 var(--qd)/1.35 var(--fb);color:#d8d8d4;margin-top:.4em}
+.host{display:flex;align-items:center;gap:calc(var(--g)*.8);font:500 var(--bs)/1.3 var(--fb);color:#3a3a37}
+.host img{width:var(--av);height:var(--av);border-radius:50%;object-fit:cover;border:var(--bw) solid var(--blue);filter:grayscale(1)}.host b{color:var(--ink)}
+.foot{font:500 var(--fs) var(--fl);letter-spacing:.06em;color:var(--mute)}
+/* ---------- A5 Druck (148 x 210 mm) ---------- */
+#a5{width:148mm;height:210mm;padding:11mm 11mm 9mm;display:flex;flex-direction:column;gap:4.2mm;
+ --ls:6.6pt;--h1:34pt;--g:2.4mm;--bw:.5mm;--cp:2.4mm 3mm;--cs:8.6pt;--box:4.4mm;--ps:13pt;--bs:7.6pt;--ic:4.2mm;--qp:4mm;--qs:27mm;--qt:15pt;--qd:7.2pt;--av:9mm;--fs:5.8pt}
+#a5 .top{display:flex;justify-content:space-between;align-items:center}#a5 .logo{width:24mm}
+#a5 .checks{display:grid;gap:1.8mm}#a5 .strip{height:24mm}
+/* ---------- Instagram 4:5 (1080 x 1350) ---------- */
+#ig{width:1080px;height:1350px;padding:70px 70px 56px;display:flex;flex-direction:column;gap:26px;
+ --ls:22px;--h1:118px;--g:16px;--bw:3px;--cp:18px 22px;--cs:31px;--box:34px;--ps:44px;--bs:26px;--ic:30px;--qp:26px;--qs:190px;--qt:52px;--qd:25px;--av:62px;--fs:20px}
+#ig .top{display:flex;justify-content:space-between;align-items:center}#ig .logo{width:150px}#ig .checks{display:grid;gap:12px}
+/* ---------- Story 9:16 (1080 x 1920) ---------- */
+#st{width:1080px;height:1920px;padding:150px 70px 300px;display:flex;flex-direction:column;gap:34px;
+ --ls:24px;--h1:132px;--g:18px;--bw:3px;--cp:22px 24px;--cs:34px;--box:38px;--ps:50px;--bs:28px;--ic:32px;--qp:30px;--qs:220px;--qt:58px;--qd:27px;--av:68px;--fs:22px}
+#st .top{display:flex;justify-content:space-between;align-items:center}#st .logo{width:160px}#st .checks{display:grid;gap:14px}#st .strip{height:300px}
+</style></head><body>
+
+<!-- A5 -->
+<div class="f" id="a5">
+ <div class="top"><img class="logo" src="../img/logo_flow.png"><span class="label">Kostenlose Community</span></div>
+ <div><p class="label">Kurzer Selbsttest · <b>hak ab, was stimmt</b></p><h1 style="margin-top:2mm">Erkennst du<br><em>dich wieder?</em></h1></div>
+ <div class="checks">
+  <div class="chk"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</div>
+  <div class="chk"><i></i>Die vielen KI-Tools überfordern mich.</div>
+  <div class="chk"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</div>
+ </div>
+ <p class="punch">Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em></p>
+ <div class="strip" style="height:24mm"><div class="s1"></div><div class="s2"></div><div class="s3" style="flex:.7"></div></div>
+ <div class="ben">
+  <div><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg>Ideen teilen & Feedback</div>
+  <div><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>KI verständlich erklärt</div>
+  <div><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg>Digitaler Stammtisch</div>
+  <div><svg viewBox="0 0 24 24"><path d="M4 19V9l8-5 8 5v10M9 19v-6h6v6"/></svg>Workshops & Skill Store</div>
+ </div>
+ <div class="qrbox"><div class="qr"><img src="qr.svg"></div><div><b>Scannen &<br><em>kostenlos beitreten</em></b><span>Flow Business Community · direkt in WhatsApp<br>Für Gründer, Selbstständige und Macher · Bielefeld, Münster & digital</span></div></div>
+ <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto">
+  <div class="host"><img src="../img/maik_avatar.jpg"><span>Dein Gastgeber: <b>Maik Zschach</b><br>KI-Sparringspartner für Gründer</span></div>
+  <span class="foot">We build your ideas. · Symbolbilder: StockSnap (CC0)</span></div>
+</div>
+
+<!-- Instagram 4:5 -->
+<div class="f" id="ig">
+ <div class="top"><img class="logo" src="../img/logo_flow.png"><span class="label">Kostenlose Community</span></div>
+ <div><p class="label">Kurzer Selbsttest</p><h1 style="margin-top:12px">Erkennst du<br><em>dich wieder?</em></h1></div>
+ <div class="checks">
+  <div class="chk on"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</div>
+  <div class="chk"><i></i>Die vielen KI-Tools überfordern mich.</div>
+  <div class="chk on"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</div>
+ </div>
+ <p class="punch">Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em></p>
+ <div class="strip" style="height:280px"><div class="s1"></div><div class="s2"></div><div class="s3" style="flex:.7"></div></div>
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
+  <div class="host"><img src="../img/maik_avatar.jpg"><span style="white-space:nowrap">Dein Gastgeber: <b>Maik</b><br>Kostenlos &amp; digital</span></div>
+  <span style="background:var(--ink);color:#fff;font:700 40px/1 var(--fh);text-transform:uppercase;padding:22px 30px;white-space:nowrap">Jetzt beitreten · <em style="font-style:normal;color:var(--blue)">Link in Bio</em></span></div>
+</div>
+
+<!-- Story 9:16 -->
+<div class="f" id="st">
+ <div class="top"><img class="logo" src="../img/logo_flow.png"><span class="label">Kostenlose Community</span></div>
+ <div><p class="label">Kurzer Selbsttest · <b>tipp an, was stimmt</b></p><h1 style="margin-top:14px">Erkennst du<br><em>dich wieder?</em></h1></div>
+ <div class="checks">
+  <div class="chk"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</div>
+  <div class="chk"><i></i>Die vielen KI-Tools überfordern mich.</div>
+  <div class="chk"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</div>
+ </div>
+ <p class="punch">Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em></p>
+ <div class="strip"><div class="s1"></div><div class="s2"></div><div class="s3" style="flex:.7"></div></div>
+ <div class="qrbox"><div class="qr"><img src="qr_ig.svg"></div><div><b>Kostenlos<br><em>beitreten</em></b><span>Link-Sticker antippen oder QR scannen · direkt in WhatsApp</span></div></div>
+ <div class="host"><img src="../img/maik_avatar.jpg"><span>Dein Gastgeber: <b>Maik</b> · KI-Sparringspartner für Gründer</span></div>
+</div>
+</body></html>
