@@ -14,3 +14,6 @@ def SH(h, img, fx, fy, say, items=(), tag="Hier", src="", bar="", zoom=1.7, ar=1
     return {"k": "shot", "h": h, "img": img, "fx": fx, "fy": fy, "say": say, "items": list(items), "tag": tag, "src": src, "bar": bar, "zoom": zoom, "ar": ar, "kicker": kicker}
 SUPPORT = ["Ich hänge fest.", "Frag in der Tech-Support-Gruppe (Tab Community) – dort helfen Maik und die Community."]
 def M(h, say): return {"k": "title", "kicker": "Merksatz", "h": h, "say": say, "size": "m", "pic": False}
+def LI(h, say, act="point", text=None, items=(), note=None, bar="Lisa · Physio-Praxis", kicker="Lisas Beispiel"):
+    """Lisa als animierte Figur links (act: wave, point, type, talk, think, photo, check, thumb, stop), rechts Fenster (text) oder Liste (items)."""
+    return {"k": "lisa", "h": h, "say": say, "act": act, "text": text, "items": list(items), "note": note, "bar": bar, "kicker": kicker}

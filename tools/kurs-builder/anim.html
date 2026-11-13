@@ -59,6 +59,13 @@ html,body{width:1280px;height:800px;overflow:hidden;background:var(--ink);color:
 .shotl{position:absolute;left:0;top:0;width:480px}.shotl .h{font-size:56px}
 .shotl .li{font-size:22px;padding:13px 0}.shotl .li i{width:32px;height:32px;font-size:18px}
 .src{position:absolute;right:0;font:400 12px Inter;color:var(--mute)}
+.lzf{position:absolute;left:0;top:0;width:300px;height:520px}
+.lzf svg{width:300px;height:432px;display:block;overflow:visible}
+.lzf .nm{margin-top:8px;font:700 30px Oswald;text-transform:uppercase;letter-spacing:.04em}.lzf .nm small{display:block;font:600 11px Montserrat;letter-spacing:.2em;color:var(--mute);margin-top:4px}
+.lzc{position:absolute;left:340px;right:0;top:0}.lzc .h{font-size:56px}
+.lzc .win{position:static;width:auto;margin-top:22px}.lzc .win pre{min-height:150px;font-size:22px}
+.lzc .list{position:static;width:auto;margin-top:22px}.lzc .li{font-size:25px;padding:14px 0}
+.lzc .nt{margin-top:16px;font-size:19px;color:#c9c9c4}.lzc .nt b{font:700 20px Oswald;text-transform:uppercase;color:var(--blue);margin-right:10px;letter-spacing:.03em}
 </style></head><body>
 <div id="top"><div id="wm"><svg width="34" height="18" viewBox="0 0 34 18"><path d="M1 9 C6 -3 11 21 17 9 S28 -3 33 9" fill="none" stroke="#2F5BFF" stroke-width="2.4"/><path d="M1 9 C6 21 11 -3 17 9 S28 21 33 9" fill="none" stroke="#F4F4F1" stroke-width="2"/></svg>Flow DNA</div><div id="crumb"></div></div>
 <div id="stage"></div><div id="sub"></div><div id="prog"></div>
@@ -79,6 +86,25 @@ const TPL={
  steps:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="h s">${hl(s.h||"")}</div><div class="track"><u></u></div><div class="steps" style="grid-template-columns:repeat(${s.items.length},1fr)">${s.items.map((x,i)=>`<div class="st"><i>${String(i+1).padStart(2,"0")}</i><b>${esc(x)}</b></div>`).join("")}</div>`,
  stamp:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="h">${hl(s.h)}</div><div class="stamp">${esc(s.stamp)}</div>`,
  shot:s=>{const H=500,W=Math.round(H*s.ar);return `<div class="shotl"><div class="k">${esc(s.kicker||"")}</div><div class="h">${hl(s.h||"")}</div><div class="list" style="position:static;width:auto;margin-top:26px">${(s.items||[]).map((x,i)=>`<div class="li"><i>${i+1}</i><span>${esc(x)}</span></div>`).join("")}</div></div><div class="shotw" style="width:${W+4}px"><div class="bar"><u></u><u></u><u></u>${esc(s.bar||"")}</div><div class="vp" style="width:${W}px;height:${H}px"><div class="im" style="background-image:url(${s.img});transform-origin:${s.fx}% ${s.fy}%"></div><div class="ring" style="left:${s.fx}%;top:${s.fy}%"></div><div class="rtag" style="left:calc(${s.fx}% ${s.fx>60?"- 70px":"+ 70px"});top:calc(${s.fy}% ${s.fy>75?"- 110px":"+ 64px"});${s.fx>60?"transform:translateX(-100%)":""}">${esc(s.tag||"Hier")}</div></div></div><div class="src" style="top:${H+48}px">Bild: ${esc(s.src||"")}</div>`},
+ lisa:s=>`<div class="lzf"><svg viewBox="0 0 320 460" fill="none" stroke-linecap="round" stroke-linejoin="round"><g class="fig">
+  <path class="la" stroke="#F4F4F1" stroke-width="15"/><path class="ra" stroke="#F4F4F1" stroke-width="15"/>
+  <path d="M96 222 Q160 196 224 222 L244 452 L76 452 Z" fill="#0B0B0B" stroke="#2F5BFF" stroke-width="6"/><path d="M134 212 L160 250 L186 212" stroke="#2F5BFF" stroke-width="5"/>
+  <path d="M160 172 L160 200" stroke="#F4F4F1" stroke-width="16"/>
+  <g class="hd"><circle cx="160" cy="58" r="23" fill="#F4F4F1"/><circle cx="160" cy="122" r="54" fill="#0B0B0B" stroke="#F4F4F1" stroke-width="6"/>
+   <path d="M106 124 A54 54 0 0 1 214 124 Q196 84 160 90 Q124 84 106 124 Z" fill="#F4F4F1"/>
+   <ellipse class="ey" cx="141" cy="128" rx="5" ry="6" fill="#F4F4F1"/><ellipse class="ey" cx="179" cy="128" rx="5" ry="6" fill="#F4F4F1"/>
+   <path class="sm" d="M142 150 Q160 164 178 150" stroke="#F4F4F1" stroke-width="5"/><ellipse class="mo" cx="160" cy="153" rx="9" ry="6" fill="#F4F4F1" opacity="0"/></g>
+  <circle class="lh" r="12" fill="#F4F4F1"/><circle class="rh" r="12" fill="#F4F4F1"/>
+  <g class="pr p-type" opacity="0"><rect x="84" y="376" width="152" height="70" rx="6" fill="#0B0B0B" stroke="#F4F4F1" stroke-width="5"/><path d="M62 450 L258 450" stroke="#F4F4F1" stroke-width="6"/><circle cx="160" cy="411" r="7" fill="#F4F4F1"/><path class="k1" d="M118 360 L112 344" stroke="#2F5BFF" stroke-width="5"/><path class="k2" d="M160 356 L160 338" stroke="#2F5BFF" stroke-width="5"/><path class="k3" d="M202 360 L208 344" stroke="#2F5BFF" stroke-width="5"/></g>
+  <g class="pr p-phone" opacity="0"><rect x="-13" y="-24" width="26" height="46" rx="5" fill="#0B0B0B" stroke="#F4F4F1" stroke-width="5"/></g>
+  <g class="pr p-wav" opacity="0" stroke="#2F5BFF" stroke-width="5"><path class="w1" d="M236 150 Q246 164 236 178"/><path class="w2" d="M252 138 Q270 164 252 190"/><path class="w3" d="M268 126 Q294 164 268 202"/></g>
+  <g class="pr p-think" opacity="0" fill="#2F5BFF"><circle class="t1" cx="232" cy="96" r="6"/><circle class="t2" cx="254" cy="70" r="10"/><circle class="t3" cx="284" cy="36" r="16"/></g>
+  <g class="pr p-flash" opacity="0"><circle class="fl" r="10" fill="#F4F4F1"/></g>
+  <g class="pr p-mag" opacity="0"><circle cx="0" cy="-34" r="26" fill="rgba(47,91,255,.18)" stroke="#F4F4F1" stroke-width="6"/><path d="M0 -8 L0 6" stroke="#F4F4F1" stroke-width="9"/></g>
+  <g class="pr p-thumb" opacity="0"><path d="M0 -6 L0 -30" stroke="#F4F4F1" stroke-width="12"/></g>
+  <g class="pr p-stop" opacity="0" stroke="#F4F4F1" stroke-width="7"><path d="M-10 -8 L-12 -30"/><path d="M-3 -10 L-4 -36"/><path d="M4 -10 L5 -36"/><path d="M11 -8 L13 -30"/></g>
+ </g></svg><div class="nm">Lisa<small>Physio-Praxis · erfundenes Beispiel</small></div></div>
+ <div class="lzc"><div class="k">${esc(s.kicker||"Lisas Beispiel")}</div><div class="h">${hl(s.h||"")}</div>${s.text?`<div class="win"><div class="bar"><u></u><u></u><u></u>${esc(s.bar||"")}</div><pre></pre></div>`:`<div class="list">${(s.items||[]).map(x=>`<div class="li"><i>✓</i><span>${esc(x)}</span></div>`).join("")}</div>`}${s.note?`<div class="nt"><b>${esc(s.note[0])}</b>${esc(s.note[1])}</div>`:""}</div>`,
  num:s=>`<div class="k">${esc(s.kicker||"")}</div><div class="big">${esc(s.num)}</div><div class="h s" style="margin-top:18px">${hl(s.h)}</div>`
 };
 const DRAWS={
@@ -96,6 +122,35 @@ const DRAWS={
   const z=1+((s.zoom||1.7)-1)*out(cl((t-.7)/Math.max(1,d*.45)));el.querySelector(".im").style.transform=`scale(${z})`;
   const rq=cl((t-d*.42)/.3),r=el.querySelector(".ring");r.style.opacity=rq;const pu=1+.06*Math.sin(Math.max(0,t-d*.42)*6);r.style.transform=`scale(${(.4+.6*back(rq))*pu})`;r.style.boxShadow=`0 0 0 4000px rgba(11,11,11,${.45*rq})`;
   const tg=el.querySelector(".rtag");tg.style.opacity=cl((t-d*.42-.25)/.3)},
+ lisa(el,p,s,t,d){const $=q=>el.querySelector(q),f=$(".fig"),q=cl(t/.55),sn=Math.sin,act=s.act||"point";
+  f.style.opacity=cl(t/.25);f.style.transform=`translate(${(1-back(q))*-90}px,${sn(t*2.1)*2.5}px)`;inn($(".nm"),(t-.35)/.3,12);
+  const bl=(t%3.1)<.13;el.querySelectorAll(".ey").forEach(e=>e.setAttribute("ry",bl?.8:6));$(".hd").style.transform=`rotate(${sn(t*1.3)*2.2}deg)`;$(".hd").style.transformOrigin="160px 176px";
+  let le=[66,314],lh=[58,394],re=[254,314],rh=[262,394];const pr={};
+  if(act==="wave"){re=[262,262];rh=[278+sn(t*7)*16,176-Math.abs(sn(t*7))*6]}
+  else if(act==="point"){re=[250,282+sn(t*3)*3];rh=[304+sn(t*3)*6,262]}
+  else if(act==="type"){le=[78,318];re=[242,318];lh=[122,386+(sn(t*14)>0?-5:2)];rh=[198,386+(sn(t*14)>0?2:-5)];pr.type=1}
+  else if(act==="talk"){re=[250,300];rh=[212,196];pr.phone=1;pr.wav=1}
+  else if(act==="think"){re=[246,296];rh=[190,188+sn(t*2)*2];pr.think=1}
+  else if(act==="photo"){re=[258,290];rh=[262,188];le=[150,330];lh=[236,206];pr.phone=1;pr.flash=1}
+  else if(act==="check"){re=[252,300];rh=[268+sn(t*2.2)*14,238];pr.mag=1}
+  else if(act==="thumb"){re=[256,292];rh=[262,214-Math.abs(sn(t*3))*8];pr.thumb=1}
+  else if(act==="stop"){re=[254,296];rh=[272,206+sn(t*2.5)*3];pr.stop=1}
+  const k=out(cl((t-.45)/.5)),mix=(a,b)=>[a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k];le=mix([66,314],le);lh=mix([58,394],lh);re=mix([254,314],re);rh=mix([262,394],rh);
+  $(".la").setAttribute("d",`M104 232 L${le[0]} ${le[1]} L${lh[0]} ${lh[1]}`);$(".ra").setAttribute("d",`M216 232 L${re[0]} ${re[1]} L${rh[0]} ${rh[1]}`);
+  $(".lh").setAttribute("cx",lh[0]);$(".lh").setAttribute("cy",lh[1]);$(".rh").setAttribute("cx",rh[0]);$(".rh").setAttribute("cy",rh[1]);
+  el.querySelectorAll(".pr").forEach(g=>g.setAttribute("opacity",0));const on=n=>{const g=$(".p-"+n);g.setAttribute("opacity",k);return g};
+  if(pr.type){on("type");["k1","k2","k3"].forEach((c,i)=>$("."+c).setAttribute("opacity",((t*5+i)%3)<1?1:0))}
+  if(pr.phone)on("phone").setAttribute("transform",`translate(${rh[0]} ${rh[1]-4}) rotate(${act==="talk"?-18:0})`);
+  if(pr.wav){on("wav");["w1","w2","w3"].forEach((c,i)=>$("."+c).setAttribute("opacity",cl(sn(t*6-i*1.1)*.5+.6)));$(".mo").setAttribute("opacity",k);$(".mo").setAttribute("ry",3+Math.abs(sn(t*9))*6);$(".sm").setAttribute("opacity",1-k)}else{$(".mo").setAttribute("opacity",0);$(".sm").setAttribute("opacity",1)}
+  if(pr.think){on("think");["t1","t2","t3"].forEach((c,i)=>$("."+c).setAttribute("opacity",cl(((t*.9)%3.2-i*.55)/.3)))}
+  if(pr.flash){const g=on("flash");g.setAttribute("transform",`translate(${rh[0]+4} ${rh[1]-30})`);const ph=(t%2.2)/2.2,fl=$(".fl");fl.setAttribute("r",8+ph*150);fl.setAttribute("opacity",t>1.2?Math.max(0,.75-ph*2.2):0)}
+  if(pr.mag)on("mag").setAttribute("transform",`translate(${rh[0]} ${rh[1]})`);
+  if(pr.thumb)on("thumb").setAttribute("transform",`translate(${rh[0]} ${rh[1]})`);
+  if(pr.stop)on("stop").setAttribute("transform",`translate(${rh[0]} ${rh[1]})`);
+  const C=$(".lzc");inn(C.children[0],(t-.2)/.3);inn(C.children[1],(t-.25)/.35,30);
+  if(s.text){const w=C.querySelector(".win");inn(w,(t-.5)/.35,26);const n=Math.floor(cl((t-1)/Math.max(1,d-2.8))*s.text.length);w.querySelector("pre").innerHTML=esc(s.text.slice(0,n)).replace(/(←[^\n]*)/g,"<em>$1</em>")+(n<s.text.length||Math.floor(t*2)%2?"<em>▍</em>":"")}
+  else{const li=[...C.querySelectorAll(".li")];li.forEach((c,i)=>{const a=.9+i*(d-2.2)/Math.max(1,li.length);inn(c,(t-a)/.3,14);c.classList.toggle("on",t>a+.35)})}
+  const nt=C.querySelector(".nt");if(nt)inn(nt,(t-(d-1.5))/.35,12)},
  num(el,p,s,t){inn(el.children[0],t/.3);const q=cl(t/.4);el.children[1].style.opacity=q;el.children[1].style.transform=`scale(${.7+.3*back(q)})`;el.children[1].style.transformOrigin="left center";inn(el.children[2],(t-.4)/.4)}
 };
 let S=[],els=[];

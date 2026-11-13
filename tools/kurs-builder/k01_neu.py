@@ -9,7 +9,7 @@ def X(nr, h, say): return T(f"Lektion {nr:02d} · Das Problem", h, say, size="m"
 def Q(f, ok, w1, w2, pos, e):
     a = [w1, w2]; a.insert(pos, ok); return {"f": f, "a": a, "r": pos, "e": e}
 
-INTRO_LISA = T("Dein Beispiel im Kurs · frei erfunden", "Das ist *Lisa.*", "Durch den Kurs begleitet dich Lisa. Sie hat eine Physio-Praxis und ist ein erfundenes Beispiel. An ihr siehst du jeden Schritt ganz konkret.", size="m")
+INTRO_LISA = LI("Das ist *Lisa.*", "Durch den Kurs begleitet dich Lisa. Sie hat eine Physio-Praxis und ist ein erfundenes Beispiel. An ihr siehst du jeden Schritt ganz konkret.", act="wave", items=["Physiotherapeutin mit eigener Praxis", "Viele Ideen, wenig Zeit", "Frei erfundenes Beispiel"], kicker="Dein Beispiel im Kurs")
 
 NEU = [
  # 01 KI als Mitarbeiter
@@ -222,3 +222,17 @@ GLOSSAR = {
  "Tool": "Werkzeug, mit dem die KI etwas tun kann, zum Beispiel im Web suchen oder Dateien erstellen.",
  "Voice Prompting": "Der KI etwas einsprechen statt zu tippen.",
 }
+
+# Lisa als animierte Figur (13.11.2026): jede Szene "Lisas Beispiel" wird zur Lisa-Szene mit passender Geste.
+ACTS = ["wave", "type", "talk", "point", "think", "thumb", "type", "type", "point", "type", "stop", "point", "thumb", "stop", "point", "stop", "think", "photo", "check", "stop"]
+def _lisa(s, act):
+    k = s["k"]
+    if k in ("prompt", "tree"): return LI(s["h"], s["say"], act, text=s["text"], note=s.get("note"), bar=s.get("bar") or LB)
+    if k in ("list", "steps"): it = s["items"]
+    elif k == "cards": it = [f"{c[1]}: {c[2]}" for c in s["items"]]
+    elif k == "vs": it = [f"{x[1]}: {', '.join(x[2])}" for x in (s["a"], s["b"])]
+    else: return s
+    return LI(s["h"], s["say"], act, items=it)
+for _n, _a in zip(NEU, ACTS):
+    _n["scenes"] = [_lisa(x, _a) if x.get("kicker") == "Lisas Beispiel" else x for x in _n["scenes"]]
+    assert any(x["k"] == "lisa" for x in _n["scenes"])
