@@ -1527,9 +1527,69 @@ const LANDING_URL = "https://maikz91.github.io/flow-media-ai/";
 async function loadStats() {
   if (!WEB) return;
   stats.loading = true; stats.error = ""; if (view === "stats") render();
+  loadComm();
   try { const j = await api("analytics", { days: stats.days }); stats.data = j; if (j.status === "error") stats.error = "PostHog hat nicht geantwortet." }
   catch { stats.error = "Die Auswertung konnte nicht geladen werden." }
   stats.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
+}
+/* ---------- Community-Seite (marketing/community/): Selbsttest-Antworten + Klicks auf „Beitreten“ ---------- */
+const comm = { data: null, loading: false, error: "" };
+const COMM_URL = "https://maikz91.github.io/flow-media-ai/marketing/community/";
+const FRAGE_NAMES = { zeit: "Ideen, aber keine Zeit", tools: "KI-Tools überfordern mich", allein: "Alles allein, kein Feedback" };
+async function loadComm() {
+  comm.loading = true; comm.error = "";
+  try { const j = await api("community", { days: stats.days }); comm.data = j; if (j.status === "error") comm.error = "PostHog hat nicht geantwortet." }
+  catch { comm.error = "Die Community-Zahlen konnten nicht geladen werden." }
+  comm.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
+}
+function srcName(s) {
+  const x = String(s || "").toLowerCase();
+  if (!x || x === "$direct" || x === "null") return "Direkt / unbekannt";
+  if (x === "meta_ad") return "Meta-Anzeige";
+  if (x.includes("instagram")) return "Instagram";
+  if (x.includes("facebook") || x === "fb") return "Facebook";
+  if (x.includes("whatsapp")) return "WhatsApp";
+  if (x.includes("maikz91.github.io")) return "Eigene Website";
+  return s;
+}
+const nullish = v => v == null || v === "" || v === "null" || v === "(null)";
+const fragenText = v => nullish(v) ? "" : String(v).split(",").filter(Boolean).map(f => FRAGE_NAMES[f] || f).join(" · ");
+function renderComm() {
+  const d = comm.data;
+  const head = `<div class="cal-head"><h2 style="margin:0">Community-Seite</h2>
+    <a class="mini" href="${COMM_URL}" target="_blank" rel="noopener">Seite öffnen</a>
+    ${d?.link ? `<a class="mini" href="${esc(d.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}
+    <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(n => `<button type="button" data-days="${n}" aria-pressed="${stats.days === n}">${n} Tage</button>`).join("")}</span></div>`;
+  let body;
+  if (comm.loading && !d) body = `<p class="sub">Lade Community-Zahlen …</p>`;
+  else if (comm.error) body = `<div class="note">${esc(comm.error)}<button type="button" class="mini" data-stats-reload>Erneut laden</button></div>`;
+  else if (d?.status === "no_token") body = `<div class="note">PostHog ist noch nicht verbunden (Secret <b>POSTHOG_API_KEY</b>).</div>`;
+  else if (d?.status === "ok") {
+    const k = d.kpi, p = d.prev, pct = (a, b) => b ? (a / b * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 }) + " %" : "–";
+    const src = {}; (d.quellen || []).forEach(([s, v, j]) => { const n = srcName(s); src[n] = src[n] || [0, 0]; src[n][0] += Number(v) || 0; src[n][1] += Number(j) || 0 });
+    const srcRows = Object.entries(src).sort((a, b) => b[1][0] - a[1][0]).map(([n, [v, j]]) => [`${n}${j ? ` · ${j} × beigetreten` : ""}`, v]);
+    const haken = (d.haken || []).map(([n, c]) => [nullish(n) ? "ohne Angabe" : `${n} von 3 angehakt`, c]);
+    const joins = d.joins || [];
+    const list = joins.length ? `<ul class="blist">${joins.map(([t, q, n, f, dev, city]) => { const dt = new Date(String(t).replace(" ", "T") + "Z");
+        const when = isNaN(dt) ? esc(t) : dt.toLocaleString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+        const ft = fragenText(f);
+        return `<li style="grid-template-columns:auto minmax(0,1fr)"><span class="bl-n" style="font-variant-numeric:tabular-nums">${when}</span><span class="bl-name" title="${esc(ft)}">${esc(srcName(q))}${dev ? ` · ${esc(DEVICE_NAMES[dev] || dev)}` : ""}${city ? ` · ${esc(city)}` : ""}${ft ? ` · <b>${esc(ft)}</b>` : nullish(n) || n === "0" ? " · ohne Selbsttest" : ""}</span></li>` }).join("")}</ul>` : `<p class="sub">Noch niemand hat auf „Beitreten“ geklickt.</p>`;
+    body = `<div class="kpis">
+        <div class="kpi"><span class="kl">Besuche</span><b>${fmtN(k.visits)}</b>${delta(k.visits, p.visits)}</div>
+        <div class="kpi"><span class="kl">Selbsttest gemacht</span><b>${fmtN(k.quiz)}</b><span class="kd">${pct(k.quiz, k.visits)} der Besuche</span></div>
+        <div class="kpi"><span class="kl">Auf „Beitreten“ geklickt</span><b>${fmtN(k.joiners)}</b>${delta(k.joiners, p.joiners)}</div>
+        <div class="kpi"><span class="kl">Beitritts-Quote</span><b>${pct(k.joiners, k.visits)}</b><span class="kd">Klicks auf Beitreten je Besuch${p.visits ? ` · vorher ${pct(p.joiners, p.visits)}` : ""}</span></div>
+      </div>
+      <div class="sgrid">
+        <div class="panel spanel wide"><h3>Besuche pro Tag</h3>${dailyChart(d.daily, d.days)}</div>
+        <div class="panel spanel"><h3>Was stimmt? (Selbsttest)</h3>${barList(d.fragen, FRAGE_NAMES)}</div>
+        <div class="panel spanel"><h3>Woher kommen die Besuche?</h3>${barList(srcRows)}</div>
+        <div class="panel spanel"><h3>Haken beim Beitreten</h3>${barList(haken)}</div>
+        <div class="panel spanel wide"><h3>Wer hat auf „Beitreten“ geklickt?</h3>${list}</div>
+      </div>
+      <p class="sub" style="margin:0">Gezählt wird der Klick auf den WhatsApp-Einladungslink. Ob jemand danach wirklich in der Gruppe ist, sieht nur WhatsApp. Namen gibt es hier nicht: Die Seite ist anonym.</p>`;
+  } else body = `<p class="sub">Lade …</p>`;
+  return `<section class="panel stats">${head}${body}</section>`;
 }
 const fmtN = n => Number(n || 0).toLocaleString("de-DE");
 function delta(cur, prev) {
@@ -1583,7 +1643,7 @@ function renderStats() {
       </div>
       <p class="sub" style="margin:0">Gezählt wird ohne Cookies: ein „Besuch“ ist ein Seitenbesuch, wiederkehrende Personen werden nicht wiedererkannt.</p>`;
   } else body = `<p class="sub">Lade …</p>`;
-  return `<section class="panel stats">${head}${body}</section>`;
+  return `<div style="display:flex;flex-direction:column;gap:16px;min-width:0;grid-column:1/-1;width:100%">${WEB ? renderComm() : ""}<section class="panel stats">${head}${body}</section></div>`;
 }
 document.addEventListener("mouseover", e => {
   const g = e.target.closest?.(".chart .bar"), c = e.target.closest?.(".chart"); if (!c) return;

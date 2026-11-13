@@ -113,7 +113,7 @@ cs.forEach(c => c.addEventListener("click", () => {
 }));
 document.querySelectorAll("[data-join]").forEach(a => {
   a.href = COMMUNITY_URL; a.target = "_blank"; a.rel = "noopener";
-  a.addEventListener("click", () => { try { posthog.capture("community_join_click", { cta: a.dataset.cta, quiz: anz(), quelle: new URLSearchParams(location.search).get("utm_source") || "" }); } catch (e) {} });
+  a.addEventListener("click", () => { try { posthog.capture("community_join_click", { cta: a.dataset.cta, quiz: anz(), fragen: cs.filter(x => x.classList.contains("on")).map(x => x.dataset.q).join(","), quelle: new URLSearchParams(location.search).get("utm_source") || "" }); } catch (e) {} });
 });
 </script>
 </body>

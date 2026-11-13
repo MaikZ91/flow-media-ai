@@ -86,6 +86,48 @@ async function analytics(daysReq: unknown) {
   return { status: "ok", days, kpi: k(cur), prev: k(prev), daily, refs, ctas, devices, link: `${host}/project/${project}/web` };
 }
 
+// Community-Seite (marketing/community/): Besuche, Selbsttest-Antworten, Klicks auf „Beitreten“ (WhatsApp).
+// Ob jemand der WhatsApp-Gruppe wirklich beitritt, sieht die Seite nicht – gezählt wird der Klick auf den Einladungslink.
+async function community(daysReq: unknown) {
+  const key = secret(["POSTHOG_API_KEY", "POSTHOG_KEY", "POSTHOG_PERSONAL_API_KEY"], /posthog/i);
+  if (!key) return { status: "no_token" };
+  const days = [7, 30, 90].includes(Number(daysReq)) ? Number(daysReq) : 30;
+  const host = Deno.env.get("POSTHOG_HOST") ?? "https://eu.posthog.com";
+  const project = Deno.env.get("POSTHOG_PROJECT") ?? "175210";
+  const page = "properties.$pathname LIKE '/flow-media-ai/marketing/community%'";
+  const q = async (sql: string) => {
+    const r = await fetch(`${host}/api/projects/${project}/query/`, {
+      method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ query: { kind: "HogQLQuery", query: sql } }),
+    });
+    if (!r.ok) throw new Error(`posthog ${r.status}`);
+    return (await r.json()).results as unknown[][];
+  };
+  const win = (from: number, to: number) => `timestamp > now() - INTERVAL ${from} DAY AND timestamp <= now() - INTERVAL ${to} DAY`;
+  const kpiSql = (from: number, to: number) => `SELECT uniqIf(properties.$session_id, event = '$pageview'), uniqIf(properties.$session_id, event = 'community_quiz'),
+      countIf(event = 'community_join_click'), uniqIf(properties.$session_id, event = 'community_join_click')
+    FROM events WHERE ${page} AND ${win(from, to)}`;
+  const [cur, prev, daily, fragen, haken, quellen, joins] = await Promise.all([
+    q(kpiSql(days, 0)), q(kpiSql(days * 2, days)),
+    q(`SELECT toString(toDate(timestamp)) AS d, countIf(event = '$pageview'), uniqIf(properties.$session_id, event = '$pageview'), countIf(event = 'community_join_click')
+       FROM events WHERE ${page} AND ${win(days, 0)} GROUP BY d ORDER BY d`),
+    // letzter Stand je Besuch und Frage: angehakt oder wieder abgewählt
+    q(`SELECT frage, countIf(zuletzt = 'true') FROM (
+         SELECT properties.$session_id AS s, toString(properties.frage) AS frage, argMax(toString(properties.an), timestamp) AS zuletzt
+         FROM events WHERE event = 'community_quiz' AND ${page} AND ${win(days, 0)} GROUP BY s, frage)
+       GROUP BY frage ORDER BY 2 DESC`),
+    q(`SELECT toString(properties.quiz) AS n, count() FROM events WHERE event = 'community_join_click' AND ${page} AND ${win(days, 0)} GROUP BY n ORDER BY n`),
+    q(`SELECT coalesce(nullIf(toString(properties.utm_source), ''), nullIf(properties.$referring_domain, ''), '$direct') AS src,
+         uniqIf(properties.$session_id, event = '$pageview'), countIf(event = 'community_join_click')
+       FROM events WHERE ${page} AND ${win(days, 0)} GROUP BY src ORDER BY 2 DESC LIMIT 8`),
+    q(`SELECT toString(timestamp), coalesce(nullIf(toString(properties.quelle), ''), nullIf(properties.$referring_domain, ''), '$direct'),
+         toString(properties.quiz), toString(properties.fragen), coalesce(properties.$device_type, ''), coalesce(properties.$geoip_city_name, '')
+       FROM events WHERE event = 'community_join_click' AND ${page} AND ${win(days, 0)} ORDER BY timestamp DESC LIMIT 30`),
+  ]);
+  const k = (r: unknown[][]) => { const [visits, quiz, clicks, joiners] = (r[0] ?? [0, 0, 0, 0]) as number[]; return { visits, quiz, clicks, joiners }; };
+  return { status: "ok", days, kpi: k(cur), prev: k(prev), daily, fragen, haken, quellen, joins, link: `${host}/project/${project}/activity/explore` };
+}
+
 // Folder listing of an allowed GitHub repo (token optional for public repos, required for private ones).
 async function githubList(repoReq: unknown, pathReq: unknown) {
   const repos = (Deno.env.get("GITHUB_REPOS") ?? "MaikZ91/flow-media-ai").split(",").map((r) => r.trim()).filter(Boolean);
@@ -203,6 +245,9 @@ Deno.serve(async (req) => {
         return json(await calendlyEvents());
       case "analytics": {
         try { return json(await analytics(body.days)); } catch (e) { return json({ status: "error", message: String((e as any)?.message ?? e) }); }
+      }
+      case "community": {
+        try { return json(await community(body.days)); } catch (e) { return json({ status: "error", message: String((e as any)?.message ?? e) }); }
       }
       case "gh_list": {
         const r = await githubList(body.repo, body.path);
