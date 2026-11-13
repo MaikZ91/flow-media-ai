@@ -60,14 +60,15 @@ def daten():
         for i, l in enumerate(k["lektionen"], 1):
             v = f"L{i:02d}"; secs += dur(v)
             e = {"videos": [[base + v + ".mp4", base + v + ".jpg", l["titel"]]], "text": l["text"], "punkte": l["punkte"], "aufgabe": l["aufgabe"]}
-            for f in ("prompt", "links", "optional", "bonus", "beispiele", "bereich", "frei", "abschnitte"):
+            for f in ("prompt", "links", "optional", "bonus", "beispiele", "bereich", "frei", "abschnitte", "satz", "check"):
                 if l.get(f): e[f] = l[f]
             lek.append(e)
         res[kid] = {"status": "live", "code": k["code"], "dauer": f"ca. {max(1, round(secs/60))} Min. Video · {k['umsetzen']} Umsetzen",
-                    "hinweis": "Animierte Videos mit KI-Stimme (gekennzeichnet). Jede Lektion endet mit einer Aufgabe.",
+                    "hinweis": k.get("hinweis", "Animierte Videos mit KI-Stimme (gekennzeichnet). Jede Lektion endet mit einer Aufgabe."),
                     "intro": {"video": base + "L00.mp4", "poster": base + "L00.jpg", "titel": k["intro"]["titel"]},
                     "module": [l["titel"] for l in k["lektionen"]], "bereiche": {str(i): l["bereich"] for i, l in enumerate(k["lektionen"]) if l.get("bereich")}, "lektionen": lek, "spick": k["spick"], "faq": k["faq"], "ende": k["ende"]}
         if k.get("special"): res[kid]["special"] = k["special"]
+        if k.get("glossar"): res[kid]["glossar"] = k["glossar"]
     js = ("// Automatisch erzeugt von tools/kurs-builder/build.py – nicht von Hand ändern. Inhalte: tools/kurs-builder/inhalte.py\n"
           "(function(){var A=" + json.dumps(res, ensure_ascii=False) + ";var K=(window.FLOW_KURSE||{}).kurse||[];K.forEach(function(k){if(A[k.id])Object.assign(k,A[k.id])});if(window.FLOW_KURSE)window.FLOW_KURSE.hinweis=\"Zehn Kurse, kurz und zum Mitmachen: Jede Lektion hat ein Video, einen Prompt zum Kopieren und eine Aufgabe. Das Intro kannst du bei jedem Kurs kostenlos ansehen.\"})();\n")
     open(os.path.join(DNA, "kurse-auto.js"), "w", encoding="utf-8").write(js); print("kurse-auto.js", len(js))

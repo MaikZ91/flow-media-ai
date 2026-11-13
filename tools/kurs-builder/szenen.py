@@ -13,3 +13,4 @@ def SH(h, img, fx, fy, say, items=(), tag="Hier", src="", bar="", zoom=1.7, ar=1
     """Original-Bildschirmfoto im App-Fenster: Zoom auf (fx, fy) in Prozent, blauer Kreis + Marke an der Stelle."""
     return {"k": "shot", "h": h, "img": img, "fx": fx, "fy": fy, "say": say, "items": list(items), "tag": tag, "src": src, "bar": bar, "zoom": zoom, "ar": ar, "kicker": kicker}
 SUPPORT = ["Ich hänge fest.", "Frag in der Tech-Support-Gruppe (Tab Community) – dort helfen Maik und die Community."]
+def M(h, say): return {"k": "title", "kicker": "Merksatz", "h": h, "say": say, "size": "m", "pic": False}

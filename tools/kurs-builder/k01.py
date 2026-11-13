@@ -249,3 +249,11 @@ KURS = {
  "faq": [["Die Antworten sind zu allgemein.", "Dann fehlt Kontext: wer du bist, für wen das Ergebnis ist und ein Beispiel, das dir gefällt (Lektion 02). Danach nachschärfen."], ["Muss ich alle 20 Lektionen der Reihe nach machen?", "Der Bereich „AI Mindset“ (Lektion 01–04) ist die Grundlage. Danach kannst du springen – die Lektionen verweisen aufeinander."], ["Stimmt das, was die KI sagt?", "Nicht immer. Fakten, Zahlen und Quellen prüfst du selbst – besonders bei Recht, Gesundheit und Geld (Lektion 19)."], ["Brauche ich ein bezahltes Abo?", "Zum Lernen reicht meist die kostenlose Version. Ein Abo lohnt sich, wenn du täglich damit arbeitest. Projekte, Konnektoren und starke Modelle sind je nach Anbieter Teil des Abos."], ["Ich nutze nicht Claude. Geht der Kurs trotzdem?", "Ja. Claude ist das Beispiel, die Prinzipien (Kontext, Briefing, Regeln, Prüfen) gelten für jeden Assistenten. CLAUDE.md und Skills sind am stärksten in Claude."], SUPPORT],
  "ende": {"titel": "Du führst jetzt deine KI.", "text": "Du weißt, wie du Kontext gibst, delegierst, deine Arbeitsumgebung aufbaust und Ergebnisse prüfst. Nächster Schritt: Halte fest, wer du bist – im Kurs „Mit KI zur Personal Brand“ wird daraus ein Skill, den jede KI nutzt."},
 }
+
+# Fassung 13.11.2026: Szenen, Merksatz und Mini-Check je Lektion kommen aus k01_neu.py (Problem → Bild → Lisa → Merksatz).
+from k01_neu import NEU, GLOSSAR, INTRO_LISA
+assert len(NEU) == len(KURS["lektionen"])
+for _l, _n in zip(KURS["lektionen"], NEU): _l.update(_n)
+KURS["intro"]["scenes"].insert(1, INTRO_LISA)
+KURS["glossar"] = GLOSSAR
+KURS["hinweis"] = "Animierte Videos mit KI-Stimme (gekennzeichnet). Lisa und ihre Physio-Praxis sind ein frei erfundenes Beispiel. Jede Lektion endet mit einer Aufgabe."

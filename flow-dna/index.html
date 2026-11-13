@@ -150,6 +150,11 @@ nav button.cbtn{gap:2px}nav button.cbtn img{width:50px;height:50px;border-radius
 .kp .lb .ab ol{padding-left:20px;margin:6px 0 10px}.kp .lb .ab ol li{display:list-item;padding:3px 0}
 .kp .lb .ab a{color:#2F5BFF;font-weight:600}.kp .lb .ab code{word-break:break-all}
 .kp .lb figure{margin:10px 0 14px}.kp .lb figure img{width:100%;display:block;border:2px solid #0B0B0B}.kp .lb figcaption{font-size:12.5px;color:#555;margin-top:4px}.kp .lb figcaption span{display:block;font-size:11px;color:#888}
+.kp .ks1{border-left:6px solid #2F5BFF;background:#fff;padding:10px 12px;margin:6px 0 10px}.kp .ks1 small,.kp .kq small{display:block;font:700 11px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#2F5BFF;margin-bottom:4px}.kp .ks1 p{margin:0;font-size:16px;line-height:1.45;font-weight:600}
+.kp .kq{border:2px solid #0B0B0B;background:#fff;padding:10px 12px;margin:8px 0}.kp .kq b{display:block;font-size:15px;margin-bottom:8px}.kp .kq button{display:block;width:100%;text-align:left;border:2px solid #0B0B0B;background:#F6F6F2;padding:9px 10px;margin:6px 0 0;font:500 14px Inter;cursor:pointer;color:#0B0B0B}.kp .kq button.ok{background:#2F5BFF;border-color:#2F5BFF;color:#fff}.kp .kq button.no{background:#0B0B0B;color:#fff}.kp .kq p{margin:8px 0 0;font-size:13.5px}
+.kp .km{margin:10px 0}.kp .km summary{cursor:pointer;font:600 13.5px Inter;padding:9px 0;border-top:2px solid #0B0B0B;border-bottom:2px solid #0B0B0B;list-style:none}.kp .km summary::before{content:"＋ ";color:#2F5BFF;font-weight:700}.kp .km[open] summary::before{content:"－ "}.kp .km summary::-webkit-details-marker{display:none}.kp .km[open] summary{margin-bottom:10px}
+.gl{border:0;background:none;padding:0;font:inherit;color:inherit;border-bottom:2px dotted #2F5BFF;cursor:pointer}
+#glb{position:fixed;left:12px;right:12px;bottom:86px;max-width:520px;margin:0 auto;background:#0B0B0B;color:#fff;padding:12px 14px;z-index:60;display:none;border-left:6px solid #2F5BFF}#glb.on{display:block}#glb small{display:block;font:600 10px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9A}#glb b{display:block;font:700 20px Oswald;text-transform:uppercase;margin:2px 0 4px}#glb p{margin:0;font-size:14px;line-height:1.45}
 .kfl{display:block;width:100%;text-align:left;border:2px solid #2F5BFF;background:#fff;padding:10px 12px;margin:0 0 12px;cursor:pointer;font:inherit}.kfl small{display:block;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#2F5BFF}.kfl b{display:block;font:700 18px Oswald;text-transform:uppercase;margin:2px 0}.kfl span{font-size:13px}
 .kpv{border:2px solid #2F5BFF;background:#fff;padding:10px 12px;margin:0 0 12px;font-size:13.5px}.kpv small{display:block;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#2F5BFF;margin-bottom:3px}.kpv button{margin-top:6px}
 .kp li.lz .lh{opacity:.55}
@@ -387,6 +392,25 @@ const kPaketCode=val=>{const c=KPAKET.find(x=>x.h===KH(val));if(!c)return"";cons
 const kOffen=k=>k.status==="live"&&(!k.code||kFrei().includes(k.id)||kAlleBis()>0);
 let kLek=-1,kVid=0,kPrev=false;
 const kDone=id=>{try{return JSON.parse(localStorage.getItem("dna-kurs-done-"+id)||"[]")}catch(e){return[]}};
+// Lektion im neuen Aufbau (Kurse mit "satz"): In einem Satz → Mach jetzt → Mini-Check → Mehr (aufklappbar). Fachbegriffe antippbar.
+const kChk=id=>{try{return JSON.parse(localStorage.getItem("dna-kurs-check-"+id)||"{}")}catch(e){return{}}};
+function glo(h,G,used){if(!G)return h;Object.keys(G).sort((a,b)=>b.length-a.length).forEach(t=>{if(used[t])return;const re=new RegExp("(^|[^A-Za-zÄÖÜäöüß])("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?:s|e|en|n)?)(?![A-Za-zÄÖÜäöüß])");let inB=false;h=h.split(/(<[^>]+>)/).map(seg=>{if(seg[0]==="<"){if(/^<(button|a|code)\b/.test(seg))inB=true;else if(/^<\/(button|a|code)>/.test(seg))inB=false;return seg}if(inB||used[t])return seg;return seg.replace(re,(m,a,w)=>{used[t]=1;return a+`<button type="button" class="gl" data-gl="${DNA.esc(t)}">${w}</button>`})}).join("")});return h}
+function lekNeu(k,l,i,dn){const G=k.glossar,U={},c=l.check,ans=kChk(k.id)[i],has=ans!==undefined;
+ return `<div class="lb">${l.frei?`<button type="button" class="ksh" data-kshare="${i}">🔗 Link zu dieser Lektion teilen</button>`:""}
+  <div class="ks1"><small>In einem Satz</small><p>${glo(DNA.esc(l.satz),G,U)}</p></div>
+  ${l.aufgabe?`<div class="tk"><small>Mach jetzt</small>${DNA.esc(l.aufgabe)}</div>`:""}
+  ${c?`<div class="kq"><small>Mini-Check</small><b>${DNA.esc(c.f)}</b>${c.a.map((a,j)=>`<button type="button" data-kq="${i},${j}" class="${has?(j===c.r?"ok":j===ans?"no":""):""}">${has&&j===c.r?"✓ ":has&&j===ans?"✗ ":""}${DNA.esc(a)}</button>`).join("")}${has?`<p>${ans===c.r?"Richtig. ":"Nicht ganz. "}${DNA.esc(c.e)}</p>`:""}</div>`:""}
+  ${l.abschnitte?l.abschnitte.map(([t,h])=>`<div class="ab"><h4>${DNA.esc(t)}</h4>${h}</div>`).join(""):""}
+  <details class="km"${l.abschnitte?" open":""}><summary>Mehr: Prompt zum Kopieren, Erklärung, Punkte</summary>
+   ${l.prompt?`<div class="pm"><code>${DNA.esc(l.prompt)}</code><button type="button" data-kcopy="${i}">Kopieren</button></div>`:""}
+   ${l.text?`<p>${glo(l.text,G,U)}</p>`:""}
+   ${l.punkte?`<ul>${l.punkte.map(x=>`<li>${glo(x,G,U)}</li>`).join("")}</ul>`:""}
+   ${l.links?`<div class="ln">${l.links.map(([t,u,n])=>`<a href="${u}"${u[0]==="?"?"":` target="_blank" rel="noopener"`}><b>${DNA.esc(t)} ↗</b><span>${DNA.esc(n)}</span></a>`).join("")}</div>`:""}
+  </details>
+  <button type="button" class="dn ${dn?"ok":""}" data-kdone="${i}">${dn?"✓ Erledigt":"Als erledigt markieren"}</button></div>`}
+document.addEventListener("click",e=>{const q=e.target.closest("[data-kq]");if(q){const [i,j]=q.dataset.kq.split(",").map(Number);const A=kChk(kursId);A[i]=j;try{localStorage.setItem("dna-kurs-check-"+kursId,JSON.stringify(A))}catch(err){}const y=view.scrollTop;kurse();view.scrollTop=y;return}
+ const g=e.target.closest("[data-gl]");let b=document.getElementById("glb");if(g){const k=K.kurse.find(x=>x.id===kursId);const d=k&&k.glossar&&k.glossar[g.dataset.gl];if(!d)return;if(!b){b=document.createElement("div");b.id="glb";document.body.appendChild(b)}b.innerHTML=`<small>Kurz erklärt</small><b>${DNA.esc(g.dataset.gl)}</b><p>${DNA.esc(d)}</p>`;b.classList.add("on");return}
+ if(b)b.classList.remove("on")});
 function kursPlayer(k){const D=kDone(k.id),L=k.lektionen;const nD=D.length;const op=kOffen(k);
  const cur=kLek<0?{src:k.intro.video,poster:k.intro.poster,t:"Intro · "+k.intro.titel}:(()=>{const l=L[kLek];const v=l.videos&&l.videos[kVid];return v?{src:v[0],poster:v[1],t:`Lektion ${String(kLek+1).padStart(2,"0")} · ${v[2]}`}:null})();
  document.getElementById("meta").innerHTML=`<span>Kurs ${k.nr}</span><span>${nD} / ${L.length} erledigt</span>`;
@@ -399,7 +423,7 @@ function kursPlayer(k){const D=kDone(k.id),L=k.lektionen;const nD=D.length;const
   <ol><li class="${kLek<0?"on":""}"><button type="button" class="lh" data-klek="-1"><i>00</i><span>Intro: ${DNA.esc(k.intro.titel)}</span><em>▶</em></button></li>${L.map((l,i)=>{const on=i===kLek,dn=D.includes(i);if(!op&&!l.frei)return `${k.bereiche&&k.bereiche[i]?`<li class="kbh">${DNA.esc(k.bereiche[i])}</li>`:""}<li class="lz"><button type="button" class="lh" data-kzu><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em>🔒</em></button></li>`;
    const st=l.folgt?"Folgt":l.bonus?(dn?"✓ Bonus":"Bonus"):l.optional?(dn?"✓ Optional":"Optional"):dn?"✓":"▶";
    return `${k.bereiche&&k.bereiche[i]?`<li class="kbh">${DNA.esc(k.bereiche[i])}</li>`:""}<li class="${on?"on":""}"><button type="button" class="lh" data-klek="${i}"><i>${String(i+1).padStart(2,"0")}</i><span>${DNA.esc(k.module[i])}</span><em class="${dn?"ok":""}">${st}</em></button>
-   ${on?`<div class="lb">${l.frei?`<button type="button" class="ksh" data-kshare="${i}">🔗 Link zu dieser Lektion teilen</button>`:""}${l.text?`<p>${l.text}</p>`:""}
+   ${on&&l.satz?lekNeu(k,l,i,dn):on?`<div class="lb">${l.frei?`<button type="button" class="ksh" data-kshare="${i}">🔗 Link zu dieser Lektion teilen</button>`:""}${l.text?`<p>${l.text}</p>`:""}
     ${l.abschnitte?l.abschnitte.map(([t,h])=>`<div class="ab"><h4>${DNA.esc(t)}</h4>${h}</div>`).join(""):""}
     ${l.videos&&l.videos.length>1?`<div class="vs">${l.videos.map((v,j)=>`<button type="button" class="${j===kVid?"on":""}" data-kvid="${j}">▶ ${DNA.esc(v[2])}</button>`).join("")}</div>`:""}
     ${l.prompt?`<div class="pm"><code>${DNA.esc(l.prompt)}</code><button type="button" data-kcopy="${i}">Kopieren</button></div>`:""}
