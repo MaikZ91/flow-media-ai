@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-12T20:00+00:00",
+ "stand": "2026-11-13T01:53+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,48 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Microsoft-365-Störung: Serverausfälle legen Teams, Exchange und Copilot lahm",
+   "s": "Eine Störung bei Microsoft 365 beeinträchtigt weltweit zahlreiche Cloud-Dienste wie Exchange Online, Teams, SharePoint, Copilot und Defender XDR.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Microsoft-365-Stoerung-Serverausfaelle-legen-Teams-Exchange-und-Copilot-lahm-11523565.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-12T21:01:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Microsoft Copilot"
+   ],
+   "n": 1,
+   "r": 11.2
+  },
+  {
+   "t": "Claude Meetings: Anthropic lässt Claude als Teilnehmer an Videoanrufe andocken",
+   "s": "Anthropic bringt Claude als sichtbaren Teilnehmer in Videocalls. Claude Meetings erstellt während des Gesprächs live Dokumente, Whiteboards und Protokolle, zunächst als Beta für Team- und Enterprise-Tarife auf Google …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/claude-meetings-anthropic-laesst-claude-als-teilnehmer-an-videoanrufe-andocken/",
+   "d": "2026-11-12T20:26:50+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 19.1
+  },
+  {
+   "t": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+   "s": "Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/amplitude",
+   "d": "2026-11-12T20:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "KI-Agenten",
+    "Coding mit KI"
+   ],
+   "n": 4,
+   "r": 51.0
+  },
   {
    "t": "Google stellt Gemini 4 Hydrogen vor: Schnelles KI-Modell für den Alltag für weniger Geld",
    "s": "Google bringt mit Gemini 4 Hydrogen ein KI-Modell, das den Vorgänger Flash ablösen soll, aber laut Benchmarks auch das teurere Argon überflüssig macht. Auf dem unabhängigen Artificial Analysis Intelligence Index …",
@@ -18,7 +60,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.9
+   "r": 12.9
   },
   {
    "t": "Googles KI-Brillen starten im Dezember ab 395 US-Dollar",
@@ -31,7 +73,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 23.5
+   "r": 22.5
   },
   {
    "t": "Digitale Medienordnung: Länder wollen Big Tech und KI streng regulieren",
@@ -44,7 +86,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 11.4
+   "r": 10.4
   },
   {
    "t": "Datum offiziell: Anthropic-Aktien ab 19. November im Handel",
@@ -57,7 +99,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 13.4
+   "r": 12.4
   },
   {
    "t": "Warum KI-Modelle ihre Gedanken verbergen können und weshalb Gegenmaßnahmen kaum greifen",
@@ -70,7 +112,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 13.2
+   "r": 12.2
   },
   {
    "t": "United Airlines untersagt KI-Agenten das Buchen von Flügen",
@@ -83,7 +125,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.2
+   "r": 10.2
   },
   {
    "t": "„Das ist bedauerlich“: Amazon lässt Tausende KI-Agenten programmieren",
@@ -96,8 +138,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 3,
-   "r": 35.1
+   "n": 4,
+   "r": 44.1
   },
   {
    "t": "Android Auto: Warum Googles neue Gemini-Funktion die meisten Smartphones ausschließt",
@@ -110,7 +152,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.1
+   "r": 12.1
   },
   {
    "t": "Nvidia-Chef Huang gestürzt, Finanzchefin Kress übernimmt vorerst",
@@ -123,7 +165,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 11.0
+   "r": 10.0
   },
   {
    "t": "Elevenlabs Scribe v3 Live: Neue Echtzeit-Spracherkennung soll Anrufer nicht mehr mitten im Satz abwürgen",
@@ -134,7 +176,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.8
+   "r": 5.9
   },
   {
    "t": "Angst vor neuen KI-Chip-Exportkontrollen: China sichert sich Rechenkapazitäten",
@@ -149,7 +191,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 18.8
+   "r": 17.8
   },
   {
    "t": "Claude zockt GTA 4 und andere Games: Wie sich der KI-Agent dabei anstellt",
@@ -163,8 +205,21 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 3,
-   "r": 40.8
+   "n": 4,
+   "r": 49.8
+  },
+  {
+   "t": "Gondola doubles revenue as its team builds more with Codex",
+   "s": "Gondola helps creatives get credit and get hired, with Codex raising its lead engineer’s output by 50% and ChatGPT simplifying daily work.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/gondola",
+   "d": "2026-11-12T12:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 11.7
   },
   {
    "t": "Googles AlphaGenome 2 soll zeigen, wie jede Körperzelle ihre DNA liest",
@@ -177,7 +232,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 22.6
+   "r": 21.6
   },
   {
    "t": "Harbor: Neue App von Apple-Tochter Claris für lokale KI-Modelle",
@@ -190,7 +245,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 10.6
+   "r": 9.6
   },
   {
    "t": "US-Firmen verkaufen wohl KI-Trainingsdaten an China",
@@ -205,7 +260,7 @@
     "DeepSeek & China"
    ],
    "n": 3,
-   "r": 42.6
+   "r": 41.6
   },
   {
    "t": "KubeCon 2026: Die CNCF will KI-Agenten sicherer und effizienter machen",
@@ -218,7 +273,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 10.5
+   "r": 9.6
   },
   {
    "t": "AlphaGenome 2: Googles KI berücksichtigt Zellzustände bei DNA-Prognosen",
@@ -229,7 +284,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.5
+   "r": 5.5
   },
   {
    "t": "Anthropic-IPO: Banken drängen auf höhere Bewertung",
@@ -243,7 +298,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 14.5
+   "r": 13.5
   },
   {
    "t": "CEOs drängen zum KI-Einsatz – und ernten \"Work-Slop\" von Mitarbeitenden",
@@ -257,7 +312,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 12.5
+   "r": 11.5
   },
   {
    "t": "Diktieren statt tippen: Diese 3 kostenlosen KI-Tools machen es möglich",
@@ -268,7 +323,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.3
+   "r": 5.4
   },
   {
    "t": "Australien will Frontier-KI-Firmen zu unabhängigen Prüfungen und Sicherheitskontrollen zwingen",
@@ -281,7 +336,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 10.3
+   "r": 9.3
   },
   {
    "t": "KI in der Justiz: Hilfe für Richter oder Risiko für den Rechtsstaat?",
@@ -292,7 +347,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.3
+   "r": 5.3
   },
   {
    "t": "/Plan oder /Goal? So nutzt du zwei KI-Modi sinnvoll im Büroalltag",
@@ -306,7 +361,7 @@
     "Claude / Anthropic"
    ],
    "n": 3,
-   "r": 38.3
+   "r": 37.3
   },
   {
    "t": "Holiday Extras is rethinking what it can build with Codex",
@@ -317,18 +372,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 6.2
-  },
-  {
-   "t": "„The Witcher 3“: KI bearbeitet Geralts polnische Stimme nach Schlaganfall",
-   "s": "Geralts polnischer Sprecher Jacek Rozenek klingt nach einem Schlaganfall anders. Für die neue „Witcher 3“-Erweiterung glättet CD Projekt Red das per KI.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/The-Witcher-3-KI-bearbeitet-Geralts-polnische-Stimme-nach-Schlaganfall-11521741.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-12T08:32:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 6.1
+   "r": 5.3
   },
   {
    "t": "Supporting research on AI and children’s safety",
@@ -341,7 +385,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.7
+   "r": 9.7
   },
   {
    "t": "Gilbert + Tobin rethinks the business of law with AI",
@@ -352,7 +396,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 4.7
+   "r": 3.7
   },
   {
    "t": "Gemini Decisions: Google bringt spezialisiertes KI-Modell für schnelle Entscheidungen statt Textgenerierung",
@@ -366,7 +410,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 12.0
+   "r": 11.0
   },
   {
    "t": "KI-Ausgaben von US-Firmen wachsen nur noch langsam und neue Konkurrenz verschärft den Druck",
@@ -380,7 +424,7 @@
     "Claude / Anthropic"
    ],
    "n": 3,
-   "r": 35.9
+   "r": 34.9
   },
   {
    "t": "Google Deepminds AlphaProof Code beweist mathematisch, dass Signals Verschlüsselung sicher ist",
@@ -394,21 +438,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 3,
-   "r": 37.7
-  },
-  {
-   "t": "Helsings neue KI-Plattform Clarity soll Europas Antwort auf Palantirs Maven werden",
-   "s": "Helsing stellt mit Clarity eine KI-Plattform vor, die Sensordaten per Agenten zu Zielvorschlägen für Waffensysteme verdichtet – unter menschlicher Aufsicht und europäischer Kontrolle. Erfahrungen aus dem Iran-Krieg, …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/helsings-neue-ki-plattform-clarity-soll-europas-antwort-auf-palantirs-maven-werden/",
-   "d": "2026-11-11T14:35:53+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 7.1
+   "n": 4,
+   "r": 46.7
   },
   {
    "t": "ChatGPT Plus for veterans and servicemembers",
@@ -421,7 +452,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.0
+   "r": 7.0
   },
   {
    "t": "JioStar’s chief architect on AI discovery at 500M-user scale",
@@ -432,7 +463,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 0.7
+   "r": 0.0
   },
   {
    "t": "Helping caregivers use AI in everyday life",
@@ -498,33 +529,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "t": "Cogent and OpenAI build cyber defense factories for enterprises",
-   "s": "Cogent combines OpenAI models with enterprise context to help automatically remediate vulnerabilities with agents.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/cogent-security",
-   "d": "2026-11-10T00:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 10.0
-  },
-  {
-   "t": "ChatGPT Enterprise now available in AWS Marketplace",
-   "s": "ChatGPT Enterprise is now available through AWS Marketplace, helping organizations simplify procurement through existing AWS purchasing and billing relationships.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
-   "d": "2026-11-09T19:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
   }
  ],
  "kanaele": [
@@ -537,502 +541,47 @@
   "Google DeepMind",
   "Two Minute Papers"
  ],
- "videos": [
-  {
-   "id": "SxiYOCPW8_c",
-   "t": "DAS ist die Zukunft der Roboter! Asimovs Gesetze, RSI & Superintelligenz (Ex-DeepMind-Forscher)",
-   "q": "Everlast AI",
-   "d": "2026-11-12T16:15:39+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini",
-    "Robotik",
-    "Regulierung & AI Act"
-   ],
-   "n": 2,
-   "r": 31.4
-  },
-  {
-   "id": "gPNiuyYirfw",
-   "t": "DeepMind’s AI Just Did The Impossible",
-   "q": "Two Minute Papers",
-   "d": "2026-11-12T13:41:41+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 12.9
-  },
-  {
-   "id": "QPrdQp9ZqeI",
-   "t": "KI-Pionier: „In 2 bis 5 Jahren kann KI ALLE Bürojobs ersetzen!“ (Prof. Marcus Hutter)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-12T10:15:06+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 6.4
-  },
-  {
-   "id": "vu3YlUMkvyg",
-   "t": "What Codex Unlocks for Holiday Extras",
-   "q": "OpenAI",
-   "d": "2026-11-12T09:45:17+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 6.3
-  },
-  {
-   "id": "NS220dAaRMo",
-   "t": "How to request and enable Daybreak Blue",
-   "q": "OpenAI",
-   "d": "2026-11-11T21:10:28+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 4.2
-  },
-  {
-   "id": "vdBDMj2UhDg",
-   "t": "How to enable PR security reviews with Codex Security",
-   "q": "OpenAI",
-   "d": "2026-11-11T21:10:24+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 4.2
-  },
-  {
-   "id": "CrrpfvbNyMw",
-   "t": "ChatGPT Images: Three Ways to Get Started",
-   "q": "OpenAI",
-   "d": "2026-11-11T21:10:10+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 10.2
-  },
-  {
-   "id": "hUhr0JiVZZs",
-   "t": "How to run your first Codex Security scan",
-   "q": "OpenAI",
-   "d": "2026-11-11T21:10:05+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 4.2
-  },
-  {
-   "id": "uND6iY2qp_c",
-   "t": "AlphaGenome 2: Teaching AI to read the entire human genome",
-   "q": "Google DeepMind",
-   "d": "2026-11-11T18:00:31+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 3.7
-  },
-  {
-   "id": "QzIFL1a1y1Y",
-   "t": "Es geht los: Chinas Humanoide Roboter kommen JETZT nach Deutschland! Ich war vor Ort (UBTech)",
-   "q": "Everlast Robotics",
-   "d": "2026-11-11T16:15:08+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 7.4
-  },
-  {
-   "id": "5M6mKitVrDQ",
-   "t": "Noch viermal singen",
-   "q": "Everlast AI",
-   "d": "2026-11-11T14:30:10+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 3.1
-  },
-  {
-   "id": "WG88oXnIl2Y",
-   "t": "Wer hat's erfunden? Die CHINESEN! SO entstand der Binärcode hinter jeder KI (Prof. Klaus Mainzer)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-11T10:15:03+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 6.4
-  },
-  {
-   "id": "BajLtMHISQU",
-   "t": "„Verbot für Superintelligenz“ USA stoppen Rechenzentren, Claude RSI, Starfall & Merz' KI-Steuer",
-   "q": "Everlast AI",
-   "d": "2026-11-10T16:15:31+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "vug73goPJaM",
-   "t": "Is Software Over?",
-   "q": "Two Minute Papers",
-   "d": "2026-11-10T10:15:57+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "xwDJI3AhyWM",
-   "t": "KI-Pionier: „Die meisten Ökonomen liegen FALSCH! Es kommen KEINE neuen Jobs“ (Marcus Hutter)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-10T10:15:21+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "RcvjZlq12kU",
-   "t": "Unser gesamtes Firmenwissen! (Stand 2026)",
-   "q": "Everlast AI",
-   "d": "2026-11-09T16:15:35+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "Tt-il3EZfhA",
-   "t": "„Ich unterhalte mich mit KRÄHEN!“ Was Tiere uns über KI verraten (Prof. Klaus Mainzer)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-09T10:15:20+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "jkeB74nI-cs",
-   "t": "„Sie haben KEINE Freizeit mehr!“ So brutal ist Chinas Schulsystem (Wolfgang Röhr)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-08T14:15:19+00:00",
-   "lang": "de",
-   "tags": [
-    "Bildung & Schule"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "6wWnbZu4oxI",
-   "t": "Motion Graphics OHNE After Effects: Claude baut alles KOMPLETT alleine!",
-   "q": "Cinetiq",
-   "d": "2026-11-08T10:00:37+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "v0q266zAQ9M",
-   "t": "Es ist passiert: Die KI-Blase platzt in Amerika! DAS musst du jetzt wissen | KI-NEWS",
-   "q": "Everlast AI",
-   "d": "2026-11-08T09:27:52+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "GJ6PMUm5oTA",
-   "t": "OpenAI's Astra Just Opened The Black Box Of AI",
-   "q": "Two Minute Papers",
-   "d": "2026-11-07T16:24:47+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "XgC1QTs6A2U",
-   "t": "The Future of AI Is Absolutely Incredible (Spencer Huang)",
-   "q": "Two Minute Papers",
-   "d": "2026-11-06T07:27:02+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "LWLTLHiDtlw",
-   "t": "„DAS ist unsere letzte Chance!“ Deutschlands größtes Roboter-Projekt startet JETZT in München",
-   "q": "Everlast Robotics",
-   "d": "2026-11-04T16:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "lytWc30v4Jo",
-   "t": "6x GÜNSTIGER als Seedance 2.5? Kling 4.0: Alles, was du wissen musst (16 Praxistests)",
-   "q": "Cinetiq",
-   "d": "2026-11-01T10:15:22+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "CWdTBLsbaQs",
-   "t": "OpenAI Claims It Just Did The Impossible",
-   "q": "Two Minute Papers",
-   "d": "2026-10-30T15:57:16+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "PAFZUpDMY64",
-   "t": "Ich bin in Chinas Zukunftsstadt: Hier sind Roboter schon ÜBERALL! | VLOG",
-   "q": "Everlast Robotics",
-   "d": "2026-10-28T14:15:06+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "sFfPkUJd_Jk",
-   "t": "Genie 4: A new generation of world simulation",
-   "q": "Google DeepMind",
-   "d": "2026-10-27T16:00:41+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "--9ZTpDQfNw",
-   "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
-   "q": "Cinetiq",
-   "d": "2026-10-25T13:00:27+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "4xnzufXKM2o",
-   "t": "Wahnsinn: Diese Roboter-Finger fühlen 160x besser als Menschen! DAS baut China gerade",
-   "q": "Everlast Robotics",
-   "d": "2026-10-21T15:15:24+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China",
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 8.0
-  },
-  {
-   "id": "owzZaTsBLhg",
-   "t": "Schau das BEVOR du KI-Avatare postest! (4 Ideen, mit denen du herausstichst)",
-   "q": "Cinetiq",
-   "d": "2026-10-18T09:00:13+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "YkGuQXXOwMQ",
-   "t": "Weltneuheit: Erste \"Underground\" Roboter-Kämpfe in USA! DAS passiert hier wirklich",
-   "q": "Everlast Robotics",
-   "d": "2026-10-14T15:18:24+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
-   "id": "LVEfFyijQ2c",
-   "t": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T16:38:17+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "ftkic7Tdpcg",
-   "t": "Using Gemini 4 Argon to protect against Cyber attackers",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T16:38:14+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "9PICEmtfpWU",
-   "t": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T15:58:20+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini",
-    "Robotik"
-   ],
-   "n": 2,
-   "r": 20.0
-  },
-  {
-   "id": "ylUTLJTkMDY",
-   "t": "12 ikonische Animationsstile, die du kennen musst (inkl. Seedance 2.5 Prompts)",
-   "q": "Cinetiq",
-   "d": "2026-10-11T09:00:26+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 2.0
-  },
-  {
-   "id": "DdCEmlAydcw",
-   "t": "Inside Anthropic's molecular biology lab",
-   "q": "Anthropic",
-   "d": "2026-09-23T18:01:32+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "uVS88gnaxcg",
-   "t": "Meet Claude Fable 5.1",
-   "q": "Anthropic",
-   "d": "2026-09-01T19:21:24+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "ROF2Nv_KjOM",
-   "t": "Introducing Claude Fable 5.1",
-   "q": "Anthropic",
-   "d": "2026-09-01T18:02:31+00:00",
-   "lang": "en",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "UxJZrCFzTHY",
-   "t": "Model Hardware Standard: AI operating physical equipment",
-   "q": "Anthropic",
-   "d": "2026-08-28T00:40:16+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "id": "djVUCj5i4sw",
-   "t": "We're building a way for AI models to connect to any device and run real experiments.",
-   "q": "Anthropic",
-   "d": "2026-08-27T19:42:35+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  }
- ],
+ "videos": [],
  "themen": [
-  {
-   "name": "Google Gemini",
-   "meldungen": 8,
-   "quellen": 5
-  },
   {
    "name": "OpenAI",
    "meldungen": 13,
    "quellen": 4
   },
   {
-   "name": "Claude / Anthropic",
-   "meldungen": 7,
-   "quellen": 4
-  },
-  {
    "name": "KI-Agenten",
-   "meldungen": 7,
-   "quellen": 4
-  },
-  {
-   "name": "Regulierung & AI Act",
-   "meldungen": 5,
+   "meldungen": 6,
    "quellen": 4
   },
   {
    "name": "Coding mit KI",
-   "meldungen": 3,
+   "meldungen": 4,
+   "quellen": 4
+  },
+  {
+   "name": "Claude / Anthropic",
+   "meldungen": 7,
    "quellen": 3
   },
   {
-   "name": "DeepSeek & China",
-   "meldungen": 3,
-   "quellen": 2
+   "name": "Google Gemini",
+   "meldungen": 7,
+   "quellen": 3
+  },
+  {
+   "name": "Regulierung & AI Act",
+   "meldungen": 4,
+   "quellen": 3
   },
   {
    "name": "Nvidia & Chips",
    "meldungen": 2,
    "quellen": 2
+  },
+  {
+   "name": "DeepSeek & China",
+   "meldungen": 2,
+   "quellen": 1
   }
  ],
  "aktien": [
@@ -1040,11 +589,12 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 141.33,
+   "preis": 139.94,
    "cur": "USD",
-   "d1": 1.13,
-   "m1": -13.5,
+   "d1": -2.2,
+   "m1": -10.6,
    "spark": [
+    156.54,
     152.16,
     148.62,
     146.03,
@@ -1065,22 +615,19 @@
     134.27,
     142.07,
     143.09,
-    139.75,
-    141.33
+    139.75
    ],
-   "t": "2026-11-12T20:00+00:00"
+   "t": "2026-11-12T21:00+00:00"
   },
   {
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 74.5,
+   "preis": 74.45,
    "cur": "HKD",
-   "d1": -0.86,
-   "m1": 10.0,
+   "d1": -0.07,
+   "m1": 10.5,
    "spark": [
-    67.7,
-    67.4,
     67.2,
     62.65,
     64.55,
@@ -1100,19 +647,22 @@
     64.5,
     70.3,
     75.15,
-    76.6
+    76.6,
+    74.5,
+    74.45
    ],
-   "t": "2026-11-12T08:08+00:00"
+   "t": "2026-11-13T01:38+00:00"
   },
   {
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 390.17,
+   "preis": 397.45,
    "cur": "USD",
-   "d1": -0.17,
-   "m1": 3.2,
+   "d1": 4.65,
+   "m1": 5.9,
    "spark": [
+    375.23,
     367.16,
     362.44,
     354.72,
@@ -1133,20 +683,20 @@
     358.22,
     378.05,
     379.78,
-    390.84,
-    390.17
+    390.84
    ],
-   "t": "2026-11-12T20:00+00:00"
+   "t": "2026-11-12T21:00+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 164.25,
+   "preis": 166.19,
    "cur": "USD",
-   "d1": -5.46,
-   "m1": -27.4,
+   "d1": -1.6,
+   "m1": -27.3,
    "spark": [
+    228.52,
     221.3,
     217.23,
     214.13,
@@ -1167,20 +717,20 @@
     186.64,
     178.67,
     168.89,
-    173.73,
-    164.24
+    173.73
    ],
-   "t": "2026-11-12T20:00+00:00"
+   "t": "2026-11-12T21:00+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 299.62,
+   "preis": 298.7,
    "cur": "USD",
-   "d1": 2.1,
-   "m1": -15.1,
+   "d1": 3.94,
+   "m1": -15.6,
    "spark": [
+    353.78,
     347.64,
     349.22,
     340.59,
@@ -1201,20 +751,20 @@
     284.78,
     288.15,
     287.38,
-    293.45,
-    299.62
+    293.45
    ],
-   "t": "2026-11-12T20:00+00:00"
+   "t": "2026-11-12T21:00+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 522.04,
+   "preis": 523.0,
    "cur": "USD",
-   "d1": 0.17,
-   "m1": -3.5,
+   "d1": -1.91,
+   "m1": -3.8,
    "spark": [
+    543.45,
     533.69,
     539.44,
     529.05,
@@ -1235,10 +785,9 @@
     530.61,
     545.18,
     533.16,
-    521.13,
-    522.04
+    521.13
    ],
-   "t": "2026-11-12T20:00+00:00"
+   "t": "2026-11-12T21:00+00:00"
   },
   {
    "name": "Anthropic",
