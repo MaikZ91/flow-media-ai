@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-14T18:12+00:00",
+ "stand": "2026-11-14T22:30+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -16,7 +16,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 8.0
+   "r": 7.3
   },
   {
    "t": "\"Große Unsicherheit\": Anthropic-Chef hadert kurz vor Rekord-IPO mit der größten Wette der KI-Branche",
@@ -29,7 +29,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 23.9
+   "r": 23.2
   },
   {
    "t": "Google schlägt OpenAI: Gemini 4 Carbon führt die KI-Mathe-Benchmark MathArena an",
@@ -43,7 +43,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 29.7
+   "r": 29.0
   },
   {
    "t": "Anthropic erklärt, welche Prompting-Gewohnheiten Nutzer bei Claude Opus 5.5 ablegen sollten",
@@ -56,7 +56,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 23.7
+   "r": 23.0
   },
   {
    "t": "Auf Anthropic wetten statt Aktien kaufen: Wie riskant sind Perpetual Futures?",
@@ -70,7 +70,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 37.6
+   "r": 36.8
   },
   {
    "t": "Inference Manager: neues Ubuntu-Tool verwaltet lokale KI-Modelle",
@@ -81,7 +81,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 6.5
   },
   {
    "t": "Anthropic legt nach: Fable 5.2 und Mythos 5.2 im Performance-Check",
@@ -94,7 +94,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 23.2
+   "r": 22.5
   },
   {
    "t": "Animationen mit KI: Was Claude Motion wirklich leistet",
@@ -107,7 +107,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 13.0
+   "r": 12.3
   },
   {
    "t": "Geheime Botschaften: Warum Bilder eine Sicherheitslücke für KI sind",
@@ -120,7 +120,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 8.9
+   "r": 8.2
   },
   {
    "t": "Claude Mythos war kein Ausreißer, sondern Teil eines sich beschleunigenden Trends, sagt Ex-Forscher",
@@ -134,7 +134,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 28.8
+   "r": 28.1
   },
   {
    "t": "OpenAI verteilt Robotik-Forscher auf andere Teams, weil Allzweckmodelle spezialisierte Robotik-KI überflüssig machen",
@@ -147,8 +147,8 @@
     "OpenAI",
     "Robotik"
    ],
-   "n": 1,
-   "r": 16.7
+   "n": 2,
+   "r": 26.0
   },
   {
    "t": "Adobe-Alternative mit KI: Das steckt hinter Artcraft",
@@ -159,7 +159,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.7
+   "r": 6.0
   },
   {
    "t": "Trotz Exportverbot: Hatten chinesische KI-Labore Zugriff auf Nvidia-Chips?",
@@ -173,7 +173,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 14.6
+   "r": 13.9
   },
   {
    "t": "Robotermodell als Open Source: Runway gibt Robotik-Modell Praxis-1 mit Gewichten frei",
@@ -186,7 +186,7 @@
     "Robotik"
    ],
    "n": 1,
-   "r": 10.6
+   "r": 9.8
   },
   {
    "t": "Blende zu, KI an – wohin entwickelt sich die Smartphone-Fotografie? | c’t uplink",
@@ -197,7 +197,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.9
+   "r": 5.2
   },
   {
    "t": "Nvidia-CEO Jensen Huang: Affären wohl nicht Hauptgrund für seinen Rücktritt",
@@ -210,7 +210,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 18.3
+   "r": 17.5
   },
   {
    "t": "Nach SpaceX-Vorbild: Auch beim Anthropic-IPO bleiben chinesische Bieter außen vor",
@@ -225,7 +225,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 15.9
+   "r": 15.2
   },
   {
    "t": "Generative KI stiftet Chaos in Brüssel und Straßburg",
@@ -236,7 +236,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.9
+   "r": 3.1
   },
   {
    "t": "OpenAI startet mit der ChatGPT Wallet einen zweiten Anlauf beim KI-Shopping",
@@ -249,7 +249,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.8
+   "r": 9.1
   },
   {
    "t": "Claude for Manufacturing: Anthropics neues Plugin macht KI zum Assistenten in der Industrieautomation",
@@ -262,7 +262,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 9.7
+   "r": 9.0
   },
   {
    "t": "Siri AI: Dann kommt Apples KI-System auf ältere Apple-TV-4K-Geräte",
@@ -276,7 +276,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 11.5
+   "r": 10.8
   },
   {
    "t": "heise+ | Bit-Rauschen: Nvidia-Chef tritt ab, KI-Aktien fahren Achterbahn",
@@ -289,7 +289,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 17.5
+   "r": 16.8
   },
   {
    "t": "Home Assistant mit KI: Gruselig und gut",
@@ -300,7 +300,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.5
+   "r": 2.8
   },
   {
    "t": "Introducing ChatGPT Wallet",
@@ -314,7 +314,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 13.5
+   "r": 12.7
   },
   {
    "t": "KI-App Gemini fährt nun im CarPlay-Auto mit",
@@ -327,7 +327,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 9.4
+   "r": 8.6
   },
   {
    "t": "KI-Update kompakt: Wirbel um Nvidia, Grundrechte, Gemini 4 Hydrogen, Roboter",
@@ -342,7 +342,7 @@
     "Robotik"
    ],
    "n": 2,
-   "r": 27.3
+   "r": 26.6
   },
   {
    "t": "Claude zockt GTA 4 und andere Games: Wie sich der KI-Agent dabei anstellt",
@@ -357,7 +357,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 36.8
+   "r": 36.1
   },
   {
    "t": "Gemini 4 Hydrogen: Googles effiziente Alternative zu Argon und Carbon",
@@ -370,7 +370,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 18.4
+   "r": 17.7
   },
   {
    "t": "Shield helps technicians hand off legacy portal work with OpenAI",
@@ -384,7 +384,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 12.3
+   "r": 11.6
   },
   {
    "t": "Microsoft-365-Störung: Serverausfälle legen Teams, Exchange und Copilot lahm",
@@ -397,7 +397,7 @@
     "Microsoft Copilot"
    ],
    "n": 1,
-   "r": 4.5
+   "r": 4.0
   },
   {
    "t": "How Amplitude ships product improvements in 1–2 days with OpenAI",
@@ -412,7 +412,7 @@
     "Coding mit KI"
    ],
    "n": 2,
-   "r": 24.3
+   "r": 24.0
   },
   {
    "t": "Googles KI-Brillen starten im Dezember ab 395 US-Dollar",
@@ -547,7 +547,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 8.7
+   "r": 8.0
   },
   {
    "id": "x7iwI6WfWS0",
@@ -557,7 +557,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 5.7
   },
   {
    "id": "ErOVIC-MGVA",
@@ -569,7 +569,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.0
+   "r": 9.3
   },
   {
    "id": "PkAmyub12K8",
@@ -581,7 +581,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.8
+   "r": 9.1
   },
   {
    "id": "pfbfZKxUEDQ",
@@ -593,7 +593,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.7
+   "r": 9.0
   },
   {
    "id": "g1To-h08yJ4",
@@ -603,7 +603,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.7
+   "r": 2.0
   },
   {
    "id": "YmxpxJZvm4M",
@@ -613,20 +613,21 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 0.7
+   "r": 0.0
   },
   {
    "id": "SxiYOCPW8_c",
-   "t": "DAS ist der nächste KI-Durchbruch! Roboter-Selbstverbesserung & Asimovs Gesetze (Markus Wulfmeier)",
+   "t": "DAS ist der nächste Durchbruch! GPT-7, Roboter-RSI & Asimovs Gesetze (Markus Wulfmeier)",
    "q": "Everlast AI",
    "d": "2026-11-12T16:15:39+00:00",
    "lang": "de",
    "tags": [
+    "OpenAI",
     "Robotik",
     "Regulierung & AI Act"
    ],
-   "n": 1,
-   "r": 8.0
+   "n": 2,
+   "r": 24.0
   },
   {
    "id": "gPNiuyYirfw",
@@ -995,6 +996,11 @@
  ],
  "themen": [
   {
+   "name": "OpenAI",
+   "meldungen": 13,
+   "quellen": 3
+  },
+  {
    "name": "Claude / Anthropic",
    "meldungen": 9,
    "quellen": 3
@@ -1018,11 +1024,6 @@
    "name": "Coding mit KI",
    "meldungen": 3,
    "quellen": 3
-  },
-  {
-   "name": "OpenAI",
-   "meldungen": 12,
-   "quellen": 2
   },
   {
    "name": "KI-Agenten",
