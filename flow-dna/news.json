@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-14T10:34+00:00",
+ "stand": "2026-11-14T18:12+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,149 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Mindestens ab der Galaxy Watch 7: Samsung bringt KI-gestützte Schlafapnoe-Messung auf seine Wearables",
+   "s": "Samsung erweitert seine Funktion zur Erkennung von Schlafapnoe um KI-Algorithmen. Künftig sollen Galaxy Ring und Watch drei Schweregrade der nächtlichen Atemaussetzer erkennen. Die KI-Funktion kommt auch auf ältere …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/samsung-galaxy-watch-schlafapnoe-1770547",
+   "d": "2026-11-14T18:10:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 8.0
+  },
+  {
+   "t": "\"Große Unsicherheit\": Anthropic-Chef hadert kurz vor Rekord-IPO mit der größten Wette der KI-Branche",
+   "s": "Kurz vor dem möglicherweise größten Börsengang aller Zeiten nennt Anthropic-CEO Dario Amodei den Einkauf von Rechenleistung das \"tiefste geschäftliche Dilemma\" seines Unternehmens. Mittlerweile summieren sich Anthropics …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/grosse-unsicherheit-anthropic-chef-hadert-kurz-vor-rekord-ipo-mit-der-groessten-wette-der-ki-branche/",
+   "d": "2026-11-14T17:51:17+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 23.9
+  },
+  {
+   "t": "Google schlägt OpenAI: Gemini 4 Carbon führt die KI-Mathe-Benchmark MathArena an",
+   "s": "Erstmals seit langer Zeit führt kein OpenAI-Modell die KI-Mathe-Benchmark MathArena an. Googles Gemini 4 Carbon und Anthropics Fable 5.2 verdrängen GPT-6.1 Sol von der Spitze, allerdings zu teils deutlich höheren …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/google-schlaegt-openai-gemini-4-carbon-fuehrt-die-ki-mathe-benchmark-matharena-an/",
+   "d": "2026-11-14T16:37:01+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 29.7
+  },
+  {
+   "t": "Anthropic erklärt, welche Prompting-Gewohnheiten Nutzer bei Claude Opus 5.5 ablegen sollten",
+   "s": "Anthropic hat Claude Opus 5.5 zum Standardmodell auf allen bezahlten Plänen gemacht und einen Leitfaden veröffentlicht, der mit alten Prompting-Gewohnheiten aufräumt. Kernbotschaft: \"Think hard\" streichen und bei Medium …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/anthropic-erklaert-welche-prompting-gewohnheiten-nutzer-bei-claude-opus-5-5-ablegen-sollten/",
+   "d": "2026-11-14T16:14:56+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 23.7
+  },
+  {
+   "t": "Auf Anthropic wetten statt Aktien kaufen: Wie riskant sind Perpetual Futures?",
+   "s": "Schon vor dem Börsengang handeln Krypto-Börsen mit Wetten auf den Kurs des Claude-Entwicklers. Was Anleger darüber wissen sollten.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/anthropic-aktien-perpetual-futures-1773455",
+   "d": "2026-11-14T15:30:51+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Coding mit KI"
+   ],
+   "n": 3,
+   "r": 37.6
+  },
+  {
+   "t": "Inference Manager: neues Ubuntu-Tool verwaltet lokale KI-Modelle",
+   "s": "Canonical hat auf dem Ubuntu Summit den Inference Manager vorgestellt, ein neues Werkzeug zur Verwaltung lokal installierter KI-Modelle.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Inference-Manager-neues-Ubuntu-Tool-verwaltet-lokale-KI-Modelle-11525275.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-14T13:46:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
+  {
+   "t": "Anthropic legt nach: Fable 5.2 und Mythos 5.2 im Performance-Check",
+   "s": "Kurz vor dem geplanten Börsengang hat Anthropic mit Claude Fable 5.2 und Mythos 5.2 zwei neue KI-Modelle vorgestellt. Beide sollen leistungsstärker und billiger als ihre Vorgänger sein und setzen sich im KI-Ranking klar …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/anthropic-claude-fable-5-2-mythos-5-2-release-1772515",
+   "d": "2026-11-14T13:35:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 23.2
+  },
+  {
+   "t": "Animationen mit KI: Was Claude Motion wirklich leistet",
+   "s": "Mit Claude Motion verfügt Anthropics KI-Tool jetzt auch über ein einfaches Animationswerkzeug. Wir haben es ausprobiert und erklären, was damit möglich ist – un",
+   "q": "t3n",
+   "l": "https://t3n.de/news/claude-motion-test-anthropic-ki-animation-1769905",
+   "d": "2026-11-14T12:10:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.0
+  },
+  {
+   "t": "Geheime Botschaften: Warum Bilder eine Sicherheitslücke für KI sind",
+   "s": "Forscher:innen haben untersucht, wie KI-Modelle geheime Botschaften in Bildern verstecken und ob sie diese wieder entschlüsseln können. Obwohl die KI keine neuen Methoden erfand, könnten die Erkenntnisse für die …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ki-geheime-bildbotschaften-sicherheitsluecke-1769790",
+   "d": "2026-11-14T11:35:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 8.9
+  },
+  {
+   "t": "Claude Mythos war kein Ausreißer, sondern Teil eines sich beschleunigenden Trends, sagt Ex-Forscher",
+   "s": "Der Ex-OpenAI- und Anthropic-Forscher Jacob Coxon nennt eine Folie aus der IPO-Roadshow als Grund für seinen Abgang: Sie zeige, dass Anthropics Algorithmen sich nicht nur schnell, sondern immer schneller verbessern. …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/claude-mythos-war-kein-ausreisser-sondern-teil-eines-sich-beschleunigenden-trends-sagt-ex-forscher/",
+   "d": "2026-11-14T10:48:41+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 28.8
+  },
+  {
+   "t": "OpenAI verteilt Robotik-Forscher auf andere Teams, weil Allzweckmodelle spezialisierte Robotik-KI überflüssig machen",
+   "s": "OpenAI löst sein eigenständiges Robotik-Team erneut auf. Dieses Mal jedoch nicht aus Mangel an Daten, sondern weil Allzweckmodelle wie GPT-6 Astra Roboter offenbar direkt steuern können. Die Forscher werden nun auf …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/openai-verteilt-robotik-forscher-auf-andere-teams-weil-allzweckmodelle-spezialisierte-robotik-ki-ueberfluessig-machen/",
+   "d": "2026-11-14T10:35:51+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 16.7
+  },
   {
    "t": "Adobe-Alternative mit KI: Das steckt hinter Artcraft",
    "s": "Hohe Kosten, unpraktische Cloud-Anbindung: Viele Kreative wünschen sich schon lange, dass die Creative Cloud von Adobe mehr Konkurrenz bekommt. Artcraft könnte genau das bieten, ist aktuell aber noch in der Entwicklung.",
@@ -16,7 +159,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 8.0
+   "r": 6.7
   },
   {
    "t": "Trotz Exportverbot: Hatten chinesische KI-Labore Zugriff auf Nvidia-Chips?",
@@ -29,8 +172,8 @@
     "Nvidia & Chips",
     "DeepSeek & China"
    ],
-   "n": 2,
-   "r": 25.9
+   "n": 1,
+   "r": 14.6
   },
   {
    "t": "Robotermodell als Open Source: Runway gibt Robotik-Modell Praxis-1 mit Gewichten frei",
@@ -43,20 +186,7 @@
     "Robotik"
    ],
    "n": 1,
-   "r": 11.8
-  },
-  {
-   "t": "Minecraft-Experiment: Was passiert, wenn KI-Agenten Bürokratie simulieren?",
-   "s": "Zu viel Bürokratie? Damit haben nicht nur wir Menschen zu kämpfen, wie ein aktueller Versuch zeigt.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ki-agenten-minecraft-buerokratie-experiment-1771070",
-   "d": "2026-11-14T07:25:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 11.5
+   "r": 10.6
   },
   {
    "t": "Blende zu, KI an – wohin entwickelt sich die Smartphone-Fotografie? | c’t uplink",
@@ -67,7 +197,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.2
+   "r": 5.9
   },
   {
    "t": "Nvidia-CEO Jensen Huang: Affären wohl nicht Hauptgrund für seinen Rücktritt",
@@ -80,7 +210,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 19.5
+   "r": 18.3
   },
   {
    "t": "Nach SpaceX-Vorbild: Auch beim Anthropic-IPO bleiben chinesische Bieter außen vor",
@@ -95,7 +225,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 17.2
+   "r": 15.9
   },
   {
    "t": "Generative KI stiftet Chaos in Brüssel und Straßburg",
@@ -106,7 +236,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.1
+   "r": 3.9
   },
   {
    "t": "OpenAI startet mit der ChatGPT Wallet einen zweiten Anlauf beim KI-Shopping",
@@ -119,7 +249,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.0
+   "r": 9.8
   },
   {
    "t": "Claude for Manufacturing: Anthropics neues Plugin macht KI zum Assistenten in der Industrieautomation",
@@ -132,20 +262,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 11.0
-  },
-  {
-   "t": "US-Gewerkschaften erkämpfen Schutz vor KI-Überwachung und automatisierten Kündigungen im öffentlichen Dienst",
-   "s": "US-Gewerkschaften im öffentlichen Dienst setzen zunehmend Schutzmaßnahmen gegen KI-Überwachung und automatisierte Kündigungen durch. In Oakland erzwang eine Streikabstimmung Umschulungen statt Entlassungen, in Ohio …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/us-gewerkschaften-erkaempfen-schutz-vor-ki-ueberwachung-und-automatisierten-kuendigungen-im-oeffentlichen-dienst/",
-   "d": "2026-11-13T15:49:53+00:00",
-   "lang": "de",
-   "tags": [
-    "Jobs & Arbeit"
-   ],
-   "n": 1,
-   "r": 6.9
+   "r": 9.7
   },
   {
    "t": "Siri AI: Dann kommt Apples KI-System auf ältere Apple-TV-4K-Geräte",
@@ -159,7 +276,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 12.8
+   "r": 11.5
   },
   {
    "t": "heise+ | Bit-Rauschen: Nvidia-Chef tritt ab, KI-Aktien fahren Achterbahn",
@@ -172,7 +289,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 18.8
+   "r": 17.5
   },
   {
    "t": "Home Assistant mit KI: Gruselig und gut",
@@ -183,7 +300,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.7
+   "r": 3.5
   },
   {
    "t": "Introducing ChatGPT Wallet",
@@ -197,22 +314,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 14.7
-  },
-  {
-   "t": "Ex-OpenAI-Forscher will Nutzung sanktionierter Nvidia-Chips in chinesischen Top-KI-Modellen nachgewiesen haben",
-   "s": "Ex-OpenAI-Forscher Will DePue will erstmals technisch belegt haben, dass DeepSeek, Moonshot AI, MiniMax und Ant Group trotz US-Exportkontrollen Nvidias neueste Blackwell-GPUs nutzen. Seine forensische Methode liest …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/ex-openai-forscher-will-nutzung-sanktionierter-nvidia-chips-in-chinesischen-top-ki-modellen-nachgewiesen-haben/",
-   "d": "2026-11-13T14:43:04+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "Nvidia & Chips",
-    "DeepSeek & China"
-   ],
-   "n": 2,
-   "r": 28.7
+   "r": 13.5
   },
   {
    "t": "KI-App Gemini fährt nun im CarPlay-Auto mit",
@@ -225,7 +327,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 10.6
+   "r": 9.4
   },
   {
    "t": "KI-Update kompakt: Wirbel um Nvidia, Grundrechte, Gemini 4 Hydrogen, Roboter",
@@ -240,60 +342,7 @@
     "Robotik"
    ],
    "n": 2,
-   "r": 28.6
-  },
-  {
-   "t": "\"Hey Gemini\": Dieses Google-Gerät bekommt als erstes ein neues Aktivierungswort",
-   "s": "Die Tage von „Hey Google“ könnten allmählich gezählt sein. Der Tech-Gigant verpasst einem ersten smarten Produkt ein neues Aktivierungswort für Gemini. Welches Produkt betroffen ist und wie es für weitere Google-Geräte …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/hey-gemini-aktivierung-google-1773438",
-   "d": "2026-11-13T12:15:12+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 10.3
-  },
-  {
-   "t": "Anthropics geplanter Börsengang ist laut Bericht sechsfach überzeichnet",
-   "s": "Die Nachfrage nach den Aktien von Anthropic ist hoch und steuert auf den bisher größten Börsengang überhaupt zu. Der Artikel Anthropics geplanter Börsengang ist laut Bericht sechsfach überzeichnet erschien zuerst auf …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/anthropics-geplanter-boersengang-ist-laut-bericht-sechsfach-ueberzeichnet/",
-   "d": "2026-11-13T11:51:08+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 10.2
-  },
-  {
-   "t": "Metas KI-Agent Muse greift für US-Nutzer zum Hörer",
-   "s": "Metas KI-Agent Muse kann jetzt für zahlende US-Abonnenten bei Unternehmen anrufen – vom Kabelanbieter bis zum Restaurant. Über 10 Millionen Nutzer hat der Agent laut Metas KI-Chef Alexandr Wang bereits. Auch Google …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/metas-ki-agent-muse-greift-fuer-us-nutzer-zum-hoerer/",
-   "d": "2026-11-13T11:22:44+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 14.1
-  },
-  {
-   "t": "OpenAI steigt mit Daybreak ins Cybersecurity-Geschäft ein",
-   "s": "OpenAI hat zwei neue Sicherheitsprodukte unter der Marke Daybreak vorgestellt. Der Artikel OpenAI steigt mit Daybreak ins Cybersecurity-Geschäft ein erschien zuerst auf The Decoder .",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-steigt-mit-daybreak-ins-cybersecurity-geschaeft-ein/",
-   "d": "2026-11-13T10:58:57+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 10.1
+   "r": 27.3
   },
   {
    "t": "Claude zockt GTA 4 und andere Games: Wie sich der KI-Agent dabei anstellt",
@@ -307,8 +356,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 2,
-   "r": 28.0
+   "n": 3,
+   "r": 36.8
   },
   {
    "t": "Gemini 4 Hydrogen: Googles effiziente Alternative zu Argon und Carbon",
@@ -320,8 +369,8 @@
    "tags": [
     "Google Gemini"
    ],
-   "n": 1,
-   "r": 9.7
+   "n": 2,
+   "r": 18.4
   },
   {
    "t": "Shield helps technicians hand off legacy portal work with OpenAI",
@@ -335,7 +384,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 13.6
+   "r": 12.3
   },
   {
    "t": "Microsoft-365-Störung: Serverausfälle legen Teams, Exchange und Copilot lahm",
@@ -348,7 +397,7 @@
     "Microsoft Copilot"
    ],
    "n": 1,
-   "r": 5.7
+   "r": 4.5
   },
   {
    "t": "How Amplitude ships product improvements in 1–2 days with OpenAI",
@@ -363,7 +412,7 @@
     "Coding mit KI"
    ],
    "n": 2,
-   "r": 25.6
+   "r": 24.3
   },
   {
    "t": "Googles KI-Brillen starten im Dezember ab 395 US-Dollar",
@@ -376,20 +425,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 7.1
-  },
-  {
-   "t": "Digitale Medienordnung: Länder wollen Big Tech und KI streng regulieren",
-   "s": "Ein Digital-Staatsvertrag soll journalistische Inhalte in Feeds privilegieren, KI-Systeme in die Pflicht nehmen und das Medienkonzentrationsrecht reformieren.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Digitale-Medienordnung-Laender-wollen-Big-Tech-und-KI-streng-regulieren-11523302.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-12T16:28:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Regulierung & AI Act"
-   ],
-   "n": 1,
-   "r": 5.0
+   "r": 6.0
   },
   {
    "t": "Gondola doubles revenue as its team builds more with Codex",
@@ -402,7 +438,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.2
+   "r": 6.0
   },
   {
    "t": "Holiday Extras is rethinking what it can build with Codex",
@@ -488,19 +524,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "t": "Closing the AI guidance gap in education",
-   "s": "New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/closing-ai-guidance-gap-education",
-   "d": "2026-11-10T09:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
   }
  ],
  "kanaele": [
@@ -524,19 +547,17 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 9.9
+   "r": 8.7
   },
   {
    "id": "x7iwI6WfWS0",
-   "t": "Funkiest Zoom meeting EVER (Surprise video)",
+   "t": "AI Can Do Everything…Except This",
    "q": "Two Minute Papers",
    "d": "2026-11-14T08:40:55+00:00",
    "lang": "en",
-   "tags": [
-    "KI-Video & Bild"
-   ],
+   "tags": [],
    "n": 1,
-   "r": 9.7
+   "r": 6.4
   },
   {
    "id": "ErOVIC-MGVA",
@@ -548,7 +569,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.3
+   "r": 10.0
   },
   {
    "id": "PkAmyub12K8",
@@ -560,7 +581,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.1
+   "r": 9.8
   },
   {
    "id": "pfbfZKxUEDQ",
@@ -572,7 +593,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.0
+   "r": 9.7
   },
   {
    "id": "g1To-h08yJ4",
@@ -582,7 +603,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.9
+   "r": 2.7
   },
   {
    "id": "YmxpxJZvm4M",
@@ -592,7 +613,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 2.0
+   "r": 0.7
   },
   {
    "id": "SxiYOCPW8_c",
@@ -605,7 +626,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 8.9
+   "r": 8.0
   },
   {
    "id": "gPNiuyYirfw",
@@ -617,7 +638,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 6.5
+   "r": 6.0
   },
   {
    "id": "QPrdQp9ZqeI",
@@ -974,42 +995,42 @@
  ],
  "themen": [
   {
-   "name": "Google Gemini",
-   "meldungen": 7,
-   "quellen": 4
+   "name": "Claude / Anthropic",
+   "meldungen": 9,
+   "quellen": 3
   },
   {
-   "name": "KI-Agenten",
+   "name": "Google Gemini",
    "meldungen": 6,
-   "quellen": 4
+   "quellen": 3
   },
   {
    "name": "Robotik",
    "meldungen": 4,
-   "quellen": 4
+   "quellen": 3
   },
   {
    "name": "Nvidia & Chips",
-   "meldungen": 5,
+   "meldungen": 4,
+   "quellen": 3
+  },
+  {
+   "name": "Coding mit KI",
+   "meldungen": 3,
    "quellen": 3
   },
   {
    "name": "OpenAI",
-   "meldungen": 11,
+   "meldungen": 12,
    "quellen": 2
   },
   {
-   "name": "Claude / Anthropic",
+   "name": "KI-Agenten",
    "meldungen": 4,
    "quellen": 2
   },
   {
    "name": "DeepSeek & China",
-   "meldungen": 3,
-   "quellen": 2
-  },
-  {
-   "name": "Jobs & Arbeit",
    "meldungen": 2,
    "quellen": 2
   }
