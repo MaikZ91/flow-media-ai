@@ -58,6 +58,17 @@ h1 em{font-style:normal;color:var(--blue)}
 .under{margin-top:9px;font:500 clamp(11px,1.45vh,13px) var(--fl);letter-spacing:.05em;color:var(--mute)}.under span{color:var(--ink)}
 .host{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(10px,2vh,20px);font:500 clamp(12px,1.6vh,14px) var(--fb);color:#3a3a37}
 .host img{width:clamp(34px,4.6vh,44px);height:clamp(34px,4.6vh,44px);border-radius:50%;object-fit:cover;border:2px solid var(--blue);filter:grayscale(1)}.host b{color:var(--ink)}
+.sub{margin-top:clamp(10px,1.8vh,18px);font:400 clamp(15px,2.1vh,19px)/1.45 var(--fb);color:#3a3a37;max-width:520px}
+.cta{border:0;cursor:pointer}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(11,11,11,.55);display:grid;place-items:end center;padding:0}
+.modal[hidden]{display:none}
+.modal .box{width:min(560px,100%);max-height:100svh;overflow:auto;background:var(--paper);padding:clamp(20px,3vh,32px) clamp(20px,5vw,32px) max(20px,env(safe-area-inset-bottom));border-top:3px solid var(--ink);animation:hoch .35s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){.modal{place-items:center}.modal .box{border:2px solid var(--ink)}}
+@keyframes hoch{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.modal h2{font:700 clamp(30px,5vh,46px)/.95 var(--fh);text-transform:uppercase;margin-top:8px}.modal h2 em{font-style:normal;color:var(--blue)}
+.msub{margin-top:8px;font:400 14px/1.45 var(--fb);color:var(--mute)}
+.modal .checks{margin-top:14px}.modal .cta{width:100%;margin-top:16px}
+.skip{display:block;margin:10px auto 0;background:none;border:0;font:500 13px var(--fl);color:var(--mute);text-decoration:underline;cursor:pointer;padding:6px}
 /* Bildspalte (nur breite Bildschirme) */
 .bilder{position:relative;height:min(68vh,620px);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.15fr 1fr;gap:12px}
 .bilder div{background-size:cover;background-position:center;filter:grayscale(1) contrast(1.05);border:2px solid var(--ink)}
@@ -82,45 +93,60 @@ footer a{color:var(--mute);text-decoration:none}
   <header><img src="img/logo_flow.png" alt="Flow Media AI"><span class="label">Bielefeld · Münster · <b>digital</b></span></header>
   <main>
     <div>
-      <p class="label in">Kurzer Selbsttest · <b>tipp an, was stimmt</b></p>
-      <h1 class="in d1">Erkennst du<br><em>dich wieder?</em></h1>
-      <div class="checks in d2">
-        <button class="chk" type="button" data-q="zeit"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</button>
-        <button class="chk" type="button" data-q="tools"><i></i>Die vielen KI-Tools überfordern mich.</button>
-        <button class="chk" type="button" data-q="allein"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</button>
-      </div>
-      <p class="antwort in d3" id="antwort">Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em></p>
-      <ul class="plus in d3">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b>Treffen vor Ort</b> in Bielefeld &amp; Münster – und digital</span></li>
+      <p class="label in">Flow Business Community · <b>kostenlos</b></p>
+      <h1 class="in d1">KI lernen.<br><em>Gemeinsam.</em></h1>
+      <p class="sub in d2">Die Community für Gründer und Selbstständige, die mit KI ihre Ideen umsetzen wollen – statt sich allein durch Tools und Tutorials zu kämpfen.</p>
+      <ul class="plus in d2">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b>Hybrid-Stammtisch</b> – vor Ort in Bielefeld &amp; Münster und digital</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/></svg><span><b>Austausch &amp; Feedback</b> mit anderen Selbstständigen</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><span><b>KI verständlich</b> – mit echten Beispielen, ohne Fachchinesisch</span></li>
       </ul>
       <div class="in d3">
-        <a class="cta" data-cta="hero" data-join href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>Kostenlos beitreten <span>→</span></a>
+        <button class="cta go" type="button" id="join"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>Kostenlos beitreten <span>→</span></button>
         <p class="under"><span>Kostenlos</span> · direkt in WhatsApp · Mitlesen reicht, du musst nichts schreiben</p>
       </div>
       <div class="host in d4"><img src="img/maik_avatar.jpg" alt="Maik"><span>Dein Gastgeber: <b>Maik</b> · KI-Sparringspartner für Gründer</span></div>
     </div>
     <div class="bilder in d2" aria-hidden="true">
       <div class="b1"></div><div class="b2"></div><div class="b3"></div>
-      <span class="t1">Gemeinsam</span><span class="t2" style="top:calc(53% + 18px);bottom:auto">Statt allein</span><span class="t3">Maik · Gastgeber</span>
+      <span class="t1">Stammtisch</span><span class="t2" style="top:calc(53% + 18px);bottom:auto">Statt allein</span><span class="t3">Maik · Gastgeber</span>
     </div>
   </main>
   <footer><span class="x">Flow Media AI · We build your ideas. · Symbolbilder: StockSnap (CC0)</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></footer>
 </div>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-t">
+  <div class="box">
+    <p class="label">Fast geschafft · <b>kurze Frage</b></p>
+    <h2 id="m-t">Was beschäftigt<br><em>dich gerade?</em></h2>
+    <p class="msub">Tipp an, was stimmt – so weiß ich, worüber wir im Stammtisch reden. Freiwillig.</p>
+    <div class="checks">
+      <button class="chk" type="button" data-q="zeit"><i></i>Ich habe Ideen, aber keine Zeit, sie umzusetzen.</button>
+      <button class="chk" type="button" data-q="tools"><i></i>Die vielen KI-Tools überfordern mich.</button>
+      <button class="chk" type="button" data-q="allein"><i></i>Ich mache alles allein – niemand gibt mir Feedback.</button>
+    </div>
+    <a class="cta" id="go" data-cta="modal" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>Weiter zur Gruppe <span>→</span></a>
+    <button class="skip" type="button" id="skip">Überspringen</button>
+  </div>
+</div>
 <script>
 // Einladungslink der WhatsApp-Community (wie auf der Website).
 const COMMUNITY_URL = "https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw";
-const T = { 0: "Deine Idee braucht kein Tutorial mehr. <em>Sie braucht Leute.</em>", 1: "Dann bist du hier <em>genau richtig.</em>", 2: "Dann bist du hier <em>genau richtig.</em>", 3: "Genau dafür gibt es <em>diese Community.</em>" };
-const cs = [...document.querySelectorAll(".chk")], an = document.getElementById("antwort"), cta = document.querySelector(".cta");
-const anz = () => cs.filter(x => x.classList.contains("on")).length;
+const quelle = new URLSearchParams(location.search).get("utm_source") || "";
+const cap = (e, p) => { try { posthog.capture(e, p) } catch (x) {} };
+const modal = document.getElementById("modal"), go = document.getElementById("go");
+const cs = [...modal.querySelectorAll(".chk")];
+const an = () => cs.filter(x => x.classList.contains("on"));
+go.href = COMMUNITY_URL; go.target = "_blank"; go.rel = "noopener";
+document.getElementById("join").addEventListener("click", () => { modal.hidden = false; cap("community_join_intent", { quelle }) });
 cs.forEach(c => c.addEventListener("click", () => {
   c.classList.toggle("on"); c.querySelector("i").textContent = c.classList.contains("on") ? "✓" : "";
-  const n = anz(); an.className = "antwort" + (n ? " ja" : ""); an.innerHTML = T[n]; cta.classList.toggle("go", n > 0);
-  try { posthog.capture("community_quiz", { frage: c.dataset.q, an: c.classList.contains("on"), anzahl: n }); } catch (e) {}
+  cap("community_quiz", { frage: c.dataset.q, an: c.classList.contains("on"), anzahl: an().length });
 }));
-document.querySelectorAll("[data-join]").forEach(a => {
-  a.href = COMMUNITY_URL; a.target = "_blank"; a.rel = "noopener";
-  a.addEventListener("click", () => { try { posthog.capture("community_join_click", { cta: a.dataset.cta, quiz: anz(), fragen: cs.filter(x => x.classList.contains("on")).map(x => x.dataset.q).join(","), quelle: new URLSearchParams(location.search).get("utm_source") || "" }); } catch (e) {} });
-});
+const weiter = cta => cap("community_join_click", { cta, quiz: an().length, fragen: an().map(x => x.dataset.q).join(","), quelle });
+go.addEventListener("click", () => weiter("modal"));
+document.getElementById("skip").addEventListener("click", () => { weiter("skip"); window.open(COMMUNITY_URL, "_blank", "noopener") || (location.href = COMMUNITY_URL) });
+modal.addEventListener("click", e => { if (e.target === modal) modal.hidden = true });
+document.addEventListener("keydown", e => { if (e.key === "Escape") modal.hidden = true });
 </script>
 </body>
 </html>
