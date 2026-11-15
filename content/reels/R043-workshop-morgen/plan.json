@@ -1,0 +1,18 @@
+{
+ "stil": {"akzent": "#2F5BFF", "schrift_kopf": "Oswald", "schrift_text": "Inter", "versalien": true, "ecken": 0, "stimmung": "klar"},
+ "bild": {"look": "natuerlich", "hintergrund_unscharf": 10, "punch_in": 1.06, "schaerfe": 0.7, "auto_helligkeit": true, "entrauschen": true},
+ "untertitel": {"stil": "box", "gruppe": 3, "y": 1470},
+ "musik": {"datei": "musik.m4a", "ab": 6.08, "lautstaerke": 0.35},
+ "fortschritt": true,
+ "blitze": [8.359],
+ "events": [
+  {"typ": "hook", "t": 0.05, "d": 2.5, "text": "Idee da. *Plan* *fehlt?*"},
+  {"typ": "chips", "t": 5.4, "d": 2.75, "items": [{"t": 5.42, "text": "App"}, {"t": 6.2, "text": "Webseite"}, {"t": 7.26, "text": "Automatisierung", "akzent": true}]},
+  {"typ": "vollbild", "t": 8.3, "d": 1.75, "kicker": "Morgen · Mo 16.11.", "text": "*Workshop*", "hintergrund": "akzent"},
+  {"typ": "keyword", "t": 12.5, "d": 2.3, "kicker": "Mit KI gebaut", "text": "Dein digitales *Produkt*"},
+  {"typ": "vollbild", "t": 16.05, "d": 2.1, "kicker": "Das Werkzeug", "text": "Flow DNA *Skills*", "hintergrund": "dunkel"},
+  {"typ": "chips", "t": 18.8, "d": 3.5, "items": [{"t": 18.82, "text": "schnell"}, {"t": 19.24, "text": "günstig"}, {"t": 20.44, "text": "effizient", "akzent": true}]},
+  {"typ": "karte", "t": 23.35, "d": 5.3, "kicker": "Am Ende des Workshops", "titel": "Dein *Prototyp*", "zeilen": ["funktionsfähig", "für dein Business"], "badge": "In 60 Minuten"},
+  {"typ": "cta", "y": 1240, "t": 29.05, "d": 1.85, "text": "Komm vorbei!", "sub": "Mo 16.11. · 18 Uhr · online"}
+ ]
+}
