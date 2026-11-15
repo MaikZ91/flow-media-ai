@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#0B0B0B;--blue:#2F5BFF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0B0B0B;color:#fff;font-family:Inter,sans-serif}
+.l{position:absolute;opacity:0}
+.k{font:600 30px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:#cfcfcf}
+.h{font:700 150px/.9 Oswald;text-transform:uppercase}.h span{color:var(--blue)}
+.logo{left:70px;top:90px;width:190px;z-index:60;opacity:1}
+#ph{inset:0;background:url(img/portrait_front.jpg) center 18%/cover;filter:grayscale(1) contrast(1.12) brightness(.85)}
+#phs{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.5),rgba(11,11,11,0) 25%,rgba(11,11,11,0) 38%,rgba(11,11,11,.95) 62%,#0B0B0B)}
+#hook{left:70px;right:70px;top:1020px}#hook .k{margin-bottom:22px}
+#hook .s{display:inline-block;font:700 58px Oswald;text-transform:uppercase;margin-top:30px;background:var(--blue);padding:10px 24px}
+/* Chat */
+#chat{left:60px;right:60px;top:300px;bottom:380px}
+#chat .lab{position:absolute;left:10px;top:0}
+.msg{position:absolute;left:0;right:0;opacity:0}
+.me{display:flex;justify-content:flex-end}
+.me div{max-width:820px;background:var(--blue);color:#fff;font:600 50px/1.25 Inter;padding:30px 38px;border-radius:44px 44px 10px 44px}
+.ai{display:flex;gap:22px;align-items:flex-start}
+.ai .dot{flex:none;width:76px;height:76px;border-radius:50%;background:#fff;display:grid;place-items:center;font:700 34px Oswald;color:var(--ink)}
+.ai .box{flex:1;background:#1A1A1A;border:2px solid #2A2A2A;border-radius:10px 44px 44px 44px;padding:32px 36px;font:500 42px/1.35 Inter;color:#e8e8e4}
+.ai .box b{color:#fff}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.nums div{border-top:4px solid #333;padding-top:12px}
+.nums strong{display:block;font:700 92px/1 Oswald;color:#fff}
+.nums span{font:600 24px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#bdbdb8}
+.ok{color:#fff;font-weight:700}.ok i{font-style:normal;color:var(--blue)}
+.note{font:500 26px Montserrat;letter-spacing:.06em;color:#8f8f8a;margin-top:18px}
+#av{left:70px;bottom:250px;display:flex;align-items:center;gap:18px;font:600 26px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#cfcfcf}
+#av img{width:84px;height:84px;border-radius:50%;filter:grayscale(1);border:3px solid #fff;object-fit:cover}
+/* Schritte */
+#how{left:70px;right:70px;top:300px}
+#how .h{font-size:132px;margin:20px 0 50px}
+.st{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:34px 0;border-top:2px solid #2A2A2A;opacity:0}
+.st .n{font:700 84px/1 Oswald;color:#555}.st.on .n{color:var(--blue)}
+.st h3{font:700 62px/1 Oswald;text-transform:uppercase;margin-bottom:12px}
+.st p{font:500 38px/1.35 Inter;color:#d0d0cc}
+/* Ende */
+#lp{inset:0;background:url(img/portrait_laptop.jpg) center/cover;filter:grayscale(1) contrast(1.1) brightness(.6)}
+#lps{inset:0;background:linear-gradient(180deg,rgba(11,11,11,.4),rgba(11,11,11,.2) 26%,rgba(11,11,11,.94) 50%,#0B0B0B)}
+#end{left:70px;right:70px;top:880px}#end .h{font-size:138px}
+#end .q{margin-top:40px;font:700 62px/1.05 Oswald;text-transform:uppercase}
+#end .cta{display:inline-block;margin-top:34px;font:700 54px Oswald;text-transform:uppercase;background:var(--blue);padding:12px 26px}
+.bar{left:0;top:0;height:10px;background:var(--blue);z-index:80;opacity:1}
+</style></head><body>
+<img class="l logo" id="logo" src="img/logo_flow.png">
+<div class="l" id="ph"></div><div class="l" id="phs"></div>
+<div class="l" id="hook"><div class="k">How-to · Meta-Werbung</div><div class="h">Meine Werbung?<br><span>Per Chat.</span></div><div class="s">Kein Rumklicken mehr.</div></div>
+
+<div class="l" id="chat">
+ <div class="k lab" id="clab">So sieht das aus</div>
+ <div class="msg me" id="m1" style="top:80px"><div>Wie läuft meine Werbung?</div></div>
+ <div class="msg ai" id="a1" style="top:300px"><span class="dot">AI</span><div class="box">Deine Community-Anzeige, letzte 7 Tage:
+  <div class="nums"><div><strong>311</strong><span>mal gesehen</span></div><div><strong>26</strong><span>Klicks</span></div><div><strong>0,14 $</strong><span>pro Klick</span></div><div><strong>BI + MS</strong><span>Region</span></div></div>
+  <div class="note">Echte Zahlen aus meinem Konto · 15.11.2026</div></div></div>
+ <div class="msg me" id="m2" style="top:80px"><div>Pausier die alte Kampagne von 2021.</div></div>
+ <div class="msg ai" id="a2" style="top:300px"><span class="dot">AI</span><div class="box"><span class="ok"><i>✓</i> Pausiert.</span> Sie hat nichts mehr ausgegeben, stört jetzt aber auch nicht mehr.</div></div>
+ <div class="msg me" id="m3" style="top:80px"><div>Neue Kampagne: nur Leute, die in Bielefeld &amp; Münster wohnen. 5 € am Tag.</div></div>
+ <div class="msg ai" id="a3" style="top:420px"><span class="dot">AI</span><div class="box"><span class="ok"><i>✓</i> Angelegt.</span> 25–45 Jahre, nur Instagram, optimiert auf Seitenaufrufe. <b>Startet erst nach deinem OK.</b></div></div>
+</div>
+<div class="l" id="av"><img src="img/maik_avatar.jpg"><span>Claude + Meta-Connector</span></div>
+
+<div class="l" id="how"><div class="k">So geht's</div><div class="h">In 3 <span>Schritten.</span></div>
+ <div class="st" id="s1"><span class="n">01</span><div><h3>Meta verbinden</h3><p>Claude → Einstellungen → Connectors → Meta.</p></div></div>
+ <div class="st" id="s2"><span class="n">02</span><div><h3>Instagram zulassen</h3><p>Beim Anmelden deinen Instagram-Account anhaken.</p></div></div>
+ <div class="st" id="s3"><span class="n">03</span><div><h3>Einfach fragen</h3><p>„Wie läuft meine Werbung?“ Änderungen erst nach deinem OK.</p></div></div>
+</div>
+
+<div class="l" id="lp"></div><div class="l" id="lps"></div>
+<div class="l" id="end"><div class="k">Weniger suchen. Mehr erschaffen.</div><div class="h">Werbung <span>per Chat.</span></div>
+ <div class="q">Was würdest du als Erstes fragen?</div>
+ <div class="cta">Speicher dir das</div></div>
+<div class="l bar" id="bar"></div>
+<script>
+const B=60/123;const T=[0,6*B,16*B,22*B,30*B,42*B,50*B];window.TOTAL=T[6];
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),out=x=>1-Math.pow(1-x,3);
+function vis(id,a,b,dy=40,f=.22){const e=$(id),t=window._t;if(t<a||t>=b){e.style.opacity=0;return 0}const i=out(cl((t-a)/f)),o=1-cl((t-(b-.1))/.1);e.style.opacity=Math.min(i,o);e.style.transform=`translateY(${(1-i)*dy}px)`;return 1}
+window.DRAW=t=>{window._t=t;
+ vis('ph',0,T[1],0,.01);$('ph').style.transform=`scale(${1.08-.08*t/T[1]})`;vis('phs',0,T[1],0,.01);vis('hook',0,T[1],60,.25);
+ const inChat=t>=T[1]&&t<T[4];$('chat').style.opacity=inChat?1:0;$('av').style.opacity=inChat?1:0;vis('clab',T[1],T[4],20,.2);
+ vis('m1',T[1]+.1,T[2],40,.2);vis('a1',T[1]+2*B,T[2],50,.25);
+ vis('m2',T[2],T[3],40,.2);vis('a2',T[2]+2*B,T[3],50,.25);
+ vis('m3',T[3],T[4],40,.2);vis('a3',T[3]+3*B,T[4],50,.25);
+ $('how').style.opacity=t>=T[4]&&t<T[5]?1:0;
+ ['s1','s2','s3'].forEach((s,i)=>{const a=T[4]+(2+i*3)*B,e=$(s);if(t<a||t>=T[5]){e.style.opacity=0;return}const p=out(cl((t-a)/.25));e.style.opacity=p;e.style.transform=`translateX(${(1-p)*60}px)`;e.className='st'+(t<a+3*B?' on':'')});
+ vis('lp',T[5],99,0,.01);$('lp').style.transform=`scale(${1.04+.05*cl((t-T[5])/(T[6]-T[5]))})`;vis('lps',T[5],99,0,.01);vis('end',T[5]+.05,99,50,.3);
+ $('bar').style.width=(1080*t/T[6])+'px'};
+DRAW(0);
+</script></body></html>

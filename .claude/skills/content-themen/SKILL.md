@@ -87,6 +87,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 15.11.2026 | R042 | `agentic` / `tools` · Problem `zeit` | Reel 24 s | „Meine Werbung? Per Chat.“ – Meta-Connector in Claude: Zahlen abfragen, alte Kampagne pausieren, neue anlegen (echt, 15.11.), How-to in 3 Schritten | `format = chat-howto` |
 | 15.11.2026 | P016 | `social` / `design` · Problem `content` | Karussell 5 Folien | „Warum dein KI-Post nach KI aussieht.“ – Frage aus der Community; Stimme · Regeln · Material; Frage „Woran erkennst du KI-Posts sofort?“ | `hook = community-frage` |
 | 12.11.2026 | R041 | `build` · Problem `idee` | Reel 25 s | Workshop „Von deiner KI-Idee zum digitalen Produkt“ (Mo 16.11.) – Uhr läuft 60:00 → 00:00 durch F·L·O·W, Preis nur in der Caption | `format = countdown-uhr` |
 | 11.11.2026 | R040 | `lernen` · Problem `anschluss` | Reel 24 s | Das Buch „Deine Ideen verdienen es, umgesetzt zu werden.“ – 20 Tutorials, nichts gebaut → ein Anfang: 25 kurze Kapitel; Leseprobe kostenlos | `hook = problem-zuerst` |
