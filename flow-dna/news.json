@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-15T16:25+00:00",
+ "stand": "2026-11-15T22:54+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,43 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "A step toward defining the Standard Model on a lattice",
+   "s": "Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/step-toward-defining-the-standard-model",
+   "d": "2026-11-15T22:00:01+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.8
+  },
+  {
+   "t": "Our new blog for science",
+   "s": "The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/our-new-blog-for-science",
+   "d": "2026-11-15T22:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.8
+  },
+  {
+   "t": "Schlafanalyse: Forscher entwickeln KI, die Gehirnströme sekundengenau analysiert",
+   "s": "In einer halben Minute Schlaf kann eine Menge passieren, was Messungen bisher entgeht. Ein Forschungsteam der FH Aachen hat mit AnySleep jetzt ein Open-Source-Modell entwickelt, das Gehirnströme sekundengenau analysiert.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/schlafanalyse-ki-sekunde-1773027",
+   "d": "2026-11-15T18:30:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
   {
    "t": "Claude Fable 5.2 malt fotorealistische Gemälde Strich für Strich mit selbst geschriebenem Python-Code",
    "s": "Anthropics Claude Fable 5.2 erzeugt Bilder auf ungewöhnlichem Weg: Statt Pixel zu berechnen, schreibt das Sprachmodell Python-Code, der Hunderttausende simulierte Pinselstriche auf eine virtuelle Leinwand setzt, …",
@@ -20,7 +57,7 @@
     "KI-Video & Bild"
    ],
    "n": 3,
-   "r": 39.8
+   "r": 38.7
   },
   {
    "t": "OpenAI startet ChatGPT Wallet: KI-Agenten kaufen für Nutzer ein",
@@ -34,7 +71,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 27.8
+   "r": 26.7
   },
   {
    "t": "Zu teuer: Warum Goldman Sachs den Zugang zu Claude Code und GitHub jetzt drastisch einschränkt",
@@ -48,7 +85,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 37.4
+   "r": 36.3
   },
   {
    "t": "Firma von Jensen Huangs Ex-Geliebter soll Nvidia-Chips für 12 Milliarden Dollar nach China vermittelt haben",
@@ -63,7 +100,7 @@
     "KI-Blase & Geld"
    ],
    "n": 3,
-   "r": 37.2
+   "r": 36.1
   },
   {
    "t": "Stopp von KI-Entwicklung per Klage gefordert",
@@ -77,7 +114,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 29.0
+   "r": 27.9
   },
   {
    "t": "Australische Zentralbank sieht erste KI-Effekte auf dem Arbeitsmarkt: vor allem junge Berufseinsteiger betroffen",
@@ -91,7 +128,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 14.9
+   "r": 13.8
   },
   {
    "t": "Kann Nvidia KI-Chips orten? Das sagt das Unternehmen hinter verschlossenen Türen",
@@ -106,7 +143,7 @@
     "Regulierung & AI Act"
    ],
    "n": 2,
-   "r": 28.8
+   "r": 27.8
   },
   {
    "t": "LongCat-2.5: Meituan gibt Gewichte seines 1,6-Billionen-Parameter-Modells für KI-Agenten frei",
@@ -121,7 +158,7 @@
     "Coding mit KI"
    ],
    "n": 3,
-   "r": 38.8
+   "r": 37.8
   },
   {
    "t": "\"Mein Second Brain diktiert mir, wie ich zu arbeiten habe\": Wie KI-Wissenssysteme die Arbeit verändern",
@@ -134,7 +171,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 8.8
+   "r": 7.7
   },
   {
    "t": "KI gegen Telefon-Scam: Wie diese Bots Betrüger stundenlang beschäftigen",
@@ -145,18 +182,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.3
-  },
-  {
-   "t": "Mindestens ab der Galaxy Watch 7: Samsung bringt KI-gestützte Schlafapnoe-Messung auf seine Wearables",
-   "s": "Samsung erweitert seine Funktion zur Erkennung von Schlafapnoe um KI-Algorithmen. Künftig sollen Galaxy Ring und Watch drei Schweregrade der nächtlichen Atemaussetzer erkennen. Die KI-Funktion kommt auch auf ältere …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/samsung-galaxy-watch-schlafapnoe-1770547",
-   "d": "2026-11-14T18:10:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.3
+   "r": 5.2
   },
   {
    "t": "\"Große Unsicherheit\": Anthropic-Chef hadert kurz vor Rekord-IPO mit der größten Wette der KI-Branche",
@@ -169,7 +195,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 9.2
   },
   {
    "t": "Google schlägt OpenAI: Gemini 4 Carbon führt die KI-Mathe-Benchmark MathArena an",
@@ -183,7 +209,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 26.0
+   "r": 25.0
   },
   {
    "t": "Anthropic erklärt, welche Prompting-Gewohnheiten Nutzer bei Claude Opus 5.5 ablegen sollten",
@@ -196,7 +222,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 10.0
+   "r": 8.9
   },
   {
    "t": "Inference Manager: neues Ubuntu-Tool verwaltet lokale KI-Modelle",
@@ -207,7 +233,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.6
+   "r": 2.5
   },
   {
    "t": "Claude Mythos war kein Ausreißer, sondern Teil eines sich beschleunigenden Trends, sagt Ex-Forscher",
@@ -221,7 +247,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 15.1
+   "r": 14.0
   },
   {
    "t": "OpenAI verteilt Robotik-Forscher auf andere Teams, weil Allzweckmodelle spezialisierte Robotik-KI überflüssig machen",
@@ -235,7 +261,7 @@
     "Robotik"
    ],
    "n": 2,
-   "r": 23.0
+   "r": 21.9
   },
   {
    "t": "Robotermodell als Open Source: Runway gibt Robotik-Modell Praxis-1 mit Gewichten frei",
@@ -248,7 +274,7 @@
     "Robotik"
    ],
    "n": 1,
-   "r": 6.9
+   "r": 5.8
   },
   {
    "t": "Blende zu, KI an – wohin entwickelt sich die Smartphone-Fotografie? | c’t uplink",
@@ -259,7 +285,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.2
+   "r": 1.1
   },
   {
    "t": "Generative KI stiftet Chaos in Brüssel und Straßburg",
@@ -270,7 +296,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 0.2
+   "r": 0.0
   },
   {
    "t": "Siri AI: Dann kommt Apples KI-System auf ältere Apple-TV-4K-Geräte",
@@ -493,32 +519,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "t": "Introducing Businesses in ChatGPT",
-   "s": "Manage your business information, get insights about how your business shows up, and turn interest into action in ChatGPT.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/introducing-businesses-chatgpt",
-   "d": "2026-11-10T10:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "Closing the AI guidance gap in education",
-   "s": "New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/closing-ai-guidance-gap-education",
-   "d": "2026-11-10T09:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
   }
  ],
  "kanaele": [
@@ -540,7 +540,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.0
+   "r": 5.9
   },
   {
    "id": "aSntd-uCWc8",
@@ -552,7 +552,7 @@
     "KI-Video & Bild"
    ],
    "n": 1,
-   "r": 8.9
+   "r": 7.8
   },
   {
    "id": "_l6gzItCF80",
@@ -565,7 +565,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 26.8
+   "r": 25.7
   },
   {
    "id": "57axeXCuvWg",
@@ -577,7 +577,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 5.0
+   "r": 3.9
   },
   {
    "id": "x7iwI6WfWS0",
@@ -587,7 +587,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 2.7
+   "r": 1.6
   },
   {
    "id": "ErOVIC-MGVA",
@@ -599,7 +599,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.3
+   "r": 6.0
   },
   {
    "id": "PkAmyub12K8",
@@ -611,7 +611,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.1
+   "r": 6.0
   },
   {
    "id": "pfbfZKxUEDQ",
@@ -995,23 +995,23 @@
    "quellen": 4
   },
   {
-   "name": "Coding mit KI",
-   "meldungen": 5,
-   "quellen": 4
-  },
-  {
    "name": "Nvidia & Chips",
    "meldungen": 5,
    "quellen": 4
   },
   {
    "name": "OpenAI",
-   "meldungen": 12,
+   "meldungen": 13,
    "quellen": 3
   },
   {
    "name": "KI-Agenten",
-   "meldungen": 6,
+   "meldungen": 5,
+   "quellen": 3
+  },
+  {
+   "name": "Coding mit KI",
+   "meldungen": 4,
    "quellen": 3
   },
   {
