@@ -1832,10 +1832,10 @@ function openCalEvent(k) {
     <button type="button" class="btn-x close" data-close-btn aria-label="Schließen">×</button>
     <div style="min-width:0">
       <h2 id="cal-h" style="margin:0 34px 4px 0">${esc(ev.invitee || ev.name)}</h2>
-      <p class="in-list">${esc(ev.name)} · Calendly</p>
+      <p class="in-list">${esc(ev.name)} · ${ev.src === "eventfrog" ? "Eventfrog" : "Calendly"}</p>
       <div class="stat">${st.toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit" })} · ${hm(st)}–${hm(en)}${ev.location ? " · " + esc(ev.location) : ""}</div>
-      <p class="stat" style="margin-top:10px">„Ausblenden“ nimmt den Termin nur aus dem Board. Absagen oder verschieben geht in Calendly – dann bekommt die Person eine Nachricht.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">${readOnly ? "" : `<button type="button" class="danger" data-cal-hide="${esc(k)}">Im Board ausblenden</button>`}<a class="ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="https://calendly.com/app/scheduled_events/user/me" target="_blank" rel="noopener">In Calendly öffnen</a></div>
+      <p class="stat" style="margin-top:10px">${ev.src === "eventfrog" ? "Kommt automatisch aus Eventfrog (veröffentlicht, mit #FlowMediaAI in der Beschreibung). Ändern oder absagen geht in Eventfrog." : "„Ausblenden“ nimmt den Termin nur aus dem Board. Absagen oder verschieben geht in Calendly – dann bekommt die Person eine Nachricht."}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">${readOnly ? "" : `<button type="button" class="danger" data-cal-hide="${esc(k)}">Im Board ausblenden</button>`}<a class="ghost" style="text-decoration:none;display:inline-flex;align-items:center" href="${ev.src === "eventfrog" ? esc(ev.url || "https://eventfrog.de") : "https://calendly.com/app/scheduled_events/user/me"}" target="_blank" rel="noopener">${ev.src === "eventfrog" ? "Bei Eventfrog öffnen" : "In Calendly öffnen"}</a></div>
     </div>
   </div></div>`;
 }
@@ -2176,8 +2176,16 @@ async function refreshSigned() {
 }
 const rowToTask = r => ({ id: r.id, ...r.data });
 async function loadCalendly() {
-  try { const j = await api("calendly"); calEvents = j.events || []; calStatus = j.status || "ok" }
+  let cal = [], wsEv = [];
+  // Workshops aus Eventfrog (veröffentlicht, kommend, #FlowMediaAI) – dieselbe Quelle wie in der Flow-DNA-App
+  const ws = fetch(SB_URL + "/functions/v1/flow-dna-events", { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } })
+    .then(r => r.ok ? r.json() : { events: [] })
+    .then(j => { wsEv = (j.events || []).filter(e => e.datum).map(e => ({ start: e.datum, end: e.endeISO || new Date(new Date(e.datum).getTime() + 36e5).toISOString(), name: "Workshop: " + e.titel, invitee: "", location: [e.preis, "Eventfrog"].filter(Boolean).join(" · "), url: e.url, src: "eventfrog" })) })
+    .catch(() => {});
+  try { const j = await api("calendly"); cal = j.events || []; calStatus = j.status || "ok" }
   catch (e) { calStatus = "error" }
+  await ws;
+  calEvents = [...cal, ...wsEv];
   if (view === "cal" && !$("#layer").innerHTML) render();
 }
 async function reloadBoard() {
