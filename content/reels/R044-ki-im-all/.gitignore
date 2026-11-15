@@ -1,0 +1,7 @@
+tex/
+frames/
+test/
+__pycache__/
+*.wav
+video_only.mp4
+r*.log
