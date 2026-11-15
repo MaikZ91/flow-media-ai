@@ -181,6 +181,29 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .finnote > p { grid-column: 1 / -1 }
 @media (max-width: 900px) { .kpis.five { grid-template-columns: repeat(2, minmax(0, 1fr)) } .finnote { grid-template-columns: minmax(0, 1fr) } [style*="span 2"] { grid-column: auto !important } }
 .stats { flex: 1; align-self: stretch; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-height: 0 }
+.statsview { flex: 1; align-self: stretch; overflow-y: auto; min-height: 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding-bottom: 32px; scroll-behavior: smooth }
+.statsview > .stats { flex: none; overflow: visible; align-self: auto; scroll-margin-top: 8px }
+.dash-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+.dash-head h2 { margin: 0 8px 0 0 }
+.dash-nav { display: flex; gap: 6px; flex-wrap: wrap }
+.dash-nav a { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; background: var(--card) }
+.dash-nav a:hover { background: var(--hover) }
+.funnel { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 8px; align-items: end }
+.fstep { display: flex; flex-direction: column; gap: 6px; min-width: 0 }
+.fstep .fb { background: var(--hover); border-radius: 8px; height: 90px; display: flex; align-items: flex-end; overflow: hidden }
+.fstep .fb i { display: block; width: 100%; background: var(--accent); border-radius: 8px 8px 0 0; min-height: 3px }
+.fstep .fb i.ph { background: color-mix(in srgb, var(--accent) 55%, var(--card)) }
+.fstep b { font: 600 22px/1.1 var(--f-body); font-variant-numeric: tabular-nums }
+.fstep .fl { font-size: 12.5px; color: var(--muted); line-height: 1.25 }
+.fstep .fr { font-size: 12px; color: var(--faint); font-variant-numeric: tabular-nums }
+.fsrc { font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--faint) }
+.ctbl { width: 100%; border-collapse: collapse; font-size: 13px }
+.ctbl th, .ctbl td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top }
+.ctbl th { font: 500 11px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.ctbl td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap }
+.spill { display: inline-block; font-size: 11.5px; padding: 2px 8px; border-radius: 999px; font-weight: 600; white-space: nowrap }
+.spill.on { background: #dcfff1; color: #1f845a } .spill.off { background: var(--hover); color: var(--muted) } .spill.rev { background: #fff7d6; color: #946f00 }
+@media (max-width: 900px) { .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)) } .fstep .fb { height: 60px } }
 .crm-cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 12px }
 .crm-col h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted) } .crm-col h3 span { font-weight: 400 }
 .crm-card { background: var(--list, #f1f1ee); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden }
@@ -1524,10 +1547,16 @@ const stats = { data: null, loading: false, days: 30, error: "" };
 const CTA_NAMES = { tool_demo: "Flow Board: Live-Demo", tool_demo_tab: "Flow Board: Demo im neuen Tab", tool_projekt: "So ein Tool für dich?", about_instagram: "Instagram (Über mich)", nav_community: "Navigation: Community", hero_community: "Community (oben)", hero_projekt: "Projekt anfragen (oben)", offer_community: "WhatsApp-Community", offer_stammtisch: "Stammtisch-Infos", offer_workshop: "Workshop: Platz sichern", offer_erstgespraech: "Erstgespräch (Projekt)", final_community: "Community (unten)", fab_whatsapp: "Avatar: WhatsApp", fab_call: "Avatar: Anrufen", hero_calendly: "Kennenlernen (oben)", nav_calendly: "Navigation: 15 Min reden", final_calendly: "Termin aussuchen (unten)", hero_projects: "Was ich gebaut habe", final_instagram: "Instagram (unten)", footer_instagram: "Instagram (Fußzeile)", log_instagram: "Instagram (Projekte)" };
 const DEVICE_NAMES = { Desktop: "Laptop / PC", Mobile: "Handy", Tablet: "Tablet" };
 const LANDING_URL = "https://maikz91.github.io/flow-media-ai/";
+const ads = { data: null, loading: false, error: "" };
+async function loadAds() {
+  ads.loading = true; ads.error = "";
+  try { ads.data = await api("ads", {}) } catch { ads.error = "Die Werbedaten konnten nicht geladen werden." }
+  ads.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
+}
 async function loadStats() {
   if (!WEB) return;
   stats.loading = true; stats.error = ""; if (view === "stats") render();
-  loadComm();
+  loadComm(); loadAds();
   try { const j = await api("analytics", { days: stats.days }); stats.data = j; if (j.status === "error") stats.error = "PostHog hat nicht geantwortet." }
   catch { stats.error = "Die Auswertung konnte nicht geladen werden." }
   stats.loading = false; if (view === "stats" && !$("#layer").innerHTML) render();
@@ -1558,8 +1587,7 @@ function renderComm() {
   const d = comm.data;
   const head = `<div class="cal-head"><h2 style="margin:0">Community-Seite</h2>
     <a class="mini" href="${COMM_URL}" target="_blank" rel="noopener">Seite öffnen</a>
-    ${d?.link ? `<a class="mini" href="${esc(d.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}
-    <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(n => `<button type="button" data-days="${n}" aria-pressed="${stats.days === n}">${n} Tage</button>`).join("")}</span></div>`;
+    ${d?.link ? `<a class="mini" href="${esc(d.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}</div>`;
   let body;
   if (comm.loading && !d) body = `<p class="sub">Lade Community-Zahlen …</p>`;
   else if (comm.error) body = `<div class="note">${esc(comm.error)}<button type="button" class="mini" data-stats-reload>Erneut laden</button></div>`;
@@ -1589,7 +1617,7 @@ function renderComm() {
       </div>
       <p class="sub" style="margin:0">Gezählt wird der Klick auf den WhatsApp-Einladungslink. Ob jemand danach wirklich in der Gruppe ist, sieht nur WhatsApp. Namen gibt es hier nicht: Die Seite ist anonym.</p>`;
   } else body = `<p class="sub">Lade …</p>`;
-  return `<section class="panel stats">${head}${body}</section>`;
+  return `<section class="panel stats" id="dash-community">${head}${body}</section>`;
 }
 const fmtN = n => Number(n || 0).toLocaleString("de-DE");
 function delta(cur, prev) {
@@ -1603,7 +1631,7 @@ function barList(rows, nameMap = {}) {
   return `<ul class="blist">${rows.map(([name, n]) => { const label = nameMap[name] || (name === "$direct" ? "Direkt / unbekannt" : name || "–");
     return `<li title="${esc(label)}: ${fmtN(n)}"><span class="bl-name">${esc(label)}</span><span class="bl-bar"><i style="width:${(n / max * 100).toFixed(1)}%"></i></span><span class="bl-n">${fmtN(n)}</span></li>` }).join("")}</ul>`;
 }
-function dailyChart(rows, days) {
+function dailyChart(rows, days, L = { main: "Besuche", a: "Aufrufe", b: "Klicks" }) {
   const map = Object.fromEntries((rows || []).map(r => [r[0], r]));
   const pts = [...Array(days)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - (days - 1 - i)); const k = ymd(d); const r = map[k]; return { k, d, pv: r ? Number(r[1]) : 0, visits: r ? Number(r[2]) : 0, cta: r ? Number(r[3]) : 0 } });
   const W = 1240, H = 230, padL = 36, padB = 24, padT = 10, max = Math.max(4, ...pts.map(p => p.visits));
@@ -1612,16 +1640,15 @@ function dailyChart(rows, days) {
   const grid = [0, 1, 2, 3, 4].map(i => `<line x1="${padL}" x2="${W}" y1="${y(i * step)}" y2="${y(i * step)}" class="gl"/><text x="${padL - 6}" y="${y(i * step) + 4}" class="ax" text-anchor="end">${i * step}</text>`).join("");
   const bars = pts.map((p, i) => { const x = padL + i * bw + 1, h = y(0) - y(p.visits);
     const lab = `${p.d.getDate()}.${p.d.getMonth() + 1}.`;
-    return `<g class="bar" data-tip="${esc(`${DOW[(p.d.getDay() + 6) % 7]} ${lab} · ${fmtN(p.visits)} Besuche · ${fmtN(p.pv)} Aufrufe · ${fmtN(p.cta)} Klicks`)}"><rect class="hit" x="${padL + i * bw}" y="${padT}" width="${bw}" height="${H - padT - padB}"/>${p.visits ? `<rect class="m" x="${x}" y="${y(p.visits)}" width="${Math.max(bw - 2, 1)}" height="${h}" rx="${Math.min(3, bw / 3)}"/>` : ""}</g>` }).join("");
+    return `<g class="bar" data-tip="${esc(`${DOW[(p.d.getDay() + 6) % 7]} ${lab} · ${fmtN(p.visits)} ${L.main} · ${fmtN(p.pv)} ${L.a} · ${fmtN(p.cta)} ${L.b}`)}"><rect class="hit" x="${padL + i * bw}" y="${padT}" width="${bw}" height="${H - padT - padB}"/>${p.visits ? `<rect class="m" x="${x}" y="${y(p.visits)}" width="${Math.max(bw - 2, 1)}" height="${h}" rx="${Math.min(3, bw / 3)}"/>` : ""}</g>` }).join("");
   const every = days <= 7 ? 1 : days <= 30 ? 5 : 15;
   const labels = pts.map((p, i) => i % every === 0 || i === pts.length - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${p.d.getDate()}.${p.d.getMonth() + 1}.</text>` : "").join("");
-  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Besuche pro Tag, letzte ${days} Tage">${grid}${bars}${labels}</svg><div class="tip" hidden></div></div>`;
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L.main} pro Tag, letzte ${days} Tage">${grid}${bars}${labels}</svg><div class="tip" hidden></div></div>`;
 }
 function renderStats() {
   const head = `<div class="cal-head"><h2 style="margin:0">Landingpage</h2>
     <a class="mini" href="${LANDING_URL}" target="_blank" rel="noopener">Seite öffnen</a>
-    ${stats.data?.link ? `<a class="mini" href="${esc(stats.data.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}
-    <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(d => `<button type="button" data-days="${d}" aria-pressed="${stats.days === d}">${d} Tage</button>`).join("")}</span></div>`;
+    ${stats.data?.link ? `<a class="mini" href="${esc(stats.data.link)}" target="_blank" rel="noopener">In PostHog</a>` : ""}</div>`;
   let body;
   if (!WEB) body = `<div class="note">Die Auswertung gibt es in der Web-Version deines Boards.</div>`;
   else if (stats.loading && !stats.data) body = `<p class="sub">Lade Zahlen aus PostHog …</p>`;
@@ -1643,8 +1670,70 @@ function renderStats() {
       </div>
       <p class="sub" style="margin:0">Gezählt wird ohne Cookies: ein „Besuch“ ist ein Seitenbesuch, wiederkehrende Personen werden nicht wiedererkannt.</p>`;
   } else body = `<p class="sub">Lade …</p>`;
-  return `<div style="display:flex;flex-direction:column;gap:16px;min-width:0;grid-column:1/-1;width:100%">${WEB ? renderComm() : ""}<section class="panel stats">${head}${body}</section></div>`;
+  const top = `<div class="dash-head"><h2>Marketing-Cockpit</h2>
+      <nav class="dash-nav" aria-label="Abschnitte"><a href="#" data-jump="dash-funnel">Trichter</a><a href="#" data-jump="dash-ads">Instagram-Werbung</a><a href="#" data-jump="dash-community">Community-Seite</a><a href="#" data-jump="dash-landing">Landingpage</a></nav>
+      <span class="cal-mode" role="group" aria-label="Zeitraum">${[7, 30, 90].map(d => `<button type="button" data-days="${d}" aria-pressed="${stats.days === d}">${d} Tage</button>`).join("")}</span>
+      <button type="button" class="mini" data-stats-reload>Neu laden</button></div>`;
+  return `<div class="statsview">${top}${WEB ? renderFunnel() + renderAds() + renderComm() : ""}<section class="panel stats" id="dash-landing">${head}${body}</section></div>`;
 }
+/* ---------- Meta-Werbung (Snapshot, den Claude über den Meta-Connector schreibt) + Trichter Anzeige → WhatsApp ---------- */
+const money = (v, cur = "USD") => (Number(v) || 0).toLocaleString("de-DE", { style: "currency", currency: cur, minimumFractionDigits: 2 });
+function adsInWindow(c, days) {
+  const from = new Date(); from.setHours(0, 0, 0, 0); from.setDate(from.getDate() - (days - 1)); const f = ymd(from);
+  return (c.daily || []).filter(r => r[0] >= f);
+}
+function adsSum(rows) { return rows.reduce((a, r) => ({ spend: a.spend + r[1], impr: a.impr + r[2], reach: a.reach + r[3], clicks: a.clicks + r[4], lpv: a.lpv + r[5] }), { spend: 0, impr: 0, reach: 0, clicks: 0, lpv: 0 }) }
+const pctTxt = (a, b) => b ? (a / b * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 }) + " %" : "–";
+function renderFunnel() {
+  const a = ads.data, c = comm.data;
+  const commCamps = a?.status === "ok" ? (a.campaigns || []).filter(x => x.ziel === "Community-Seite") : [];
+  const m = adsSum(commCamps.flatMap(x => adsInWindow(x, stats.days)));
+  const fm = c?.status === "ok" && c.funnel ? c.funnel.meta : [0, 0, 0], fa = c?.status === "ok" && c.funnel ? c.funnel.all : [0, 0, 0];
+  const steps = [
+    ["Anzeige gesehen", m.impr, "Meta"], ["Auf Anzeige geklickt", m.clicks, "Meta"], ["Seite geladen", m.lpv, "Meta"],
+    ["Besuch gemessen", fm[0], "PostHog"], ["„Beitreten“ geklickt", fm[1], "PostHog"], ["WhatsApp geöffnet", fm[2], "PostHog"]];
+  const bar = (list, spend) => { const max = Math.max(1, ...list.map(s => s[1]));
+    return `<div class="funnel" style="--n:${list.length}">${list.map(([l, v, src], i) => `<div class="fstep" title="${esc(l)}: ${fmtN(v)}">
+      <span class="fsrc">${src}</span><div class="fb"><i class="${src === "PostHog" ? "ph" : ""}" style="height:${v ? Math.max(3, v / max * 100) : 0}%"></i></div>
+      <b>${fmtN(v)}</b><span class="fl">${esc(l)}</span><span class="fr">${i ? (v <= list[i - 1][1] ? `${pctTxt(v, list[i - 1][1])} vom Schritt davor` : "– (enthält Klicks von vor dem Popup)") : spend ? `${money(m.spend, a?.currency || "USD")} ausgegeben` : "Besuche"}</span></div>`).join("")}</div>` };
+  const all = [["Besuche Community-Seite", fa[0], "PostHog"], ["„Beitreten“ geklickt", fa[1], "PostHog"], ["WhatsApp geöffnet", fa[2], "PostHog"]];
+  const loading = (!a && ads.loading) || (!c && comm.loading);
+  return `<section class="panel stats" id="dash-funnel"><div class="cal-head"><h2 style="margin:0">Trichter: Anzeige → WhatsApp</h2></div>
+    ${loading ? `<p class="sub">Lade …</p>` : `${bar(steps, true)}
+    <p class="sub" style="margin:0">Letzte ${stats.days} Tage · nur Kampagnen, die auf die Community-Seite führen. „Seite geladen“ zählt Meta, „Besuch gemessen“ zählt PostHog über den Link mit <b>utm_source=meta_ad</b>. Die alte Hervorhebung aus der Instagram-App hatte diesen Zusatz nicht, ihre Besucher fehlen deshalb ab Schritt 4.</p>
+    <div class="spanel"><h3>Alle Besucher der Community-Seite (egal woher)</h3>${bar(all)}</div>`}</section>`;
+}
+function renderAds() {
+  const a = ads.data, head = `<div class="cal-head"><h2 style="margin:0">Instagram-Werbung</h2>
+    <a class="mini" href="https://adsmanager.facebook.com/adsmanager/manage/campaigns" target="_blank" rel="noopener">Werbeanzeigenmanager</a></div>`;
+  if (ads.loading && !a) return `<section class="panel stats" id="dash-ads">${head}<p class="sub">Lade Werbedaten …</p></section>`;
+  if (ads.error) return `<section class="panel stats" id="dash-ads">${head}<div class="note">${esc(ads.error)}</div></section>`;
+  if (!a || a.status !== "ok") return `<section class="panel stats" id="dash-ads">${head}<div class="note">Noch keine Werbedaten. Sag im Chat „Werbung ins Board“, dann trage ich den aktuellen Stand ein.</div></section>`;
+  const cur = a.currency || "USD", camps = a.campaigns || [];
+  const rows = camps.map(c => ({ c, s: adsSum(adsInWindow(c, stats.days)), t: adsSum(c.daily || []) }));
+  const tot = adsSum(camps.flatMap(c => adsInWindow(c, stats.days)));
+  const byDay = {}; camps.forEach(c => adsInWindow(c, stats.days).forEach(r => { const x = byDay[r[0]] = byDay[r[0]] || [r[0], 0, 0, 0]; x[1] += r[2]; x[2] += r[4]; x[3] += r[5] }));
+  const st = c => c.status === "ACTIVE" ? `<span class="spill on">läuft</span>` : `<span class="spill off">pausiert</span>`;
+  const saved = a.saved_at ? new Date(a.saved_at).toLocaleString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "";
+  return `<section class="panel stats" id="dash-ads">${head}
+    <div class="kpis five">
+      <div class="kpi"><span class="kl">Ausgegeben</span><b>${money(tot.spend, cur)}</b><span class="kd">letzte ${stats.days} Tage</span></div>
+      <div class="kpi"><span class="kl">Gesehen</span><b>${fmtN(tot.impr)}</b><span class="kd">${fmtN(tot.reach)} Personen erreicht (Summe je Tag)</span></div>
+      <div class="kpi"><span class="kl">Klicks auf Link</span><b>${fmtN(tot.clicks)}</b><span class="kd">${pctTxt(tot.clicks, tot.impr)} der Einblendungen</span></div>
+      <div class="kpi"><span class="kl">Kosten pro Klick</span><b>${tot.clicks ? money(tot.spend / tot.clicks, cur) : "–"}</b><span class="kd">${tot.lpv ? `${money(tot.spend / tot.lpv, cur)} pro Seitenaufruf` : "noch keine Seitenaufrufe"}</span></div>
+      <div class="kpi"><span class="kl">Seite geladen</span><b>${fmtN(tot.lpv)}</b><span class="kd">laut Meta</span></div>
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel wide"><h3>Klicks pro Tag (alle Kampagnen)</h3>${dailyChart(Object.values(byDay), stats.days, { main: "Klicks", a: "× gesehen", b: "Seitenaufrufe" })}</div>
+      <div class="panel spanel wide"><h3>Kampagnen</h3><div class="tbl"><table class="ctbl"><thead><tr><th>Kampagne</th><th>Status</th><th>Budget/Tag</th><th class="n">Ausgegeben</th><th class="n">Gesehen</th><th class="n">Klicks</th><th class="n">pro Klick</th></tr></thead><tbody>
+        ${rows.map(({ c, s, t }) => `<tr><td><b>${esc(c.name)}</b><br><span class="sub">${esc(c.kurz || "")} · ${esc(c.zielgruppe || "")} · seit ${esc(String(c.start || "").split("-").reverse().join("."))}</span></td>
+          <td>${st(c)}</td><td>${money(c.budget, cur)}</td><td class="n">${money(s.spend, cur)}<br><span class="sub">gesamt ${money(t.spend, cur)}</span></td><td class="n">${fmtN(s.impr)}</td><td class="n">${fmtN(s.clicks)}</td><td class="n">${s.clicks ? money(s.spend / s.clicks, cur) : "–"}</td></tr>`).join("")}
+      </tbody></table></div></div>
+    </div>
+    <p class="sub" style="margin:0">Stand der Werbedaten: ${esc(saved)} · Konto in Dollar (5,80 $ ≈ 5 €). Aktualisiert wird, wenn du im Chat „Werbung ins Board“ sagst; die Seitenzahlen darunter kommen live aus PostHog.</p>
+  </section>`;
+}
+document.addEventListener("click", e => { const j = e.target.closest?.("[data-jump]"); if (!j) return; e.preventDefault(); document.getElementById(j.dataset.jump)?.scrollIntoView({ block: "start" }) });
 document.addEventListener("mouseover", e => {
   const g = e.target.closest?.(".chart .bar"), c = e.target.closest?.(".chart"); if (!c) return;
   const tip = c.querySelector(".tip");
@@ -2230,6 +2319,8 @@ async function startBoard() {
   rtChannel.on("broadcast", { event: "changed" }, () => scheduleReload()).subscribe();
   setInterval(() => { if (!document.hidden && !drag.active) scheduleReload(0) }, 30000);
   loadCalendly(); setInterval(() => { if (!document.hidden) loadCalendly() }, 5 * 60000);
+  if (view === "stats" && !stats.data && !stats.loading) loadStats();
+  if (view === "crm" && !umf.loaded && !umf.loading) loadUmfrage();
   document.addEventListener("visibilitychange", () => { if (!document.hidden) scheduleReload(0) });
 }
 async function bootWeb() {

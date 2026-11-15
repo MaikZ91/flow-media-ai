@@ -107,7 +107,12 @@ async function community(daysReq: unknown) {
   const kpiSql = (from: number, to: number) => `SELECT uniqIf(properties.$session_id, event = '$pageview'), uniqIf(properties.$session_id, event = 'community_quiz'),
       countIf(event = 'community_join_click'), uniqIf(properties.$session_id, event = 'community_join_click')
     FROM events WHERE ${page} AND ${win(from, to)}`;
-  const [cur, prev, daily, fragen, haken, quellen, joins] = await Promise.all([
+  // Trichter je Besuch: Seite gesehen → „Beitreten“ geklickt → WhatsApp geöffnet (alle Besuche bzw. nur die über die Meta-Anzeige)
+  const funnelSql = (onlyMeta: boolean) => `SELECT uniqIf(s, pv > 0), uniqIf(s, intent > 0), uniqIf(s, joined > 0) FROM (
+      SELECT properties.$session_id AS s, countIf(event = '$pageview') AS pv, countIf(event = 'community_join_intent') AS intent,
+        countIf(event = 'community_join_click') AS joined, countIf(event = '$pageview' AND toString(properties.utm_source) = 'meta_ad') AS m
+      FROM events WHERE ${page} AND ${win(days, 0)} GROUP BY s)${onlyMeta ? " WHERE m > 0" : ""}`;
+  const [cur, prev, daily, fragen, haken, quellen, joins, funnelMeta, funnelAll] = await Promise.all([
     q(kpiSql(days, 0)), q(kpiSql(days * 2, days)),
     q(`SELECT toString(toDate(timestamp)) AS d, countIf(event = '$pageview'), uniqIf(properties.$session_id, event = '$pageview'), countIf(event = 'community_join_click')
        FROM events WHERE ${page} AND ${win(days, 0)} GROUP BY d ORDER BY d`),
@@ -123,9 +128,11 @@ async function community(daysReq: unknown) {
     q(`SELECT toString(timestamp), coalesce(nullIf(toString(properties.quelle), ''), nullIf(properties.$referring_domain, ''), '$direct'),
          toString(properties.quiz), toString(properties.fragen), coalesce(properties.$device_type, ''), coalesce(properties.$geoip_city_name, '')
        FROM events WHERE event = 'community_join_click' AND ${page} AND ${win(days, 0)} ORDER BY timestamp DESC LIMIT 30`),
+    q(funnelSql(true)), q(funnelSql(false)),
   ]);
   const k = (r: unknown[][]) => { const [visits, quiz, clicks, joiners] = (r[0] ?? [0, 0, 0, 0]) as number[]; return { visits, quiz, clicks, joiners }; };
-  return { status: "ok", days, kpi: k(cur), prev: k(prev), daily, fragen, haken, quellen, joins, link: `${host}/project/${project}/activity/explore` };
+  const f = (r: unknown[][]) => (r[0] ?? [0, 0, 0]).map(Number);
+  return { status: "ok", days, kpi: k(cur), prev: k(prev), daily, fragen, haken, quellen, joins, funnel: { meta: f(funnelMeta), all: f(funnelAll) }, link: `${host}/project/${project}/activity/explore` };
 }
 
 // Folder listing of an allowed GitHub repo (token optional for public repos, required for private ones).
@@ -184,7 +191,7 @@ Deno.serve(async (req) => {
           db.from("flow_board_finance").select("id,data").eq("board_id", board),
         ]);
         if (t.error || f.error || fin.error) throw t.error || f.error || fin.error;
-        const isCrm = (r: any) => String(r.data?.type || "").startsWith("crm");
+        const isCrm = (r: any) => String(r.data?.type || "").startsWith("crm") || r.data?.type === "ads";
         return json({ tasks: t.data, files: f.data, meta: m.data?.data ?? null, finance: fin.data.filter((r: any) => !isCrm(r)), crm: fin.data.filter((r: any) => r.data?.type === "crm") });
       }
       case "upsert": {
@@ -248,6 +255,12 @@ Deno.serve(async (req) => {
       }
       case "community": {
         try { return json(await community(body.days)); } catch (e) { return json({ status: "error", message: String((e as any)?.message ?? e) }); }
+      }
+      case "ads": {
+        // Snapshot der Meta-Werbung (aus dem Chat mit dem Meta-Connector geschrieben, data.type = "ads")
+        const r = await db.from("flow_board_finance").select("data,updated_at").eq("board_id", board).eq("id", "ads-meta-" + board).maybeSingle();
+        if (r.error) throw r.error;
+        return json(r.data ? { status: "ok", ...r.data.data, saved_at: r.data.updated_at } : { status: "empty" });
       }
       case "gh_list": {
         const r = await githubList(body.repo, body.path);
