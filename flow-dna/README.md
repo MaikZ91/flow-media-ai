@@ -15,7 +15,7 @@ Projekt `ykleosfvtqcmqxqihnod`, Edge Function **`flow-dna`** (verify_jwt aus, pr
 ## Free-Download & Premium-Lizenzen (Maik, 08.11.2026)
 - **Free:** Knopf „⬇ Kostenlos herunterladen“ lädt direkt `downloads/<id>.zip` (Ordner mit SKILL.md + Dateien + INSTALLATION.md). Neu bauen nach Änderungen: `python3 build-downloads.py`.
 - **Premium:** alle 25 Anleitungen liegen in Supabase `flow_dna_skills` (IDs = Store-IDs, Website = `website-builder`). Verkauf: Anfrage per WhatsApp → Claude stellt einen Code aus (`select flow_dna_issue('<skill>','<Kunde>','kauf'|'setup'|'miete', <Tage>)`; Kauf/Einrichtung unbefristet, Miete standardmäßig 31 Tage) → Kunde gibt den Code im Detailfenster unter „Schon gekauft? Lizenz-Code einlösen“ ein und bekommt den Lade-Skill. Miete verlängern: `valid_until` hochsetzen; sperren: `active = false`.
-- Premium-Dateien in Drive (`07_KI/flow-dna-premium`) bleiben die Arbeitsfassung; Änderungen dort auch in `flow_dna_skills` übernehmen.
+- Premium-Dateien in Drive (`07_KI/skills/flow-dna-premium`) bleiben die Arbeitsfassung; Änderungen dort auch in `flow_dna_skills` übernehmen.
 
 ## Signature-Skills, Animationen, Videos (Maik, 08.11.2026)
 - **Signature** (★, Verlauf-Badge, blaue Leiste, schwarze Leiste ganz oben in der Liste): Lead Agent · Website (39 €/Mon. · 399 € · 799 €), Lead Agent · Business (49 · 499 · 999), Social Content System (49 · 449 · 899), Creative Director, Agentensystem. Landingpage Generator dafür auf 19 · 149 · 349 (Baustein des Lead Agents).
@@ -60,7 +60,7 @@ Stand 08.11.2026 · Idee von Maik: ein „App Store für Skills“ neben der Web
 
 ## Stand 08.11.2026 – alle Skills mit Inhalt
 - **Free (11, öffentlich):** `skills/<id>/SKILL.md` – Personal Brand (= Brand-Builder aus dem Workshop), Blindspot-Analyse, Content Style Analyzer, Brainstorming, Social Media Post Analyzer, Caption & Copywriting, Angebot & Rechnung, Meeting Summary, E-Mail Assistant, Business Idea Validator, Prompt Optimizer. Installation: `skills/INSTALLATION.md`. Download-Knopf im Store verlinkt den Ordner.
-- **Premium (19, privat):** nur in Drive `07_KI/flow-dna-premium/<id>.SKILL.md` (das Repo ist öffentlich!). Neutralisiert aus Maiks Skills: Creative Director, Design System, Content Calendar, Instagram-Autopilot, Wettbewerbsanalyse, App Builder, Landingpage Generator, Flow Agentensystem; neu: Website Builder, Brand Identity Generator, Reel Script Generator, Business Process Analyzer, Workflow Builder, Customer Support Agent, Lead Qualification, UI/UX Design, Research Agent, Business Assistant, Knowledge Management. Auslieferung nach Kauf: Datei als `SKILL.md` in einen Ordner mit dem Skill-Namen legen.
+- **Premium (19, privat):** nur in Drive `07_KI/skills/flow-dna-premium/<id>.SKILL.md` (das Repo ist öffentlich!). Neutralisiert aus Maiks Skills: Creative Director, Design System, Content Calendar, Instagram-Autopilot, Wettbewerbsanalyse, App Builder, Landingpage Generator, Flow Agentensystem; neu: Website Builder, Brand Identity Generator, Reel Script Generator, Business Process Analyzer, Workflow Builder, Customer Support Agent, Lead Qualification, UI/UX Design, Research Agent, Business Assistant, Knowledge Management. Auslieferung nach Kauf: Datei als `SKILL.md` in einen Ordner mit dem Skill-Namen legen.
 - v6: Auswahlleiste kompakter (Suche + Stufe in einer Zeile, Bereiche klappen beim Scrollen weg).
 
 ## Offen

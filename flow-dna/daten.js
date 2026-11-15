@@ -1,5 +1,5 @@
 // Flow DNA – Skill-Katalog (Stand 08.11.2026, erweitert um Maiks Konzepttext „The Skill Marketplace“).
-// Stand 08.11.2026: alle 30 Skills geschrieben – Free öffentlich unter flow-dna/skills/, Premium privat in Drive 07_KI/flow-dna-premium.
+// Stand 08.11.2026: alle 30 Skills geschrieben – Free öffentlich unter flow-dna/skills/, Premium privat in Drive 07_KI/skills/flow-dna-premium.
 // Status: "bereit" = Skill existiert und ist teilbar · "vorbereitung" = existiert, Store-Version (ohne Maiks eigene Daten) in Arbeit
 // · "geplant" = Idee aus dem Konzept, noch nicht gebaut.
 // Preise Premium (Maik, 08.11.2026: „nimm Preise, die du denkst, die wert sind“; Lead/Landingpage 399 € von Maik): miete €/Monat · kauf (allgemein) · setup (angepasst inkl. Einrichtung). Bezug auf Anfrage.
