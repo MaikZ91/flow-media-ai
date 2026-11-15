@@ -77,7 +77,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | So 08.11. abends / Mo 09.11. morgens | **R037 Comic „Maik & Bertrand in: Die Website“** (Workshop-Promo, gezeichnete Animation) | Build + Connect, Workshop |
 | Di 10.11. 18–20 Uhr | R027 120 Minuten. Deine Website. | Build + Offer |
 | Mi 11.11. 18–20 Uhr | **R035 Flow DNA Launch** (vorher Bio-Link setzen) · R029 rutscht auf So 15.11. | Tools/Agentic, Launch |
-| So 15.11. 18–20 Uhr | R029 Dieses Video war ein Plakat | Kreativ/How-to |
+| So 15.11. 18–20 Uhr | ✓ gesendet (Routine 15.11.) · R029 Dieses Video war ein Plakat | Kreativ/How-to |
 | Do 12.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
 | Fr 13.11. 18–20 Uhr | ✓ gesendet (Routine 13.11.) · R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
 | Sa 14.11. 11–13 / 18–20 Uhr | ✓ gesendet (Routine 14.11.) · P011 Karussell „Mein Weg“ (11–13 Uhr) · R032 Reel „Mein Weg“ bleibt im Vorrat | Weg/Personal |
