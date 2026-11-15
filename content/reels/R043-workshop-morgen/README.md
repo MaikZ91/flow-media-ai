@@ -24,7 +24,7 @@ Du hast eine Idee für dein Business – aber keinen Plan, wie du sie mit KI ums
 
 App, Website oder Automatisierung: Morgen zeige ich dir im Workshop, wie aus deiner Idee ein digitales Produkt wird.
 
-Mit den Flow DNA Skills geht das schnell und ohne Programmieren. Am Ende hast du einen funktionsfähigen Prototypen.
+Mit den Flow DNA Skills geht das schnell, günstig und effizient. Am Ende hast du einen funktionsfähigen Prototypen.
 
 🗓 Mo 16.11. · 18–19 Uhr · online
 🎟 69 € · Link in der Bio
