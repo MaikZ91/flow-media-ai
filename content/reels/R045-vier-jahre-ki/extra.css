@@ -1,0 +1,16 @@
+/* R045 */
+#years{left:70px;right:70px;top:170px;display:flex;gap:10px;align-items:center;font:600 24px Montserrat;letter-spacing:.16em;color:rgba(255,255,255,.38);opacity:1}
+#years span{padding:6px 0}#years i{flex:1;height:2px;background:rgba(255,255,255,.2)}#years i.on{background:#fff}
+#years span.on{color:#fff}#years span.now{color:#0b0b0b;background:#fff;padding:6px 12px}
+.card{top:262px}.card .h{font-size:124px}.card .sub{margin-top:20px}
+.card .num{font-size:176px;margin-top:6px}
+#t26{left:0;right:0;top:640px;text-align:center}
+#t26 .h{font-size:430px;letter-spacing:-.02em}
+#tr{left:70px;right:70px;top:300px}
+#tr .h{font-size:150px}
+#flash{position:absolute;inset:0;background:#dfe7ff;opacity:0;pointer-events:none}
+#fin{left:70px;right:70px;top:262px}
+#fin .h{font-size:158px}
+#outro{left:70px;right:70px;top:262px}
+#outro .h{font-size:150px}
+#made{top:1130px}

@@ -1,0 +1,5 @@
+tex
+frames/
+test/
+r*.log
+__pycache__/
