@@ -81,12 +81,14 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Do 12.11. 18–20 Uhr | R025 Sprich statt tipp | Tipp-Reel mit Bertrand |
 | Fr 13.11. 18–20 Uhr | ✓ gesendet (Routine 13.11.) · R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
 | Sa 14.11. 11–13 / 18–20 Uhr | ✓ gesendet (Routine 14.11.) · P011 Karussell „Mein Weg“ (11–13 Uhr) · R032 Reel „Mein Weg“ bleibt im Vorrat | Weg/Personal |
-| Fr 13.11. – So 15.11. 18–20 Uhr | ✓ gesendet (Routine 14.11., für Sa 18–20 Uhr) · **R041 Workshop „Von deiner KI-Idee zum digitalen Produkt“** (Mo 16.11., 18–19 Uhr, 69 € – Preis nur in Caption/Link, nicht im Reel) · Story „Heute 18 Uhr“ am Mo 16.11. morgens | Idee + Connect, Workshop-Promo |
+| Fr 13.11. – So 15.11. 18–20 Uhr | ✓ gesendet (Routine 14.11., für Sa 18–20 Uhr) · **R041 Workshop „Von deiner KI-Idee zum digitalen Produkt“** (Mo 16.11., 18–19 Uhr, 69 € – Preis nur in Caption/Link, nicht im Reel) · Story „Heute 18 Uhr“ am Mo 16.11. morgens: ✓ gesendet als P017 (Routine 16.11.) | Idee + Connect, Workshop-Promo |
+| Di 17.11. – Do 19.11. 18–20 Uhr | **R044 KI zieht ins All** (3D-Reel, fertig im Vorrat; Label „Mit KI erstellt“) | ki / anschluss |
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 16.11.2026 | P017 | lernen / build · Problem idee | Story | „Heute. 18 Uhr.“ – Workshop-Tag „Von deiner KI-Idee zum digitalen Produkt“ (online), Countdown- und Link-Sticker zu Eventfrog | format = story-countdown |
 | 15.11.2026 | R044 | ki · Problem anschluss | Reel 30 s (3D-Animation) | „KI zieht ins All.“ – Rechenzentren im Orbit: Strombedarf, 8× Solar, was schon fliegt (China, Starcloud, Google), 1.000.000 Satelliten beantragt, Mond-Fabriken, „Genial oder Größenwahn?“; alle Zahlen mit Quelle | thema = tech-news-3d |
 | 15.11.2026 | R043 | lernen / build · Problem idee | Reel 31 s (Talking Head) | „Workshop morgen“ – Idee da, Plan fehlt? → Workshop Mo 16.11. (online), Flow DNA Skills, Prototyp; erster Schnitt mit Video Cutter v2 | format = talkinghead-videocutter-v2 |
 | 15.11.2026 | R042 | `agentic` / `tools` · Problem `zeit` | Reel 24 s | „Meine Werbung? Per Chat.“ – Meta-Connector in Claude: Zahlen abfragen, alte Kampagne pausieren, neue anlegen (echt, 15.11.), How-to in 3 Schritten | `format = chat-howto` |
