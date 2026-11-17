@@ -161,7 +161,7 @@ Das Ziel: **Mehr Freiheit, Kreativität und Unabhängigkeit durch KI.**
 - Persönliches 1:1-Sparring
 - KI-Beratung und Masterclasses
 - Ideenentwicklung und Strategie
-- Individuelle Begleitung nach der FLOW-Methode (Langzeit-Sparring über 3 oder 6 Monate: wöchentlich 1 Stunde + 7-stündige KI-Masterclass rund um Claude Code)
+- Das FLOW-Programm (Maik, 17.11.2026): persönliche 1:1-Begleitung über 6 oder 12 Wochen durch F · L · O · W – wöchentlich 60 Min. 1:1, 7 Std. AI Masterclass, Tech-Support per WhatsApp, Flow DNA Skills kostenlos, Community + hybrider Stammtisch; aktuell 2–3 Testkunden zum Testkundenpreis gegen Feedback + Testimonial; eigene Seite `marketing/landing-page/programm/`
 
 **02 – BUILD** · Aus Ideen konkrete digitale Lösungen erschaffen.
 - Websites und Landingpages

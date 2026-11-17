@@ -63,5 +63,5 @@ KURS = {
  ],
  "spick": [["FLOW", "F  Fokussieren  Idea2Concept\nL  Losbauen     Concept2Prototype\nO  Optimieren   Prototype2Product\nW  Wachsen      Product2Business"], ["Konzept", "Ziel · Zielgruppe\nAngebot · Modell\n→ eine Seite"], ["90 Tage", "F 2 Wo · L 3 Wo\nO 4 Wo · W 3 Wo"]],
  "faq": [["Ich habe zu viele Ideen.", "Genau dafür ist Phase F da. Nimm die Idee, für die du schon Material oder erste Interessenten hast."], ["Mein Prototyp ist mir peinlich.", "Das ist normal – und ein gutes Zeichen. Zeig ihn trotzdem. Rückmeldungen sind wertvoller als Politur."], ["Was, wenn niemand zahlen will?", "Dann hast du es früh und günstig gelernt. Zurück zu F: Zielgruppe oder Angebot schärfen."], ["Kann ich die Methode ohne Technikwissen nutzen?", "Ja. Die Kurse 03 und 04 zeigen, wie die KI das Bauen übernimmt."], SUPPORT],
- "ende": {"titel": "Du bist im Flow.", "text": "Du kennst die vier Phasen und hast einen Plan. Wenn du jemanden zum Mitdenken und Umsetzen willst: Maik begleitet dich im 1:1-Sparring über 3 oder 6 Monate – starte mit dem kostenlosen Erstgespräch."},
+ "ende": {"titel": "Du bist im Flow.", "text": "Du kennst die vier Phasen und hast einen Plan. Wenn du jemanden zum Mitdenken und Umsetzen willst: Maik begleitet dich im FLOW-Programm 1:1 über 6 oder 12 Wochen – starte mit dem kostenlosen Erstgespräch."},
 }

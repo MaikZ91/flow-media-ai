@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Das FLOW-Programm – Mach deine Idee mit KI real | Flow Media AI</title>
+<meta name="description" content="In 6 oder 12 Wochen von der ersten Idee zum eigenen digitalen Produkt – mit persönlicher 1:1-Begleitung durch den FLOW-Prozess. Aktuell 2–3 Plätze für Testkunden.">
+<!-- TODO Impressum: noindex entfernen, sobald das Impressum vollständig ist (wie auf der Hauptseite) -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="Das FLOW-Programm – Mach deine Idee mit KI real.">
+<meta property="og:description" content="6 oder 12 Wochen 1:1-Begleitung von der Idee zum digitalen Produkt. Testkunden gesucht.">
+<meta property="og:image" content="../img/maik_laptop.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+/* Look: skill flow-design, same tokens as the main landing page (black, white, one blue accent). */
+:root {
+  --bg: #0A0A0A; --bg2: #0E0E0E; --card: rgba(18,18,18,.82);
+  --white: #FFFFFF; --text: rgba(255,255,255,.78); --muted: rgba(255,255,255,.52); --line: rgba(255,255,255,.1); --line2: rgba(255,255,255,.18);
+  --blue: #2F5BFF; --blue-glow: rgba(47,91,255,.45);
+  --f-head: "Oswald", "Arial Narrow", sans-serif; --f-label: "Montserrat", system-ui, sans-serif; --f-body: "Inter", system-ui, sans-serif;
+  --wrap: 1160px; --r: 22px; --ease: cubic-bezier(.2,.7,.2,1);
+  color-scheme: dark;
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { margin: 0; background: var(--bg); color: var(--text); font: 300 17px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden }
+img { max-width: 100%; display: block }
+a { color: inherit }
+::selection { background: var(--blue); color: #fff }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(22px, env(safe-area-inset-left)); padding-right: max(22px, env(safe-area-inset-right)) }
+h1, h2, h3 { margin: 0; color: var(--white); text-wrap: balance }
+p { margin: 0 }
+.display { font-family: var(--f-head); font-weight: 700; text-transform: uppercase; line-height: .92; letter-spacing: -.005em }
+.blue { color: var(--blue) }
+.label { font: 500 12px/1.5 var(--f-label); letter-spacing: .22em; text-transform: uppercase; color: var(--muted) }
+.pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid var(--line2); border-radius: 999px; background: rgba(255,255,255,.04); backdrop-filter: blur(8px); font: 500 12px/1 var(--f-label); letter-spacing: .18em; text-transform: uppercase; color: var(--white) }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 12px var(--blue); animation: pulse 2s ease-in-out infinite }
+@keyframes pulse { 50% { opacity: .35 } }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 26px; border-radius: 999px; font: 500 15px/1 var(--f-body); text-decoration: none; color: var(--white); border: 1px solid var(--line2); background: rgba(255,255,255,.03); transition: transform .3s var(--ease), background .3s, border-color .3s, box-shadow .3s; min-height: 48px }
+.btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.07) }
+.btn.primary { background: var(--blue); border-color: var(--blue); box-shadow: 0 10px 40px -10px var(--blue-glow) }
+.btn.primary:hover { box-shadow: 0 16px 50px -8px var(--blue-glow); background: #3d67ff }
+.btn .ar { transition: transform .3s var(--ease) }
+.btn:hover .ar { transform: translateX(4px) }
+.btn svg { width: 18px; height: 18px; flex: none }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center }
+
+.rv { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease) }
+.rv.in { opacity: 1; transform: none }
+.rv.d1 { transition-delay: .1s } .rv.d2 { transition-delay: .2s } .rv.d3 { transition-delay: .3s }
+
+/* nav */
+nav { position: fixed; inset: 0 0 auto 0; z-index: 40; transition: background .4s, border-color .4s; border-bottom: 1px solid transparent }
+nav.solid { background: rgba(10,10,10,.75); backdrop-filter: blur(16px) saturate(1.2); border-color: var(--line) }
+nav .wrap { display: flex; align-items: center; gap: 22px; height: 72px }
+.logo img { height: 28px; width: auto }
+.back { margin-left: auto; font: 400 14px var(--f-body); color: var(--muted); text-decoration: none }
+.back:hover { color: var(--white) }
+nav .btn { padding: 11px 18px; font-size: 14px; min-height: 42px }
+
+/* hero */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 120px 0 80px; isolation: isolate; overflow: hidden }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 50% at 18% 70%, rgba(47,91,255,.20), transparent 70%), radial-gradient(40% 40% at 90% 10%, rgba(47,91,255,.10), transparent 70%) }
+.hero-photo { position: absolute; right: 0; top: 0; bottom: 0; width: min(48%, 660px); z-index: -1; background: url(../img/maik_laptop.jpg) center 20%/cover; filter: grayscale(1) contrast(1.08) brightness(.9); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(180deg, #000 70%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(180deg, #000 70%, transparent 100%); mask-composite: intersect }
+.hero-copy { max-width: 690px; display: flex; flex-direction: column; gap: 26px }
+.hero h1 { font-size: clamp(54px, 9vw, 118px) }
+.hero .lead { font-size: clamp(18px, 2vw, 21px); color: var(--text); max-width: 590px }
+.hero .lead b { color: var(--white); font-weight: 500 }
+.hero .note { font-size: 15px; color: var(--muted) }
+.seats { display: flex; align-items: center; gap: 14px; flex-wrap: wrap }
+.seats .dots { display: flex; gap: 6px }
+.seats .dots span { width: 34px; height: 8px; border-radius: 4px; background: var(--blue); box-shadow: 0 0 14px var(--blue-glow) }
+.seats .dots span.off { background: rgba(255,255,255,.14); box-shadow: none }
+.seats small { font: 500 12px var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--white) }
+
+/* sections */
+section { padding: 110px 0 }
+.sec-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; margin-bottom: 52px }
+.sec-head h2 { font-size: clamp(40px, 6vw, 76px) }
+.sec-head p { font-size: 18px }
+.eyebrow { display: block; margin-bottom: 16px }
+.eyebrow .blue { color: var(--blue) }
+
+/* problem */
+.problem { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 90px 0 }
+.problem .q { font: 700 clamp(30px, 4.6vw, 58px)/1.02 var(--f-head); text-transform: uppercase; color: var(--white); max-width: 980px }
+.problem .q span { color: var(--muted) }
+.problem .a { margin-top: 28px; font-size: 19px; max-width: 760px }
+.problem .a b { color: var(--white); font-weight: 500 }
+
+/* FLOW */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--card) }
+.ph { position: relative; padding: 34px 28px 32px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; transition: background .4s }
+.ph:first-child { border-left: 0 }
+.ph:hover { background: rgba(47,91,255,.06) }
+.ph .L { font: 700 92px/0.85 var(--f-head); color: var(--blue); text-shadow: 0 0 40px var(--blue-glow) }
+.ph h3 { font: 700 26px/1 var(--f-head); text-transform: uppercase; letter-spacing: .02em; margin-top: 8px }
+.ph em { font: 500 13px var(--f-label); font-style: normal; color: var(--muted); letter-spacing: .04em }
+.ph .claim { color: var(--white); font-weight: 500; font-size: 16px; line-height: 1.45 }
+.ph p { font-size: 15px; line-height: 1.6 }
+
+/* weeks */
+.toggle { display: inline-flex; padding: 5px; border: 1px solid var(--line2); border-radius: 999px; background: rgba(255,255,255,.03); margin-bottom: 30px }
+.toggle button { appearance: none; border: 0; background: transparent; color: var(--muted); font: 600 14px var(--f-body); padding: 12px 22px; border-radius: 999px; cursor: pointer; min-height: 44px; transition: background .3s, color .3s }
+.toggle button[aria-selected="true"] { background: var(--white); color: #0A0A0A }
+.plan-intro { font-size: 18px; color: var(--white); margin-bottom: 26px; max-width: 760px }
+.plan-intro span { color: var(--text) }
+.timeline { display: grid; gap: 0; border-top: 1px solid var(--line) }
+.step { display: grid; grid-template-columns: 170px 70px 1fr; gap: 24px; align-items: start; padding: 26px 0; border-bottom: 1px solid var(--line) }
+.step .wk { font: 500 13px/1.4 var(--f-label); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); padding-top: 8px }
+.step .wk b { display: block; font: 700 34px/1 var(--f-head); color: var(--white); letter-spacing: 0; margin-top: 4px }
+.step .lt { font: 700 56px/.9 var(--f-head); color: var(--blue) }
+.step h3 { font: 700 24px/1.1 var(--f-head); text-transform: uppercase; margin-bottom: 8px }
+.step p { font-size: 16px; max-width: 640px }
+.bar { display: flex; gap: 4px; margin: 6px 0 30px }
+.bar i { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.12) }
+.bar i.f { background: var(--blue) } .bar i.l { background: rgba(47,91,255,.72) } .bar i.o { background: rgba(47,91,255,.48) } .bar i.w { background: rgba(47,91,255,.28) }
+[hidden] { display: none !important }
+
+/* included */
+.inc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+.it { padding: 28px 26px; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); display: flex; flex-direction: column; gap: 12px; transition: border-color .3s, transform .4s var(--ease) }
+.it:hover { border-color: var(--line2); transform: translateY(-3px) }
+.it svg { width: 30px; height: 30px; stroke: var(--white); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round }
+.it .big { font: 700 44px/1 var(--f-head); color: var(--white) }
+.it h3 { font: 600 18px/1.3 var(--f-body); color: var(--white) }
+.it p { font-size: 15px }
+.it.hl { border-color: rgba(47,91,255,.5); background: linear-gradient(160deg, rgba(47,91,255,.16), rgba(18,18,18,.85) 60%) }
+
+/* how */
+.how { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line) }
+.how div { padding: 28px 28px 28px 0; border-bottom: 1px solid var(--line) }
+.how div:nth-child(2n) { padding-left: 28px; border-left: 1px solid var(--line) }
+.how h3 { font: 700 22px/1.1 var(--f-head); text-transform: uppercase; margin-bottom: 8px }
+.how h3 span { color: var(--blue); margin-right: 10px }
+.how p { font-size: 16px }
+
+/* test customer */
+.deal { position: relative; border: 1px solid rgba(47,91,255,.45); border-radius: 28px; padding: clamp(32px, 5vw, 64px); background: radial-gradient(80% 90% at 0% 0%, rgba(47,91,255,.22), transparent 60%), #0D0D10; overflow: hidden }
+.deal h2 { font-size: clamp(40px, 6vw, 78px); margin: 14px 0 22px }
+.deal > p { font-size: 18px; max-width: 720px }
+.give { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 36px 0 34px }
+.give > div { padding: 26px; border-radius: var(--r); border: 1px solid var(--line2); background: rgba(255,255,255,.03) }
+.give .label { display: block; margin-bottom: 10px }
+.give h3 { font: 700 26px/1.1 var(--f-head); text-transform: uppercase; margin-bottom: 10px }
+.give p { font-size: 16px }
+.give ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px }
+.give li { display: flex; gap: 10px }
+.give li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 9px; border-radius: 50%; background: var(--blue) }
+
+/* result */
+.result { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center }
+.result .ph-img { aspect-ratio: 4/5; border-radius: var(--r); background: url(../img/maik_front.jpg) center 18%/cover; filter: grayscale(1) contrast(1.05); border: 1px solid var(--line) }
+.result h2 { font-size: clamp(40px, 5.6vw, 70px); margin: 12px 0 24px }
+.result p { font-size: 18px; margin-bottom: 16px }
+.result p b { color: var(--white); font-weight: 500 }
+.result ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px }
+.result li { display: flex; gap: 12px; color: var(--white); font-weight: 400 }
+.result li svg { width: 22px; height: 22px; flex: none; stroke: var(--blue); fill: none; stroke-width: 2 }
+
+/* final */
+.final { text-align: center; padding: 130px 0 120px }
+.final h2 { font-size: clamp(48px, 9vw, 120px) }
+.final p { font-size: 19px; max-width: 620px; margin: 24px auto 34px }
+.final .cta-row { justify-content: center }
+.final .sig { margin-top: 44px; font: 500 12px var(--f-label); letter-spacing: .22em; text-transform: uppercase; color: var(--muted) }
+.final .sig b { color: var(--white) }
+
+footer { border-top: 1px solid var(--line); padding: 30px 0 calc(30px + env(safe-area-inset-bottom)); font-size: 14px; color: var(--muted) }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center }
+footer a { text-decoration: none } footer a:hover { color: var(--white) }
+footer .sp { flex: 1 }
+
+/* sticky mobile CTA */
+.mcta { display: none }
+
+@media (max-width: 960px) {
+  .sec-head { grid-template-columns: 1fr; gap: 18px }
+  .flow { grid-template-columns: 1fr 1fr }
+  .ph:nth-child(3) { border-left: 0 }
+  .ph:nth-child(n+3) { border-top: 1px solid var(--line) }
+  .inc { grid-template-columns: 1fr 1fr }
+  .result { grid-template-columns: 1fr }
+  .result .ph-img { max-width: 420px; aspect-ratio: 1/1 }
+}
+@media (max-width: 720px) {
+  section { padding: 80px 0 }
+  .hero { align-items: flex-end; padding-top: 0; min-height: 100svh }
+  .hero-photo { width: 100%; height: 62vh; bottom: auto; -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 45%, transparent 100%) }
+  .hero-copy { padding-top: 46vh; gap: 20px }
+  .back { display: none }
+  nav .btn { margin-left: auto }
+  .flow { grid-template-columns: 1fr }
+  .ph { border-left: 0 !important; border-top: 1px solid var(--line) }
+  .ph:first-child { border-top: 0 }
+  .ph .L { font-size: 72px }
+  .step { grid-template-columns: 1fr; gap: 6px }
+  .step .lt { display: none }
+  .inc { grid-template-columns: 1fr }
+  .how { grid-template-columns: 1fr }
+  .how div, .how div:nth-child(2n) { padding: 24px 0; border-left: 0 }
+  .give { grid-template-columns: 1fr }
+  .cta-row .btn { width: 100% }
+  .mcta { display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 50; transform: translateY(140%); transition: transform .4s var(--ease) }
+  .mcta.on { transform: none }
+  .mcta .btn { width: 100% }
+  footer { padding-bottom: 96px }
+}
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none } .pill i { animation: none } html { scroll-behavior: auto } }
+</style>
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "https://eu.i.posthog.com", person_profiles: "identified_only" });
+</script>
+</head>
+<body>
+
+<nav id="nav" aria-label="Navigation"><div class="wrap">
+  <a class="logo" href="../"><img src="../img/logo_flow.png" alt="Flow Media AI" width="822" height="222"></a>
+  <a class="back" href="../" data-cta="prog_nav_home">← Zur Hauptseite</a>
+  <a class="btn primary" data-cta="prog_nav_bewerben" data-wa="testkunde" href="#testkunde">Platz anfragen</a>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="hero-photo" role="img" aria-label="Maik am Laptop"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="pill rv"><i></i>Testkunden gesucht · 2–3 Plätze</span>
+      <h1 class="display rv d1">Mach deine Idee<br><span class="blue">mit KI real.</span></h1>
+      <p class="lead rv d2">Das FLOW-Programm: <b>In 6 oder 12 Wochen von der ersten Idee zum eigenen digitalen Produkt</b> – mit persönlicher 1:1-Begleitung, praktischer Umsetzung und KI-Workflows, die du auch danach selbst nutzen kannst.</p>
+      <p class="note rv d2">Du brauchst keine Programmierkenntnisse. Du brauchst eine Idee, die du verwirklichen möchtest.</p>
+      <div class="cta-row rv d3">
+        <a class="btn primary" data-cta="prog_hero_bewerben" data-wa="testkunde" href="#testkunde">Als Testkunde bewerben <span class="ar">→</span></a>
+        <a class="btn" data-cta="prog_hero_ablauf" href="#ablauf">So läuft das Programm</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="problem"><div class="wrap">
+  <p class="q rv">Du hast eine Idee für eine App, Website oder ein digitales Produkt – <span>weißt aber noch nicht genau, wie du sie umsetzen kannst?</span></p>
+  <p class="a rv d1">Ich suche aktuell <b>2–3 ausgewählte Testkunden</b>, die gemeinsam mit mir ihre Ideen mithilfe von KI in die Realität bringen möchten. Du lernst KI nicht nur kennen – du setzt sie direkt ein, Woche für Woche, an deinem eigenen Vorhaben.</p>
+</div></section>
+
+<section id="flow"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="label eyebrow rv">Der FLOW-Prozess</span><h2 class="display rv d1">Vier Phasen.<br><span class="blue">Ein echtes Produkt.</span></h2></div>
+    <p class="rv d2">Wir arbeiten Schritt für Schritt an deinem eigenen Vorhaben. Aus deiner Idee wird ein Konzept, aus dem Konzept ein Prototyp, aus dem Prototyp ein Produkt – und du lernst, es selbst weiterzuentwickeln.</p>
+  </div>
+  <div class="flow rv">
+    <div class="ph"><span class="L">F</span><h3>Fokussieren</h3><em>Idea2Concept</em><p class="claim">Aus deiner Idee wird ein klares Konzept.</p><p>Wir schärfen deine Idee, bestimmen Zielgruppe und konkreten Nutzen und entwickeln daraus ein umsetzbares Produkt- und Geschäftsmodell.</p></div>
+    <div class="ph"><span class="L">L</span><h3>Losbauen</h3><em>Concept2Prototype</em><p class="claim">Wir entwickeln deinen ersten Prototyp.</p><p>Du richtest dein KI-Setup ein und baust mit passenden Tools und Flow DNA Skills die erste Version deiner App, Website oder deines digitalen Produkts.</p></div>
+    <div class="ph"><span class="L">O</span><h3>Optimieren</h3><em>Prototype2Product</em><p class="claim">Wir machen daraus ein einsatzbereites Produkt.</p><p>Du testest deine Lösung, holst Feedback ein und verbesserst Funktionen, Design und Inhalte, bis dein Produkt bereit für den Einsatz ist.</p></div>
+    <div class="ph"><span class="L">W</span><h3>Wachsen</h3><em>Product2Business</em><p class="claim">Du entwickelst Produkt und Prozesse mit KI weiter.</p><p>Du ergänzt passende KI-Workflows und Automatisierungen, verbesserst deine Abläufe und entwickelst einen konkreten Plan für die nächsten Schritte.</p></div>
+  </div>
+</div></section>
+
+<section id="ablauf" style="padding-top:0"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="label eyebrow rv">Dein Programm</span><h2 class="display rv d1">6 oder 12<br><span class="blue">Wochen.</span></h2></div>
+    <p class="rv d2">Beide Varianten folgen denselben vier FLOW-Phasen. In 6 Wochen gehst du fokussiert von der Idee zum ersten einsatzbereiten Produkt. In 12 Wochen hast du mehr Zeit, dein Vorhaben zu vertiefen, zu testen und Prozesse für den weiteren Aufbau zu entwickeln.</p>
+  </div>
+
+  <div class="toggle rv" role="tablist" aria-label="Programmdauer">
+    <button type="button" role="tab" id="t6" aria-selected="true" aria-controls="p6" data-cta="prog_tab_6">6 Wochen · kompakt</button>
+    <button type="button" role="tab" id="t12" aria-selected="false" aria-controls="p12" data-cta="prog_tab_12">12 Wochen · vertieft</button>
+  </div>
+
+  <div id="p6" role="tabpanel" aria-labelledby="t6">
+    <p class="plan-intro">Der kompakte Umsetzungsweg. <span>Von der Idee zum ersten einsatzbereiten Produkt.</span></p>
+    <div class="bar" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="l"></i><i class="l"></i><i class="o"></i><i class="w"></i></div>
+    <div class="timeline">
+      <div class="step"><div class="wk">Woche<b>1–2</b></div><div class="lt">F</div><div><h3>Fokussieren</h3><p>Du bringst deine Idee auf den Punkt, definierst Zielgruppe und Nutzen und entwickelst ein klares Konzept mit konkretem Umsetzungsplan.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>3–4</b></div><div class="lt">L</div><div><h3>Losbauen</h3><p>Du richtest deine KI-Arbeitsumgebung ein und entwickelst Schritt für Schritt den ersten Prototyp deiner App, Website oder deines digitalen Produkts.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>5</b></div><div class="lt">O</div><div><h3>Optimieren</h3><p>Du testest deinen Prototyp, wertest Feedback aus und verbesserst deine Lösung für den praktischen Einsatz.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>6</b></div><div class="lt">W</div><div><h3>Wachsen</h3><p>Du ergänzt erste KI-Workflows und Automatisierungen und legst fest, wie du dein Produkt und deine Fähigkeiten selbstständig weiterentwickelst.</p></div></div>
+    </div>
+  </div>
+
+  <div id="p12" role="tabpanel" aria-labelledby="t12" hidden>
+    <p class="plan-intro">Der vertiefte Entwicklungsweg. <span>Mehr Zeit für Konzept, Produktversion, Tests und Wachstum.</span></p>
+    <div class="bar" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="l"></i><i class="l"></i><i class="l"></i><i class="l"></i><i class="o"></i><i class="o"></i><i class="w"></i><i class="w"></i><i class="w"></i></div>
+    <div class="timeline">
+      <div class="step"><div class="wk">Woche<b>1–3</b></div><div class="lt">F</div><div><h3>Fokussieren</h3><p>Du analysierst deine Ausgangslage, prüfst Ideen und Zielgruppe und entwickelst ein klares Produktkonzept mit Mehrwert, Geschäftsmodell und Umsetzungsstrategie.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>4–7</b></div><div class="lt">L</div><div><h3>Losbauen</h3><p>Du lernst dein KI-Setup kennen, nutzt passende Flow DNA Skills und entwickelst deinen Prototyp Schritt für Schritt zu einer umfangreicheren ersten Produktversion.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>8–9</b></div><div class="lt">O</div><div><h3>Optimieren</h3><p>Du testest dein Produkt mit echten Anwendungsfällen, sammelst Feedback und optimierst Funktionen, Design und Inhalte. Anschließend bereitest du die Veröffentlichung vor.</p></div></div>
+      <div class="step"><div class="wk">Woche<b>10–12</b></div><div class="lt">W</div><div><h3>Wachsen</h3><p>Du entwickelst Workflows und Automatisierungen, arbeitest an Vermarktung und Geschäftsprozessen und erstellst deinen persönlichen Plan für die nächste Wachstumsphase.</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="leistungen" style="padding-top:0"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="label eyebrow rv">Das bekommst du</span><h2 class="display rv d1">Alles, was du<br><span class="blue">zum Umsetzen brauchst.</span></h2></div>
+    <p class="rv d2">Persönliche Begleitung, fundiertes Wissen und Werkzeuge, mit denen du schneller und strukturierter ans Ziel kommst.</p>
+  </div>
+  <div class="inc">
+    <div class="it hl rv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="big">60 Min.</span><h3>Wöchentlich persönliche 1:1-Begleitung</h3><p>Wir besprechen deinen Fortschritt, lösen konkrete Herausforderungen und legen die nächsten Umsetzungsschritte fest.</p></div>
+    <div class="it rv d1"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/></svg><span class="big">7 Std.</span><h3>AI Masterclass</h3><p>Du lernst die Grundlagen und Methoden der KI-gestützten Entwicklung und setzt sie direkt für dein Projekt ein.</p></div>
+    <div class="it rv d2"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span class="big">Direkt</span><h3>Technischer Support über WhatsApp</h3><p>Du hängst zwischen den Sessions fest? Schreib mir – wir lösen es, damit du weiterkommst.</p></div>
+    <div class="it rv"><svg viewBox="0 0 24 24"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6M8 7h8M8 17h8"/></svg><span class="big">Inklusive</span><h3>Kostenlose Nutzung der Flow DNA Skills</h3><p>Wiederverwendbare Skills, Vorlagen und Workflows aus dem <a href="../../../flow-dna/" data-cta="prog_store">Flow DNA Skill Store</a>.</p></div>
+    <div class="it rv d1"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.8 0 5 2.2 5 5"/></svg><span class="big">Gemeinsam</span><h3>Community &amp; hybrider Stammtisch</h3><p>Austausch mit anderen Gründern und Selbstständigen – digital und vor Ort.</p></div>
+    <div class="it rv d2"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l3 3-3 3M12 15h5"/></svg><span class="big">Praxis</span><h3>Projektarbeit an deiner Idee</h3><p>Zwischen den Sessions setzt du die Inhalte direkt um. So entsteht Woche für Woche sichtbarer Fortschritt.</p></div>
+  </div>
+</div></section>
+
+<section id="testkunde" style="padding-top:0"><div class="wrap">
+  <div class="deal rv">
+    <span class="pill"><i></i>Nur 2–3 Plätze</span>
+    <h2 class="display">Werde<br><span class="blue">Testkunde.</span></h2>
+    <p>Ich starte das FLOW-Programm mit wenigen ausgewählten Menschen – und möchte es gemeinsam mit dir besser machen. Dafür bekommst du das volle Programm zu deutlich besseren Konditionen.</p>
+    <div class="give">
+      <div>
+        <span class="label">Dein Vorteil</span>
+        <h3>Volles Programm.<br><span class="blue">Testkundenpreis.</span></h3>
+        <p>Du erhältst das vollständige Programm zu einem exklusiven Testkundenpreis – deutlich unter dem späteren regulären Angebotspreis.</p>
+        <ul><li>Alle Leistungen, nichts weggelassen</li><li>6 oder 12 Wochen – du wählst</li><li>Persönlich, 1:1, an deiner eigenen Idee</li></ul>
+      </div>
+      <div>
+        <span class="label">Was ich mir wünsche</span>
+        <h3>Ehrliches Feedback.<br>Deine Geschichte.</h3>
+        <p>Dein ehrliches Feedback während der Zusammenarbeit und ein Testimonial mit deinen Erfahrungen und Ergebnissen nach Abschluss.</p>
+        <ul><li>Was hilft dir, was fehlt dir?</li><li>Kurze Rückmeldung nach den Phasen</li><li>Testimonial nach Abschluss</li></ul>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" data-cta="prog_deal_whatsapp" data-wa="testkunde" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+        Idee per WhatsApp schicken <span class="ar">→</span>
+      </a>
+      <a class="btn" data-cta="prog_deal_calendly" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Kostenloses Erstgespräch</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="ergebnis" style="padding-top:0"><div class="wrap result">
+  <div class="ph-img rv" role="img" aria-label="Maik, Flow Media AI"></div>
+  <div>
+    <span class="label eyebrow rv">Was du am Ende erreichst</span>
+    <h2 class="display rv d1">Dein eigenes<br><span class="blue">digitales Produkt.</span></h2>
+    <p class="rv d2"><b>Eine App, eine Website oder ein digitales Tool</b> – und das Wissen, wie du KI, Skills und Workflows einsetzt, um es weiterzuentwickeln.</p>
+    <p class="rv d2">Vor allem kannst du künftig weitere eigene Ideen selbstständiger in die Umsetzung bringen.</p>
+    <ul class="rv d3">
+      <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Ein klares Konzept für deine Idee</li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Ein getestetes, einsatzbereites Produkt</li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Dein eigenes KI-Setup mit Flow DNA Skills</li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Einen Plan für die nächsten Schritte</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2 class="display rv">Du bringst die Idee.<br><span class="blue">Wir machen sie real.</span></h2>
+  <p class="rv d1">Interesse? Schreib mir eine persönliche Nachricht mit deiner Idee. Ich melde mich bei dir, und wir schauen gemeinsam, ob das Programm zu dir passt.</p>
+  <div class="cta-row rv d2">
+    <a class="btn primary" data-cta="prog_final_whatsapp" data-wa="testkunde" href="#">Schreib mir deine Idee <span class="ar">→</span></a>
+    <a class="btn" data-cta="prog_final_calendly" href="https://calendly.com/flow_media_ai/1-kennenlernen" target="_blank" rel="noopener">Erstgespräch buchen</a>
+  </div>
+  <div class="sig rv d3"><b>Maik</b> · Flow Media AI · We build your ideas.</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Flow Media AI · Maik · We build your ideas.</span>
+  <a href="../" data-cta="prog_footer_home">Hauptseite</a>
+  <span class="sp"></span>
+  <a href="../impressum.html">Impressum</a>
+  <a href="../datenschutz.html">Datenschutz</a>
+</div></footer>
+
+<div class="mcta" id="mcta"><a class="btn primary" data-cta="prog_sticky_whatsapp" data-wa="testkunde" href="#">Als Testkunde bewerben <span class="ar">→</span></a></div>
+
+<script>
+const PHONE = "4917645961547";
+const WA_TEXT = { testkunde: "Hi Maik, ich interessiere mich für das FLOW-Programm als Testkunde. Meine Idee: " };
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT[a.dataset.wa])}`;
+  a.target = "_blank"; a.rel = "noopener";
+});
+
+// Nav background and sticky mobile CTA
+const nav = document.getElementById("nav"), mcta = document.getElementById("mcta"), finalSec = document.querySelector(".final");
+const onScroll = () => {
+  nav.classList.toggle("solid", scrollY > 40);
+  const nearEnd = finalSec.getBoundingClientRect().top < innerHeight;
+  mcta.classList.toggle("on", scrollY > innerHeight * .8 && !nearEnd);
+};
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+// Reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+// 6 / 12 weeks toggle
+const tabs = [["t6", "p6"], ["t12", "p12"]];
+tabs.forEach(([t]) => document.getElementById(t).addEventListener("click", () => tabs.forEach(([tt, pp]) => {
+  const on = tt === t;
+  document.getElementById(tt).setAttribute("aria-selected", on);
+  document.getElementById(pp).hidden = !on;
+})));
+
+// Click tracking (same event as the main page)
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-cta]");
+  if (a && window.posthog) posthog.capture("cta_click", { cta: a.dataset.cta, target: a.getAttribute("href") || a.id, page: "programm" });
+});
+</script>
+</body>
+</html>
