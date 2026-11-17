@@ -250,6 +250,7 @@ body:not(.ready) .hero * { animation-play-state: paused !important }
   .cur { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff }
   .cur-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255,255,255,.45); transition: width .3s var(--ease), height .3s var(--ease), margin .3s var(--ease), background .3s, border-color .3s }
   .cur-ring.hov { width: 72px; height: 72px; margin: -36px 0 0 -36px; background: rgba(47,91,255,.14); border-color: rgba(47,91,255,.7) }
+}
 .manifest { padding-block: clamp(110px, 15vw, 200px) }
 .manifest p { margin: 0; font: 500 clamp(34px, 5vw, 72px)/1.12 var(--f-body); letter-spacing: -.025em; color: var(--white); max-width: 18ch }
 .manifest .w { opacity: .16; transition: opacity .25s linear, color .4s }
@@ -334,6 +335,32 @@ main { position: relative; isolation: isolate }
 .k-play { transform-box: fill-box; transform-origin: center; animation: kplay 2s ease-in-out infinite }
 @keyframes kplay { 50% { transform: scale(1.12) } }
 
+
+/* 7 Social Media Agent (wide card): agent plans, reel builds, auto-post, numbers grow */
+.ex.wide { grid-column: 1 / -1; flex-direction: row }
+.ex.wide .vis { flex: 1.35; height: auto; min-height: 260px; border-bottom: 0; border-right: 1px solid var(--line) }
+.ex.wide .txt { flex: 1; justify-content: center; padding: 30px 34px }
+.ex.wide h3 { font-size: 30px }
+.s-core { transform-box: fill-box; transform-origin: center; animation: score 2.4s ease-in-out infinite }
+@keyframes score { 50% { transform: scale(1.08) } }
+.s-orb { transform-box: view-box; transform-origin: 90px 120px; animation: sorb 6s linear infinite }
+@keyframes sorb { to { transform: rotate(360deg) } }
+.s-flow { stroke-dasharray: 4 6; animation: dash 1.2s linear infinite }
+.s-frame { opacity: 0; animation: sframe 8s steps(1) infinite }
+.s-frame.f2 { animation-name: sframe2 } .s-frame.f3 { animation-name: sframe3 }
+@keyframes sframe { 0%, 33% { opacity: 1 } 33.01%, 100% { opacity: 0 } }
+@keyframes sframe2 { 0%, 33% { opacity: 0 } 33.01%, 66% { opacity: 1 } 66.01%, 100% { opacity: 0 } }
+@keyframes sframe3 { 0%, 66% { opacity: 0 } 66.01%, 100% { opacity: 1 } }
+.s-rbar { transform-box: fill-box; transform-origin: left; animation: gprog 8s linear infinite }
+.s-post { animation: spost 8s var(--ease) infinite }
+@keyframes spost { 0%, 55% { opacity: 0; transform: translateY(8px) } 62%, 92% { opacity: 1; transform: none } 100% { opacity: 0 } }
+.s-bar { transform-box: fill-box; transform-origin: bottom; animation: sbar 8s var(--ease) infinite both }
+.s-bar.b2 { animation-delay: .25s } .s-bar.b3 { animation-delay: .5s } .s-bar.b4 { animation-delay: .75s } .s-bar.b5 { animation-delay: 1s }
+@keyframes sbar { 0%, 60% { transform: scaleY(.12) } 78%, 94% { transform: none } 100% { transform: scaleY(.12) } }
+.s-heart { opacity: 0; animation: sheart 8s ease-out infinite }
+.s-heart.h2 { animation-delay: .5s } .s-heart.h3 { animation-delay: 1s }
+@keyframes sheart { 0%, 62% { opacity: 0; transform: translateY(0) } 68% { opacity: 1 } 90% { opacity: 0; transform: translateY(-46px) } 100% { opacity: 0 } }
+@media (max-width: 960px) { .ex.wide { flex-direction: column } .ex.wide .vis { border-right: 0; border-bottom: 1px solid var(--line); min-height: 230px } }
 @media (max-width: 960px) { .exg { grid-template-columns: 1fr 1fr } }
 @media (max-width: 720px) { .exg { grid-template-columns: 1fr } }
 @media (prefers-reduced-motion: reduce) { .ex .vis * { animation: none !important } .a-tick, .c-b, .w-live { opacity: 1 } }
@@ -400,9 +427,31 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
 <section id="beispiele" style="padding-top:0"><div class="wrap">
   <div class="sec-head">
     <div><span class="label eyebrow rv">Was entstehen kann</span><h2 class="display rv d1">Deine Idee.<br><span class="blue">Dein Produkt.</span></h2></div>
-    <p class="rv d2">App, Website, Automatisierung oder etwas ganz Neues: So könnten Ergebnisse aus dem FLOW-Programm aussehen. Welche Lösung es bei dir wird, entscheidet deine Idee.</p>
+    <p class="rv d2">App, Website, Automatisierung, Social Media Agent oder etwas ganz Neues: So könnten Ergebnisse aus dem FLOW-Programm aussehen. Welche Lösung es bei dir wird, entscheidet deine Idee.</p>
   </div>
   <div class="exg">
+
+    <article class="ex card wide rv">
+      <div class="vis"><svg viewBox="0 0 560 240" aria-hidden="true">
+        <g class="s-orb"><circle cx="90" cy="62" r="4" fill="#8aa4ff"/><circle cx="148" cy="120" r="3" fill="rgba(255,255,255,.6)"/><circle cx="90" cy="178" r="3.5" fill="#8aa4ff"/><circle cx="32" cy="120" r="3" fill="rgba(255,255,255,.6)"/></g>
+        <circle cx="90" cy="120" r="58" fill="none" stroke="rgba(255,255,255,.1)" stroke-dasharray="2 5"/>
+        <g class="s-core"><circle cx="90" cy="120" r="34" fill="#2F5BFF" style="filter:drop-shadow(0 0 16px rgba(47,91,255,.8))"/><text x="90" y="117" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1.5">AGENT</text><text x="90" y="131" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle" letter-spacing="1">PLANT · BAUT</text></g>
+        <line class="s-flow" x1="128" y1="120" x2="208" y2="120" stroke="rgba(47,91,255,.7)" stroke-width="1.5"/>
+        <rect x="210" y="34" width="104" height="180" rx="14" fill="#111" stroke="rgba(255,255,255,.55)" stroke-width="1.3"/>
+        <g class="s-frame"><rect x="218" y="48" width="88" height="128" rx="6" fill="rgba(47,91,255,.22)"/><text x="262" y="96" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" font-family="Oswald, sans-serif">VIELE IDEEN?</text><circle cx="230" cy="164" r="7" fill="rgba(255,255,255,.5)"/></g>
+        <g class="s-frame f2"><rect x="218" y="48" width="88" height="128" rx="6" fill="rgba(255,255,255,.08)"/><rect x="230" y="70" width="64" height="40" rx="5" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)"/><text x="262" y="132" font-size="11" fill="#fff" text-anchor="middle">So geht's</text><circle cx="230" cy="164" r="7" fill="rgba(255,255,255,.5)"/></g>
+        <g class="s-frame f3"><rect x="218" y="48" width="88" height="128" rx="6" fill="rgba(47,91,255,.35)"/><text x="262" y="100" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" font-family="Oswald, sans-serif">MACH SIE</text><text x="262" y="118" font-size="15" font-weight="700" fill="#fff" text-anchor="middle" font-family="Oswald, sans-serif">REAL.</text><circle cx="230" cy="164" r="7" fill="rgba(255,255,255,.5)"/></g>
+        <rect x="218" y="186" width="88" height="3" rx="1.5" fill="rgba(255,255,255,.15)"/><rect class="s-rbar" x="218" y="186" width="88" height="3" rx="1.5" fill="#fff"/>
+        <rect x="218" y="196" width="60" height="4" rx="2" fill="rgba(255,255,255,.35)"/>
+        <g class="s-post"><rect x="300" y="18" width="112" height="30" rx="10" fill="#161618" stroke="rgba(47,91,255,.7)"/><circle cx="314" cy="33" r="5" fill="#2F5BFF"/><text x="324" y="37" font-size="9.5" fill="#fff">18:00 · gepostet ✓</text></g>
+        <line class="s-flow" x1="316" y1="140" x2="392" y2="140" stroke="rgba(47,91,255,.7)" stroke-width="1.5"/>
+        <line x1="400" y1="200" x2="530" y2="200" stroke="rgba(255,255,255,.15)"/>
+        <g fill="#2F5BFF"><rect class="s-bar" x="408" y="150" width="16" height="50" rx="3" fill="rgba(47,91,255,.45)"/><rect class="s-bar b2" x="432" y="130" width="16" height="70" rx="3" fill="rgba(47,91,255,.6)"/><rect class="s-bar b3" x="456" y="110" width="16" height="90" rx="3" fill="rgba(47,91,255,.75)"/><rect class="s-bar b4" x="480" y="92" width="16" height="108" rx="3" fill="rgba(47,91,255,.9)"/><rect class="s-bar b5" x="504" y="70" width="16" height="130" rx="3"/></g>
+        <g fill="#fff"><path class="s-heart" d="M440 112c-4-4-10 0-6 5l6 6 6-6c4-5-2-9-6-5z"/><path class="s-heart h2" d="M486 82c-4-4-10 0-6 5l6 6 6-6c4-5-2-9-6-5z" fill="#8aa4ff"/><path class="s-heart h3" d="M512 60c-4-4-10 0-6 5l6 6 6-6c4-5-2-9-6-5z"/></g>
+        <g font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" letter-spacing="1.5"><text x="90" y="222">PLANEN</text><text x="262" y="232">BAUEN · POSTEN</text><text x="466" y="222">LERNEN</text></g>
+      </svg></div>
+      <div class="txt"><span class="tag">Social Media Agent</span><h3>Dein Kanal läuft von allein</h3><p>Der Agent plant Themen, baut Reels und Posts in deinem Look, postet zur besten Uhrzeit und lernt aus den Zahlen, was ankommt. Du gibst nur noch frei – oder lässt ihn ganz allein laufen.</p></div>
+    </article>
 
     <article class="ex card rv">
       <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
