@@ -210,7 +210,136 @@ footer .sp { flex: 1 }
   .mcta .btn { width: 100% }
   footer { padding-bottom: 96px }
 }
-@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none } .pill i { animation: none } html { scroll-behavior: auto } }
+/* ---- Animations taken over from the main page ---- */
+#flow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2 }
+.hero h1 .line { display: block; overflow: hidden }
+.hero h1 .line span { display: inline-block; transform: translateY(105%); animation: up 1.1s var(--ease) forwards }
+.hero h1 .line:nth-child(2) span { animation-delay: .12s } .hero h1 .line:nth-child(3) span { animation-delay: .24s }
+@keyframes up { to { transform: none } }
+.flow-word { background: linear-gradient(90deg, #2F5BFF 0%, #8aa4ff 40%, #2F5BFF 80%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: up 1.1s var(--ease) .12s forwards, sheen 6s linear 1.4s infinite }
+@keyframes sheen { to { background-position: -200% 0 } }
+.marquee { border-block: 1px solid var(--line); overflow: hidden; padding: 26px 0; background: var(--bg2) }
+.marquee .track { display: flex; width: max-content; animation: marquee 32s linear infinite }
+.marquee span { font: 700 clamp(40px, 6vw, 84px)/1 var(--f-head); text-transform: uppercase; padding-right: .6em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.35) }
+.marquee span.f { color: var(--white); -webkit-text-stroke: 0 }
+.marquee span.b { color: var(--blue); -webkit-text-stroke: 0 }
+.marquee em { font-style: normal; color: var(--blue); padding-right: .6em; font: 400 clamp(28px, 4vw, 56px)/1 var(--f-body); align-self: center }
+@keyframes marquee { to { transform: translateX(-50%) } }
+.card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s; background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(47,91,255,.16), transparent 45%); z-index: 0 }
+.card:hover::before { opacity: 1 }
+.card { position: relative }
+.lenis.lenis-smooth { scroll-behavior: auto !important }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain }
+
+/* film grain over everything */
+body::after { content: ""; position: fixed; inset: -100%; z-index: 90; pointer-events: none; opacity: .045; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); animation: grain 1.2s steps(6) infinite }
+@keyframes grain { 0% { transform: translate(0,0) } 20% { transform: translate(-3%,2%) } 40% { transform: translate(2%,-3%) } 60% { transform: translate(-2%,-1%) } 80% { transform: translate(3%,3%) } 100% { transform: translate(0,0) } }
+
+/* intro */
+.intro { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center; transition: opacity .7s var(--ease), visibility .7s }
+.intro img { width: min(220px, 50vw); opacity: 0; animation: introLogo 1s var(--ease) .1s forwards }
+.intro i { position: absolute; left: 50%; top: calc(50% + 70px); width: 0; height: 1px; background: var(--blue); box-shadow: 0 0 14px var(--blue); transform: translateX(-50%); animation: introLine 1s var(--ease) .25s forwards }
+@keyframes introLogo { from { opacity: 0; transform: translateY(10px); filter: blur(6px) } to { opacity: 1; transform: none; filter: none } }
+@keyframes introLine { to { width: min(260px, 60vw) } }
+body.ready .intro { opacity: 0; visibility: hidden }
+body:not(.ready) .hero * { animation-play-state: paused !important }
+/* custom cursor (mouse only) */
+.cur, .cur-ring { position: fixed; left: 0; top: 0; z-index: 95; pointer-events: none; border-radius: 50%; display: none }
+@media (hover: hover) and (pointer: fine) {
+  .cur, .cur-ring { display: block }
+  .cur { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff }
+  .cur-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255,255,255,.45); transition: width .3s var(--ease), height .3s var(--ease), margin .3s var(--ease), background .3s, border-color .3s }
+  .cur-ring.hov { width: 72px; height: 72px; margin: -36px 0 0 -36px; background: rgba(47,91,255,.14); border-color: rgba(47,91,255,.7) }
+.manifest { padding-block: clamp(110px, 15vw, 200px) }
+.manifest p { margin: 0; font: 500 clamp(34px, 5vw, 72px)/1.12 var(--f-body); letter-spacing: -.025em; color: var(--white); max-width: 18ch }
+.manifest .w { opacity: .16; transition: opacity .25s linear, color .4s }
+.manifest .w.on { opacity: 1 }
+.manifest .w.k.on { color: var(--blue); text-shadow: 0 0 30px rgba(47,91,255,.5) }
+.manifest .sig { display: flex; align-items: center; gap: 14px; margin-top: 46px }
+.manifest .sig span { width: 44px; height: 44px; border-radius: 50%; background: url(../img/maik_avatar.jpg) center/cover; filter: grayscale(1); border: 1px solid var(--line2) }
+main { position: relative; isolation: isolate }
+#flowpath { position: absolute; left: 0; top: 0; width: 100%; z-index: -1; pointer-events: none; overflow: visible }
+#flowpath .base { fill: none; stroke: rgba(255,255,255,.06); stroke-width: 1 }
+#flowpath .prog { fill: none; stroke: url(#fpg); stroke-width: 1.6; stroke-linecap: round }
+#flowpath circle { fill: #fff; filter: drop-shadow(0 0 8px var(--blue)) drop-shadow(0 0 18px var(--blue)) }
+.marquee.js .track { animation: none }
+/* ---- Example products: each card plays a small looping scene ---- */
+.exg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+.ex { border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; display: flex; flex-direction: column; transition: border-color .4s, transform .5s var(--ease) }
+.ex:hover { border-color: var(--line2); transform: translateY(-4px) }
+.ex .vis { position: relative; height: 230px; border-bottom: 1px solid var(--line); background: radial-gradient(70% 80% at 50% 100%, rgba(47,91,255,.14), transparent 70%), #0C0C0E; overflow: hidden; display: grid; place-items: center; z-index: 1 }
+.ex .vis::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none }
+.ex .vis svg { width: 100%; height: 100%; position: relative; z-index: 1 }
+.ex .txt { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1 }
+.ex .tag { font: 600 11px/1 var(--f-label); letter-spacing: .2em; text-transform: uppercase; color: var(--blue) }
+.ex h3 { font: 700 24px/1.05 var(--f-head); text-transform: uppercase }
+.ex p { font-size: 15px; line-height: 1.55 }
+.ex-note { margin-top: 18px; font-size: 13px; color: var(--muted) }
+.ex svg text { font-family: var(--f-body) }
+/* animations only run while the card is on screen */
+.ex:not(.play) .vis * { animation-play-state: paused !important }
+
+/* 1 App: slots get booked one after another */
+.a-slot { animation: slot 6s var(--ease) infinite both }
+.a-slot:nth-of-type(2) { animation-delay: .8s } .a-slot:nth-of-type(3) { animation-delay: 1.6s } .a-slot:nth-of-type(4) { animation-delay: 2.4s }
+@keyframes slot { 0%, 8% { fill: rgba(255,255,255,.06) } 14%, 85% { fill: #2F5BFF } 100% { fill: rgba(255,255,255,.06) } }
+.a-tick { opacity: 0; animation: tick 6s ease infinite }
+.a-tick.t2 { animation-delay: .8s } .a-tick.t3 { animation-delay: 1.6s } .a-tick.t4 { animation-delay: 2.4s }
+@keyframes tick { 0%, 10% { opacity: 0 } 16%, 85% { opacity: 1 } 100% { opacity: 0 } }
+.a-toast { animation: toast 6s var(--ease) infinite }
+@keyframes toast { 0%, 50% { transform: translateY(-40px); opacity: 0 } 58%, 85% { transform: none; opacity: 1 } 95%, 100% { transform: translateY(-40px); opacity: 0 } }
+
+/* 2 Website: blocks build up in the browser */
+.w-b { transform-box: fill-box; transform-origin: left center; animation: wb 7s var(--ease) infinite both }
+.w-b.b2 { animation-delay: .35s } .w-b.b3 { animation-delay: .7s } .w-b.b4 { animation-delay: 1.05s } .w-b.b5 { animation-delay: 1.4s } .w-b.b6 { animation-delay: 1.75s }
+@keyframes wb { 0% { transform: scaleX(0); opacity: 0 } 10%, 82% { transform: none; opacity: 1 } 92%, 100% { transform: none; opacity: 0 } }
+.w-live { animation: live 7s ease infinite }
+@keyframes live { 0%, 38% { opacity: 0 } 44%, 82% { opacity: 1 } 92%, 100% { opacity: 0 } }
+.w-cursor { animation: wcur 7s var(--ease) infinite }
+@keyframes wcur { 0%, 30% { transform: translate(40px, 50px) } 45%, 60% { transform: translate(0, 0) } 64% { transform: translate(0, 0) scale(.85) } 68%, 100% { transform: translate(0, 0) } }
+
+/* 3 Automation: pulses travel along the pipeline */
+.f-line { stroke-dasharray: 4 6; animation: dash 1.2s linear infinite }
+@keyframes dash { to { stroke-dashoffset: -20 } }
+.f-node { animation: node 4.5s ease infinite }
+.f-node.n2 { animation-delay: 1.1s } .f-node.n3 { animation-delay: 2.2s } .f-node.n4 { animation-delay: 3.3s }
+@keyframes node { 0%, 100% { stroke: rgba(255,255,255,.25) } 8%, 22% { stroke: #2F5BFF } }
+.f-dot { offset-path: path("M 40 115 L 125 115 L 210 115 L 295 115"); animation: travel 4.5s linear infinite }
+@keyframes travel { from { offset-distance: 0% } to { offset-distance: 100% } }
+
+/* 4 Smart Glasses: steps appear in the field of view */
+.g-hud { animation: hud 9s steps(1) infinite }
+.g-s1 { animation-name: h1 } .g-s2 { animation-name: h2 } .g-s3 { animation-name: h3 }
+@keyframes h1 { 0%, 33% { opacity: 1 } 33.01%, 100% { opacity: 0 } }
+@keyframes h2 { 0%, 33% { opacity: 0 } 33.01%, 66% { opacity: 1 } 66.01%, 100% { opacity: 0 } }
+@keyframes h3 { 0%, 66% { opacity: 0 } 66.01%, 100% { opacity: 1 } }
+.g-scan { animation: scan 3s ease-in-out infinite }
+@keyframes scan { 0%, 100% { transform: translateY(0); opacity: .0 } 20% { opacity: .9 } 50% { transform: translateY(46px); opacity: .9 } 70% { opacity: 0 } }
+.g-prog { transform-box: fill-box; transform-origin: left; animation: gprog 9s linear infinite }
+@keyframes gprog { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+
+/* 5 KI-Assistent: chat bubbles appear, typing dots */
+.c-b { opacity: 0; animation: bub 8s var(--ease) infinite }
+.c-b.c2 { animation-delay: 1.2s } .c-b.c3 { animation-delay: 3s }
+@keyframes bub { 0% { opacity: 0; transform: translateY(10px) } 6%, 85% { opacity: 1; transform: none } 95%, 100% { opacity: 0 } }
+.c-typ { animation: typ 8s steps(1) infinite }
+@keyframes typ { 0%, 15% { opacity: 0 } 15.01%, 37% { opacity: 1 } 37.01%, 100% { opacity: 0 } }
+.c-d { animation: blink 1s ease-in-out infinite } .c-d.d2 { animation-delay: .15s } .c-d.d3 { animation-delay: .3s }
+@keyframes blink { 50% { opacity: .2 } }
+
+/* 6 Online-Kurs: modules fill up */
+.k-bar { transform-box: fill-box; transform-origin: left; animation: kbar 6s var(--ease) infinite both }
+.k-bar.k2 { animation-delay: .6s } .k-bar.k3 { animation-delay: 1.2s } .k-bar.k4 { animation-delay: 1.8s }
+@keyframes kbar { 0% { transform: scaleX(0) } 22%, 85% { transform: scaleX(1) } 100% { transform: scaleX(1); opacity: 0 } }
+.k-play { transform-box: fill-box; transform-origin: center; animation: kplay 2s ease-in-out infinite }
+@keyframes kplay { 50% { transform: scale(1.12) } }
+
+@media (max-width: 960px) { .exg { grid-template-columns: 1fr 1fr } }
+@media (max-width: 720px) { .exg { grid-template-columns: 1fr } }
+@media (prefers-reduced-motion: reduce) { .ex .vis * { animation: none !important } .a-tick, .c-b, .w-live { opacity: 1 } }
+
+@media (max-width: 720px) { #flowpath { display: none } }
+@media (prefers-reduced-motion: reduce) { .marquee .track { animation: none } .hero h1 .line span, .flow-word { transform: none; animation: none } .flow-word { color: var(--blue) } .rv { opacity: 1; transform: none; transition: none } .pill i { animation: none } html { scroll-behavior: auto } }
 </style>
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -218,6 +347,8 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
 </script>
 </head>
 <body>
+<div class="intro" aria-hidden="true"><img src="../img/logo_flow.png" alt=""><i></i></div>
+<div class="cur" aria-hidden="true"></div><div class="cur-ring" aria-hidden="true"></div>
 
 <nav id="nav" aria-label="Navigation"><div class="wrap">
   <a class="logo" href="../"><img src="../img/logo_flow.png" alt="Flow Media AI" width="822" height="222"></a>
@@ -226,11 +357,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
 </div></nav>
 
 <header class="hero" id="top">
+  <canvas id="flow" aria-hidden="true"></canvas>
   <div class="hero-photo" role="img" aria-label="Maik am Laptop"></div>
   <div class="wrap">
     <div class="hero-copy">
       <span class="pill rv"><i></i>Testkunden gesucht · 2–3 Plätze</span>
-      <h1 class="display rv d1">Mach deine Idee<br><span class="blue">mit KI real.</span></h1>
+      <h1 class="display"><span class="line"><span>Mach deine</span></span><span class="line"><span>Idee</span></span><span class="line"><span class="flow-word">mit KI real.</span></span></h1>
       <p class="lead rv d2">Das FLOW-Programm: <b>In 6 oder 12 Wochen von der ersten Idee zum eigenen digitalen Produkt</b> – mit persönlicher 1:1-Begleitung, praktischer Umsetzung und KI-Workflows, die du auch danach selbst nutzen kannst.</p>
       <p class="note rv d2">Du brauchst keine Programmierkenntnisse. Du brauchst eine Idee, die du verwirklichen möchtest.</p>
       <div class="cta-row rv d3">
@@ -241,13 +373,18 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
   </div>
 </header>
 
+<div class="marquee" aria-label="Fokussieren. Losbauen. Optimieren. Wachsen."><div class="track" aria-hidden="true">
+  <span class="b">Fokussieren</span><em>✦</em><span class="f">Losbauen</span><em>✦</em><span>Optimieren</span><em>✦</em><span class="f">Wachsen</span><em>✦</em><span class="b">Fokussieren</span><em>✦</em><span class="f">Losbauen</span><em>✦</em><span>Optimieren</span><em>✦</em><span class="f">Wachsen</span><em>✦</em>
+</div></div>
+
 <main>
+<svg id="flowpath" aria-hidden="true"><defs><linearGradient id="fpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F5BFF" stop-opacity=".1"/><stop offset=".5" stop-color="#2F5BFF" stop-opacity=".55"/><stop offset="1" stop-color="#8aa4ff" stop-opacity=".7"/></linearGradient></defs><path class="base"/><path class="prog"/><circle r="3.5"/></svg>
 <section class="problem"><div class="wrap">
   <p class="q rv">Du hast eine Idee für eine App, Website oder ein digitales Produkt – <span>weißt aber noch nicht genau, wie du sie umsetzen kannst?</span></p>
   <p class="a rv d1">Ich suche aktuell <b>2–3 ausgewählte Testkunden</b>, die gemeinsam mit mir ihre Ideen mithilfe von KI in die Realität bringen möchten. Du lernst KI nicht nur kennen – du setzt sie direkt ein, Woche für Woche, an deinem eigenen Vorhaben.</p>
 </div></section>
 
-<section id="flow"><div class="wrap">
+<section id="prozess"><div class="wrap">
   <div class="sec-head">
     <div><span class="label eyebrow rv">Der FLOW-Prozess</span><h2 class="display rv d1">Vier Phasen.<br><span class="blue">Ein echtes Produkt.</span></h2></div>
     <p class="rv d2">Wir arbeiten Schritt für Schritt an deinem eigenen Vorhaben. Aus deiner Idee wird ein Konzept, aus dem Konzept ein Prototyp, aus dem Prototyp ein Produkt – und du lernst, es selbst weiterzuentwickeln.</p>
@@ -258,6 +395,125 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
     <div class="ph"><span class="L">O</span><h3>Optimieren</h3><em>Prototype2Product</em><p class="claim">Wir machen daraus ein einsatzbereites Produkt.</p><p>Du testest deine Lösung, holst Feedback ein und verbesserst Funktionen, Design und Inhalte, bis dein Produkt bereit für den Einsatz ist.</p></div>
     <div class="ph"><span class="L">W</span><h3>Wachsen</h3><em>Product2Business</em><p class="claim">Du entwickelst Produkt und Prozesse mit KI weiter.</p><p>Du ergänzt passende KI-Workflows und Automatisierungen, verbesserst deine Abläufe und entwickelst einen konkreten Plan für die nächsten Schritte.</p></div>
   </div>
+</div></section>
+
+<section id="beispiele" style="padding-top:0"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="label eyebrow rv">Was entstehen kann</span><h2 class="display rv d1">Deine Idee.<br><span class="blue">Dein Produkt.</span></h2></div>
+    <p class="rv d2">App, Website, Automatisierung oder etwas ganz Neues: So könnten Ergebnisse aus dem FLOW-Programm aussehen. Welche Lösung es bei dir wird, entscheidet deine Idee.</p>
+  </div>
+  <div class="exg">
+
+    <article class="ex card rv">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <rect x="120" y="14" width="100" height="200" rx="16" fill="#111" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+        <rect x="155" y="22" width="30" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
+        <rect x="131" y="38" width="46" height="6" rx="3" fill="rgba(255,255,255,.7)"/>
+        <rect x="131" y="50" width="70" height="4" rx="2" fill="rgba(255,255,255,.25)"/>
+        <g>
+          <rect class="a-slot" x="131" y="66" width="78" height="22" rx="6"/>
+          <rect class="a-slot" x="131" y="94" width="78" height="22" rx="6"/>
+          <rect class="a-slot" x="131" y="122" width="78" height="22" rx="6"/>
+          <rect class="a-slot" x="131" y="150" width="78" height="22" rx="6"/>
+        </g>
+        <g fill="rgba(255,255,255,.75)"><rect x="138" y="75" width="26" height="4" rx="2"/><rect x="138" y="103" width="26" height="4" rx="2"/><rect x="138" y="131" width="26" height="4" rx="2"/><rect x="138" y="159" width="26" height="4" rx="2"/></g>
+        <g stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"><path class="a-tick" d="M193 77l3 3 6-6"/><path class="a-tick t2" d="M193 105l3 3 6-6"/><path class="a-tick t3" d="M193 133l3 3 6-6"/><path class="a-tick t4" d="M193 161l3 3 6-6"/></g>
+        <rect x="131" y="182" width="78" height="20" rx="10" fill="#2F5BFF"/>
+        <g class="a-toast"><rect x="226" y="40" width="96" height="34" rx="10" fill="#161618" stroke="rgba(47,91,255,.6)"/><circle cx="240" cy="57" r="5" fill="#2F5BFF"/><rect x="251" y="50" width="56" height="5" rx="2.5" fill="rgba(255,255,255,.8)"/><rect x="251" y="60" width="38" height="4" rx="2" fill="rgba(255,255,255,.35)"/></g>
+      </svg></div>
+      <div class="txt"><span class="tag">App</span><h3>Buchungs-App für deine Kunden</h3><p>Termine, Erinnerungen und Kundenkontakt in einer App – installierbar auf iPhone und Android, ohne App Store.</p></div>
+    </article>
+
+    <article class="ex card rv d1">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <rect x="40" y="22" width="260" height="180" rx="12" fill="#111" stroke="rgba(255,255,255,.5)" stroke-width="1.3"/>
+        <line x1="40" y1="44" x2="300" y2="44" stroke="rgba(255,255,255,.15)"/>
+        <circle cx="54" cy="33" r="3" fill="rgba(255,255,255,.3)"/><circle cx="64" cy="33" r="3" fill="rgba(255,255,255,.3)"/><circle cx="74" cy="33" r="3" fill="rgba(255,255,255,.3)"/>
+        <rect x="100" y="28" width="140" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+        <g class="w-live"><circle cx="262" cy="33" r="3" fill="#2F5BFF"/><text x="269" y="36.5" font-size="9" font-weight="600" fill="#fff" letter-spacing="1">LIVE</text></g>
+        <rect class="w-b" x="56" y="56" width="60" height="7" rx="3" fill="rgba(255,255,255,.6)"/>
+        <rect class="w-b b2" x="56" y="72" width="140" height="16" rx="3" fill="#fff"/>
+        <rect class="w-b b3" x="56" y="94" width="110" height="6" rx="3" fill="rgba(255,255,255,.35)"/>
+        <rect class="w-b b4" x="56" y="110" width="64" height="18" rx="9" fill="#2F5BFF"/>
+        <rect class="w-b b5" x="210" y="56" width="74" height="72" rx="8" fill="rgba(47,91,255,.25)" stroke="rgba(47,91,255,.6)"/>
+        <g class="w-b b6"><rect x="56" y="142" width="70" height="46" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)"/><rect x="135" y="142" width="70" height="46" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)"/><rect x="214" y="142" width="70" height="46" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)"/></g>
+        <g class="w-cursor"><path d="M92 122l0 16 4-4 3 7 3-1-3-7 6 0z" fill="#fff" stroke="#000" stroke-width=".8"/></g>
+      </svg></div>
+      <div class="txt"><span class="tag">Website</span><h3>Website mit Online-Buchung</h3><p>Dein Auftritt im eigenen Look: klare Botschaft, Angebote, Anfrage- oder Buchungsbutton – live im Netz und von dir selbst pflegbar.</p></div>
+    </article>
+
+    <article class="ex card rv d2">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <line class="f-line" x1="40" y1="115" x2="295" y2="115" stroke="rgba(47,91,255,.6)" stroke-width="1.5"/>
+        <g fill="#111" stroke-width="1.4">
+          <rect class="f-node" x="16" y="91" width="48" height="48" rx="12"/><rect class="f-node n2" x="101" y="91" width="48" height="48" rx="12"/><rect class="f-node n3" x="186" y="91" width="48" height="48" rx="12"/><rect class="f-node n4" x="271" y="91" width="48" height="48" rx="12"/>
+        </g>
+        <g fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 106h20v18H30zM30 106l10 8 10-8"/>
+          <path d="M115 104h14l6 6v16h-20zM119 114h12M119 119h12"/>
+          <path d="M200 106h20v20h-20zM200 112h20M205 102v6M215 102v6"/>
+          <path d="M285 115l6 6 12-12"/>
+        </g>
+        <circle class="f-dot" r="4" fill="#fff" style="filter:drop-shadow(0 0 6px #2F5BFF)"/>
+        <g font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle" letter-spacing=".5"><text x="40" y="160">Anfrage</text><text x="125" y="160">Angebot</text><text x="210" y="160">Termin</text><text x="295" y="160">Erledigt</text></g>
+        <text x="170" y="62" font-size="10" fill="rgba(47,91,255,.9)" text-anchor="middle" letter-spacing="2" font-weight="600">LÄUFT VON ALLEIN</text>
+      </svg></div>
+      <div class="txt"><span class="tag">Automatisierung</span><h3>Von der Anfrage zum Termin</h3><p>Eine Anfrage kommt rein, das Angebot entsteht, der Termin landet im Kalender – ohne dass du es von Hand machst.</p></div>
+    </article>
+
+    <article class="ex card rv">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <g fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.2" stroke-linejoin="round">
+          <path d="M40 92 Q40 82 52 82 L150 82 Q162 82 162 94 L158 140 Q156 154 140 154 L66 154 Q48 154 46 138 Z"/>
+          <path d="M178 94 Q178 82 190 82 L288 82 Q300 82 300 92 L294 138 Q292 154 274 154 L200 154 Q184 154 182 140 Z"/>
+          <path d="M162 98 Q170 90 178 98"/><path d="M40 92 L18 86"/><path d="M300 92 L322 86"/>
+        </g>
+        <path d="M44 90 L158 90 L154 140 Q152 150 140 150 L66 150 Q52 150 50 138 Z" fill="rgba(47,91,255,.08)"/>
+        <path d="M182 90 L296 90 L290 138 Q288 150 274 150 L200 150 Q186 150 186 140 Z" fill="rgba(47,91,255,.08)"/>
+        <rect class="g-scan" x="186" y="92" width="104" height="2" fill="#2F5BFF" style="filter:drop-shadow(0 0 4px #2F5BFF)"/>
+        <g font-size="9.5" fill="#fff">
+          <g class="g-hud g-s1"><text x="194" y="108" fill="#8aa4ff" font-size="8" letter-spacing="1.5" font-weight="600">SCHRITT 1/3</text><text x="194" y="124">Eis ins Glas</text><text x="194" y="137" fill="rgba(255,255,255,.6)">bis zum Rand</text></g>
+          <g class="g-hud g-s2"><text x="194" y="108" fill="#8aa4ff" font-size="8" letter-spacing="1.5" font-weight="600">SCHRITT 2/3</text><text x="194" y="124">4 cl Wodka</text><text x="194" y="137" fill="rgba(255,255,255,.6)">✓ erkannt</text></g>
+          <g class="g-hud g-s3"><text x="194" y="108" fill="#8aa4ff" font-size="8" letter-spacing="1.5" font-weight="600">SCHRITT 3/3</text><text x="194" y="124">Mit Saft auffüllen</text><text x="194" y="137" fill="rgba(255,255,255,.6)">fast fertig</text></g>
+        </g>
+        <rect x="194" y="142" width="86" height="2.5" rx="1.2" fill="rgba(255,255,255,.12)"/>
+        <rect class="g-prog" x="194" y="142" width="86" height="2.5" rx="1.2" fill="#2F5BFF"/>
+        <text x="170" y="192" font-size="10" fill="rgba(255,255,255,.5)" text-anchor="middle" letter-spacing="2">HÄNDE FREI · ANLEITUNG IM BLICK</text>
+      </svg></div>
+      <div class="txt"><span class="tag">Smart Glasses</span><h3>Anleitung direkt im Sichtfeld</h3><p>Schritt für Schritt durch Rezepte, Reparaturen oder Abläufe – die Brille zeigt, was als Nächstes kommt, die Hände bleiben frei.</p></div>
+    </article>
+
+    <article class="ex card rv d1">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <rect x="70" y="20" width="200" height="190" rx="14" fill="#111" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>
+        <circle cx="90" cy="40" r="7" fill="#2F5BFF"/><rect x="104" y="35" width="60" height="5" rx="2.5" fill="rgba(255,255,255,.7)"/><rect x="104" y="44" width="34" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
+        <line x1="70" y1="58" x2="270" y2="58" stroke="rgba(255,255,255,.1)"/>
+        <g class="c-b"><rect x="150" y="70" width="108" height="26" rx="10" fill="rgba(255,255,255,.1)"/><text x="160" y="87" font-size="9.5" fill="#fff">Habt ihr Samstag frei?</text></g>
+        <g class="c-typ"><rect x="82" y="106" width="44" height="22" rx="10" fill="#2F5BFF"/><circle class="c-d" cx="95" cy="117" r="2.6" fill="#fff"/><circle class="c-d d2" cx="104" cy="117" r="2.6" fill="#fff"/><circle class="c-d d3" cx="113" cy="117" r="2.6" fill="#fff"/></g>
+        <g class="c-b c2" style="animation-delay:3s"><rect x="82" y="106" width="150" height="40" rx="10" fill="#2F5BFF"/><text x="92" y="122" font-size="9.5" fill="#fff">Ja! Samstag 10 oder 14 Uhr.</text><text x="92" y="136" font-size="9.5" fill="rgba(255,255,255,.8)">Soll ich dich eintragen?</text></g>
+        <g class="c-b c3" style="animation-delay:4.6s"><rect x="196" y="156" width="62" height="24" rx="10" fill="rgba(255,255,255,.1)"/><text x="206" y="172" font-size="9.5" fill="#fff">14 Uhr 👍</text></g>
+        <rect x="82" y="188" width="150" height="14" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)"/>
+      </svg></div>
+      <div class="txt"><span class="tag">KI-Assistent</span><h3>Ein Assistent, der deine Kunden kennt</h3><p>Beantwortet Standardfragen in deinem Ton, schlägt Termine vor und gibt dir nur noch die Fälle, bei denen du gebraucht wirst.</p></div>
+    </article>
+
+    <article class="ex card rv d2">
+      <div class="vis"><svg viewBox="0 0 340 230" aria-hidden="true">
+        <rect x="40" y="26" width="132" height="84" rx="10" fill="rgba(47,91,255,.18)" stroke="rgba(47,91,255,.6)"/>
+        <g class="k-play"><circle cx="106" cy="68" r="17" fill="#2F5BFF"/><path d="M101 60v16l13-8z" fill="#fff"/></g>
+        <rect x="40" y="120" width="96" height="6" rx="3" fill="rgba(255,255,255,.75)"/><rect x="40" y="132" width="70" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
+        <g font-size="9.5" fill="rgba(255,255,255,.75)">
+          <text x="190" y="40">01 Grundlagen</text><text x="190" y="80">02 Werkzeuge</text><text x="190" y="120">03 Praxis</text><text x="190" y="160">04 Dein Projekt</text>
+        </g>
+        <g fill="rgba(255,255,255,.1)"><rect x="190" y="48" width="110" height="5" rx="2.5"/><rect x="190" y="88" width="110" height="5" rx="2.5"/><rect x="190" y="128" width="110" height="5" rx="2.5"/><rect x="190" y="168" width="110" height="5" rx="2.5"/></g>
+        <g fill="#2F5BFF"><rect class="k-bar" x="190" y="48" width="110" height="5" rx="2.5"/><rect class="k-bar k2" x="190" y="88" width="110" height="5" rx="2.5"/><rect class="k-bar k3" x="190" y="128" width="110" height="5" rx="2.5"/><rect class="k-bar k4" x="190" y="168" width="66" height="5" rx="2.5"/></g>
+        <text x="40" y="170" font-size="26" font-weight="700" fill="#fff" font-family="Oswald, sans-serif">4 Module</text><text x="40" y="186" font-size="9" fill="rgba(255,255,255,.5)" letter-spacing="1.5">DEIN WISSEN ALS PRODUKT</text>
+      </svg></div>
+      <div class="txt"><span class="tag">Digitales Produkt</span><h3>Online-Kurs aus deinem Wissen</h3><p>Aus deiner Erfahrung wird ein Kurs mit Videos, Aufgaben und eigener Kursseite – einmal gebaut, immer wieder verkaufbar.</p></div>
+    </article>
+
+  </div>
+  <p class="ex-note rv">Beispiele zur Veranschaulichung – keine Kundenprojekte.</p>
 </div></section>
 
 <section id="ablauf" style="padding-top:0"><div class="wrap">
@@ -300,17 +556,17 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
     <p class="rv d2">Persönliche Begleitung, fundiertes Wissen und Werkzeuge, mit denen du schneller und strukturierter ans Ziel kommst.</p>
   </div>
   <div class="inc">
-    <div class="it hl rv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="big">60 Min.</span><h3>Wöchentlich persönliche 1:1-Begleitung</h3><p>Wir besprechen deinen Fortschritt, lösen konkrete Herausforderungen und legen die nächsten Umsetzungsschritte fest.</p></div>
-    <div class="it rv d1"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/></svg><span class="big">7 Std.</span><h3>AI Masterclass</h3><p>Du lernst die Grundlagen und Methoden der KI-gestützten Entwicklung und setzt sie direkt für dein Projekt ein.</p></div>
-    <div class="it rv d2"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span class="big">Direkt</span><h3>Technischer Support über WhatsApp</h3><p>Du hängst zwischen den Sessions fest? Schreib mir – wir lösen es, damit du weiterkommst.</p></div>
-    <div class="it rv"><svg viewBox="0 0 24 24"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6M8 7h8M8 17h8"/></svg><span class="big">Inklusive</span><h3>Kostenlose Nutzung der Flow DNA Skills</h3><p>Wiederverwendbare Skills, Vorlagen und Workflows aus dem <a href="../../../flow-dna/" data-cta="prog_store">Flow DNA Skill Store</a>.</p></div>
-    <div class="it rv d1"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.8 0 5 2.2 5 5"/></svg><span class="big">Gemeinsam</span><h3>Community &amp; hybrider Stammtisch</h3><p>Austausch mit anderen Gründern und Selbstständigen – digital und vor Ort.</p></div>
-    <div class="it rv d2"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l3 3-3 3M12 15h5"/></svg><span class="big">Praxis</span><h3>Projektarbeit an deiner Idee</h3><p>Zwischen den Sessions setzt du die Inhalte direkt um. So entsteht Woche für Woche sichtbarer Fortschritt.</p></div>
+    <div class="it card hl rv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="big">60 Min.</span><h3>Wöchentlich persönliche 1:1-Begleitung</h3><p>Wir besprechen deinen Fortschritt, lösen konkrete Herausforderungen und legen die nächsten Umsetzungsschritte fest.</p></div>
+    <div class="it card rv d1"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/></svg><span class="big">7 Std.</span><h3>AI Masterclass</h3><p>Du lernst die Grundlagen und Methoden der KI-gestützten Entwicklung und setzt sie direkt für dein Projekt ein.</p></div>
+    <div class="it card rv d2"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span class="big">Direkt</span><h3>Technischer Support über WhatsApp</h3><p>Du hängst zwischen den Sessions fest? Schreib mir – wir lösen es, damit du weiterkommst.</p></div>
+    <div class="it card rv"><svg viewBox="0 0 24 24"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6M8 7h8M8 17h8"/></svg><span class="big">Inklusive</span><h3>Kostenlose Nutzung der Flow DNA Skills</h3><p>Wiederverwendbare Skills, Vorlagen und Workflows aus dem <a href="../../../flow-dna/" data-cta="prog_store">Flow DNA Skill Store</a>.</p></div>
+    <div class="it card rv d1"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.8 0 5 2.2 5 5"/></svg><span class="big">Gemeinsam</span><h3>Community &amp; hybrider Stammtisch</h3><p>Austausch mit anderen Gründern und Selbstständigen – digital und vor Ort.</p></div>
+    <div class="it card rv d2"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l3 3-3 3M12 15h5"/></svg><span class="big">Praxis</span><h3>Projektarbeit an deiner Idee</h3><p>Zwischen den Sessions setzt du die Inhalte direkt um. So entsteht Woche für Woche sichtbarer Fortschritt.</p></div>
   </div>
 </div></section>
 
 <section id="testkunde" style="padding-top:0"><div class="wrap">
-  <div class="deal rv">
+  <div class="deal card rv">
     <span class="pill"><i></i>Nur 2–3 Plätze</span>
     <h2 class="display">Werde<br><span class="blue">Testkunde.</span></h2>
     <p>Ich starte das FLOW-Programm mit wenigen ausgewählten Menschen – und möchte es gemeinsam mit dir besser machen. Dafür bekommst du das volle Programm zu deutlich besseren Konditionen.</p>
@@ -354,6 +610,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
   </div>
 </div></section>
 
+<section class="manifest" aria-label="Haltung"><div class="wrap">
+  <span class="label eyebrow">Warum ich das mache</span>
+  <p id="manifest">Ich will nicht, dass du von mir *abhängig* wirst. Ich will, dass du deine nächste Idee *selbst* umsetzen kannst. Darum bauen wir *gemeinsam* – und du lernst bei jedem *Schritt.*</p>
+  <div class="sig"><span></span><div class="label"><b style="color:#fff">Maik</b> · Flow Media AI</div></div>
+</div></section>
+
 <section class="final"><div class="wrap">
   <h2 class="display rv">Du bringst die Idee.<br><span class="blue">Wir machen sie real.</span></h2>
   <p class="rv d1">Interesse? Schreib mir eine persönliche Nachricht mit deiner Idee. Ich melde mich bei dir, und wir schauen gemeinsam, ob das Programm zu dir passt.</p>
@@ -375,6 +637,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "ht
 
 <div class="mcta" id="mcta"><a class="btn primary" data-cta="prog_sticky_whatsapp" data-wa="testkunde" href="#">Als Testkunde bewerben <span class="ar">→</span></a></div>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 const PHONE = "4917645961547";
 const WA_TEXT = { testkunde: "Hi Maik, ich interessiere mich für das FLOW-Programm als Testkunde. Meine Idee: " };
@@ -392,7 +655,9 @@ const onScroll = () => {
 };
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
-// Reveal on scroll
+// Reveal on scroll; example cards only animate while visible
+const exo = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("play", e.isIntersecting)), { threshold: .2 });
+document.querySelectorAll(".ex").forEach(el => exo.observe(el));
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
@@ -403,6 +668,126 @@ tabs.forEach(([t]) => document.getElementById(t).addEventListener("click", () =>
   document.getElementById(tt).setAttribute("aria-selected", on);
   document.getElementById(pp).hidden = !on;
 })));
+
+// ---- Animations taken over from the main page ----
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+// Flowing lines in the hero: thin sine waves, one of them in Flow blue
+function flowLines(canvas, opts) {
+  const ctx = canvas.getContext("2d");
+  let w, h, dpr, t = 0, mx = .5, my = .5, visible = true;
+  const resize = () => { dpr = Math.min(devicePixelRatio || 1, 2); w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0) };
+  resize(); addEventListener("resize", resize);
+  addEventListener("pointermove", e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight }, { passive: true });
+  new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(canvas);
+  const N = opts.lines;
+  function draw() {
+    if (visible) {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < N; i++) {
+        const p = i / (N - 1), blue = i === opts.blueIndex;
+        const base = h * (opts.top + p * opts.spread), amp = h * (.05 + .07 * Math.sin(p * 3 + t * .3)) * (1 + (my - .5) * .6);
+        ctx.beginPath();
+        for (let x = -20; x <= w + 20; x += 14) {
+          const k = x / w;
+          const y = base + Math.sin(k * 5.5 + t * .55 + p * 2.2) * amp + Math.sin(k * 11 - t * .35 + p * 4) * amp * .28 + (k - mx) * (my - .5) * 40 * p;
+          x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = blue ? "rgba(47,91,255,.9)" : `rgba(255,255,255,${.045 + .085 * Math.sin(p * Math.PI)})`;
+        ctx.lineWidth = blue ? 1.6 : 1;
+        ctx.shadowBlur = blue ? 18 : 0; ctx.shadowColor = "rgba(47,91,255,.9)";
+        ctx.stroke();
+      }
+      t += REDUCE ? 0 : .012;
+    }
+    if (!REDUCE) requestAnimationFrame(draw);
+  }
+  draw();
+}
+flowLines(document.getElementById("flow"), { lines: 34, top: .28, spread: .62, blueIndex: 21 });
+
+// Intro: full on the first visit of a session, short afterwards
+let seen = false; try { seen = sessionStorage.getItem("flow-intro-prog") === "1"; sessionStorage.setItem("flow-intro-prog", "1") } catch {}
+setTimeout(() => document.body.classList.add("ready"), REDUCE ? 0 : seen ? 250 : 1250);
+
+// Smooth scroll (Lenis); anchor links glide to their section
+let lenis = null;
+if (window.Lenis && !REDUCE) {
+  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  const raf = t => { lenis.raf(t); requestAnimationFrame(raf) }; requestAnimationFrame(raf);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const id = a.getAttribute("href"); if (id.length < 2 || a.dataset.wa) return;
+  const el = document.querySelector(id); if (!el) return;
+  e.preventDefault(); lenis ? lenis.scrollTo(el, { offset: -70 }) : el.scrollIntoView({ behavior: "smooth" });
+}));
+
+// Cursor light on cards
+document.querySelectorAll(".card").forEach(c => c.addEventListener("pointermove", e => {
+  const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px");
+}));
+
+// Cursor and magnetic buttons
+if (FINE && !REDUCE) {
+  const dot = document.querySelector(".cur"), ring = document.querySelector(".cur-ring");
+  let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+  addEventListener("pointermove", e => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px,${y}px)` }, { passive: true });
+  (function loop() { rx += (x - rx) * .16; ry += (y - ry) * .16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop) })();
+  document.querySelectorAll("a, button, .card").forEach(el => {
+    el.addEventListener("pointerenter", () => ring.classList.add("hov"));
+    el.addEventListener("pointerleave", () => ring.classList.remove("hov"));
+  });
+  document.querySelectorAll(".btn").forEach(b => {
+    b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .3}px)` });
+    b.addEventListener("pointerleave", () => b.style.transform = "");
+  });
+}
+
+// Manifesto: split into words, *word* marks a key word
+const man = document.getElementById("manifest");
+man.innerHTML = man.textContent.trim().split(/\s+/).map(w => { const k = /^\*.*\*[.,]?$/.test(w); return `<span class="w${k ? " k" : ""}">${w.replace(/\*/g, "")}</span>` }).join(" ");
+const words = [...man.querySelectorAll(".w")];
+
+// Flow line through main: a soft S-curve from section to section, drawn with the scroll
+const svg = document.getElementById("flowpath"), base = svg.querySelector(".base"), prog = svg.querySelector(".prog"), head = svg.querySelector("circle"), mainEl = document.querySelector("main");
+let pathLen = 0;
+function buildPath() {
+  const W = mainEl.clientWidth, H = mainEl.scrollHeight, step = Math.max(520, innerHeight * .75);
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.style.height = H + "px";
+  const left = W < 700 ? W * .06 : W * .045, right = W - left;
+  let d = `M ${W * .5} 0`, yPrev = 0, side = 0;
+  for (let y = step * .6; y < H + step; y += step) {
+    const x = side ? left : right, yy = Math.min(y, H);
+    d += ` C ${W * .5} ${yPrev + step * .45}, ${x} ${yy - step * .55}, ${x} ${yy}`; yPrev = yy; side ^= 1; if (yy >= H) break;
+  }
+  base.setAttribute("d", d); prog.setAttribute("d", d);
+  pathLen = prog.getTotalLength(); prog.style.strokeDasharray = pathLen;
+}
+
+// Marquee follows scroll speed; hero photo parallax
+const track = document.querySelector(".marquee .track"); let mq = 0, lastY = scrollY, vel = 0;
+if (!REDUCE) document.querySelector(".marquee").classList.add("js");
+const heroPhoto = document.querySelector(".hero-photo");
+function frame() {
+  const sy = scrollY, vh = innerHeight;
+  vel += ((sy - lastY) - vel) * .1; lastY = sy;
+  if (!REDUCE) {
+    mq -= .6 + Math.abs(vel) * .35; const half = track.scrollWidth / 2; if (-mq > half) mq += half; track.style.transform = `translateX(${mq}px)`;
+    if (sy < vh) heroPhoto.style.translate = `0 ${sy * .18}px`;
+  }
+  const r = man.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35)));
+  const lit = Math.floor(p * words.length * 1.05); words.forEach((w, i) => w.classList.toggle("on", REDUCE || i < lit));
+  if (pathLen) {
+    const mr = mainEl.getBoundingClientRect(), q = Math.min(1, Math.max(0, (vh * .6 - mr.top) / mr.height));
+    prog.style.strokeDashoffset = pathLen * (1 - q);
+    const pt = prog.getPointAtLength(pathLen * q); head.setAttribute("cx", pt.x); head.setAttribute("cy", pt.y); head.style.opacity = q > 0 && q < 1 ? 1 : 0;
+  }
+  requestAnimationFrame(frame);
+}
+addEventListener("load", () => { buildPath(); requestAnimationFrame(frame) });
+addEventListener("resize", () => { clearTimeout(window.__bp); window.__bp = setTimeout(buildPath, 150) });
+document.querySelectorAll('[role="tab"]').forEach(b => b.addEventListener("click", () => setTimeout(buildPath, 50)));
 
 // Click tracking (same event as the main page)
 document.addEventListener("click", e => {
