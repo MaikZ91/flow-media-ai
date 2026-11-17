@@ -82,8 +82,8 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Fr 13.11. 18–20 Uhr | ✓ gesendet (Routine 13.11.) · R028 Community-Update „3 Dinge“ | Connect (verschoben vom 08.11.) |
 | Sa 14.11. 11–13 / 18–20 Uhr | ✓ gesendet (Routine 14.11.) · P011 Karussell „Mein Weg“ (11–13 Uhr) · R032 Reel „Mein Weg“ bleibt im Vorrat | Weg/Personal |
 | Fr 13.11. – So 15.11. 18–20 Uhr | ✓ gesendet (Routine 14.11., für Sa 18–20 Uhr) · **R041 Workshop „Von deiner KI-Idee zum digitalen Produkt“** (Mo 16.11., 18–19 Uhr, 69 € – Preis nur in Caption/Link, nicht im Reel) · Story „Heute 18 Uhr“ am Mo 16.11. morgens: ✓ gesendet als P017 (Routine 16.11.) | Idee + Connect, Workshop-Promo |
-| Di 17.11. – Do 19.11. 18–20 Uhr | **R045 4 Jahre KI** (3D-Reel, fertig im Vorrat; einen Tag Abstand zu anderen Reels, Label „Mit KI erstellt“) | ki / anschluss |
-| Di 17.11. – Do 19.11. 18–20 Uhr | **R044 KI zieht ins All** (3D-Reel, fertig im Vorrat; Label „Mit KI erstellt“) | ki / anschluss |
+| Di 17.11. 18–20 Uhr | ✓ gesendet (Routine 17.11.) · **R045 4 Jahre KI** (3D-Reel, fertig im Vorrat; einen Tag Abstand zu anderen Reels, Label „Mit KI erstellt“) | ki / anschluss |
+| So 15.11. | ✓ gepostet (650 Aufrufe nach 1 Tag) · **R044 KI zieht ins All** (3D-Reel, fertig im Vorrat; Label „Mit KI erstellt“) | ki / anschluss |
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 
 ## 6. Verlauf (neueste oben)
