@@ -89,6 +89,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 17.11.2026 | P018 | lernen / build · Problem idee | Karussell 6 Folien (Paper) | „Idee da. Plan fehlt?“ – FLOW-Programm, 2–3 Testkunden gesucht: Problem → F·L·O·W in 6/12 Wochen → Beispiel-Produkte → Leistungen → Testkunden-Deal, CTA Idee per DM | format = angebot-karussell |
 | 16.11.2026 | R045 | ki · Problem anschluss | Reel 30 s (3D-Zeitreise) | „4 Jahre KI. In 30 Sekunden.“ – ChatGPT-Start → GPT-4 → Nobelpreise → Nvidia 5 Bio. → 2026: Erdős-Vermutung, SpaceX-Börsengang, 1 Mrd. Wochennutzer, GPT-6, KI-Chips im Orbit, Claude Fable 5.2; Frage „Was baust du damit?“ | format = zeitreise-3d |
 | 16.11.2026 | P017 | lernen / build · Problem idee | Story | „Heute. 18 Uhr.“ – Workshop-Tag „Von deiner KI-Idee zum digitalen Produkt“ (online), Anmeldung per PN, Countdown-Sticker | format = story-countdown |
 | 15.11.2026 | R044 | ki · Problem anschluss | Reel 30 s (3D-Animation) | „KI zieht ins All.“ – Rechenzentren im Orbit: Strombedarf, 8× Solar, was schon fliegt (China, Starcloud, Google), 1.000.000 Satelliten beantragt, Mond-Fabriken, „Genial oder Größenwahn?“; alle Zahlen mit Quelle | thema = tech-news-3d |
