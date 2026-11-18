@@ -3,6 +3,14 @@
 // Themen aus Maiks echtem Content: Workshops, Masterclass, FLOW-Methode, eigene Skills und Systeme.
 window.FLOW_KURSE = {
   hinweis: "Die Kurse nehme ich nach und nach auf. Merk dir die vor, die dich interessieren – du bekommst Bescheid, sobald sie starten.",
+  // Live Sessions: Aufzeichnungen aus Workshops und Tutorials, oben in der Kurs-Übersicht (blau markiert, frei für alle). Neueste zuerst.
+  live: [
+    { id: "website-mit-skill", titel: "Website mit Skill bauen", datum: "18.11.2026", dauer: "4 Min.",
+      untertitel: "Live mitgeschnitten: Claude Code öffnen, Ordner anlegen, Website-Skill rein – und die KI baut drei Varianten einer Website für ein Tanz-Coaching.",
+      video: "media/live/website-mit-skill.mp4", poster: "media/live/website-mit-skill.jpg", skill: "website",
+      schritte: ["Claude Code Desktop öffnen", "Projektordner anlegen (Content, Output, Skills)", "Skill herunterladen & in „Skills“ legen", "Ordner in Claude Code wählen", "Prompt: „Nutze den Skill …“", "Varianten prüfen & wählen"],
+      hinweis: "Tipp aus dem Video: Für einfache Aufgaben Haiku 5.5, für Websites mit viel Design und Animation Opus 5.5. Die Tanzschule im Video ist frei erfunden." }
+  ],
   kurse: [
     { id: "ki-basics", nr: "01", titel: "KI Basics", untertitel: "KI wie einen Mitarbeiter führen – vom Mindset bis zu Agenten", level: "Einsteiger", dauer: "ca. 90 Min.", status: "bald", bild: "img/maik_front.jpg",
       module: ["Was KI kann – und was nicht", "ChatGPT, Claude, Gemini: Welches Tool wofür?", "Gute Prompts in 5 Minuten", "Deine ersten 10 Alltagsaufgaben mit KI", "Datenschutz und Grenzen"] },
