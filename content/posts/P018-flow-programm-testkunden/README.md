@@ -14,6 +14,9 @@ Ziel: 2–3 Testkunden für das FLOW-Programm (6 oder 12 Wochen 1:1). Programmse
 
 Test-Variable: `format = angebot-karussell` (erstes Karussell, das direkt ein bezahltes Angebot vorstellt). Kein Preis genannt (nur „Testkundenpreis“).
 
+## Einzelpost-Fassung (18.11.2026, Maik: „kein Karussell, sondern eine Seite“)
+`flow_single.png` (1080×1350, aus `single.html`, `node shoot_single.js`): alles auf einer Seite – Testkunden-Badge, „Idee da. Plan fehlt?“, 6 oder 12 Wochen 1:1, Maik am Laptop, F·L·O·W, die fünf Leistungen, CTA „Schreib mir deine Idee per DM“. Wird statt des Karussells gepostet; Caption bleibt gleich.
+
 ## Caption
 ```
 Idee da. Plan fehlt? 👇
