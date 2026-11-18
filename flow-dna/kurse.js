@@ -3,28 +3,20 @@
 // Themen aus Maiks echtem Content: Workshops, Masterclass, FLOW-Methode, eigene Skills und Systeme.
 window.FLOW_KURSE = {
   hinweis: "Die Kurse nehme ich nach und nach auf. Merk dir die vor, die dich interessieren – du bekommst Bescheid, sobald sie starten.",
-  // Live Sessions: Aufzeichnungen aus Workshops und Tutorials, oben in der Kurs-Übersicht (blau markiert, frei für alle). Neueste zuerst.
-  live: [
-    { id: "website-mit-skill", titel: "Website mit Skill bauen", datum: "18.11.2026", dauer: "4 Min.",
-      untertitel: "Live mitgeschnitten: Claude Code öffnen, Ordner anlegen, Website-Skill rein – und die KI baut drei Varianten einer Website für ein Tanz-Coaching.",
-      video: "media/live/website-mit-skill.mp4", poster: "media/live/website-mit-skill.jpg", skill: "website",
-      schritte: ["Claude Code Desktop öffnen", "Projektordner anlegen (Content, Output, Skills)", "Skill herunterladen & in „Skills“ legen", "Ordner in Claude Code wählen", "Prompt: „Nutze den Skill …“", "Varianten prüfen & wählen"],
-      hinweis: "Tipp aus dem Video: Für einfache Aufgaben Haiku 5.5, für Websites mit viel Design und Animation Opus 5.5. Die Tanzschule im Video ist frei erfunden." }
-  ],
   kurse: [
     { id: "ki-basics", nr: "01", titel: "KI Basics", untertitel: "KI wie einen Mitarbeiter führen – vom Mindset bis zu Agenten", level: "Einsteiger", dauer: "ca. 90 Min.", status: "bald", bild: "img/maik_front.jpg",
       module: ["Was KI kann – und was nicht", "ChatGPT, Claude, Gemini: Welches Tool wofür?", "Gute Prompts in 5 Minuten", "Deine ersten 10 Alltagsaufgaben mit KI", "Datenschutz und Grenzen"] },
     { id: "personal-brand", nr: "02", titel: "Mit KI zur Personal Brand", untertitel: "Deine Marke, deine Stimme, dein Look – mit KI geschärft", level: "Einsteiger", dauer: "ca. 2 Std.", status: "bald", bild: "img/maik_avatar.jpg",
       module: ["Brand DNA: Wer bist du, für wen, warum?", "Deine Stimme als Skill festhalten", "Look & Design-System ohne Designer", "Fotos und Porträts richtig nutzen", "Dein Brand-Paket für jede KI"] },
     { id: "website", nr: "03", titel: "Bau deine Premium-Website mit Skill", untertitel: "Aus deinem Content wird deine eigene Premium-Website", level: "Einsteiger", dauer: "ca. 5 Min. Video · 30 Min. Umsetzen", status: "live", code: "WEBSITE", bild: "kurse/website-mit-skill/img/cover.jpg",
-      preis: { normal: 249, early: 59, gratis: "Für Workshop-Teilnehmer gratis", paket: ["Kurs mit 8 Lektionen inkl. 2 Bonus-Lektionen", "Website-Builder-Skill (Flow DNA Special Skill)", "Vorlagen-Paket als PDF", "Persönlicher Website-Check von Maik", "Tech-Support-Gruppe"] },
+      preis: { normal: 249, early: 59, gratis: "Für Workshop-Teilnehmer gratis", paket: ["Kurs mit 9 Lektionen inkl. Live Session und 2 Bonus-Lektionen", "Website-Builder-Skill (Flow DNA Special Skill)", "Vorlagen-Paket als PDF", "Persönlicher Website-Check von Maik", "Tech-Support-Gruppe"] },
       vorlagen: "kurse/website-mit-skill/Vorlagen-Paket.pdf",
       special: { label: "Flow DNA Special Skill", titel: "Gebaut für Premium.",
         text: "Du arbeitest nicht mit einem Baukasten oder einem Standard-Prompt, sondern mit dem Website-Skill aus dem Flow DNA Store. Er ist in vielen echten Website-Durchläufen auf Premium geschärft – jede Regel kommt aus Seiten, die gebaut, verglichen und verbessert wurden. Am Ende steht keine Vorlage, sondern deine Premium-Website – auf einem Niveau, für das Agenturen oft 3.000 € und mehr verlangen.",
         punkte: ["Premium-Seitenaufbau als Pflicht: Vollbild-Hero, Story, Bildkarten, Galerie, Kontakt", "Branchen-Regeln: erkennt deine Branche und baut ein, was Kunden dort erwarten", "Fünf deutlich verschiedene Varianten – du nimmst die beste", "Dein Content zuerst: deine Fotos, deine Stimme, deine Farben"] },
       intro: { video: "kurse/website-mit-skill/videos/L00.mp4", poster: "kurse/website-mit-skill/videos/L00.jpg", titel: "Hallo – das baust du heute" },
       hinweis: "Videos mit KI-Stimme, teils als Animation. Jede Lektion endet mit einer Aufgabe.",
-      module: ["Content-Ordner anlegen", "Website-Skill einrichten", "5 Varianten bauen und auswählen", "Premium-Look: Hero, Branche, Pflicht-Bausteine", "Live stellen auf GitHub Pages", "Mit KI weiterpflegen", "Bonus: Eigene Domain", "Bonus: Gefunden werden"],
+      module: ["Content-Ordner anlegen", "Website-Skill einrichten", "5 Varianten bauen und auswählen", "Live Session: Website mit Skill bauen", "Premium-Look: Hero, Branche, Pflicht-Bausteine", "Live stellen auf GitHub Pages", "Mit KI weiterpflegen", "Bonus: Eigene Domain", "Bonus: Gefunden werden"],
       lektionen: [
         { videos: [["kurse/website-mit-skill/videos/L03.mp4", "kurse/website-mit-skill/videos/L03.jpg", "Einrichten: Werkzeug, Ordner, Skill"]],
           text: "Alles, was die KI über dich wissen soll, liegt in einem Ordner. Erst sammeln, dann bauen.",
@@ -42,6 +34,12 @@ window.FLOW_KURSE = {
           punkte: ["Varianten durchklicken, z. B. Layout von 03 und Farben von 05", "Sag, was dir gefällt – daraus baut der Skill die finale Version"],
           beispiele: [["Bäckerei", "demos/baeckerei/", "Speisekarte & Öffnungszeiten"], ["Physio", "demos/physio/", "Team, Telefon & Termin"], ["Friseur", "demos/friseur/", "Online-Termin & Galerie"], ["Flow Media AI", "../marketing/landing-page/", "Echte Seite, so entstanden"]],
           aufgabe: "Schick den Start-Prompt und wähl deine Lieblingsvariante." },
+        { live: true, frei: true, videos: [["media/live/website-mit-skill.mp4", "media/live/website-mit-skill.jpg", "Live Session · Website mit Skill bauen"]],
+          text: "Einmal komplett mitgeschnitten: Maik baut live eine Website für ein Tanz-Coaching – vom leeren Ordner bis zu den fertigen Varianten. Die Tanzschule ist frei erfunden.",
+          prompt: "Nutze den Skill aus dem Ordner „Skills“ (website-builder-3v.SKILL.md). Baue mir eine Website für ein Dancing Coaching, die verschiedene Tanzstile erklärt. Wir haben noch keinen Content – such dir lizenzfreie Bilder und Beispieltexte aus dem Netz.",
+          punkte: ["Claude Code Desktop öffnen", "Projektordner anlegen: <code>Content</code>, <code>Output</code>, <code>Skills</code>", "Website-Skill in den Ordner <code>Skills</code> legen", "Ordner in Claude Code wählen", "Prompt schicken: „Nutze den Skill …“ – sag ausdrücklich, dass er den Skill nutzen soll", "Varianten im Browser prüfen und wählen", "<b>Tipp:</b> Haiku 5.5 für Einfaches, Opus 5.5 für Websites mit viel Design und Animation"],
+          links: [["Website-Skill", "?skill=website", "Der Skill aus dem Video"]],
+          aufgabe: "Bau es nach – mit deinem eigenen Thema statt Tanz-Coaching." },
         { videos: [["kurse/website-mit-skill/videos/P4.mp4", "kurse/website-mit-skill/videos/P4.jpg", "Premium-Look"]],
           text: "Was eine Seite hochwertig wirken lässt: ein starker Hero, die Bausteine deiner Branche und die Pflichtseiten.",
           prompt: "Mach den Hero stärker und ergänze die Bausteine für meine Branche. Prüf, ob Impressum, Datenschutz und Kontakt drin sind.",
