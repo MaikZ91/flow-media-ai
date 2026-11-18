@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-17T16:08+00:00",
+ "stand": "2026-11-18T01:00+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,112 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Kurz vor Anthropic-IPO: OpenAI bringt GPT-6.2 Astra und Sol",
+   "s": "OpenAI hat mit GPT-6.2 Astra und Sol zwei neue KI-Modelle für den Einsatz in ChatGPT Work, Codex und der OpenAI-API veröffentlicht. Astra soll dabei komplexe Projekte unterstützen und Sol als günstigere Alltagsvariante …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/openai-gpt-6-2-astra-sol-1774058",
+   "d": "2026-11-17T21:21:35+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic"
+   ],
+   "n": 3,
+   "r": 39.4
+  },
+  {
+   "t": "OpenAI bringt GPT-6.2 Astra und Sol: Mehr Leistung bei sinkenden Preisen",
+   "s": "OpenAI veröffentlicht mit GPT-6.2 Astra und Sol zwei neue Sprachmodelle, leistungsstärker und günstiger als ihre Vorgänger. Astra landet im unabhängigen Artificial Analysis Index auf Platz 2 hinter Claude Fable 5.2, und …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/openai-bringt-gpt-6-2-astra-und-sol-mehr-leistung-bei-sinkenden-preisen/",
+   "d": "2026-11-17T19:48:50+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 29.1
+  },
+  {
+   "t": "Introducing GPT-6.2 Astra and Sol",
+   "s": "Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+   "d": "2026-11-17T17:45:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 26.8
+  },
+  {
+   "t": "ChatGPT wie einen Kollegen nutzen: Diese 5-Minuten-Übung empfiehlt ein Stanford-Professor",
+   "s": "Stanford-Professor Jeremy Utley ist der Überzeugung, dass KI-Chatbots wie ChatGPT ihr Potenzial als Ideengeber und Kreativitätsbooster nur dann entfalten können, wenn man sie als Kolleg:innen behandelt. Eine …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/chatgpt-wie-kollegen-nutzen-stanford-uebung-1731334",
+   "d": "2026-11-17T16:55:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.7
+  },
+  {
+   "t": "Nach den Adobe-Klonen: ArtCraft lässt KI auf GitHub-Backlogs los",
+   "s": "Hinter den KI-Klonen von ArtCraft steckt ein wachsendes GitHub-Backlog. Das neue Open-Source-Tool AutoCraft soll Issues und Pull-Requests per KI abarbeiten.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Nach-den-Adobe-Klonen-ArtCraft-laesst-KI-auf-GitHub-Backlogs-los-11528115.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-17T16:45:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.6
+  },
+  {
+   "t": "Zu neugierige KI-Agenten: Apple warnt Mac-Nutzer nachdrücklich vor Freigabe",
+   "s": "Vielen Nutzern dürfte unklar sein, welch tiefen Einblick sie KI-Apps in macOS erlauben. Neue Apple-Zugriffskontrollen und Warnungen sollen das ändern.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Keine-Blankoschecks-fuer-KI-Agenten-Apple-passt-Mac-Sicherheitsarchitektur-an-11528217.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-17T16:35:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Apple",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 14.6
+  },
+  {
+   "t": "KI in China: Riesige Rechenzentren mit grünem Strom in Ulanqab",
+   "s": "Der Standort Ulanqab in der Inneren Mongolei zeigt, wie rasant chinesische Firmen KI-Rechenleistung aufbauen. Der Strom dafür kommt aus Solar- und Windparks.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KI-in-China-Riesige-Rechenzentren-mit-gruenem-Strom-in-Ulanqab-11528183.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-17T16:09:00+00:00",
+   "lang": "de",
+   "tags": [
+    "DeepSeek & China"
+   ],
+   "n": 1,
+   "r": 10.5
+  },
+  {
+   "t": "Moonshot AI wechselt Entwicklungsfokus von Programmierung zu Wissenschaft",
+   "s": "Moonshot AI, die Firma hinter den Kimi-Modellen, will sich verstärkt auf wissenschaftliche Anwendungen für KI-Systeme konzentrieren.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Moonshot-AI-wechselt-Entwicklungsfokus-von-Programmierung-zu-Wissenschaft-11528033.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-17T16:04:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Coding mit KI"
+   ],
+   "n": 1,
+   "r": 10.5
+  },
   {
    "t": "Synchronisation: Netflix erhöht Folgevergütung, KI-Streit bleibt ungelöst",
    "s": "Netflix erhöht die Folgevergütung für deutsche Synchronsprecher und zahlt in deren Altersvorsorge ein. Die umstrittene KI-Klausel bleibt aber bestehen.",
@@ -16,7 +122,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 8.0
+   "r": 6.5
   },
   {
    "t": "Mit neuen KI-Funktionen: So will Google Maps den Planungsstress auf Reisen reduzieren",
@@ -29,7 +135,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.9
+   "r": 12.4
   },
   {
    "t": "Fast richtige Überlebenstipps: Warum diese Survival-KI keine gute Idee ist",
@@ -40,7 +146,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 6.3
   },
   {
    "t": "Bericht: China trainiert KI mit Destillation von US-Modellen",
@@ -53,7 +159,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 11.8
+   "r": 10.3
   },
   {
    "t": "OpenAI öffnet Cyber-Tool Daybreak für NATO und europäische Verbündete",
@@ -67,7 +173,7 @@
     "Mistral & Europa"
    ],
    "n": 2,
-   "r": 27.8
+   "r": 26.3
   },
   {
    "t": "OpenAI lässt GPT-6 als digitalen Sachbearbeiter durch Kliniksoftware und Versicherungsportale klicken",
@@ -81,7 +187,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 27.7
+   "r": 26.3
   },
   {
    "t": "Zahl der Meldungen von KI-generierten Missbrauchsdarstellungen von Kindern steigt binnen zwei Jahren um mehr als 8.400 Prozent",
@@ -92,7 +198,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.7
+   "r": 6.2
   },
   {
    "t": "Angriff ohne Mensch: Google warnt vor vollständig autonomen KI-Attacken",
@@ -104,8 +210,8 @@
    "tags": [
     "Google Gemini"
    ],
-   "n": 3,
-   "r": 33.6
+   "n": 2,
+   "r": 22.1
   },
   {
    "t": "Alphabet-Tochter Isomorphic Labs sammelt 5 Milliarden Dollar für KI-Medikamentenentwicklung ein",
@@ -118,7 +224,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 9.6
+   "r": 8.1
   },
   {
    "t": "Wo ist Walter? Künstler will ihn mit KI, 3 GPUs und 450 öffentlichen Kameras finden",
@@ -131,7 +237,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 11.6
+   "r": 10.1
   },
   {
    "t": "USA schließen Cloud-Schlupfloch für Nvidia-Chips, während China die Modell-Destillation zur Industrie ausbaut",
@@ -145,7 +251,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 15.5
+   "r": 14.0
   },
   {
    "t": "Zahlen, bitte! Gemini 12: Letzte Station vor Apollos Weg zum Mond",
@@ -158,7 +264,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.4
+   "r": 11.9
   },
   {
    "t": "KI-Chatbot von Proton: Lumo bekommt mit Desktop-App Zugriff auf Proton Mail",
@@ -169,7 +275,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.4
+   "r": 5.9
   },
   {
    "t": "Kalifornien verklagt OpenAI wegen außer Kontrolle geratener KI-Agenten",
@@ -183,7 +289,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 27.2
+   "r": 25.7
   },
   {
    "t": "Gemini Notebooks: So werden aus deinen Notizen jetzt interaktive Webseiten",
@@ -196,7 +302,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.2
+   "r": 11.7
   },
   {
    "t": "Kann man erkennen, ob eine Idee von ChatGPT stammt?",
@@ -209,7 +315,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 13.1
+   "r": 11.7
   },
   {
    "t": "KubeCon 2026: Wie Unternehmen KI-Agenten im Griff behalten",
@@ -222,21 +328,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.1
-  },
-  {
-   "t": "Claudes Office-Funktionen ausprobiert: Muss Microsoft jetzt Angst haben?",
-   "s": "Claude übernimmt zunehmend auch klassische Office-Funktionen. Warum sich Anthropics Ansatz grundsätzlich von Microsofts Copilot unterscheidet – und warum das KI",
-   "q": "t3n",
-   "l": "https://t3n.de/news/claudes-office-funktionen-ausprobiert-muss-microsoft-jetzt-angst-haben-1773849",
-   "d": "2026-11-17T10:30:11+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "Microsoft Copilot"
-   ],
-   "n": 1,
-   "r": 17.1
+   "r": 9.6
   },
   {
    "t": "„Frag Maps“: Google verpasst seinem Kartendienst eine Portion Gemini",
@@ -250,60 +342,20 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 16.9
+   "r": 15.4
   },
   {
-   "t": "Klage gegen OpenAI: Kalifornien sieht öffentliche Sicherheit gefährdet",
-   "s": "Kalifornien wirft OpenAI unsichere KI-Tests und irreführende Aussagen vor. Das Unternehmen kündigt neue externe Sicherheitsprüfungen an.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Klage-gegen-OpenAI-Kalifornien-sieht-oeffentliche-Sicherheit-gefaehrdet-11527400.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T08:53:00+00:00",
-   "lang": "de",
+   "t": "Introducing ChatGPT for Sales",
+   "s": "Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/introducing-chatgpt-for-sales",
+   "d": "2026-11-17T08:00:00+00:00",
+   "lang": "en",
    "tags": [
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.8
-  },
-  {
-   "t": "heise+ | Google AI Tools für Developer: Sinnvoller Einsatz und Alternativen",
-   "s": "Google-Tools erleichtern Entwicklung und Betrieb leistungsfähiger Cloud- und Rechenressourcen, bringen allerdings Abhängigkeiten im Google-Ökosystem mit sich.",
-   "q": "heise",
-   "l": "https://www.heise.de/tests/Google-AI-Tools-fuer-Developer-Sinnvoller-Einsatz-und-Alternativen-11504111.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "d": "2026-11-17T07:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 12.5
-  },
-  {
-   "t": "Google beobachtet vollständig automatisierte Cyberangriffe mit KI-Technik",
-   "s": "Im jüngsten Bericht der Google Threat Intelligence Group gibt es Informationen zu Angreifern, die IT-Angriffe mit KI-Hilfe vollständig automatisieren.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Google-beobachtet-vollstaendig-automatisierte-Cyberangriffe-mit-KI-Technik-11527123.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T06:42:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 3,
-   "r": 32.4
-  },
-  {
-   "t": "Dienstag: Schärfere US-Exportregeln für KI-Chips, Störungen bei US-Banken",
-   "s": "USA schließen Schlupflöcher + Softwareprobleme bei US-Banken + Tesla investiert in Grünheide + Europäer suchen Alternativen + Cyberangriffe auf BundID",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Dienstag-Schaerfere-US-Exportregeln-fuer-KI-Chips-Stoerungen-bei-US-Banken-11527091.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T05:15:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 12.2
+   "r": 11.2
   },
   {
    "t": "Strengthening NATO and allied cyber defenses with AI",
@@ -316,7 +368,20 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 21.3
+   "r": 19.8
+  },
+  {
+   "t": "Astra for Law leads in legal intelligence",
+   "s": "Astra for Law ranked first in a launch evaluation spanning 24 areas of law. Every ChatGPT Enterprise customer can now request access.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/astra-law-6-2",
+   "d": "2026-11-17T00:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 9.8
   },
   {
    "t": "Introducing OpenAI for Chile",
@@ -329,7 +394,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.3
+   "r": 9.8
   },
   {
    "t": "Cyberangriffe ohne Menschen: Google dokumentiert vollständig autonome Attacken",
@@ -341,8 +406,8 @@
    "tags": [
     "Google Gemini"
    ],
-   "n": 3,
-   "r": 30.6
+   "n": 2,
+   "r": 19.1
   },
   {
    "t": "Moonshot AI setzt Kimi-Sprachmodelle jetzt für Biologie, Chemie und Pharmazie ein, weil beim Programmieren kaum noch Fortschritte kommen",
@@ -355,7 +420,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 8.4
+   "r": 7.0
   },
   {
    "t": "OpenAIs GPT-6 Astra liefert mathematischen Beweis für Gitter-Standardmodell der Teilchenphysik",
@@ -368,7 +433,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 8.7
   },
   {
    "t": "Broadening access to AI for scientists",
@@ -381,7 +446,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.1
+   "r": 8.7
   },
   {
    "t": "Strengthening the fight against online child sexual abuse with new tools and support",
@@ -392,20 +457,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 4.1
-  },
-  {
-   "t": "Vibecoding-Slop ade? Neue Funktion bringt \"bizarre\" Flash-Ästhetik in Claudes Artifacts",
-   "s": "Claude kann Texte, Buttons und andere Bausteine einer Webseite jetzt in aufwendige Grafiken und 3D-Effekte einbauen. Der Artikel Vibecoding-Slop ade? Neue Funktion bringt \"bizarre\" Flash-Ästhetik in Claudes Artifacts …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/vibecoding-slop-ade-neue-funktion-bringt-bizarre-flash-aesthetik-in-claudes-artifacts/",
-   "d": "2026-11-16T16:10:22+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 10.0
+   "r": 2.7
   },
   {
    "t": "Science at the Frontier: How scientists use ChatGPT",
@@ -418,7 +470,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.3
+   "r": 7.8
   },
   {
    "t": "How Revolut raises ambition without lowering the bar",
@@ -433,7 +485,7 @@
     "KI-Blase & Geld"
    ],
    "n": 1,
-   "r": 14.9
+   "r": 13.4
   },
   {
    "t": "LVMH’s Media Division announces strategic partnership with OpenAI",
@@ -446,7 +498,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.8
+   "r": 7.3
   },
   {
    "t": "Our first phase of embedded assessments",
@@ -459,7 +511,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.6
+   "r": 7.2
   },
   {
    "t": "More ways to move care forward with ChatGPT for Healthcare",
@@ -473,44 +525,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 22.3
-  },
-  {
-   "t": "Advancing computer-use agents for healthcare teams",
-   "s": "",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
-   "d": "2026-11-16T06:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 6.3
-  },
-  {
-   "t": "The King’s Trust and OpenAI launch £1m partnership",
-   "s": "The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/the-kings-trust-and-openai",
-   "d": "2026-11-16T00:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 7.3
-  },
-  {
-   "t": "At Holiday Extras, dots get to work before anyone asks",
-   "s": "Dots deliver launch reports unprompted, flag issues people might miss, and talk through upcoming meetings on the commute to work.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/customer-stories/holiday-extras-dots",
-   "d": "2026-11-16T00:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 1.3
+   "r": 20.8
   }
  ],
  "kanaele": [
@@ -525,6 +540,67 @@
  ],
  "videos": [
   {
+   "id": "2pdF52EVlbM",
+   "t": "An underrated way to use ChatGPT: Life admin",
+   "q": "OpenAI",
+   "d": "2026-11-18T00:06:39+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 2,
+   "r": 23.9
+  },
+  {
+   "id": "pmOJIq7Ah00",
+   "t": "Introducing ChatGPT for Sales",
+   "q": "OpenAI",
+   "d": "2026-11-17T23:24:04+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 3,
+   "r": 33.7
+  },
+  {
+   "id": "tKoDPOrLMX0",
+   "t": "Building 3D video sets with GPT-6.2 Astra",
+   "q": "OpenAI",
+   "d": "2026-11-17T18:41:32+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "KI-Video & Bild"
+   ],
+   "n": 2,
+   "r": 24.9
+  },
+  {
+   "id": "C1zYX5jwqq4",
+   "t": "GPT-6.2 Astra and GPT-6.2 Sol—Models built for the real world",
+   "q": "OpenAI",
+   "d": "2026-11-17T17:55:40+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.8
+  },
+  {
+   "id": "xGS2TTUowZU",
+   "t": "Millionen Studenten stehen vor dem Nichts: KI hat alles beendet",
+   "q": "Everlast AI",
+   "d": "2026-11-17T16:15:12+00:00",
+   "lang": "de",
+   "tags": [
+    "Bildung & Schule"
+   ],
+   "n": 1,
+   "r": 8.5
+  },
+  {
    "id": "gl2U4fGTr6g",
    "t": "OpenAI's New Breakthrough Is... Utter Chaos",
    "q": "Two Minute Papers",
@@ -534,7 +610,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 13.4
+   "r": 12.0
   },
   {
    "id": "KgVlwXAXzM4",
@@ -545,8 +621,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 2,
-   "r": 23.0
+   "n": 3,
+   "r": 31.5
   },
   {
    "id": "ZIpm-0RczCk",
@@ -558,49 +634,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.9
-  },
-  {
-   "id": "R_sl8zEp9ng",
-   "t": "How one engineer built a code review service with Codex | Revolut’s Dmitry Pitik",
-   "q": "OpenAI",
-   "d": "2026-11-17T09:45:34+00:00",
-   "lang": "en",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 10.9
-  },
-  {
-   "id": "xkeXefmxArU",
-   "t": "Making marketing feel local across 40 markets | Revolut’s Kim Maniovich",
-   "q": "OpenAI",
-   "d": "2026-11-17T09:45:31+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 6.9
-  },
-  {
-   "id": "-O0tMcyH4Wo",
-   "t": "Faster fraud response for safer shopping | Revolut’s David Abitbol",
-   "q": "OpenAI",
-   "d": "2026-11-17T09:45:26+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 6.9
-  },
-  {
-   "id": "hAASMPKkaXA",
-   "t": "Making seven years of design documentation AI-readable in a day | Revolut’s Dmytro Pavlov",
-   "q": "OpenAI",
-   "d": "2026-11-17T09:45:10+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 6.9
+   "r": 11.5
   },
   {
    "id": "1X4rF_o60mY",
@@ -611,8 +645,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 2,
-   "r": 20.0
+   "n": 3,
+   "r": 28.5
   },
   {
    "id": "HbZK3MdjIKk",
@@ -622,7 +656,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.0
+   "r": 1.5
   },
   {
    "id": "uvE7AsWecNk",
@@ -750,18 +784,6 @@
    "r": 0.0
   },
   {
-   "id": "BajLtMHISQU",
-   "t": "„Verbot für Superintelligenz“ USA stoppen Rechenzentren, Claude RSI, Starfall & Merz' KI-Steuer",
-   "q": "Everlast AI",
-   "d": "2026-11-10T16:15:31+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
    "id": "vug73goPJaM",
    "t": "Is Software Over?",
    "q": "Two Minute Papers",
@@ -792,8 +814,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 1,
-   "r": 6.0
+   "n": 2,
+   "r": 16.0
   },
   {
    "id": "LWLTLHiDtlw",
@@ -985,17 +1007,12 @@
  "themen": [
   {
    "name": "OpenAI",
-   "meldungen": 19,
-   "quellen": 6
-  },
-  {
-   "name": "Nvidia & Chips",
-   "meldungen": 4,
-   "quellen": 4
+   "meldungen": 27,
+   "quellen": 7
   },
   {
    "name": "Google Gemini",
-   "meldungen": 8,
+   "meldungen": 6,
    "quellen": 3
   },
   {
@@ -1004,8 +1021,8 @@
    "quellen": 3
   },
   {
-   "name": "KI-Blase & Geld",
-   "meldungen": 3,
+   "name": "Coding mit KI",
+   "meldungen": 4,
    "quellen": 3
   },
   {
@@ -1014,12 +1031,17 @@
    "quellen": 3
   },
   {
-   "name": "Coding mit KI",
+   "name": "Nvidia & Chips",
+   "meldungen": 3,
+   "quellen": 3
+  },
+  {
+   "name": "DeepSeek & China",
    "meldungen": 3,
    "quellen": 2
   },
   {
-   "name": "DeepSeek & China",
+   "name": "Mistral & Europa",
    "meldungen": 2,
    "quellen": 2
   }
@@ -1029,10 +1051,10 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 140.72,
+   "preis": 141.7,
    "cur": "USD",
-   "d1": 2.45,
-   "m1": -4.9,
+   "d1": 3.16,
+   "m1": -4.2,
    "spark": [
     147.96,
     147.79,
@@ -1055,9 +1077,9 @@
     139.94,
     139.11,
     137.36,
-    140.72
+    141.7
    ],
-   "t": "2026-11-17T16:08+00:00"
+   "t": "2026-11-17T21:00+00:00"
   },
   {
    "name": "UBTech Robotics",
@@ -1065,7 +1087,7 @@
    "info": "Humanoide Roboter",
    "preis": 66.8,
    "cur": "HKD",
-   "d1": -7.67,
+   "d1": -5.11,
    "m1": -2.4,
    "spark": [
     68.45,
@@ -1087,7 +1109,8 @@
     76.6,
     74.5,
     72.35,
-    70.4
+    70.4,
+    66.8
    ],
    "t": "2026-11-17T08:08+00:00"
   },
@@ -1095,10 +1118,10 @@
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 379.6,
+   "preis": 380.11,
    "cur": "USD",
-   "d1": -0.04,
-   "m1": 3.1,
+   "d1": 0.1,
+   "m1": 3.3,
    "spark": [
     368.06,
     373.71,
@@ -1121,18 +1144,18 @@
     397.45,
     390.22,
     379.74,
-    379.6
+    380.11
    ],
-   "t": "2026-11-17T16:08+00:00"
+   "t": "2026-11-17T21:00+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 154.65,
+   "preis": 155.46,
    "cur": "USD",
-   "d1": -0.95,
-   "m1": -28.8,
+   "d1": -0.44,
+   "m1": -28.4,
    "spark": [
     217.09,
     216.47,
@@ -1155,18 +1178,18 @@
     166.19,
     162.85,
     156.14,
-    154.65
+    155.46
    ],
-   "t": "2026-11-17T16:08+00:00"
+   "t": "2026-11-17T21:00+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 280.81,
+   "preis": 280.2,
    "cur": "USD",
-   "d1": -1.02,
-   "m1": -18.4,
+   "d1": -1.24,
+   "m1": -18.6,
    "spark": [
     344.18,
     340.28,
@@ -1189,18 +1212,18 @@
     298.7,
     295.77,
     283.72,
-    280.82
+    280.2
    ],
-   "t": "2026-11-17T16:08+00:00"
+   "t": "2026-11-17T21:00+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 501.42,
+   "preis": 506.24,
    "cur": "USD",
-   "d1": -3.2,
-   "m1": -6.0,
+   "d1": -3.37,
+   "m1": -5.1,
    "spark": [
     533.52,
     531.87,
@@ -1222,10 +1245,9 @@
     521.13,
     523.0,
     523.88,
-    517.99,
-    501.42
+    517.99
    ],
-   "t": "2026-11-17T16:08+00:00"
+   "t": "2026-11-17T21:00+00:00"
   },
   {
    "name": "Anthropic",
