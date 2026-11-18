@@ -89,6 +89,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 18.11.2026 | R046 | web / lernen · Problem idee | Reel 31 s (Live-Session-Ausschnitt, Video Cutter v2) | „Deine Website. Mit KI gebaut.“ – Maik → Claude Code → „Führ die KI wie einen Mitarbeiter“ → fertige Tanz-Coaching-Website → Handy-Ansicht; CTA ganze Live Session im Kurs (Flow DNA) | format = live-session-ausschnitt |
 | 18.11.2026 | P018 | lernen / build · Problem idee | Einzelpost (Paper; Karussell-Fassung 6 Folien im Vorrat) | „Idee da. Plan fehlt?“ – FLOW-Programm, 2–3 Testkunden gesucht: Problem → F·L·O·W in 6/12 Wochen → Beispiel-Produkte → Leistungen → Testkunden-Deal, CTA Idee per DM | format = angebot-karussell |
 | 16.11.2026 | R045 | ki · Problem anschluss | Reel 30 s (3D-Zeitreise) | „4 Jahre KI. In 30 Sekunden.“ – ChatGPT-Start → GPT-4 → Nobelpreise → Nvidia 5 Bio. → 2026: Erdős-Vermutung, SpaceX-Börsengang, 1 Mrd. Wochennutzer, GPT-6, KI-Chips im Orbit, Claude Fable 5.2; Frage „Was baust du damit?“ | format = zeitreise-3d |
 | 16.11.2026 | P017 | lernen / build · Problem idee | Story | „Heute. 18 Uhr.“ – Workshop-Tag „Von deiner KI-Idee zum digitalen Produkt“ (online), Anmeldung per PN, Countdown-Sticker | format = story-countdown |

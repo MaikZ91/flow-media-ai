@@ -1,0 +1,105 @@
+{
+ "stil": {
+  "akzent": "#2F5BFF",
+  "schrift_kopf": "Oswald",
+  "schrift_text": "Inter",
+  "versalien": true,
+  "ecken": 0,
+  "stimmung": "klar"
+ },
+ "bild": {
+  "look": "natuerlich",
+  "hintergrund_unscharf": 0,
+  "punch_in": 1.0,
+  "schaerfe": 0.4,
+  "auto_helligkeit": false,
+  "entrauschen": false
+ },
+ "untertitel": {
+  "stil": "box",
+  "gruppe": 3,
+  "y": 1500
+ },
+ "musik": {
+  "datei": "musik.mp3",
+  "ab": 13.3,
+  "lautstaerke": 0.32
+ },
+ "fortschritt": true,
+ "blitze": [
+  10.0,
+  28.1
+ ],
+ "events": [
+  {
+   "typ": "hook",
+   "t": 0.05,
+   "d": 2.6,
+   "text": "Deine Website. *Mit* *KI* *gebaut.*"
+  },
+  {
+   "typ": "lower",
+   "t": 2.9,
+   "d": 2.4,
+   "name": "Maik",
+   "rolle": "Flow Media AI · Live Session"
+  },
+  {
+   "typ": "keyword",
+   "t": 5.45,
+   "d": 4.0,
+   "kicker": "Das Werkzeug",
+   "text": "*Claude Code* oder Codex"
+  },
+  {
+   "typ": "vollbild",
+   "t": 10.0,
+   "d": 2.3,
+   "kicker": "Mein Tipp",
+   "text": "Führ die KI wie einen *Mitarbeiter.*",
+   "hintergrund": "dunkel"
+  },
+  {
+   "typ": "keyword",
+   "t": 15.75,
+   "d": 3.4,
+   "kicker": "Live gebaut",
+   "text": "Version 1: *fertig.*"
+  },
+  {
+   "typ": "chips",
+   "t": 19.6,
+   "d": 3.0,
+   "items": [
+    {
+     "t": 19.61,
+     "text": "Eigener Look"
+    },
+    {
+     "t": 20.61,
+     "text": "Premium-Design",
+     "akzent": true
+    },
+    {
+     "t": 21.87,
+     "text": "Mit Skill"
+    }
+   ]
+  },
+  {
+   "typ": "keyword",
+   "t": 23.76,
+   "d": 2.0,
+   "kicker": "Automatisch gesucht",
+   "text": "*Lizenzfreie* Fotos"
+  },
+  {
+   "typ": "vollbild",
+   "t": 28.1,
+   "d": 2.7,
+   "kicker": "Flow DNA · Kurs Website",
+   "text": "Die ganze Live Session: Link in der Bio.",
+   "hintergrund": "akzent"
+  }
+ ]
+}
