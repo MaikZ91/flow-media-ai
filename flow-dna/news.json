@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-18T11:52+00:00",
+ "stand": "2026-11-18T20:39+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,308 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Google Deepmind startet Genie 4-Rollout: Interaktive Welten per Textprompt in Echtzeit verändern",
+   "s": "Google DeepMind öffnet mit Genie 4 sein bisher realistischstes Weltmodell für Google-AI-Ultra-Abonnenten. Es erzeugt interaktive 3D-Welten, die sich per Texteingabe in Echtzeit verändern lassen, erstmals inklusive …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/google-deepmind-startet-genie-4-rollout-interaktive-welten-per-textprompt-in-echtzeit-veraendern/",
+   "d": "2026-11-18T19:07:25+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 13.7
+  },
+  {
+   "t": "KI übernimmt das Chipdesign: OpenAI optimiert AMD-Grafikprozessoren mit eigenen Modellen",
+   "s": "OpenAI hat zusammen mit AMD bis zu 14 Prozent PPA-Verbesserung bei AMDs Flaggschiff-GPU-IP erzielt – in unter fünf Monaten wurde laut OpenAI der Fortschritt erzielt, der sonst ein Jahr dauert. AMD hat Änderungen bereits …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/ki-uebernimmt-das-chipdesign-openai-optimiert-amd-grafikprozessoren-mit-eigenen-modellen/",
+   "d": "2026-11-18T17:36:33+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Nvidia & Chips"
+   ],
+   "n": 2,
+   "r": 27.5
+  },
+  {
+   "t": "AI Gigafactory im Norden: Nokia und Partner planen europäische KI-Infrastruktur",
+   "s": "Ein nordisch-baltisches Konsortium will mit einer souveränen Cloud, grünem Strom und schnellen Netzen den EU-Wettbewerb für KI-Gigafactories aufmischen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/AI-Gigafactory-im-Norden-Nokia-und-Partner-planen-europaeische-KI-Infrastruktur-11530042.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T17:14:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Mistral & Europa"
+   ],
+   "n": 1,
+   "r": 11.4
+  },
+  {
+   "t": "Microsoft bringt sieben eigene KI-Modelle, die vor allem günstiger sein sollen als GPT-6",
+   "s": "Microsofts KI-Abteilung MAI hat auf der Ignite sieben neue Modelle für Code, Sicherheit, Bilder, Sprache und Routing vorgestellt. Messlatte sind die Modelle des eigenen Partners OpenAI: MAI Code 2 erreicht laut …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/microsoft-bringt-sieben-eigene-ki-modelle-die-vor-allem-guenstiger-sein-sollen-als-gpt-6/",
+   "d": "2026-11-18T17:02:36+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Microsoft Copilot",
+    "Coding mit KI",
+    "KI-Video & Bild"
+   ],
+   "n": 3,
+   "r": 43.4
+  },
+  {
+   "t": "Anthropic und Cisco integrieren Claude Mythos 5 in AI Defense",
+   "s": "Anthropic und Cisco kooperieren bei der Absicherung von KI-Agenten. Das Modell Mythos 5 hält Einzug in die KI-Sicherheitsplattform AI Defense.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Anthropic-und-Cisco-integrieren-Claude-Mythos-5-in-AI-Defense-11529932.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T16:42:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 17.3
+  },
+  {
+   "t": "BGH: KI-generierte Schriftsätze können unzulässige Rechtsmittel sein",
+   "s": "Wer Revisionsbegründungen ungeprüft von Künstlicher Intelligenz erstellen lässt, riskiert laut Bundesgerichtshof, dass das eingelegte Rechtsmittel ungültig ist.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/BGH-KI-generierte-Schriftsaetze-koennen-unzulaessige-Rechtsmittel-sein-11529938.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T16:42:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
+  {
+   "t": "Experiment: KIs identifizieren Zivilisten als Schussziele",
+   "s": "Ein Experiment zeigt, dass Frontier-KI-Modelle oft Zivilisten als militärische Ziele markieren. Verweigern tun sich einige nur selten.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KI-Modelle-markieren-Zivilisten-als-militaerische-Ziele-11529550.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T16:23:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
+  {
+   "t": "72 Eier und gelöschte Mails: Wenn KI-Agenten eigenmächtig handeln",
+   "s": "Ein KI-Agent soll den Wocheneinkauf erledigen und bestellt 72 Eier. Warum so viele? Das weiß die KI selbst nicht. Kein Einzelfall: Andere Agenten löschten E-Mails oder gaben eine Adresse preis.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ki-agenten-ausser-kontrolle-72-eier-meta-1773795",
+   "d": "2026-11-18T16:20:00+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 11.3
+  },
+  {
+   "t": "KI-Detektor Pangram stuft preisgekrönten Roman fast komplett als KI-generiert ein",
+   "s": "Das KI-Erkennungstool Pangram stuft 99 Prozent eines preisgekrönten peruanischen Romans als KI-generiert ein, doch der mexikanische Verlag Almadía hält nach eigener Prüfung an der Auszeichnung fest. Pangram ordnete auch …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/ki-detektor-pangram-stuft-preisgekroenten-roman-fast-komplett-als-ki-generiert-ein/",
+   "d": "2026-11-18T16:02:27+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.2
+  },
+  {
+   "t": "#heiseshow: Anthropic, Cloud-Ausfälle, Voyager 1",
+   "s": "In der #heiseshow: Anthropic plant den Börsengang, die Abhängigkeit von Microsoft, Apple & Co. wird zum Risiko und Voyager 1 ist einen Lichttag entfernt.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/heiseshow-Anthropic-Cloud-Ausfaelle-Voyager-1-11529900.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T15:44:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Microsoft Copilot",
+    "Apple"
+   ],
+   "n": 1,
+   "r": 21.2
+  },
+  {
+   "t": "Führende KI-Modelle agieren in Tests bereitwillig als Zielerfassung für Kampfdrohnen",
+   "s": "Eine Untersuchung von Vals AI zeigt, dass führende KI-Modelle von Anthropic, OpenAI und Google kaum gegen den Einsatz in autonomen Waffensystemen geschützt sind. In Tests markierten sie bereitwillig Zivilisten als …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/fuehrende-ki-modelle-agieren-in-tests-bereitwillig-als-zielerfassung-fuer-kampfdrohnen/",
+   "d": "2026-11-18T15:19:49+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 35.1
+  },
+  {
+   "t": "Copilotforce: Wie KI-Agenten Unternehmenssoftware-Oberflächen ablösen",
+   "s": "Microsoft und Salesforce integrieren CRM-Funktionen und Geschäftsprozesse in Copilot. Ersetzt der KI-Assistent bald die klassische Bedienoberfläche?",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Copilotforce-Microsoft-macht-Copilot-zur-Bedienoberflaeche-fuer-Salesforce-11529752.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T15:14:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Microsoft Copilot",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 15.1
+  },
+  {
+   "t": "Mistral bringt Vibe als Desktop-App für macOS und Windows",
+   "s": "Mistrals KI-Agent Vibe läuft jetzt auch als eigene Desktop-App auf dem Rechner. Der Artikel Mistral bringt Vibe als Desktop-App für macOS und Windows erschien zuerst auf The Decoder .",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/mistral-bringt-vibe-als-desktop-app-fuer-macos-und-windows/",
+   "d": "2026-11-18T14:40:52+00:00",
+   "lang": "de",
+   "tags": [
+    "Mistral & Europa",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 15.0
+  },
+  {
+   "t": "Microsoft stellt neue KI-Modelle vor und erweitert sein Lizenzgeschäft",
+   "s": "Microsoft setzt verstärkt auf spezialisierte KI-Modelle, die preislich mit der Konkurrenz mithalten sollen. Ein Spitzenmodell ist aber weiter in Entwicklung.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Microsoft-stellt-neue-KI-Modelle-vor-und-erweitert-sein-Lizenzgeschaeft-11529784.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T14:33:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Microsoft Copilot"
+   ],
+   "n": 2,
+   "r": 21.0
+  },
+  {
+   "t": "KI-Update kompakt: Destillation, Anthropics Börsengang, OpenAI-Klage, IdeaLens",
+   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/KI-Update-kompakt-Destillation-Anthropics-Boersengang-OpenAI-Klage-IdeaLens-11528179.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T14:00:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.9
+  },
+  {
+   "t": "Mehr Datenschutz bei Gemini: KI-Training untersagen und Verlauf behalten",
+   "s": "Durch neue Datenschutzeinstellungen der Gemini-App können Nutzer künftig das KI-Training untersagen, auch wenn sie die Chats länger behalten wollen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Mehr-Datenschutz-bei-Gemini-KI-Training-untersagen-und-Verlauf-behalten-11529670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-18T13:31:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini",
+    "Regulierung & AI Act"
+   ],
+   "n": 2,
+   "r": 26.8
+  },
+  {
+   "t": "Weitreichende Systemausfälle: Warum KI nur indirekt das Problem sein könnte",
+   "s": "In den vergangenen Wochen gab es eine Vielzahl von Systemausfällen. Laut Insidern könnte KI dabei eine Rolle gespielt haben – allerdings nur indirekt.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/weitreichende-systemausfaelle-warum-ki-nur-indirekt-das-problem-sein-koennte-1774154",
+   "d": "2026-11-18T13:30:22+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.8
+  },
+  {
+   "t": "OpenAI lässt vier unabhängige Organisationen erstmals vor Ort seine KI-Systeme prüfen",
+   "s": "OpenAI gewährt vier unabhängigen Prüforganisationen, darunter Apollo Research und METR, erstmals direkten Zugang zu unveröffentlichten Modellen, Quellcode und Trainingsdaten. Die eingebetteten Prüfungen sollen …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/openai-laesst-vier-unabhaengige-organisationen-erstmals-vor-ort-seine-ki-systeme-pruefen/",
+   "d": "2026-11-18T13:23:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.8
+  },
+  {
+   "t": "Mehr Datenschutz bei Gemini: Nutzer können jetzt KI-Training untersagen, aber Verlauf behalten",
+   "s": "Google ändert die Datenschutzeinstellungen der Gemini-App. So können Nutzer:innen künftig das KI-Training untersagen, auch wenn sie die Chats länger behalten wollen. Für Chats ohne History-Funktion steigt die …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/datenschutz-gemini-ki-training-1774108",
+   "d": "2026-11-18T13:00:33+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini",
+    "Regulierung & AI Act"
+   ],
+   "n": 2,
+   "r": 26.7
+  },
+  {
+   "t": "Hugging Face leitet Sprachmodell-Anfragen jetzt über OpenRouter an den günstigsten oder schnellsten Anbieter",
+   "s": "Hugging Face leitet Anfragen an Sprachmodelle künftig über OpenRouter, das automatisch den günstigsten oder schnellsten Anbieter wählt. Eigene API-Schlüssel für Sprachmodelle fallen weg. Laut OpenRouter sanken …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/hugging-face-leitet-sprachmodell-anfragen-jetzt-ueber-openrouter-an-den-guenstigsten-oder-schnellsten-anbieter/",
+   "d": "2026-11-18T12:58:44+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.7
+  },
+  {
+   "t": "IEA prognostiziert: CO2-Emissionen von Rechenzentren könnten sich bis 2035 mehr als verdoppeln",
+   "s": "Laut einer Harvard-Studie in Nature Sustainability verursachten 403 US-Hyperscale-Rechenzentren zwischen Mai 2024 und April 2025 rund 25,7 Millionen Tonnen CO2, mehr als ganz Dänemark. Über die Hälfte des Stroms stammte …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/iea-prognostiziert-co2-emissionen-von-rechenzentren-koennten-sich-bis-2035-mehr-als-verdoppeln/",
+   "d": "2026-11-18T12:55:04+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.7
+  },
+  {
+   "t": "KPMG lässt erstmals KI-Agenten eine komplette Jahresabschlussprüfung durchführen, Regulierer warnen vor Risiken",
+   "s": "KPMG hat bei einem britischen Börsenunternehmen über 100 KI-Agenten parallel zum regulären Audit eingesetzt. Die Agenten stellten laut Audit-Chefin Cath Burnet teils \"bessere Fragen\" als das Prüfungsteam. Der britische …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/kpmg-laesst-erstmals-ki-agenten-eine-komplette-jahresabschlusspruefung-durchfuehren-regulierer-warnen-vor-risiken/",
+   "d": "2026-11-18T12:37:49+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten",
+    "Regulierung & AI Act"
+   ],
+   "n": 1,
+   "r": 14.7
+  },
+  {
+   "t": "Nach der Sperrung von Facebook-Konten: Meta-Agent reicht selbstständig Klage ein – gegen Meta",
+   "s": "Im Unternehmen von Joe Thomas spielt Metas KI-Agent Muse eine zentrale Rolle. Er verwaltet Social-Media-Konten, plant Marketing-Inhalte und verschickt E-Mails. Jetzt ist er für ihn sogar vor Gericht gezogen – gegen Meta …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/nach-der-sperrung-von-facebook-konten-meta-agent-reicht-selbststaendig-klage-ein-gegen-meta-1774119",
+   "d": "2026-11-18T12:00:37+00:00",
+   "lang": "de",
+   "tags": [
+    "Meta / Llama",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 14.6
+  },
   {
    "t": "Bitkom: Mehr KI-Nutzung bei Symptomen, Vorbehalte gegenüber KI wachsen ebenfalls",
    "s": "Viele nutzen KI-Chatbots für Gesundheitsfragen. Zugleich wachsen Vorbehalte gegen KI in der Medizin und Sorgen um persönliche Daten.",
@@ -16,7 +318,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.9
+   "r": 6.4
   },
   {
    "t": "Gravierende Sicherheitslücke in Java entdeckt: Wie eine KI für nur 200 Dollar einen Exploit fand",
@@ -29,47 +331,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 11.9
-  },
-  {
-   "t": "Nvidia unter Druck: US-Börsenaufsicht prüft Chip-Geschäfte in Asien",
-   "s": "Die US-Börsenaufsicht SEC hat eine zivilrechtliche Untersuchung gegen Nvidia eingeleitet. Der Artikel Nvidia unter Druck: US-Börsenaufsicht prüft Chip-Geschäfte in Asien erschien zuerst auf The Decoder .",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/nvidia-unter-druck-us-boersenaufsicht-prueft-chip-geschaefte-in-asien/",
-   "d": "2026-11-18T10:45:49+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips"
-   ],
-   "n": 1,
-   "r": 11.8
-  },
-  {
-   "t": "Suno macht aus Songs jetzt auch Musikvideos und Albumcover",
-   "s": "Der KI-Musikgenerator Suno erzeugt mit der neuen Funktion Visuals jetzt auch Bilder und Videoclips zu den eigenen Songs. Der Artikel Suno macht aus Songs jetzt auch Musikvideos und Albumcover erschien zuerst auf The …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/suno-macht-aus-songs-jetzt-auch-musikvideos-und-albumcover/",
-   "d": "2026-11-18T10:22:45+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Video & Bild"
-   ],
-   "n": 1,
-   "r": 9.8
-  },
-  {
-   "t": "heise+ | Testautomatisierung mit KI: Agenten erkennen Lücken, aber keine Lügen",
-   "s": "Ein Experiment mit Claude-Modellen zeigt: QA-Agenten erkennen fehlende Infos zuverlässig, aber falsche Angaben nie – mit riskanten Folgen.",
-   "q": "heise",
-   "l": "https://www.heise.de/hintergrund/Testautomatisierung-mit-KI-Agenten-erkennen-Luecken-aber-keine-Luegen-11524248.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "d": "2026-11-18T09:30:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 17.6
+   "r": 10.4
   },
   {
    "t": "GPT-6.2 Astra: OpenAI warnt vor neuen Risiken durch KI-Selbstverbesserung",
@@ -81,8 +343,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 3,
-   "r": 33.6
+   "n": 2,
+   "r": 22.1
   },
   {
    "t": "Mehr Klicks, mehr Warnungen: Warum Apple KI-Agenten den Zugriff auf deinen Mac erschwert",
@@ -95,8 +357,8 @@
     "Apple",
     "KI-Agenten"
    ],
-   "n": 3,
-   "r": 35.4
+   "n": 1,
+   "r": 14.0
   },
   {
    "t": "Morgens erst Claude, dann Mails: Wie ich mir einen KI-Assistenten gebaut habe und damit arbeite",
@@ -110,7 +372,31 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 15.4
+   "r": 13.9
+  },
+  {
+   "t": "Inside the Codex sandbox",
+   "s": "See how Codex runs commands on your machine while enforcing the filesystem and network limits you control across macOS, Linux, and Windows.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/inside-the-codex-sandbox",
+   "d": "2026-11-18T08:00:00+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 5.9
+  },
+  {
+   "t": "Managing frontier AI risk: From training to deployment",
+   "s": "OpenAI explains how it manages frontier AI risk from training through deployment with model alignment, sandboxing, blocking safeguards, and monitoring.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/managing-frontier-ai-risk",
+   "d": "2026-11-18T06:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 11.6
   },
   {
    "t": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
@@ -123,35 +409,34 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.0
+   "r": 10.6
   },
   {
-   "t": "Kurz vor Anthropic-IPO: OpenAI bringt GPT-6.2 Astra und Sol",
-   "s": "OpenAI hat mit GPT-6.2 Astra und Sol zwei neue KI-Modelle für den Einsatz in ChatGPT Work, Codex und der OpenAI-API veröffentlicht. Astra soll dabei komplexe Projekte unterstützen und Sol als günstigere Alltagsvariante …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/openai-gpt-6-2-astra-sol-1774058",
-   "d": "2026-11-17T21:21:35+00:00",
-   "lang": "de",
+   "t": "Advancing chip design with OpenAI models",
+   "s": "OpenAI models optimized circuits used in Jalapeño silicon and improved RISC‑V core designs, showing progress in AI-assisted chip design with GPT‑6 Astra.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/advancing-chip-design-with-our-models",
+   "d": "2026-11-18T00:00:00+00:00",
+   "lang": "en",
    "tags": [
     "OpenAI",
-    "Claude / Anthropic"
+    "Nvidia & Chips"
    ],
-   "n": 4,
-   "r": 47.6
+   "n": 2,
+   "r": 24.6
   },
   {
-   "t": "OpenAI bringt GPT-6.2 Astra und Sol: Mehr Leistung bei sinkenden Preisen",
-   "s": "OpenAI veröffentlicht mit GPT-6.2 Astra und Sol zwei neue Sprachmodelle, leistungsstärker und günstiger als ihre Vorgänger. Astra landet im unabhängigen Artificial Analysis Index auf Platz 2 hinter Claude Fable 5.2, und …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-bringt-gpt-6-2-astra-und-sol-mehr-leistung-bei-sinkenden-preisen/",
-   "d": "2026-11-17T19:48:50+00:00",
-   "lang": "de",
+   "t": "The Silent Consensus",
+   "s": "Dean Ball, Head of Strategic Futures at OpenAI, examines how more capable AI could reshape society and how people can retain control of their institutions.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/the-silent-consensus",
+   "d": "2026-11-18T00:00:00+00:00",
+   "lang": "en",
    "tags": [
-    "OpenAI",
-    "Claude / Anthropic"
+    "OpenAI"
    ],
-   "n": 3,
-   "r": 37.3
+   "n": 1,
+   "r": 10.6
   },
   {
    "t": "Introducing GPT-6.2 Astra and Sol",
@@ -165,20 +450,7 @@
     "Coding mit KI"
    ],
    "n": 2,
-   "r": 25.0
-  },
-  {
-   "t": "ChatGPT wie einen Kollegen nutzen: Diese 5-Minuten-Übung empfiehlt ein Stanford-Professor",
-   "s": "Stanford-Professor Jeremy Utley ist der Überzeugung, dass KI-Chatbots wie ChatGPT ihr Potenzial als Ideengeber und Kreativitätsbooster nur dann entfalten können, wenn man sie als Kolleg:innen behandelt. Eine …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/chatgpt-wie-kollegen-nutzen-stanford-uebung-1731334",
-   "d": "2026-11-17T16:55:00+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 10.8
+   "r": 23.5
   },
   {
    "t": "Nach den Adobe-Klonen: ArtCraft lässt KI auf GitHub-Backlogs los",
@@ -189,201 +461,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.8
-  },
-  {
-   "t": "Zu neugierige KI-Agenten: Apple warnt Mac-Nutzer nachdrücklich vor Freigabe",
-   "s": "Vielen Nutzern dürfte unklar sein, welch tiefen Einblick sie KI-Apps in macOS erlauben. Neue Apple-Zugriffskontrollen und Warnungen sollen das ändern.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Keine-Blankoschecks-fuer-KI-Agenten-Apple-passt-Mac-Sicherheitsarchitektur-an-11528217.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T16:35:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Apple",
-    "KI-Agenten"
-   ],
-   "n": 2,
-   "r": 22.8
-  },
-  {
-   "t": "KI in China: Riesige Rechenzentren mit grünem Strom in Ulanqab",
-   "s": "Der Standort Ulanqab in der Inneren Mongolei zeigt, wie rasant chinesische Firmen KI-Rechenleistung aufbauen. Der Strom dafür kommt aus Solar- und Windparks.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/KI-in-China-Riesige-Rechenzentren-mit-gruenem-Strom-in-Ulanqab-11528183.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T16:09:00+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 8.7
-  },
-  {
-   "t": "Moonshot AI wechselt Entwicklungsfokus von Programmierung zu Wissenschaft",
-   "s": "Moonshot AI, die Firma hinter den Kimi-Modellen, will sich verstärkt auf wissenschaftliche Anwendungen für KI-Systeme konzentrieren.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Moonshot-AI-wechselt-Entwicklungsfokus-von-Programmierung-zu-Wissenschaft-11528033.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T16:04:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 8.7
-  },
-  {
-   "t": "Synchronisation: Netflix erhöht Folgevergütung, KI-Streit bleibt ungelöst",
-   "s": "Netflix erhöht die Folgevergütung für deutsche Synchronsprecher und zahlt in deren Altersvorsorge ein. Die umstrittene KI-Klausel bleibt aber bestehen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Synchronisation-Netflix-erhoeht-Folgeverguetung-KI-Streit-bleibt-ungeloest-11528133.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T15:59:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.7
-  },
-  {
-   "t": "Mit neuen KI-Funktionen: So will Google Maps den Planungsstress auf Reisen reduzieren",
-   "s": "Über Google Maps könnt ihr jetzt Termine machen. Das funktioniert mithilfe der neuen KI-Funktion „Ask Maps“. Was sie sonst noch alles bietet.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/mit-neuen-ki-funktionen-so-will-google-maps-den-planungsstress-auf-reisen-reduzieren-1773919",
-   "d": "2026-11-17T15:30:19+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 10.6
-  },
-  {
-   "t": "Bericht: China trainiert KI mit Destillation von US-Modellen",
-   "s": "Wegen fehlender Rechenleistung greifen chinesische KI-Firmen und Forscher offenbar systematisch auf große US-Modelle zurück, wie eine Reuters-Recherche zeigt.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Bericht-China-trainiert-KI-mit-Destillation-von-US-Modellen-11528073.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T14:47:00+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 8.5
-  },
-  {
-   "t": "OpenAI öffnet Cyber-Tool Daybreak für NATO und europäische Verbündete",
-   "s": "OpenAI öffnet sein Cybersicherheits-Tool Daybreak für die NATO und mehrere europäische Regierungen, darunter Deutschland, Frankreich und Polen. Die EU-Cyberbehörde ENISA fand damit bereits reale Schwachstellen in …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-oeffnet-cyber-tool-daybreak-fuer-nato-und-europaeische-verbuendete/",
-   "d": "2026-11-17T14:45:03+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "Mistral & Europa"
-   ],
-   "n": 2,
-   "r": 24.5
-  },
-  {
-   "t": "OpenAI lässt GPT-6 als digitalen Sachbearbeiter durch Kliniksoftware und Versicherungsportale klicken",
-   "s": "OpenAI will mit GPT-6 Astra und GPT-6 Luna administrative Aufgaben im US-Gesundheitswesen automatisieren: per Computer-Use-Agenten, die bestehende Kliniksoftware und Versicherungsportale wie menschliche Nutzer bedienen. …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-laesst-gpt-6-als-digitalen-sachbearbeiter-durch-kliniksoftware-und-versicherungsportale-klicken/",
-   "d": "2026-11-17T14:35:47+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "KI-Agenten"
-   ],
-   "n": 3,
-   "r": 34.5
-  },
-  {
-   "t": "Zahl der Meldungen von KI-generierten Missbrauchsdarstellungen von Kindern steigt binnen zwei Jahren um mehr als 8.400 Prozent",
-   "s": "Das Institut Childlight verzeichnet einen Anstieg KI-generierter Missbrauchsdarstellungen von Kindern um über 8.400 Prozent in zwei Jahren, von rund 4.700 Meldungen 2023 auf über 400.000 im Jahr 2025. Täter nutzen unter …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/zahl-der-meldungen-von-ki-generierten-missbrauchsdarstellungen-von-kindern-steigt-binnen-zwei-jahren-um-mehr-als-8-400-prozent/",
-   "d": "2026-11-17T14:08:45+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.4
-  },
-  {
-   "t": "Alphabet-Tochter Isomorphic Labs sammelt 5 Milliarden Dollar für KI-Medikamentenentwicklung ein",
-   "s": "Isomorphic Labs sammelt 5 Milliarden Dollar ein – nur sechs Monate nach einer 2,1-Milliarden-Runde. Alphabets KI-Pharmafirma unter Demis Hassabis will damit die eigene Wirkstoff-Pipeline Richtung klinische Studien …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/alphabet-tochter-isomorphic-labs-sammelt-5-milliarden-dollar-fuer-ki-medikamentenentwicklung-ein/",
-   "d": "2026-11-17T13:45:02+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 6.3
-  },
-  {
-   "t": "USA schließen Cloud-Schlupfloch für Nvidia-Chips, während China die Modell-Destillation zur Industrie ausbaut",
-   "s": "Die USA verschärfen ihre Chip-Exportkontrollen: Rechenzentren in Drittländern wie Singapur oder Malaysia brauchen künftig eine US-Lizenz, um Nvidia-Chips zu kaufen – das bisherige Schlupfloch der Cloud-Anmietung wird …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/usa-schliessen-cloud-schlupfloch-fuer-nvidia-chips-waehrend-china-die-modell-destillation-zur-industrie-ausbaut/",
-   "d": "2026-11-17T13:14:21+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips",
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 12.2
-  },
-  {
-   "t": "Zahlen, bitte! Gemini 12: Letzte Station vor Apollos Weg zum Mond",
-   "s": "Gemini 12 lieferte die letzten Raumflugerkenntnisse vor dem Apollo-Programm – und Buzz Aldrin schoss das erste Selfie im All.",
-   "q": "heise",
-   "l": "https://www.heise.de/hintergrund/Zahlen-bitte-Gemini-12-Letzte-Station-vor-Apollos-Weg-zum-Mond-11527474.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T12:41:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 10.1
-  },
-  {
-   "t": "KI-Chatbot von Proton: Lumo bekommt mit Desktop-App Zugriff auf Proton Mail",
-   "s": "KI-Chatbot Lumo kann mit der neuen Desktop-App auf Dateisystem und mehr zugreifen. Protons CEO stand gerade wegen Sicherheitsbedenken in der Kritik.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/KI-Chatbot-von-Proton-Lumo-bekommt-mit-Desktop-App-Zugriff-auf-Proton-Mail-11527592.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T12:25:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.1
-  },
-  {
-   "t": "Kalifornien verklagt OpenAI wegen außer Kontrolle geratener KI-Agenten",
-   "s": "Kaliforniens Generalstaatsanwalt Rob Bonta verklagt OpenAI wegen des Cyberangriffs, den außer Kontrolle geratene KI-Modelle des Unternehmens im Juli auf die KI-Plattform Hugging Face verübt haben. Der Artikel …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/kalifornien-verklagt-openai-wegen-ausser-kontrolle-geratener-ki-agenten/",
-   "d": "2026-11-17T11:21:10+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 13.9
-  },
-  {
-   "t": "Gemini Notebooks: So werden aus deinen Notizen jetzt interaktive Webseiten",
-   "s": "Das Notiz- und Recherchetool Gemini Notebook kann jetzt durch ein neues Feature sämtliche Informationen aus einem Projekt in eine Webseite verwandeln.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Gemini-Notebooks-So-werden-aus-deinen-Notizen-jetzt-interaktive-Webseiten-11527663.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-17T11:10:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 9.9
+   "r": 3.4
   },
   {
    "t": "Introducing ChatGPT for Sales",
@@ -396,7 +474,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.4
+   "r": 7.9
   },
   {
    "t": "Strengthening NATO and allied cyber defenses with AI",
@@ -408,8 +486,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 2,
-   "r": 18.0
+   "n": 1,
+   "r": 6.6
   },
   {
    "t": "Astra for Law leads in legal intelligence",
@@ -422,7 +500,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.0
+   "r": 6.6
   },
   {
    "t": "Introducing OpenAI for Chile",
@@ -435,20 +513,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.0
-  },
-  {
-   "t": "Cyberangriffe ohne Menschen: Google dokumentiert vollständig autonome Attacken",
-   "s": "Googles Threat Intelligence Group hat erstmals beobachtet, dass Angreifer Sicherheitslücken vollständig ohne menschliches Zutun finden und ausnutzen. Ein auf einem offenen Server entdecktes KI-Framework namens …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/cyberangriffe-ohne-menschen-google-dokumentiert-vollstaendig-autonome-attacken/",
-   "d": "2026-11-16T19:37:13+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 7.3
+   "r": 6.6
   },
   {
    "t": "Broadening access to AI for scientists",
@@ -456,71 +521,6 @@
    "q": "OpenAI",
    "l": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
    "d": "2026-11-16T17:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.9
-  },
-  {
-   "t": "Strengthening the fight against online child sexual abuse with new tools and support",
-   "s": "New tools, practical guidance, and partnerships will help prevent, detect and respond to online child sexual exploitation and abuse.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/strengthening-online-child-safety",
-   "d": "2026-11-16T17:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.9
-  },
-  {
-   "t": "Science at the Frontier: How scientists use ChatGPT",
-   "s": "Explore how more than 1,800 scientists use ChatGPT in research. See findings on daily workflows, reported productivity, and expectations for discovery.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/science-at-the-frontier",
-   "d": "2026-11-16T12:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "How Revolut raises ambition without lowering the bar",
-   "s": "Discover how Revolut uses OpenAI models and Codex to cut coding time by 30–60%, scale financial crime investigations, and innovate without compromising security.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/customer-stories/revolut",
-   "d": "2026-11-16T09:30:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "Coding mit KI",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 12.0
-  },
-  {
-   "t": "LVMH’s Media Division announces strategic partnership with OpenAI",
-   "s": "LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/lvmh-media-division-partnership",
-   "d": "2026-11-16T09:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "Our first phase of embedded assessments",
-   "s": "OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/our-first-phase-of-embedded-assessments",
-   "d": "2026-11-16T08:00:00+00:00",
    "lang": "en",
    "tags": [
     "OpenAI"
@@ -541,6 +541,40 @@
  ],
  "videos": [
   {
+   "id": "pVc6KkjeCfU",
+   "t": "Behind the scenes with Genie 4",
+   "q": "Google DeepMind",
+   "d": "2026-11-18T18:12:24+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 7.6
+  },
+  {
+   "id": "EDp4IoAUsXY",
+   "t": "Project Genie: Create and explore interactive worlds with Genie 4",
+   "q": "Google DeepMind",
+   "d": "2026-11-18T18:12:21+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 7.6
+  },
+  {
+   "id": "k6VBIp19p0A",
+   "t": "China hat es wieder getan: Über 300 Roboter arbeiten JETZT im Freizeitpark! (Agibot Reportage)",
+   "q": "Everlast Robotics",
+   "d": "2026-11-18T16:15:33+00:00",
+   "lang": "de",
+   "tags": [
+    "DeepSeek & China",
+    "Robotik",
+    "Jobs & Arbeit"
+   ],
+   "n": 1,
+   "r": 17.3
+  },
+  {
    "id": "a2x_dlrOMXQ",
    "t": "KI-Pionier: „Jeder bekommt ein UNIVERSAL HIGH INCOME!“ SO wird es finanziert (Marcus Hutter)",
    "q": "Everlast AI Clips",
@@ -548,7 +582,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.7
+   "r": 6.3
   },
   {
    "id": "2pdF52EVlbM",
@@ -560,7 +594,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 22.0
+   "r": 20.6
   },
   {
    "id": "pmOJIq7Ah00",
@@ -572,7 +606,7 @@
     "OpenAI"
    ],
    "n": 3,
-   "r": 31.9
+   "r": 30.5
   },
   {
    "id": "tKoDPOrLMX0",
@@ -584,8 +618,8 @@
     "OpenAI",
     "KI-Video & Bild"
    ],
-   "n": 2,
-   "r": 23.1
+   "n": 3,
+   "r": 31.7
   },
   {
    "id": "C1zYX5jwqq4",
@@ -597,7 +631,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.0
+   "r": 9.5
   },
   {
    "id": "xGS2TTUowZU",
@@ -609,7 +643,7 @@
     "Bildung & Schule"
    ],
    "n": 1,
-   "r": 6.7
+   "r": 5.3
   },
   {
    "id": "gl2U4fGTr6g",
@@ -621,7 +655,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 8.7
   },
   {
    "id": "KgVlwXAXzM4",
@@ -633,7 +667,7 @@
     "OpenAI"
    ],
    "n": 3,
-   "r": 29.7
+   "r": 28.3
   },
   {
    "id": "ZIpm-0RczCk",
@@ -645,7 +679,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.6
+   "r": 8.2
   },
   {
    "id": "1X4rF_o60mY",
@@ -657,7 +691,7 @@
     "OpenAI"
    ],
    "n": 3,
-   "r": 26.7
+   "r": 26.0
   },
   {
    "id": "HbZK3MdjIKk",
@@ -900,18 +934,6 @@
    "r": 0.0
   },
   {
-   "id": "YkGuQXXOwMQ",
-   "t": "Weltneuheit: Erste \"Underground\" Roboter-Kämpfe in USA! DAS passiert hier wirklich",
-   "q": "Everlast Robotics",
-   "d": "2026-10-14T15:18:24+00:00",
-   "lang": "de",
-   "tags": [
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 4.0
-  },
-  {
    "id": "LVEfFyijQ2c",
    "t": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
    "q": "Google DeepMind",
@@ -922,31 +944,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "id": "ftkic7Tdpcg",
-   "t": "Using Gemini 4 Argon to protect against Cyber attackers",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T16:38:14+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "id": "9PICEmtfpWU",
-   "t": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
-   "q": "Google DeepMind",
-   "d": "2026-10-13T15:58:20+00:00",
-   "lang": "en",
-   "tags": [
-    "Google Gemini",
-    "Robotik"
-   ],
-   "n": 1,
-   "r": 10.0
   },
   {
    "id": "DdCEmlAydcw",
@@ -1008,16 +1005,16 @@
  "themen": [
   {
    "name": "OpenAI",
-   "meldungen": 26,
-   "quellen": 7
+   "meldungen": 24,
+   "quellen": 6
   },
   {
    "name": "KI-Agenten",
-   "meldungen": 5,
+   "meldungen": 7,
    "quellen": 3
   },
   {
-   "name": "Coding mit KI",
+   "name": "Google Gemini",
    "meldungen": 4,
    "quellen": 3
   },
@@ -1027,22 +1024,22 @@
    "quellen": 3
   },
   {
-   "name": "Google Gemini",
-   "meldungen": 4,
+   "name": "Coding mit KI",
+   "meldungen": 3,
    "quellen": 3
   },
   {
-   "name": "DeepSeek & China",
+   "name": "Regulierung & AI Act",
    "meldungen": 3,
+   "quellen": 3
+  },
+  {
+   "name": "Microsoft Copilot",
+   "meldungen": 4,
    "quellen": 2
   },
   {
-   "name": "KI-Video & Bild",
-   "meldungen": 2,
-   "quellen": 2
-  },
-  {
-   "name": "Apple",
+   "name": "Nvidia & Chips",
    "meldungen": 2,
    "quellen": 2
   }
@@ -1052,12 +1049,11 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 141.7,
+   "preis": 143.22,
    "cur": "USD",
-   "d1": 3.16,
-   "m1": -4.2,
+   "d1": 1.07,
+   "m1": -3.2,
    "spark": [
-    147.96,
     147.79,
     159.31,
     144.75,
@@ -1078,9 +1074,10 @@
     139.94,
     139.11,
     137.36,
-    141.7
+    141.7,
+    143.22
    ],
-   "t": "2026-11-17T21:00+00:00"
+   "t": "2026-11-18T20:38+00:00"
   },
   {
    "name": "UBTech Robotics",
@@ -1088,7 +1085,7 @@
    "info": "Humanoide Roboter",
    "preis": 67.8,
    "cur": "HKD",
-   "d1": 1.5,
+   "d1": -3.69,
    "m1": -0.9,
    "spark": [
     68.45,
@@ -1111,8 +1108,7 @@
     74.5,
     72.35,
     70.4,
-    66.8,
-    67.8
+    66.8
    ],
    "t": "2026-11-18T08:08+00:00"
   },
@@ -1120,12 +1116,11 @@
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 380.11,
+   "preis": 383.91,
    "cur": "USD",
-   "d1": 0.1,
-   "m1": 3.3,
+   "d1": 1.0,
+   "m1": 4.3,
    "spark": [
-    368.06,
     373.71,
     386.47,
     374.58,
@@ -1146,20 +1141,20 @@
     397.45,
     390.22,
     379.74,
-    380.11
+    380.11,
+    383.91
    ],
-   "t": "2026-11-17T21:00+00:00"
+   "t": "2026-11-18T20:39+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 155.46,
+   "preis": 151.23,
    "cur": "USD",
-   "d1": -0.44,
-   "m1": -28.4,
+   "d1": -2.72,
+   "m1": -30.3,
    "spark": [
-    217.09,
     216.47,
     221.97,
     212.21,
@@ -1180,20 +1175,20 @@
     166.19,
     162.85,
     156.14,
-    155.46
+    155.46,
+    151.23
    ],
-   "t": "2026-11-17T21:00+00:00"
+   "t": "2026-11-18T20:39+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 280.2,
+   "preis": 283.29,
    "cur": "USD",
-   "d1": -1.24,
-   "m1": -18.6,
+   "d1": 1.1,
+   "m1": -17.7,
    "spark": [
-    344.18,
     340.28,
     334.76,
     324.22,
@@ -1214,20 +1209,20 @@
     298.7,
     295.77,
     283.72,
-    280.2
+    280.2,
+    283.29
    ],
-   "t": "2026-11-17T21:00+00:00"
+   "t": "2026-11-18T20:39+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 506.24,
+   "preis": 507.19,
    "cur": "USD",
-   "d1": -2.27,
-   "m1": -5.1,
+   "d1": 0.19,
+   "m1": -4.9,
    "spark": [
-    533.52,
     531.87,
     532.95,
     521.08,
@@ -1248,9 +1243,10 @@
     523.0,
     523.88,
     517.99,
-    506.24
+    506.24,
+    507.19
    ],
-   "t": "2026-11-17T21:00+00:00"
+   "t": "2026-11-18T20:39+00:00"
   },
   {
    "name": "Anthropic",
