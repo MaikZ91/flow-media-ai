@@ -156,6 +156,31 @@ section{position:relative;padding-block:clamp(90px,12vw,150px)}
 .manifest p{margin:0;font:500 clamp(32px,5vw,70px)/1.12 var(--f-body);letter-spacing:-.025em;color:var(--white);max-width:19ch}
 .manifest .w{opacity:.16;transition:opacity .25s linear,color .4s}.manifest .w.on{opacity:1}
 .manifest .w.k.on{color:var(--blue);text-shadow:0 0 30px rgba(47,91,255,.5)}
+/* skill store */
+.store{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(30px,5vw,72px);align-items:center}
+.store h2{font-size:clamp(46px,6vw,88px)}
+.store .nums{display:flex;gap:30px;margin:28px 0 6px}
+.store .nums div{display:flex;flex-direction:column}
+.store .nums b{font:700 clamp(46px,5vw,64px)/1 var(--f-head);color:var(--white)}
+.store .nums b.blue{color:var(--blue);text-shadow:0 0 40px rgba(47,91,255,.45)}
+.store .nums span{font:500 12px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.store ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.store li{display:flex;gap:12px;align-items:flex-start}.store li::before{content:"";flex:none;width:7px;height:7px;margin-top:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+.store li b{color:var(--white);font-weight:500}
+.shelf{position:relative;padding:22px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.row{display:flex;gap:12px;width:max-content;margin-bottom:12px;animation:marq 40s linear infinite}
+.row.r2{animation-direction:reverse;animation-duration:46s}.row.r3{animation-duration:52s}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid var(--line2);border-radius:16px;background:rgba(18,18,18,.85);font:400 15px var(--f-body);color:var(--white);white-space:nowrap}
+.chip i{font-style:normal;font-size:18px}
+.chip em{font:500 10px var(--f-label);letter-spacing:.16em;text-transform:uppercase;font-style:normal;padding:4px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.chip em.p{border-color:rgba(47,91,255,.6);color:#9db2ff}
+.vip{position:relative;margin:16px auto 0;max-width:460px;padding:24px 26px;border-radius:var(--r);border:1px solid rgba(47,91,255,.55);background:linear-gradient(160deg,rgba(47,91,255,.22),rgba(18,18,18,.9) 60%);box-shadow:0 30px 80px -30px var(--blue-glow);overflow:hidden}
+.vip::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.12) 45%,transparent 60%);transform:translateX(-100%);animation:shine 4.5s ease-in-out infinite 1s}
+@keyframes shine{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+.vip .label{color:#9db2ff}
+.vip h3{font:700 clamp(30px,3vw,40px)/1 var(--f-head);text-transform:uppercase;margin-top:10px;display:flex;align-items:center;gap:12px}
+.vip p{margin:8px 0 0;font-size:15px}
+.vip .lock{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--blue);font-size:18px;box-shadow:0 0 30px var(--blue-glow)}
 /* host */
 .host{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,72px);align-items:center}
 .host .pic{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
@@ -213,7 +238,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
  .cta-row .btn{width:100%}
  .scroll-hint{display:none}
  .sec-head{grid-template-columns:minmax(0,1fr);gap:18px}
- .events,.values,.steps,.host{grid-template-columns:minmax(0,1fr)}
+ .events,.values,.steps,.host,.store{grid-template-columns:minmax(0,1fr)}
  .value{min-height:0}
  .ev .btn{align-self:stretch}
  .host .pic{aspect-ratio:4/4.2}
@@ -336,6 +361,27 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
         <h3>Hybrid-Stammtisch</h3>
         <p>Jeden Freitag: vor Ort in Münster und digital. Komm vorbei oder schalt dich dazu.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap store">
+    <div>
+      <span class="label eyebrow rv">Flow DNA Skill Store · für Mitglieder</span>
+      <h2 class="display rv d1">KI-Skills, die<br><span class="blue">für dich arbeiten.</span></h2>
+      <p class="rv d2">Skills sind fertige Bauanleitungen für deine KI: Du lädst sie in Claude oder Codex, und die KI baut damit Websites, schneidet Reels oder schreibt deine Texte – in deinem Stil.</p>
+      <div class="nums rv d2"><div><b>40</b><span>Skills</span></div><div><b>11</b><span>kostenlos</span></div><div><b class="blue">29</b><span>Premium</span></div></div>
+      <ul class="rv d3">
+        <li><span><b>Exklusiv in der Community:</b> Codes, mit denen du Premium-Skills kostenlos testest.</span></li>
+        <li><span><b>Neue Skills zuerst:</b> Was ich baue, zeige ich zuerst in der Gruppe.</span></li>
+        <li><span><b>Hilfe beim Einrichten:</b> Fragen zu Skills direkt in der Community.</span></li>
+      </ul>
+      <div class="cta-row rv d3" style="margin-top:28px"><a class="btn primary join" data-cta="store_join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Beitreten &amp; freischalten <span class="ar">→</span></a><a class="btn" data-cta="store_ansehen" href="../../flow-dna/">Store ansehen</a></div>
+    </div>
+    <div class="rv d1">
+      <div class="shelf" aria-hidden="true"><div class="row"><span class="chip"><i>🎬</i>Video Cutter<em class="p">Premium</em></span><span class="chip"><i>🌐</i>Website Builder<em class="p">Premium</em></span><span class="chip"><i>📱</i>App Builder<em class="p">Premium</em></span><span class="chip"><i>✍️</i>Caption & Copywriting<em class="">Free</em></span><span class="chip"><i>🤖</i>Instagram-Autopilot<em class="p">Premium</em></span><span class="chip"><i>💡</i>Brainstorming<em class="">Free</em></span><span class="chip"><i>🎬</i>Video Cutter<em class="p">Premium</em></span><span class="chip"><i>🌐</i>Website Builder<em class="p">Premium</em></span><span class="chip"><i>📱</i>App Builder<em class="p">Premium</em></span><span class="chip"><i>✍️</i>Caption & Copywriting<em class="">Free</em></span><span class="chip"><i>🤖</i>Instagram-Autopilot<em class="p">Premium</em></span><span class="chip"><i>💡</i>Brainstorming<em class="">Free</em></span></div><div class="row r2"><span class="chip"><i>🎞️</i>Reel Script<em class="p">Premium</em></span><span class="chip"><i>🧪</i>Idea Validator<em class="">Free</em></span><span class="chip"><i>🧲</i>Lead Agent<em class="p">Premium</em></span><span class="chip"><i>🎨</i>Design System<em class="p">Premium</em></span><span class="chip"><i>✉️</i>E-Mail Assistant<em class="">Free</em></span><span class="chip"><i>🧠</i>Agentensystem<em class="p">Premium</em></span><span class="chip"><i>🎞️</i>Reel Script<em class="p">Premium</em></span><span class="chip"><i>🧪</i>Idea Validator<em class="">Free</em></span><span class="chip"><i>🧲</i>Lead Agent<em class="p">Premium</em></span><span class="chip"><i>🎨</i>Design System<em class="p">Premium</em></span><span class="chip"><i>✉️</i>E-Mail Assistant<em class="">Free</em></span><span class="chip"><i>🧠</i>Agentensystem<em class="p">Premium</em></span></div><div class="row r3"><span class="chip"><i>🔗</i>Workflow Builder<em class="p">Premium</em></span><span class="chip"><i>📝</i>Meeting Summary<em class="">Free</em></span><span class="chip"><i>🧬</i>Personal Brand<em class="">Free</em></span><span class="chip"><i>🛍️</i>Shopify Builder<em class="p">Premium</em></span><span class="chip"><i>🪄</i>Bildbearbeitung<em class="p">Premium</em></span><span class="chip"><i>🔦</i>Blindspot-Analyse<em class="">Free</em></span><span class="chip"><i>🔗</i>Workflow Builder<em class="p">Premium</em></span><span class="chip"><i>📝</i>Meeting Summary<em class="">Free</em></span><span class="chip"><i>🧬</i>Personal Brand<em class="">Free</em></span><span class="chip"><i>🛍️</i>Shopify Builder<em class="p">Premium</em></span><span class="chip"><i>🪄</i>Bildbearbeitung<em class="p">Premium</em></span><span class="chip"><i>🔦</i>Blindspot-Analyse<em class="">Free</em></span></div></div>
+      <div class="vip"><span class="label">Aktuell für Mitglieder</span><h3><span class="lock">🎬</span>Video Cutter · 7 Tage gratis</h3><p>Aus deinem Selfie-Video ein Reel wie vom Profi – sonst 29 € im Monat. Den Code gibt es in der Gruppe.</p></div>
     </div>
   </div>
 </section>
