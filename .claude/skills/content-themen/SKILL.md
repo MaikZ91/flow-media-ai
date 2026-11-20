@@ -89,6 +89,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 20.11.2026 | R049 | automation · Zeitmangel | Reel 34,7 s (Kreis + Bühne hell, Video Cutter) | „Mein erster Lead-Scraper“ – Instagram-Leads finden, persönliche DM vorbereitet, im Flow Board nur noch senden; Namen im Beispiel erfunden | format = tool-buehne (2. Mal) |
 | 20.11.2026 | R048 | community · Problem allein | Reel 19,5 s (Talking Head, Video Cutter + HyperFrames-End-Karte) | „Flow Business Community“ – Maik stellt die Community vor: Gründer & Selbstständige, KI, Business, Workshops; kostenlos; auch auf der Landingpage | format = community-vorstellung |
 | 20.11.2026 | R047 | ki / tools · Problem zeit | Reel 44 s (weiß, Kreis + Tool-Bühne, Video Cutter) | „Lokale KI. Echter Use Case.“ – lokaler KI-Rechner, Datenschutz, PFMEA: Anleitung rein → Risikotabelle in Echtzeit (erfundenes Beispiel) → statt 3 h Meeting mit fertiger Tabelle rein | format = tool-kreis-weiss |
 | 18.11.2026 | R046 | web / lernen · Problem idee | Reel 31 s (Live-Session-Ausschnitt, Video Cutter v2) | „Deine Website. Mit KI gebaut.“ – Maik → Claude Code → „Führ die KI wie einen Mitarbeiter“ → fertige Tanz-Coaching-Website → Handy-Ansicht; CTA ganze Live Session im Kurs (Flow DNA) | format = live-session-ausschnitt |

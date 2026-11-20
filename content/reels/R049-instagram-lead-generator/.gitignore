@@ -1,0 +1,5 @@
+.videocutter/
+roh.MOV
+audio.raw
+*_schnitt/*.mov
+*_schnitt/hf_*
