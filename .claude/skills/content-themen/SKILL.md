@@ -89,6 +89,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 20.11.2026 | R050 | personal · Ideen nicht umsetzen | Reel 13 s (animiertes s/w-Foto, Netz wächst aus dem Kopf) | Bewegte Fassung von P020 „Von einer Idee zu etwas Eigenem“, Caption von Maik | look = s/w-foto-netz animiert |
 | 20.11.2026 | P020 | personal · Ideen nicht umsetzen | Einzelpost 1080×1350 (s/w-Foto, Skulptur als neuronales Netz) | „Von einer Idee zu etwas Eigenem“ – Maiks Weg zu Flow Media AI, Caption von Maik | look = s/w-foto-netz |
 | 20.11.2026 | R049 | automation · Zeitmangel | Reel 34,7 s (Kreis + Bühne hell, Video Cutter) | „Mein erster Lead-Scraper“ – Instagram-Leads finden, persönliche DM vorbereitet, im Flow Board nur noch senden; Namen im Beispiel erfunden | format = tool-buehne (2. Mal) |
 | 20.11.2026 | R048 | community · Problem allein | Reel 19,5 s (Talking Head, Video Cutter + HyperFrames-End-Karte) | „Flow Business Community“ – Maik stellt die Community vor: Gründer & Selbstständige, KI, Business, Workshops; kostenlos; auch auf der Landingpage | format = community-vorstellung |

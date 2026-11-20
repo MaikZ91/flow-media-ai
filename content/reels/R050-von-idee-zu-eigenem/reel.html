@@ -1,0 +1,80 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* R050 – animated version of P020: the stick sculpture grows into a glowing neural network, an idea flows from Maik's head into it.
+   Black and white only. Every frame is a pure function of t (window.DRAW). */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#0A0A0A;overflow:hidden;font-family:Inter,sans-serif;color:#fff}
+canvas{position:absolute;inset:0}
+.fade{position:absolute;left:0;top:760px;width:1080px;height:520px;background:linear-gradient(180deg,transparent,#0A0A0A 80%)}
+.vig{position:absolute;inset:0;background:radial-gradient(120% 80% at 40% 30%,transparent 55%,rgba(0,0,0,.55))}
+.grain{position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.pill{position:absolute;top:150px;display:flex;align-items:center;gap:14px;padding:14px 22px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(10,10,10,.5);backdrop-filter:blur(8px);font:600 20px Montserrat;letter-spacing:.22em;text-transform:uppercase;opacity:0}
+.pill i{width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff}
+#p1{left:64px}#p2{right:64px}
+.txt{position:absolute;left:64px;right:64px;top:1150px}
+.lab{font:500 22px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55);opacity:0}
+.ln{overflow:hidden;margin-top:6px}.ln span{display:block;font:700 112px/.95 Oswald;white-space:nowrap;text-transform:uppercase;transform:translateY(105%)}
+.ln .o{color:transparent;-webkit-text-stroke:2px #fff}
+#sub{margin-top:30px;font:300 34px/1.4 Inter;color:rgba(255,255,255,.82);opacity:0}
+#foot{position:absolute;left:64px;right:64px;top:1590px;display:flex;flex-direction:column;gap:22px;opacity:0}
+#foot img{height:38px;width:auto;align-self:flex-start}
+#foot span{font:500 21px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div class="fade"></div><div class="vig"></div>
+<div class="pill" id="p1"><i></i>Mein Weg</div><div class="pill" id="p2">Idee → KI → Eigenes</div>
+<div class="txt"><p class="lab" id="lab">Flow Media AI · Welcome</p>
+ <div class="ln"><span id="l1">Von einer Idee</span></div><div class="ln"><span id="l2" class="o">zu etwas Eigenem.</span></div>
+ <p id="sub">Früher brauchte jede Idee ein ganzes Team. Heute baue ich sie selbst – mit KI.</p></div>
+<div id="foot"><img src="logo_flow.png" alt=""><span>Frei denken · Neues erschaffen · Menschen befähigen</span></div>
+<div class="grain"></div>
+<script>
+const $=id=>document.getElementById(id), cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const E=x=>1-Math.pow(1-cl(x),3), S=(t,a,d=.5)=>E((t-a)/d), EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+let N=null; const img=new Image(); img.src="foto_reel.jpg";
+window.LOAD=async d=>{N=d; await img.decode(); await document.fonts.ready};
+const ctx=$("cv").getContext("2d");
+const HEAD=[702,398];
+// thought line from the head into the net (cubic bezier in photo coordinates)
+const TL=[[702,398],[820,330],[900,470],[1040,400],[1180,330],[1300,380],[1560,330]];
+function bez(p,k){ // piecewise cubic through TL points (Catmull-Rom)
+ const n=p.length-1,f=k*n,i=Math.min(n-1,Math.floor(f)),u=f-i,P=j=>p[Math.max(0,Math.min(n,j))];
+ const p0=P(i-1),p1=P(i),p2=P(i+1),p3=P(i+2),c=(a,b,c2,d)=>.5*((2*b)+(-a+c2)*u+(2*a-5*b+4*c2-d)*u*u+(-a+3*b-3*c2+d)*u*u*u);
+ return [c(p0[0],p1[0],p2[0],p3[0]),c(p0[1],p1[1],p2[1],p3[1])]}
+window.DRAW=t=>{
+ if(!N) return;
+ const z=1+.07*EI(t/13), ox=250+110*EI(t/13), oy=40;
+ ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle="#0A0A0A";ctx.fillRect(0,0,1080,1920);
+ // photo
+ ctx.save();ctx.translate(-ox*z,-oy*z+60);ctx.scale(z,z);
+ ctx.globalAlpha=S(t,0,1.2);ctx.filter="grayscale(1) brightness(.6) contrast(1.05)";ctx.drawImage(img,0,0);ctx.filter="none";ctx.globalAlpha=1;
+ // network grows outward from the head (points are sorted by distance to the head)
+ const P=N.pts,n=P.length,grow=cl((t-1.0)/3.4);const shown=Math.floor(grow*n);
+ ctx.lineWidth=1.5/z;
+ N.edges.forEach(([i,j],k)=>{const mx=Math.max(i,j);if(mx>=shown)return;const a=cl((grow*n-mx)/12);
+  ctx.strokeStyle=`rgba(255,255,255,${(.25+.45*((k*37)%10)/10)*a})`;ctx.beginPath();ctx.moveTo(...P[i]);
+  const q=a<1?[P[i][0]+(P[j][0]-P[i][0])*a,P[i][1]+(P[j][1]-P[i][1])*a]:P[j];ctx.lineTo(...q);ctx.stroke()});
+ // pulses travelling along edges after the net is built
+ if(t>3.2){N.edges.forEach(([i,j],k)=>{if(k%4)return;const ph=((t-3.2)*.55+(k*.618)%1)%1,x=P[i][0]+(P[j][0]-P[i][0])*ph,y=P[i][1]+(P[j][1]-P[i][1])*ph;
+  ctx.shadowBlur=14;ctx.shadowColor="#fff";ctx.fillStyle="rgba(255,255,255,.95)";ctx.beginPath();ctx.arc(x,y,3.2/z,0,7);ctx.fill();ctx.shadowBlur=0})}
+ // nodes
+ for(let i=0;i<shown;i++){const a=cl((grow*n-i)/6),hot=i%7===0,tw=hot?.6+.4*Math.sin(t*3+i):1;
+  ctx.shadowBlur=hot?18:0;ctx.shadowColor="#fff";ctx.fillStyle=`rgba(255,255,255,${(hot?1:.85)*a*tw})`;ctx.beginPath();ctx.arc(P[i][0],P[i][1],(hot?5.5:2.8)*(.4+.6*a)/z,0,7);ctx.fill()}
+ ctx.shadowBlur=0;
+ // the idea: glowing line from the head
+ const L=S(t,.6,2.6);if(L>0){ctx.lineWidth=2.6/z;ctx.strokeStyle="#fff";ctx.shadowBlur=16;ctx.shadowColor="#fff";ctx.beginPath();
+  for(let k=0;k<=L;k+=.01){const p=bez(TL,k);k?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+  const hp=bez(TL,L);ctx.beginPath();ctx.arc(hp[0],hp[1],7/z,0,7);ctx.fillStyle="#fff";ctx.fill();
+  ctx.beginPath();ctx.arc(HEAD[0],HEAD[1],(6+2*Math.sin(t*4))/z,0,7);ctx.fill();ctx.shadowBlur=0}
+ ctx.restore();
+ ctx.fillStyle="#0A0A0A";ctx.fillRect(0,1270,1080,650);
+ // text
+ $("p1").style.opacity=S(t,1.6,.5);$("p2").style.opacity=S(t,2.0,.5);
+ $("lab").style.opacity=S(t,4.6,.5);
+ $("l1").style.transform=`translateY(${(1-S(t,5.0,.8))*105}%)`;$("l2").style.transform=`translateY(${(1-S(t,5.5,.8))*105}%)`;
+ const sb=S(t,7.0,.7);$("sub").style.opacity=sb;$("sub").style.transform=`translateY(${(1-sb)*20}px)`;
+ const ft=S(t,9.2,.7);$("foot").style.opacity=ft;$("foot").style.transform=`translateY(${(1-ft)*20}px)`;
+ const end=cl((t-12.4)/.6);document.body.style.opacity=1-end*.0;
+};
+</script></body></html>
