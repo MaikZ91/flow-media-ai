@@ -1,6 +1,6 @@
 # R049 – Mein erster Lead-Scraper (Instagram-Leads)
 
-Maiks Selfie-Video (55 s → 34,7 s) mit dem Video Cutter v2 im Layout „Kreis + Bühne“ (hell): Maik als Kreis unten links, dahinter eine animierte Bühne (`buehne.html`), die den Instagram-Lead-Generator zeigt – Suche nach Zielgruppe → passende Profile → persönliche Nachricht schreibt sich → Liste im Flow Board, DM geschickt → „Typischer Lead-Scraper“ vs. persönlich → „Deine Arbeit: nur senden“ → „Dein eigener Lead-Scraper? Schreib mir“. Namen im Beispiel frei erfunden (im Bild gekennzeichnet).
+Maiks Selfie-Video (55 s → 34,7 s) mit dem Video Cutter v2 im Layout „Kreis + Bühne“ im **dunklen Website-Look** (Maik 20.11.2026: weißes Layout gefällt nicht – Version 2: schwarz, fließende Linien wie im Hero, Glas-Karten, blaues Glühen, nummerierte Schritte 01–03): Maik als Kreis unten links, dahinter eine animierte Bühne (`buehne.html`), die den Instagram-Lead-Generator zeigt – Suche nach Zielgruppe → passende Profile → persönliche Nachricht schreibt sich → Liste im Flow Board, DM geschickt → „Typischer Lead-Scraper“ vs. persönlich → „Deine Arbeit: nur senden“ → „Dein eigener Lead-Scraper? Schreib mir“. Namen im Beispiel frei erfunden (im Bild gekennzeichnet).
 
 - Schnitt: Doppel-„Crazy“, „die perfekt zu meiner Positionierung passen … äh“, „und“-Pausen, „Man muss nicht mehr …“ und „Ciao“ raus. Untertitel korrigiert (vorgefertigte, sag Bescheid, interessant).
 - Musik: „Digital Clouds“ (Mixkit, frei), leise.

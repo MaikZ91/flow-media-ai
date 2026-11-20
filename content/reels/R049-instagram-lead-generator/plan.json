@@ -1,14 +1,11 @@
 {
  "stil": {
   "akzent": "#2F5BFF",
-  "text": "#0B0B0B",
-  "dunkel": "#FFFFFF",
   "schrift_kopf": "Oswald",
   "schrift_text": "Inter",
   "versalien": true,
   "ecken": 0,
-  "stimmung": "klar",
-  "hell": true
+  "stimmung": "klar"
  },
  "bild": {
   "look": "natuerlich",
@@ -26,7 +23,7 @@
  },
  "layout": {
   "typ": "kreis",
-  "hintergrund": "#F4F4F1",
+  "hintergrund": "#0A0A0A",
   "buehne": "buehne.html",
   "kreis": {
    "d": 300,
@@ -37,7 +34,8 @@
     900,
     190,
     300
-   ]
+   ],
+   "farbe": "#2F5BFF"
   }
  },
  "untertitel": {
