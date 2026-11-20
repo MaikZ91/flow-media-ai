@@ -191,6 +191,19 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .crm-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 12px 12px } .crm-form label { display: grid; gap: 4px; font-size: 12px; font-weight: 600; color: var(--muted) } .crm-form .w, .crm-form fieldset, .crm-form .crm-act, .crm-form .crm-umf { grid-column: 1 / -1 }
 .crm-form input, .crm-form select, .crm-form textarea { font: inherit; font-size: 14px; color: var(--text, inherit); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card) } .crm-form textarea { min-height: 110px }
 .crm-q { border: 1px solid var(--line); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 10px } .crm-q legend { font-size: 12px; font-weight: 600; color: var(--muted) } .crm-q .chk { display: flex; align-items: center; gap: 6px; font-weight: 400; color: inherit }
+.igl { flex: none; margin: 0 0 22px; border: 1px solid rgba(225,48,108,.35); border-radius: 16px; overflow: hidden }
+.igl h3 { margin: 0; padding: 12px 16px; font-size: 15px; display: flex; gap: 10px; align-items: center; background: linear-gradient(135deg, rgba(131,58,180,.12), rgba(253,29,29,.08) 55%, rgba(252,176,69,.1)) }
+.igl h3 span { font-weight: 400; opacity: .7 }
+.igl ul { list-style: none; margin: 0; padding: 0 }
+.igl li { display: flex; align-items: center; gap: 12px; padding: 9px 12px 9px 16px; border-top: 1px solid rgba(0,0,0,.07) }
+.igl li.done { opacity: .45 }
+.igl .who { flex: 1; min-width: 0; display: flex; flex-direction: column }
+.igl .who a { font-weight: 600; color: inherit; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.igl .who a:hover { text-decoration: underline }
+.igl .who small { opacity: .65; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12.5px }
+.igl .go { flex: none; padding: 9px 14px; border-radius: 999px; border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: 13.5px; color: #fff; background: linear-gradient(45deg, #833ab4, #e1306c 55%, #fcb045) }
+.igl .ok { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); background: transparent; cursor: pointer; font: inherit; font-size: 15px; color: inherit }
+.igl .ok.on { background: #2E8B57; border-color: #2E8B57; color: #fff }
 .crm-act { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 4px 0 }
 .crm-ig { grid-column: 1 / -1; display: grid; gap: 10px; padding: 14px; border-radius: 14px; background: linear-gradient(135deg, rgba(131,58,180,.12), rgba(253,29,29,.08) 55%, rgba(252,176,69,.1)); border: 1px solid rgba(225,48,108,.35) }
 .crm-ig .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center }
@@ -1651,7 +1664,7 @@ function crmCard(c, full = false) {
   const ig = igHandle(c), dm = igDm(c);
   const igBox = ig ? `<div class="crm-ig"><span class="h">Instagram · @${esc(ig)}</span>
     <div class="row">${dm ? `<button type="button" class="igbtn" data-crm-dm="${c.id}">✉ Nachricht kopieren &amp; DM öffnen</button>` : ""}<a class="igbtn ghost" href="https://www.instagram.com/${encodeURIComponent(ig)}/" target="_blank" rel="noopener">Profil ansehen</a>${readOnly || !dm ? "" : `<button type="button" class="igbtn ghost" data-crm-sent="${c.id}">✓ Gesendet</button>`}</div>
-    ${dm ? `<pre>${esc(dm)}</pre>` : `<span class="sub">Kein DM-Entwurf in den Notizen (Zeile „DM-Entwurf …:“).</span>`}</div>` : "";
+    ${dm ? "" : `<span class="sub">Kein DM-Entwurf in den Notizen (Zeile „DM-Entwurf …:“).</span>`}</div>` : "";
   return `<div class="crm-card on">${head}<form class="crm-form" data-crm-form="${c.id}">${igBox}
     <label>Name<input name="name" value="${esc(c.name)}" ${dis} required maxlength="80"></label>
     <label>Status<select name="stage" ${dis}>${CRM_STAGES.map(([k, n]) => `<option value="${k}" ${c.stage === k ? "selected" : ""}>${n}</option>`).join("")}</select></label>
@@ -1664,10 +1677,17 @@ function crmCard(c, full = false) {
     ${u ? `<div class="crm-umf"><h4>Antworten aus der Umfrage · ${new Date(u.created_at).toLocaleDateString("de-DE")}</h4>${umfDetail(u)}</div>` : c.umfrageId && umf.loading ? `<p class="sub">Lade Umfrage-Antworten …</p>` : ""}
   </form></div>`;
 }
+function igList() {
+  const L = crm.filter(c => igHandle(c) && igDm(c) && (c.stage || "lead") === "lead").sort((a, b) => (a.dmAm ? 1 : 0) - (b.dmAm ? 1 : 0) || (b.createdAt || 0) - (a.createdAt || 0));
+  if (!L.length) return "";
+  const offen = L.filter(c => !c.dmAm).length;
+  return `<div class="igl"><h3>Instagram-Leads <span>${offen} offen · ${L.length - offen} geschickt</span></h3><ul>${L.map(c => { const h = igHandle(c);
+    return `<li class="${c.dmAm ? "done" : ""}"><span class="who"><a href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener">${esc(c.name)} · @${esc(h)}</a><small>${esc(c.kurz || "")}</small></span><button type="button" class="go" data-crm-dm="${c.id}">DM</button>${readOnly ? "" : `<button type="button" class="ok ${c.dmAm ? "on" : ""}" data-crm-sent="${c.id}" title="Als gesendet markieren">✓</button>`}</li>` }).join("")}</ul></div>`;
+}
 function renderCrm() {
   const list = crm.slice().sort((a, b) => (a.name || "").localeCompare(b.name || "", "de"));
   const cols = CRM_STAGES.map(([k, n]) => { const items = list.filter(c => (c.stage || "lead") === k);
-    return `<div class="crm-col"><h3>${n} <span>${items.length}</span></h3>${items.map(crmCard).join("") || `<p class="sub">–</p>`}</div>` }).join("");
+    return `<div class="crm-col"><h3>${n} <span>${items.length}</span></h3>${items.map(c => crmCard(c)).join("") || `<p class="sub">–</p>`}</div>` }).join("");
   const linked = new Set(crm.map(c => String(c.umfrageId || "")));
   const ans = umf.rows.map(r => { const a = r.antworten || {}, open = umf.open === r.id, has = linked.has(String(r.id));
     return `<div class="crm-card ${open ? "on" : ""}"><button type="button" class="crm-head" data-umf-open="${r.id}"><b>${esc(a.q1_name || "Ohne Namen")}</b><span class="crm-src">${r.status === "neu" ? `<i class="u">neu</i>` : ""}${has ? `<i>im CRM</i>` : ""}</span><span class="crm-sub">${esc(a.q4_situation || "")} · KI ${esc(a.q6_sicherheit || "–")}/10 · ${new Date(r.created_at).toLocaleDateString("de-DE")}</span></button>
@@ -1675,6 +1695,7 @@ function renderCrm() {
   const umfBody = !WEB ? `<div class="note">Die Umfrage-Antworten gibt es in der Web-Version deines Boards.</div>` : umf.error ? `<div class="note">${esc(umf.error)} <button type="button" class="mini" data-umf-reload>Erneut laden</button></div>` : umf.loading && !umf.loaded ? `<p class="sub">Lade Antworten …</p>` : ans || `<p class="sub">Noch keine Antworten.</p>`;
   return `<section class="panel stats crm">
     <div class="cal-head"><h2 style="margin:0">Kontakte</h2><span class="sub">${crm.length} Kontakte · ${umf.rows.length} Umfrage-Antworten</span>${readOnly ? "" : `<button type="button" class="mini" data-crm-new>+ Kontakt</button>`}<a class="mini" href="https://maikz91.github.io/flow-media-ai/flow-dna/umfrage/" target="_blank" rel="noopener">Umfrage öffnen</a></div>
+    ${igList()}
     <div class="crm-cols">${cols}</div>
     ${crmUi.open && crm.find(c => c.id === crmUi.open) ? `<div class="crm-edit">${crmCard(crm.find(c => c.id === crmUi.open), true)}</div>` : ""}
     <div class="cal-head" style="margin-top:22px"><h2 style="margin:0">Wunschkundenbefragung</h2><button type="button" class="mini" data-umf-reload>Aktualisieren</button></div>
@@ -1692,7 +1713,8 @@ document.addEventListener("click", e => {
     const ok = copyText(igDm(c)); window.open("https://ig.me/m/" + encodeURIComponent(igHandle(c)), "_blank", "noopener");
     toast(ok ? "Nachricht kopiert – im Chat einfügen und senden" : "Kopieren ging nicht – Text bitte markieren"); return }
   const sb = t.closest("[data-crm-sent]"); if (sb) { const c = crm.find(x => x.id === sb.dataset.crmSent); if (!c) return;
-    const day = new Date().toLocaleDateString("de-DE"); saveCrm({ ...c, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." }); toast("Als gesendet markiert"); return }
+    if (c.dmAm) { saveCrm({ ...c, dmAm: null, next: "DM schicken (Entwurf in den Notizen)" }); return }
+    const day = new Date().toLocaleDateString("de-DE"); saveCrm({ ...c, dmAm: day, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." }); toast("Als gesendet markiert"); return }
   const uc = t.closest("[data-umf-crm]"); if (uc) { const r = umf.rows.find(x => String(x.id) === uc.dataset.umfCrm); if (!r) return; const a = r.antworten || {};
     const kontakt = [a.q21_telefon, a.q21_email, a.q21_instagram && "@" + String(a.q21_instagram).replace(/^@/, "")].filter(Boolean).join(" · ");
     const c = { id: newId(), name: a.q1_name || "Umfrage #" + r.id, stage: a.q20_testkunde?.startsWith("Ja") ? "gespraech" : "lead", quellen: ["Umfrage"], kurz: [a.q3_beruf, a.q7_idee].filter(Boolean).join(" · ").slice(0, 160), kontakt, umfrageId: r.id, next: a.q20_testkunde?.startsWith("Ja") ? "Nachgespräch / Testkunde anbieten" : "", createdAt: Date.now() };
