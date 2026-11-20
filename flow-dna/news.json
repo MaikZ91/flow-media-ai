@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-19T20:43+00:00",
+ "stand": "2026-11-20T02:23+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -19,7 +19,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 27.9
+   "r": 27.0
   },
   {
    "t": "KI-Branche wächst weiter stark, aber die Dynamik kühlt ab",
@@ -32,7 +32,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 13.7
+   "r": 12.8
   },
   {
    "t": "Anthropic-Aktien an der Börse gestartet",
@@ -46,7 +46,7 @@
     "KI-Blase & Geld"
    ],
    "n": 2,
-   "r": 25.4
+   "r": 24.5
   },
   {
    "t": "KI-generierte Präzedenzfälle: Anwältin vom EGMR ausgeschlossen",
@@ -57,7 +57,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 6.4
   },
   {
    "t": "Neue US-Chip-Regeln: Moonshot AI streicht 150-Millionen-Deal, TSMC und Samsung stoppen Lieferungen",
@@ -71,7 +71,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 15.3
+   "r": 14.4
   },
   {
    "t": "Cyberangriff auf EU-Kommission: Verdacht auf KI-Tool Artex, tagelange Ausfälle",
@@ -84,7 +84,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 11.3
+   "r": 10.3
   },
   {
    "t": "Mit KI-Suche durch den Behörden-Dschungel: NRW stellt neues Webportal vor",
@@ -95,7 +95,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.1
+   "r": 6.2
   },
   {
    "t": "Telekom steigt bei Mistral ein: 100 Millionen Euro für Europas Antwort auf OpenAI",
@@ -111,7 +111,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 29.0
+   "r": 28.1
   },
   {
    "t": "Schäden durch KI-Agenten: Ethik-Expertin schlägt Haftstrafen für CEOs vor",
@@ -125,7 +125,7 @@
     "Bildung & Schule"
    ],
    "n": 1,
-   "r": 13.0
+   "r": 12.0
   },
   {
    "t": "WTF: KI nicht nach Geschenken fragen – sonst bekommen Deutsche die billigsten",
@@ -136,7 +136,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.9
+   "r": 6.0
   },
   {
    "t": "Sicherheitsprobleme bei Metas KI-Agent: Teilt Muse Informationen aus fremden Chats?",
@@ -150,7 +150,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 14.9
+   "r": 14.0
   },
   {
    "t": "Anthropics historischer Börsengang bringt 81,3 Milliarden US-Dollar ein und beunruhigt eigenen Frühinvestor",
@@ -164,7 +164,7 @@
     "KI-Blase & Geld"
    ],
    "n": 2,
-   "r": 24.7
+   "r": 23.7
   },
   {
    "t": "Microsofts KI-Framework verteilt Malware: So bekamen Angreifer Zugang",
@@ -178,7 +178,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 24.5
+   "r": 23.6
   },
   {
    "t": "OpenAI-Forscher würden eher auf 40 Prozent ihrer Kollegen verzichten als auf ihre Coding-Agenten",
@@ -193,7 +193,7 @@
     "Coding mit KI"
    ],
    "n": 2,
-   "r": 30.5
+   "r": 29.6
   },
   {
    "t": "Google Genie 4: Interaktive KI-Welten jetzt für Abonnenten verfügbar",
@@ -206,7 +206,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 22.4
+   "r": 21.5
   },
   {
    "t": "Pages, Numbers, Keynote: Apples Office-Suite bekommt KI-Boost",
@@ -217,7 +217,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 5.5
   },
   {
    "t": "Gemini 4 Neon: Google setzt im KI-Wettlauf auf Tempo und Preiskampf",
@@ -230,7 +230,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 22.2
+   "r": 21.3
   },
   {
    "t": "Microsofts KI-Framework verteilt Malware: So konnten sich Angreifer Zugang verschaffen",
@@ -244,7 +244,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 24.1
+   "r": 23.2
   },
   {
    "t": "Offene OCR-Modelle sind in 18 Monaten auf ein Fünftel der Kosten gefallen",
@@ -255,7 +255,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.1
+   "r": 5.2
   },
   {
    "t": "Schnäppchenjagd mit ChatGPT & Gemini: Warum du dich am Black Friday lieber nicht blind auf KI verlassen solltest",
@@ -269,7 +269,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 18.0
+   "r": 17.1
   },
   {
    "t": "Gemini 4 Neon macht Googles Spitzenmodell Konkurrenz",
@@ -283,7 +283,7 @@
     "Jobs & Arbeit"
    ],
    "n": 2,
-   "r": 24.0
+   "r": 23.0
   },
   {
    "t": "How OpenAI’s Performance Factory keeps ChatGPT fast",
@@ -296,7 +296,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.9
+   "r": 10.9
   },
   {
    "t": "Donnerstag: Anthropics überzeichneter Börsengang, Meta mit noch einem Messenger",
@@ -309,7 +309,7 @@
     "Meta / Llama"
    ],
    "n": 1,
-   "r": 9.4
+   "r": 8.5
   },
   {
    "t": "Anthropic: Finaler IPO-Preis steht fest",
@@ -323,7 +323,53 @@
     "KI-Blase & Geld"
    ],
    "n": 2,
-   "r": 22.8
+   "r": 21.8
+  },
+  {
+   "t": "Deploying Daybreak Red",
+   "s": "Explore a reference architecture for supervised security investigations with Daybreak Red, including safety controls, setup, and monitoring.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/learn/deploying-daybreak-red",
+   "d": "2026-11-19T00:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "KI-Blase & Geld"
+   ],
+   "n": 1,
+   "r": 5.6
+  },
+  {
+   "t": "See PR scans in action",
+   "s": "Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/learn/pr-scans-demo",
+   "d": "2026-11-19T00:00:00+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 3.6
+  },
+  {
+   "t": "Explore the Codex Security Plugin",
+   "s": "Watch a demo of the Codex Security Plugin and see the workflow in action, from getting started to reviewing the results shown in the recording.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/learn/codex-security-plugin-demo",
+   "d": "2026-11-19T00:00:00+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 3.6
+  },
+  {
+   "t": "Get started with Daybreak Blue",
+   "s": "Watch a walkthrough of onboarding to Daybreak Blue, with a closer look at the setup experience and how to get started.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+   "d": "2026-11-19T00:00:00+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 3.6
   },
   {
    "t": "Google veröffentlicht Gemini 4 Neon als neues Frontier-Modell für komplexe Aufgaben",
@@ -337,7 +383,7 @@
     "KI-Video & Bild"
    ],
    "n": 2,
-   "r": 22.0
+   "r": 21.1
   },
   {
    "t": "Google Deepmind startet Genie 4-Rollout: Interaktive Welten per Textprompt in Echtzeit verändern",
@@ -350,7 +396,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 19.7
+   "r": 18.8
   },
   {
    "t": "KI übernimmt das Chipdesign: OpenAI optimiert AMD-Grafikprozessoren mit eigenen Modellen",
@@ -364,7 +410,7 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 23.5
+   "r": 22.5
   },
   {
    "t": "AI Gigafactory im Norden: Nokia und Partner planen europäische KI-Infrastruktur",
@@ -377,7 +423,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 7.4
+   "r": 6.5
   },
   {
    "t": "The Silent Consensus",
@@ -390,22 +436,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.2
-  },
-  {
-   "t": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
-   "s": "Sumitomo Life uses ChatGPT Enterprise to research insurers, prepare proposals, and draft code for investment analysis. Early use by executives helped drive adoption.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/customer-stories/sumitomo-life",
-   "d": "2026-11-18T08:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "Coding mit KI",
-    "KI-Blase & Geld"
-   ],
-   "n": 2,
-   "r": 23.9
+   "r": 7.3
   },
   {
    "t": "Research acceleration: The jagged frontier",
@@ -420,7 +451,22 @@
     "Coding mit KI"
    ],
    "n": 2,
-   "r": 25.9
+   "r": 24.9
+  },
+  {
+   "t": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
+   "s": "Sumitomo Life uses ChatGPT Enterprise to research insurers, prepare proposals, and draft code for investment analysis. Early use by executives helped drive adoption.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/sumitomo-life",
+   "d": "2026-11-18T08:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "Coding mit KI",
+    "KI-Blase & Geld"
+   ],
+   "n": 2,
+   "r": 22.9
   },
   {
    "t": "Inside the Codex sandbox",
@@ -431,7 +477,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 1.9
+   "r": 0.9
   },
   {
    "t": "Managing frontier AI risk: From training to deployment",
@@ -444,20 +490,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 7.5
-  },
-  {
-   "t": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
-   "s": "Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
-   "d": "2026-11-18T00:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.5
+   "r": 6.6
   },
   {
    "t": "Advancing chip design with OpenAI models",
@@ -471,54 +504,14 @@
     "Nvidia & Chips"
    ],
    "n": 2,
-   "r": 20.5
-  },
-  {
-   "t": "Introducing GPT-6.2 Astra and Sol",
-   "s": "Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
-   "d": "2026-11-17T17:45:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "Coding mit KI"
-   ],
-   "n": 2,
    "r": 20.0
   },
   {
-   "t": "Introducing ChatGPT for Sales",
-   "s": "Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+   "t": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
+   "s": "Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
    "q": "OpenAI",
-   "l": "https://openai.com/index/introducing-chatgpt-for-sales",
-   "d": "2026-11-17T08:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "Strengthening NATO and allied cyber defenses with AI",
-   "s": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
-   "d": "2026-11-17T00:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "Introducing OpenAI for Chile",
-   "s": "OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/introducing-openai-for-chile",
-   "d": "2026-11-17T00:00:00+00:00",
+   "l": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+   "d": "2026-11-18T00:00:00+00:00",
    "lang": "en",
    "tags": [
     "OpenAI"
@@ -539,6 +532,18 @@
  ],
  "videos": [
   {
+   "id": "sof3vW4mHTs",
+   "t": "The making of Anthropic",
+   "q": "Anthropic",
+   "d": "2026-11-19T21:03:23+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.1
+  },
+  {
    "id": "FORdPIWOH5k",
    "t": "Gemini and the path to AGI with Koray Kavukcuoglu",
    "q": "Google DeepMind",
@@ -548,7 +553,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.9
+   "r": 12.9
   },
   {
    "id": "dvcxM2aHKGY",
@@ -558,7 +563,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 6.3
   },
   {
    "id": "JDsFHmq9hlA",
@@ -568,7 +573,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 7.1
+   "r": 6.1
   },
   {
    "id": "ikNf7eW8CHk",
@@ -578,7 +583,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 6.5
+   "r": 5.5
   },
   {
    "id": "mexGFhjgtOM",
@@ -590,7 +595,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.3
+   "r": 11.3
   },
   {
    "id": "Cy7Wz6Z4TWU",
@@ -602,7 +607,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 12.1
+   "r": 11.2
   },
   {
    "id": "AhmCKHNqhB8",
@@ -614,7 +619,7 @@
     "OpenAI"
    ],
    "n": 3,
-   "r": 30.1
+   "r": 29.1
   },
   {
    "id": "pVc6KkjeCfU",
@@ -624,7 +629,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 3.6
+   "r": 2.6
   },
   {
    "id": "EDp4IoAUsXY",
@@ -634,7 +639,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 3.6
+   "r": 2.6
   },
   {
    "id": "k6VBIp19p0A",
@@ -648,7 +653,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 13.3
+   "r": 12.3
   },
   {
    "id": "a2x_dlrOMXQ",
@@ -658,7 +663,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.3
+   "r": 1.3
   },
   {
    "id": "2pdF52EVlbM",
@@ -670,7 +675,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 16.6
+   "r": 16.0
   },
   {
    "id": "pmOJIq7Ah00",
@@ -682,7 +687,7 @@
     "OpenAI"
    ],
    "n": 3,
-   "r": 26.4
+   "r": 26.0
   },
   {
    "id": "tKoDPOrLMX0",
@@ -988,22 +993,12 @@
    ],
    "n": 2,
    "r": 16.0
-  },
-  {
-   "id": "UxJZrCFzTHY",
-   "t": "Model Hardware Standard: AI operating physical equipment",
-   "q": "Anthropic",
-   "d": "2026-08-28T00:40:16+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
   }
  ],
  "themen": [
   {
    "name": "OpenAI",
-   "meldungen": 23,
+   "meldungen": 19,
    "quellen": 5
   },
   {
@@ -1018,18 +1013,13 @@
   },
   {
    "name": "Claude / Anthropic",
-   "meldungen": 5,
-   "quellen": 3
+   "meldungen": 6,
+   "quellen": 4
   },
   {
    "name": "KI-Blase & Geld",
-   "meldungen": 4,
+   "meldungen": 5,
    "quellen": 3
-  },
-  {
-   "name": "Coding mit KI",
-   "meldungen": 4,
-   "quellen": 2
   },
   {
    "name": "Nvidia & Chips",
@@ -1040,6 +1030,11 @@
    "name": "Mistral & Europa",
    "meldungen": 3,
    "quellen": 2
+  },
+  {
+   "name": "Coding mit KI",
+   "meldungen": 3,
+   "quellen": 2
   }
  ],
  "aktien": [
@@ -1047,11 +1042,12 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 137.5,
+   "preis": 138.43,
    "cur": "USD",
-   "d1": -4.18,
-   "m1": -7.1,
+   "d1": -2.31,
+   "m1": -6.3,
    "spark": [
+    147.79,
     159.31,
     144.75,
     147.49,
@@ -1072,22 +1068,19 @@
     139.11,
     137.36,
     141.7,
-    143.5,
-    137.49
+    143.5
    ],
-   "t": "2026-11-19T20:43+00:00"
+   "t": "2026-11-19T21:00+00:00"
   },
   {
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 66.8,
+   "preis": 62.3,
    "cur": "HKD",
-   "d1": -0.0,
-   "m1": -2.4,
+   "d1": -6.74,
+   "m1": -9.0,
    "spark": [
-    68.45,
-    67.35,
     63.9,
     68.2,
     68.5,
@@ -1107,18 +1100,20 @@
     72.35,
     70.4,
     66.8,
-    67.8
+    67.8,
+    66.8,
+    62.3
    ],
-   "t": "2026-11-19T08:08+00:00"
+   "t": "2026-11-20T02:07+00:00"
   },
   {
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 375.68,
+   "preis": 374.41,
    "cur": "USD",
-   "d1": -2.1,
-   "m1": 2.1,
+   "d1": -2.43,
+   "m1": 0.2,
    "spark": [
     386.47,
     374.58,
@@ -1141,18 +1136,18 @@
     379.74,
     380.11,
     383.72,
-    375.68
+    374.41
    ],
-   "t": "2026-11-19T20:43+00:00"
+   "t": "2026-11-19T21:00+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 147.31,
+   "preis": 145.98,
    "cur": "USD",
-   "d1": -2.42,
-   "m1": -32.1,
+   "d1": -3.3,
+   "m1": -32.6,
    "spark": [
     221.97,
     212.21,
@@ -1175,18 +1170,18 @@
     156.14,
     155.46,
     150.96,
-    147.31
+    145.98
    ],
-   "t": "2026-11-19T20:43+00:00"
+   "t": "2026-11-19T21:00+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 273.77,
+   "preis": 272.66,
    "cur": "USD",
-   "d1": -3.07,
-   "m1": -20.5,
+   "d1": -3.46,
+   "m1": -19.9,
    "spark": [
     334.76,
     324.22,
@@ -1209,18 +1204,18 @@
     283.72,
     280.2,
     282.44,
-    273.77
+    272.66
    ],
-   "t": "2026-11-19T20:43+00:00"
+   "t": "2026-11-19T21:00+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 500.39,
+   "preis": 498.3,
    "cur": "USD",
-   "d1": -1.55,
-   "m1": -6.2,
+   "d1": -1.97,
+   "m1": -6.3,
    "spark": [
     532.95,
     521.08,
@@ -1243,9 +1238,9 @@
     517.99,
     506.24,
     508.29,
-    500.39
+    498.3
    ],
-   "t": "2026-11-19T20:43+00:00"
+   "t": "2026-11-19T21:00+00:00"
   },
   {
    "name": "Anthropic",
