@@ -1,0 +1,233 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Stage for the "Kreis + Bühne" layout: white Flow look, one blue accent. Every frame is a pure function of t (window.DRAW). */
+:root{--p:#F4F4F1;--k:#0B0B0B;--m:#6B6B66;--l:rgba(11,11,11,.12);--b:#2F5BFF;--w:#fff;--ok:#1E9E63;--warn:#E8A317;--bad:#D9452B}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:var(--p);overflow:hidden;font-family:Inter,sans-serif;color:var(--k)}
+.sc{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+.grid{position:absolute;inset:0;background-image:radial-gradient(rgba(11,11,11,.08) 1.4px,transparent 1.4px);background-size:36px 36px}
+.tag{font:700 22px Montserrat;letter-spacing:.22em;text-transform:uppercase;color:var(--m)}
+.tag b{color:var(--b)}
+.h{font:700 78px/.95 Oswald;text-transform:uppercase}
+.card{position:absolute;background:var(--w);border:3px solid var(--k);box-shadow:14px 14px 0 rgba(11,11,11,.08)}
+.mono{font-family:'JetBrains Mono',monospace}
+.ex{position:absolute;left:60px;right:60px;top:1262px;text-align:center;font:600 19px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#9A9A94}
+/* S1 rig */
+#rig{left:200px;top:520px;width:680px;height:560px}
+#rig .top{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:3px solid var(--k)}
+#rig .leds{display:flex;gap:10px}#rig .leds i{width:16px;height:16px;border-radius:50%;background:#ddd}
+#rig .body{padding:28px}
+#rig .slot{height:62px;border:2px solid var(--l);margin-bottom:14px;display:flex;align-items:center;gap:16px;padding:0 18px;font:600 24px 'JetBrains Mono'}
+#rig .bar{flex:1;height:10px;background:#ececE8;position:relative;overflow:hidden}#rig .bar span{position:absolute;inset:0 auto 0 0;background:var(--b)}
+#rig .st{font:600 26px Inter;margin-top:20px}
+#cloud{position:absolute;left:380px;top:1120px;width:320px;text-align:center;font:600 26px Inter;color:var(--m)}
+/* S2 privacy */
+#house{left:300px;top:640px;width:480px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+#house .lock{font:700 120px Oswald;color:var(--b)}
+.doc{position:absolute;width:110px;height:140px;background:#fff;border:3px solid var(--k);padding:16px 12px}
+.doc i{display:block;height:7px;background:#d7d7d2;margin-bottom:10px}
+#cl2{position:absolute;left:720px;top:380px;width:280px;height:170px}
+#shield{position:absolute;left:120px;right:120px;top:1100px;text-align:center}
+/* S3 fmea */
+#fm{left:90px;top:420px;width:900px;padding:44px 48px}
+#fm .big{font:700 150px/.9 Oswald;letter-spacing:.02em}
+#fm .row{display:flex;gap:18px;margin-top:40px}
+#fm .k{flex:1;border:3px solid var(--k);padding:22px 18px;text-align:center}
+#fm .k b{display:block;font:700 70px/1 Oswald}#fm .k span{font:600 22px Inter;color:var(--m)}
+#fm .eq{margin-top:34px;font:700 54px Oswald;text-align:center}
+/* S4 app */
+#app{left:50px;top:350px;width:980px;height:900px}
+#app .tb{display:flex;align-items:center;gap:14px;padding:18px 24px;border-bottom:3px solid var(--k);font:700 26px Inter}
+#app .tb .loc{margin-left:auto;font:700 18px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--k);padding:8px 14px}
+#app .tb .dot{width:12px;height:12px;border-radius:50%;background:var(--ok)}
+#app .cols{display:grid;grid-template-columns:340px 1fr;height:calc(100% - 70px)}
+#app .left{border-right:3px solid var(--k);padding:22px;position:relative}
+#app .pdf{border:2px solid var(--k);padding:16px 16px 10px;background:#fff;position:relative}
+#app .pdf h4{font:700 22px Inter;margin-bottom:12px}
+#app .ln{font:500 20px/1.35 Inter;color:#3a3a37;padding:6px 8px;margin:0 -8px 4px;border-left:4px solid transparent}
+#app .ln.hi{background:#E9EEFF;border-left-color:var(--b);color:var(--k)}
+#app .scan{position:absolute;left:0;right:0;height:4px;background:var(--b);box-shadow:0 0 18px var(--b)}
+#app .right{padding:22px 24px;position:relative}
+#app .steps{display:grid;gap:8px;margin-bottom:20px}
+#app .step{display:flex;gap:12px;align-items:center;font:600 25px Inter;padding:9px 12px;border:2px solid var(--l);background:#fafaf8}
+#app .step i{font:700 18px 'JetBrains Mono';font-style:normal;color:#fff;background:var(--k);width:30px;height:30px;display:grid;place-items:center}
+table{width:100%;border-collapse:collapse;font-size:18px}
+th{font:700 17px Montserrat;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:8px 6px;border-bottom:3px solid var(--k)}
+td{padding:12px 6px;border-bottom:1px solid var(--l);font:500 22px Inter;vertical-align:middle}
+td.n{font:600 24px 'JetBrains Mono';text-align:center;width:46px}
+td.r{font:700 26px 'JetBrains Mono';text-align:right;width:86px}
+.pill{display:inline-block;padding:3px 10px;font:700 18px 'JetBrains Mono';color:#fff}
+#app .status{position:absolute;left:24px;right:24px;bottom:20px;display:flex;justify-content:space-between;align-items:center;font:600 24px Inter;color:var(--m)}
+#app .status b{color:var(--k)}
+.cursor{position:absolute;width:34px;height:42px}
+/* S5 meeting */
+#clock{position:absolute;left:0;right:0;top:420px;text-align:center}
+#clock .t{font:700 190px/1 'JetBrains Mono';letter-spacing:-4px}
+#ppl{position:absolute;left:120px;right:120px;top:720px;height:420px}
+.person{position:absolute;width:120px;height:150px}
+.person .hd{width:70px;height:70px;border-radius:50%;background:#d8d8d3;margin:0 auto}
+.person .bd{width:120px;height:70px;border-radius:60px 60px 0 0;background:#c9c9c4;margin-top:8px}
+.bub{position:absolute;background:#fff;border:3px solid var(--k);padding:12px 20px;font:700 34px Oswald;white-space:nowrap}
+#scale{position:absolute;left:150px;right:150px;top:1180px;display:flex;gap:8px}
+#scale span{flex:1;height:56px;border:2px solid var(--k);display:grid;place-items:center;font:700 26px 'JetBrains Mono';background:#fff}
+/* S6 export */
+#xl{left:340px;top:560px;width:400px;height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+#xl .ic{width:150px;height:180px;border:4px solid var(--k);position:relative;background:#fff}
+#xl .ic::after{content:"XLSX";position:absolute;left:-18px;bottom:22px;background:var(--ok);color:#fff;font:700 26px Montserrat;padding:6px 12px;letter-spacing:.08em}
+#xl .ic i{position:absolute;left:18px;right:18px;height:10px;background:#e2e2dd}
+#meet{position:absolute;left:150px;right:150px;top:950px;display:flex;align-items:center;gap:22px;justify-content:center}
+#meet .ck{width:70px;height:70px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font:700 44px Inter}
+#meet b{font:700 50px/1 Oswald;text-transform:uppercase}
+/* S7 end */
+#end{position:absolute;left:90px;right:90px;top:520px}
+#end .h{font-size:120px}
+</style></head><body>
+<div class="grid"></div>
+
+<div class="sc" id="s1">
+ <div class="card" id="rig">
+  <div class="top"><span class="tag"><b>●</b> Lokaler KI-Rechner</span><span class="leds"><i></i><i></i><i></i></span></div>
+  <div class="body">
+   <div class="slot">GPU<div class="bar"><span id="g1"></span></div></div>
+   <div class="slot">Modell<div class="bar"><span id="g2"></span></div></div>
+   <div class="slot">RAM<div class="bar"><span id="g3"></span></div></div>
+   <p class="st mono" id="st1">&gt; Modell lädt …</p>
+  </div>
+ </div>
+ <div id="cloud"><span style="font:700 40px Oswald;text-decoration:line-through;text-decoration-thickness:4px">CLOUD</span><br>0 Byte nach draußen</div>
+</div>
+
+<div class="sc" id="s2">
+ <svg id="cl2" viewBox="0 0 280 170"><path d="M70 150h150a50 50 0 0 0 0-100 70 70 0 0 0-130-10 52 52 0 0 0-20 110z" fill="#fff" stroke="#0B0B0B" stroke-width="6"/><path id="x2" d="M110 60l60 60M170 60l-60 60" stroke="#D9452B" stroke-width="12" stroke-linecap="round"/></svg>
+ <div class="card" id="house"><div class="lock">🔒</div><div class="tag" style="letter-spacing:.12em;font-size:21px">Daten bleiben im Haus</div></div>
+ <div class="doc" id="d1"><i></i><i></i><i style="width:60%"></i><i></i></div>
+ <div class="doc" id="d2"><i></i><i style="width:70%"></i><i></i><i></i></div>
+ <div class="doc" id="d3"><i></i><i></i><i></i><i style="width:50%"></i></div>
+ <div id="shield"><p class="h" style="font-size:66px">Lokale KI:</p><p style="font:500 34px Inter;margin-top:12px;color:var(--m)">rechnet auf dem eigenen Rechner – nichts geht raus.</p></div>
+</div>
+
+<div class="sc" id="s3">
+ <div class="card" id="fm">
+  <span class="tag"><b>Prozess-FMEA</b> · kurz erklärt</span>
+  <div class="big" id="fmt">PFMEA</div>
+  <p style="font:500 30px/1.35 Inter;color:var(--m);margin-top:10px">Was kann in welchem Prozessschritt schiefgehen – und wie schlimm ist das?</p>
+  <div class="row">
+   <div class="k" id="k1"><b>B</b><span>Bedeutung</span></div>
+   <div class="k" id="k2"><b>A</b><span>Auftreten</span></div>
+   <div class="k" id="k3"><b>E</b><span>Entdeckung</span></div>
+  </div>
+  <div class="eq" id="eq">B × A × E = <span style="color:var(--b)">RPZ</span></div>
+ </div>
+</div>
+
+<div class="sc" id="s4">
+ <div class="card" id="app">
+  <div class="tb"><span class="dot"></span>Risiko-Assistent<span class="loc">● lokal · offline</span></div>
+  <div class="cols">
+   <div class="left">
+    <p class="tag" style="margin-bottom:12px">Eingabe</p>
+    <div class="pdf" id="pdf">
+     <h4>📄 Anleitung: Espressomaschine entkalken</h4>
+     <p class="ln">1. Wassertank leeren, Entkalker einfüllen</p>
+     <p class="ln">2. Entkalkungsprogramm starten</p>
+     <p class="ln">3. Brühgruppe spülen</p>
+     <p class="ln">4. Tank ausspülen, Frischwasser füllen</p>
+     <p class="ln">5. Klarspülgang durchlaufen lassen</p>
+     <div class="scan" id="scan"></div>
+    </div>
+   </div>
+   <div class="right">
+    <p class="tag" style="margin-bottom:12px" id="rh">Prozessschritte</p>
+    <div class="steps" id="steps"></div>
+    <table id="tbl"><thead><tr><th>Mögl. Fehler</th><th style="text-align:center">B</th><th style="text-align:center">A</th><th style="text-align:center">E</th><th style="text-align:right">RPZ</th></tr></thead><tbody id="tb"></tbody></table>
+    <div class="status"><span id="stat">Warte auf Anleitung …</span><b id="cnt"></b></div>
+   </div>
+  </div>
+ </div>
+ <svg class="cursor" id="cur" viewBox="0 0 34 42"><path d="M2 2l0 34 9-8 6 13 6-3-6-12 12 0z" fill="#0B0B0B" stroke="#fff" stroke-width="2"/></svg>
+</div>
+
+<div class="sc" id="s5">
+ <div id="clock"><p class="tag">Risiko-Meeting</p><div class="t" id="clk">00:00:00</div></div>
+ <div id="ppl"></div>
+ <div id="scale"></div>
+</div>
+
+<div class="sc" id="s6">
+ <div class="card" id="xl"><div class="ic"><i style="top:30px"></i><i style="top:56px"></i><i style="top:82px"></i><i style="top:108px"></i></div><span class="tag">Risikoanalyse.xlsx</span></div>
+ <div id="meet"><div class="ck">✓</div><b>Mit fertiger Tabelle<br>ins Meeting</b></div>
+</div>
+
+<div class="sc" id="s7">
+ <div id="end"><span class="tag"><b>●</b> Lokale KI · Use Case</span><p class="h" style="margin-top:24px">Weniger<br>diskutieren.<br><span style="color:var(--b)">Mehr Zeit.</span></p></div>
+</div>
+
+<p class="ex" id="ex">Beispiel · Anleitung und Werte frei erfunden</p>
+
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const E=x=>1-Math.pow(1-cl(x),3);                     // ease out
+const S=(t,a,d=.45)=>E((t-a)/d);                        // 0..1 starting at a
+const B=x=>{x=cl(x);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}; // back out
+const scene=(id,t,a,b,f=.35)=>{const o=Math.min(cl((t-a)/f),cl((b-t)/f));$(id).style.opacity=o;return o>0};
+const ROWS=[["Falsche Dosierung Entkalker",6,4,5],["Programm bricht ab",5,3,3],["Kalkreste in Brühgruppe",4,5,6],["Entkalker-Reste im Tank",8,3,4],["Klarspülgang ausgelassen",9,2,6]];
+const STEPS=["Entkalker einfüllen","Programm starten","Brühgruppe spülen","Tank ausspülen","Klarspülen"];
+const col=r=>r>=110?"var(--bad)":r>=80?"var(--warn)":"var(--ok)";
+// scene windows (seconds in the cut video) – synced to the spoken words
+const T={s1:[0,4.55],s2:[4.5,11.0],s3:[10.95,15.8],s4:[15.75,24.95],s5:[24.9,33.1],s6:[33.05,41.6],s7:[41.55,99]};
+// meeting people + scale
+for(let i=0;i<5;i++){const p=document.createElement("div");p.className="person";p.style.left=(i*180+20)+"px";p.style.top=(i%2?180:120)+"px";p.innerHTML='<div class="hd"></div><div class="bd"></div>';$("ppl").appendChild(p)}
+const BUBS=[["6!",60,20,28.98],["Nein, 7!",420,-10,29.7],["Eher 5 …",640,60,30.4],["Wieso 8?",230,230,31.1],["Nochmal von vorn.",470,250,31.8]];
+BUBS.forEach(([t,x,y],i)=>{const b=document.createElement("div");b.className="bub";b.id="bb"+i;b.textContent=t;b.style.left=x+"px";b.style.top=y+"px";$("ppl").appendChild(b)});
+for(let i=1;i<=10;i++){const s=document.createElement("span");s.textContent=i;s.id="sc"+i;$("scale").appendChild(s)}
+
+window.DRAW=function(t){
+ // S1 local AI rig boots
+ if(scene("s1",t,...T.s1)){const k=S(t,.1,.6);$("rig").style.transform=`translateY(${(1-k)*60}px)`;
+  $("g1").style.width=(S(t,.6,1.6)*92)+"%";$("g2").style.width=(S(t,1.2,1.8)*100)+"%";$("g3").style.width=(S(t,1.6,1.5)*68)+"%";
+  [...document.querySelectorAll("#rig .leds i")].forEach((l,i)=>l.style.background=t>2.77+i*.15?(i==2?"#2F5BFF":"#1E9E63"):"#ddd");
+  $("st1").innerHTML=t<2.77?"&gt; Modell lädt …":"&gt; <b style='color:#1E9E63'>bereit</b> · läuft offline";
+  $("cloud").style.opacity=S(t,3.31,.5)}
+ // S2 privacy: documents bounce off the cloud, then go into the local box
+ if(scene("s2",t,...T.s2)){$("house").style.transform=`scale(${.9+.1*B((t-4.6)/.6)})`;
+  [["d1",0],["d2",.5],["d3",1]].forEach(([id,o])=>{const d=$(id);let x,y;
+   if(t<9.03){const k=cl((t-5+o*1.3)/1.6);const kk=k<.7?k/.7:1-(k-.7)/.3*.8;x=140+kk*560;y=1000-kk*560;d.style.opacity=k>0?1:0}
+   else{const k=E((t-9.03-o*.25)/.9);x=140+(470-140)*k;y=1000-(1000-760)*k;d.style.opacity=1-cl((t-10.2)/.4)}
+   d.style.left=x+"px";d.style.top=y+"px";d.style.transform=`rotate(${(o-.5)*14}deg)`});
+  $("x2").style.opacity=t>5.6?1:0;$("shield").style.opacity=S(t,9.03,.5);$("house").querySelector(".lock").style.transform=`scale(${1+.15*Math.sin(Math.max(0,t-6.86)*6)*Math.exp(-Math.max(0,t-6.86)*2)})`}
+ // S3 PFMEA card
+ if(scene("s3",t,...T.s3)){$("fm").style.transform=`translateY(${(1-S(t,11.0,.5))*50}px)`;
+  ["k1","k2","k3"].forEach((k,i)=>{const v=B((t-12.4-i*.35)/.5);$(k).style.opacity=cl(v);$(k).style.transform=`scale(${.6+.4*cl(v,0,1.2)})`});
+  $("eq").style.opacity=S(t,14.4,.4)}
+ // S4 the tool, live: pdf in -> scan -> steps -> table -> sort
+ if(scene("s4",t,...T.s4)){const pin=S(t,16.0,.6);$("pdf").style.transform=`translate(${(1-pin)*-340}px,${(1-pin)*40}px) rotate(${(1-pin)*-8}deg)`;
+  const cx=t<17.0?720-(720-230)*S(t,15.9,.9):230, cy=t<17.0?380+(620-380)*S(t,15.9,.9):620;$("cur").style.left=(cx+60)+"px";$("cur").style.top=(cy+40)+"px";$("cur").style.opacity=t<17.3?1:0;
+  const lines=[...document.querySelectorAll("#app .ln")],sc=cl((t-17.1)/2.6);$("scan").style.top=(46+sc*235)+"px";$("scan").style.opacity=t>17.1&&t<19.9?1:0;
+  lines.forEach((l,i)=>l.classList.toggle("hi",sc*5>i+.2&&t<23));
+  const ns=t<19.59?0:Math.min(5,Math.floor((t-19.59)/.32)+1);
+  $("steps").innerHTML=STEPS.slice(0,ns).map((s,i)=>`<div class="step"><i>${i+1}</i>${s}</div>`).join("");
+  $("steps").style.display=t<22.6?"grid":"none";$("rh").textContent=t<22.6?"Prozessschritte":"Risikobewertung";
+  const nr=t<22.75?0:Math.min(5,Math.floor((t-22.75)/.28)+1);let rows=ROWS.slice(0,nr).map((r,i)=>{const kk=cl((t-22.75-i*.28)/.5),ex=[r[1],r[2],r[3]].map(v=>kk<1?Math.max(1,Math.round(v*kk+((t*37+i*7)%3)*(1-kk))):v);const rp=ex[0]*ex[1]*ex[2];return {r,ex,rp}});
+  if(t>24.3)rows=rows.slice().sort((a,b)=>b.rp-a.rp);
+  $("tb").innerHTML=rows.map(o=>`<tr><td>${o.r[0]}</td>${o.ex.map(v=>`<td class="n">${v}</td>`).join("")}<td class="r"><span class="pill" style="background:${col(o.rp)}">${o.rp}</span></td></tr>`).join("");
+  $("tbl").style.opacity=t>22.6?1:0;
+  $("stat").innerHTML=t<17.1?"Warte auf Anleitung …":t<19.59?"Lese Anleitung …":t<22.75?"Schritte erkannt":t<24.3?"Bewerte Risiken …":"<b style='color:#1E9E63'>✓ Fertig</b> · nach RPZ sortiert";
+  $("cnt").textContent=t<19.59?"":t<22.75?ns+" Schritte":nr+" Risiken"}
+ // S5 meeting
+ if(scene("s5",t,...T.s5)){const k=cl((t-28.0)/3.5);const sec=Math.floor(E(k)*3*3600*.999+(t>25?(t-25)*40:0));const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;$("clk").textContent=[h,m,s].map(v=>String(v).padStart(2,"0")).join(":");
+  $("clk").style.color=t>28?"#D9452B":"#0B0B0B";
+  BUBS.forEach((b,i)=>{const v=B((t-b[3])/.35);$("bb"+i).style.opacity=cl(v*2);$("bb"+i).style.transform=`scale(${.4+.6*cl(v,0,1.15)})`});
+  for(let i=1;i<=10;i++){const on=t>28.98&&Math.floor(t*6+i*3)%7===0;$("sc"+i).style.background=on?"#2F5BFF":"#fff";$("sc"+i).style.color=on?"#fff":"#0B0B0B"}
+  $("scale").style.opacity=S(t,30.7,.4)}
+ // S6 export -> into the meeting
+ if(scene("s6",t,...T.s6)){const v=B((t-36.55)/.5);$("xl").style.opacity=cl(v*2);$("xl").style.transform=`translateY(${(1-cl(v))*80}px) scale(${.7+.3*cl(v,0,1.1)})`;
+  $("meet").style.opacity=S(t,38.43,.5);$("meet").style.transform=`translateY(${(1-S(t,38.43,.5))*40}px)`;
+  const early=1-S(t,35.7,.4);$("xl").style.filter=early>0.01&&t<36.5?"grayscale(1)":"none"}
+ // S7 end
+ if(scene("s7",t,...T.s7,.4)){$("end").style.transform=`translateY(${(1-S(t,41.6,.6))*60}px)`}
+ $("ex").style.opacity=t>15.8&&t<41.6?1:0;
+};
+window.DRAW(0);
+</script></body></html>

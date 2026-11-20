@@ -1,0 +1,97 @@
+{
+ "stil": {
+  "akzent": "#2F5BFF",
+  "text": "#0B0B0B",
+  "dunkel": "#FFFFFF",
+  "schrift_kopf": "Oswald",
+  "schrift_text": "Inter",
+  "versalien": true,
+  "ecken": 0,
+  "stimmung": "klar",
+  "hell": true
+ },
+ "bild": {
+  "look": "natuerlich",
+  "hintergrund_unscharf": 0,
+  "punch_in": 1.0,
+  "schaerfe": 0.5,
+  "auto_helligkeit": true,
+  "entrauschen": true,
+  "crop": [
+   270,
+   480,
+   45,
+   0
+  ]
+ },
+ "layout": {
+  "typ": "kreis",
+  "hintergrund": "#F4F4F1",
+  "buehne": "buehne.html",
+  "kreis": {
+   "d": 300,
+   "x": 60,
+   "y": 1490,
+   "ausschnitt": [
+    900,
+    900,
+    130,
+    400
+   ]
+  }
+ },
+ "untertitel": {
+  "stil": "box",
+  "gruppe": 2,
+  "y": 1300
+ },
+ "musik": {
+  "datei": "musik.mp3",
+  "ab": 0,
+  "lautstaerke": 0.22
+ },
+ "fortschritt": true,
+ "events": [
+  {
+   "typ": "hook",
+   "t": 0.05,
+   "d": 2.6,
+   "text": "Lokale *KI.* Echter *Use* *Case.*"
+  },
+  {
+   "typ": "keyword",
+   "t": 6.86,
+   "d": 2.6,
+   "kicker": "Medical",
+   "text": "Datenschutz *zuerst.*"
+  },
+  {
+   "typ": "keyword",
+   "t": 17.09,
+   "d": 2.6,
+   "kicker": "In Echtzeit",
+   "text": "Anleitung *rein.*"
+  },
+  {
+   "typ": "keyword",
+   "t": 22.75,
+   "d": 2.0,
+   "kicker": "Lokale KI",
+   "text": "Risiken *bewertet.*"
+  },
+  {
+   "typ": "keyword",
+   "t": 28.0,
+   "d": 3.0,
+   "kicker": "Ohne KI",
+   "text": "*3 Stunden* Meeting"
+  },
+  {
+   "typ": "keyword",
+   "t": 36.55,
+   "d": 3.6,
+   "kicker": "Mit KI",
+   "text": "*Fertige* Tabelle"
+  }
+ ]
+}
