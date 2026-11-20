@@ -126,6 +126,11 @@ section { position: relative; padding-block: clamp(90px, 12vw, 160px) }
 .community .copy { padding: clamp(32px, 4.6vw, 64px) }
 .community h3 { font: 700 clamp(48px, 6vw, 88px)/.92 var(--f-head); text-transform: uppercase; margin: 22px 0 0 }
 .community .img { position: relative; min-height: 420px; background: url(img/community.jpg) center 22%/cover; filter: grayscale(1) }
+.community .img.vid { min-height: 0; filter: none; background: radial-gradient(60% 60% at 50% 40%, rgba(47,91,255,.18), transparent 70%), #070708; display: grid; place-items: center; padding: 28px }
+.community .img.vid::after { display: none }
+.community .img.vid video { height: min(680px, 78vh); aspect-ratio: 9 / 16; width: auto; max-width: 100%; object-fit: cover; border-radius: 18px; border: 1px solid var(--line2); box-shadow: 0 30px 80px -20px rgba(0,0,0,.8), 0 0 60px -10px var(--blue-glow) }
+.community .img.vid .snd { position: absolute; right: 44px; top: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: rgba(10,10,10,.72); backdrop-filter: blur(8px); color: #fff; font: 600 14px var(--f-body); cursor: pointer }
+.community .img.vid .snd.on { opacity: 0; pointer-events: none }
 .community .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.9), transparent 40%) }
 .free { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff; border-radius: 999px; padding: 8px 14px; font: 600 12px/1 var(--f-label); letter-spacing: .16em; text-transform: uppercase }
 .offer p { margin: 18px 0 0; max-width: 50ch }
@@ -340,6 +345,7 @@ main { position: relative; isolation: isolate }
   .community { grid-template-columns: minmax(0, 1fr) }
   .community .img { min-height: 300px; order: -1 }
   .community .img::after { background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.9)) }
+  .community .img.vid { padding: 18px 18px 0 } .community .img.vid video { height: auto; width: min(100%, 360px) }
   .tool, .about { grid-template-columns: minmax(0, 1fr) }
 }
 @media (max-width: 860px) {
@@ -443,7 +449,10 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         WhatsApp-Community beitreten <span class="ar">→</span>
       </a>
     </div>
-    <div class="img" role="img" aria-label="Plakat Flow Business Community"></div>
+    <div class="img vid">
+      <video id="cvid" src="img/community.mp4" poster="img/community-poster.jpg" muted playsinline loop preload="metadata" aria-label="Maik stellt die Flow Business Community vor"></video>
+      <button class="snd" id="csnd" type="button" data-cta="community_video_sound">🔊 Ton an</button>
+    </div>
   </article>
 
   <div class="pathline rv" aria-hidden="true"><span>Kostenlos reinkommen</span><i></i><span class="blue">Gemeinsam umsetzen</span></div>
@@ -974,6 +983,13 @@ tick();
   loop();
 })();
 
+// Community video: plays muted while visible (captions are burned in); "Ton an" restarts it with sound
+(function () {
+  const v = document.getElementById("cvid"), b = document.getElementById("csnd"); if (!v) return;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }, { threshold: .35 }).observe(v);
+  b.addEventListener("click", () => { v.muted = false; v.loop = false; v.currentTime = 0; v.play().catch(() => {}); b.classList.add("on"); if (window.posthog) posthog.capture("community_video_sound") });
+  v.addEventListener("ended", () => { v.muted = true; v.loop = true; v.play().catch(() => {}); b.classList.remove("on") });
+})();
 // Count clicks on calls to action (PostHog event "cta_click" with the button name)
 document.addEventListener("click", e => {
   const a = e.target.closest("[data-cta]");

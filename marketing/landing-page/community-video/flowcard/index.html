@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      /* Flow look: black plate, white Oswald caps, one blue accent. Transparent root so the speaker stays visible above the card. */
+      :root {
+        --ink: #ffffff;
+        --plate: #0b0b0b;
+        --blue: #2f5bff;
+        --mute: rgba(255, 255, 255, 0.62);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: transparent;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+      }
+      #card {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 1250px;
+        padding: 54px 56px 60px;
+        background: var(--plate);
+        border-top: 8px solid var(--blue);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+      }
+      .kicker {
+        font: 600 26px "Montserrat", sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+      .line {
+        overflow: hidden;
+      }
+      .line span {
+        display: block;
+        font: 700 132px/0.96 "Oswald", sans-serif;
+        text-transform: uppercase;
+      }
+      .blue {
+        color: var(--blue);
+      }
+      #chips {
+        display: flex;
+        gap: 16px;
+        margin-top: 34px;
+      }
+      .chip {
+        font: 700 36px "Inter", sans-serif;
+        padding: 12px 26px;
+        border: 3px solid rgba(255, 255, 255, 0.35);
+      }
+      #btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 40px;
+        padding: 26px 44px;
+        background: var(--blue);
+        font: 700 46px "Inter", sans-serif;
+        box-shadow: 0 0 80px rgba(47, 91, 255, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="3.6" data-width="1080" data-height="1920">
+      <div id="card" class="clip" data-start="0" data-duration="3.6" data-track-index="0">
+        <p class="kicker" id="kick">Kostenlos · Bielefeld · Münster · digital</p>
+        <div class="line"><span id="l1">Flow Business</span></div>
+        <div class="line"><span id="l2" class="blue">Community.</span></div>
+        <div id="chips"><span class="chip" id="c1">KI</span><span class="chip" id="c2">Business</span><span class="chip" id="c3">Workshops</span></div>
+        <div id="btn">Jetzt beitreten <span id="ar">→</span></div>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#card", { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0)
+        .fromTo("#kick", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.25)
+        .fromTo(["#l1", "#l2"], { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: "power4.out", stagger: 0.12 }, 0.35)
+        .fromTo([".chip"], { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.12 }, 0.95)
+        .fromTo("#btn", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.35)
+        .to("#btn", { scale: 1.06, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.9)
+        .to("#ar", { x: 14, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.9)
+        .to("#card", { opacity: 0, y: 40, duration: 0.3, ease: "power2.in" }, 3.25);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

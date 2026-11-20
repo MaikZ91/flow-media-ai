@@ -1,0 +1,92 @@
+{
+ "stil": {
+  "akzent": "#2F5BFF",
+  "schrift_kopf": "Oswald",
+  "schrift_text": "Inter",
+  "versalien": true,
+  "ecken": 0,
+  "stimmung": "klar"
+ },
+ "bild": {
+  "look": "klar",
+  "hintergrund_unscharf": 0,
+  "punch_in": 1.06,
+  "schaerfe": 0.5,
+  "auto_helligkeit": true,
+  "entrauschen": true,
+  "crop": [
+   270,
+   480,
+   45,
+   0
+  ]
+ },
+ "untertitel": {
+  "stil": "box",
+  "gruppe": 3,
+  "y": 1470
+ },
+ "musik": {
+  "datei": "musik.mp3",
+  "ab": 0,
+  "lautstaerke": 0.18
+ },
+ "fortschritt": false,
+ "events": [
+  {
+   "typ": "lower",
+   "t": 1.25,
+   "d": 2.6,
+   "name": "Maik",
+   "rolle": "Flow Media AI"
+  },
+  {
+   "typ": "keyword",
+   "t": 4.45,
+   "d": 2.9,
+   "kicker": "Neu gegründet",
+   "text": "Flow Business *Community*"
+  },
+  {
+   "typ": "chips",
+   "t": 7.8,
+   "d": 2.6,
+   "items": [
+    {
+     "t": 7.85,
+     "text": "Gründer"
+    },
+    {
+     "t": 8.33,
+     "text": "Selbstständige",
+     "akzent": true
+    }
+   ]
+  },
+  {
+   "typ": "chips",
+   "t": 10.8,
+   "d": 4.4,
+   "items": [
+    {
+     "t": 10.83,
+     "text": "KI"
+    },
+    {
+     "t": 11.43,
+     "text": "Business"
+    },
+    {
+     "t": 13.63,
+     "text": "Workshops",
+     "akzent": true
+    }
+   ]
+  },
+  {
+   "typ": "hyperframes",
+   "t": 16.45,
+   "projekt": "flowcard"
+  }
+ ]
+}
