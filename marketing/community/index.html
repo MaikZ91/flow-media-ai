@@ -90,6 +90,63 @@ footer a{color:#8a8a86;text-decoration:none}
 @keyframes rein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.cta.go,.in{animation:none}html{scroll-behavior:auto}}
 @media (min-width:861px){.bar{display:none}}
+
+/* weekly events */
+.pill{display:inline-flex;align-items:center;gap:9px;margin-bottom:6px;padding:7px 14px;border:1.5px solid var(--ink);border-radius:999px;font:600 12px var(--fl);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:var(--card)}
+.pill i,.live i{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(47,91,255,.6);animation:ping 1.6s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(47,91,255,0)}100%{box-shadow:0 0 0 0 rgba(47,91,255,0)}}
+.ticker{background:var(--ink);color:#fff;overflow:hidden;border-top:1px solid var(--ink);white-space:nowrap}
+.ticker div{display:inline-flex;gap:42px;padding:14px 0;animation:lauf 26s linear infinite;font:700 clamp(18px,2.2vw,26px) var(--fh);text-transform:uppercase;letter-spacing:.04em}
+.ticker span{display:inline-flex;align-items:center;gap:42px}.ticker span::after{content:"✦";color:var(--blue)}
+@keyframes lauf{to{transform:translateX(-50%)}}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.ev{position:relative;overflow:hidden;border:2px solid var(--ink);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.ev.zeig{opacity:1;transform:none}.ev.b{transition-delay:.12s}
+.ev.ws{background:var(--ink);color:#fff}.ev.st{background:var(--card)}
+.ev .tag{display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 12px var(--fl);letter-spacing:.18em;text-transform:uppercase}
+.ev.ws .tag{color:#9a9a96}.ev .tag b{color:var(--blue);font-weight:600}
+.ev .day{font:700 clamp(84px,11vw,150px)/.8 var(--fh);letter-spacing:-.02em;margin-top:14px;display:flex}
+.ev .day span{display:inline-block;transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.9,.2,1)}
+.ev.zeig .day span{transform:none}.ev.zeig .day span+span{transition-delay:.08s}
+.ev.ws .day{color:var(--blue)}
+.ev h3{font:700 clamp(26px,3vw,38px)/1 var(--fh);text-transform:uppercase;margin-top:12px}
+.ev p{margin-top:10px;font-size:15px;line-height:1.5;color:#3a3a37}.ev.ws p{color:#cfcfca}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.facts span{font:600 13px var(--fb);padding:7px 12px;border:1.5px solid currentColor;border-radius:999px;opacity:.9}
+.ev.ws .facts span{border-color:rgba(255,255,255,.35)}
+.viz{margin:22px 0 4px;aspect-ratio:600/140}
+.viz svg{width:100%;height:100%;overflow:visible}
+.cd{display:flex;gap:8px;margin-top:16px;font:500 12px var(--fl);letter-spacing:.12em;text-transform:uppercase;color:#9a9a96;align-items:center}
+.cd b{font:700 26px/1 var(--fh);color:#fff;letter-spacing:0;min-width:1.4em;text-align:right}
+.ev.st .cd{color:var(--mute)}.ev.st .cd b{color:var(--ink)}
+.ev .cta{margin-top:20px;align-self:flex-start}
+.ev.st .cta{background:var(--ink);box-shadow:0 18px 44px -14px rgba(11,11,11,.5)}
+.live{display:inline-flex;align-items:center;gap:8px}
+/* workshop viz: idea -> prototype -> product */
+.wsv .stg{opacity:.28;transition:opacity .3s}
+.ev.zeig .wsv .s1{animation:an 6s infinite 0s}.ev.zeig .wsv .s2{animation:an 6s infinite 1.6s}.ev.zeig .wsv .s3{animation:an 6s infinite 3.2s}
+@keyframes an{0%,4%{opacity:.28}8%,60%{opacity:1}72%,100%{opacity:.28}}
+.wsv .track{stroke:rgba(255,255,255,.25);stroke-width:2;stroke-dasharray:4 6;fill:none}
+.wsv .run{offset-path:path("M60 70 L300 70 L540 70");animation:run 6s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes run{0%{offset-distance:0%;opacity:0}6%{opacity:1}54%{offset-distance:100%;opacity:1}62%,100%{offset-distance:100%;opacity:0}}
+.wsv text{font:600 13px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:#cfcfca}
+/* stammtisch viz: on site + digital */
+.stv .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:5 7;animation:fl 1.2s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-24}}
+.stv .pin{transform-box:fill-box;transform-origin:50% 100%;animation:hop 2.4s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:none}50%{transform:translateY(-6px)}}
+.stv .ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.4);opacity:.7}100%{transform:scale(2.2);opacity:0}}
+.stv .p{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3)}
+.ev.zeig .stv .p{animation:pop .6s cubic-bezier(.2,1.6,.4,1) forwards}
+.ev.zeig .stv .p2{animation-delay:.25s}.ev.zeig .stv .p3{animation-delay:.5s}.ev.zeig .stv .p4{animation-delay:.75s}.ev.zeig .stv .p5{animation-delay:1s}
+@keyframes pop{to{opacity:1;transform:none}}
+.stv text{font:600 12px Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:var(--mute)}
+.wer{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px;font:500 14px var(--fb);color:#3a3a37}
+.wer .stack{display:flex}.wer .stack i{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);margin-left:-9px;display:grid;place-items:center;font:700 13px var(--fh);color:#fff;font-style:normal}
+.wer .stack i:first-child{margin-left:0}
+@media (prefers-reduced-motion:reduce){.ticker div,.wsv .run,.stv .ln,.stv .pin,.stv .ring,.pill i,.live i{animation:none}.ev{opacity:1;transform:none}.ev .day span{transform:none}.stv .p{opacity:1;transform:none}.wsv .stg{opacity:1}}
+@media (max-width:860px){.events{grid-template-columns:minmax(0,1fr)}.ev .cta{align-self:stretch}}
 @media (max-width:860px){
  .hero{grid-template-columns:minmax(0,1fr);gap:22px;padding-top:14px}
  .hero .vid{order:2;width:min(100%,300px);box-shadow:8px 8px 0 var(--ink)}
@@ -108,6 +165,7 @@ footer a{color:#8a8a86;text-decoration:none}
   <div class="hero">
     <div class="txt">
       <div class="t1">
+        <a class="pill in" href="#termine"><i></i>Jeden Mo Workshop · Jeden Fr Stammtisch</a>
         <p class="label in">Flow Business Community · <b>kostenlos</b></p>
         <h1 class="in d1">KI lernen.<br><em>Gemeinsam.</em></h1>
         <p class="sub in d2">Die WhatsApp-Community für Gründer und Selbstständige, die mit KI ihre Ideen umsetzen wollen – statt sich allein durch Tools und Tutorials zu kämpfen.</p>
@@ -125,6 +183,53 @@ footer a{color:#8a8a86;text-decoration:none}
     </div>
   </div>
 </div>
+
+<div class="ticker" aria-hidden="true"><div><span>KI lernen</span><span>Montag Workshop</span><span>Freitag Stammtisch</span><span>Münster · Bielefeld · digital</span><span>Ideen umsetzen</span><span>Kostenlos beitreten</span><span>KI lernen</span><span>Montag Workshop</span><span>Freitag Stammtisch</span><span>Münster · Bielefeld · digital</span><span>Ideen umsetzen</span><span>Kostenlos beitreten</span></div></div>
+
+<section id="termine">
+  <div class="wrap">
+    <p class="label">Jede Woche · <b>zwei feste Termine</b></p>
+    <h2>Lernen am Montag.<br><em>Austausch am Freitag.</em></h2>
+    <div class="events">
+      <article class="ev ws">
+        <div class="tag"><span class="live"><i></i>Workshop · live</span><b id="ws-dat">Mo</b></div>
+        <div class="day"><span>M</span><span>O</span></div>
+        <h3>Mit KI zum<br>digitalen Produkt</h3>
+        <p>Website, App oder Automatisierung: In 60 Minuten baust du live aus deiner Idee ein erstes digitales Produkt – mit der FLOW-Methode und den Flow-DNA-Skills.</p>
+        <div class="facts"><span>18:00 Uhr</span><span>60 Min live</span><span>digital</span><span>69 €</span></div>
+        <div class="viz"><svg class="wsv" viewBox="0 0 600 140" aria-hidden="true">
+          <path class="track" d="M60 70 L540 70"/>
+          <g class="stg s1"><circle cx="60" cy="70" r="38" fill="#0B0B0B" stroke="#fff" stroke-width="2"/><path d="M60 50a14 14 0 0 1 8 25v6h-16v-6a14 14 0 0 1 8-25z M53 86h14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><text x="60" y="132" text-anchor="middle">Idee</text></g>
+          <g class="stg s2"><circle cx="300" cy="70" r="38" fill="#0B0B0B" stroke="#fff" stroke-width="2"/><rect x="280" y="54" width="40" height="32" rx="3" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M280 63h40M287 71h14M287 78h22" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><text x="300" y="132" text-anchor="middle">Prototyp</text></g>
+          <g class="stg s3"><circle cx="540" cy="70" r="38" fill="#2F5BFF"/><rect x="527" y="48" width="26" height="44" rx="5" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M533 62l5 5 9-10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="540" y="132" text-anchor="middle">Produkt</text></g>
+          <circle class="run" r="7" fill="#2F5BFF"/>
+        </svg></div>
+        <div class="cd" id="ws-cd" aria-live="polite">Noch <b id="cd-t">–</b> Tg <b id="cd-h">–</b> Std <b id="cd-m">–</b> Min</div>
+        <a class="cta wa-ws" data-cta="ev_workshop" href="https://wa.me/4917645961547" target="_blank" rel="noopener">Platz sichern <span>→</span></a>
+      </article>
+      <article class="ev st b">
+        <div class="tag"><span class="live"><i></i>Hybrider Stammtisch</span><b id="st-dat">Fr</b></div>
+        <div class="day"><span>F</span><span>R</span></div>
+        <h3>Vor Ort in Münster<br>&amp; digital dabei</h3>
+        <p>Offener Austausch unter Gründern und Selbstständigen: Ideen zeigen, Fragen stellen, Feedback holen. Wer nicht vor Ort sein kann, ist digital live dabei. Uhrzeit und Ort kündige ich in der Gruppe an.</p>
+        <div class="facts"><span>jeden Freitag</span><span>vor Ort + digital</span><span>kostenlos</span></div>
+        <div class="viz"><svg class="stv" viewBox="0 0 600 140" aria-hidden="true">
+          <path class="ln" d="M300 70 C230 70 200 30 110 30"/><path class="ln" d="M300 70 C230 70 200 110 110 110"/><path class="ln" d="M300 70 C370 70 400 30 490 30"/><path class="ln" d="M300 70 C370 70 400 110 490 110"/>
+          <circle class="ring" cx="300" cy="66" r="22" fill="none" stroke="#2F5BFF" stroke-width="2"/>
+          <g class="pin"><path d="M300 92s-20-18-20-32a20 20 0 0 1 40 0c0 14-20 32-20 32z" fill="#2F5BFF"/><circle cx="300" cy="60" r="7" fill="#fff"/></g>
+          <g class="p p1"><rect x="78" y="14" width="64" height="40" rx="4" fill="#0B0B0B"/><circle cx="110" cy="30" r="7" fill="#fff"/><path d="M98 48a12 9 0 0 1 24 0" fill="#fff"/></g>
+          <g class="p p2"><rect x="78" y="90" width="64" height="40" rx="4" fill="#0B0B0B"/><circle cx="110" cy="106" r="7" fill="#fff"/><path d="M98 124a12 9 0 0 1 24 0" fill="#fff"/></g>
+          <g class="p p3"><rect x="458" y="14" width="64" height="40" rx="4" fill="#0B0B0B"/><circle cx="490" cy="30" r="7" fill="#fff"/><path d="M478 48a12 9 0 0 1 24 0" fill="#fff"/></g>
+          <g class="p p4"><rect x="458" y="90" width="64" height="40" rx="4" fill="#0B0B0B"/><circle cx="490" cy="106" r="7" fill="#fff"/><path d="M478 124a12 9 0 0 1 24 0" fill="#fff"/></g>
+          <text class="p p5" x="300" y="128" text-anchor="middle">Münster</text>
+        </svg></div>
+        <div class="cd">Nächster Stammtisch <b id="st-tag" style="min-width:0">–</b></div>
+        <a class="cta join" data-cta="ev_stammtisch" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>In die Gruppe <span>→</span></a>
+      </article>
+    </div>
+    <div class="wer"><span class="stack" aria-hidden="true"><i style="background:#2F5BFF">G</i><i style="background:#0B0B0B">C</i><i style="background:#6B6B66">K</i><i style="background:#2F5BFF">S</i></span><span>Für <b>G</b>ründer, <b>C</b>oaches, <b>K</b>reative und <b>S</b>elbstständige – mit und ohne Technik-Vorwissen.</span></div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -205,6 +310,28 @@ let hv = true, fv = false;
 const upd = () => bar.classList.toggle("show", !hv && !fv);
 new IntersectionObserver(([e]) => { hv = e.isIntersecting; upd() }).observe(hero);
 new IntersectionObserver(([e]) => { fv = e.isIntersecting; upd() }).observe(fin);
+// Weekly events: countdown to Monday 18:00 (Berlin), date of the coming Friday; reveal on scroll.
+(() => {
+  const berlin = d => new Date(d.toLocaleString("en-US", { timeZone: "Europe/Berlin" }));
+  const fmt = d => String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0") + ".";
+  const next = (wd, h) => { const n = berlin(new Date()), t = new Date(n); t.setHours(h, 0, 0, 0); let add = (wd - n.getDay() + 7) % 7; if (add === 0 && n >= new Date(t.getTime() + 60 * 60000)) add = 7; t.setDate(t.getDate() + add); return { n, t } };
+  const tick = () => {
+    const { n, t } = next(1, 18), ms = t - n;
+    document.getElementById("ws-dat").textContent = "Mo " + fmt(t);
+    const cd = document.getElementById("ws-cd");
+    if (ms <= 0) { cd.innerHTML = "<b style='min-width:0'>Läuft gerade</b>"; }
+    else { const m = Math.floor(ms / 60000); document.getElementById("cd-t").textContent = Math.floor(m / 1440); document.getElementById("cd-h").textContent = Math.floor(m % 1440 / 60); document.getElementById("cd-m").textContent = m % 60; }
+    const n2 = berlin(new Date()), f = new Date(n2); f.setDate(f.getDate() + (5 - n2.getDay() + 7) % 7);
+    const heute = n2.getDay() === 5; document.getElementById("st-dat").textContent = "Fr " + fmt(f);
+    document.getElementById("st-tag").textContent = heute ? "heute" : "Fr " + fmt(f);
+  };
+  tick(); setInterval(tick, 30000);
+  const ws = document.querySelector(".wa-ws");
+  ws.addEventListener("click", () => { ws.href = "https://wa.me/4917645961547?text=" + encodeURIComponent("Hi Maik, ich möchte beim Workshop „Mit KI zum digitalen Produkt“ am " + document.getElementById("ws-dat").textContent.replace("Mo ", "Montag, ") + " um 18 Uhr dabei sein."); cap("community_workshop_click", { quelle }) });
+  if (matchMedia("(pointer:coarse)").matches) ws.removeAttribute("target");
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("zeig"); io.unobserve(e.target) } }), { threshold: .2 });
+  document.querySelectorAll(".ev").forEach(e => io.observe(e));
+})();
 </script>
 </body>
 </html>
