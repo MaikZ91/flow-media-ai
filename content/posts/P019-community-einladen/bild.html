@@ -1,0 +1,42 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* WhatsApp invite graphic, 1080x1350, Flow look of the community page */
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;background:#0A0A0A;overflow:hidden;font-family:Inter,sans-serif;color:#fff}
+.c{position:relative;width:1080px;height:1350px;overflow:hidden}
+canvas{position:absolute;inset:0}
+.photo{position:absolute;right:-40px;top:0;width:620px;height:900px;background:url(maik_front.jpg) center 15%/cover;filter:grayscale(1) contrast(1.08) brightness(.9);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%),linear-gradient(180deg,#000 60%,transparent 100%);-webkit-mask-composite:source-in}
+.top{position:absolute;left:72px;top:72px;display:flex;align-items:center;gap:22px}
+.top img{height:40px}
+.pill{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.05);font:600 17px Montserrat;letter-spacing:.2em;text-transform:uppercase}
+.pill i{width:10px;height:10px;border-radius:50%;background:#2F5BFF;box-shadow:0 0 14px #2F5BFF}
+h1{position:absolute;left:72px;top:230px;font:700 136px/.9 Oswald;text-transform:uppercase;letter-spacing:-.005em}
+h1 span{display:block}
+h1 .b{background:linear-gradient(90deg,#2F5BFF,#8aa4ff 55%,#2F5BFF);-webkit-background-clip:text;color:transparent}
+.lead{position:absolute;left:72px;top:600px;width:540px;font:400 30px/1.42 Inter;color:rgba(255,255,255,.8)}
+.chips{position:absolute;left:72px;top:820px;display:flex;flex-wrap:wrap;gap:12px;width:620px}
+.chips span{font:500 22px Inter;padding:11px 20px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(18,18,18,.85)}
+.chips span b{color:#2F5BFF;font-weight:500}
+.card{position:absolute;left:72px;right:72px;bottom:72px;height:230px;border-radius:30px;border:1px solid rgba(47,91,255,.55);background:linear-gradient(160deg,rgba(47,91,255,.25),rgba(18,18,18,.92) 60%);box-shadow:0 30px 90px -30px rgba(47,91,255,.6);display:flex;align-items:center;gap:36px;padding:0 36px}
+.qr{flex:none;width:170px;height:170px;background:#fff;border-radius:18px;padding:14px}
+.qr img{width:100%;height:100%;image-rendering:pixelated}
+.card h2{font:700 54px/1 Oswald;text-transform:uppercase}
+.card p{margin-top:12px;font:400 24px/1.35 Inter;color:rgba(255,255,255,.75)}
+.card p b{color:#fff;font-weight:500}
+</style></head><body><div class="c">
+<canvas id="f" width="1080" height="1350"></canvas>
+<div class="photo"></div>
+<div class="top"><img src="logo_flow.png" alt=""><span class="pill"><i></i>Flow Business Community</span></div>
+<h1><span>Bring deine</span><span class="b">Leute mit.</span></h1>
+<p class="lead">Je mehr spannende Menschen zusammenkommen, desto mehr Ideen, Austausch und gemeinsame Projekte entstehen.</p>
+<div class="chips"><span><b>MO</b> · Workshop</span><span><b>FR</b> · Stammtisch</span><span>Online-Kurse</span><span>KI-Skills</span></div>
+<div class="card"><div class="qr"><img src="qr.png" alt=""></div><div><h2>Kostenlos beitreten</h2><p>Code scannen oder Link teilen – <b>Münster, Bielefeld &amp; digital</b>. Mitlesen reicht.</p></div></div>
+</div>
+<script>
+// Static flowing lines, same motif as the website
+const c=document.getElementById("f"),x=c.getContext("2d"),W=1080,H=1350,N=30;
+for(let i=0;i<N;i++){const p=i/(N-1),blue=i===19,base=H*(.32+p*.5),amp=H*(.04+.05*Math.sin(p*3+1));x.beginPath();
+for(let X=-20;X<=W+20;X+=12){const k=X/W,Y=base+Math.sin(k*5.5+p*2.2+1.3)*amp+Math.sin(k*11+p*4)*amp*.28;X===-20?x.moveTo(X,Y):x.lineTo(X,Y)}
+x.strokeStyle=blue?"rgba(47,91,255,.95)":`rgba(255,255,255,${.04+.08*Math.sin(p*Math.PI)})`;x.lineWidth=blue?2.2:1.2;x.shadowBlur=blue?22:0;x.shadowColor="rgba(47,91,255,.9)";x.stroke()}
+</script></body></html>
