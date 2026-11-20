@@ -234,7 +234,8 @@ footer a:hover { color: var(--white) }
 footer .sp { margin-left: auto }
 
 /* contact pill bottom right */
-.fab { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 50; display: flex; flex-direction: column; align-items: flex-end; gap: 12px }
+.fab { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 50; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; pointer-events: none }
+.fab-btn { pointer-events: auto }
 .fab-btn { display: flex; align-items: center; gap: 12px; padding: 6px 18px 6px 6px; border-radius: 999px; border: 1px solid var(--line2); background: rgba(14,14,14,.85); backdrop-filter: blur(14px); color: #fff; cursor: pointer; font: inherit; box-shadow: 0 18px 50px -12px rgba(0,0,0,.8); transition: border-color .3s, transform .3s var(--ease) }
 .fab-btn:hover { border-color: rgba(255,255,255,.4); transform: translateY(-2px) }
 .fab-btn .av { position: relative; width: 46px; height: 46px; border-radius: 50%; background: url(img/maik_avatar.jpg) center/cover; filter: grayscale(1) }
@@ -667,10 +668,12 @@ const WA_TEXT = {
   workshop: "Hi Maik, ich möchte beim Workshop am {DATUM} um 18 Uhr dabei sein („Von deiner KI-Idee zum digitalen Produkt“).",
   hallo: "Hi Maik, ich hab eine Frage:",
 };
+const TOUCH = matchMedia("(pointer:coarse)").matches;
 document.querySelectorAll("[data-wa]").forEach(a => {
   const k = a.dataset.wa;
   a.href = k === "community" && COMMUNITY_URL ? COMMUNITY_URL : `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT[k])}`;
-  a.target = "_blank"; a.rel = "noopener";
+  // Phones: same tab, so WhatsApp opens directly (new tabs often do nothing in the Instagram/Facebook in-app browser).
+  if (!TOUCH) { a.target = "_blank"; a.rel = "noopener" }
   if (k === "workshop") a.addEventListener("click", () => { const d = (document.getElementById("ws-date") || {}).textContent || "Montag"; a.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(WA_TEXT.workshop.replace("{DATUM}", d.replace(/^Mo /, "Montag, ")))}` });
 });
 
