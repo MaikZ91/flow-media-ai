@@ -271,7 +271,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   <a class="btn primary join" data-cta="nav" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener">Beitreten</a>
 </div></nav>
 
-<header class="hero" id="top">
+<header data-ab="1_hero" class="hero" id="top">
   <canvas id="flow" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
@@ -301,7 +301,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 </div></div>
 
 <main>
-<section id="termine">
+<section data-ab="2_termine" id="termine">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label eyebrow rv">Jede Woche · zwei feste Termine</span><h2 class="display rv d1">Montag lernen.<br><span class="blue">Freitag austauschen.</span></h2></div>
@@ -347,7 +347,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section style="border-top:1px solid var(--line)">
+<section data-ab="3_stimmen" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label eyebrow rv">Aus der Community</span><h2 class="display rv d1">Was andere<br><span class="blue">daraus gemacht haben.</span></h2></div>
@@ -378,11 +378,11 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section class="manifest">
+<section data-ab="4_manifest" class="manifest">
   <div class="wrap"><p id="manifest">Mach deine *Ideen* nicht allein. Lern KI mit Menschen, die auch etwas *aufbauen* – in Münster, Bielefeld und *digital.*</p></div>
 </section>
 
-<section>
+<section data-ab="5_erwartet">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label eyebrow rv">Was dich erwartet</span><h2 class="display rv d1">Austausch statt<br><span class="blue">Einzelkampf.</span></h2></div>
@@ -411,7 +411,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section style="border-top:1px solid var(--line)">
+<section data-ab="6_kurse_skills" style="border-top:1px solid var(--line)">
   <div class="wrap store">
     <div>
       <span class="label eyebrow rv">Flow DNA · Skills &amp; Online-Tutorials</span>
@@ -433,7 +433,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section style="border-top:1px solid var(--line)">
+<section data-ab="7_gastgeber" style="border-top:1px solid var(--line)">
   <div class="wrap host">
     <div class="pic rv"><img src="img/maik_front.jpg" alt="Maik, Gründer von Flow Media AI" loading="lazy"><span class="label">Maik · Flow Media AI</span></div>
     <div>
@@ -446,7 +446,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section style="border-top:1px solid var(--line)">
+<section data-ab="8_so_einfach" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label eyebrow rv">So einfach geht's</span><h2 class="display rv d1">In 10 Sekunden<br><span class="blue">dabei.</span></h2></div>
@@ -460,7 +460,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   </div>
 </section>
 
-<section class="final" id="final">
+<section data-ab="9_final" class="final" id="final">
   <canvas id="flow2" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="pill rv"><i></i>Kostenlos · ohne Verpflichtung</span>
@@ -589,6 +589,22 @@ const bar = document.getElementById("bar"), heroBtn = document.querySelector(".h
 let hv = true, fv = false; const upd = () => bar.classList.toggle("show", !hv && !fv);
 new IntersectionObserver(([e]) => { hv = e.isIntersecting; upd() }).observe(heroBtn);
 new IntersectionObserver(([e]) => { fv = e.isIntersecting; upd() }).observe(fin);
+// ---- Measurement (no cookies, no recordings): which sections people reach, how long they stay, how much of the video they watch ----
+(() => {
+  const t0 = Date.now(), seen = new Set(), sent = new Set();
+  const sec = () => Math.round((Date.now() - t0) / 1000);
+  const ab = new IntersectionObserver(es => es.forEach(e => { const n = e.target.dataset.ab; if (e.isIntersecting && !seen.has(n)) { seen.add(n); cap("community_abschnitt", { quelle, abschnitt: n, sek: sec() }) } }), { threshold: .35 });
+  document.querySelectorAll("[data-ab]").forEach(el => ab.observe(el));
+  // Time on page: heartbeat at 10/30/60/120 s (the Instagram browser often sends no page-leave)
+  [10, 30, 60, 120].forEach(s => setTimeout(() => { if (document.visibilityState === "visible") cap("community_verweildauer", { quelle, sek: s, abschnitte: seen.size }) }, s * 1000));
+  // Video progress of the first run, muted or with sound, only while the video is on screen
+  let vis = false; new IntersectionObserver(([e]) => vis = e.isIntersecting, { threshold: .5 }).observe(v);
+  v.addEventListener("timeupdate", () => {
+    if (!vis || !v.duration) return; const pct = v.currentTime / v.duration;
+    for (const m of [25, 50, 75, 95]) if (pct * 100 >= m && !sent.has(m)) { sent.add(m); cap("community_video_fortschritt", { quelle, prozent: m === 95 ? 100 : m, ton: !v.muted, sek: sec() }) }
+  });
+  addEventListener("pagehide", () => cap("community_verlassen", { quelle, sek: sec(), abschnitte: seen.size, tiefster: [...seen].sort().pop() || "", video: Math.max(0, ...sent) }));
+})();
 </script>
 </body>
 </html>
