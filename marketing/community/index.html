@@ -182,6 +182,20 @@ section{position:relative;padding-block:clamp(90px,12vw,150px)}
 .vip h3{font:700 clamp(30px,3vw,40px)/1 var(--f-head);text-transform:uppercase;margin-top:10px;display:flex;align-items:center;gap:12px}
 .vip p{margin:8px 0 0;font-size:15px}
 .vip .lock{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--blue);font-size:18px;box-shadow:0 0 30px var(--blue-glow)}
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.quote{padding:34px 30px 30px;display:flex;flex-direction:column}
+.quote .q{font:700 96px/.6 var(--f-head);color:var(--blue);text-shadow:0 0 40px rgba(47,91,255,.5);height:40px}
+.quote .tag{align-self:flex-start;margin-top:8px;font:500 11px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:#9db2ff;padding:6px 11px;border:1px solid rgba(47,91,255,.5);border-radius:999px}
+.quote blockquote{margin:18px 0 0;font:400 clamp(18px,1.6vw,21px)/1.5 var(--f-body);color:var(--white);flex:1}
+.quote blockquote b{font-weight:500;color:#9db2ff}
+.quote .who{display:flex;align-items:center;gap:14px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.quote .av{display:flex}
+.quote .av i{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:700 18px var(--f-head);font-style:normal;color:#fff;background:linear-gradient(140deg,#2F5BFF,#0f1f66);border:2px solid var(--bg)}
+.quote .av i+i{margin-left:-12px;background:linear-gradient(140deg,#3a3a3e,#151517)}
+.quote .who b{display:block;color:var(--white);font:500 16px var(--f-body)}
+.quote .who span{font-size:14px;color:var(--muted)}
+.quote .stars{margin-left:auto;color:var(--blue);letter-spacing:2px;font-size:14px;text-shadow:0 0 12px rgba(47,91,255,.6)}
 /* host */
 .host{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,72px);align-items:center}
 .host .pic{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
@@ -239,7 +253,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
  .cta-row .btn{width:100%}
  .scroll-hint{display:none}
  .sec-head{grid-template-columns:minmax(0,1fr);gap:18px}
- .events,.values,.steps,.host,.store{grid-template-columns:minmax(0,1fr)}
+ .events,.values,.steps,.host,.store,.quotes{grid-template-columns:minmax(0,1fr)}
  .value{min-height:0}
  .ev .btn{align-self:stretch}
  .host .pic{aspect-ratio:4/4.2}
@@ -329,6 +343,32 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
         <div class="cd">Nächster Stammtisch <b id="st-tag">–</b></div>
         <a class="btn join" data-cta="ev_stammtisch" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>In die Gruppe <span class="ar">→</span></a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label eyebrow rv">Aus der Community</span><h2 class="display rv d1">Was andere<br><span class="blue">daraus gemacht haben.</span></h2></div>
+      <p class="rv d2">Echte Stimmen aus Workshops, Projekten und dem Stammtisch.</p>
+    </div>
+    <div class="quotes">
+      <figure class="card quote rv" style="margin:0">
+        <span class="q" aria-hidden="true">“</span><span class="tag">Workshop · Personal Brand</span>
+        <blockquote>Durch den Workshop „Mit KI zur Personal Brand“ habe ich <b>Klarheit</b> bekommen: Mein Look und mein Content sehen nicht mehr generisch aus. Ich habe jetzt einen eigenen Workflow dafür.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true"><i>C</i></span><span><b>Caro</b><span>Gründerin · Coaching</span></span></figcaption>
+      </figure>
+      <figure class="card quote rv d1" style="margin:0">
+        <span class="q" aria-hidden="true">“</span><span class="tag">App-Projekt · Flow DNA</span>
+        <blockquote>Zusammen mit Maik habe ich eine App entwickelt. Mit den Flow-DNA-Skills war das <b>erste Konzept in einer Stunde fertig</b> – ein Workflow, den ich so noch nicht kannte.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true"><i>M</i></span><span><b>Marco</b><span>App-Projekt mit Maik</span></span></figcaption>
+      </figure>
+      <figure class="card quote rv d2" style="margin:0">
+        <span class="q" aria-hidden="true">“</span><span class="tag">Community · Stammtisch</span>
+        <blockquote>In der Community haben wir <b>richtig gute Leute kennengelernt</b>. Man inspiriert sich gegenseitig, tauscht sich über Projekte aus und kommt gemeinsam weiter.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true"><i>M</i><i>S</i></span><span><b>Max &amp; Sarah</b><span>Mitglieder der Community</span></span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
