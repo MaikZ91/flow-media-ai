@@ -254,12 +254,6 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 /* grain, intro, cursor, lenis */
 body::after{content:"";position:fixed;inset:-100%;z-index:90;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1.2s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
-.intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
-.intro img{width:min(220px,50vw);opacity:0;animation:introLogo 1s var(--ease) .1s forwards}
-.intro i{position:absolute;left:50%;top:calc(50% + 70px);width:0;height:1px;background:var(--blue);box-shadow:0 0 14px var(--blue);transform:translateX(-50%);animation:introLine 1s var(--ease) .25s forwards}
-@keyframes introLogo{from{opacity:0;transform:translateY(10px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
-@keyframes introLine{to{width:min(260px,60vw)}}
-body.ready .intro,.schnell .intro{opacity:0;visibility:hidden;display:none}
 .schnell body:not(.ready) .hero *{animation-play-state:running!important}
 .schnell .hero h1 .line span,.schnell .hero .lead,.schnell .hero .next,.schnell .hero .cta-row,.schnell .hero .meta,.schnell .hero .hq,.schnell .phone{animation-duration:.45s!important;animation-delay:0s!important}
 body:not(.ready) .hero *{animation-play-state:paused!important}
@@ -298,8 +292,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 </style>
 </head>
 <body>
-<script>/* Visitors from ads or in-app browsers see the page at once – no intro */(function(){var q=location.search,u=navigator.userAgent;if(/utm_|fbclid/.test(q)||/Instagram|FBAN|FBAV/.test(u)){document.documentElement.classList.add("schnell")}})();window.__t0=performance.now();</script>
-<div class="intro" aria-hidden="true"><img src="img/logo_flow.png" alt=""><i></i></div>
+<script>/* Page shows at once for everyone – no intro */(function(){var q=location.search,u=navigator.userAgent;document.documentElement.classList.add("schnell")})();window.__t0=performance.now();</script>
 <div class="cur" aria-hidden="true"></div><div class="cur-ring" aria-hidden="true"></div>
 
 <nav id="nav" aria-label="Navigation"><div class="wrap">
@@ -556,9 +549,8 @@ document.querySelectorAll(".join").forEach(a => {
   const nav = performance.getEntriesByType("navigation")[0]; cap("community_sichtbar", { quelle, ms: Math.round(performance.now()), dom_ms: nav ? Math.round(nav.domContentLoadedEventEnd) : null, schnell: document.documentElement.classList.contains("schnell") }) };
   send(); document.addEventListener("visibilitychange", send) })();
 // Intro, then hero animations
-let seen = false; try { seen = sessionStorage.getItem("flow-c-intro") === "1"; sessionStorage.setItem("flow-c-intro", "1") } catch {}
 const SCHNELL = document.documentElement.classList.contains("schnell");
-setTimeout(() => document.body.classList.add("ready"), REDUCE || SCHNELL ? 0 : seen ? 200 : 1100);
+document.body.classList.add("ready");
 
 // Video: autoplay muted while visible; sound button restarts with sound
 const pb = document.getElementById("cplay");
