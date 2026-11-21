@@ -82,6 +82,20 @@ nav .btn{padding:11px 18px;font-size:14px}
 @keyframes puls{50%{box-shadow:0 0 0 7px rgba(47,91,255,0),0 0 16px var(--blue-glow)}0%,100%{box-shadow:0 0 0 0 rgba(47,91,255,.55)}}
 .meta b{color:var(--white);font-weight:500}
 .meta u{color:var(--white);text-decoration-color:var(--blue);text-underline-offset:3px}
+/* hero quote + faq */
+.hero .lead b{color:var(--white);font-weight:500}
+.hq{display:flex;align-items:center;gap:12px;margin:18px 0 0;max-width:520px;opacity:0;animation:fade 1s var(--ease) .75s forwards}
+.hq .av i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--f-head);font-style:normal;color:#fff;background:linear-gradient(140deg,#2F5BFF,#0f1f66)}
+.hq figcaption{display:flex;flex-direction:column;gap:3px;font-size:14px;line-height:1.4}
+.hq q{color:var(--white);font-style:italic}
+.hq span{color:var(--muted);font-size:12.5px}.hq a{color:#9db2ff}
+.faq{display:grid;gap:12px;max-width:860px}
+.faq details{padding:0}
+.faq summary{list-style:none;cursor:pointer;padding:22px 60px 22px 26px;font:500 18px/1.35 var(--f-body);color:var(--white);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font:300 30px var(--f-body);color:var(--blue);transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{margin:0;padding:0 26px 24px;font-size:16px;line-height:1.6}
 /* next dates, right in the hero */
 .next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 22px;max-width:560px;opacity:0;animation:fade 1s var(--ease) .58s forwards}
 .nx{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none;padding:12px 14px;border:1px solid var(--line2);border-radius:16px;background:rgba(18,18,18,.72);backdrop-filter:blur(8px);transition:border-color .3s}
@@ -247,7 +261,7 @@ body::after{content:"";position:fixed;inset:-100%;z-index:90;pointer-events:none
 @keyframes introLine{to{width:min(260px,60vw)}}
 body.ready .intro,.schnell .intro{opacity:0;visibility:hidden;display:none}
 .schnell body:not(.ready) .hero *{animation-play-state:running!important}
-.schnell .hero h1 .line span,.schnell .hero .lead,.schnell .hero .next,.schnell .hero .cta-row,.schnell .hero .meta,.schnell .phone{animation-duration:.45s!important;animation-delay:0s!important}
+.schnell .hero h1 .line span,.schnell .hero .lead,.schnell .hero .next,.schnell .hero .cta-row,.schnell .hero .meta,.schnell .hero .hq,.schnell .phone{animation-duration:.45s!important;animation-delay:0s!important}
 body:not(.ready) .hero *{animation-play-state:paused!important}
 .cur,.cur-ring{position:fixed;left:0;top:0;z-index:95;pointer-events:none;border-radius:50%;display:none}
 @media (hover:hover) and (pointer:fine){
@@ -300,15 +314,16 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
     <div>
       <a class="pill" href="#termine"><i></i>Münster · Bielefeld · digital</a>
       <h1 class="display"><span class="line"><span>KI lernen.</span></span><span class="line"><span class="flow-word">Gemeinsam.</span></span></h1>
-      <p class="lead">Die kostenlose WhatsApp-Gruppe für Gründer und Selbstständige, die mit KI ihre Ideen umsetzen wollen. Mitlesen reicht.</p>
+      <p class="lead"><b>Es liegt nicht an fehlendem Technik-Wissen.</b> Sondern daran, dass du allein vor 100 Tools sitzt. Die kostenlose WhatsApp-Gruppe für Gründer und Selbstständige – Mitlesen reicht.</p>
       <div class="next" aria-label="Nächste Termine">
         <a class="nx" href="#termine" data-cta="hero_ws"><b id="h-ws">MO</b><span><i>Workshop · 18 Uhr</i><em id="h-ws-t">Mit KI zum digitalen Produkt</em></span></a>
         <a class="nx" href="#termine" data-cta="hero_st"><b id="h-st">FR</b><span><i>Stammtisch · gratis</i><em>Münster + digital</em></span></a>
       </div>
       <div class="cta-row">
-        <a class="btn primary join" data-cta="hero" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Kostenlos beitreten <span class="ar">→</span></a>
+        <a class="btn primary join" data-cta="hero" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Ich bin dabei · kostenlos <span class="ar">→</span></a>
         <a class="btn hide-m" data-cta="hero_termine" href="#termine">Termine ansehen</a>
       </div>
+      <figure class="hq"><span class="av" aria-hidden="true"><i>M</i></span><figcaption><q>Mit den Flow-DNA-Skills war das erste Konzept für meine App in einer Stunde fertig.</q><span>Marco · App-Projekt mit Maik · <a href="#stimmen">mehr Stimmen</a></span></figcaption></figure>
       <button class="meta" id="vteaser" type="button"><span class="av"><img src="img/maik_avatar.jpg" alt=""><i aria-hidden="true">▶</i></span><span><b>Maik</b> stellt die Community vor · <u>20-Sek.-Video ansehen</u></span></button>
     </div>
     <div class="phone" id="phone">
@@ -369,13 +384,13 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
           <text class="p p5" x="300" y="128" text-anchor="middle">MÜNSTER</text>
         </svg></div>
         <div class="cd">Nächster Stammtisch <b id="st-tag">–</b></div>
-        <a class="btn join" data-cta="ev_stammtisch" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>In die Gruppe <span class="ar">→</span></a>
+        <a class="btn join" data-cta="ev_stammtisch" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Ich komme vorbei <span class="ar">→</span></a>
       </article>
     </div>
   </div>
 </section>
 
-<section data-ab="3_stimmen" style="border-top:1px solid var(--line)">
+<section data-ab="3_stimmen" id="stimmen" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="label eyebrow rv">Aus der Community</span><h2 class="display rv d1">Was andere<br><span class="blue">daraus gemacht haben.</span></h2></div>
@@ -469,7 +484,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
       <h2 class="display rv d1">Hi, ich bin <span class="blue">Maik.</span></h2>
       <p class="rv d2">Ich baue mit KI Apps, Websites, Tools und Automatisierungen – und teile, was dabei funktioniert und was nicht. Die Community habe ich gegründet, weil Ideen schneller real werden, wenn man sie nicht allein umsetzt.</p>
       <p class="rv d2">Hier zeige ich, woran ich gerade baue, beantworte Fragen und bringe Leute zusammen, die etwas bewegen wollen.</p>
-      <div class="cta-row rv d3" style="margin-top:28px"><a class="btn primary join" data-cta="host" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Kostenlos beitreten <span class="ar">→</span></a></div>
+      <div class="cta-row rv d3" style="margin-top:28px"><a class="btn primary join" data-cta="host" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Ich bin dabei · kostenlos <span class="ar">→</span></a></div>
     </div>
   </div>
 </section>
@@ -481,10 +496,26 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
       <p class="rv d2">Keine Anmeldung, keine Kosten, keine Verpflichtung. Du kannst die Gruppe jederzeit wieder verlassen.</p>
     </div>
     <ol class="steps">
-      <li class="card rv"><b>Tippen</b><span>Auf „Kostenlos beitreten“ – WhatsApp öffnet sich.</span></li>
+      <li class="card rv"><b>Tippen</b><span>Auf „Ich bin dabei“ – WhatsApp öffnet sich.</span></li>
       <li class="card rv d1"><b>Beitreten</b><span>„Gruppe beitreten“ antippen. Fertig.</span></li>
       <li class="card rv d2"><b>Mitlesen</b><span>Du musst nichts schreiben. Stell dich vor, wenn du magst.</span></li>
     </ol>
+  </div>
+</section>
+
+<section data-ab="8b_fragen" id="fragen" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label eyebrow rv">Fragen</span><h2 class="display rv d1">Was du vorher<br><span class="blue">wissen willst.</span></h2></div>
+      <p class="rv d2">Deine Frage ist nicht dabei? Schreib mir einfach in der Gruppe oder auf Instagram.</p>
+    </div>
+    <div class="faq">
+      <details class="card rv"><summary>Ich kann nicht programmieren. Ist das trotzdem was für mich?</summary><p>Ja, gerade dann. Du brauchst kein Technik-Wissen: Die KI-Tools bedienst du in ganz normaler Sprache. Und wenn es hakt, hilft dir jemand in der Gruppe weiter.</p></details>
+      <details class="card rv d1"><summary>Wie viel Zeit muss ich mitbringen?</summary><p>So viel du willst. Mitlesen reicht völlig. Der Workshop am Montag dauert 60 Minuten, der Stammtisch am Freitag ist offen – beides freiwillig.</p></details>
+      <details class="card rv d2"><summary>Ich wohne nicht in Münster oder Bielefeld.</summary><p>Kein Problem. Die Workshops laufen digital, und beim Stammtisch bist du auch digital live dabei.</p></details>
+      <details class="card rv d1"><summary>Kostet das was?</summary><p>Die Community ist kostenlos. Die Live-Workshops am Montag kosten 69 € – ob du teilnimmst, entscheidest du selbst.</p></details>
+      <details class="card rv d2"><summary>Werde ich mit Werbung zugeschüttet?</summary><p>Nein. In der Gruppe gibt es Termine, Tipps und Austausch – kein Verkaufsdruck. Du kannst jederzeit wieder austreten.</p></details>
+    </div>
   </div>
 </section>
 
@@ -494,7 +525,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
     <span class="pill rv"><i></i>Kostenlos · ohne Verpflichtung</span>
     <h2 class="display rv d1" style="margin-top:22px">Komm in den <span class="flow-word" style="animation:sheen 6s linear infinite">Flow.</span></h2>
     <p class="rv d2">Die Flow Business Community – für Gründer und Selbstständige aus Münster, Bielefeld und überall digital.</p>
-    <div class="cta-row rv d3"><a class="btn primary join" data-cta="final" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Jetzt beitreten <span class="ar">→</span></a></div>
+    <div class="cta-row rv d3"><a class="btn primary join" data-cta="final" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Ich bin dabei <span class="ar">→</span></a></div>
     <small class="rv d3">Direkt in WhatsApp · Mitlesen reicht</small>
   </div>
 </section>
@@ -502,7 +533,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 
 <footer><div class="wrap"><span>Flow Media AI · We build your ideas.</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 
-<div class="bar" id="bar"><a class="btn primary join" data-cta="sticky" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Kostenlos beitreten <span class="ar">→</span></a></div>
+<div class="bar" id="bar"><a class="btn primary join" data-cta="sticky" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Ich bin dabei · kostenlos <span class="ar">→</span></a></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></symbol></svg>
 
@@ -542,6 +573,7 @@ document.getElementById("vteaser").addEventListener("click", () => {
   v.muted = false; v.loop = false; v.currentTime = 0; v.play().then(() => { pb.hidden = true }).catch(() => { pb.hidden = false });
   sb.classList.add("on"); sb.textContent = "🔇 Ton aus"; cap("community_video_teaser", { quelle });
 });
+document.querySelectorAll(".faq details").forEach((d, i) => d.addEventListener("toggle", () => { if (d.open) cap("community_faq", { quelle, frage: i + 1 }) }));
 document.querySelectorAll(".nx").forEach(a => a.addEventListener("click", () => cap("community_termin_tipp", { quelle, cta: a.dataset.cta })));
 new IntersectionObserver(([e]) => { if (e.isIntersecting) tryPlay(); else v.pause() }, { threshold: .35 }).observe(v);
 sb.addEventListener("click", () => {
