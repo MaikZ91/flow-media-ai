@@ -12,7 +12,8 @@
 <meta property="og:image" content="img/community-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <!-- PostHog (EU, ohne Cookies: persistence "memory", keine Aufzeichnungen) -->
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset identify alias".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -83,6 +84,7 @@ nav .btn{padding:11px 18px;font-size:14px}
 .phone video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .phone .snd{position:absolute;top:14px;right:14px;z-index:2;padding:9px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(10,10,10,.65);backdrop-filter:blur(8px);color:#fff;font:600 13px var(--f-body);cursor:pointer}
 .phone .snd.on{background:var(--blue);border-color:var(--blue)}
+.playfb{position:absolute;left:50%;top:50%;z-index:2;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;border:0;background:var(--blue);color:#fff;font-size:30px;box-shadow:0 0 40px var(--blue-glow);cursor:pointer}
 .phone .tag{position:absolute;left:14px;top:14px;z-index:2;background:rgba(10,10,10,.65);font-size:11px}
 .phone::after{content:"";position:absolute;inset:-1px;border-radius:35px;pointer-events:none;border:1px solid rgba(255,255,255,.14)}
 .scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:500 11px var(--f-label);letter-spacing:.3em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px}
@@ -230,7 +232,9 @@ body::after{content:"";position:fixed;inset:-100%;z-index:90;pointer-events:none
 .intro i{position:absolute;left:50%;top:calc(50% + 70px);width:0;height:1px;background:var(--blue);box-shadow:0 0 14px var(--blue);transform:translateX(-50%);animation:introLine 1s var(--ease) .25s forwards}
 @keyframes introLogo{from{opacity:0;transform:translateY(10px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
 @keyframes introLine{to{width:min(260px,60vw)}}
-body.ready .intro{opacity:0;visibility:hidden}
+body.ready .intro,.schnell .intro{opacity:0;visibility:hidden;display:none}
+.schnell body:not(.ready) .hero *{animation-play-state:running!important}
+.schnell .hero h1 .line span,.schnell .hero .lead,.schnell .hero .cta-row,.schnell .hero .meta,.schnell .phone{animation-duration:.45s!important;animation-delay:0s!important}
 body:not(.ready) .hero *{animation-play-state:paused!important}
 .cur,.cur-ring{position:fixed;left:0;top:0;z-index:95;pointer-events:none;border-radius:50%;display:none}
 @media (hover:hover) and (pointer:fine){
@@ -262,6 +266,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 </style>
 </head>
 <body>
+<script>/* Visitors from ads or in-app browsers see the page at once – no intro */(function(){var q=location.search,u=navigator.userAgent;if(/utm_|fbclid/.test(q)||/Instagram|FBAN|FBAV/.test(u)){document.documentElement.classList.add("schnell")}})();window.__t0=performance.now();</script>
 <div class="intro" aria-hidden="true"><img src="img/logo_flow.png" alt=""><i></i></div>
 <div class="cur" aria-hidden="true"></div><div class="cur-ring" aria-hidden="true"></div>
 
@@ -287,8 +292,9 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
     <div class="phone" id="phone">
       <div class="in">
         <span class="pill tag"><i></i>Maik · 20 Sek.</span>
-        <video id="cvid" src="img/community.mp4" poster="img/community-poster.jpg" muted playsinline loop preload="metadata" aria-label="Maik stellt die Flow Business Community vor (mit Untertiteln)"></video>
+        <video id="cvid" src="img/community.mp4" poster="img/community-poster.jpg" muted playsinline loop preload="none" aria-label="Maik stellt die Flow Business Community vor (mit Untertiteln)"></video>
         <button class="snd" id="csnd" type="button">🔊 Ton an</button>
+        <button class="playfb" id="cplay" type="button" aria-label="Video abspielen" hidden>▶</button>
       </div>
     </div>
   </div>
@@ -478,7 +484,6 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></symbol></svg>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 const quelle = new URLSearchParams(location.search).get("utm_source") || "";
 const cap = (e, p) => { try { posthog.capture(e, p) } catch (x) {} };
@@ -493,12 +498,20 @@ document.querySelectorAll(".join").forEach(a => {
   a.addEventListener("click", () => { cap("community_join_intent", { quelle, cta: a.dataset.cta }); cap("community_join_click", { quelle, cta: a.dataset.cta, video_ton: !v.muted }) });
 });
 
+// Load timing: when the page is first really visible (ads: many taps leave before the page appears)
+(() => { let done = false; const send = () => { if (done || document.visibilityState !== "visible") return; done = true;
+  const nav = performance.getEntriesByType("navigation")[0]; cap("community_sichtbar", { quelle, ms: Math.round(performance.now()), dom_ms: nav ? Math.round(nav.domContentLoadedEventEnd) : null, schnell: document.documentElement.classList.contains("schnell") }) };
+  send(); document.addEventListener("visibilitychange", send) })();
 // Intro, then hero animations
 let seen = false; try { seen = sessionStorage.getItem("flow-c-intro") === "1"; sessionStorage.setItem("flow-c-intro", "1") } catch {}
-setTimeout(() => document.body.classList.add("ready"), REDUCE ? 0 : seen ? 200 : 1100);
+const SCHNELL = document.documentElement.classList.contains("schnell");
+setTimeout(() => document.body.classList.add("ready"), REDUCE || SCHNELL ? 0 : seen ? 200 : 1100);
 
 // Video: autoplay muted while visible; sound button restarts with sound
-new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }, { threshold: .35 }).observe(v);
+const pb = document.getElementById("cplay");
+const tryPlay = () => v.play().then(() => { pb.hidden = true }).catch(() => { pb.hidden = false; cap("community_video_blockiert", { quelle }) });
+pb.addEventListener("click", () => { v.play().catch(() => {}); pb.hidden = true; cap("community_video_tipp", { quelle }) });
+new IntersectionObserver(([e]) => { if (e.isIntersecting) tryPlay(); else v.pause() }, { threshold: .35 }).observe(v);
 sb.addEventListener("click", () => {
   if (!v.muted) { v.muted = true; sb.classList.remove("on"); sb.textContent = "🔊 Ton an"; return }
   v.muted = false; v.loop = false; v.currentTime = 0; v.play().catch(() => {});
@@ -532,7 +545,8 @@ flowLines(document.getElementById("flow2"), { lines: 24, top: .15, spread: .75, 
 
 // Smooth scroll
 let lenis = null;
-if (window.Lenis && !REDUCE) { lenis = new Lenis({ duration: 1.15, smoothWheel: true }); const raf = t => { lenis.raf(t); requestAnimationFrame(raf) }; requestAnimationFrame(raf) }
+if (FINE && !REDUCE) addEventListener("load", () => { const sc = document.createElement("script"); sc.src = "https://unpkg.com/lenis@1.1.13/dist/lenis.min.js";
+  sc.onload = () => { lenis = new Lenis({ duration: 1.15, smoothWheel: true }); const raf = t => { lenis.raf(t); requestAnimationFrame(raf) }; requestAnimationFrame(raf) }; document.head.appendChild(sc) });
 document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => { const el = document.querySelector(a.getAttribute("href")); if (!el) return; e.preventDefault(); lenis ? lenis.scrollTo(el, { offset: -70 }) : el.scrollIntoView({ behavior: "smooth" }) }));
 
 // Cursor, magnetic buttons, card light, phone tilt (mouse only)
