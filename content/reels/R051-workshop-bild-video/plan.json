@@ -1,0 +1,20 @@
+{
+ "stil": {"akzent": "#2F5BFF", "schrift_kopf": "Oswald", "schrift_text": "Inter", "versalien": true, "ecken": 0, "stimmung": "klar"},
+ "bild": {"look": "natuerlich", "hintergrund_unscharf": 0, "punch_in": 1.06, "schaerfe": 0.6, "auto_helligkeit": true, "entrauschen": true},
+ "untertitel": {"stil": "box", "gruppe": 3, "y": 1470},
+ "musik": {"datei": "musik.mp3", "ab": 0, "lautstaerke": 0.18},
+ "fortschritt": true,
+ "events": [
+  {"typ": "hook", "t": 0.05, "d": 2.5, "text": "Montag ist *Workshop-Tag*"},
+  {"typ": "video", "t": 4.39, "src": "broll/holo.mp4", "ab": 0, "d": 2.0},
+  {"typ": "keyword", "t": 7.6, "d": 1.5, "kicker": "Bilder & Videos", "text": "Wie vom *Profi*"},
+  {"typ": "chips", "t": 9.2, "d": 3.6, "items": [{"t": 9.23, "text": "Fotograf"}, {"t": 9.89, "text": "Videograf", "akzent": true}, {"t": 10.89, "text": "Videocutting"}]},
+  {"typ": "video", "t": 13.4, "src": "broll/buero.mp4", "ab": 0, "d": 2.0},
+  {"typ": "video", "t": 16.06, "src": "broll/idee.mp4", "ab": 0, "d": 1.4},
+  {"typ": "video", "t": 17.46, "src": "broll/robot.mp4", "ab": 0, "d": 1.35},
+  {"typ": "video", "t": 18.81, "src": "broll/couch.mp4", "ab": 0, "d": 1.35},
+  {"typ": "video", "t": 20.16, "src": "broll/bertrand.mp4", "ab": 0, "d": 1.6},
+  {"typ": "keyword", "t": 22.4, "d": 2.6, "kicker": "Bring ihn mit", "text": "Dein *Use-Case?*"},
+  {"typ": "karte", "t": 25.4, "d": 5.5, "kicker": "Workshop · live", "titel": "Bild & Video mit *KI*", "zeilen": ["Mo 23.11. · 18 Uhr", "Anmeldung per DM"], "badge": "Montag"}
+ ]
+}

@@ -87,12 +87,14 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 | **Vorrat 21.11.** | | |
 | Sa 21.11. 18–20 Uhr | ✓ gesendet (Routine 21.11.) · **R050** Von einer Idee zu etwas Eigenem (P020 als Story/später) | Personal, Wochenende |
+| So 22.11. 12–13 Uhr | **R051** Workshop Bild & Video (Mo 23.11.) – muss vor dem Workshop raus | Workshop-Promo |
 | So 22.11. 18–20 Uhr | **R049** Mein erster Lead-Scraper | Automation, vor Workshop-Woche |
 
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 21.11.2026 | R051 | workshop · Content-Aufwand | Reel 31 s (Talking Head + KI-B-Roll, Video Cutter) | „Montag ist Workshop-Tag“ – Bild & Video mit KI (bearbeiten wie vom Profi, fotorealistisch generieren), Mo 23.11. 18 Uhr, eigene KI-Clips mit Label | look = talking-head + ki-broll |
 | 20.11.2026 | R050 | personal · Ideen nicht umsetzen | Reel 13 s (animiertes s/w-Foto, Netz wächst aus dem Kopf) | Bewegte Fassung von P020 „Von einer Idee zu etwas Eigenem“, Caption von Maik | look = s/w-foto-netz animiert |
 | 20.11.2026 | P020 | personal · Ideen nicht umsetzen | Einzelpost 1080×1350 (s/w-Foto, Skulptur als neuronales Netz) | „Von einer Idee zu etwas Eigenem“ – Maiks Weg zu Flow Media AI, Caption von Maik | look = s/w-foto-netz |
 | 20.11.2026 | R049 | automation · Zeitmangel | Reel 34,7 s (Kreis + Bühne, dunkler Website-Look nach Maiks Feedback, Video Cutter) | „Mein erster Lead-Scraper“ – Instagram-Leads finden, persönliche DM vorbereitet, im Flow Board nur noch senden; Namen im Beispiel erfunden | format = tool-buehne (2. Mal) |
