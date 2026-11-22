@@ -1,5 +1,7 @@
 # R053 – KI-Skills in Zahlen
 
+**Hauptfassung `R053.mp4` (64 s, 22.11.2026):** Maiks Sprachvideo (94 s → 64 s, Füllwörter, Versprecher und die Passage über seinen Arbeitsplatz raus) im Layout Kreis + Bühne: Maik als sprechender Avatar unten links, dahinter die Zahlen-Präsentation im hellen Daten-Look, jede Szene auf seine Worte gelegt: Kumpel im Hotel → „75 % haben noch nie KI genutzt“ (als Erzählung gekennzeichnet, keine Studie) → Bitkom 66 % geringe KI-Kompetenz + was KI heute kann (Excel, PowerPoint …) → Bitkom 57 % nutzen KI → IAB 1,6 Mio. Stellen, Jobs bleiben stabil → Bitkom 1 von 5 geschult → „Der wichtigste Skill: KI“ + PwC +20 % Gehalt → 7 Days AI Challenge → Anmeldung. Untertitel dunkel (Spracherkennung korrigiert: KI statt „EI/Kali“, „starten“, PowerPoint). `R053-ohne-stimme.mp4` = erste Fassung (25 s, nur Animation + Musik).
+
 Daten-Reel (25 s, 1080×1920), heller Look (Off-White, schwarze Versal-Headlines, ein blauer Akzent, graue Flow-Linien), letzte Szene dunkel. Maik als runder Avatar in jeder Szene, am Ende großes s/w-Foto. Botschaft: keine Angst, sondern Augenöffner – KI-Skills sind gerade der wichtigste Skill. CTA zur 7 Days AI Challenge.
 
 | Szene | Aussage | Quelle (geprüft am 22.11.2026) |
@@ -16,7 +18,26 @@ Nicht verwendet: „800.000 weg / 800.000 neu“ (steht nur in Blogs, nicht beim
 
 Musik: „Close Up“ (Mixkit, frei), ab Sekunde 2. Neu bauen: `node render.js 25`, dann ffmpeg (Befehl siehe Commit).
 
-## Caption
+## Caption (Fassung mit Stimme)
+
+Hab gestern mit einem Kumpel gesprochen. Er arbeitet in einem großen Hotel – und laut ihm haben 75 % seiner Kollegen noch nie KI benutzt. 😳
+
+Also hab ich mir die echten Zahlen angeschaut:
+→ 57 % der Unternehmen nutzen schon KI
+→ aber 66 % sagen: Die KI-Kompetenz ihrer Leute ist gering
+→ nur 1 von 5 Berufstätigen wurde im Job zu KI geschult
+→ mit KI-Skills verdient man in den meisten Branchen über 20 % mehr
+→ und laut IAB werden es nicht weniger Jobs – gefragt sind andere Kompetenzen
+
+Für mich ist KI gerade der wichtigste Skill, den du lernen kannst.
+
+Am 30.11. startet unsere 7 Days AI Challenge: KI-Basics, eigene Ideen umsetzen, fit für 2027. Link in der Bio.
+
+Quellen: IAB (11/2025), Bitkom (09/2026), PwC AI Jobs Barometer 2026
+
+#ki #kiskills #zukunftderarbeit #weiterbildung #flowmediaai
+
+## Caption (erste Fassung ohne Stimme)
 
 Alle reden davon, dass KI Jobs vernichtet. Ich hab mir die Zahlen angeschaut 👇
 

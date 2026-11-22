@@ -19,6 +19,10 @@ canvas{position:absolute;inset:0}
 .chip.b{background:#2F5BFF;color:#fff;border-color:#2F5BFF}
 .ppl{display:flex;justify-content:space-between;padding:34px 46px}
 .ppl svg{width:110px;height:150px}
+.bar{display:flex;align-items:center;gap:22px;margin:12px 0;font:600 28px Inter}
+.bar span{width:86px;color:#6b6b70}.bar i{display:block;height:40px;border-radius:10px;background:#0A0A0A}
+.bar i.b{background:#2F5BFF;box-shadow:0 10px 30px -8px rgba(47,91,255,.6)}
+.bar em{font:700 36px Oswald;font-style:normal}
 .li{display:flex;align-items:center;gap:22px;padding:22px 30px;font:600 38px Inter;border-bottom:1px solid rgba(0,0,0,.07)}
 .li:last-child{border:0}
 .li i{flex:none;width:46px;height:46px;border-radius:50%;background:#2F5BFF;color:#fff;display:grid;place-items:center;font:700 26px Inter;font-style:normal}
@@ -36,9 +40,20 @@ canvas{position:absolute;inset:0}
 
 <div class="sc" id="s3"><p class="k">Was heute mit KI geht</p>
   <div class="t" id="t3" style="top:420px;font-size:110px">Super<br><span class="blue">erschreckend.</span></div>
-  <div id="ch3" style="position:absolute;left:90px;right:90px;top:700px">
+  <div class="card" id="c3" style="top:680px;padding:26px 34px;display:flex;align-items:center;gap:26px"><b style="font:700 96px/1 Oswald;color:#2F5BFF">66%</b><span style="font:500 32px/1.35 Inter">der Unternehmen sagen: Die KI-Kompetenz ihrer Leute ist gering. <small style="display:block;margin-top:6px;font:500 20px Montserrat;letter-spacing:.1em;color:#8a8a90">BITKOM, SEPT. 2026</small></span></div>
+  <div id="ch3" style="position:absolute;left:90px;right:90px;top:900px">
     <span class="chip b">Alles automatisieren</span><span class="chip">den ganzen Rechner</span><span class="chip">Excel</span><span class="chip">PowerPoint</span><span class="chip">Präsentationen</span>
   </div></div>
+
+<div class="sc" id="s4a"><p class="k">KI ist längst im Job angekommen</p>
+  <div class="big blue" style="font-size:280px"><span id="n4a">0</span>%</div>
+  <div class="t" id="t4a" style="top:680px;font-size:72px">der Unternehmen<br>nutzen schon KI.</div>
+  <div class="card" id="b4a" style="top:880px;padding:22px 40px">
+    <div class="bar"><span>2024</span><i id="ba"></i><em>20 %</em></div>
+    <div class="bar"><span>2025</span><i id="bb"></i><em>36 %</em></div>
+    <div class="bar"><span>2026</span><i class="b" id="bc"></i><em>57 %</em></div>
+  </div>
+  <p class="src">Quelle: Bitkom, 603 Unternehmen, Sept. 2026</p></div>
 
 <div class="sc" id="s4"><p class="k">KI nimmt viele Aufgaben ab</p>
   <div class="big" style="font-size:250px"><span id="n4">0</span><span style="font-size:120px"> Mio.</span></div>
@@ -50,8 +65,12 @@ canvas{position:absolute;inset:0}
   <div class="t" id="t5a" style="top:420px;font-size:120px;line-height:.9">Nur <span class="blue">1</span> von 5</div>
   <div class="s" id="u5" style="top:560px">wurde im Job zu KI geschult.</div>
   <div class="card ppl" id="p5" style="top:650px"></div>
-  <div class="t" id="t5b" style="top:900px;font-size:92px">Der wichtigste Skill:<br><span class="blue">KI.</span></div>
   <p class="src">Quelle: Bitkom-Befragung, 1.005 Personen</p></div>
+
+<div class="sc" id="s5b"><p class="k">Meine Meinung</p>
+  <div class="t" id="t5b" style="top:420px;font-size:120px">Der wichtigste<br>Skill: <span class="blue">KI.</span></div>
+  <div class="card" id="c5b" style="top:720px;padding:30px 38px;display:flex;align-items:center;gap:26px"><b style="font:700 110px/1 Oswald;color:#2F5BFF">+20%</b><span style="font:500 34px/1.35 Inter">mehr Gehalt mit KI-Skills – in den meisten Branchen.</span></div>
+  <p class="src">Quelle: PwC AI Jobs Barometer 2026</p></div>
 
 <div class="sc" id="s6"><p class="k">Übernächste Woche · ab <b>30.11.</b></p>
   <div class="t" id="t6" style="top:420px;font-size:120px">7 Days<br><span class="blue">AI Challenge</span></div>
@@ -73,7 +92,7 @@ const ctx = $("cv").getContext("2d");
 const PERSON = c => `<svg viewBox="0 0 120 170"><circle cx="60" cy="40" r="32" fill="${c}"/><path d="M8 170c0-40 23-72 52-72s52 32 52 72z" fill="${c}"/></svg>`;
 $("p5").innerHTML = [0, 1, 2, 3, 4].map(i => PERSON(i === 0 ? "#2F5BFF" : "#d6d5d0")).join("");
 // scene windows in seconds of the cut video
-const SC = [["s1", 0, 4.3], ["s2", 4.3, 12.5], ["s3", 12.5, 23.0], ["s4", 23.0, 32.3], ["s5", 32.3, 42.1], ["s6", 42.1, 60.9], ["s7", 60.9, 99]];
+const SC = [["s1", 0, 4.3], ["s2", 4.3, 12.5], ["s3", 12.5, 23.0], ["s4a", 23.0, 28.1], ["s4", 28.1, 32.3], ["s5", 32.3, 38.2], ["s5b", 38.2, 42.1], ["s6", 42.1, 60.9], ["s7", 60.9, 99]];
 function lines(t) { ctx.clearRect(0, 0, 1080, 1920);
   for (let i = 0; i < 24; i++) { const p = i / 23, hi = i === 15, base = 1920 * (.3 + p * .4), amp = 1920 * (.025 + .03 * Math.sin(p * 3 + t * .3)); ctx.beginPath();
     for (let X = -20; X <= 1100; X += 12) { const k = X / 1080, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y) }
@@ -85,9 +104,10 @@ window.DRAW = function (t) {
   for (const [id, a, b] of SC) $(id).style.opacity = Math.min(a === 0 ? 1 : cl((t - a) / .3), cl((b - t) / .3));
   rise($("t1"), t, -1); rise($("c1"), t, 2.9);                                      // "Kumpel … großen Hotel"
   count($("n2"), t, 5.2, 75); rise($("t2"), t, 8.6);                                // "75 % … keine KI eingesetzt"
-  rise($("t3"), t, 13.3); document.querySelectorAll("#ch3 .chip").forEach((c, i) => rise(c, t, [17.4, 19.1, 21.1, 21.6, 22.3][i], 24)); // chips on the words
-  count($("n4"), t, 23.2, 1.6, 1.2, 1); rise($("t4"), t, 23.6); rise($("c4"), t, 29.2); // "viele Aufgaben abnehmen … Jobs gefährdet"
-  rise($("t5a"), t, 32.4); rise($("u5"), t, 32.8); rise($("p5"), t, 33.2); rise($("t5b"), t, 38.5); // "wer sich jetzt KI … wichtigste Skill"
+  rise($("t3"), t, 13.3); rise($("c3"), t, 14.2); document.querySelectorAll("#ch3 .chip").forEach((c, i) => rise(c, t, [17.4, 19.1, 21.1, 21.6, 22.3][i], 24)); // chips on the words
+  count($("n4a"), t, 23.1, 57); rise($("t4a"), t, 23.5); rise($("b4a"), t, 24.0); [["ba", 20], ["bb", 36], ["bc", 57]].forEach(([id, v], i) => $(id).style.width = (v * 9 * E((t - 24.3 - i * .35) / .7)) + "px");
+  count($("n4"), t, 28.2, 1.6, 1.0, 1); rise($("t4"), t, 28.5); rise($("c4"), t, 30.6); // "viele Aufgaben abnehmen … Jobs gefährdet"
+  rise($("t5a"), t, 32.4); rise($("u5"), t, 32.8); rise($("p5"), t, 33.2); rise($("t5b"), t, 38.3); rise($("c5b"), t, 39.6); // "wer sich jetzt KI … wichtigste Skill"
   rise($("t6"), t, 43.9); rise($("l6"), t, 46.7); rise($("i1"), t, 48.5, 16); rise($("i2"), t, 53.3, 16); rise($("i3"), t, 58.8, 16);
   rise($("t7"), t, 61.0); rise($("c7"), t, 61.6); rise($("b7"), t, 62.3);
 };
