@@ -1,0 +1,96 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Stage for R053 with Maik's voice (Kreis + Bühne): light data look – off-white, black type, one blue accent, grey flow lines.
+   Scenes follow the word times of the cut video. Every frame is a pure function of t (window.DRAW). */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#F4F3EF;overflow:hidden;font-family:Inter,sans-serif;color:#0A0A0A}
+canvas{position:absolute;inset:0}
+.sc{position:absolute;inset:0;opacity:0}
+.k{position:absolute;left:90px;top:360px;font:600 24px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#6b6b70}
+.k b{color:#2F5BFF;font-weight:600}
+.big{position:absolute;left:84px;top:410px;font:700 300px/.9 Oswald;letter-spacing:-.01em}
+.blue{color:#2F5BFF}
+.t{position:absolute;left:90px;right:90px;font:700 84px/.98 Oswald;text-transform:uppercase}
+.s{position:absolute;left:90px;right:90px;font:400 36px/1.4 Inter;color:#3a3a3f}
+.src{position:absolute;left:90px;right:90px;top:1215px;font:500 21px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#8a8a90}
+.card{position:absolute;left:90px;right:90px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:30px;box-shadow:0 30px 80px -30px rgba(0,0,0,.25)}
+.chip{display:inline-block;margin:0 12px 14px 0;padding:16px 28px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.1);font:600 36px Inter;box-shadow:0 14px 40px -18px rgba(0,0,0,.3)}
+.chip.b{background:#2F5BFF;color:#fff;border-color:#2F5BFF}
+.ppl{display:flex;justify-content:space-between;padding:34px 46px}
+.ppl svg{width:110px;height:150px}
+.li{display:flex;align-items:center;gap:22px;padding:22px 30px;font:600 38px Inter;border-bottom:1px solid rgba(0,0,0,.07)}
+.li:last-child{border:0}
+.li i{flex:none;width:46px;height:46px;border-radius:50%;background:#2F5BFF;color:#fff;display:grid;place-items:center;font:700 26px Inter;font-style:normal}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+
+<div class="sc" id="s1"><p class="k">Hier mal was <b>Ernstes</b></p>
+  <div class="t" id="t1" style="top:420px;font-size:120px">Gespräch mit<br>einem Kumpel</div>
+  <div class="card" id="c1" style="top:720px;padding:34px 40px;display:flex;align-items:center;gap:26px"><span style="font-size:64px">🏨</span><span style="font:600 40px Inter">arbeitet in einem großen Hotel</span></div></div>
+
+<div class="sc" id="s2"><p class="k">Im Hotel seines Kumpels</p>
+  <div class="big"><span id="n2">0</span>%</div>
+  <div class="t" id="t2" style="top:720px">der Mitarbeiter haben<br><span class="blue">noch nie KI genutzt.</span></div>
+  <p class="src">Erzählung, keine Studie · aber die Studien sehen ähnlich aus ↓</p></div>
+
+<div class="sc" id="s3"><p class="k">Was heute mit KI geht</p>
+  <div class="t" id="t3" style="top:420px;font-size:110px">Super<br><span class="blue">erschreckend.</span></div>
+  <div id="ch3" style="position:absolute;left:90px;right:90px;top:700px">
+    <span class="chip b">Alles automatisieren</span><span class="chip">den ganzen Rechner</span><span class="chip">Excel</span><span class="chip">PowerPoint</span><span class="chip">Präsentationen</span>
+  </div></div>
+
+<div class="sc" id="s4"><p class="k">KI nimmt viele Aufgaben ab</p>
+  <div class="big" style="font-size:250px"><span id="n4">0</span><span style="font-size:120px"> Mio.</span></div>
+  <div class="t" id="t4" style="top:650px;font-size:72px">Stellen in 15 Jahren:<br><span class="blue">weg oder neu.</span></div>
+  <div class="card" id="c4" style="top:900px;padding:30px 38px;font:500 36px/1.4 Inter">Die Zahl der Jobs bleibt fast gleich – <b class="blue">gefragt sind andere Kompetenzen.</b></div>
+  <p class="src">Quelle: IAB, Presseinfo 19.11.2025</p></div>
+
+<div class="sc" id="s5"><p class="k">Wer jetzt KI lernt</p>
+  <div class="t" id="t5a" style="top:420px;font-size:120px;line-height:.9">Nur <span class="blue">1</span> von 5</div>
+  <div class="s" id="u5" style="top:560px">wurde im Job zu KI geschult.</div>
+  <div class="card ppl" id="p5" style="top:650px"></div>
+  <div class="t" id="t5b" style="top:900px;font-size:92px">Der wichtigste Skill:<br><span class="blue">KI.</span></div>
+  <p class="src">Quelle: Bitkom-Befragung, 1.005 Personen</p></div>
+
+<div class="sc" id="s6"><p class="k">Übernächste Woche · ab <b>30.11.</b></p>
+  <div class="t" id="t6" style="top:420px;font-size:120px">7 Days<br><span class="blue">AI Challenge</span></div>
+  <div class="card" id="l6" style="top:700px;padding:6px 10px">
+    <div class="li" id="i1"><i>1</i>AI-Basis-Skills an die Hand</div>
+    <div class="li" id="i2"><i>2</i>Eigene Ideen umsetzen</div>
+    <div class="li" id="i3"><i>3</i>Gut aufgestellt für 2027</div>
+  </div></div>
+
+<div class="sc" id="s7"><p class="k">Jetzt anmelden</p>
+  <div class="t" id="t7" style="top:420px;font-size:120px">Ich freu mich<br><span class="blue">auf euch.</span></div>
+  <div class="card" id="c7" style="top:720px;padding:34px 40px;text-align:center"><p style="font:700 56px Oswald;text-transform:uppercase">7 Days AI Challenge</p><p style="margin-top:8px;font:500 32px Inter;color:#3a3a3f">30.11. – 06.12. · ab 29 €</p></div>
+  <div id="b7" style="position:absolute;left:90px;right:90px;top:960px;padding:30px;border-radius:999px;background:#2F5BFF;color:#fff;text-align:center;font:600 34px Montserrat;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 20px 60px -10px rgba(47,91,255,.6)">Link in der Bio →</div></div>
+
+<script>
+const $ = id => document.getElementById(id), cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const E = x => 1 - Math.pow(1 - cl(x), 3), S = (t, a, d = .45) => E((t - a) / d);
+const ctx = $("cv").getContext("2d");
+const PERSON = c => `<svg viewBox="0 0 120 170"><circle cx="60" cy="40" r="32" fill="${c}"/><path d="M8 170c0-40 23-72 52-72s52 32 52 72z" fill="${c}"/></svg>`;
+$("p5").innerHTML = [0, 1, 2, 3, 4].map(i => PERSON(i === 0 ? "#2F5BFF" : "#d6d5d0")).join("");
+// scene windows in seconds of the cut video
+const SC = [["s1", 0, 4.3], ["s2", 4.3, 12.5], ["s3", 12.5, 23.0], ["s4", 23.0, 32.3], ["s5", 32.3, 42.1], ["s6", 42.1, 60.9], ["s7", 60.9, 99]];
+function lines(t) { ctx.clearRect(0, 0, 1080, 1920);
+  for (let i = 0; i < 24; i++) { const p = i / 23, hi = i === 15, base = 1920 * (.3 + p * .4), amp = 1920 * (.025 + .03 * Math.sin(p * 3 + t * .3)); ctx.beginPath();
+    for (let X = -20; X <= 1100; X += 12) { const k = X / 1080, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y) }
+    ctx.strokeStyle = hi ? "rgba(47,91,255,.75)" : `rgba(10,10,10,${.035 + .06 * Math.sin(p * Math.PI)})`; ctx.lineWidth = hi ? 2 : 1.1; ctx.shadowBlur = hi ? 14 : 0; ctx.shadowColor = "rgba(47,91,255,.6)"; ctx.stroke() } }
+const rise = (el, t, a, dy = 40) => { const k = S(t, a); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px)` };
+const count = (el, t, a, to, d = 1.1, dec = 0) => { el.textContent = (to * E((t - a) / d)).toFixed(dec).replace(".", ",") };
+window.DRAW = function (t) {
+  lines(t);
+  for (const [id, a, b] of SC) $(id).style.opacity = Math.min(a === 0 ? 1 : cl((t - a) / .3), cl((b - t) / .3));
+  rise($("t1"), t, -1); rise($("c1"), t, 2.9);                                      // "Kumpel … großen Hotel"
+  count($("n2"), t, 5.2, 75); rise($("t2"), t, 8.6);                                // "75 % … keine KI eingesetzt"
+  rise($("t3"), t, 13.3); document.querySelectorAll("#ch3 .chip").forEach((c, i) => rise(c, t, [17.4, 19.1, 21.1, 21.6, 22.3][i], 24)); // chips on the words
+  count($("n4"), t, 23.2, 1.6, 1.2, 1); rise($("t4"), t, 23.6); rise($("c4"), t, 29.2); // "viele Aufgaben abnehmen … Jobs gefährdet"
+  rise($("t5a"), t, 32.4); rise($("u5"), t, 32.8); rise($("p5"), t, 33.2); rise($("t5b"), t, 38.5); // "wer sich jetzt KI … wichtigste Skill"
+  rise($("t6"), t, 43.9); rise($("l6"), t, 46.7); rise($("i1"), t, 48.5, 16); rise($("i2"), t, 53.3, 16); rise($("i3"), t, 58.8, 16);
+  rise($("t7"), t, 61.0); rise($("c7"), t, 61.6); rise($("b7"), t, 62.3);
+};
+window.DRAW(0);
+</script>
+</body></html>
