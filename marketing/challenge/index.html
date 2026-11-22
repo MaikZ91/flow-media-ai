@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>7 Days AI Challenge – Flow Media AI</title>
+<meta name="description" content="7 Tage. Neue Skills. Deine Ideen. Deine KI-Zukunft. Die 7-Tage-KI-Challenge der Flow Business Community vom 30.11. bis 06.12.2026 – Teilnahme ab 29 €.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="7 Days AI Challenge – Flow Media AI">
+<meta property="og:description" content="7 Days. Build your AI future. 30.11. – 06.12.2026, exklusiv für die Flow Business Community. Teilnahme ab 29 €.">
+<meta property="og:image" content="img/maik_laptop.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script src="config.js"></script>
+<!-- PostHog (EU, ohne Cookies: persistence "memory", keine Aufzeichnungen) -->
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset identify alias".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", { api_host: "https://eu.i.posthog.com", persistence: "memory", person_profiles: "identified_only", disable_session_recording: true, respect_dnt: true, loaded: ph => ph.register({ site: "flow-challenge" }) });
+</script>
+<style>
+/* Black, white, silver. Thin hairlines, chrome type, calm motion. Mobile first. */
+:root{--bg:#050505;--bg2:#0B0B0C;--card:rgba(16,16,18,.82);--white:#fff;--text:rgba(255,255,255,.74);--muted:rgba(255,255,255,.48);--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.18);
+ --silver:linear-gradient(100deg,#8d8d93 0%,#f4f4f6 28%,#a9a9b0 50%,#ffffff 72%,#8d8d93 100%);
+ --f-head:"Oswald","Arial Narrow",sans-serif;--f-label:"Montserrat",system-ui,sans-serif;--f-body:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1);--r:22px;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 120px,radial-gradient(1200px 600px at 80% -10%,rgba(255,255,255,.05),transparent 60%)}
+.label{font:600 11px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.chrome{background:var(--silver);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s linear infinite}
+@keyframes sheen{to{background-position:-220% 0}}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;text-transform:uppercase;color:var(--white);line-height:.95;letter-spacing:-.005em}
+h2{font-size:clamp(40px,9vw,84px)}
+.sec{padding:96px 0;border-top:1px solid var(--line);position:relative}
+.sec-head{display:grid;gap:18px;margin-bottom:44px}
+.sec-head p{max-width:56ch;font-size:17px}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:999px;font:600 14px var(--f-label);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--line2);background:transparent;color:#fff;transition:transform .25s var(--ease),background .3s,border-color .3s,box-shadow .3s}
+.btn:hover{border-color:#fff}
+.btn.pri{background:linear-gradient(180deg,#ffffff,#cfcfd4);color:#050505;border-color:transparent;box-shadow:0 10px 40px -12px rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.15)}
+.btn.pri:hover{transform:translateY(-2px);box-shadow:0 16px 50px -12px rgba(255,255,255,.6)}
+.btn .ar{transition:transform .25s var(--ease)}.btn:hover .ar{transform:translateX(4px)}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(5,5,5,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:66px}
+nav img{height:24px;width:auto}
+nav .dt{margin-left:auto;font:600 11px var(--f-label);letter-spacing:.2em;color:var(--muted)}
+nav .btn{padding:11px 16px;font-size:11px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .ph{position:absolute;top:0;left:0;right:0;height:min(56svh,520px);z-index:-2;width:100%;object-fit:cover;object-position:50% 12%;filter:grayscale(1) contrast(1.08) brightness(.7)}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;height:min(56svh,520px);z-index:-1;background:linear-gradient(180deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,.1) 22%,rgba(5,5,5,.55) 58%,var(--bg) 100%)}
+#lines{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.9}
+.hero .wrap{padding-top:min(34svh,330px);padding-bottom:56px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid var(--line2);border-radius:999px;background:rgba(10,10,12,.55);backdrop-filter:blur(8px);font:600 10.5px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:#e6e6ea}
+.tag i{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff;animation:blink 2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.hero h1{font-size:clamp(56px,15.5vw,150px);margin:22px 0 0}
+.hero h1 span{display:block}
+.hero .lead{max-width:44ch;margin:22px 0 0;font-size:clamp(16.5px,2vw,19px);color:rgba(255,255,255,.82)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.fact{padding:12px 16px;border:1px solid var(--line2);border-radius:14px;background:rgba(12,12,14,.7);backdrop-filter:blur(8px)}
+.fact b{display:block;font:500 22px/1.1 var(--f-head);letter-spacing:.02em;color:#fff}
+.fact span{font:600 10px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cd{margin-top:18px;font:500 13px var(--f-body);color:var(--muted)}
+.cd b{color:#fff;font-weight:600}
+/* statement */
+.stmt{padding:90px 0;border-top:1px solid var(--line)}
+.stmt p.big{font:500 clamp(28px,6vw,58px)/1.08 var(--f-head);text-transform:uppercase;color:rgba(255,255,255,.28)}
+.stmt p.big b{color:#fff;font-weight:500}
+.stmt p.sm{margin-top:26px;max-width:58ch;font-size:17px}
+/* days */
+.days{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.day{position:relative;padding:26px 24px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;transition:border-color .4s,transform .4s var(--ease)}
+.day:hover{border-color:var(--line2);transform:translateY(-3px)}
+.day::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at var(--mx,80%) var(--my,0%),rgba(255,255,255,.07),transparent 60%);pointer-events:none}
+.day .top{display:flex;justify-content:space-between;align-items:baseline}
+.day .n{font:700 64px/1 var(--f-head)}
+.day .dt{font:600 10.5px var(--f-label);letter-spacing:.2em;color:var(--muted)}
+.day h3{font-size:25px;line-height:1.05;margin-top:12px}
+.day p{margin-top:10px;font-size:15.5px}
+.day .res{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;color:#fff}
+.day .res span{display:block;font:600 10px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.day.last{border-color:rgba(255,255,255,.35);background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(16,16,18,.9) 55%)}
+/* pricing */
+.plans{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;padding:30px 26px 26px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+.plan .nm{font:600 12px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:#e6e6ea}
+.plan .pr{display:flex;align-items:baseline;gap:6px;margin-top:14px}
+.plan .pr b{font:700 64px/1 var(--f-head);color:#fff}
+.plan .pr small{font-size:14px;color:var(--muted)}
+.plan .tl{margin-top:10px;font-size:16px;color:#fff}
+.plan .plus{margin-top:22px;font:600 11px var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.plan ul{list-style:none;margin:12px 0 26px;display:grid;gap:10px;flex:1}
+.plan li{position:relative;padding-left:26px;font-size:15px;line-height:1.45}
+.plan li::before{content:"";position:absolute;left:2px;top:7px;width:12px;height:7px;border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;transform:rotate(-45deg)}
+.plan .btn{width:100%}
+.plan.hi{border:1px solid transparent;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--silver) border-box;box-shadow:0 30px 80px -30px rgba(255,255,255,.25)}
+.plan.hi .badge{position:absolute;top:-12px;left:26px;padding:6px 12px;border-radius:999px;background:linear-gradient(180deg,#fff,#cfcfd4);color:#050505;font:600 10px var(--f-label);letter-spacing:.18em;text-transform:uppercase}
+.cmp{margin-top:34px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cmp table{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:13px 12px;border-bottom:1px solid var(--line);text-align:center}
+.cmp th:first-child,.cmp td:first-child{text-align:left;color:var(--text)}
+.cmp thead th{font:600 10.5px var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.03)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp .y{color:#fff;font-weight:600;white-space:nowrap}.cmp .n{color:rgba(255,255,255,.22)}
+.cmp .hc{background:rgba(255,255,255,.04)}
+/* flow */
+.steps{list-style:none;display:grid;grid-template-columns:minmax(0,1fr);gap:0;counter-reset:s;border-left:1px solid var(--line2);margin-left:8px}
+.steps li{counter-increment:s;position:relative;padding:0 0 30px 30px}
+.steps li::before{content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 14px rgba(255,255,255,.7)}
+.steps b{display:block;font:500 22px/1.15 var(--f-head);text-transform:uppercase;color:#fff}
+.steps b::before{content:"0" counter(s) "  ";color:var(--muted);font-weight:400}
+.steps span{display:block;margin-top:6px;font-size:15px}
+.steps small{display:inline-block;margin-top:8px;padding:4px 10px;border:1px solid var(--line2);border-radius:999px;font:600 10px var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:#e6e6ea}
+/* host */
+.host{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center}
+.host .pic{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.4;border:1px solid var(--line)}
+.host .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05)}
+.host p{margin-top:16px;font-size:17px;max-width:52ch}
+.host p b{color:#fff;font-weight:500}
+/* form */
+.book{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+form{padding:28px 22px;border:1px solid var(--line2);border-radius:var(--r);background:var(--card);display:grid;gap:16px}
+label.f{display:grid;gap:7px;font:600 10.5px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+input[type=text],input[type=email]{width:100%;padding:15px 16px;border-radius:14px;border:1px solid var(--line2);background:rgba(0,0,0,.4);color:#fff;font:400 16px var(--f-body);outline:none;transition:border-color .3s}
+input:focus{border-color:#fff}
+fieldset{border:0;display:grid;gap:10px}
+legend{font:600 10.5px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line2);border-radius:14px;cursor:pointer;transition:border-color .3s,background .3s}
+.opt input{appearance:none;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line2);flex:none;display:grid;place-items:center;margin:0}
+.opt input:checked{border-color:#fff}.opt input:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff}
+.opt:has(input:checked){border-color:#fff;background:rgba(255,255,255,.05)}
+.opt span{flex:1;font-size:15px;color:#fff}.opt span small{display:block;font-size:12.5px;color:var(--muted)}
+.opt b{font:500 22px var(--f-head);color:#fff}
+.ok{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.ok input{margin-top:3px;accent-color:#fff;width:18px;height:18px;flex:none}
+.ok a{color:#fff}
+.err{display:none;font-size:14px;color:#ffb4b4}
+form .btn{width:100%;margin-top:4px}
+.note{font-size:13px;color:var(--muted);text-align:center}
+.done{display:none;padding:30px 24px;border:1px solid #fff;border-radius:var(--r);background:var(--card)}
+.done h3{font-size:34px}.done p{margin-top:12px}
+.member{padding:18px 20px;border:1px dashed var(--line2);border-radius:16px;font-size:15px}
+.member a{color:#fff}
+/* faq */
+.faq{display:grid;gap:10px;max-width:860px}
+.faq details{border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 54px 20px 22px;font:500 17px/1.35 var(--f-body);color:#fff;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font:300 28px var(--f-body);color:#fff;transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq p{padding:0 22px 22px;font-size:15.5px}
+/* final */
+.final{padding:120px 0 110px;border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+.final h2{font-size:clamp(38px,8.5vw,92px);max-width:16ch;margin:0 auto}
+.final p{max-width:52ch;margin:24px auto 0;font-size:17px}
+.final .sig{margin-top:22px;font:600 11px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:#e6e6ea}
+.final .btn{margin-top:34px}
+footer{padding:30px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
+.bar{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:60;transform:translateY(140%);transition:transform .5s var(--ease)}
+.bar.show{transform:none}.bar .btn{width:100%;box-shadow:0 20px 50px -10px rgba(0,0,0,.8)}
+@media (min-width:760px){
+ .wrap{padding:0 36px}
+ .days{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .plan.hi{transform:translateY(-14px)}
+ .host{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px}
+ .book{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px;align-items:start}
+ form{padding:34px 32px}
+ .hero{align-items:center}
+ .hero .wrap{padding-top:110px;padding-bottom:70px}
+ .hero .ph{left:auto;width:46%;height:100%;object-position:50% 20%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
+ .hero::before{height:auto;inset:0;background:linear-gradient(90deg,var(--bg) 40%,rgba(5,5,5,.2) 75%,rgba(5,5,5,.35) 100%),linear-gradient(180deg,transparent 75%,var(--bg))}
+ .hero h1{font-size:clamp(70px,9vw,132px)}
+ .bar{display:none}
+ .cmp table{font-size:15px}
+}
+@media (min-width:1080px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}.day.last{grid-column:span 2}.hero .wrap{padding-bottom:80px}}
+@media (max-width:420px){nav .dt{display:none}nav .btn{margin-left:auto}.cmp th,.cmp td{padding:11px 7px;font-size:12.5px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a href="#top"><img src="img/logo_flow.png" alt="Flow Media AI"></a>
+  <span class="dt">30.11. – 06.12.2026</span>
+  <a class="btn pri" href="#anmelden" data-cta="nav">Platz sichern</a>
+</div></nav>
+
+<header class="hero" id="top">
+  <img class="ph" src="img/maik_laptop.jpg" alt="Maik am Laptop" fetchpriority="high">
+  <canvas id="lines" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="tag rv"><i></i>7 Days AI Challenge</span>
+    <h1 class="rv d1"><span>7 Days.</span><span class="chrome">Build your</span><span class="chrome">AI future.</span></h1>
+    <p class="lead rv d2">Entdecke, was mit KI möglich ist. Entwickle eigene Skills, automatisiere Prozesse und bring deine Ideen in nur sieben Tagen auf das nächste Level.</p>
+    <div class="facts rv d2">
+      <div class="fact"><b>30.11. – 06.12.2026</b><span>7 Tage · online</span></div>
+      <div class="fact"><b>ab 29 €</b><span>3 Pakete</span></div>
+      <div class="fact"><b>Exklusiv</b><span>für die Flow Business Community</span></div>
+    </div>
+    <div class="cta rv d3">
+      <a class="btn pri" href="#anmelden" data-cta="hero">Jetzt Platz sichern <span class="ar">→</span></a>
+      <a class="btn" href="#tage" data-cta="hero_tage">Die 7 Tage ansehen</a>
+    </div>
+    <p class="cd rv d3" id="cd" aria-live="polite"></p>
+  </div>
+</header>
+
+<section class="stmt">
+  <div class="wrap">
+    <p class="big rv">Keine trockene Theorie. Keine endlosen Tool-Listen. <b>Sondern praktische Umsetzung.</b></p>
+    <p class="sm rv d1">In sieben Tagen lernst du, KI nicht nur zu nutzen, sondern aktiv für deine eigenen Ideen, Projekte und dein Business einzusetzen. Jeden Tag ein Thema, eine Aufgabe und ein Ergebnis, das du behältst.</p>
+  </div>
+</section>
+
+<section class="sec" id="tage">
+  <div class="wrap">
+    <div class="sec-head"><span class="label rv">Die sieben Tage</span><h2 class="rv d1">Ein Tag.<br><span class="chrome">Ein Ergebnis.</span></h2></div>
+    <div class="days" id="days"></div>
+  </div>
+</section>
+
+<section class="sec" id="pakete">
+  <div class="wrap">
+    <div class="sec-head"><span class="label rv">Teilnahme</span><h2 class="rv d1">Wähle dein<br><span class="chrome">Level.</span></h2><p class="rv d2">Alle Pakete enthalten die komplette Challenge. Der Unterschied ist, wie viel persönliche Begleitung du dazu willst.</p></div>
+    <div class="plans" id="plans"></div>
+    <div class="cmp rv" id="cmp"></div>
+  </div>
+</section>
+
+<section class="sec" id="ablauf">
+  <div class="wrap">
+    <div class="sec-head"><span class="label rv">Ablauf</span><h2 class="rv d1">So läuft<br><span class="chrome">die Challenge.</span></h2></div>
+    <ol class="steps" id="steps"></ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap host">
+    <div class="pic rv"><img src="img/maik_front.jpg" alt="Maik, Gründer von Flow Media AI" loading="lazy"></div>
+    <div>
+      <span class="label rv">Dein Host</span>
+      <h2 class="rv d1" style="font-size:clamp(40px,8vw,72px)">Hi, ich bin<br><span class="chrome">Maik.</span></h2>
+      <p class="rv d2">Ich bin <b>KI-Sparrings- und Umsetzungspartner für Gründer und Selbstständige</b>. Ich baue mit KI Apps, Websites, Tools und Automatisierungen – und zeige, wie du das selbst kannst. Ohne Tool-Dschungel, ohne Programmierkenntnisse.</p>
+      <p class="rv d2">In der Challenge machen wir genau das: sieben Tage lang zusammen bauen statt nur darüber reden.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="anmelden">
+  <div class="wrap book">
+    <div>
+      <div class="sec-head" style="margin-bottom:24px"><span class="label rv">Anmeldung</span><h2 class="rv d1">Sichere dir<br><span class="chrome">deinen Platz.</span></h2><p class="rv d2">Name, E-Mail, Paket – fertig. Danach bekommst du alles Weitere für den Start am 30.11.</p></div>
+      <div class="member rv d2">Die Challenge ist exklusiv für Mitglieder der Flow Business Community. Noch nicht dabei? <a href="#" id="commlink">Hier kostenlos beitreten →</a></div>
+    </div>
+    <div>
+      <form id="form" novalidate class="rv">
+        <label class="f">Name<input type="text" name="name" autocomplete="name" required placeholder="Dein Vorname"></label>
+        <label class="f">E-Mail<input type="email" name="email" autocomplete="email" required placeholder="du@beispiel.de"></label>
+        <fieldset id="opts"><legend>Paket</legend></fieldset>
+        <label class="ok"><input type="checkbox" name="ok" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anmeldung verwendet werden. Mehr in der <a href="../landing-page/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn pri" type="submit" id="submit">Platz sichern <span class="ar">→</span></button>
+        <p class="note" id="note"></p>
+      </form>
+      <div class="done" id="done" role="status"><span class="label">Fast geschafft</span><h3 style="margin-top:10px">Danke, <span id="dname"></span>!</h3><p id="dtext"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fragen">
+  <div class="wrap">
+    <div class="sec-head"><span class="label rv">Fragen</span><h2 class="rv d1">Gut zu<br><span class="chrome">wissen.</span></h2></div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="rv">Hör auf, nur über KI zu reden. <span class="chrome">Fang an, damit etwas zu erschaffen.</span></h2>
+    <p class="rv d1">Egal, ob du gerade erst startest oder schon mit KI arbeitest: In sieben Tagen kannst du mehr erreichen, als du vielleicht denkst.</p>
+    <p class="sig rv d2">Flow Media AI – We build your ideas.</p>
+    <a class="btn pri rv d3" href="#anmelden" data-cta="final">Ich bin dabei <span class="ar">→</span></a>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
+
+<div class="bar" id="bar"><a class="btn pri" href="#anmelden" data-cta="sticky">Jetzt Platz sichern · ab 29 € <span class="ar">→</span></a></div>
+
+<script>
+const C = window.CHALLENGE;
+const cap = (e, p) => { try { posthog.capture(e, p) } catch (x) {} };
+const $ = id => document.getElementById(id);
+
+const PAKETE = [
+  { id: "starter", name: "Starter", preis: 29, tl: "Der praktische Einstieg.", plus: null,
+    items: ["Zugang zur 7-Tage-KI-Challenge", "Tägliche Aufgaben und Tutorials", "Zugang zur Challenge-Community", "Gruppen-Support während der Challenge", "Zugriff auf Vorlagen, Prompts und KI-Skills", "Austausch mit anderen Teilnehmern"], cta: "Starter sichern" },
+  { id: "premium", name: "Premium", preis: 59, tl: "Mehr Unterstützung und gemeinsame Umsetzung.", plus: "Alle Starter-Leistungen plus", hi: true,
+    items: ["Teilnahme an den gemeinsamen Live-Sessions", "Praktische Übungen und Demonstrationen", "Direkte Fragerunden", "Persönliches Feedback während der Live-Sessions", "Gemeinsames Entwickeln und Ausprobieren"], cta: "Premium sichern" },
+  { id: "intensive", name: "1:1 Intensive", preis: 99, tl: "Deine eigene Idee. Deine persönliche KI-Begleitung.", plus: "Alle Premium-Leistungen plus",
+    items: ["45 Minuten persönliches 1:1 KI-Sparring", "Individuelle Beratung zu deinem Projekt", "Gemeinsame Arbeit an deiner konkreten Idee", "Unterstützung bei der Auswahl geeigneter KI-Tools", "Konkrete nächste Schritte für die Umsetzung"], cta: "1:1 Intensive sichern" },
+];
+const TAGE = [
+  ["KI verstehen und richtig nutzen", "Wie KI-Modelle arbeiten, welches Tool wofür taugt und wie du so fragst, dass brauchbare Antworten kommen.", "Dein persönlicher Prompt-Baukasten für den Alltag."],
+  ["Eigene KI-Skills und Assistenten entwickeln", "Du bringst der KI bei, wie du arbeitest: mit deinem Wissen, deinem Stil, deinen Abläufen.", "Dein erster eigener KI-Assistent."],
+  ["Content Creation mit KI", "Texte, Bilder und Videos für dein Business – schneller und trotzdem nach dir.", "Ein eigener Content-Workflow mit ersten fertigen Beiträgen."],
+  ["Workflows und Automatisierungen", "Wiederkehrende Aufgaben finden und Schritt für Schritt an KI und Automatisierung abgeben.", "Eine Automatisierung, die dir eine Aufgabe abnimmt."],
+  ["Eigene Apps und digitale Tools entwickeln", "Aus einer Idee ein nutzbares Tool bauen – ohne Programmierkenntnisse.", "Dein erster App-Prototyp."],
+  ["KI-Agenten entdecken", "Was Agenten heute schon selbstständig erledigen können – und wo du ihnen besser nicht vertraust.", "Ein Agent, der eine Aufgabe für dich erledigt."],
+  ["Build your own idea", "Alles zusammen: Du setzt dein eigenes KI-Projekt um – mit dem, was du in der Woche gelernt hast.", "Dein eigenes KI-Projekt, vorgestellt in der Gruppe."],
+];
+const ABLAUF = [
+  ["Anmelden & Paket wählen", "Name, E-Mail und dein Paket – das dauert eine Minute."],
+  ["Zugang zur Challenge-Gruppe", "Du kommst in die WhatsApp-Gruppe der Challenge."],
+  ["Tägliche Aufgaben & Impulse", "Jeden Morgen das Thema des Tages mit Tutorial und Aufgabe."],
+  ["Gemeinsame Umsetzung", "Du baust, fragst und tauschst dich mit den anderen aus."],
+  ["Live-Sessions", "Gemeinsam üben, Fragen klären, Feedback bekommen.", "Premium & 1:1 Intensive"],
+  ["Abschluss & Präsentation", "Am Tag 7 zeigst du, was du gebaut hast."],
+];
+const FAQ = [
+  ["Brauche ich Vorkenntnisse?", "Nein. Die Challenge ist für Einsteiger genauso gedacht wie für Leute, die schon mit KI arbeiten. Programmieren musst du nicht."],
+  ["Muss ich Mitglied der Flow Business Community sein?", "Ja, die Challenge ist exklusiv für die Community. Der Beitritt ist kostenlos und geht in wenigen Sekunden über WhatsApp."],
+  ["Was ist der Unterschied zwischen den Paketen?", "Alle bekommen die komplette Challenge mit Aufgaben, Tutorials, Vorlagen und Gruppen-Support. Premium kommt mit den Live-Sessions und persönlichem Feedback dazu, 1:1 Intensive zusätzlich mit 45 Minuten persönlichem Sparring zu deiner eigenen Idee."],
+  ["Wann finden die Live-Sessions statt?", "Die Termine bekommst du vor dem Start in der Challenge-Gruppe."],
+  ["Wie läuft die Bezahlung?", null],
+];
+
+// Render days
+const fmt = d => ["SO", "MO", "DI", "MI", "DO", "FR", "SA"][d.getDay()] + " " + String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0") + ".";
+const s0 = new Date(new Date(C.start).getTime() + 12 * 3600e3); // midday of day 1: date stays right in every time zone
+const fmtB = d => d.toLocaleDateString("de-DE", { timeZone: "Europe/Berlin", weekday: "short", day: "2-digit", month: "2-digit" }).replace(/\.,?\s*/, " ").toUpperCase();
+$("days").innerHTML = TAGE.map(([t, p, r], i) => { const d = new Date(s0); d.setDate(d.getDate() + i);
+  return `<article class="day rv${i % 2 ? " d1" : ""}${i === 6 ? " last" : ""}"><div class="top"><span class="n chrome">0${i + 1}</span><span class="dt">TAG ${i + 1} · ${fmtB(d)}</span></div><h3>${t}</h3><p>${p}</p><div class="res"><span>Ergebnis</span>${r}</div></article>` }).join("");
+// Render plans + comparison + form options
+$("plans").innerHTML = PAKETE.map((k, i) => `<article class="plan rv d${i}${k.hi ? " hi" : ""}">${k.hi ? '<span class="badge">Empfohlen</span>' : ""}<span class="nm">${k.name}</span><div class="pr"><b>${k.preis} €</b><small>einmalig</small></div><p class="tl">${k.tl}</p>${k.plus ? `<p class="plus">${k.plus}</p>` : '<p class="plus">Enthalten</p>'}<ul>${k.items.map(x => `<li>${x}</li>`).join("")}</ul><a class="btn${k.hi ? " pri" : ""}" href="#anmelden" data-pick="${k.id}">${k.cta} <span class="ar">→</span></a></article>`).join("");
+const ROWS = [["Komplette 7-Tage-Challenge", 1, 1, 1], ["Tägliche Aufgaben & Tutorials", 1, 1, 1], ["Vorlagen, Prompts & KI-Skills", 1, 1, 1], ["Challenge-Community & Gruppen-Support", 1, 1, 1], ["Live-Sessions mit Übungen & Fragerunden", 0, 1, 1], ["Persönliches Feedback in den Live-Sessions", 0, 1, 1], ["45 Min. 1:1-KI-Sparring zu deiner Idee", 0, 0, 1], ["Tool-Auswahl & nächste Schritte für dein Projekt", 0, 0, 1]];
+$("cmp").innerHTML = `<table><thead><tr><th>Leistung</th><th>Starter</th><th class="hc">Premium</th><th>1:1</th></tr></thead><tbody>${ROWS.map(r => `<tr><td>${r[0]}</td>${r.slice(1).map((v, j) => `<td class="${v ? "y" : "n"}${j === 1 ? " hc" : ""}">${v ? "✓" : "–"}</td>`).join("")}</tr>`).join("")}<tr><td>Preis</td><td class="y">29 €</td><td class="y hc">59 €</td><td class="y">99 €</td></tr></tbody></table>`;
+$("opts").insertAdjacentHTML("beforeend", PAKETE.map(k => `<label class="opt"><input type="radio" name="paket" value="${k.id}"${k.hi ? " checked" : ""}><span>${k.name}<small>${k.tl}</small></span><b>${k.preis} €</b></label>`).join(""));
+$("steps").innerHTML = ABLAUF.map(([b, s, t], i) => `<li class="rv"><b>${b}</b><span>${s}</span>${t ? `<small>${t}</small>` : ""}</li>`).join("");
+const hasPay = () => Object.values(C.zahlung).some(Boolean);
+FAQ[4][1] = hasPay() ? "Nach der Anmeldung geht es direkt weiter zur sicheren Zahlung. Danach bekommst du den Zugang zur Challenge-Gruppe." : "Nach der Anmeldung melde ich mich persönlich bei dir und schicke dir den Zahlungslink. Sobald bezahlt ist, bekommst du den Zugang zur Challenge-Gruppe.";
+$("faq").innerHTML = FAQ.map(([q, a], i) => `<details class="rv"><summary>${q}</summary><p>${a}</p></details>`).join("");
+$("commlink").href = C.community;
+$("note").textContent = hasPay() ? "Du wirst zur sicheren Zahlung weitergeleitet." : "Nach dem Absenden öffnet sich WhatsApp mit deiner Anmeldung – einfach abschicken.";
+
+// Package buttons preselect the form
+document.querySelectorAll("[data-pick]").forEach(a => a.addEventListener("click", () => { document.querySelector(`input[name=paket][value=${a.dataset.pick}]`).checked = true; cap("challenge_paket_klick", { paket: a.dataset.pick }) }));
+document.querySelectorAll("[data-cta]").forEach(a => a.addEventListener("click", () => cap("challenge_cta", { cta: a.dataset.cta })));
+$("commlink").addEventListener("click", () => cap("challenge_community_klick"));
+document.querySelectorAll(".faq details").forEach((d, i) => d.addEventListener("toggle", () => { if (d.open) cap("challenge_faq", { frage: i + 1 }) }));
+
+// Booking: payment link if configured, otherwise the booking goes to Maik via WhatsApp
+$("form").addEventListener("submit", e => {
+  e.preventDefault(); const f = e.target, err = $("err");
+  const name = f.name.value.trim(), email = f.email.value.trim(), paket = (f.querySelector("input[name=paket]:checked") || {}).value;
+  const fail = m => { err.textContent = m; err.style.display = "block" };
+  if (!name) return fail("Bitte gib deinen Namen ein.");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Bitte gib eine gültige E-Mail-Adresse ein.");
+  if (!paket) return fail("Bitte wähle ein Paket.");
+  if (!f.ok.checked) return fail("Bitte bestätige die Einwilligung zur Datenverarbeitung.");
+  err.style.display = "none";
+  const k = PAKETE.find(p => p.id === paket);
+  cap("challenge_anmeldung", { paket, preis: k.preis, weg: C.zahlung[paket] ? "zahlung" : "whatsapp" });
+  try { sessionStorage.setItem("flow-challenge", JSON.stringify({ name, paket })) } catch (x) {}
+  if (C.zahlung[paket]) { const u = new URL(C.zahlung[paket]); if (/stripe\.com/.test(u.host)) u.searchParams.set("prefilled_email", email); location.href = u.toString(); return }
+  const msg = `Hi Maik, ich möchte bei der 7 Days AI Challenge (30.11. – 06.12.2026) dabei sein.\n\nPaket: ${k.name} (${k.preis} €)\nName: ${name}\nE-Mail: ${email}\n\nSchick mir bitte den Zahlungslink.`;
+  $("dname").textContent = name.split(" ")[0];
+  $("dtext").innerHTML = `Deine Anmeldung für <b>${k.name} (${k.preis} €)</b> ist vorbereitet. Schick die WhatsApp-Nachricht ab, dann bekommst du von mir den Zahlungslink und danach den Zugang zur Challenge-Gruppe.<br><br><a class="btn pri" style="width:100%" href="https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent(msg)}">WhatsApp öffnen <span class="ar">→</span></a>`;
+  f.style.display = "none"; $("done").style.display = "block";
+  location.href = `https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent(msg)}`;
+});
+
+// Countdown to the start (Berlin)
+function tick() { const ms = new Date(C.start) - Date.now(), end = new Date(C.ende) - Date.now(), el = $("cd");
+  if (ms > 0) { const m = Math.floor(ms / 60000); el.innerHTML = `Start in <b>${Math.floor(m / 1440)} Tagen</b> · <b>${Math.floor(m % 1440 / 60)} Std</b> · <b>${m % 60} Min</b>` }
+  else if (end > 0) el.innerHTML = "<b>Die Challenge läuft gerade.</b>"; else el.textContent = "Diese Challenge ist vorbei – die nächste wird in der Community angekündigt." }
+tick(); setInterval(tick, 30000);
+
+// Reveal, nav, sticky bar, card light
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+const nav = $("nav"), bar = $("bar"), hero = document.querySelector(".hero"), book = $("anmelden"); let hv = true, bv = false;
+addEventListener("scroll", () => nav.classList.toggle("solid", scrollY > 30), { passive: true });
+new IntersectionObserver(([e]) => { hv = e.isIntersecting; bar.classList.toggle("show", !hv && !bv) }).observe(hero);
+new IntersectionObserver(([e]) => { bv = e.isIntersecting; bar.classList.toggle("show", !hv && !bv) }, { threshold: .05 }).observe(book);
+document.querySelectorAll(".day").forEach(c => c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px") }));
+
+// Silver flowing lines in the hero
+(() => { const c = $("lines"), x = c.getContext("2d"), RM = matchMedia("(prefers-reduced-motion: reduce)").matches; let w, h, t = 0, vis = true;
+  const rs = () => { const d = Math.min(devicePixelRatio || 1, 2); w = c.clientWidth; h = c.clientHeight; c.width = w * d; c.height = h * d; x.setTransform(d, 0, 0, d, 0, 0) };
+  rs(); addEventListener("resize", rs); new IntersectionObserver(([e]) => vis = e.isIntersecting).observe(c);
+  (function draw() { if (vis) { x.clearRect(0, 0, w, h);
+    for (let i = 0; i < 26; i++) { const p = i / 25, hi = i === 17, base = h * (.42 + p * .5), amp = h * (.035 + .05 * Math.sin(p * 3 + t * .3)); x.beginPath();
+      for (let X = -20; X <= w + 20; X += 14) { const k = X / w, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? x.moveTo(X, Y) : x.lineTo(X, Y) }
+      x.strokeStyle = hi ? "rgba(255,255,255,.75)" : `rgba(220,220,228,${.03 + .07 * Math.sin(p * Math.PI)})`; x.lineWidth = hi ? 1.3 : 1; x.shadowBlur = hi ? 14 : 0; x.shadowColor = "rgba(255,255,255,.8)"; x.stroke() }
+    t += RM ? 0 : .01 } requestAnimationFrame(draw) })() })();
+cap("challenge_sichtbar", { quelle: new URLSearchParams(location.search).get("utm_source") || "" });
+</script>
+</body>
+</html>

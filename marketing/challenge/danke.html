@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danke – 7 Days AI Challenge</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+/* Thank-you page after payment: hands out the challenge group link (set in config.js). */
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100svh;display:grid;place-items:center;padding:24px;background:#050505;color:rgba(255,255,255,.75);font:400 17px/1.6 "Inter",system-ui,sans-serif}
+.box{width:100%;max-width:520px;padding:36px 28px;border:1px solid rgba(255,255,255,.18);border-radius:24px;background:rgba(16,16,18,.85)}
+img{height:24px;margin-bottom:28px}
+.label{display:block;font:600 11px "Montserrat",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+h1{margin-top:10px;font:700 clamp(40px,11vw,60px)/.95 "Oswald",sans-serif;text-transform:uppercase;background:linear-gradient(100deg,#8d8d93,#f4f4f6 30%,#a9a9b0 55%,#fff 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{margin-top:16px}
+.btn{display:flex;justify-content:center;margin-top:26px;padding:17px 24px;border-radius:999px;background:linear-gradient(180deg,#fff,#cfcfd4);color:#050505;font:600 14px "Montserrat",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+small{display:block;margin-top:18px;font-size:13px;color:rgba(255,255,255,.45)}
+</style>
+</head>
+<body>
+<div class="box">
+  <img src="img/logo_flow.png" alt="Flow Media AI">
+  <span class="label">7 Days AI Challenge · 30.11. – 06.12.2026</span>
+  <h1>Du bist dabei<span id="n"></span>.</h1>
+  <p>Danke für deine Anmeldung. Tritt jetzt der Challenge-Gruppe bei – dort startet am 30.11. Tag 1.</p>
+  <div id="cta"></div>
+  <small>Fragen? Schreib mir einfach auf WhatsApp. – Maik, Flow Media AI</small>
+</div>
+<script>
+const C = window.CHALLENGE;
+try { const d = JSON.parse(sessionStorage.getItem("flow-challenge") || "{}"); if (d.name) document.getElementById("n").textContent = ", " + d.name.split(" ")[0] } catch (x) {}
+document.getElementById("cta").innerHTML = C.whatsappChallenge
+  ? `<a class="btn" href="${C.whatsappChallenge}">Zur Challenge-Gruppe →</a>`
+  : `<a class="btn" href="https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent("Hi Maik, ich habe die 7 Days AI Challenge gebucht. Kannst du mir den Link zur Challenge-Gruppe schicken?")}">Link zur Gruppe anfragen →</a>`;
+</script>
+</body>
+</html>
