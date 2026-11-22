@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-22T01:23+00:00",
+ "stand": "2026-11-22T11:34+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,123 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Mathematiker löst Riemannsche Hypothese – mithilfe von Claude",
+   "s": "Unabhängige Organisationen gratulieren dem Anthropic-Forscher. Aber nicht alle sind von seiner Arbeit begeistert. In der mathematischen Community wird die Kritik an der Verwendung von KI immer lauter.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/mathematiker-loest-riemannsche-hypothese-mithilfe-von-claude-1774699",
+   "d": "2026-11-22T10:52:21+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Jobs & Arbeit"
+   ],
+   "n": 3,
+   "r": 35.9
+  },
+  {
+   "t": "Sicherheitsforscher schicken zwei Millionen KI-Anfragen mit gefälschten Zugangsdaten und decken gravierende Lücken auf",
+   "s": "Sicherheitsforscher von Dragos haben mit zwei Millionen gefälschten KI-Anfragen gravierende Schwachstellen in der KI-Lieferkette aufgedeckt: mindestens drei kompromittierte Anbieter, Hunderte gestohlene AWS-Schlüssel …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/sicherheitsforscher-schicken-zwei-millionen-ki-anfragen-mit-gefaelschten-zugangsdaten-und-decken-gravierende-luecken-auf/",
+   "d": "2026-11-22T10:37:56+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.8
+  },
+  {
+   "t": "Lean-Community bestätigt offiziell den Beweis der Riemannschen Vermutung",
+   "s": "Die Lean- und Mathlib-Community hat Levent Alpöges Beweis der Riemannschen Vermutung offiziell als korrekt bestätigt. Der 17 Millionen Zeilen lange Computercode wurde von Dutzenden unabhängigen Prüfern verifiziert. Die …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/lean-community-bestaetigt-offiziell-den-beweis-der-riemannschen-vermutung/",
+   "d": "2026-11-22T09:59:31+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.7
+  },
+  {
+   "t": "OpenAIs GPT-6.2 antwortet kürzer und direkter, gesteht aber kaum noch Unsicherheit ein",
+   "s": "OpenAIs GPT-6.2 Astra und Sol antworten laut Artificial Analysis rund 40 Prozent kürzer und kommen schneller auf den Punkt als ihre Vorgänger, gestehen aber deutlich seltener Unsicherheit ein. Im Vergleich schneiden …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/gpt-6-2-antwortet-bis-zu-40-prozent-kuerzer-und-gesteht-unsicherheit-seltener-ein/",
+   "d": "2026-11-22T09:12:37+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.6
+  },
+  {
+   "t": "370 Bücher in 20 Monaten: So schreibt eine Autorin mit ChatGPT, Claude und Grok",
+   "s": "In nicht einmal zwei Jahren hat eine südafrikanische Autorin mehr als 370 Bücher geschrieben und veröffentlicht. Dabei hat ihr Künstliche Intelligenz geholfen. Wie sie ihren Workflow gestaltet und die Werke zu einem …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/370-buecher-ki-chatgpt-claude-grok-1773778",
+   "d": "2026-11-22T07:40:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "xAI / Grok"
+   ],
+   "n": 3,
+   "r": 43.4
+  },
+  {
+   "t": "Wenn diese KI Walter findet, findet sie jeden: Künstler zeigt die Gefahr offener Kameras",
+   "s": "Die Wimmelbuch-Reihe „Wo ist Walter?“ ist weltweit ein Klassiker. Der belgische Künstler Dries Depoorter hat die Suche nach der Figur mit dem rot-weiß-gestreift",
+   "q": "t3n",
+   "l": "https://t3n.de/news/wally-finder-ki-sucht-walter-ueberwachungskameras-1773734",
+   "d": "2026-11-22T07:20:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
+  {
+   "t": "OpenAI setzt auf Rechenzentren, ein 19-Jähriger auf Ghost Core – den KI-Computer für daheim",
+   "s": "Während die etablierte Tech-Branche bei autonomen KI-Programmen auf Rechenzentren setzt, wählt ein neunzehnjähriger Entwickler den exakt entgegengesetzten Weg. Seine bildschirmlose Spezialhardware für den Heimeinsatz …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ghost-core-lokaler-ki-computer-1767111",
+   "d": "2026-11-22T07:10:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 27.3
+  },
+  {
+   "t": "Schutz vor KI-Agenten: Das ändert Apple beim Festplattenzugriff am Mac",
+   "s": "Mit macOS 27.3 baut Apple die Zugriffsrechte um. Wer einer App künftig Festplattenvollzugriff geben will, muss sich durch mehrere Warnungen klicken. Grund sind KI-Agenten, die tief ins System eingreifen.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/macos-ki-agenten-festplattenzugriff-sicherheit-1774075",
+   "d": "2026-11-22T06:25:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Apple",
+    "KI-Agenten"
+   ],
+   "n": 2,
+   "r": 25.1
+  },
+  {
+   "t": "Morgens zuerst Claude, dann Mails: Wie ich mir einen KI-Assistenten gebaut habe und damit arbeite",
+   "s": "Dass nur der Chef einen persönlichen Assistenten hat, gilt heute nicht mehr: Unser Autor hat ausprobiert, ob er sich mit KI einen Sparringspartner und Coach bau",
+   "q": "t3n",
+   "l": "https://t3n.de/news/morgens-claude-dann-mails-ki-assistent-arbeit-1772873",
+   "d": "2026-11-22T05:50:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Jobs & Arbeit"
+   ],
+   "n": 1,
+   "r": 15.0
+  },
   {
    "t": "Gezielte Suche schlägt das vollständige Einlesen langer Dokumente in KI-Modelle",
    "s": "Nvidia-Forschende argumentieren, dass Sprachmodelle ihre riesigen, langsamen, teuren und ungenauen Kontextfenster oft gar nicht benötigen, und schlagen eine Alternative vor. In Tests lieferten Zwischenzusammenfassungen …",
@@ -18,7 +135,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 10.3
+   "r": 8.6
   },
   {
    "t": "Fünf EU-Staaten wollen Zentrum für KI in der Verteidigung gründen",
@@ -31,7 +148,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 8.5
   },
   {
    "t": "Pseudo-buddhistisches Kloster in Vermont will zum \"Scientology für das Silicon Valley\" aufsteigen",
@@ -42,7 +159,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.2
+   "r": 4.5
   },
   {
    "t": "Starker Start an der Börse: Wird Anthropic den Erfolgskurs halten können?",
@@ -57,7 +174,7 @@
     "KI-Blase & Geld"
    ],
    "n": 3,
-   "r": 38.0
+   "r": 36.3
   },
   {
    "t": "OpenAI teilt Prompting-Tipps für GPT-6.2 Astra und Sol",
@@ -70,7 +187,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 11.8
+   "r": 10.1
   },
   {
    "t": "Heiliger Gral der Mathematik offenbar gefallen: Anthropic-Forscher löst Riemannsche Vermutung mit KI",
@@ -82,8 +199,8 @@
    "tags": [
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 21.5
+   "n": 3,
+   "r": 29.8
   },
   {
    "t": "US-Techmarkt im freien Fall: Perfekter Sturm aus KI-Zweifeln, Skandalen und Inflationsangst",
@@ -97,7 +214,7 @@
     "Nvidia & Chips"
    ],
    "n": 3,
-   "r": 35.5
+   "r": 33.8
   },
   {
    "t": "Inkling 2 Mini: Neues KI-Modell denkt in Schleifen – und läuft trotzdem auf dem Laptop",
@@ -108,20 +225,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.4
-  },
-  {
-   "t": "Human in the Lead: Wie man KI-Agenten zähmt, ohne sie auszubremsen",
-   "s": "War der Hugging-Face-Hack nur Schlamperei – oder haben wir es mit einer neuen Bedrohung zu tun? Oder lenkt beides tatsächlich von einer viel grundsätzlicheren Frage ab: Wie wird ein Fehler korrigiert, bevor er Schaden …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/agentische-ki-human-in-the-lead-steuerung-1773694",
-   "d": "2026-11-21T09:25:00+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 9.3
+   "r": 3.7
   },
   {
    "t": "Riemannsche Vermutung: Anthropic-Mathematiker will KI-Beweis gefunden haben",
@@ -133,8 +237,8 @@
    "tags": [
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 21.3
+   "n": 3,
+   "r": 29.6
   },
   {
    "t": "KI-Kennzeichnung und National Geographic – die Fotonews der Woche 47/2026",
@@ -145,18 +249,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.3
-  },
-  {
-   "t": "KI vs. Klimaziele: Warum Rechenzentren zum Problem für das Stromnetz werden",
-   "s": "Der KI-Boom und der damit verbundene Ausbau von Rechenzentren sorgen aufgrund des hohen Strom- und Wasserverbrauchs in den USA zunehmend für Gegenwind. Dank einer neuen Harvard-Studie dürften sich Kritiker:innen …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/rechenzentren-stromverbrauch-harvard-studie-1773938",
-   "d": "2026-11-21T08:50:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 5.2
+   "r": 3.6
   },
   {
    "t": "Bytedance-Forschende hinterfragen aufwendige KI-Trainingsverfahren und liefern eine schlanke Alternative",
@@ -171,33 +264,8 @@
     "KI-Agenten",
     "Bildung & Schule"
    ],
-   "n": 2,
-   "r": 33.2
-  },
-  {
-   "t": "800 Millionen „Duft-Tokens“: So will ein US-Startup einer KI das Riechen beibringen",
-   "s": "Das Geruchsmodell von Osmo wird bereits in der Parfümindustrie eingesetzt. Künftig soll sie auch für medizinische Diagnostik und das Erschnüffeln von Gefahren g",
-   "q": "t3n",
-   "l": "https://t3n.de/news/800-millionen-duft-tokens-so-will-ein-us-startup-einer-ki-das-riechen-beibringen-1774212",
-   "d": "2026-11-21T07:40:28+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 5.0
-  },
-  {
-   "t": "KI-Kosten steigen massiv: Warum Goldman Sachs jetzt die Bremse zieht",
-   "s": "Goldman Sachs zieht bei KI-Tools die Zügel an: Claude Code und GitHub bleiben künftig Entwicklern vorbehalten. Was das über den KI-Boom an der Wall Street verrät.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/goldman-sachs-ki-kosten-bremse-1771271",
-   "d": "2026-11-21T07:30:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 15.0
+   "n": 4,
+   "r": 51.5
   },
   {
    "t": "Developer-Häppchen: Agenten überwachen sich mit openchamber gegenseitig",
@@ -210,48 +278,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 9.0
-  },
-  {
-   "t": "KI-Datenklau: OpenAI macht Nachahmer-Modellen das Leben schwer",
-   "s": "OpenAI verschärft den Schutz interner Denkprozesse bei GPT-6.2 Astra und GPT-6.2 Sol massiv. In adaptiven Red-Teaming-Tests sank die Erfolgsquote für das Auslesen geschützter Gedankengänge von 54 auf 0,2 Prozent. …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/ki-datenklau-openai-macht-nachahmer-modellen-das-leben-schwer/",
-   "d": "2026-11-20T20:31:50+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 9.2
-  },
-  {
-   "t": "Signal schränkt Screenshots ein und warnt vor \"existenzieller Bedrohung\" durch KI-Agenten",
-   "s": "Signal blockiert Screenshots, um KI-Agenten wie Apples Siri AI, Googles Gemini Intelligence oder Metas Muse am Mitlesen privater Chats zu hindern. Der Messenger spricht von einer „existenziellen Bedrohung\" für den …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/signal-schraenkt-screenshots-ein-und-warnt-vor-existenzieller-bedrohung-durch-ki-agenten/",
-   "d": "2026-11-20T19:42:17+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini",
-    "Apple",
-    "KI-Agenten"
-   ],
-   "n": 2,
-   "r": 27.1
-  },
-  {
-   "t": "Googles Gemini-App für Mac bekommt \"Computer Use\" und steuert Desktop-Apps im Hintergrund",
-   "s": "Google bringt \"Computer Use\" in die Gemini-App für den Mac: Die KI navigiert eigenständig durch Desktop-Programme, lokale Dateien und Webseiten, während Nutzer ungestört weiterarbeiten. Jeder Schritt läuft in einem …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/googles-gemini-app-fuer-mac-bekommt-computer-use-und-steuert-desktop-apps-im-hintergrund/",
-   "d": "2026-11-20T18:30:31+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 8.9
+   "r": 7.3
   },
   {
    "t": "Anthropics IPO: Gemischtes Fazit trotz Rekord-Börsengangs",
@@ -264,7 +291,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 8.8
+   "r": 7.1
   },
   {
    "t": "GitLab 19.6 führt Audit-Log für KI-Agenten ein, NGINX bleibt verwundbar",
@@ -277,7 +304,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 6.2
+   "r": 4.5
   },
   {
    "t": "KI-Update Deep-Dive: Smart Glasses als Alltagshilfe",
@@ -290,7 +317,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 6.1
+   "r": 4.4
   },
   {
    "t": "KI-Mini-Workstations mit Nvidia RTX Spark jetzt ab 4600 Euro erhältlich",
@@ -303,7 +330,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 5.9
+   "r": 4.2
   },
   {
    "t": "Metas KI-Gadget für die Hosentasche soll 300 Dollar kosten",
@@ -314,7 +341,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 1.7
+   "r": 0.0
   },
   {
    "t": "Stellenanzeigen verraten Apples Pläne für agentische KI",
@@ -330,7 +357,7 @@
     "Jobs & Arbeit"
    ],
    "n": 3,
-   "r": 35.6
+   "r": 34.0
   },
   {
    "t": "Combatting adversarial distillation",
@@ -343,7 +370,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 7.4
+   "r": 6.0
   },
   {
    "t": "software-architektur.tv: Produktivität mit KI – das Harvard-Paper",
@@ -356,7 +383,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 5.4
+   "r": 4.0
   },
   {
    "t": "Google baut ein künstliches Internet für seine KI-Agenten",
@@ -369,8 +396,8 @@
     "Google Gemini",
     "KI-Agenten"
    ],
-   "n": 2,
-   "r": 21.3
+   "n": 1,
+   "r": 10.0
   },
   {
    "t": "Hebbia sees improvements in financial research with GPT-6 Astra",
@@ -480,8 +507,8 @@
     "Coding mit KI",
     "KI-Blase & Geld"
    ],
-   "n": 1,
-   "r": 12.0
+   "n": 2,
+   "r": 22.0
   },
   {
    "t": "Research acceleration: The jagged frontier",
@@ -495,19 +522,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 3,
-   "r": 34.0
-  },
-  {
-   "t": "Inside the Codex sandbox",
-   "s": "See how Codex runs commands on your machine while enforcing the filesystem and network limits you control across macOS, Linux, and Windows.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/inside-the-codex-sandbox",
-   "d": "2026-11-18T08:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
+   "n": 4,
+   "r": 44.0
   }
  ],
  "kanaele": [
@@ -522,14 +538,50 @@
  ],
  "videos": [
   {
+   "id": "KyhucNH9SZw",
+   "t": "Offiziell im Börsenprospekt: Anthropic steht kurz vor der INTELLIGENZEXPLOSION!",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-22T10:15:15+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 23.8
+  },
+  {
+   "id": "CrrQ7sra_U4",
+   "t": "Schau das BEVOR du KI Videos generierst! 5 Dinge die du vorher ändern solltest",
+   "q": "Cinetiq",
+   "d": "2026-11-22T10:00:19+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.7
+  },
+  {
+   "id": "kqa9fPVYNxg",
+   "t": "Damit habe ich nicht gerechnet: Gemini \"Neon\" SCHLÄGT GPT-6.2! + Anthropic Rekord-IPO | KI-NEWS",
+   "q": "Everlast AI",
+   "d": "2026-11-22T09:42:23+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "Google Gemini"
+   ],
+   "n": 3,
+   "r": 45.7
+  },
+  {
    "id": "T6WbsuWoLNo",
-   "t": "Zukunftsforscher: „KI berät dich besser als JEDER Arzt!“ So analysiert er sein eigenes Genom",
+   "t": "KI entwirft Krebsimpfstoffe für JEDEN einzelnen Patienten: 100 Stück in 12 Monaten!",
    "q": "Everlast AI Clips",
    "d": "2026-11-21T10:15:38+00:00",
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.5
+   "r": 3.8
   },
   {
    "id": "mX7wHNnsghs",
@@ -541,7 +593,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 19.2
+   "r": 17.5
   },
   {
    "id": "X19Q12hmRjY",
@@ -553,11 +605,11 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 18.7
+   "r": 17.0
   },
   {
    "id": "WGvsk0LIveU",
-   "t": "3 ChatGPT Tips to Save Money",
+   "t": "3 Tips to Save Money With ChatGPT",
    "q": "OpenAI",
    "d": "2026-11-20T16:00:17+00:00",
    "lang": "en",
@@ -565,7 +617,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 18.4
+   "r": 16.7
   },
   {
    "id": "sEdgsgh25Wo",
@@ -575,7 +627,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 1.5
+   "r": 0.0
   },
   {
    "id": "OSHSopaYjTw",
@@ -587,7 +639,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 16.8
+   "r": 16.0
   },
   {
    "id": "JEgTn37Sk50",
@@ -599,7 +651,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 16.8
+   "r": 16.0
   },
   {
    "id": "sof3vW4mHTs",
@@ -610,8 +662,8 @@
    "tags": [
     "Claude / Anthropic"
    ],
-   "n": 1,
-   "r": 6.0
+   "n": 2,
+   "r": 16.0
   },
   {
    "id": "FORdPIWOH5k",
@@ -738,18 +790,6 @@
    "r": 6.0
   },
   {
-   "id": "KgVlwXAXzM4",
-   "t": "„ChatGPT ist NUR hochgetrimmte Statistik, mehr ist es nicht!“ (Prof. Klaus Mainzer)",
-   "q": "Everlast AI Clips",
-   "d": "2026-11-17T10:15:31+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 2,
-   "r": 16.0
-  },
-  {
    "id": "1X4rF_o60mY",
    "t": "Tatort: ChatGPT",
    "q": "Everlast AI",
@@ -758,8 +798,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 3,
-   "r": 26.0
+   "n": 2,
+   "r": 16.0
   },
   {
    "id": "aSntd-uCWc8",
@@ -795,20 +835,6 @@
    "tags": [],
    "n": 1,
    "r": 0.0
-  },
-  {
-   "id": "SxiYOCPW8_c",
-   "t": "DAS ist der nächste Durchbruch! GPT-7, Roboter-RSI & Asimovs Gesetze (Markus Wulfmeier)",
-   "q": "Everlast AI",
-   "d": "2026-11-12T16:15:39+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI",
-    "Robotik",
-    "Regulierung & AI Act"
-   ],
-   "n": 1,
-   "r": 14.0
   },
   {
    "id": "gPNiuyYirfw",
@@ -938,16 +964,6 @@
    "r": 8.0
   },
   {
-   "id": "owzZaTsBLhg",
-   "t": "Schau das BEVOR du KI-Avatare postest! (4 Ideen, mit denen du herausstichst)",
-   "q": "Cinetiq",
-   "d": "2026-10-18T09:00:13+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
    "id": "DdCEmlAydcw",
    "t": "Inside Anthropic's molecular biology lab",
    "q": "Anthropic",
@@ -987,28 +1003,33 @@
  "themen": [
   {
    "name": "Claude / Anthropic",
-   "meldungen": 8,
-   "quellen": 4
-  },
-  {
-   "name": "Google Gemini",
-   "meldungen": 5,
-   "quellen": 4
+   "meldungen": 12,
+   "quellen": 6
   },
   {
    "name": "OpenAI",
-   "meldungen": 12,
-   "quellen": 3
+   "meldungen": 13,
+   "quellen": 4
   },
   {
    "name": "KI-Agenten",
-   "meldungen": 7,
+   "meldungen": 6,
    "quellen": 3
   },
   {
    "name": "Nvidia & Chips",
    "meldungen": 4,
    "quellen": 3
+  },
+  {
+   "name": "Google Gemini",
+   "meldungen": 3,
+   "quellen": 3
+  },
+  {
+   "name": "Jobs & Arbeit",
+   "meldungen": 3,
+   "quellen": 2
   },
   {
    "name": "Coding mit KI",
@@ -1019,11 +1040,6 @@
    "name": "Apple",
    "meldungen": 2,
    "quellen": 2
-  },
-  {
-   "name": "Mistral & Europa",
-   "meldungen": 1,
-   "quellen": 1
   }
  ],
  "aktien": [
