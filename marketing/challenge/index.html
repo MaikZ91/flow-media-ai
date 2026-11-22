@@ -151,7 +151,8 @@ form .btn{width:100%;margin-top:4px}
 .note{font-size:13px;color:var(--muted);text-align:center}
 .done{display:none;padding:30px 24px;border:1px solid #fff;border-radius:var(--r);background:var(--card)}
 .done h3{font-size:34px}.done p{margin-top:12px}
-.member{padding:18px 20px;border:1px dashed var(--line2);border-radius:16px;font-size:15px}
+.howto{margin-top:26px;font-size:15.5px;color:#fff;max-width:62ch}
+.member{margin-top:16px;padding:18px 20px;border:1px dashed var(--line2);border-radius:16px;font-size:15px}
 .member a{color:#fff}
 /* faq */
 .faq{display:grid;gap:10px;max-width:860px}
@@ -198,7 +199,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 <nav id="nav"><div class="wrap">
   <a href="#top"><img src="img/logo_flow.png" alt="Flow Media AI"></a>
   <span class="dt">30.11. – 06.12.2026</span>
-  <a class="btn pri" href="#anmelden" data-cta="nav">Platz sichern</a>
+  <a class="btn pri" href="#pakete" data-cta="nav">Platz sichern</a>
 </div></nav>
 
 <header class="hero" id="top">
@@ -214,7 +215,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
       <div class="fact"><b>Exklusiv</b><span>für die Flow Business Community</span></div>
     </div>
     <div class="cta rv d3">
-      <a class="btn pri" href="#anmelden" data-cta="hero">Jetzt Platz sichern <span class="ar">→</span></a>
+      <a class="btn pri" href="#pakete" data-cta="hero">Jetzt Platz sichern <span class="ar">→</span></a>
       <a class="btn" href="#tage" data-cta="hero_tage">Die 7 Tage ansehen</a>
     </div>
     <p class="cd rv d3" id="cd" aria-live="polite"></p>
@@ -240,6 +241,8 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
     <div class="sec-head"><span class="label rv">Teilnahme</span><h2 class="rv d1">Wähle dein<br><span class="chrome">Level.</span></h2><p class="rv d2">Alle Pakete enthalten die komplette Challenge. Der Unterschied ist, wie viel persönliche Begleitung du dazu willst.</p></div>
     <div class="plans" id="plans"></div>
     <div class="cmp rv" id="cmp"></div>
+    <p class="howto rv">Tipp auf dein Paket – es öffnet sich WhatsApp mit einer Nachricht an mich, in der dein Paket schon drinsteht. Abschicken, fertig. Ich melde mich mit allem Weiteren.</p>
+    <div class="member rv">Die Challenge ist exklusiv für Mitglieder der Flow Business Community. Noch nicht dabei? <a href="#" id="commlink">Hier kostenlos beitreten →</a></div>
   </div>
 </section>
 
@@ -262,27 +265,6 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
   </div>
 </section>
 
-<section class="sec" id="anmelden">
-  <div class="wrap book">
-    <div>
-      <div class="sec-head" style="margin-bottom:24px"><span class="label rv">Anmeldung</span><h2 class="rv d1">Sichere dir<br><span class="chrome">deinen Platz.</span></h2><p class="rv d2">Name, E-Mail, Paket – fertig. Danach bekommst du alles Weitere für den Start am 30.11.</p></div>
-      <div class="member rv d2">Die Challenge ist exklusiv für Mitglieder der Flow Business Community. Noch nicht dabei? <a href="#" id="commlink">Hier kostenlos beitreten →</a></div>
-    </div>
-    <div>
-      <form id="form" novalidate class="rv">
-        <label class="f">Name<input type="text" name="name" autocomplete="name" required placeholder="Dein Vorname"></label>
-        <label class="f">E-Mail<input type="email" name="email" autocomplete="email" required placeholder="du@beispiel.de"></label>
-        <fieldset id="opts"><legend>Paket</legend></fieldset>
-        <label class="ok"><input type="checkbox" name="ok" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anmeldung verwendet werden. Mehr in der <a href="../landing-page/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
-        <p class="err" id="err" role="alert"></p>
-        <button class="btn pri" type="submit" id="submit">Platz sichern <span class="ar">→</span></button>
-        <p class="note" id="note"></p>
-      </form>
-      <div class="done" id="done" role="status"><span class="label">Fast geschafft</span><h3 style="margin-top:10px">Danke, <span id="dname"></span>!</h3><p id="dtext"></p></div>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="fragen">
   <div class="wrap">
     <div class="sec-head"><span class="label rv">Fragen</span><h2 class="rv d1">Gut zu<br><span class="chrome">wissen.</span></h2></div>
@@ -295,13 +277,13 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
     <h2 class="rv">Hör auf, nur über KI zu reden. <span class="chrome">Fang an, damit etwas zu erschaffen.</span></h2>
     <p class="rv d1">Egal, ob du gerade erst startest oder schon mit KI arbeitest: In sieben Tagen kannst du mehr erreichen, als du vielleicht denkst.</p>
     <p class="sig rv d2">Flow Media AI – We build your ideas.</p>
-    <a class="btn pri rv d3" href="#anmelden" data-cta="final">Ich bin dabei <span class="ar">→</span></a>
+    <a class="btn pri rv d3" href="#pakete" data-cta="final">Ich bin dabei <span class="ar">→</span></a>
   </div>
 </section>
 
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../landing-page/">Website</a> · <a href="../landing-page/impressum.html">Impressum</a> · <a href="../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 
-<div class="bar" id="bar"><a class="btn pri" href="#anmelden" data-cta="sticky">Jetzt Platz sichern · ab 29 € <span class="ar">→</span></a></div>
+<div class="bar" id="bar"><a class="btn pri" href="#pakete" data-cta="sticky">Jetzt Platz sichern · ab 29 € <span class="ar">→</span></a></div>
 
 <script>
 const C = window.CHALLENGE;
@@ -326,7 +308,7 @@ const TAGE = [
   ["Build your own idea", "Alles zusammen: Du setzt dein eigenes KI-Projekt um – mit dem, was du in der Woche gelernt hast.", "Dein eigenes KI-Projekt, vorgestellt in der Gruppe."],
 ];
 const ABLAUF = [
-  ["Anmelden & Paket wählen", "Name, E-Mail und dein Paket – das dauert eine Minute."],
+  ["Paket wählen & per WhatsApp anmelden", "Tipp auf dein Paket, schick mir die vorbereitete WhatsApp – fertig."],
   ["Zugang zur Challenge-Gruppe", "Du kommst in die WhatsApp-Gruppe der Challenge."],
   ["Tägliche Aufgaben & Impulse", "Jeden Morgen das Thema des Tages mit Tutorial und Aufgabe."],
   ["Gemeinsame Umsetzung", "Du baust, fragst und tauschst dich mit den anderen aus."],
@@ -351,40 +333,22 @@ $("days").innerHTML = TAGE.map(([t, p, r], i) => { const d = new Date(s0); d.set
 $("plans").innerHTML = PAKETE.map((k, i) => `<article class="plan rv d${i}${k.hi ? " hi" : ""}">${k.hi ? '<span class="badge">Empfohlen</span>' : ""}<span class="nm">${k.name}</span><div class="pr"><b>${k.preis} €</b><small>einmalig</small></div><p class="tl">${k.tl}</p>${k.plus ? `<p class="plus">${k.plus}</p>` : '<p class="plus">Enthalten</p>'}<ul>${k.items.map(x => `<li>${x}</li>`).join("")}</ul><a class="btn${k.hi ? " pri" : ""}" href="#anmelden" data-pick="${k.id}">${k.cta} <span class="ar">→</span></a></article>`).join("");
 const ROWS = [["Komplette 7-Tage-Challenge", 1, 1, 1], ["Tägliche Aufgaben & Tutorials", 1, 1, 1], ["Vorlagen, Prompts & KI-Skills", 1, 1, 1], ["Challenge-Community & Gruppen-Support", 1, 1, 1], ["Live-Sessions mit Übungen & Fragerunden", 0, 1, 1], ["Persönliches Feedback in den Live-Sessions", 0, 1, 1], ["45 Min. 1:1-KI-Sparring zu deiner Idee", 0, 0, 1], ["Tool-Auswahl & nächste Schritte für dein Projekt", 0, 0, 1]];
 $("cmp").innerHTML = `<table><thead><tr><th>Leistung</th><th>Starter</th><th class="hc">Premium</th><th>1:1</th></tr></thead><tbody>${ROWS.map(r => `<tr><td>${r[0]}</td>${r.slice(1).map((v, j) => `<td class="${v ? "y" : "n"}${j === 1 ? " hc" : ""}">${v ? "✓" : "–"}</td>`).join("")}</tr>`).join("")}<tr><td>Preis</td><td class="y">29 €</td><td class="y hc">59 €</td><td class="y">99 €</td></tr></tbody></table>`;
-$("opts").insertAdjacentHTML("beforeend", PAKETE.map(k => `<label class="opt"><input type="radio" name="paket" value="${k.id}"${k.hi ? " checked" : ""}><span>${k.name}<small>${k.tl}</small></span><b>${k.preis} €</b></label>`).join(""));
 $("steps").innerHTML = ABLAUF.map(([b, s, t], i) => `<li class="rv"><b>${b}</b><span>${s}</span>${t ? `<small>${t}</small>` : ""}</li>`).join("");
 const hasPay = () => Object.values(C.zahlung).some(Boolean);
-FAQ[4][1] = hasPay() ? "Nach der Anmeldung geht es direkt weiter zur sicheren Zahlung. Danach bekommst du den Zugang zur Challenge-Gruppe." : "Nach der Anmeldung melde ich mich persönlich bei dir und schicke dir den Zahlungslink. Sobald bezahlt ist, bekommst du den Zugang zur Challenge-Gruppe.";
+FAQ[4][1] = hasPay() ? "Nach der Paketwahl geht es direkt weiter zur sicheren Zahlung. Danach bekommst du den Zugang zur Challenge-Gruppe." : "Nach deiner WhatsApp melde ich mich persönlich bei dir und schicke dir den Zahlungslink. Sobald bezahlt ist, bekommst du den Zugang zur Challenge-Gruppe.";
 $("faq").innerHTML = FAQ.map(([q, a], i) => `<details class="rv"><summary>${q}</summary><p>${a}</p></details>`).join("");
 $("commlink").href = C.community;
-$("note").textContent = hasPay() ? "Du wirst zur sicheren Zahlung weitergeleitet." : "Nach dem Absenden öffnet sich WhatsApp mit deiner Anmeldung – einfach abschicken.";
 
 // Package buttons preselect the form
-document.querySelectorAll("[data-pick]").forEach(a => a.addEventListener("click", () => { document.querySelector(`input[name=paket][value=${a.dataset.pick}]`).checked = true; cap("challenge_paket_klick", { paket: a.dataset.pick }) }));
+// Package buttons: WhatsApp to Maik with the chosen package (or the payment link, once one is set in config.js)
+const waText = k => `Hi Maik, ich möchte bei der 7 Days AI Challenge (30.11. – 06.12.2026) dabei sein.\n\nMein Paket: ${k.name} (${k.preis} €)\n\nWie geht es weiter?`;
+document.querySelectorAll("[data-pick]").forEach(a => { const k = PAKETE.find(p => p.id === a.dataset.pick);
+  a.href = C.zahlung[k.id] || `https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent(waText(k))}`;
+  if (!matchMedia("(pointer: coarse)").matches) { a.target = "_blank"; a.rel = "noopener" }
+  a.addEventListener("click", () => { cap("challenge_paket_klick", { paket: k.id, preis: k.preis, weg: C.zahlung[k.id] ? "zahlung" : "whatsapp" }); try { sessionStorage.setItem("flow-challenge", JSON.stringify({ paket: k.id })) } catch (x) {} }) });
 document.querySelectorAll("[data-cta]").forEach(a => a.addEventListener("click", () => cap("challenge_cta", { cta: a.dataset.cta })));
 $("commlink").addEventListener("click", () => cap("challenge_community_klick"));
 document.querySelectorAll(".faq details").forEach((d, i) => d.addEventListener("toggle", () => { if (d.open) cap("challenge_faq", { frage: i + 1 }) }));
-
-// Booking: payment link if configured, otherwise the booking goes to Maik via WhatsApp
-$("form").addEventListener("submit", e => {
-  e.preventDefault(); const f = e.target, err = $("err");
-  const name = f.name.value.trim(), email = f.email.value.trim(), paket = (f.querySelector("input[name=paket]:checked") || {}).value;
-  const fail = m => { err.textContent = m; err.style.display = "block" };
-  if (!name) return fail("Bitte gib deinen Namen ein.");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Bitte gib eine gültige E-Mail-Adresse ein.");
-  if (!paket) return fail("Bitte wähle ein Paket.");
-  if (!f.ok.checked) return fail("Bitte bestätige die Einwilligung zur Datenverarbeitung.");
-  err.style.display = "none";
-  const k = PAKETE.find(p => p.id === paket);
-  cap("challenge_anmeldung", { paket, preis: k.preis, weg: C.zahlung[paket] ? "zahlung" : "whatsapp" });
-  try { sessionStorage.setItem("flow-challenge", JSON.stringify({ name, paket })) } catch (x) {}
-  if (C.zahlung[paket]) { const u = new URL(C.zahlung[paket]); if (/stripe\.com/.test(u.host)) u.searchParams.set("prefilled_email", email); location.href = u.toString(); return }
-  const msg = `Hi Maik, ich möchte bei der 7 Days AI Challenge (30.11. – 06.12.2026) dabei sein.\n\nPaket: ${k.name} (${k.preis} €)\nName: ${name}\nE-Mail: ${email}\n\nSchick mir bitte den Zahlungslink.`;
-  $("dname").textContent = name.split(" ")[0];
-  $("dtext").innerHTML = `Deine Anmeldung für <b>${k.name} (${k.preis} €)</b> ist vorbereitet. Schick die WhatsApp-Nachricht ab, dann bekommst du von mir den Zahlungslink und danach den Zugang zur Challenge-Gruppe.<br><br><a class="btn pri" style="width:100%" href="https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent(msg)}">WhatsApp öffnen <span class="ar">→</span></a>`;
-  f.style.display = "none"; $("done").style.display = "block";
-  location.href = `https://wa.me/${C.whatsappMaik}?text=${encodeURIComponent(msg)}`;
-});
 
 // Countdown to the start (Berlin)
 function tick() { const ms = new Date(C.start) - Date.now(), end = new Date(C.ende) - Date.now(), el = $("cd");
@@ -395,7 +359,7 @@ tick(); setInterval(tick, 30000);
 // Reveal, nav, sticky bar, card light
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
-const nav = $("nav"), bar = $("bar"), hero = document.querySelector(".hero"), book = $("anmelden"); let hv = true, bv = false;
+const nav = $("nav"), bar = $("bar"), hero = document.querySelector(".hero"), book = $("pakete"); let hv = true, bv = false;
 addEventListener("scroll", () => nav.classList.toggle("solid", scrollY > 30), { passive: true });
 new IntersectionObserver(([e]) => { hv = e.isIntersecting; bar.classList.toggle("show", !hv && !bv) }).observe(hero);
 new IntersectionObserver(([e]) => { bv = e.isIntersecting; bar.classList.toggle("show", !hv && !bv) }, { threshold: .05 }).observe(book);
