@@ -197,6 +197,9 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .igl ul { list-style: none; margin: 0; padding: 0 }
 .igl li { display: flex; align-items: center; gap: 10px; padding: 7px 10px 7px 16px; border-top: 1px solid rgba(0,0,0,.07) }
 .igl li.done .who, .igl li.done .go { opacity: .45 }
+.igl li.next { background: rgba(225,48,108,.07); box-shadow: inset 4px 0 0 #e1306c }
+.igl li.next .go { background: #e1306c; color: #fff; border-color: #e1306c }
+.igl .nx { flex: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #e1306c }
 .igl .st { flex: none; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(225,48,108,.12); color: #c1356b }
 .igl .st.s { background: rgba(46,139,87,.14); color: #2E8B57 }
 .igl .who { flex: 1; min-width: 0; display: flex; flex-direction: column }
@@ -1679,12 +1682,16 @@ function crmCard(c, full = false) {
     ${u ? `<div class="crm-umf"><h4>Antworten aus der Umfrage · ${new Date(u.created_at).toLocaleDateString("de-DE")}</h4>${umfDetail(u)}</div>` : c.umfrageId && umf.loading ? `<p class="sub">Lade Umfrage-Antworten …</p>` : ""}
   </form></div>`;
 }
+let igJump = false;
+function markSent(c) { const day = new Date().toLocaleDateString("de-DE"); saveCrm({ ...c, dmAm: day, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." }) }
+// Back from Instagram: bring the next open lead into view
+document.addEventListener("visibilitychange", () => { if (!document.hidden && igJump && view === "crm") setTimeout(() => { const n = document.getElementById("ig-next"); if (n) n.scrollIntoView({ behavior: "smooth", block: "center" }); igJump = false }, 400) });
 function igList() {
   const L = crm.filter(c => igHandle(c) && igDm(c) && (c.stage || "lead") === "lead").sort((a, b) => (a.dmAm ? 1 : 0) - (b.dmAm ? 1 : 0) || (b.createdAt || 0) - (a.createdAt || 0));
   if (!L.length) return "";
-  const offen = L.filter(c => !c.dmAm).length;
+  const offen = L.filter(c => !c.dmAm).length, nextId = (L.find(c => !c.dmAm) || {}).id;
   return `<div class="igl"><h3>Instagram-Leads <span>${offen} offen · ${L.length - offen} geschickt</span></h3><ul>${L.map(c => { const h = igHandle(c);
-    return `<li class="${c.dmAm ? "done" : ""}"><span class="who"><a href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener">${esc(c.name)}</a></span><span class="st ${c.dmAm ? "s" : ""}">${c.dmAm ? "geschickt " + esc(String(c.dmAm).slice(0, 6)) : "offen"}</span><button type="button" class="go" data-crm-dm="${c.id}">DM</button>${readOnly ? "" : `<button type="button" class="ok ${c.dmAm ? "on" : ""}" data-crm-sent="${c.id}" title="Als gesendet markieren">✓</button>`}</li>` }).join("")}</ul></div>`;
+    return `<li class="${c.dmAm ? "done" : ""}${c.id === nextId ? " next" : ""}" ${c.id === nextId ? 'id="ig-next"' : ""}>${c.id === nextId ? '<span class="nx">Als Nächstes</span>' : ""}<span class="who"><a href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener">${esc(c.name)}</a></span><span class="st ${c.dmAm ? "s" : ""}">${c.dmAm ? "geschickt " + esc(String(c.dmAm).slice(0, 6)) : "offen"}</span><button type="button" class="go" data-crm-dm="${c.id}">DM</button>${readOnly ? "" : `<button type="button" class="ok ${c.dmAm ? "on" : ""}" data-crm-sent="${c.id}" title="Als gesendet markieren">✓</button>`}</li>` }).join("")}</ul></div>`;
 }
 function renderCrm() {
   const list = crm.slice().sort((a, b) => (a.name || "").localeCompare(b.name || "", "de"));
@@ -1714,10 +1721,12 @@ document.addEventListener("click", e => {
   const d = t.closest("[data-crm-del]"); if (d) { removeCrm(d.dataset.crmDel); return }
   const dmb = t.closest("[data-crm-dm]"); if (dmb) { const c = crm.find(x => x.id === dmb.dataset.crmDm); if (!c) return;
     const ok = copyText(igDm(c)); window.open("https://ig.me/m/" + encodeURIComponent(igHandle(c)), "_blank", "noopener");
-    toast(ok ? "Nachricht kopiert – im Chat einfügen und senden" : "Kopieren ging nicht – Text bitte markieren"); return }
+    // Send mode: tapping DM marks the lead as sent right away; the next open lead gets highlighted. ✓ undoes it.
+    if (!readOnly && !c.dmAm) { markSent(c); igJump = true }
+    toast(ok ? "Kopiert & als gesendet markiert – im Chat einfügen und senden" : "Kopieren ging nicht – Text bitte markieren"); return }
   const sb = t.closest("[data-crm-sent]"); if (sb) { const c = crm.find(x => x.id === sb.dataset.crmSent); if (!c) return;
     if (c.dmAm) { saveCrm({ ...c, dmAm: null, next: "DM schicken (Entwurf in den Notizen)" }); return }
-    const day = new Date().toLocaleDateString("de-DE"); saveCrm({ ...c, dmAm: day, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." }); toast("Als gesendet markiert"); return }
+    markSent(c); toast("Als gesendet markiert"); return }
   const uc = t.closest("[data-umf-crm]"); if (uc) { const r = umf.rows.find(x => String(x.id) === uc.dataset.umfCrm); if (!r) return; const a = r.antworten || {};
     const kontakt = [a.q21_telefon, a.q21_email, a.q21_instagram && "@" + String(a.q21_instagram).replace(/^@/, "")].filter(Boolean).join(" · ");
     const c = { id: newId(), name: a.q1_name || "Umfrage #" + r.id, stage: a.q20_testkunde?.startsWith("Ja") ? "gespraech" : "lead", quellen: ["Umfrage"], kurz: [a.q3_beruf, a.q7_idee].filter(Boolean).join(" · ").slice(0, 160), kontakt, umfrageId: r.id, next: a.q20_testkunde?.startsWith("Ja") ? "Nachgespräch / Testkunde anbieten" : "", createdAt: Date.now() };
