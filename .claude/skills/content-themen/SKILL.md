@@ -87,7 +87,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | – | R030 Skill-Experiment, R031 Workshop-Promo 06.11. | **nicht mehr posten** (Datum „heute“/Fr 06.11. vorbei) |
 | **Vorrat 21.11.** | | |
 | Sa 21.11. 18–20 Uhr | ✓ gesendet (Routine 21.11.) · **R050** Von einer Idee zu etwas Eigenem (P020 als Story/später) | Personal, Wochenende |
-| So 22.11. 12–13 Uhr | **R051** Workshop Bild & Video (Mo 23.11.) – muss vor dem Workshop raus | Workshop-Promo |
+| So 22.11. 12–13 Uhr | ✓ gesendet (Routine 22.11.) · **R051** Workshop Bild & Video (Mo 23.11.) | Workshop-Promo |
 | So 22.11. 18–20 Uhr | **R049** Mein erster Lead-Scraper | Automation, vor Workshop-Woche |
 
 
