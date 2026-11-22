@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-21T19:23+00:00",
+ "stand": "2026-11-22T01:23+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -18,7 +18,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 11.3
+   "r": 10.3
   },
   {
    "t": "Fünf EU-Staaten wollen Zentrum für KI in der Verteidigung gründen",
@@ -31,7 +31,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 11.2
+   "r": 10.2
   },
   {
    "t": "Pseudo-buddhistisches Kloster in Vermont will zum \"Scientology für das Silicon Valley\" aufsteigen",
@@ -42,7 +42,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.2
+   "r": 6.2
   },
   {
    "t": "Starker Start an der Börse: Wird Anthropic den Erfolgskurs halten können?",
@@ -57,7 +57,7 @@
     "KI-Blase & Geld"
    ],
    "n": 3,
-   "r": 39.0
+   "r": 38.0
   },
   {
    "t": "OpenAI teilt Prompting-Tipps für GPT-6.2 Astra und Sol",
@@ -70,7 +70,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.8
+   "r": 11.8
   },
   {
    "t": "Heiliger Gral der Mathematik offenbar gefallen: Anthropic-Forscher löst Riemannsche Vermutung mit KI",
@@ -83,7 +83,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 22.5
+   "r": 21.5
   },
   {
    "t": "US-Techmarkt im freien Fall: Perfekter Sturm aus KI-Zweifeln, Skandalen und Inflationsangst",
@@ -97,7 +97,7 @@
     "Nvidia & Chips"
    ],
    "n": 3,
-   "r": 36.5
+   "r": 35.5
   },
   {
    "t": "Inkling 2 Mini: Neues KI-Modell denkt in Schleifen – und läuft trotzdem auf dem Laptop",
@@ -108,7 +108,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 5.4
   },
   {
    "t": "Human in the Lead: Wie man KI-Agenten zähmt, ohne sie auszubremsen",
@@ -121,7 +121,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 10.3
+   "r": 9.3
   },
   {
    "t": "Riemannsche Vermutung: Anthropic-Mathematiker will KI-Beweis gefunden haben",
@@ -134,7 +134,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 22.3
+   "r": 21.3
   },
   {
    "t": "KI-Kennzeichnung und National Geographic – die Fotonews der Woche 47/2026",
@@ -145,7 +145,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.3
+   "r": 5.3
   },
   {
    "t": "KI vs. Klimaziele: Warum Rechenzentren zum Problem für das Stromnetz werden",
@@ -156,7 +156,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.2
+   "r": 5.2
   },
   {
    "t": "Bytedance-Forschende hinterfragen aufwendige KI-Trainingsverfahren und liefern eine schlanke Alternative",
@@ -172,7 +172,7 @@
     "Bildung & Schule"
    ],
    "n": 2,
-   "r": 34.2
+   "r": 33.2
   },
   {
    "t": "800 Millionen „Duft-Tokens“: So will ein US-Startup einer KI das Riechen beibringen",
@@ -183,7 +183,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.0
+   "r": 5.0
   },
   {
    "t": "KI-Kosten steigen massiv: Warum Goldman Sachs jetzt die Bremse zieht",
@@ -197,7 +197,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 16.0
+   "r": 15.0
   },
   {
    "t": "Developer-Häppchen: Agenten überwachen sich mit openchamber gegenseitig",
@@ -210,7 +210,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 10.0
+   "r": 9.0
   },
   {
    "t": "KI-Datenklau: OpenAI macht Nachahmer-Modellen das Leben schwer",
@@ -223,7 +223,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 9.2
   },
   {
    "t": "Signal schränkt Screenshots ein und warnt vor \"existenzieller Bedrohung\" durch KI-Agenten",
@@ -238,7 +238,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 28.1
+   "r": 27.1
   },
   {
    "t": "Googles Gemini-App für Mac bekommt \"Computer Use\" und steuert Desktop-Apps im Hintergrund",
@@ -251,7 +251,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 9.9
+   "r": 8.9
   },
   {
    "t": "Anthropics IPO: Gemischtes Fazit trotz Rekord-Börsengangs",
@@ -264,7 +264,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 9.8
+   "r": 8.8
   },
   {
    "t": "GitLab 19.6 führt Audit-Log für KI-Agenten ein, NGINX bleibt verwundbar",
@@ -277,7 +277,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 7.2
+   "r": 6.2
   },
   {
    "t": "KI-Update Deep-Dive: Smart Glasses als Alltagshilfe",
@@ -290,7 +290,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 7.1
+   "r": 6.1
   },
   {
    "t": "KI-Mini-Workstations mit Nvidia RTX Spark jetzt ab 4600 Euro erhältlich",
@@ -303,7 +303,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 6.9
+   "r": 5.9
   },
   {
    "t": "Metas KI-Gadget für die Hosentasche soll 300 Dollar kosten",
@@ -314,7 +314,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.7
+   "r": 1.7
   },
   {
    "t": "Stellenanzeigen verraten Apples Pläne für agentische KI",
@@ -330,7 +330,7 @@
     "Jobs & Arbeit"
    ],
    "n": 3,
-   "r": 36.6
+   "r": 35.6
   },
   {
    "t": "Combatting adversarial distillation",
@@ -343,7 +343,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.4
+   "r": 7.4
   },
   {
    "t": "software-architektur.tv: Produktivität mit KI – das Harvard-Paper",
@@ -356,7 +356,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 6.4
+   "r": 5.4
   },
   {
    "t": "Google baut ein künstliches Internet für seine KI-Agenten",
@@ -370,7 +370,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 22.3
+   "r": 21.3
   },
   {
    "t": "Hebbia sees improvements in financial research with GPT-6 Astra",
@@ -383,7 +383,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 6.8
+   "r": 6.0
   },
   {
    "t": "Can AI help scientists identify promising drug candidates?",
@@ -394,7 +394,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 0.8
+   "r": 0.0
   },
   {
    "t": "How OpenAI’s Performance Factory keeps ChatGPT fast",
@@ -529,7 +529,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.5
+   "r": 5.5
   },
   {
    "id": "mX7wHNnsghs",
@@ -541,7 +541,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 20.2
+   "r": 19.2
   },
   {
    "id": "X19Q12hmRjY",
@@ -553,7 +553,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 19.7
+   "r": 18.7
   },
   {
    "id": "WGvsk0LIveU",
@@ -565,7 +565,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 19.4
+   "r": 18.4
   },
   {
    "id": "sEdgsgh25Wo",
@@ -575,7 +575,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.5
+   "r": 1.5
   },
   {
    "id": "OSHSopaYjTw",
@@ -587,7 +587,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 17.8
+   "r": 16.8
   },
   {
    "id": "JEgTn37Sk50",
@@ -599,7 +599,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 17.8
+   "r": 16.8
   },
   {
    "id": "sof3vW4mHTs",
@@ -611,7 +611,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 6.3
+   "r": 6.0
   },
   {
    "id": "FORdPIWOH5k",
@@ -623,7 +623,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 6.1
+   "r": 6.0
   },
   {
    "id": "dvcxM2aHKGY",
@@ -1016,14 +1016,14 @@
    "quellen": 2
   },
   {
-   "name": "KI-Blase & Geld",
+   "name": "Apple",
    "meldungen": 2,
    "quellen": 2
   },
   {
-   "name": "Apple",
-   "meldungen": 2,
-   "quellen": 2
+   "name": "Mistral & Europa",
+   "meldungen": 1,
+   "quellen": 1
   }
  ],
  "aktien": [
