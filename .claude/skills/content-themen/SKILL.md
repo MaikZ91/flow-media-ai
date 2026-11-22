@@ -94,6 +94,7 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 22.11.2026 | R053 | wissen · Angst, den Anschluss zu verlieren | Reel 25 s (Daten-Animation, hell, Ende dunkel) | „KI-Skills in Zahlen“: IAB 1,6 Mio. Stellen im Wandel, Jobs bleiben stabil; Bitkom 57 % nutzen KI, 66 % geringe Kompetenz, 1 von 5 geschult; PwC +20 % Gehalt; CTA Challenge | look = hell daten (erstmals) |
 | 22.11.2026 | R052 | community · Ideen nicht umsetzen | Reel 20,7 s (Kreis + Bühne, schwarz-silber) | 7 Days AI Challenge 30.11.–06.12.: „2026 bald vorbei – Idee umgesetzt?“, 7 Tage, Pakete 29/59/99 €, fester Kopf mit Name + Datum ab Bild 1, eigenes Cover | look = buehne silber (Abwechslung zu R049 blau) |
 | 21.11.2026 | R051 | workshop · Content-Aufwand | Reel 31 s (Talking Head + KI-B-Roll, Video Cutter) | „Montag ist Workshop-Tag“ – Bild & Video mit KI (bearbeiten wie vom Profi, fotorealistisch generieren), Mo 23.11. 18 Uhr, eigene KI-Clips mit Label | look = talking-head + ki-broll |
 | 20.11.2026 | R050 | personal · Ideen nicht umsetzen | Reel 13 s (animiertes s/w-Foto, Netz wächst aus dem Kopf) | Bewegte Fassung von P020 „Von einer Idee zu etwas Eigenem“, Caption von Maik | look = s/w-foto-netz animiert |
