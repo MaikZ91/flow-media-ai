@@ -1,0 +1,47 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@600&family=Inter:wght@500&display=swap" rel="stylesheet">
+<style>
+/* R056 – personal reel: Maik's own "why" over his real photos (content/personal), slow zoom + cuts on the beat.
+   Hook: big text from frame 0, motion from frame 0, music energy from frame 0. Safe zone y 250–1560. Pure function of t. */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#0A0A0A;overflow:hidden;font-family:Inter,sans-serif;color:#fff}
+.sc{position:absolute;inset:0;opacity:0;overflow:hidden}
+.sc img{position:absolute;left:50%;top:50%;width:1080px;height:1920px;object-fit:cover;transform:translate(-50%,-50%);transform-origin:50% 100%;filter:contrast(1.04) saturate(1.05)}
+.sc:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 38%,rgba(0,0,0,.82) 78%,rgba(0,0,0,.88) 100%)}
+.t{position:absolute;left:80px;right:80px;z-index:2;font:700 108px/.95 Oswald;text-transform:uppercase;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.t span{color:#5E86FF}
+.s{position:absolute;left:80px;right:80px;z-index:2;font:500 40px/1.35 Inter;color:rgba(255,255,255,.92);text-shadow:0 4px 30px rgba(0,0,0,.7)}
+.k{position:absolute;left:80px;top:300px;z-index:2;font:600 26px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.7)}
+#cta{position:absolute;left:80px;right:80px;top:1330px;z-index:3;padding:30px 36px;border-radius:999px;background:#2F5BFF;color:#fff;font:600 32px Montserrat;letter-spacing:.1em;text-transform:uppercase;text-align:center;box-shadow:0 20px 60px -10px rgba(47,91,255,.7);opacity:0}
+#brand{position:absolute;left:80px;top:230px;z-index:3;font:600 22px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);text-shadow:0 3px 20px #000}
+</style></head><body>
+<div class="sc" id="a"><img src="../../personal/strand-sonnenbrille.jpg"><div class="k">Ehrlich gesagt</div>
+  <div class="t" style="top:1000px">Ich will <span>nicht</span> nur Zeit gegen Geld tauschen.</div></div>
+<div class="sc" id="b"><img src="../../personal/muenster-prinzipalmarkt-tag.jpg">
+  <div class="t" style="top:1020px;font-size:96px">Ich will Dinge bauen, deren Wert <span>vom Ergebnis</span> kommt.</div></div>
+<div class="sc" id="c"><img src="../../personal/muenster-prinzipalmarkt-nacht.jpg">
+  <div class="t" style="top:1050px;font-size:100px">Darum baue ich mit <span>KI.</span></div>
+  <div class="s" style="top:1290px">Apps, Websites, Automatisierung.</div></div>
+<div class="sc" id="d"><img src="../../personal/draussen-pulli.jpg">
+  <div class="t" style="top:1020px;font-size:96px">Und zeige dir, wie du deine <span>Idee</span> umsetzt.</div></div>
+<div class="sc" id="e"><img src="../../personal/selfie-nah.jpg">
+  <div class="t" style="top:960px;font-size:92px">Welche Idee trägst du <span>zu lange</span> mit dir rum?</div>
+  <div class="s" style="top:1250px">Schreib sie in die Kommentare.</div></div>
+<div id="brand">Maik · Flow Media AI</div>
+<div id="cta">Komm in den Flow</div>
+<script>
+const $ = id => document.getElementById(id), cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const E = x => 1 - Math.pow(1 - cl(x), 3);
+const SC = [["a", 0, 4.2], ["b", 4.2, 8.6], ["c", 8.6, 12.8], ["d", 12.8, 16.4], ["e", 16.4, 99]];
+const ZOOM = { a: [1.09, 1.2], b: [1.18, 1.09], c: [1.09, 1.18], d: [1.17, 1.09], e: [1.09, 1.18] };
+window.DRAW = function (t) {
+  for (const [id, a, b] of SC) { const el = $(id), p = cl((t - a) / (b - a + .01));
+    el.style.opacity = a === 0 ? cl((b - t) / .3) : Math.min(cl((t - a) / .25), id === "e" ? 1 : cl((b - t) / .3));
+    const z = ZOOM[id]; el.querySelector("img").style.transform = `translate(-50%,-50%) scale(${z[0] + (z[1] - z[0]) * p})`;
+    el.querySelectorAll(".t,.s,.k").forEach((x, i) => { const k = E((t - a - .08 - i * .12) / .4); x.style.opacity = a === 0 ? 1 : k; x.style.transform = a === 0 ? "none" : `translateY(${(1 - k) * 34}px)` }) }
+  const c = E((t - 18.0) / .5); $("cta").style.opacity = c; $("cta").style.transform = `translateY(${(1 - c) * 24}px)`;
+};
+window.LOAD = () => Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => 0))]);
+window.DRAW(0);
+</script>
+</body></html>
