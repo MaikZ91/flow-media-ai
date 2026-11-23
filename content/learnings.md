@@ -2,6 +2,14 @@
 
 Neueste Einträge oben. Format: Datum · Post · Variable/Wert · Zahlen (nach 48 h) · Schluss.
 
+## 23.11.2026 – Erste echte Zahlen über die Instagram-API (Stand 22.11. abends)
+- R048 Community („Viele Ideen – aber niemand zum Austauschen?“): 87 Aufrufe, 63 Reichweite – bester Wert der Woche.
+- R052 Challenge („2026 ist bald vorbei…“): 68 Aufrufe, 53 Reichweite, 1 Interaktion.
+- „Hey, ich bin Maik“ (19.11.): 68 Aufrufe, 56 Reichweite. R050: 59 / 35, 2 Likes. Lokale KI (20.11.): 50 / 43.
+- R053 mit Stimme (KI-Skills in Zahlen): 42 / 35 nach wenigen Stunden. R051 Workshop-Tag: 38 / 30. R049 Kundengewinnung: 21 / 18 (schwächster).
+- Über alle Posts: 0 Speicherungen, 0 Shares. Reichweite kommt fast nur aus den eigenen 120 Followern.
+- Schluss (vorläufig): Problem-Hook mit Mensch im Bild („niemand zum Austauschen“, „Hey, ich bin Maik“) schlägt Themen-Hooks („Kunden gewinnen mit KI“). Nächster Hebel: speicherbarer Inhalt (Liste, Anleitung, Prompt), damit Saves/Shares entstehen.
+
 ## 16.11.2026 – R044 „KI zieht ins All“ (3D-Erklär-Reel, Nachrichten-Thema)
 - Variable: `thema = tech-news-3d` (erstes Reel zu einem aktuellen Tech-Thema statt eigenem Projekt, komplett 3D, kein Mensch im ersten Bild).
 - Zahlen nach ca. 1 Tag (Maik, 16.11.2026): **650 Aufrufe**. Skip-Rate, Sends, Saves noch offen.
