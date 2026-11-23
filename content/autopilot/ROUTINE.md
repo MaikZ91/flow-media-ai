@@ -63,6 +63,12 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
        - Die gewählte Art rotiert als Test-Variable. Im Wochen-Rückblick die Hook-Arten nach Views und Reach vergleichen.
        - Im Log Hook-Text, Hook-Arten und Punktzahl eintragen.
      - Lesbar ohne Ton.
+     - **Musik passend zum Reel wählen, nie immer denselben Track:**
+       - Vorgehen: Stimmung und Tempo des Reels bestimmen, dann im README `content/musik/README.md` den Track mit passendem Charakter suchen.
+       - Rotation: Dieselbe Datei höchstens einmal in 5 Reels. Im Log die Musikdatei eintragen, damit das prüfbar ist.
+       - Passung prüfen: Schnitt auf den Beat (Musik-Einsatz an der Stelle des Hooks), Lautstärke leise unter Sprache.
+       - Ohne Stimme und ohne Sprache: Der Track muss das Reel alleine tragen.
+       - Eigene MZ.9-Tracks zuerst, wenn Stimmung passt; sonst freie Musik aus `frei/`.
      - Musik aus `content/musik/`. Bei einem MZ.9-Track kommt die Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“ in die Caption.
    - Cover-JPG dazu.
    - Ablage: `content/reels/R<nnn>-<slug>/` bzw. `content/posts/P<nnn>-<slug>/`. Die nächste freie Nummer nehmen. README mit Konzept, Caption, Quellen, Test-Variable.
