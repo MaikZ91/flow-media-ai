@@ -57,7 +57,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - Kaltmail-Versand nicht zeigen oder bewerben.
 - **Niemanden markieren** (keine @-Namen, User-Tags, Collabs) – **Ausnahme:** Maiks eigener Musik-Account **@mz.9_nyc** wird immer genannt, wenn ein MZ.9-Track läuft (Maik, 24.10.2026). Keine Kalt-DMs, keine KI-Menschen als „Kunden“, keine Computerstimme als Maik.
 - Keine Tokens, Passwörter, Mailadressen oder fremden Daten in Bildschirmaufnahmen – vorher prüfen.
-- Automatisches Posten erst, wenn eigene Zugangsdaten für @flow.media.ai existieren; nie den Zugang von Tribe oder Dating verwenden.
+- Automatisches Posten läuft seit 23.11.2026 über den eigenen Zugang (Systemnutzer „Flow“, Network Secret) – Ablauf und Regeln in `content/autopilot/ROUTINE.md`. Nie den Zugang von Tribe oder Dating verwenden.
 
 # Teil B – Themen & Formate
 
@@ -124,11 +124,13 @@ Quellen: later.com/blog/instagram-reels-algorithm · socialpilot.co (Reels Algor
 2. Entscheiden: Format, Konzept, Hook, Material, **eine** Test-Variable. Fehlt Material von Maik (Selfie-Video, Freigabe), gezielt danach fragen statt etwas zu erfinden.
 3. Bauen bzw. Skript schreiben: Hook, Szenenfolge mit Sekunden, Text im Bild, Caption, ggf. Musik.
 4. Checkliste (Teil C §5) durchgehen.
-5. Posten: bis es einen eigenen Zugang gibt, postet Maik selbst – Skript + Caption fertig übergeben.
+5. Posten: über den Autopiloten (`content/autopilot/ROUTINE.md`, `tools/ig/ig.py`) – 3× täglich, selbst entschieden nach Daten (Maik, 23.11.2026).
 6. Nach 48 h: Views, Durchsehquote/Skip-Rate, Sends, Saves, Profilaufrufe in `content/learnings.md` (mit Datum, Zahl, Variable, Schluss daraus).
 7. Google Drive spiegeln (siehe `CLAUDE.md` → „Google-Drive-Spiegel“, gesammelt am Ende des Arbeitsblocks): geänderte Pläne, Learnings und Skills aktualisieren – Caption-Docs nicht mehr; Reel-Videos legt Maik selbst in den passenden Themenordner unter `01_Marketing/Content/` (Apps, Personal, Workshops, Automation, Community) – in der Antwort vorschlagen, welcher passt.
 
 # Teil E – Daily-Content-Routine (Maik, 23.10.2026)
+
+> **Abgelöst am 23.11.2026 durch den Autopiloten** (`content/autopilot/ROUTINE.md`): 3 Posts pro Tag, Zeit, Thema und Format datengetrieben, direkt gepostet. Teil E gilt nur noch, wenn Maik ausdrücklich einen Post zum Selbst-Hochladen will.
 
 Ziel: **jeden Tag ein fertiger Post** für @flow.media.ai, den Maik von Hand hochlädt. Läuft als geplante Aufgabe täglich morgens in Maiks Claude-Code-Chat; Maik kann sie auch jederzeit mit „Daily Content“ auslösen.
 
