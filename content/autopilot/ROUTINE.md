@@ -130,4 +130,4 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
 
 `online_followers` liefert noch keine Daten (Stand 23.11.). Den Wert bei jedem Wochen-Rückblick neu abfragen: `GET /{ig}/insights?metric=online_followers&period=lifetime`.
 
-Geplante Aufgabe: „Flow Autopilot: Instagram 3× täglich“ · Trigger-ID `trig_019ESkCkFqTyHCDifLuZTMdB` (frische Session je Lauf, Umgebung „Full“). Die alte Daily-Content-Routine (`trig_01FBws1P68soP9NQAu1MhsSv`) ist seit 23.11. ausgeschaltet.
+Geplante Aufgabe: „Flow Autopilot: Instagram 3× täglich“ · Trigger-ID `trig_01PPnYqYZ1wt2HoaprdKai4H` (läuft in Maiks Hauptsession `session_013fteYFceKiG7Uk7Z2ie8Jy`, die ins Repo pushen darf; frische Sessions hatten keinen Push-Zugriff). Die alte Daily-Content-Routine (`trig_01FBws1P68soP9NQAu1MhsSv`) ist seit 23.11. ausgeschaltet.

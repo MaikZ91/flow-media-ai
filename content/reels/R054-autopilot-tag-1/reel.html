@@ -1,0 +1,98 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* R054 – "Mein Instagram postet ab heute selbst" (Autopilot, Tag 1). Light Flow look, one blue accent.
+   Safe zone: content between y=260 and y=1560. Every frame is a pure function of t (window.DRAW). */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#F4F3EF;overflow:hidden;font-family:Inter,sans-serif;color:#0A0A0A}
+canvas{position:absolute;inset:0}
+#dark{position:absolute;inset:0;background:#0A0A0A;opacity:0}
+.sc{position:absolute;inset:0;opacity:0}
+.k{position:absolute;left:90px;top:330px;font:600 26px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#6b6b70}
+.k b{color:#2F5BFF;font-weight:600}
+.t{position:absolute;left:90px;right:90px;font:700 118px/.95 Oswald;text-transform:uppercase}
+.blue{color:#2F5BFF}
+.s{position:absolute;left:90px;right:90px;font:400 40px/1.4 Inter;color:#3a3a3f}
+.card{position:absolute;left:90px;right:90px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:30px;box-shadow:0 30px 80px -30px rgba(0,0,0,.25)}
+.chips{position:absolute;left:90px;right:90px;top:760px;display:flex;gap:24px}
+.chip{flex:1;padding:34px 0;border-radius:26px;background:#fff;border:1px solid rgba(0,0,0,.08);text-align:center;font:700 64px Oswald;box-shadow:0 20px 60px -30px rgba(0,0,0,.3)}
+.chip small{display:block;font:600 22px Montserrat;letter-spacing:.18em;color:#8a8a90;margin-top:6px}
+.row{margin:0 0 26px}
+.row p{display:flex;justify-content:space-between;font:600 32px Inter;margin-bottom:10px}
+.row p em{font:700 40px Oswald;font-style:normal}
+.row i{display:block;height:34px;border-radius:10px;background:#0A0A0A}
+.row i.b{background:#2F5BFF;box-shadow:0 10px 30px -8px rgba(47,91,255,.6)}
+.rule{display:flex;align-items:center;gap:26px;margin:0 0 30px;font:600 44px Inter}
+.rule span{flex:none;width:68px;height:68px;border-radius:50%;display:grid;place-items:center;font:700 40px Inter;color:#fff;background:#2F5BFF}
+.rule span.no{background:#0A0A0A}
+#av{position:absolute;left:90px;top:1420px;display:flex;align-items:center;gap:22px}
+#av img{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:50% 20%;filter:grayscale(1);border:3px solid #2F5BFF}
+#av span{font:600 24px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#3a3a3f}
+#av span b{display:block;font:700 34px Oswald;letter-spacing:.02em;color:#0A0A0A}
+#s5 .t{color:#fff}
+#ph{position:absolute;left:90px;top:820px;width:900px;height:520px;border-radius:30px;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.05)}
+#ch{position:absolute;left:90px;right:90px;top:1380px;padding:30px 36px;border-radius:999px;background:#2F5BFF;color:#fff;font:600 32px Montserrat;letter-spacing:.1em;text-transform:uppercase;text-align:center;box-shadow:0 20px 60px -10px rgba(47,91,255,.7)}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas><div id="dark"></div>
+
+<div class="sc" id="s1"><p class="k">Experiment · <b>Tag 1</b></p>
+  <div class="t" id="t1" style="top:400px">Mein Instagram<br>postet ab heute<br><span class="blue">selbst.</span></div>
+  <div class="s" id="u1" style="top:820px">Keine Agentur. Kein Planer. Eine KI, die ich gebaut habe.</div></div>
+
+<div class="sc" id="s2"><p class="k">Der Plan</p>
+  <div class="t" id="t2" style="top:400px">3× am Tag.</div>
+  <div class="s" id="u2" style="top:540px">Thema, Format und Uhrzeit wählt die KI – nach meinen echten Zahlen.</div>
+  <div class="chips" id="c2"><div class="chip">07:30<small>Morgen</small></div><div class="chip">12:30<small>Mittag</small></div><div class="chip" style="color:#2F5BFF">19:30<small>Abend</small></div></div></div>
+
+<div class="sc" id="s3"><p class="k">Zuerst: <b>26 Posts</b> ausgewertet</p>
+  <div class="t" id="t3" style="top:400px;font-size:92px">Was bei mir<br>wirklich läuft:</div>
+  <div class="card" id="b3" style="top:700px;padding:44px 50px 22px">
+    <div class="row"><p>Persönliche Story<em class="blue">957</em></p><i class="b" id="r1"></i></div>
+    <div class="row"><p>KI-News<em>228</em></p><i id="r2"></i></div>
+    <div class="row"><p>Selbst gebaut<em>174</em></p><i id="r3"></i></div>
+    <div class="row"><p>Werbung<em>68</em></p><i id="r4"></i></div>
+    <p style="font:500 22px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#8a8a90;margin:6px 0 20px">Aufrufe · bester Post je Thema</p>
+  </div></div>
+
+<div class="sc" id="s4"><p class="k">Ihre Regeln</p>
+  <div class="t" id="t4" style="top:400px;font-size:100px">Was sie darf –<br><span class="blue">und was nicht.</span></div>
+  <div id="l4" style="position:absolute;left:90px;right:90px;top:680px">
+    <div class="rule"><span>✓</span>Nichts erfinden</div>
+    <div class="rule"><span>✓</span>Jede Zahl mit Quelle</div>
+    <div class="rule"><span class="no">✕</span>Keine DMs</div>
+    <div class="rule"><span class="no">✕</span>Keine KI-Stimme von mir</div>
+  </div></div>
+
+<div class="sc" id="s5"><p class="k" style="color:#9a9aa0">Das hier ist</p>
+  <div class="t" id="t5" style="top:400px;font-size:150px">Post <span class="blue">#1.</span></div>
+  <div class="s" id="u5" style="top:590px;color:rgba(255,255,255,.8)">Klappt das – oder wird's peinlich? Ich zeige dir alles.</div>
+  <img id="ph" src="maik_front.jpg" alt="">
+  <div id="ch">Folgen &amp; zuschauen</div></div>
+
+<div id="av"><img src="maik_front.jpg" alt=""><span><b>Maik</b>Flow Media AI</span></div>
+
+<script>
+const $ = id => document.getElementById(id), cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const E = x => 1 - Math.pow(1 - cl(x), 3), S = (t, a, d = .45) => E((t - a) / d);
+const ctx = $("cv").getContext("2d");
+const SC = [["s1", 0, 3.4], ["s2", 3.4, 7.2], ["s3", 7.2, 11.6], ["s4", 11.6, 15.4], ["s5", 15.4, 99]];
+function lines(t, dark) { ctx.clearRect(0, 0, 1080, 1920);
+  for (let i = 0; i < 24; i++) { const p = i / 23, hi = i === 15, base = 1920 * (.42 + p * .5), amp = 1920 * (.025 + .035 * Math.sin(p * 3 + t * .3)); ctx.beginPath();
+    for (let X = -20; X <= 1100; X += 12) { const k = X / 1080, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y) }
+    ctx.strokeStyle = hi ? "rgba(47,91,255,.8)" : dark ? `rgba(255,255,255,${.03 + .06 * Math.sin(p * Math.PI)})` : `rgba(10,10,10,${.04 + .07 * Math.sin(p * Math.PI)})`;
+    ctx.lineWidth = hi ? 2 : 1.1; ctx.shadowBlur = hi ? 16 : 0; ctx.shadowColor = "rgba(47,91,255,.7)"; ctx.stroke() } }
+const rise = (el, t, a, dy = 40) => { const k = S(t, a); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px)` };
+window.DRAW = function (t) {
+  const dk = cl((t - 15.2) / .4); $("dark").style.opacity = dk; lines(t, dk > .5);
+  for (const [id, a, b] of SC) $(id).style.opacity = Math.min(a === 0 ? 1 : cl((t - a) / .3), cl((b - t) / .3));
+  $("t1").style.opacity = 1; $("t1").style.transform = "none"; rise($("u1"), t, 1.2);
+  rise($("t2"), t, 3.5); rise($("u2"), t, 4.0); rise($("c2"), t, 4.7);
+  rise($("t3"), t, 7.3); rise($("b3"), t, 7.8); [["r1", 957], ["r2", 228], ["r3", 174], ["r4", 68]].forEach(([id, v], i) => $(id).style.width = (v / 957 * 100 * E((t - 8.2 - i * .4) / .8)) + "%");
+  rise($("t4"), t, 11.7); document.querySelectorAll("#l4 .rule").forEach((el, i) => rise(el, t, 12.3 + i * .5, 24));
+  rise($("t5"), t, 15.5); rise($("u5"), t, 16.1); rise($("ph"), t, 16.6, 60); rise($("ch"), t, 17.2);
+  $("av").style.opacity = cl((16.4 - t) / .4);
+};
+window.LOAD = () => document.fonts.ready;
+window.DRAW(0);
+</script>
+</body></html>
