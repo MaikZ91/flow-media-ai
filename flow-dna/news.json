@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-22T19:46+00:00",
+ "stand": "2026-11-23T01:48+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -19,7 +19,7 @@
     "Microsoft Copilot"
    ],
    "n": 1,
-   "r": 17.9
+   "r": 16.9
   },
   {
    "t": "KI-Rechenzentren: Warum der wahre Konflikt beim Strom liegt",
@@ -30,7 +30,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.6
+   "r": 6.6
   },
   {
    "t": "Mit den eigenen Waffen geschlagen: Metas KI-Agent zieht vor Gericht – und verklagt Meta auf 75.000 Dollar",
@@ -44,7 +44,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 15.6
+   "r": 14.6
   },
   {
    "t": "Internet weg, Wasser verseucht – erstmal den KI-Bot fragen? Warum „Survival LLM“ im Ernstfall gefährlich werden kann",
@@ -55,7 +55,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.2
+   "r": 6.2
   },
   {
    "t": "KI-Agenten in simulierter Firma schreiben guten Code, verlieren aber bei realistischen Projekten den Faden",
@@ -70,7 +70,7 @@
     "Jobs & Arbeit"
    ],
    "n": 3,
-   "r": 37.1
+   "r": 36.1
   },
   {
    "t": "Ein Satz reicht: Googles Gemini Notebook verwandelt deine losen Notizen ab sofort in interaktive Webseiten",
@@ -83,7 +83,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 13.1
+   "r": 12.1
   },
   {
    "t": "Perplexity lässt KI-Agenten \"das Web als Ganzes\" rund um die Uhr beobachten",
@@ -96,7 +96,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 10.8
+   "r": 9.8
   },
   {
    "t": "KI-Modelle werden schneller besser, als sich ihre Fähigkeiten prüfen lassen",
@@ -109,7 +109,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.8
+   "r": 11.8
   },
   {
    "t": "Black Friday Shopping mit KI: Warum du ChatGPT und Gemini nicht blind vertrauen solltest",
@@ -123,7 +123,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 28.6
+   "r": 27.6
   },
   {
    "t": "Mathematiker löst Riemannsche Hypothese – mithilfe von Claude",
@@ -137,7 +137,7 @@
     "Jobs & Arbeit"
    ],
    "n": 3,
-   "r": 34.5
+   "r": 33.5
   },
   {
    "t": "Sicherheitsforscher schicken zwei Millionen KI-Anfragen mit gefälschten Zugangsdaten und decken gravierende Lücken auf",
@@ -148,7 +148,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.5
+   "r": 5.5
   },
   {
    "t": "Lean-Community bestätigt offiziell den Beweis der Riemannschen Vermutung",
@@ -159,7 +159,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 5.4
   },
   {
    "t": "OpenAIs GPT-6.2 antwortet kürzer und direkter, gesteht aber kaum noch Unsicherheit ein",
@@ -172,7 +172,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.2
+   "r": 11.2
   },
   {
    "t": "Perplexity and Intelligence",
@@ -183,7 +183,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 4.7
+   "r": 3.7
   },
   {
    "t": "Gezielte Suche schlägt das vollständige Einlesen langer Dokumente in KI-Modelle",
@@ -196,7 +196,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 7.2
+   "r": 6.2
   },
   {
    "t": "Fünf EU-Staaten wollen Zentrum für KI in der Verteidigung gründen",
@@ -209,7 +209,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 7.2
+   "r": 6.2
   },
   {
    "t": "Pseudo-buddhistisches Kloster in Vermont will zum \"Scientology für das Silicon Valley\" aufsteigen",
@@ -220,7 +220,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.1
+   "r": 2.1
   },
   {
    "t": "OpenAI teilt Prompting-Tipps für GPT-6.2 Astra und Sol",
@@ -233,7 +233,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 8.7
+   "r": 7.7
   },
   {
    "t": "Heiliger Gral der Mathematik offenbar erreicht: Anthropic-Forscher löst Riemannsche Vermutung mit KI",
@@ -246,7 +246,7 @@
     "Claude / Anthropic"
    ],
    "n": 3,
-   "r": 28.4
+   "r": 27.4
   },
   {
    "t": "Riemannsche Vermutung: Anthropic-Mathematiker will KI-Beweis gefunden haben",
@@ -259,7 +259,7 @@
     "Claude / Anthropic"
    ],
    "n": 3,
-   "r": 28.2
+   "r": 27.2
   },
   {
    "t": "KI-Kennzeichnung und National Geographic – die Fotonews der Woche 47/2026",
@@ -270,7 +270,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.2
+   "r": 1.2
   },
   {
    "t": "Developer-Häppchen: Agenten überwachen sich mit openchamber gegenseitig",
@@ -283,7 +283,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 5.9
+   "r": 4.9
   },
   {
    "t": "Anthropics IPO: Gemischtes Fazit trotz Rekord-Börsengangs",
@@ -537,7 +537,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 22.4
+   "r": 21.4
   },
   {
    "id": "CrrQ7sra_U4",
@@ -547,7 +547,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.4
+   "r": 5.4
   },
   {
    "id": "kqa9fPVYNxg",
@@ -561,7 +561,7 @@
     "Google Gemini"
    ],
    "n": 2,
-   "r": 34.3
+   "r": 33.3
   },
   {
    "id": "T6WbsuWoLNo",
@@ -571,7 +571,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.4
+   "r": 1.4
   },
   {
    "id": "mX7wHNnsghs",
@@ -583,7 +583,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 16.2
+   "r": 16.0
   },
   {
    "id": "X19Q12hmRjY",
@@ -993,22 +993,22 @@
  "themen": [
   {
    "name": "Claude / Anthropic",
-   "meldungen": 8,
-   "quellen": 6
+   "meldungen": 7,
+   "quellen": 5
   },
   {
    "name": "OpenAI",
-   "meldungen": 12,
-   "quellen": 4
-  },
-  {
-   "name": "Google Gemini",
-   "meldungen": 5,
+   "meldungen": 11,
    "quellen": 4
   },
   {
    "name": "KI-Agenten",
    "meldungen": 7,
+   "quellen": 3
+  },
+  {
+   "name": "Google Gemini",
+   "meldungen": 4,
    "quellen": 3
   },
   {
@@ -1071,12 +1071,11 @@
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 57.9,
+   "preis": 59.05,
    "cur": "HKD",
-   "d1": -13.32,
-   "m1": -15.4,
+   "d1": 1.99,
+   "m1": -13.4,
    "spark": [
-    63.9,
     68.2,
     68.5,
     63.3,
@@ -1097,9 +1096,10 @@
     66.8,
     67.8,
     66.8,
-    57.9
+    57.9,
+    59.05
    ],
-   "t": "2026-11-20T08:08+00:00"
+   "t": "2026-11-23T01:33+00:00"
   },
   {
    "name": "Tesla",
