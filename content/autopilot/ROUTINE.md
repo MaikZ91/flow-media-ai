@@ -130,6 +130,7 @@ Seit dem 23.11. kommt ein vierter Post pro Tag dazu (Maik: „Mache einen 4. Pos
 - Nach Tag 31 schaltet sich die Aufgabe ab (`update_trigger` enabled=false, Trigger-ID in `challenge31.md`).
 
 ## Harte Regeln (zusätzlich zu `creative-director` Teil A §6)
+- **Nicht jedes Mal Porträt (Maik, 23.11.2026):** Posts mit Maiks Gesicht und Text sehen sonst alle gleich aus und wirken billig. Pro Tag höchstens ein Porträt-Post. Sonst echtes Material: Screenshots, Bildschirmaufnahmen, Terminal-Looks, Karussells, Clips. Das Format wechselt, nie zweimal hintereinander dieselbe Gestaltung. Gestaltung des vorigen Posts im Log ansehen.
 
 - **Nichts erfinden.**
   - Keine Kunden, Ergebnisse, Testimonials, Zahlen ohne Quelle.
