@@ -59,6 +59,8 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
          - Text groß ab Frame 0,
          - Bewegung ab Frame 0,
          - Musik-Akzent oder stärkster Satz auf Frame 0.
+       - Die 3 Varianten aus **verschiedenen der 6 Text-Hook-Arten** schreiben (`creative-director` Teil C §2): Problem, Myth-Busting, Bold Statement, Story (nur echt), Frage, Benefit (nur einlösbar).
+       - Die gewählte Art rotiert als Test-Variable. Im Wochen-Rückblick die Hook-Arten nach Views und Reach vergleichen.
        - Im Log Hook-Text, Hook-Arten und Punktzahl eintragen.
      - Lesbar ohne Ton.
      - Musik aus `content/musik/`. Bei einem MZ.9-Track kommt die Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“ in die Caption.

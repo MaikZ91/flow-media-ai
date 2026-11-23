@@ -105,6 +105,13 @@ Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) s
   - **Text-Hook:** Ab Frame 0 groß im Bild, nicht erst einblenden. Gut funktioniert eine kleine Vorzeile als Emotion (z. B. „Fast schon beängstigend 😱“) plus eine Hauptaussage mit Versprechen.
   - **Visueller Hook:** In der ersten Sekunde Bewegung, Gesicht oder Nahaufnahme, etwas, das den Daumen stoppt. Bei Grafik-Reels: Bewegung ab Frame 0 (Zahl zählt hoch, Element fliegt ein), kein ruhiges Titelbild.
   - **Auditiver Hook:** Der erste Ton zählt. Mit Maiks Stimme der stärkste Satz zuerst; ohne Stimme ein Musik-Akzent oder Beat-Einsatz genau auf Frame 0, keine leise Einleitung. Nie eine KI-Stimme als Maik.
+- **Die 6 Text-Hook-Arten.** Je Reel eine davon wählen und im Log als `hook = <art>` eintragen. Gegeneinander testen, die Gewinner ergeben sich aus den Zahlen.
+  1. **Problem-Hook:** spricht den Schmerzpunkt direkt an. „Du hast 1000 Ideen, aber keine Ahnung, womit du starten sollst?“
+  2. **Myth-Busting / Überraschung:** bricht Erwartungen. „Die meisten scheitern nicht an der Technik, sondern an diesem einen Fehler.“
+  3. **Bold Statement:** mutig, polarisierend. „Wenn du länger als 2 Monate an deiner Idee rumdenkst, ist das bereits ein Problem.“
+  4. **Story-Hook:** kleine Szene oder Cold Start aus dem Leben. „Mitten in der Wüste. Keine Ahnung, wo es langgeht.“ **Nur echte Szenen aus Maiks Leben**, keine erfundenen Vorher/Nachher- oder Umsatz-Geschichten.
+  5. **Question-Hook:** eine direkte, neugierig machende Frage. „Was passiert, wenn mein Instagram 30 Tage lang selbst postet?“
+  6. **Konkretes Versprechen / Benefit-Hook:** zeigt den Nutzen klar. „3 Prompts, die dir heute eine Stunde sparen.“ Nur Versprechen, die das Reel selbst einlöst; keine erfundenen Zahlen.
 - **Bewegung + Mensch im ersten Frame** – nie Logo/Titelbild als Start.
 - Text-Hook bis 1,0 s lesbar, Auflösung angedeutet bis 3 s.
 - Funktionierende Hook-Typen: konkretes Ergebnis („Ich hab in 20 Minuten …“), echte Zahl, Frage an eine Gruppe, Überraschung, „POV: …“.
