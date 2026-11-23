@@ -1,0 +1,63 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* R055 – "So postet meine KI für mich": the real steps of an autopilot run as a terminal, typed live.
+   Dark look, one blue accent. Safe zone y 250–1560. Every frame is a pure function of t (window.DRAW). */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#0A0A0A;overflow:hidden;font-family:Inter,sans-serif;color:#fff}
+canvas{position:absolute;inset:0}
+.h{position:absolute;left:80px;right:80px;top:280px}
+.h small{display:block;font:600 24px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#2F5BFF}
+.h b{display:block;margin-top:16px;font:700 104px/.95 Oswald;text-transform:uppercase}
+.h b span{color:#2F5BFF}
+#term{position:absolute;left:60px;right:60px;top:640px;height:730px;border-radius:30px;background:#0E0E11;border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 100px -30px #000;overflow:hidden}
+#bar{height:64px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:10px;padding:0 26px;font:600 20px Montserrat;letter-spacing:.16em;color:rgba(255,255,255,.5);text-transform:uppercase}
+#bar i{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.22)}
+#bar span{margin-left:12px}
+#lines{padding:26px 34px;font:500 30px/1.45 "DejaVu Sans Mono","Menlo",monospace;color:#d7d7dc}
+.l{margin:0 0 20px;opacity:0;white-space:nowrap;overflow:hidden}
+.l .p{color:#2F5BFF}
+.l .ok{color:#3FD08A}
+.l .m{color:rgba(255,255,255,.5)}
+.l .bar{display:inline-block;height:14px;border-radius:5px;background:#2F5BFF;vertical-align:middle;margin-right:10px}
+#cta{position:absolute;left:80px;right:80px;top:1410px;opacity:0}
+#cta div{padding:30px 36px;border-radius:999px;background:#2F5BFF;color:#fff;font:600 32px Montserrat;letter-spacing:.1em;text-transform:uppercase;text-align:center;box-shadow:0 20px 60px -10px rgba(47,91,255,.7)}
+#cta small{display:block;margin-top:18px;text-align:center;font:500 26px Inter;color:rgba(255,255,255,.7)}
+#ft{position:absolute;left:80px;right:80px;top:1600px;display:flex;justify-content:space-between;font:600 20px Montserrat;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div class="h"><small>Autopilot · ein echter Lauf</small><b>So postet <span>meine KI</span> für mich.</b></div>
+<div id="term"><div id="bar"><i></i><i></i><i></i><span>autopilot · lauf</span></div><div id="lines">
+ <div class="l"><span class="p">1 ›</span> doppelte prüfen <span class="ok">✓</span></div>
+ <div class="l"><span class="p">2 ›</span> zahlen holen: <span class="ok">26 posts</span></div>
+ <div class="l"><span class="p">3 ›</span> entscheiden – was lief am besten?
+   <div style="margin-top:10px"><span class="bar" style="width:300px"></span>persönlich 957</div>
+   <div><span class="bar" style="width:72px;background:#3a3a42"></span>news 228</div>
+   <div><span class="bar" style="width:55px;background:#3a3a42"></span>selbst gebaut 174</div>
+   <div><span class="bar" style="width:22px;background:#3a3a42"></span>werbung 68</div></div>
+ <div class="l"><span class="p">4 ›</span> reel bauen <span class="m">1080×1920</span> <span class="ok">✓</span></div>
+ <div class="l"><span class="p">5 ›</span> prüfen: frame 0 · text · quellen <span class="ok">✓</span></div>
+ <div class="l"><span class="p">6 ›</span> posten <span class="ok">✓ live</span></div>
+ <div class="l"><span class="p">7 ›</span> bericht an maik: 3 zeilen</div>
+</div></div>
+<div id="cta"><div>Lektion 1 kostenlos</div><small>Kurs „Dein Instagram-Autopilot“ · Link in Bio</small></div>
+<script>
+const $ = id => document.getElementById(id), cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const E = x => 1 - Math.pow(1 - cl(x), 3), S = (t, a, d = .35) => E((t - a) / d);
+const ctx = $("cv").getContext("2d");
+function lines(t) { ctx.clearRect(0, 0, 1080, 1920);
+  for (let i = 0; i < 24; i++) { const p = i / 23, hi = i === 15, base = 1920 * (.42 + p * .5), amp = 1920 * (.025 + .035 * Math.sin(p * 3 + t * .3)); ctx.beginPath();
+    for (let X = -20; X <= 1100; X += 12) { const k = X / 1080, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y) }
+    ctx.strokeStyle = hi ? "rgba(47,91,255,.8)" : `rgba(255,255,255,${.03 + .05 * Math.sin(p * Math.PI)})`;
+    ctx.lineWidth = hi ? 2 : 1.1; ctx.shadowBlur = hi ? 16 : 0; ctx.shadowColor = "rgba(47,91,255,.7)"; ctx.stroke() } }
+const TIMES = [.1, 2.1, 3.7, 6.9, 8.5, 10.1, 11.7];
+window.DRAW = function (t) {
+  lines(t);
+  document.querySelectorAll("#lines .l").forEach((el, i) => { const k = S(t, TIMES[i]); el.style.opacity = k; el.style.transform = `translateX(${(1 - k) * 30}px)`;
+    el.style.clipPath = `inset(0 ${(1 - cl((t - TIMES[i]) / .5)) * 100}% 0 0)` });
+  const c = S(t, 14.2, .5); $("cta").style.opacity = c; $("cta").style.transform = `translateY(${(1 - c) * 30}px)`;
+};
+window.LOAD = () => document.fonts.ready;
+window.DRAW(0);
+</script>
+</body></html>
