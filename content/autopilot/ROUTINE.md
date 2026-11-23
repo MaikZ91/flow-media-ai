@@ -32,8 +32,8 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
 2. **Doppelte vermeiden:**
    - `ig.py today` aufrufen.
    - Abbruch ohne Post und mit einer Zeile Bericht, wenn eine der Bedingungen zutrifft:
-     - Heute sind schon 3 Posts draußen.
-     - Der letzte Post ist weniger als 3,5 Stunden her.
+     - Heute sind schon 3 reguläre Posts draußen. Challenge-Posts (Caption beginnt mit „Tag N/31“) zählen nicht mit, insgesamt sind höchstens 4 am Tag erlaubt.
+     - Der letzte Post ist weniger als 3 Stunden her.
 3. **Daten:**
    - `ig.py insights` aufrufen.
    - In `log.md` bei jedem Post, der 24 Stunden oder älter ist, die Zahlen nachtragen.
@@ -108,6 +108,15 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
    - was und warum (mit Zahl),
    - was getestet wird.
    - „Von dir gebraucht:“ nur, wenn etwas wirklich nur Maik kann (neues Video, Token, Freigabe).
+
+## Slot 4 · 31-Tage-Challenge (24.11.–24.12.2026)
+
+Seit dem 23.11. kommt ein vierter Post pro Tag dazu (Maik: „Mache einen 4. Post pro Tag immer für den 31-Tage-Challenge“).
+- Eigene geplante Aufgabe um 15:17, Ziel etwa 16:00.
+- Plan, Regeln und Status stehen in `content/autopilot/challenge31.md`.
+- Der Lauf geht wie oben (Schritte 1–9), aber das Thema steht fest: der Tag aus `challenge31.md`, der zum heutigen Datum gehört.
+- Format, Hook-Art und Umsetzung wählt der Lauf selbst. Caption und erstes Bild beginnen mit „Tag N/31“.
+- Nach Tag 31 schaltet sich die Aufgabe ab (`update_trigger` enabled=false, Trigger-ID in `challenge31.md`).
 
 ## Harte Regeln (zusätzlich zu `creative-director` Teil A §6)
 
