@@ -4,3 +4,4 @@ Neueste oben. Zahlen nach 24 h / 72 h nachtragen (Views · Reach · Saves · Sha
 
 | Datum Zeit | Post | Säule | Format | Hook | Variable = Variante | Hypothese (Begründung mit Zahl) | 24 h | 72 h |
 |---|---|---|---|---|---|---|---|---|
+| 23.11. 14:02 | [R054](https://www.instagram.com/reel/DgFcI8pHD5a/) Autopilot Tag 1 | 3 Selbst gebaut | Reel 20 s | „Mein Instagram postet ab heute selbst.“ | hook = Experiment/Serie | Build in public läuft (Roboterarm 174, Plakat→Video 154); echtes Projekt vom selben Tag + Serien-Charakter soll Folgen auslösen. Mittag-Slot ist Test (noch keine Daten). | | |
