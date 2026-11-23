@@ -94,6 +94,8 @@ window.FLOW_KURSE = {
     { id: "flow-methode", nr: "09", titel: "Die FLOW-Methode", untertitel: "Fokussieren · Losbauen · Optimieren · Wachsen", level: "Alle", dauer: "ca. 2 Std.", status: "bald", bild: "img/maik_front.jpg",
       module: ["F – Fokussieren: Idea2Concept", "L – Losbauen: Concept2Prototype", "O – Optimieren: Prototype2Product", "W – Wachsen: Product2Business", "Dein 90-Tage-Plan"] },
     { id: "kunden-gewinnen", nr: "10", titel: "Kunden gewinnen mit KI", untertitel: "Websites analysieren, Konzepte bauen, ehrlich anschreiben", level: "Fortgeschritten", dauer: "ca. 2 Std.", status: "bald", bild: "media/r017.jpg",
-      module: ["Zielgruppe und Region wählen", "Websites automatisch bewerten", "Konzeptseiten im Branchen-Look", "Rechtssicher Kontakt aufnehmen", "Dein Lead-System im Alltag"] }
+      module: ["Zielgruppe und Region wählen", "Websites automatisch bewerten", "Konzeptseiten im Branchen-Look", "Rechtssicher Kontakt aufnehmen", "Dein Lead-System im Alltag"] },
+    { id: "instagram-autopilot", nr: "11", titel: "Dein Instagram-Autopilot", untertitel: "Dein Kanal postet selbst – 3× am Tag, nach deinen Zahlen", level: "Fortgeschritten", dauer: "ca. 3 Std.", status: "bald", bild: "media/r054.jpg",
+      module: ["Ziel und Regeln", "Säulen aus deinen Zahlen", "Der Instagram-Zugang über Meta", "Den Schlüssel sicher ablegen", "Das Werkzeug: Zahlen holen und posten", "Die Routine-Datei", "Der Testlauf", "Dreimal am Tag – plus Stories", "Lernen aus den Zahlen"] }
   ]
 };

@@ -6,6 +6,10 @@ window.FLOW_COACH = {
   hallo: "Hey, ich bin Maik – bzw. meine digitale Version. Frag mich alles rund um KI, Websites, Apps, Skills und deine Ideen. Ich antworte aus dem, was ich selbst so mache. Wenn ich nicht weiterweiß, schick ich dich in die Tech-Support-Gruppe.",
   vorschlaege: ["Wie installiere ich Claude Code?", "Wie läuft der Website-Kurs ab?", "Wie fange ich mit KI an?", "Welches KI-Tool soll ich nehmen?", "Wie baue ich meine Website?", "Wohin kommt ein Skill?", "Wie schreibe ich gute Prompts?", "Was ist die FLOW-Methode?"],
   wissen: [
+    // Kurs 11 „Dein Instagram-Autopilot“ (23.11.2026) – Maiks echter Weg, wie @flow.media.ai selbst postet
+    { k: ["instagram automatisch", "automatisch posten", "autopilot", "instagram autopilot", "posts planen", "selbst posten", "social media agent", "graph api", "meta token", "systemnutzer"],
+      a: "Mein Instagram postet seit dem 23.11. selbst – dreimal am Tag, Thema, Format und Uhrzeit nach meinen echten Zahlen. Der Weg: offizieller Zugang über Meta (Systemnutzer + Token), das Token sicher als Network Secret, ein kleines Hilfsskript, eine Routine-Datei mit klaren Regeln und eine geplante Aufgabe in Claude Code. Wichtigste Regel: Der Token gehört nie in den Chat. Alles Schritt für Schritt in Kurs 11 – oder wir bauen es 1:1 im FLOW-Programm.",
+      go: [["kurs", "instagram-autopilot", "Zum Kurs 11"], ["wa", "", "Lieber 1:1 bauen"]] },
     // Kurs 03 „Bau deine Premium-Website mit Skill“ (09.11.2026) – vorne, damit Kursfragen vor allgemeinen Antworten greifen
     { k: ["eigene domain", "domain", "deinname.de", "dns", "domain verbinden", "www adresse"],
       a: "Mit einer eigenen Domain wirkt deine Seite wie von einer Agentur. Kauf sie bei einem Anbieter deiner Wahl – meist nur ein paar Euro im Monat. Dann sag dem Skill: „Verbinde meine Domain mit GitHub Pages und sag mir, welche DNS-Einträge ich setzen muss.“ Bei GitHub Pages sind das vier A-Einträge und ein CNAME für www; danach „HTTPS erzwingen“ anhaken. Alles Schritt für Schritt in Bonus-Lektion 07.",

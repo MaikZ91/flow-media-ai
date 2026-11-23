@@ -72,7 +72,7 @@ def daten():
         if k.get("special"): res[kid]["special"] = k["special"]
         if k.get("glossar"): res[kid]["glossar"] = k["glossar"]
     js = ("// Automatisch erzeugt von tools/kurs-builder/build.py – nicht von Hand ändern. Inhalte: tools/kurs-builder/inhalte.py\n"
-          "(function(){var A=" + json.dumps(res, ensure_ascii=False) + ";var K=(window.FLOW_KURSE||{}).kurse||[];K.forEach(function(k){if(A[k.id])Object.assign(k,A[k.id])});if(window.FLOW_KURSE)window.FLOW_KURSE.hinweis=\"Zehn Kurse, kurz und zum Mitmachen: Jede Lektion hat ein Video, einen Prompt zum Kopieren und eine Aufgabe. Das Intro kannst du bei jedem Kurs kostenlos ansehen.\"})();\n")
+          "(function(){var A=" + json.dumps(res, ensure_ascii=False) + ";var K=(window.FLOW_KURSE||{}).kurse||[];K.forEach(function(k){if(A[k.id])Object.assign(k,A[k.id])});if(window.FLOW_KURSE)window.FLOW_KURSE.hinweis=\"Elf Kurse, kurz und zum Mitmachen: Jede Lektion hat ein Video, einen Prompt zum Kopieren und eine Aufgabe. Das Intro kannst du bei jedem Kurs kostenlos ansehen.\"})();\n")
     open(os.path.join(DNA, "kurse-auto.js"), "w", encoding="utf-8").write(js); print("kurse-auto.js", len(js))
 
 if __name__ == "__main__":

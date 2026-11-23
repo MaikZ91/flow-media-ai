@@ -18,7 +18,7 @@ import json, os, sys, time, urllib.parse, urllib.request, urllib.error
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-IG = "17841419830106399"
+IG = os.environ.get("IG_USER_ID", "17841419830106399")  # @flow.media.ai; set IG_USER_ID for another account
 API = "https://graph.facebook.com/v21.0/"
 BER = ZoneInfo("Europe/Berlin")
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
