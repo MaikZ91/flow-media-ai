@@ -50,6 +50,7 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
    - **Eine Test-Variable** je Post, z. B. Hook-Art, Länge, Musik, Uhrzeit, mit/ohne Gesicht im ersten Bild. Ins Log `variable` und `variante` schreiben.
 5. **Bauen:**
    - Flow-Look nach `flow-design`, Maik in jedem Motiv. Dafür vorhandene echte Fotos und Avatare im Repo nutzen, z. B. `flow-dna/img/maik_front.jpg`, `content/posts/*/img/maik_*.jpg`.
+   - **Echte Fotos zuerst aus `content/personal/`** (10 Fotos von Maik mit Beschreibung im README: Münster, Strand, Café, Selfie, S/W). Für Reels als Bildfolge mit Bewegung (Zoom/Ken Burns, Schnitt auf den Beat) und Text-Hook, nie als stehendes Porträt mit Text. Ein Foto höchstens einmal pro Woche. Hintergrundpersonen vor dem Posten prüfen.
    - Reel:
      - 1080×1920, H.264 + AAC, 8–30 Sekunden.
      - **Hook-Pflicht** (Maik, 23.11.2026, Details in `creative-director` Teil C §2):
