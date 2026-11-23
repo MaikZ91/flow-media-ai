@@ -101,7 +101,7 @@ Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) s
   2. **Er macht ein klares Versprechen oder schafft Spannung.**
   3. **Er spricht ein konkretes Problem oder Bedürfnis an.**
   4. **Er führt die richtige Zielgruppe sofort hinein:** Gründer und Selbstständige erkennen sich.
-- **Drei Hook-Arten, möglichst kombiniert:**
+- **Drei Hook-Arten, immer alle drei kombiniert:** Visual Hook + Text Hook + Audio Hook ergibt die maximale Aufmerksamkeit (Maik, 23.11.2026). Ein Reel ohne einen der drei ist nicht fertig.
   - **Text-Hook:** Ab Frame 0 groß im Bild, nicht erst einblenden. Gut funktioniert eine kleine Vorzeile als Emotion (z. B. „Fast schon beängstigend 😱“) plus eine Hauptaussage mit Versprechen.
   - **Visueller Hook:** In der ersten Sekunde Bewegung, Gesicht oder Nahaufnahme, etwas, das den Daumen stoppt. Bei Grafik-Reels: Bewegung ab Frame 0 (Zahl zählt hoch, Element fliegt ein), kein ruhiges Titelbild.
   - **Auditiver Hook:** Der erste Ton zählt. Mit Maiks Stimme der stärkste Satz zuerst; ohne Stimme ein Musik-Akzent oder Beat-Einsatz genau auf Frame 0, keine leise Einleitung. Nie eine KI-Stimme als Maik.

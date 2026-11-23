@@ -55,7 +55,7 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
      - **Hook-Pflicht** (Maik, 23.11.2026, Details in `creative-director` Teil C §2):
        - Erst **3 Hook-Varianten** schreiben.
        - Jede nach den 4 Wirkungen bewerten, je 0–2 Punkte: Emotion · Versprechen oder Spannung · konkretes Problem · Zielgruppe erkennt sich. Nur ein Hook mit mindestens 6 von 8 Punkten wird genommen.
-       - Text-, visuellen und auditiven Hook kombinieren:
+       - **Immer alle drei** kombinieren, Visual + Text + Audio = maximale Aufmerksamkeit. Fehlt einer, ist das Reel nicht fertig:
          - Text groß ab Frame 0,
          - Bewegung ab Frame 0,
          - Musik-Akzent oder stärkster Satz auf Frame 0.
