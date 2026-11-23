@@ -52,13 +52,20 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
    - Flow-Look nach `flow-design`, Maik in jedem Motiv. Dafür vorhandene echte Fotos und Avatare im Repo nutzen, z. B. `flow-dna/img/maik_front.jpg`, `content/posts/*/img/maik_*.jpg`.
    - Reel:
      - 1080×1920, H.264 + AAC, 8–30 Sekunden.
-     - Hook in der ersten Sekunde.
+     - **Hook-Pflicht** (Maik, 23.11.2026, Details in `creative-director` Teil C §2):
+       - Erst **3 Hook-Varianten** schreiben.
+       - Jede nach den 4 Wirkungen bewerten, je 0–2 Punkte: Emotion · Versprechen oder Spannung · konkretes Problem · Zielgruppe erkennt sich. Nur ein Hook mit mindestens 6 von 8 Punkten wird genommen.
+       - Text-, visuellen und auditiven Hook kombinieren:
+         - Text groß ab Frame 0,
+         - Bewegung ab Frame 0,
+         - Musik-Akzent oder stärkster Satz auf Frame 0.
+       - Im Log Hook-Text, Hook-Arten und Punktzahl eintragen.
      - Lesbar ohne Ton.
      - Musik aus `content/musik/`. Bei einem MZ.9-Track kommt die Zeile „🎵 MZ.9 – <Titel> · @mz.9_nyc“ in die Caption.
    - Cover-JPG dazu.
    - Ablage: `content/reels/R<nnn>-<slug>/` bzw. `content/posts/P<nnn>-<slug>/`. Die nächste freie Nummer nehmen. README mit Konzept, Caption, Quellen, Test-Variable.
 6. **Prüfen (Pflicht, sonst nicht posten):**
-   - Mindestens 4 Frames bzw. alle Folien als PNG ansehen. Prüfen auf:
+   - Mindestens 4 Frames bzw. alle Folien als PNG ansehen, darunter **Frame 0** (stoppt der Hook allein, ohne Ton?). Prüfen auf:
      - abgeschnittenen Text,
      - Überlappungen,
      - Tippfehler,

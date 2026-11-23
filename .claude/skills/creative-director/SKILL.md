@@ -96,6 +96,15 @@ Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) s
 - Original + echt wird bevorzugt; reine Grafik/Text-Reels und Wiederverwertungen schwächer.
 
 ## 2. Hook (erste Sekunde entscheidet)
+- **Hook-Pflicht bei jedem Reel (Maik, 23.11.2026).** Ein guter Hook bewirkt vier Dinge:
+  1. **Er weckt Emotion:** Neugier, Überraschung oder Identifikation („Das bin ich“).
+  2. **Er macht ein klares Versprechen oder schafft Spannung.**
+  3. **Er spricht ein konkretes Problem oder Bedürfnis an.**
+  4. **Er führt die richtige Zielgruppe sofort hinein:** Gründer und Selbstständige erkennen sich.
+- **Drei Hook-Arten, möglichst kombiniert:**
+  - **Text-Hook:** Ab Frame 0 groß im Bild, nicht erst einblenden. Gut funktioniert eine kleine Vorzeile als Emotion (z. B. „Fast schon beängstigend 😱“) plus eine Hauptaussage mit Versprechen.
+  - **Visueller Hook:** In der ersten Sekunde Bewegung, Gesicht oder Nahaufnahme, etwas, das den Daumen stoppt. Bei Grafik-Reels: Bewegung ab Frame 0 (Zahl zählt hoch, Element fliegt ein), kein ruhiges Titelbild.
+  - **Auditiver Hook:** Der erste Ton zählt. Mit Maiks Stimme der stärkste Satz zuerst; ohne Stimme ein Musik-Akzent oder Beat-Einsatz genau auf Frame 0, keine leise Einleitung. Nie eine KI-Stimme als Maik.
 - **Bewegung + Mensch im ersten Frame** – nie Logo/Titelbild als Start.
 - Text-Hook bis 1,0 s lesbar, Auflösung angedeutet bis 3 s.
 - Funktionierende Hook-Typen: konkretes Ergebnis („Ich hab in 20 Minuten …“), echte Zahl, Frage an eine Gruppe, Überraschung, „POV: …“.
