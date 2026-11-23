@@ -64,7 +64,12 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
        - Im Log Hook-Text, Hook-Arten und Punktzahl eintragen.
      - Lesbar ohne Ton.
      - **Musik passend zum Reel wählen, nie immer denselben Track:**
-       - Vorgehen: Stimmung und Tempo des Reels bestimmen, dann im README `content/musik/README.md` den Track mit passendem Charakter suchen.
+       - **Jedes Mal neu entscheiden**, nicht immer aus derselben Liste nehmen:
+         1. Stimmung, Tempo und Länge des Reels festlegen (Beispiel: ruhige Persönlichkeit, 15 s, nachdenklich).
+         2. Alle Kandidaten prüfen: eigene MZ.9-Tracks in `eigene/` und freie Tracks in `frei/`, dazu neue Tracks aus dem Mixkit-Katalog (Stock Music Free License, Lizenz auf der Seite selbst bestätigen).
+         3. Den Track wählen, dessen Tempo, Energieverlauf und Stelle für den Einstieg zum Reel passen. Begründung ins Log.
+         4. Neue Tracks mit Quelle, Lizenz und Dateiname in `content/musik/README.md` eintragen.
+         5. Wenn der Katalog nicht erreichbar ist: aus dem README nehmen, den Track mit der geringsten Nutzung in den letzten 10 Reels, und das im Bericht vermerken.
        - Rotation: Dieselbe Datei höchstens einmal in 5 Reels. Im Log die Musikdatei eintragen, damit das prüfbar ist.
        - Passung prüfen: Schnitt auf den Beat (Musik-Einsatz an der Stelle des Hooks), Lautstärke leise unter Sprache.
        - Ohne Stimme und ohne Sprache: Der Track muss das Reel alleine tragen.
