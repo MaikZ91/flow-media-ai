@@ -13,7 +13,7 @@ Die Vorlage ist Maiks Notion-Postingplan „Instagram Postingplan“ (isleofmind
 
 | Tag | Datum | Thema (Vorlage) | Umsetzung für Flow Media AI | Status |
 |---|---|---|---|---|
-| 1 | Di 24.11. | Deine Geschichte | Maiks Weg, mit echten Stationen aus R032 „Mein Weg“ (HoloLens 2017, Roboter, Flow Media AI) | offen |
+| 1 | Di 24.11. (vorgezogen auf Mo 23.11.) | Deine Geschichte | Maiks Weg, mit echten Stationen aus R032 „Mein Weg“ (HoloLens 2017, Roboter, Flow Media AI) · gepostet: `content/posts/P023-challenge-tag-1` | ✓ 23.11. |
 | 2 | Mi 25.11. | Dein Arbeitsplatz | Wo Flow Media AI entsteht: Laptop-Foto (`maik_laptop.jpg`) und was darauf läuft (Autopilot, Kurse) | offen |
 | 3 | Do 26.11. | Über mich (Vorstellung) | Wer ich bin, was ich mache, für wen. Positionierung aus `CLAUDE.md` | offen |
 | 4 | Fr 27.11. | Fragen beantworten | Die häufigste Frage aus Workshops und Community ehrlich beantworten | offen |
