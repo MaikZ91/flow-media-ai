@@ -89,11 +89,15 @@ Von Maik fest eingeplante Posts. Die Daily-Routine schaut hier zuerst nach; erle
 | Sa 21.11. 18–20 Uhr | ✓ gesendet (Routine 21.11.) · **R050** Von einer Idee zu etwas Eigenem (P020 als Story/später) | Personal, Wochenende |
 | So 22.11. 12–13 Uhr | ✓ gesendet (Routine 22.11.) · **R051** Workshop Bild & Video (Mo 23.11.) | Workshop-Promo |
 | So 22.11. 18–20 Uhr | **R049** Mein erster Lead-Scraper | Automation, vor Workshop-Woche |
+| Mo 23.11. morgens | ✓ gesendet (Routine 23.11.) · **P022** Story „Heute 18 Uhr“ Bild & Video | Workshop-Erinnerung |
+| Mo 23.11. 12–13 Uhr | ✓ gesendet (Routine 23.11.) · **R053** KI-Skills in Zahlen (Fassung mit Stimme) | anschluss · Challenge-Promo |
+| bis Sa 28.11. | **R052** 7 Days AI Challenge (Ankündigung) · Flyer P021 als Story | Challenge-Promo vor dem Start 30.11. |
 
 
 ## 6. Verlauf (neueste oben)
 | Datum | ID | Säule | Format | Idee/Titel | Test-Variable |
 |---|---|---|---|---|---|
+| 23.11.2026 | P022 | workshop | Story 1080×1920 (s/w-Porträt, Look P017) | „Heute 18 Uhr – Bild & Video mit KI“ | look = story porträt (wie P017) |
 | 22.11.2026 | R053 | wissen · Angst, den Anschluss zu verlieren | Reel 25 s (Daten-Animation, hell, Ende dunkel) | „KI-Skills in Zahlen“: IAB 1,6 Mio. Stellen im Wandel, Jobs bleiben stabil; Bitkom 57 % nutzen KI, 66 % geringe Kompetenz, 1 von 5 geschult; PwC +20 % Gehalt; CTA Challenge | look = hell daten (erstmals) |
 | 22.11.2026 | R052 | community · Ideen nicht umsetzen | Reel 20,7 s (Kreis + Bühne, schwarz-silber) | 7 Days AI Challenge 30.11.–06.12.: „2026 bald vorbei – Idee umgesetzt?“, 7 Tage, Pakete 29/59/99 €, fester Kopf mit Name + Datum ab Bild 1, eigenes Cover | look = buehne silber (Abwechslung zu R049 blau) |
 | 21.11.2026 | R051 | workshop · Content-Aufwand | Reel 31 s (Talking Head + KI-B-Roll, Video Cutter) | „Montag ist Workshop-Tag“ – Bild & Video mit KI (bearbeiten wie vom Profi, fotorealistisch generieren), Mo 23.11. 18 Uhr, eigene KI-Clips mit Label | look = talking-head + ki-broll |
