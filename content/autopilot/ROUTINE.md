@@ -46,7 +46,7 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
    - **Format:**
      - Reels sind Standard: Bisher waren alle Top-Posts Reels.
      - Karussell oder Einzelbild nur gezielt als Test für Saves (z. B. Anleitung, Liste, Prompt-Sammlung), höchstens 1 pro Tag.
-     - Story-Hinweise auf Termine (Workshop Montag 18 Uhr, Stammtisch Freitag) optional, zusätzlich und ohne Zählung.
+     - Stories gehören zu jedem Lauf dazu (siehe Schritt 7b), sie zählen nicht zu den 3 Feed-Posts.
    - **Eine Test-Variable** je Post, z. B. Hook-Art, Länge, Musik, Uhrzeit, mit/ohne Gesicht im ersten Bild. Ins Log `variable` und `variante` schreiben.
 5. **Bauen:**
    - Flow-Look nach `flow-design`, Maik in jedem Motiv. Dafür vorhandene echte Fotos und Avatare im Repo nutzen, z. B. `flow-dna/img/maik_front.jpg`, `content/posts/*/img/maik_*.jpg`.
@@ -79,6 +79,17 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
      - Permalink, Uhrzeit, Säule, Format, Hook, Variable und Hypothese in `log.md` eintragen.
      - Den Verlauf in `content-themen` §6 eintragen.
      - Committen und pushen.
+7b. **Stories (Maik, 23.11.2026: „in Story auch posten“)**, 1–2 je Lauf:
+   - **Immer:** den neuen Feed-Post als Story ankündigen. Bei einem Reel das MP4 direkt als Story (`ig.py story <mp4-url>`). Bei Karussell oder Bild eine eigene Story-Grafik 1080×1920 als JPG mit „Neuer Post“, dem Hook und einem Bild daraus.
+   - **Zusätzlich an Termin-Tagen** im Morgen- oder Mittag-Lauf eine Termin-Story im Flow-Look (Vorlage P022: dunkles s/w-Porträt, große Uhrzeit in Blau):
+     - Montag: Workshop 18 Uhr, Thema aus `marketing/community/` (THEMEN-Map).
+     - Freitag: Stammtisch.
+     - Bis 30.11.: täglich höchstens eine Challenge-Story.
+     - Termine und Themen nur aus dem Repo, nichts erfinden.
+   - Story-Grafiken: Text in der Mitte halten, also oben 250 px und unten 300 px frei. Immer JPG, nicht PNG. Ablage im Ordner des Posts.
+   - Sticker (Link, Umfrage, Countdown) kann die API nicht. Darum „Link in Bio“ oder „Schreib mir“ im Bild.
+   - Daten: `ig.py stories` bei **jedem** Lauf aufrufen. Stories verschwinden nach 24 Stunden, die Zahlen bleiben nur so in `content/autopilot/stories.json`. Bei neuen Einträgen `inhalt` ergänzen (kurz: was war drauf).
+   - Bewertung über Reach und Antworten, außerdem über die Navigation (viele „Verlassen“ = schwache Story). Daraus lernen, welche Story-Art trägt; im Wochen-Rückblick mit auswerten.
 8. **Wochen-Rückblick:** Den macht nur der Abendlauf am Sonntag, zusätzlich zum Post.
    - Fazit der Woche oben in `content/learnings.md`: was bestätigt ist, was verworfen ist, was als Nächstes getestet wird.
    - Die Säulen-Reihenfolge unten aktualisieren.

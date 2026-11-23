@@ -12,6 +12,7 @@ the environment it is used instead (local runs).
   ig.py carousel CAPTION_FILE IMG_URL [IMG_URL ...]   (2-10 JPEG)
   ig.py image CAPTION_FILE IMG_URL
   ig.py story MEDIA_URL          image (jpg) or video (mp4) story
+  ig.py stories                  save insights of live stories (<24 h) into content/autopilot/stories.json
 """
 import json, os, sys, time, urllib.parse, urllib.request, urllib.error
 from datetime import datetime, timezone
@@ -68,6 +69,23 @@ def insights():
               f"{r.get('saved','-'):>5} {r.get('shares','-'):>6} {r.get('likes','-'):>5}  {r['caption'][:50].replace(chr(10),' ')}")
 
 
+def stories():
+    path = os.path.join(ROOT, "content", "autopilot", "stories.json")
+    try: known = {r["id"]: r for r in json.load(open(path))}
+    except Exception: known = {}
+    d = call(f"{IG}/stories", {"fields": "id,timestamp,media_type,insights.metric(views,reach,replies,shares,navigation)"})
+    for m in d.get("data", []):
+        ins = {i["name"]: i["values"][0]["value"] for i in m.get("insights", {}).get("data", [])}
+        old = known.get(m["id"], {})
+        known[m["id"]] = {**old, "id": m["id"], "zeit": berlin(m["timestamp"]).strftime("%Y-%m-%d %H:%M"),
+                          "format": m.get("media_type"), **ins, "stand": datetime.now(BER).strftime("%Y-%m-%d %H:%M")}
+    rows = sorted(known.values(), key=lambda r: r["zeit"], reverse=True)
+    json.dump(rows, open(path, "w"), ensure_ascii=False, indent=1)
+    for r in rows[:15]:
+        print(r["zeit"], r["format"], "views", r.get("views"), "reach", r.get("reach"), "replies", r.get("replies"),
+              "navigation", r.get("navigation"), r.get("inhalt", ""))
+
+
 def today():
     d = call(f"{IG}/media", {"fields": "timestamp,permalink,caption", "limit": 10})
     now = datetime.now(BER).date()
@@ -115,6 +133,7 @@ def main(a):
     cmd = a[0]
     if cmd == "insights": insights()
     elif cmd == "today": today()
+    elif cmd == "stories": stories()
     elif cmd == "wait-url": wait_url(a[1], int(a[2]) if len(a) > 2 else 600)
     elif cmd == "reel":
         p = {"media_type": "REELS", "video_url": a[1], "caption": cap(a[2]), "share_to_feed": "true"}
