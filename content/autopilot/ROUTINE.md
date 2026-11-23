@@ -131,6 +131,7 @@ Seit dem 23.11. kommt ein vierter Post pro Tag dazu (Maik: „Mache einen 4. Pos
 - Nach Tag 31 schaltet sich die Aufgabe ab (`update_trigger` enabled=false, Trigger-ID in `challenge31.md`).
 
 ## Harte Regeln (zusätzlich zu `creative-director` Teil A §6)
+- **Kein Reel nur mit Technik (Maik, 23.11.2026):** Terminal, Screens oder Ablaufgrafiken allein tragen kein Reel (R055 war so ein Test). Ein Reel braucht immer einen Menschen oder Moment, eine kleine Geschichte oder Überraschung und einen emotionalen Hook (Neugier, Identifikation, Staunen). Technik darf als Beleg dienen, nie als Hauptinhalt. Reichweite kommt bei Maik von persönlichen Geschichten (Wüste 957 Aufrufe), nicht von Prozessen.
 - **Nicht jedes Mal Porträt (Maik, 23.11.2026):** Posts mit Maiks Gesicht und Text sehen sonst alle gleich aus und wirken billig. Pro Tag höchstens ein Porträt-Post. Sonst echtes Material: Screenshots, Bildschirmaufnahmen, Terminal-Looks, Karussells, Clips. Das Format wechselt, nie zweimal hintereinander dieselbe Gestaltung. Gestaltung des vorigen Posts im Log ansehen.
 
 - **Nichts erfinden.**
