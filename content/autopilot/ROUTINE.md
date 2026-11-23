@@ -66,7 +66,7 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
      - **Musik passend zum Reel wählen, nie immer denselben Track:**
        - **Jedes Mal neu entscheiden**, nicht immer aus derselben Liste nehmen:
          1. Stimmung, Tempo und Länge des Reels festlegen (Beispiel: ruhige Persönlichkeit, 15 s, nachdenklich).
-         2. Alle Kandidaten prüfen: eigene MZ.9-Tracks in `eigene/` und freie Tracks in `frei/`, dazu neue Tracks aus **Pixabay Music** und **Mixkit** (jeweils kostenlos, kommerzielle Nutzung erlaubt). Die Lizenz auf der Quellseite selbst prüfen und festhalten. Keine Tracks mit Namensnennungspflicht oder Nutzungsverbot für Werbung und Social Media; keine Creative-Commons-Tracks mit NC- oder ND-Zusatz.
+         2. Alle Kandidaten prüfen: eigene MZ.9-Tracks in `eigene/` und freie Tracks in `frei/`, dazu neue Tracks aus **Pixabay Music**, **Mixkit** und **Freesound** (Freesound nur Tracks mit Lizenz **CC0**; alle drei kostenlos und kommerziell nutzbar, ohne Namensnennungspflicht). Die Lizenz auf der Quellseite selbst prüfen und festhalten. Keine Tracks mit Namensnennungspflicht oder Nutzungsverbot für Werbung und Social Media; keine Creative-Commons-Tracks mit NC- oder ND-Zusatz.
          3. Den Track wählen, dessen Tempo, Energieverlauf und Stelle für den Einstieg zum Reel passen. Begründung ins Log.
          4. Neue Tracks mit Quelle, Lizenz-Link, Lizenzdatum und Dateiname in `content/musik/README.md` eintragen.
          5. Wenn der Katalog nicht erreichbar ist: aus dem README nehmen, den Track mit der geringsten Nutzung in den letzten 10 Reels, und das im Bericht vermerken.
