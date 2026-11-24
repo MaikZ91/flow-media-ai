@@ -45,6 +45,22 @@
 | 30 | Behind the scenes | Story | — | Key Takeaways aus einem Call, Teilnehmer taggen nur mit Absprache | offen |
 | 31 | Behind the scenes | Einzelbild | Emotionale Caption: wie der Monat war, Learnings und Erfolge | Sprech-Story über Erfolge, Learnings und Fails | offen |
 
+## Beitragsalternativen für Fortgeschrittene (aus der Vorlage)
+
+Optional, wenn der Tag mehr Aufwand verträgt. Beispiel-Links aus der Vorlage bleiben draußen, nur die Formate zählen.
+
+- **Tag 1:**
+  - Vorstellungsreel „Hey, ich bin …“ im Talking-Head-Format: deine Geschichte erzählen.
+  - Vorstellungspost als Karussell mit Bildern und Text: „Deine Geschichte“.
+  - Vorstellungsreel als Story: B-Roll-Reel mit Text-Overlay.
+- **Tag 5:** Warum eine vermeintliche Lösung bei einem Problem nicht funktioniert: B-Roll und Text-Hook.
+- **Tag 7:** „Wenn du … machst, dann …“ als Talking-Head-Reel.
+- **Tag 15:**
+  - Post zur Zusammenarbeit, sobald es eine gibt (nur mit Freigabe).
+  - Grafik-Post, der zeigt, wie etwas geht: „So erreichst du als [Zielgruppe] endlich [Ziel]“.
+- **Tag 23:** Den Fakt als Talking-Head-Video aufnehmen, statt nur Text zu zeigen.
+- **Tag 25:** Die größte Gefahr aufgreifen, die viele glauben, und dann auflösen.
+
 Geplante Aufgabe: „Flow Autopilot: 31-Tage-Challenge (Slot 4, ~16 Uhr)“ · Trigger-ID `trig_01UwyRN4habzxykcA2o7nMSe` · täglich 15:17 Berlin.
 
 Nach jedem Post: Status auf „✓ <Datum>“ plus Permalink setzen und den Eintrag in `log.md` mit Säule „Challenge“ anlegen.
