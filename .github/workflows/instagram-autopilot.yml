@@ -1,0 +1,40 @@
+name: Instagram Autopilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Freigegebenen, fälligen Beitrag veröffentlichen"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 * * * *"
+
+concurrency:
+  group: instagram-autopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  instagram:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || vars.IG_AUTOPILOT_ENABLED == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Warteschlange verarbeiten
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_POST_QUEUE: ${{ secrets.IG_POST_QUEUE }}
+          IG_API_VERSION: ${{ vars.IG_API_VERSION }}
+          GH_STATE_TOKEN: ${{ github.token }}
+          IG_PUBLISH: ${{ github.event_name == 'schedule' || inputs.publish }}
+        run: python3 autopilot/post.py
