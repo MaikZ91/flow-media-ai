@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-24T13:52+00:00",
+ "stand": "2026-11-24T23:56+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,139 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Anthropic macht Claude Artifacts zu eigenständigen Desktop-Apps für macOS und Windows",
+   "s": "Claude Artifacts lassen sich ab sofort als native Desktop-Apps für Mac und Windows installieren, ein kostenloses Konto genügt. Die Programme greifen auf Menüleiste, Benachrichtigungen und transparente Fenster zu; …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/anthropic-macht-claude-artifacts-zu-eigenstaendigen-desktop-apps-fuer-macos-und-windows/",
+   "d": "2026-11-24T20:13:29+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.4
+  },
+  {
+   "t": "Anthropic baut Model Context Protocol (MCP) für autonomere KI-Agenten aus",
+   "s": "Anthropic verpasst seinem Schnittstellen-Standard MCP nach über 700 Millionen monatlichen SDK-Downloads ein großes Update: Skills, Hintergrund-Tasks und bald Datei-Uploads sollen Claude deutlich autonomer machen. Auch …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/anthropic-baut-model-context-protocol-fuer-autonomere-ki-agenten-aus/",
+   "d": "2026-11-24T18:54:41+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 17.2
+  },
+  {
+   "t": "Boomer holen bei KI-Nutzung auf: Sorge vor nicht abschätzbaren Risiken steigt",
+   "s": "Vier Jahre nach dem Start von ChatGPT nutzen 81 Prozent der Deutschen generative KI-Tools. Besonders stark angestiegen ist die KI-Nutzung bei älteren Menschen ab 65 Jahren. Deutlich gewachsen ist aber auch die Sorge vor …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/boomer-ki-nutzung-risiken-1775096",
+   "d": "2026-11-24T18:20:07+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 2,
+   "r": 23.1
+  },
+  {
+   "t": "Novartis-Chef kontert Amodei und Hassabis: Menschliche Biologie bremst KI-Medizinversprechen aus",
+   "s": "Novartis-Chef Vas Narasimhan, zugleich Anthropic-Vorstandsmitglied, widerspricht den Heilungsversprechen von Anthropic-Chef Amodei und DeepMind-Gründer Hassabis. KI werde die Medikamentenentwicklung beschleunigen, aber …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/novartis-chef-kontert-amodei-und-hassabis-menschliche-biologie-bremst-ki-medizinversprechen-aus/",
+   "d": "2026-11-24T17:46:18+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 29.0
+  },
+  {
+   "t": "Führender KI-Forscher rät talentierten Studierenden zum Abbruch: \"Keine gute Zeit, an der Seitenlinie zu stehen\"",
+   "s": "OpenAI-Forscher Noam Brown rät talentierten Studierenden zum Studienabbruch, weil es \"keine gute Zeit ist, an der Seitenlinie zu stehen\". Der o1-Mitentwickler sieht KI zwar noch in einer \"Zentaur-Periode\" mit Schwächen …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/openai-forscher-noam-brown-ueber-gpt-6-astra-chain-of-thought-und-studienabbruch/",
+   "d": "2026-11-24T17:39:44+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.0
+  },
+  {
+   "t": "Ist der Anthropic-Boom schon wieder vorbei? Aktie fällt unter den Ausgabepreis",
+   "s": "Anthropic startete an der Börse mit einem Kurssprung von 34 Prozent und einer Bewertung von zwei Billionen Dollar. Doch die Euphorie währte nur kurz.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/ist-der-anthropic-boom-schon-wieder-vorbei-aktie-faellt-unter-den-ausgabepreis-1775067",
+   "d": "2026-11-24T15:45:46+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "KI-Blase & Geld"
+   ],
+   "n": 2,
+   "r": 24.6
+  },
+  {
+   "t": "Mathe-Wettlauf: Anthropic und OpenAI mit fast zeitgleichen Beweisen für VP ≠ VNP",
+   "s": "Wenige Tage nach dem Riemann-Beweis legen Anthropic und OpenAI fast zeitgleich Beweise für ein jahrzehntealtes Problem der theoretischen Informatik vor.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Mathe-Wettlauf-Anthropic-und-OpenAI-mit-fast-zeitgleichen-Beweisen-fuer-VP-VNP-11536640.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-24T15:35:00+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic"
+   ],
+   "n": 3,
+   "r": 38.6
+  },
+  {
+   "t": "Neue KI-Funktionen für Entwickler: Was du über Claude Ship wissen musst",
+   "s": "Anthropic hat Claude Ship vorgestellt. Die neue Suite soll Entwickler:innen dabei helfen, KI-generierten Code schneller zu prüfen und freizugeben – und dadurch ihre Produktivität steigern.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/neue-ki-funktionen-fuer-entwickler-was-du-ueber-claude-ship-wissen-musst-1775032",
+   "d": "2026-11-24T15:15:47+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 26.6
+  },
+  {
+   "t": "heise+ | Interview mit Scott Sellers: Die Zukunft von KI-Anwendungen heißt Java",
+   "s": "JavaSPEKTRUM sprach mit Scott Sellers, CEO und Co-Founder von Azul über die Rolle von Java bei der Zukunft von KI. Das Interview führe Michael Stal in München.",
+   "q": "heise",
+   "l": "https://www.heise.de/hintergrund/Interview-mit-Scott-Sellers-Die-Zukunft-von-KI-Anwendungen-heisst-Java-11533136.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "d": "2026-11-24T15:15:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.6
+  },
+  {
+   "t": "Google führt eine neue Suchseite mit KI-Seitenleiste ohne Suchbutton ein",
+   "s": "Google baut seine Startseite um: Aus dem Such- wird ein KI-Button, zudem zieht eine Seitenleiste für die letzten KI-Suchanfragen und Gemini Notebook ein.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/Google-fuehrt-eine-neue-Suchseite-mit-KI-Seitenleiste-ohne-Suchbutton-ein-11536330.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-24T14:07:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 22.4
+  },
   {
    "t": "Linnemann: KI als „Gamechanger“, Bundeswehr will krisenfeste Gesundheitsdaten",
    "s": "Minister Linnemann will das Gesundheitssystem mit KI und präventiver Datenmedizin bezahlbar halten. Militär und Industrie mahnen zur besseren Notfallversorgung.",
@@ -16,7 +149,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.9
+   "r": 6.2
   },
   {
    "t": "Mitarbeitende von Anthropic und OpenAI warnen: Interne KI-Modelle werden zu gefährlich für eine Freigabe",
@@ -29,8 +162,8 @@
     "OpenAI",
     "Claude / Anthropic"
    ],
-   "n": 2,
-   "r": 29.9
+   "n": 3,
+   "r": 38.2
   },
   {
    "t": "Anthropic-Forscher hält an KI-Beweis für Riemannsche Vermutung fest, räumt aber peinliche Fehler ein",
@@ -43,8 +176,22 @@
     "Claude / Anthropic",
     "Coding mit KI"
    ],
+   "n": 2,
+   "r": 26.2
+  },
+  {
+   "t": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+   "s": "GPT-6 models design protein structures and sequences using reasoning and code. Lab tests found evidence of binding across five targets.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
+   "d": "2026-11-24T13:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI",
+    "Coding mit KI"
+   ],
    "n": 1,
-   "r": 17.9
+   "r": 16.2
   },
   {
    "t": "KI-Beschleunigung: Wie weit Apple bei Siri AI und Co. gekommen ist",
@@ -57,7 +204,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 11.8
+   "r": 10.1
   },
   {
    "t": "Smarte Schwimmbrille im Test: Kann ein KI-Coach meinen Freistil retten?",
@@ -68,7 +215,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 6.1
   },
   {
    "t": "Optimierung versus Datenschutz: Google verknüpft KI-Modus mit Drive, Wallet und Gemini",
@@ -81,8 +228,8 @@
     "Google Gemini",
     "Regulierung & AI Act"
    ],
-   "n": 1,
-   "r": 17.7
+   "n": 2,
+   "r": 26.1
   },
   {
    "t": "Drei Fragen und Antworten: Was der KI-Agent wusste, bevor er falsch abbog",
@@ -95,7 +242,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.6
+   "r": 10.0
   },
   {
    "t": "Shirudo: OpenAI und Cisco stellen KI-Schutzschild für Linux-Server vor",
@@ -109,7 +256,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 27.6
+   "r": 25.9
   },
   {
    "t": "Claude Ship: Anthropic lässt KI-Agenten über Code-Freigaben entscheiden",
@@ -123,8 +270,19 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
+   "n": 3,
+   "r": 39.9
+  },
+  {
+   "t": "Searching for distant planets with Astra",
+   "s": "See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and TESS space telescopes.",
+   "q": "OpenAI",
+   "l": "https://openai.com/index/searching-for-distant-planets-with-astra",
+   "d": "2026-11-24T11:00:00+00:00",
+   "lang": "en",
+   "tags": [],
    "n": 1,
-   "r": 21.5
+   "r": 5.8
   },
   {
    "t": "Europäische KI fördern: So lassen sich die Vorteile des Standorts nutzen",
@@ -137,7 +295,7 @@
     "Mistral & Europa"
    ],
    "n": 1,
-   "r": 11.4
+   "r": 9.8
   },
   {
    "t": "\"Generative Computing\": Informatik soll sich als \"Computer and AI Science\" neu erfinden",
@@ -150,7 +308,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 11.4
+   "r": 9.7
   },
   {
    "t": "Der KI-Masterplan ist veraltet, bevor er beschlossen wird – was Unternehmen stattdessen tun sollten",
@@ -163,7 +321,7 @@
     "Bildung & Schule"
    ],
    "n": 1,
-   "r": 9.1
+   "r": 7.4
   },
   {
    "t": "Nothing stellt am 8. Dezember KI-Ohrhörer Ear (note) mit Aufnahmefunktion vor",
@@ -174,20 +332,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.1
-  },
-  {
-   "t": "heise+ | Helfer im Browser: Praktische Bookmarklets mit KI programmieren",
-   "s": "Bookmarklets übernehmen im Browser praktische Dienste. Den JavaScript-Code dafür liefern KI-Chatbots in wenigen Sekunden.",
-   "q": "heise",
-   "l": "https://www.heise.de/ratgeber/Helfer-im-Browser-Praktische-Bookmarklets-mit-KI-programmieren-11517206.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "d": "2026-11-24T08:00:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 11.0
+   "r": 5.4
   },
   {
    "t": "Cloud- und KI-Gesetz: Positionsentwurf des Europaparlaments liegt endlich vor",
@@ -200,7 +345,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 10.9
+   "r": 9.2
   },
   {
    "t": "OpenAI veröffentlicht GPT-6.2 für ChatGPT",
@@ -213,31 +358,45 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.9
+   "r": 11.2
   },
   {
-   "t": "heise+ | Die KI-Produktivitätslüge: Warum schnellerer Code nichts bringt",
-   "s": "Kai Spichale, Application Engineering Manager bei SAP, erklärt, warum mehr Produktivität durch KI nicht automatisch zu schnellerer Software Delivery führt.",
-   "q": "heise",
-   "l": "https://www.heise.de/hintergrund/Die-KI-Produktivitaetsluege-Warum-schnellerer-Code-nichts-bringt-11511612.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "d": "2026-11-24T06:30:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 10.8
-  },
-  {
-   "t": "Von Obst bis Gewebe: US-Startup analysiert Gerüche – und will sie der KI beibringen",
-   "s": "Das Geruchsmodell von Osmo wird bereits in der Parfümindustrie eingesetzt. Künftig soll sie auch für medizinische Diagnostik und das Erschnüffeln von Gefahren g",
-   "q": "t3n",
-   "l": "https://t3n.de/news/obst-gewebe-startup-gerueche-ki-1774212",
-   "d": "2026-11-24T05:15:00+00:00",
-   "lang": "de",
+   "t": "How Intentful uses dots to make more time for growth",
+   "s": "Marina Petrova’s dot Aria helps research websites and build proposals, while proactively flagging messages and resolving issues.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/intentful-dots",
+   "d": "2026-11-24T00:00:00+00:00",
+   "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 6.6
+   "r": 4.0
+  },
+  {
+   "t": "How iFood scales coding agents across 15,000 repositories",
+   "s": "",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/ifood",
+   "d": "2026-11-24T00:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "KI-Agenten",
+    "Coding mit KI"
+   ],
+   "n": 2,
+   "r": 22.0
+  },
+  {
+   "t": "Clay helps sales teams win with Codex and ChatGPT",
+   "s": "ChatGPT and Codex integrations help Clay’s users research deals and turn data into go-to-market plays, with GPT-6 models handling the reasoning.",
+   "q": "OpenAI",
+   "l": "https://openai.com/business/customer-stories/clay-plugins-openai",
+   "d": "2026-11-24T00:00:00+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 10.0
   },
   {
    "t": "OpenAI and Cisco introduce Shirudo",
@@ -250,20 +409,7 @@
     "OpenAI"
    ],
    "n": 2,
-   "r": 21.2
-  },
-  {
-   "t": "5,4 Billionen Teilchen: Wie KI die Milchstraße auf drei Supercomputern nachbildet",
-   "s": "Blicke von der Erde in den Nachthimmel zeigen immer nur eine kurze Momentaufnahme aus Milliarden Jahren Kosmosgeschichte. Wer diesen Wandel im Computer nachstellen will, wurde bislang regelmäßig von explodierenden …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/milchstrasse-simulation-ki-supercomputer-1774940",
-   "d": "2026-11-23T20:54:09+00:00",
-   "lang": "de",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 2,
-   "r": 17.2
+   "r": 19.6
   },
   {
    "t": "Großes ChatGPT-Update: Bessere Antworten, sicherere Gespräche und genauere Websuche",
@@ -275,8 +421,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 1,
-   "r": 11.0
+   "n": 2,
+   "r": 19.3
   },
   {
    "t": "Musks KI-Firma SpaceXSI verdient ihr Geld jetzt vor allem mit Vermietung statt mit eigenen Projekten",
@@ -290,8 +436,8 @@
     "Google Gemini",
     "KI-Blase & Geld"
    ],
-   "n": 2,
-   "r": 28.7
+   "n": 3,
+   "r": 37.1
   },
   {
    "t": "KI-Migrationsgesetz: Experten fürchten mehr Klagen statt kürzerer Verfahren",
@@ -302,20 +448,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.7
-  },
-  {
-   "t": "OpenAI-Chefwissenschaftler legt interne Fortschrittsmetrik offen und fordert gemeinsame Sicherheitslimits",
-   "s": "OpenAI-Chefwissenschaftler Jakub Pachocki hat erstmals die internen Perplexity-Werte der gesamten GPT-Reihe offengelegt, bis hin zu einem unveröffentlichten Modell jenseits der aktuellen Generation. Die Metrik zeigt, …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-chefwissenschaftler-legt-interne-fortschrittsmetrik-offen-und-fordert-gemeinsame-sicherheitslimits/",
-   "d": "2026-11-23T14:57:38+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 10.2
+   "r": 3.0
   },
   {
    "t": "Große KI-Modelle auf mehreren Windows-11-PCs: Microsoft bringt USB4-Vernetzung",
@@ -329,60 +462,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 12.1
-  },
-  {
-   "t": "Nvidia setzt Jensen Huang wieder als CEO ein",
-   "s": "Der Verwaltungsrat von Nvidia hat Jensen Huang mit sofortiger Wirkung wieder als Präsidenten, CEO und Verwaltungsratsmitglied eingesetzt. Der Artikel Nvidia setzt Jensen Huang wieder als CEO ein erschien zuerst auf The …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/nvidia-setzt-jensen-huang-wieder-als-ceo-ein/",
-   "d": "2026-11-23T14:20:47+00:00",
-   "lang": "de",
-   "tags": [
-    "Nvidia & Chips"
-   ],
-   "n": 1,
-   "r": 8.1
-  },
-  {
-   "t": "Chinesische Militärforscher sehen nukleare Abschreckung durch KI in Gefahr",
-   "s": "Chinesische Militärforscher befürchten, dass KI-Fortschritte den USA einen Vorteil im nuklearen Kräftemessen verschaffen könnten. Der Artikel Chinesische Militärforscher sehen nukleare Abschreckung durch KI in Gefahr …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/chinesische-militaerforscher-sehen-nukleare-abschreckung-durch-ki-in-gefahr/",
-   "d": "2026-11-23T14:12:23+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 8.1
-  },
-  {
-   "t": "KI-Update kompakt: KI-Aktien, Gemini 4 Neon, Riemannsche Vermutung, Geschenktipp",
-   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/KI-Update-kompakt-KI-Aktien-Gemini-4-Neon-Riemannsche-Vermutung-Geschenktipp-11532019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-23T14:00:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini"
-   ],
-   "n": 1,
-   "r": 10.0
-  },
-  {
-   "t": "Z.ai lässt GLM-5.4 zweimal rechnen und ruft \"Generalized Coding\" aus",
-   "s": "Z.ai stellt sein Flaggschiffmodell GLM-5.4 auf eine Loop-Architektur um: 28 Schichten laufen zweimal durch, was mit 750 Milliarden Parametern ein Niveau von zwei bis drei Billionen Parametern erreichen soll. …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/z-ai-laesst-glm-5-4-zweimal-rechnen-und-ruft-generalized-coding-aus/",
-   "d": "2026-11-23T13:21:03+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI",
-    "KI-Blase & Geld"
-   ],
-   "n": 2,
-   "r": 19.9
+   "r": 10.5
   },
   {
    "t": "Connected intelligence for in-house legal",
@@ -395,7 +475,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.0
+   "r": 7.3
   },
   {
    "t": "Richpanel helps companies automate 50% of support in 30 days",
@@ -409,7 +489,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 23.0
+   "r": 21.3
   },
   {
    "t": "Perplexity and Intelligence",
@@ -447,76 +527,6 @@
    ],
    "n": 1,
    "r": 6.0
-  },
-  {
-   "t": "Can AI help scientists identify promising drug candidates?",
-   "s": "MedChemBench evaluates how well AI models interpret molecular structures, reason from experimental evidence, and select compounds in early drug discovery.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/introducing-medchembench",
-   "d": "2026-11-20T00:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-   "s": "Learn how OpenAI built the Performance Factory, a system of Codex-powered workflows that finds and fixes performance issues to help keep ChatGPT fast.",
-   "q": "OpenAI",
-   "l": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
-   "d": "2026-11-19T08:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 6.0
-  },
-  {
-   "t": "See PR scans in action",
-   "s": "Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/learn/pr-scans-demo",
-   "d": "2026-11-19T00:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "Get started with Daybreak Blue",
-   "s": "Watch a walkthrough of onboarding to Daybreak Blue, with a closer look at the setup experience and how to get started.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
-   "d": "2026-11-19T00:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "Explore the Codex Security Plugin",
-   "s": "Watch a demo of the Codex Security Plugin and see the workflow in action, from getting started to reviewing the results shown in the recording.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/learn/codex-security-plugin-demo",
-   "d": "2026-11-19T00:00:00+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
-   "t": "Deploying Daybreak Red",
-   "s": "Explore a reference architecture for supervised security investigations with Daybreak Red, including safety controls, setup, and monitoring.",
-   "q": "OpenAI",
-   "l": "https://openai.com/business/learn/deploying-daybreak-red",
-   "d": "2026-11-19T00:00:00+00:00",
-   "lang": "en",
-   "tags": [
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 2.0
   }
  ],
  "kanaele": [
@@ -531,16 +541,82 @@
  ],
  "videos": [
   {
-   "id": "5p8CdiQGqV4",
-   "t": "Conheça o novíssimo ChatGPT Modo Voz.",
+   "id": "1u0hTd86_HU",
+   "t": "Experiment with SVG & 3D Design with the Codex Plugin",
    "q": "OpenAI",
-   "d": "2026-11-24T13:14:46+00:00",
+   "d": "2026-11-24T21:32:42+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 7.6
+  },
+  {
+   "id": "p8lvQQebvpg",
+   "t": "How to Search for Exoplanets",
+   "q": "OpenAI",
+   "d": "2026-11-24T20:00:45+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 7.3
+  },
+  {
+   "id": "K8rdrWQRd20",
+   "t": "The brain helped us build AI. Now AI is explaining the brain.",
+   "q": "Google DeepMind",
+   "d": "2026-11-24T17:51:08+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 7.0
+  },
+  {
+   "id": "2DUJ2whBJRM",
+   "t": "Make sense of your day | with ChatGPT",
+   "q": "OpenAI",
+   "d": "2026-11-24T17:14:03+00:00",
    "lang": "en",
    "tags": [
     "OpenAI"
    ],
-   "n": 2,
-   "r": 23.9
+   "n": 1,
+   "r": 12.9
+  },
+  {
+   "id": "4MFBNFyBmQg",
+   "t": "Make a day of it | with ChatGPT",
+   "q": "OpenAI",
+   "d": "2026-11-24T17:14:01+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.9
+  },
+  {
+   "id": "Faoam45LT-Q",
+   "t": "Make room in your day | with ChatGPT",
+   "q": "OpenAI",
+   "d": "2026-11-24T17:13:58+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.9
+  },
+  {
+   "id": "lSQpmfuFyVc",
+   "t": "KI entwirft jetzt ihre eigenen Chips und es ist das Ende der Elektronik",
+   "q": "Everlast AI",
+   "d": "2026-11-24T16:15:19+00:00",
+   "lang": "de",
+   "tags": [
+    "Nvidia & Chips"
+   ],
+   "n": 1,
+   "r": 10.7
   },
   {
    "id": "09zUU_GJzIQ",
@@ -550,45 +626,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.4
-  },
-  {
-   "id": "asUuxCqj0GE",
-   "t": "Waiting for a better price on that gift? Use ChatGPT.",
-   "q": "OpenAI",
-   "d": "2026-11-24T01:36:38+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 2,
-   "r": 22.0
-  },
-  {
-   "id": "w-ltt0Np2cY",
-   "t": "Investigating Linux Vulnerabilities with GPT-6 Cyber",
-   "q": "OpenAI",
-   "d": "2026-11-23T20:03:11+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 13.0
-  },
-  {
-   "id": "MpsO8Ds8uyo",
-   "t": "Investigating Linux Vulnerabilities with GPT-6 Cyber",
-   "q": "OpenAI",
-   "d": "2026-11-23T20:02:15+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 13.0
+   "r": 5.7
   },
   {
    "id": "HGBUNfRnxbo",
@@ -598,20 +636,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.4
-  },
-  {
-   "id": "gAmjBqXNoFI",
-   "t": "How Franklin Templeton uses AI for investment research | OpenAI",
-   "q": "OpenAI",
-   "d": "2026-11-23T15:23:23+00:00",
-   "lang": "en",
-   "tags": [
-    "OpenAI",
-    "KI-Blase & Geld"
-   ],
-   "n": 1,
-   "r": 12.3
+   "r": 2.7
   },
   {
    "id": "hBMsWM1MQgQ",
@@ -621,7 +646,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.4
+   "r": 1.7
   },
   {
    "id": "1jPdehG3Hms",
@@ -633,7 +658,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 19.0
+   "r": 17.3
   },
   {
    "id": "KyhucNH9SZw",
@@ -668,8 +693,8 @@
     "Claude / Anthropic",
     "Google Gemini"
    ],
-   "n": 2,
-   "r": 28.0
+   "n": 3,
+   "r": 38.0
   },
   {
    "id": "T6WbsuWoLNo",
@@ -806,18 +831,6 @@
    "r": 6.0
   },
   {
-   "id": "1X4rF_o60mY",
-   "t": "Tatort: ChatGPT",
-   "q": "Everlast AI",
-   "d": "2026-11-16T16:15:06+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 2,
-   "r": 16.0
-  },
-  {
    "id": "aSntd-uCWc8",
    "t": "DURCHBRUCH bei Live-Avataren, Fable 5.2 & Seedream 5.5 schlagen alles | KI-Video-News",
    "q": "Cinetiq",
@@ -922,16 +935,6 @@
    "r": 4.0
   },
   {
-   "id": "sFfPkUJd_Jk",
-   "t": "Genie 4: A new generation of world simulation",
-   "q": "Google DeepMind",
-   "d": "2026-10-27T16:00:41+00:00",
-   "lang": "en",
-   "tags": [],
-   "n": 1,
-   "r": 0.0
-  },
-  {
    "id": "--9ZTpDQfNw",
    "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
    "q": "Cinetiq",
@@ -995,33 +998,33 @@
  ],
  "themen": [
   {
-   "name": "OpenAI",
-   "meldungen": 14,
-   "quellen": 4
+   "name": "Claude / Anthropic",
+   "meldungen": 13,
+   "quellen": 6
   },
   {
-   "name": "Claude / Anthropic",
-   "meldungen": 7,
-   "quellen": 4
+   "name": "OpenAI",
+   "meldungen": 16,
+   "quellen": 5
   },
   {
    "name": "Google Gemini",
-   "meldungen": 4,
+   "meldungen": 5,
    "quellen": 4
   },
   {
-   "name": "KI-Blase & Geld",
-   "meldungen": 6,
-   "quellen": 3
-  },
-  {
    "name": "KI-Agenten",
-   "meldungen": 4,
+   "meldungen": 6,
    "quellen": 3
   },
   {
    "name": "Coding mit KI",
    "meldungen": 6,
+   "quellen": 3
+  },
+  {
+   "name": "KI-Blase & Geld",
+   "meldungen": 2,
    "quellen": 2
   },
   {
@@ -1040,10 +1043,10 @@
    "name": "SpaceX",
    "sym": "SPCX",
    "info": "Raumfahrt · KI-Rechenzentren",
-   "preis": 133.35,
+   "preis": 125.81,
    "cur": "USD",
-   "d1": 4.35,
-   "m1": -9.2,
+   "d1": -5.65,
+   "m1": -14.4,
    "spark": [
     146.9,
     148.58,
@@ -1065,9 +1068,10 @@
     143.5,
     138.43,
     127.79,
-    133.35
+    133.35,
+    125.81
    ],
-   "t": "2026-11-23T21:00+00:00"
+   "t": "2026-11-24T21:00+00:00"
   },
   {
    "name": "UBTech Robotics",
@@ -1107,10 +1111,10 @@
    "name": "Tesla",
    "sym": "TSLA",
    "info": "Optimus-Roboter · KI",
-   "preis": 385.46,
+   "preis": 384.68,
    "cur": "USD",
-   "d1": 11.46,
-   "m1": -1.6,
+   "d1": -0.2,
+   "m1": -1.8,
    "spark": [
     391.62,
     407.46,
@@ -1132,18 +1136,19 @@
     383.72,
     374.41,
     345.82,
-    385.46
+    385.46,
+    384.68
    ],
-   "t": "2026-11-23T21:00+00:00"
+   "t": "2026-11-24T21:00+00:00"
   },
   {
    "name": "Nvidia",
    "sym": "NVDA",
    "info": "KI-Chips",
-   "preis": 165.05,
+   "preis": 155.38,
    "cur": "USD",
-   "d1": 31.48,
-   "m1": -23.6,
+   "d1": -5.86,
+   "m1": -28.1,
    "spark": [
     216.0,
     217.94,
@@ -1165,18 +1170,19 @@
     150.96,
     145.98,
     125.53,
-    165.05
+    165.05,
+    155.38
    ],
-   "t": "2026-11-23T21:00+00:00"
+   "t": "2026-11-24T21:00+00:00"
   },
   {
    "name": "Alphabet",
    "sym": "GOOGL",
    "info": "Google · Gemini",
-   "preis": 282.1,
+   "preis": 279.05,
    "cur": "USD",
-   "d1": 6.34,
-   "m1": -11.0,
+   "d1": -1.08,
+   "m1": -11.9,
    "spark": [
     316.8,
     320.58,
@@ -1198,18 +1204,19 @@
     282.44,
     272.66,
     265.29,
-    282.1
+    282.1,
+    279.05
    ],
-   "t": "2026-11-23T21:00+00:00"
+   "t": "2026-11-24T21:00+00:00"
   },
   {
    "name": "Microsoft",
    "sym": "MSFT",
    "info": "Copilot · OpenAI-Partner",
-   "preis": 492.5,
+   "preis": 496.13,
    "cur": "USD",
-   "d1": 1.65,
-   "m1": -7.5,
+   "d1": 0.74,
+   "m1": -6.8,
    "spark": [
     532.6,
     531.33,
@@ -1231,9 +1238,10 @@
     508.29,
     498.3,
     484.52,
-    492.5
+    492.5,
+    496.13
    ],
-   "t": "2026-11-23T21:00+00:00"
+   "t": "2026-11-24T21:00+00:00"
   },
   {
    "name": "Anthropic",
