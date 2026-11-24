@@ -24,7 +24,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `.claude/skills/blindspot-analyse/` – optional, nur wenn Maik ihn einschaltet: Blindspot-Pass vor neuen Projekten
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
-- `content/01_startplan.md` – Startplan der ersten zwei Wochen
+- `content/autopilot/challenge31.md` – Posting-Plan der 31-Tage-Challenge (ersetzt den Startplan)
 - `content/strategie/problem-zu-loesung.md` – Content- und Marketingstrategie „Vom Problem zur Lösung“ (11.11.2026): fünf Problem-Säulen, Formel Problem → Aha → Lösung → CTA, Hooks, Reels, Serien, CTAs. Gilt für jeden Post.
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 - `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
@@ -63,7 +63,6 @@ Maiks Google Drive `Flow Media AI` (Ordner-ID `1b0BfA5Y56OwA3-RBMhKXakpJ4dKOBRiU
 | `.claude/skills/<name>/…` (jede Datei, auch neue Skills) | `07_KI/skills/<name>/…` |
 | `auswertungen/…` | `07_KI/auswertungen/…` |
 | `CLAUDE.md`, Abschnitte 1–10 (ohne Claude-Kopf) | `01_Marketing/Brand_Identity_Flow_Media_AI` (daneben Maiks eigenes Doc `Persoenlichkeitsprofil_und_Werte_Maik` – nie überschreiben) |
-| `content/01_startplan.md` | `01_Marketing/Startplan_Instagram` |
 | `content/learnings.md` | `01_Marketing/Learnings_Instagram` |
 | `marketing/brand/…` | `01_Marketing/Brand/…` |
 | `organisatorisch/…`, `finanzen/…` | `06_Organisatorisch/…`, `05_Finanzen/…` |

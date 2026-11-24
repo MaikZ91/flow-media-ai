@@ -13,7 +13,7 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 
 ## 1. Grundlage
 - **Maßgeblich ist `CLAUDE.md` im Root dieses Repos** (Wer ich bin, Mission, Positionierung, Zielgruppe, Werte, Tonalität, Post-Regeln). Vor jedem Post lesen. Dieser Skill ergänzt nur, was für Instagram dazukommt.
-- Content-Plan: `content/01_startplan.md` · Learnings: `content/learnings.md`.
+- Content-Plan: `content/autopilot/challenge31.md` · Learnings: `content/learnings.md`.
 - Kanal: **@flow.media.ai**, neuer Account (angelegt 18.10.2026). Der *alte* Account mit diesem Namen heißt seit 13.10. @natuerlich.du.ms – dessen Zahlen und Follower gehören nicht hierher.
 - **Positionierung (Maik, 06.11.2026):** Maik ist der **persönliche KI-Sparrings- und Umsetzungspartner** für Gründer, Selbstständige und kreative Unternehmer, die viele Ideen haben, aber nicht wissen, wie sie sie umsetzen. Kein Tool-Trainer, keine IT-Agentur. Details: `CLAUDE.md` §1–7.
 - Markenversprechen: **„We build your ideas.“** · Einstieg: **„Viele Ideen? Mach sie mit KI real.“** · Rolle: „Dein persönlicher KI-Partner.“ · Arbeitsweise: „Gemeinsam Ideen verwirklichen.“ · Nutzen: „Weniger suchen. Mehr erschaffen.“
@@ -136,7 +136,7 @@ Quellen: later.com/blog/instagram-reels-algorithm · socialpilot.co (Reels Algor
 
 # Teil D – Ablauf je Post
 
-1. `git pull`; `CLAUDE.md`, `content/learnings.md` und `content/01_startplan.md` lesen.
+1. `git pull`; `CLAUDE.md`, `content/learnings.md` und `content/autopilot/challenge31.md` lesen.
 2. Entscheiden: Format, Konzept, Hook, Material, **eine** Test-Variable. Fehlt Material von Maik (Selfie-Video, Freigabe), gezielt danach fragen statt etwas zu erfinden.
 3. Bauen bzw. Skript schreiben: Hook, Szenenfolge mit Sekunden, Text im Bild, Caption, ggf. Musik.
 4. Checkliste (Teil C §5) durchgehen.
