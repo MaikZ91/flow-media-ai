@@ -1,50 +1,45 @@
-# 31-Tage-Sichtbarkeits-Challenge @flow.media.ai
+# 31-Tage-Challenge @flow.media.ai – Posting-Plan (ausführlich)
 
-**Auftrag von Maik, 23.11.2026:** „Mache einen 4. Post pro Tag immer für den 31-Tage-Challenge.“
-Die Vorlage ist Maiks Notion-Postingplan „Instagram Postingplan“ (isleofmind). Übernommen werden nur die Tagesthemen; die Texte sind eigene, in Maiks Stimme.
+Basis: Maiks Notion-Vorlage „Instagram Postingplan“, angepasst auf Flow Media AI. Entfernt: ISLE-OF-MIND-Verweise, Tutorials, Beispiel-Posts anderer Leute, Canva-Links, erfundene Testimonials.
 
-- **Ablauf:** Jeden Tag ein Feed-Post im Slot 4 (etwa 16:00 Berlin).
-  - **Laufzeit:** Start Di 24.11.2026 mit Tag 1, Ende Do 24.12.2026 mit Tag 31.
-  - **Story dazu:** Jeder Post wird zusätzlich als Story geteilt.
-- **Serien-Look:** erste Zeile der Caption und Text im ersten Bild „Tag N/31“. Hashtag `#31TageSichtbar`. So erkennen Folgende die Serie, und `ig.py today` erkennt den Challenge-Post.
-- **Story-Tage aus der Vorlage** (die geraden Tage) werden hier ebenfalls Feed-Posts. Ideen, die einen Sticker bräuchten (Abstimmung, Themen abfragen), laufen über die Kommentare: „Schreib A oder B in die Kommentare“.
-- **Hooks und Regeln** wie bei allen Posts (`ROUTINE.md`): Hook-Pflicht mit Visual + Text + Audio, nichts erfinden, Maik in jedem Motiv.
-- **Echtes Material:** Braucht ein Tag echtes Material (Arbeitsplatz, Routine, Tag in meinem Leben), nimmt der Lauf vorhandene echte Fotos und Clips aus dem Repo oder aus Drive `01_Marketing/RAW`. Gibt es nichts Passendes, wird der Tag als ehrlicher Text-Post gebaut, z. B. „So sieht mein Arbeitstag aus“ mit vorhandenen Fotos. Dann bittet der Bericht Maik um ein Foto für das nächste Mal.
+**Regeln:** ein Feed-Post pro Tag (Challenge-Slot ~16:00 Berlin) + eine Story. Nächster offener Eintrag zählt. Echte Fotos aus content/personal zuerst. Kein Porträt-Einerlei. Hook-Pflicht. Nichts erfinden. Kein Testimonial ohne Freigabe.
 
-| Tag | Datum | Thema (Vorlage) | Umsetzung für Flow Media AI | Status |
-|---|---|---|---|---|
-| 1 | Di 24.11. (vorgezogen auf Mo 23.11.) | Deine Geschichte | Maiks Weg, mit echten Stationen aus R032 „Mein Weg“ (HoloLens 2017, Roboter, Flow Media AI) · gepostet: `content/posts/P023-challenge-tag-1` | ✓ 23.11. |
-| 2 | Mi 25.11. | Dein Arbeitsplatz | Wo Flow Media AI entsteht: Laptop-Foto (`maik_laptop.jpg`) und was darauf läuft (Autopilot, Kurse) | offen |
-| 3 | Do 26.11. | Über mich (Vorstellung) | Wer ich bin, was ich mache, für wen. Positionierung aus `CLAUDE.md` | offen |
-| 4 | Fr 27.11. | Fragen beantworten | Die häufigste Frage aus Workshops und Community ehrlich beantworten | offen |
-| 5 | Sa 28.11. | Das hätte ich gerne früher gewusst | 3 echte Learnings aus `content/learnings.md` (Speichern-Post) | offen |
-| 6 | So 29.11. | Routine | Mein KI-Arbeitsalltag: Was der Autopilot jeden Morgen erledigt | offen |
-| 7 | Mo 30.11. | Mini-Tutorial / Quick-Tipp | Ein Prompt oder Kniff zum Mitmachen (Speichern-Post) | offen |
-| 8 | Di 1.12. | 1 Woche Sichtbarkeit | Ehrliche Zwischenbilanz Woche 1 mit echten Zahlen (`ig.py insights`) | offen |
-| 9 | Mi 2.12. | Kundenproblem beschreiben | „Viele Ideen, keine Umsetzung“, die Problem-Säule | offen |
-| 10 | Do 3.12. | Win des Tages | Ein echter Erfolg des Tages aus dem Log (Post, Kurs, Projekt) | offen |
-| 11 | Fr 4.12. | Anzeichen, dass … | „5 Anzeichen, dass du KI falsch nutzt“ (Speichern-Post) | offen |
-| 12 | Sa 5.12. | Abstimmung | Frage an die Community, Antwort A oder B in die Kommentare | offen |
-| 13 | So 6.12. | Tag in meinem Leben | Ein Tag zwischen Workshops, Bauen und Community, mit echten Fotos | offen |
-| 14 | Mo 7.12. | Feedback teilen | Echtes Feedback aus Workshops oder der Community, nur freigegebene Zitate | offen |
-| 15 | Di 8.12. | 2 Wochen Sichtbarkeit | Zwischenbilanz Woche 2, echte Zahlen | offen |
-| 16 | Mi 9.12. | Real Talk | Was nicht geklappt hat (ehrlich, aus Learnings und Log) | offen |
-| 17 | Do 10.12. | „Ich bin der, …“ | „Ich bin der, der …“: Haltung und Werte (`CLAUDE.md` §8) | offen |
-| 18 | Fr 11.12. | Alltags-Win | Kleiner KI-Erfolg aus dem Alltag | offen |
-| 19 | Sa 12.12. | Glaubenssätze umdeuten | „Ich bin nicht technisch genug“ → umgedeutet | offen |
-| 20 | So 13.12. | Reframing | Ein zweiter Glaubenssatz, z. B. „KI nimmt mir den Job weg“ (Daten aus R053) | offen |
-| 21 | Mo 14.12. | Checkliste posten | Checkliste „Bevor du eine App bauen lässt“ (Speichern-Post, Karussell) | offen |
-| 22 | Di 15.12. | Motivation | Ehrliche Motivation ohne Hustle-Phrasen: „Deine Idee verdient es …“ | offen |
-| 23 | Mi 16.12. | Wusstest du, dass … | Ein überraschender, belegter KI-Fakt mit Quelle | offen |
-| 24 | Do 17.12. | Abstimmung | Zweite Community-Frage (A oder B) | offen |
-| 25 | Fr 18.12. | Etwas Persönliches | Etwas Persönliches, das Maik schon geteilt hat (Wüste, Musik MZ.9) | offen |
-| 26 | Sa 19.12. | Themen abfragen | „Worüber soll ich als Nächstes posten?“ – Antworten in die Kommentare | offen |
-| 27 | So 20.12. | Einblick in dein Leben | Hinter den Kulissen: wie ein Kurs oder Reel entsteht | offen |
-| 28 | Mo 21.12. | Deine Empfehlungen | 3 Tools, die ich wirklich nutze, ehrlich bewertet | offen |
-| 29 | Di 22.12. | Kennst du das? | Problem-Hook zur Zielgruppe: „Kennst du das? Idee seit Monaten im Kopf …“ | offen |
-| 30 | Mi 23.12. | Teile einen Call | Einladung zum kostenlosen Erstgespräch (FLOW-Programm), der Angebots-Post des Tages | offen |
-| 31 | Do 24.12. | Monats-Recap | 31 Tage in Zahlen: was gelernt, was funktioniert hat | offen |
+**Story-Sticker:** Umfragen, Fragen und Emoji-Slider kann die Schnittstelle nicht setzen. Stattdessen als Text „A oder B“ oder „Schreib mir“ im Bild.
 
-Geplante Aufgabe: „Flow Autopilot: 31-Tage-Challenge (Slot 4, ~16 Uhr)“ · Trigger-ID `trig_01UwyRN4habzxykcA2o7nMSe` · täglich 15:17 Berlin.
+| Tag | Säule | Feed (Format + Idee) | Story | Material | Status |
+|---|---|---|---|---|---|
+| 1 | Founder Story | Einzelbild · Talking Head (Vorstellung „Ich baue nicht erst seit KI“) | Ankündigung: 31 Tage, wie ich arbeite | Fotos aus content/personal + R032 · ✓ gepostet 23.11. | ✓ 23.11. |
+| 2 | Behind the scenes | Einzelbild · Büro-Foto oder Labor-Foto | Arbeitsplatz-Story mit Frage-Text „Was willst du über meinen Alltag wissen?“ | content/personal/arbeitsplatz/ (Büro freigegeben, Labor freigegeben) | offen |
+| 3 | Founder Story | Karussell 6 Folien: wer ich bin, Fakten, was ich mag, Ziele, mein Why, Danke/CTA (Why aus CLAUDE.md §2) | Karussell-Folie als Story-Teaser | Fotos content/personal; Texte aus CLAUDE.md §1–2 | offen |
+| 4 | Founder Story (Fragen) | Einzelbild mit echter Frage aus Workshop/Community (nur wenn vorhanden, sonst: „Die häufigste Frage, die ich bekomme“) | Beantwortete Frage als Story-Text | Notizen aus Gesprächen; keine erfundenen Fragen | offen |
+| 5 | Demonstration / Proof | B-Roll Reel: „Das hätte ich früher gewusst“, 3 echte Learnings | Laptop-Foto während Arbeit + Text-Frage | content/learnings.md · B-Roll aus RAW | offen |
+| 6 | Behind the scenes | Reel: Autopilot-Ablauf mit mir im Bild (nicht nur Terminal) | Story: meine Routine als A-oder-B-Text-Abstimmung | content/autopilot/ROUTINE.md · Foto/Clip von dir | offen |
+| 7 | Demonstration / Proof | Reel: Quick-Tipp mit echtem Prompt (z. B. Themenpool) | Story: Emoji-Slider „Hat dir das geholfen?“ (als Text) | Prompts aus Kurs 06/11 | offen |
+| 8 | Behind the scenes | Einzelbild: Zwischenbilanz Woche 1, echte Zahlen aus `ig.py insights` | Sprech-Story 1 Min.: was ich in Woche 1 gelernt habe | content/autopilot/insights.json | offen |
+| 9 | PAS | Talking Head Reel: Problem „Idee seit Monaten im Kopf“ + Lösungsimpuls | Story: Foto + Frage „Was ist dein größtes Problem bei deiner Idee?“ | Dein Clip (RAW) oder Foto aus content/personal | offen |
+| 10 | Behind the scenes | Einzelbild: Win des Tages (echter Erfolg aus dem Log) | Story: Win + Emoji-Slider | content/autopilot/log.md | offen |
+| 11 | PAS | B-Roll Reel: „5 Anzeichen, dass du KI falsch nutzt“, Auflösung in der Caption | Story: Sprech-Clip, woran ich es gemerkt habe | Fotos content/personal · Caption | offen |
+| 12 | Behind the scenes | Einzelbild Arbeitsalltag + Text zur Situation | Story: Abstimmung „A oder B“ | Foto aus content/personal/arbeitsplatz | offen |
+| 13 | Behind the scenes | B-Roll Reel: Tag in meinem Leben, Voice-Over mit Untertiteln | Story: Reel als Story + Frage | RAW-Clips (bitte von dir) | offen |
+| 14 | Testimonial | Nur wenn eine Freigabe vorliegt: Feedback-Screenshot. Sonst: Teaser zum Halbzeit-Rückblick | Halbzeit-Story: Teaser für Tag 15 | Nur mit Freigabe; nichts erfinden | offen |
+| 15 | Founder Story | Einzelbild: Learnings nach 2 Wochen, emotionaler Text | Story: Update, wo ich stehe (Foto aus einem Call, ohne Namen) | Foto · Zahlen aus Tag 8 | offen |
+| 16 | PAS | Story: Real Talk aus meiner eigenen Erfahrung (keine erfundenen Kundinnen) | Story: Frage „Kennst du das auch?“ | Eigene Erfahrung · learnings.md | offen |
+| 17 | Founder Story | B-Roll Reel: „Ich bin der, der …“ mit echtem Fakt über mich | Story: Frage „Womit kämpfst du gerade?“ (Antworten später, nur anonym) | Clip von dir · CLAUDE.md §8 | offen |
+| 18 | Behind the scenes | Story: Alltags-Win, Emoji-Slider | — | Foto/Text aus dem Alltag | offen |
+| 19 | PAS | Karussell: alte Glaubenssätze vs. neue Wahrheiten (z. B. „Ich bin nicht technisch genug“) | Story: Foto + Frage, welchen Glaubenssatz man loslassen will | Canva oder eigenes Layout (flow-design) | offen |
+| 20 | PAS | — | Story: Antworten von gestern + Reframing-Impuls | Antworten aus Tag 19 | offen |
+| 21 | Demonstration / Proof | Karussell: „5 Dinge, bevor du eine App bauen lässt“ (7 Folien, CTA am Ende) | Story: Foto aus dem Alltag + Satz, wie es mir heute geht | Wissen aus Kurs 04/11 | offen |
+| 22 | Demonstration / Proof | — | Story: Selfie-Video mit Motivation, Sticker „Let’s go!“ (als Text) | Selfie-Clip von dir | offen |
+| 23 | Demonstration / Proof | B-Roll Reel: „Wusstest du, dass …“ mit belegtem Fakt und Quelle | Story: Umfrage-Learning (anonym) + Frage | Fakt mit Quelle · RAW-Clip | offen |
+| 24 | Demonstration / Proof | — | Story: Abstimmung (4 Optionen) + Talking-Head-Auflösung | Foto · Clip von dir | offen |
+| 25 | Founder Story | Talking Head Reel: persönliche Geschichte (Hook: „Was kaum jemand über mich weiß“) | Story: Reel + Frage dazu | Clip von dir · Wüste/Musik MZ.9 als Option | offen |
+| 26 | Behind the scenes | — | Story: „Worüber soll ich als Nächstes posten?“ mit 3 Optionen | — | offen |
+| 27 | Founder Story | B-Roll Reel: „Es ist X Uhr …“, ein echter Tag aus meinem Leben | Story: To-do-Liste als Foto | RAW-Clips | offen |
+| 28 | Demonstration / Proof | — | Story: Buch- oder Podcast-Empfehlung zu meinem Thema (nur echte, die ich kenne) | Eigene Empfehlung | offen |
+| 29 | PAS | Talking Head Reel: „Kennst du das?“ + Lösungsimpuls | Story: Reel + Frage „Kennst du das auch?“ | Clip von dir | offen |
+| 30 | Behind the scenes | Einzelbild: Key Takeaways aus einem Workshop oder Call (ohne Teilnehmernamen) | Story: Key Takeaways als Text | Foto/Screenshot eigener Calls | offen |
+| 31 | Behind the scenes | Einzelbild: Monats-Recap, emotionaler Text, Erfolge und Fails | Story: Sprech-Clip, was der Monat gebracht hat | Foto · Zahlen aus insights.json | offen |
 
-Nach jedem Post: Status auf „✓ <Permalink>“ setzen und den Eintrag in `log.md` mit Säule „Challenge“ anlegen.
+Geplante Aufgabe: „Flow Autopilot: 31-Tage-Challenge (Slot 4, ~16 Uhr)“ · Trigger-ID `trig_01UwyRN4habzxykcA2o7nMSe` · täglich 15:17 Berlin. Ab 24.11.: genau ein Post pro Tag.
+
+Nach jedem Post: Status auf „✓ <Datum>“ plus Permalink setzen und den Eintrag in `log.md` mit Säule „Challenge“ anlegen.
