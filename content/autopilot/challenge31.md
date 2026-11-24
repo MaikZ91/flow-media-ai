@@ -14,7 +14,7 @@
 | Tag | Säule | Format (Feed) | Vorschlag Feed | Vorschlag Story | Status |
 |---|---|---|---|---|---|
 | [1](#tag-1) | Founder Story | Einzelbild / Talking Head | Authentisch Bild von dir, Reise und Ausblick auf den Account erzählen | Ankündigung der 30-Tage-Challenge | ✓ 23.11. |
-| [2](#tag-2) | Behind the scenes | Story | — | Einblick in deinen Arbeitsplatz oder Arbeitsumfeld | offen |
+| [2](#tag-2) | Behind the scenes | Story | — | Einblick in deinen Arbeitsplatz oder Arbeitsumfeld | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
 | [3](#tag-3) | Founder Story | Karussell | Dich vorstellen: wer du bist, Fakten, was du magst, Ziele, Why, Danke + CTA | Frage-Sticker (als Text): „Was willst du noch über mich wissen?“ | offen |
 | [4](#tag-4) | Founder Story | Story | — | Beantwortete Fragen von gestern; ohne Antworten einen Alltags-Clip mit Musik | offen |
 | [5](#tag-5) | Demonstration / Proof | B-Roll-Reel | „Das hätte ich gerne früher gewusst“, Text-Overlay mit Learnings | Laptop filmen bei der Arbeit, Profil taggen (hier: kein Tag, nur Arbeit zeigen) | offen |
@@ -32,16 +32,16 @@
 | [17](#tag-17) | Founder Story | B-Roll-Reel | „Ich bin übrigens der/die, der/die …“ mit einem echten Fakt über dich | Frage, womit die Follower gerade am meisten kämpfen | offen |
 | [18](#tag-18) | Behind the scenes | Story | — | Kleiner Alltags-Win, Emoji-Schieberegler (als Text) | offen |
 | [19](#tag-19) | PAS | Karussell | Alte Glaubenssätze gegen neue Wahrheiten | Foto + Frage, welchen Glaubenssatz man loslassen will | offen |
-| [20](#tag-20) | PAS | Story | — | Antworten von gestern mit Reframing-Impuls | offen |
-| [21](#tag-21) | Demonstration / Proof | Karussell | Checkliste: 5 Dinge, die man heute tun kann, mit CTA am Ende | Foto aus dem Alltag, wie es dir heute geht | offen |
-| [22](#tag-22) | Demonstration / Proof | Story | — | Selfie-Video mit motivierendem Gedanken, „Let's go!“ | offen |
-| [23](#tag-23) | Demonstration / Proof | B-Roll-Reel | „Wusstest du, dass …“ mit belegtem Fakt | Anonymes Learning aus Gesprächen, Frage „Kennst du das?“ | offen |
-| [24](#tag-24) | Demonstration / Proof | Story | — | Abstimmung mit mehreren Optionen, dann Talking-Head-Auflösung | offen |
-| [25](#tag-25) | Founder Story | Talking-Head-Reel | Persönliche Geschichte, einer deiner bewegenden Momente | Reel als Story, dazu eine passende Frage | offen |
-| [26](#tag-26) | Behind the scenes | Story | — | Frage: „Worüber soll ich als Nächstes posten?“ | offen |
-| [27](#tag-27) | Founder Story | B-Roll-Reel | „Es ist X Uhr …“, Einblick in deinen Tag | To-do-Liste als Foto | offen |
-| [28](#tag-28) | Demonstration / Proof | Story | — | Buch- oder Podcast-Empfehlung zu deinem Thema | offen |
-| [29](#tag-29) | PAS | Talking-Head-Reel | Problem der Zielgruppe, mit einem Impuls zum Umgang | Reel als Story, Frage „Kennst du das auch?“ | offen |
+| [20](#tag-20) | PAS | Story | — | Antworten von gestern mit Reframing-Impuls | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [21](#tag-21) | Demonstration / Proof | Karussell | Checkliste: 5 Dinge, die man heute tun kann, mit CTA am Ende | Foto aus dem Alltag, wie es dir heute geht | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [22](#tag-22) | Demonstration / Proof | Story | — | Selfie-Video mit motivierendem Gedanken, „Let's go!“ | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [23](#tag-23) | Demonstration / Proof | B-Roll-Reel | „Wusstest du, dass …“ mit belegtem Fakt | Anonymes Learning aus Gesprächen, Frage „Kennst du das?“ | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [24](#tag-24) | Demonstration / Proof | Story | — | Abstimmung mit mehreren Optionen, dann Talking-Head-Auflösung | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [25](#tag-25) | Founder Story | Talking-Head-Reel | Persönliche Geschichte, einer deiner bewegenden Momente | Reel als Story, dazu eine passende Frage | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [26](#tag-26) | Behind the scenes | Story | — | Frage: „Worüber soll ich als Nächstes posten?“ | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [27](#tag-27) | Founder Story | B-Roll-Reel | „Es ist X Uhr …“, Einblick in deinen Tag | To-do-Liste als Foto | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [28](#tag-28) | Demonstration / Proof | Story | — | Buch- oder Podcast-Empfehlung zu deinem Thema | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
+| [29](#tag-29) | PAS | Talking-Head-Reel | Problem der Zielgruppe, mit einem Impuls zum Umgang | Reel als Story, Frage „Kennst du das auch?“ | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
 | [30](#tag-30) | Behind the scenes | Story | — | Key Takeaways aus einem Call, Teilnehmer taggen nur mit Absprache | offen |
 | [31](#tag-31) | Behind the scenes | Einzelbild | Emotionale Caption: wie der Monat war, Learnings und Erfolge | Sprech-Story über Erfolge, Learnings und Fails | offen |
 
