@@ -4,5 +4,5 @@
 - `arbeitsplatz-hololens.jpg`: Maik mit HoloLens vor holografischen Ansichten. Passt zur Geschichte von 2017 (R032). Keine weiteren erkennbaren Personen außer am Bildrand.
 
 - `arbeitsplatz-labor.jpg`: Labor mit Roboterarm, ohne Wasserzeichen (oberer Rand abgeschnitten). Zwei weitere Personen erkennbar: Maik hat die Freigabe erteilt (24.11.).
-  OFFEN: Gehört das Labor zu einem Arbeitgeber? Wenn ja, nicht posten (Regel: keine Inhalte aus Arbeitgeber-Projekten).
+  FREIGEGEBEN (Maik, 24.11.): Personen und Arbeitgeber-Frage sind geklärt, das Foto darf verwendet werden.
 - `arbeitsplatz-labor-ROHFASSUNG.jpg`: Original mit Wasserzeichen, nicht verwenden.
