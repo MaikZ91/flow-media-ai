@@ -4,7 +4,7 @@
 Damit ist automatisches Posten auf @flow.media.ai freigegeben. Der Autopilot entscheidet selbst und meldet danach kurz, was gepostet wurde.
 
 Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe „Flow Autopilot“ laufen.
-- Die Slots stehen unten unter „Slots“.
+- Die Slots stehen unten unter „Slots“. **Stand 24.11.: pausiert, nur der Challenge-Post läuft**, bis Maik etwas anderes sagt.
 - Auslöser ist ein Cron-Ausdruck, eingestellt etwa 40 Minuten vor der Zielzeit.
 - Den Cron passt der Wochen-Rückblick an (siehe Schritt 8).
 
@@ -125,6 +125,7 @@ Ein Lauf = **ein** Post. Es gibt drei Läufe am Tag, die als geplante Aufgabe �
 
 Seit dem 23.11. kommt ein vierter Post pro Tag dazu (Maik: „Mache einen 4. Post pro Tag immer für den 31-Tage-Challenge“).
 - Eigene geplante Aufgabe um 15:17, Ziel etwa 16:00.
+- **Diese Woche (ab 24.11., Maik): nur ein Post pro Tag**, der Challenge-Post. Die drei regulären Slots (06:47, 11:47, 18:47) sind pausiert, bis Maik „3× posten“ sagt. Ab dann schaltet er sie wieder ein.
 - Plan, Regeln und Status stehen in `content/autopilot/challenge31.md`.
 - Der Lauf geht wie oben (Schritte 1–9), aber das Thema steht fest: der Tag aus `challenge31.md`, der zum heutigen Datum gehört.
 - Format, Hook-Art und Umsetzung wählt der Lauf selbst. Caption und erstes Bild beginnen mit „Tag N/31“.
