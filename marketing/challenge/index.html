@@ -90,6 +90,7 @@ nav .btn{padding:11px 16px;font-size:11px}
 .day h3{font-size:25px;line-height:1.05;margin-top:12px}
 .day p{margin-top:10px;font-size:15.5px}
 .day .res{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;color:#fff}
+.day .lesson-link{margin-top:16px;padding:10px 15px;font-size:11px}
 .day .res span{display:block;font:600 10px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .day.last{border-color:rgba(255,255,255,.35);background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(16,16,18,.9) 55%)}
 /* pricing */
@@ -299,7 +300,7 @@ const PAKETE = [
     items: ["45 Minuten persönliches 1:1 KI-Sparring", "Individuelle Beratung zu deinem Projekt", "Gemeinsame Arbeit an deiner konkreten Idee", "Unterstützung bei der Auswahl geeigneter KI-Tools", "Konkrete nächste Schritte für die Umsetzung"], cta: "1:1 Intensive sichern" },
 ];
 const TAGE = [
-  ["KI verstehen und richtig nutzen", "Wie KI-Modelle arbeiten, welches Tool wofür taugt und wie du so fragst, dass brauchbare Antworten kommen.", "Dein persönlicher Prompt-Baukasten für den Alltag."],
+  ["Dein erster KI-Workspace", "Richte mit Claude Code oder Codex einen Projektordner ein und gib deinem Agenten einen klaren Auftrag.", "Ein Workspace mit Briefing und geprüftem Entwurf."],
   ["Eigene KI-Skills und Assistenten entwickeln", "Du bringst der KI bei, wie du arbeitest: mit deinem Wissen, deinem Stil, deinen Abläufen.", "Dein erster eigener KI-Assistent."],
   ["Content Creation mit KI", "Texte, Bilder und Videos für dein Business – schneller und trotzdem nach dir.", "Ein eigener Content-Workflow mit ersten fertigen Beiträgen."],
   ["Workflows und Automatisierungen", "Wiederkehrende Aufgaben finden und Schritt für Schritt an KI und Automatisierung abgeben.", "Eine Automatisierung, die dir eine Aufgabe abnimmt."],
@@ -328,7 +329,7 @@ const fmt = d => ["SO", "MO", "DI", "MI", "DO", "FR", "SA"][d.getDay()] + " " + 
 const s0 = new Date(new Date(C.start).getTime() + 12 * 3600e3); // midday of day 1: date stays right in every time zone
 const fmtB = d => d.toLocaleDateString("de-DE", { timeZone: "Europe/Berlin", weekday: "short", day: "2-digit", month: "2-digit" }).replace(/\.,?\s*/, " ").toUpperCase();
 $("days").innerHTML = TAGE.map(([t, p, r], i) => { const d = new Date(s0); d.setDate(d.getDate() + i);
-  return `<article class="day rv${i % 2 ? " d1" : ""}${i === 6 ? " last" : ""}"><div class="top"><span class="n chrome">0${i + 1}</span><span class="dt">TAG ${i + 1} · ${fmtB(d)}</span></div><h3>${t}</h3><p>${p}</p><div class="res"><span>Ergebnis</span>${r}</div></article>` }).join("");
+  return `<article class="day rv${i % 2 ? " d1" : ""}${i === 6 ? " last" : ""}"><div class="top"><span class="n chrome">0${i + 1}</span><span class="dt">TAG ${i + 1} · ${fmtB(d)}</span></div><h3>${t}</h3><p>${p}</p><div class="res"><span>Ergebnis</span>${r}</div>${i === 0 ? '<a class="btn lesson-link" href="tag-1/">Tutorial für Tag 1</a>' : ""}</article>` }).join("");
 // Render plans + comparison + form options
 $("plans").innerHTML = PAKETE.map((k, i) => `<article class="plan rv d${i}${k.hi ? " hi" : ""}">${k.hi ? '<span class="badge">Empfohlen</span>' : ""}<span class="nm">${k.name}</span><div class="pr"><b>${k.preis} €</b><small>einmalig</small></div><p class="tl">${k.tl}</p>${k.plus ? `<p class="plus">${k.plus}</p>` : '<p class="plus">Enthalten</p>'}<ul>${k.items.map(x => `<li>${x}</li>`).join("")}</ul><a class="btn${k.hi ? " pri" : ""}" href="#anmelden" data-pick="${k.id}">${k.cta} <span class="ar">→</span></a></article>`).join("");
 const ROWS = [["Komplette 7-Tage-Challenge", 1, 1, 1], ["Tägliche Aufgaben & Tutorials", 1, 1, 1], ["Vorlagen, Prompts & KI-Skills", 1, 1, 1], ["Challenge-Community & Gruppen-Support", 1, 1, 1], ["Live-Sessions mit Übungen & Fragerunden", 0, 1, 1], ["Persönliches Feedback in den Live-Sessions", 0, 1, 1], ["45 Min. 1:1-KI-Sparring zu deiner Idee", 0, 0, 1], ["Tool-Auswahl & nächste Schritte für dein Projekt", 0, 0, 1]];
