@@ -141,11 +141,8 @@ nav .btn{margin-left:auto}
 .goal{align-items:center;gap:34px}
 .goal h2{margin-top:16px}
 .example{margin:0}
-.example-card{padding:clamp(24px,5vw,46px);border:1px solid #a3a891;border-radius:var(--r);background:linear-gradient(145deg,#263126,#121713);color:#eaefe7}
-.example-card h3{margin:14px 0;font-size:clamp(38px,7vw,72px);color:#f2f7d6}
-.example-card .label,.example-card .example-next strong{color:#d9e5aa}
-.example-next{margin-top:22px;padding-top:16px;border-top:1px solid #a3a891}
-.example-next strong{display:block}
+.example iframe{display:block;width:100%;height:465px;border:1px solid var(--line2);border-radius:var(--r);background:#e8e8cb}
+@media(max-width:420px){.example iframe{height:430px}}
 .example figcaption{margin-top:10px;font-size:14px;color:var(--text)}
 nav.level-choice{position:static;border:0}
 nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));height:auto;gap:14px;padding-bottom:38px}
@@ -195,7 +192,10 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 </header>
 <section class="stmt" aria-labelledby="goal"><div class="wrap goal">
   <div><p class="label">Das baust du heute</p><h2 id="goal">Deine erste<br><span class="chrome">Projektkarte.</span></h2><p class="sm">Zeig der Gruppe, woran du arbeitest. Am Ende hast du eine kleine Website mit deiner Idee und einen Screenshot, den du teilen kannst.</p></div>
-  <figure class="example"><div class="example-card"><p class="label">Beispielprojekt</p><h3>Stadtgarten</h3><p>Ein Pflanzplan für Menschen, die auf einem kleinen Balkon Gemüse anbauen möchten.</p><p class="example-next"><strong>Nächster Schritt</strong> Drei Pflanzen für einen schattigen Balkon auswählen.</p></div><figcaption>So könnte deine Projektkarte aussehen.</figcaption></figure>
+  <figure class="example">
+      <iframe src="projektkarte.html" title="Beispiel-Projektkarte Stadtgarten" loading="lazy"></iframe>
+      <figcaption><a href="projektkarte.html">Beispiel-Projektkarte öffnen</a></figcaption>
+    </figure>
 </div></section>
 <nav class="level-choice" aria-label="Schwierigkeitsstufe"><div class="wrap">
   <a href="#basic"><span class="label">Level 01 · Basic</span><strong>Desktop-App</strong><span>Hier startest du mit Codex oder Claude Desktop.</span></a>
