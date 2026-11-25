@@ -179,6 +179,21 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
  .lesson-practice{grid-column:1}
  .lesson-result{grid-column:2}
 }
+
+.pace-grid{display:grid;gap:18px}
+.pace-steps{list-style:none;display:grid;gap:10px}
+.pace-steps li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;background:var(--card)}
+.pace-steps p{grid-column:1/-1}
+.pace-steps strong,.pace-min{color:#fff}
+.pace-steps li[aria-current="step"]{border-color:#fff;background:#222227}
+.pace-min{white-space:nowrap}
+.pace-clock{align-self:start}
+#pace-time{font:500 clamp(48px,9vw,80px)/1.2 var(--f-head);font-variant-numeric:tabular-nums;color:#fff}
+.pace-track{height:6px;margin:12px 0 16px;border-radius:9px;background:#343438;overflow:hidden}
+.pace-track span{display:block;width:0;height:100%;background:#fff;transition:width .8s linear}
+.pace-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pace-actions .btn{padding:10px 14px;font-size:12px}
+@media(min-width:760px){.pace-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -197,9 +212,10 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
     <p class="lead">Richte deinen KI-Workspace ein und baue eine Projektkarte, die du in der Challenge-Gruppe zeigen kannst.</p>
     <div class="facts">
       
+      <div class="fact"><b>15 Min.</b><span>Aufgabe nach dem Setup</span></div>
       <div class="fact"><b>Claude Code oder Codex</b><span>Du brauchst nur eines</span></div>
     </div>
-    <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a></div>
+    <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a><a class="btn" href="#zeitplan">15-Minuten-Zeitplan</a></div>
   </div>
 </header>
 <section class="stmt" aria-labelledby="goal"><div class="wrap goal">
@@ -213,6 +229,25 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
   <a href="#basic"><span class="label">Level 01 · Basic</span><strong>Desktop-App</strong><span>Hier startest du mit Codex oder Claude Desktop.</span></a>
   <a href="#advanced"><span class="label">Level 02 · Advanced · Optional</span><strong>Terminal</strong><span>Für alle, die direkt mit einer CLI arbeiten möchten.</span></a>
 </div></nav>
+<section class="sec pace" id="zeitplan" aria-labelledby="pace-title"><div class="wrap">
+  <div class="sec-head"><span class="label">Zeitplan für Basic oder Advanced</span><h2 id="pace-title">In 15 Minuten<br><span class="chrome">zur Projektkarte.</span></h2><p>Starte den Timer, sobald dein Tool installiert ist und du angemeldet bist. Plane für die Ersteinrichtung zusätzlich etwa 5–15 Minuten ein. Wenn du das Setup-Video nutzt, kommen rund 1½ Minuten dazu.</p></div>
+  <div class="pace-grid">
+    <ol class="pace-steps">
+      <li><strong>Aufgabe verstehen</strong><span class="pace-min">2 Min.</span><p>Lies die Aufgabe und schau dir die Beispielkarte an.</p></li>
+      <li><strong>Briefing eingeben</strong><span class="pace-min">3 Min.</span><p>Fülle den Prompt-Generator aus.</p></li>
+      <li><strong>Karte bauen</strong><span class="pace-min">5 Min.</span><p>Starte den Agenten im Projektordner und lass die HTML-Datei erstellen.</p></li>
+      <li><strong>Datei prüfen</strong><span class="pace-min">3 Min.</span><p>Finde die Datei und öffne sie im Browser.</p></li>
+      <li><strong>Ergebnis teilen</strong><span class="pace-min">2 Min.</span><p>Poste den Screenshot mit zwei Zeilen in der Gruppe.</p></li>
+    </ol>
+    <div class="lesson-panel pace-clock" hidden>
+      <p class="label">Dein Timer</p>
+      <div id="pace-time" role="timer" aria-label="Verbleibende Zeit">15:00</div>
+      <div class="pace-track" aria-hidden="true"><span></span></div>
+      <p id="pace-status" role="status">Wähle ein Level und starte, wenn du bereit bist.</p>
+      <div class="pace-actions"><button type="button" class="btn pri" id="pace-toggle">Timer starten</button><button type="button" class="btn" id="pace-reset">Zurücksetzen</button></div>
+    </div>
+  </div>
+</div></section>
 <section class="sec level basic" id="basic"><div class="wrap">
   <div class="sec-head"><span class="label level-label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Alles, was du für die weiteren Challenge-Tage brauchst.</p></div>
   <div class="lesson-layout">
@@ -333,6 +368,63 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
+const clock = document.querySelector(".pace-clock");
+const clockTime = document.getElementById("pace-time");
+const clockStatus = document.getElementById("pace-status");
+const clockToggle = document.getElementById("pace-toggle");
+const clockReset = document.getElementById("pace-reset");
+const clockBar = clock.querySelector(".pace-track span");
+const clockSteps = [...document.querySelectorAll(".pace-steps li")];
+const phaseEnds = [120000,300000,600000,780000,900000];
+const totalTime = phaseEnds.at(-1);
+const idleMessage = clockStatus.textContent;
+let remaining = totalTime;
+let deadline = 0;
+let ticker;
+
+function renderClock() {
+  if (deadline) remaining = Math.max(0, deadline - Date.now());
+  const seconds = Math.ceil(remaining / 1000);
+  clockTime.textContent = Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
+  clockBar.style.width = 100 * (1 - remaining / totalTime) + "%";
+  const active = deadline ? phaseEnds.findIndex(end => totalTime - remaining < end) : -1;
+  clockSteps.forEach((step, i) => {
+    if (i === active) step.setAttribute("aria-current", "step");
+    else step.removeAttribute("aria-current");
+  });
+  if (!remaining) {
+    clearInterval(ticker);
+    deadline = 0;
+  }
+  const message = active >= 0
+    ? "Jetzt: " + clockSteps[active].querySelector("strong").textContent
+    : remaining === totalTime ? idleMessage
+    : remaining ? "Timer pausiert." : "15 Minuten sind um. Wenn deine Karte fertig ist, teile den Screenshot.";
+  if (clockStatus.textContent !== message) clockStatus.textContent = message;
+  clockToggle.textContent = deadline ? "Pausieren" : remaining && remaining !== totalTime ? "Fortsetzen" : "Timer starten";
+}
+
+clockToggle.addEventListener("click", () => {
+  if (deadline) {
+    remaining = Math.max(0, deadline - Date.now());
+    clearInterval(ticker);
+    deadline = 0;
+  } else {
+    if (!remaining) remaining = totalTime;
+    deadline = Date.now() + remaining;
+    ticker = setInterval(renderClock, 250);
+  }
+  renderClock();
+});
+
+clockReset.addEventListener("click", () => {
+  clearInterval(ticker);
+  deadline = 0;
+  remaining = totalTime;
+  renderClock();
+});
+clock.hidden = false;
+
 const projectExample = {
   "name": "Stadtgarten",
   "idea": "Ein Pflanzplan für kleine Balkone.",
