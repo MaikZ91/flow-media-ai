@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tag 1 – Dein KI-Workspace | 7 Days AI Challenge</title>
+<meta name="description" content="Richte deinen ersten KI-Workspace ein und erledige eine kleine Aufgabe mit Claude Code oder Codex.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Montserrat:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Black, white, silver. Thin hairlines, chrome type, calm motion. Mobile first. */
+:root{--bg:#050505;--bg2:#0B0B0C;--card:rgba(16,16,18,.82);--white:#fff;--text:rgba(255,255,255,.74);--muted:rgba(255,255,255,.48);--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.18);
+ --silver:linear-gradient(100deg,#8d8d93 0%,#f4f4f6 28%,#a9a9b0 50%,#ffffff 72%,#8d8d93 100%);
+ --f-head:"Oswald","Arial Narrow",sans-serif;--f-label:"Montserrat",system-ui,sans-serif;--f-body:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1);--r:22px;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 120px,radial-gradient(1200px 600px at 80% -10%,rgba(255,255,255,.05),transparent 60%)}
+.label{font:600 11px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.chrome{background:var(--silver);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s linear infinite}
+@keyframes sheen{to{background-position:-220% 0}}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;text-transform:uppercase;color:var(--white);line-height:.95;letter-spacing:-.005em}
+h2{font-size:clamp(40px,9vw,84px)}
+.sec{padding:96px 0;border-top:1px solid var(--line);position:relative}
+.sec-head{display:grid;gap:18px;margin-bottom:44px}
+.sec-head p{max-width:56ch;font-size:17px}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:999px;font:600 14px var(--f-label);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--line2);background:transparent;color:#fff;transition:transform .25s var(--ease),background .3s,border-color .3s,box-shadow .3s}
+.btn:hover{border-color:#fff}
+.btn.pri{background:linear-gradient(180deg,#ffffff,#cfcfd4);color:#050505;border-color:transparent;box-shadow:0 10px 40px -12px rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.15)}
+.btn.pri:hover{transform:translateY(-2px);box-shadow:0 16px 50px -12px rgba(255,255,255,.6)}
+.btn .ar{transition:transform .25s var(--ease)}.btn:hover .ar{transform:translateX(4px)}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(5,5,5,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:66px}
+nav img{height:24px;width:auto}
+nav .dt{margin-left:auto;font:600 11px var(--f-label);letter-spacing:.2em;color:var(--muted)}
+nav .btn{padding:11px 16px;font-size:11px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .ph{position:absolute;top:0;left:0;right:0;height:min(56svh,520px);z-index:-2;width:100%;object-fit:cover;object-position:50% 12%;filter:grayscale(1) contrast(1.08) brightness(.7)}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;height:min(56svh,520px);z-index:-1;background:linear-gradient(180deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,.1) 22%,rgba(5,5,5,.55) 58%,var(--bg) 100%)}
+#lines{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.9}
+.hero .wrap{padding-top:min(34svh,330px);padding-bottom:56px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid var(--line2);border-radius:999px;background:rgba(10,10,12,.55);backdrop-filter:blur(8px);font:600 10.5px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:#e6e6ea}
+.tag i{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff;animation:blink 2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.hero h1{font-size:clamp(56px,15.5vw,150px);margin:22px 0 0}
+.hero h1 span{display:block}
+.hero .lead{max-width:44ch;margin:22px 0 0;font-size:clamp(16.5px,2vw,19px);color:rgba(255,255,255,.82)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.fact{padding:12px 16px;border:1px solid var(--line2);border-radius:14px;background:rgba(12,12,14,.7);backdrop-filter:blur(8px)}
+.fact b{display:block;font:500 22px/1.1 var(--f-head);letter-spacing:.02em;color:#fff}
+.fact span{font:600 10px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cd{margin-top:18px;font:500 13px var(--f-body);color:var(--muted)}
+.cd b{color:#fff;font-weight:600}
+/* statement */
+.stmt{padding:90px 0;border-top:1px solid var(--line)}
+.stmt p.big{font:500 clamp(28px,6vw,58px)/1.08 var(--f-head);text-transform:uppercase;color:rgba(255,255,255,.28)}
+.stmt p.big b{color:#fff;font-weight:500}
+.stmt p.sm{margin-top:26px;max-width:58ch;font-size:17px}
+/* days */
+.days{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.day{position:relative;padding:26px 24px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;transition:border-color .4s,transform .4s var(--ease)}
+.day:hover{border-color:var(--line2);transform:translateY(-3px)}
+.day::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at var(--mx,80%) var(--my,0%),rgba(255,255,255,.07),transparent 60%);pointer-events:none}
+.day .top{display:flex;justify-content:space-between;align-items:baseline}
+.day .n{font:700 64px/1 var(--f-head)}
+.day .dt{font:600 10.5px var(--f-label);letter-spacing:.2em;color:var(--muted)}
+.day h3{font-size:25px;line-height:1.05;margin-top:12px}
+.day p{margin-top:10px;font-size:15.5px}
+.day .res{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;color:#fff}
+.day .res span{display:block;font:600 10px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.day.last{border-color:rgba(255,255,255,.35);background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(16,16,18,.9) 55%)}
+/* flow */
+.steps{list-style:none;display:grid;grid-template-columns:minmax(0,1fr);gap:0;counter-reset:s;border-left:1px solid var(--line2);margin-left:8px}
+.steps li{counter-increment:s;position:relative;padding:0 0 30px 30px}
+.steps li::before{content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 14px rgba(255,255,255,.7)}
+.steps b{display:block;font:500 22px/1.15 var(--f-head);text-transform:uppercase;color:#fff}
+.steps b::before{content:"0" counter(s) "  ";color:var(--muted);font-weight:400}
+.steps span{display:block;margin-top:6px;font-size:15px}
+.steps small{display:inline-block;margin-top:8px;padding:4px 10px;border:1px solid var(--line2);border-radius:999px;font:600 10px var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:#e6e6ea}
+/* final */
+.final{padding:120px 0 110px;border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+.final h2{font-size:clamp(38px,8.5vw,92px);max-width:16ch;margin:0 auto}
+.final p{max-width:52ch;margin:24px auto 0;font-size:17px}
+.final .sig{margin-top:22px;font:600 11px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:#e6e6ea}
+.final .btn{margin-top:34px}
+footer{padding:30px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
+@media (min-width:760px){
+ .wrap{padding:0 36px}
+ .days{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+
+
+
+
+ .hero{align-items:center}
+ .hero .wrap{padding-top:110px;padding-bottom:70px}
+ .hero .ph{left:auto;width:46%;height:100%;object-position:50% 20%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
+ .hero::before{height:auto;inset:0;background:linear-gradient(90deg,var(--bg) 40%,rgba(5,5,5,.2) 75%,rgba(5,5,5,.35) 100%),linear-gradient(180deg,transparent 75%,var(--bg))}
+ .hero h1{font-size:clamp(70px,9vw,132px)}
+
+
+}
+@media (min-width:1080px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}.hero .wrap{padding-bottom:80px}}
+@media (max-width:420px){nav .dt{display:none}nav .btn{margin-left:auto}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+nav .btn{margin-left:auto}
+.hero h1{font-size:clamp(36px,12vw,132px)}
+.hero .lead{max-width:46ch}
+.sec[id]{scroll-margin-top:65px}
+.lesson-grid{display:grid;gap:18px}
+.lesson-grid .day h3{margin-top:8px}
+.lesson-grid .btn{margin-top:20px;padding:12px 16px;font-size:12px}
+.steps span{font-size:1rem}
+.exercise{display:grid;gap:16px;max-width:760px}
+.prompt{padding:18px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);color:#fff;font:400 1rem/1.65 var(--f-body);white-space:pre-wrap;overflow-wrap:anywhere;width:100%;min-height:13rem;resize:vertical}
+.copy-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.copy-row button[hidden]{display:none}
+.checklist{display:grid;gap:10px}
+.checklist label{display:flex;align-items:baseline;gap:10px}
+.checklist input{accent-color:#fff;flex:none}
+.source{margin-top:24px}
+@media(min-width:760px){.hero h1{font-size:clamp(65px,9vw,132px)}.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav class="solid" aria-label="Challenge-Navigation"><div class="wrap">
+  <a href="../"><img src="../img/logo_flow.png" alt="Flow Media AI"></a>
+  <span class="dt">TAG 1 · MO 30.11.</span>
+  <a class="btn" href="../#tage">Zur Challenge</a>
+</div></nav>
+<main>
+<header class="hero">
+  <img class="ph" src="../img/maik_laptop.jpg" alt="" fetchpriority="high">
+  <canvas id="lines" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="tag"><i aria-hidden="true"></i>7 Days AI Challenge · Tag 1</span>
+    <h1><span>Dein erster</span><span class="chrome">KI-Workspace.</span></h1>
+    <p class="lead">Richte einen Projektordner ein, gib deinem KI-Agenten einen klaren Auftrag und prüfe das Ergebnis direkt in deinem Workspace.</p>
+    <div class="facts">
+      <div class="fact"><b>Ca. 25 Min.</b><span>Dauer</span></div>
+      <div class="fact"><b>Claude Code oder Codex</b><span>Du brauchst nur eines</span></div>
+    </div>
+    <div class="cta"><a class="btn pri" href="#tutorial">Tutorial starten</a><a class="btn" href="#aufgabe">Zur Tagesaufgabe</a></div>
+  </div>
+</header>
+<section class="stmt"><div class="wrap">
+  <p class="big">Ein Workspace ist der Ort, <b>an dem dein Agent arbeitet.</b></p>
+  <p class="sm">In deinem Projektordner liegen das Briefing, Beispiele und Ergebnisse. Ein KI-Agent kann mit den freigegebenen Dateien arbeiten und dort einen Entwurf anlegen. Du legst fest, welche Dateien er nutzen darf und woran du ein gutes Ergebnis erkennst.</p>
+</div></section>
+<section class="sec" id="tutorial"><div class="wrap">
+  <div class="sec-head"><span class="label">Tutorial</span><h2>Richte deinen<br><span class="chrome">Workspace ein.</span></h2></div>
+  <ol class="steps">
+    <li><b>Wähle eine App</b><span>Nutze Claude Code oder Codex. Melde dich mit deinem Konto an und öffne die Ansicht für den Agenten.</span></li>
+    <li><b>Öffne einen leeren Ordner</b><span>Erstelle einen Ordner namens <code>flow-workshop</code> und wähle ihn in der App als Projektordner aus.</span></li>
+    <li><b>Lege dein Briefing ab</b><span>Erstelle im Ordner eine Datei namens <code>briefing.md</code>. Schreib hinein, was du anbietest, wen du erreichen möchtest und wie der Text klingen soll. Drei Sätze reichen. Ein fiktives Angebot funktioniert genauso.</span></li>
+  </ol>
+  <div class="lesson-grid">
+    <article class="day"><h3>Claude Code</h3><p>Öffne die Claude-Desktop-App, wechsle zu „Code“ und wähle deinen Projektordner.</p><a class="btn" href="https://claude.com/download">Claude herunterladen</a></article>
+    <article class="day"><h3>Codex</h3><p>Öffne Codex in der Desktop-App und wähle deinen Projektordner für eine neue Aufgabe aus.</p><a class="btn" href="https://chatgpt.com/download/">ChatGPT herunterladen</a></article>
+  </div>
+</div></section>
+<section class="sec" id="aufgabe"><div class="wrap">
+  <div class="sec-head"><span class="label">Tagesaufgabe</span><h2>Dein erster<br><span class="chrome">Agentenauftrag.</span></h2><p>Gib deinem Agenten diesen Auftrag. Prüfe anschließend im Projektordner, ob der Entwurf zu deinem Briefing passt.</p></div>
+  <div class="day exercise">
+    <label for="prompt">Kopiervorlage für Claude Code oder Codex</label>
+    <textarea class="prompt" id="prompt" readonly>Lies briefing.md in diesem Projektordner. Erstelle daraus entwurf.md mit einer Überschrift, einer kurzen Beschreibung meines Angebots und einem konkreten nächsten Schritt für meine Zielgruppe. Verwende nur die Angaben aus dem Briefing. Frag nach, falls wesentliche Informationen fehlen. Lass briefing.md unverändert und zeig mir am Ende, welche Datei du angelegt hast.</textarea>
+    <div class="copy-row"><button type="button" id="copy" class="btn pri" hidden>Prompt kopieren</button><span id="copy-status" role="status"></span></div>
+    <div class="res"><span>Dein Ergebnis</span>Ein Workspace mit einem Briefing und einem geprüften Entwurf.</div>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Mein Projektordner ist in der App geöffnet.</span></label>
+      <label><input type="checkbox"><span>Mein Briefing liegt als <code>briefing.md</code> im Ordner.</span></label>
+      <label><input type="checkbox"><span>Ich habe <code>entwurf.md</code> geöffnet und mit dem Briefing abgeglichen.</span></label>
+    </div>
+  </div>
+  <p class="source">Der Einstieg greift die Lektion zur Agenten-Einrichtung aus „KI Basics“ auf. <a href="../../../flow-dna/">Zu Flow DNA</a></p>
+</div></section>
+<section class="final"><div class="wrap">
+  <h2>Dein Workspace <span class="chrome">steht.</span></h2>
+  <p>Am zweiten Tag nutzt du deinen Projektordner weiter und entwickelst daraus deinen ersten eigenen KI-Assistenten.</p>
+  <a class="btn pri" href="../#tage">Zur Challenge-Übersicht</a>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
+<script>
+const copyButton = document.getElementById("copy");
+const promptField = document.getElementById("prompt");
+const copyStatus = document.getElementById("copy-status");
+copyButton.hidden = false;
+copyButton.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(promptField.value);
+    copyStatus.textContent = "Prompt kopiert.";
+  } catch {
+    promptField.focus();
+    promptField.select();
+    copyStatus.textContent = "Prompt markiert. Du kannst ihn jetzt manuell kopieren.";
+  }
+});
+
+const $ = id => document.getElementById(id);
+// Silver flowing lines in the hero
+(() => { const c = $("lines"), x = c.getContext("2d"), RM = matchMedia("(prefers-reduced-motion: reduce)").matches; if (!x) return; let w, h, t = 0, vis = true;
+  const rs = () => { const d = Math.min(devicePixelRatio || 1, 2); w = c.clientWidth; h = c.clientHeight; c.width = w * d; c.height = h * d; x.setTransform(d, 0, 0, d, 0, 0) };
+  rs(); addEventListener("resize", rs); if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => vis = e.isIntersecting).observe(c);
+  (function draw() { if (vis) { x.clearRect(0, 0, w, h);
+    for (let i = 0; i < 26; i++) { const p = i / 25, hi = i === 17, base = h * (.42 + p * .5), amp = h * (.035 + .05 * Math.sin(p * 3 + t * .3)); x.beginPath();
+      for (let X = -20; X <= w + 20; X += 14) { const k = X / w, Y = base + Math.sin(k * 5 + t * .5 + p * 2.2) * amp + Math.sin(k * 10 - t * .3 + p * 4) * amp * .3; X === -20 ? x.moveTo(X, Y) : x.lineTo(X, Y) }
+      x.strokeStyle = hi ? "rgba(255,255,255,.75)" : `rgba(220,220,228,${.03 + .07 * Math.sin(p * Math.PI)})`; x.lineWidth = hi ? 1.3 : 1; x.shadowBlur = hi ? 14 : 0; x.shadowColor = "rgba(255,255,255,.8)"; x.stroke() }
+    t += RM ? 0 : .01 } if (!RM) requestAnimationFrame(draw) })() })();
+
+</script>
+</body>
+</html>
