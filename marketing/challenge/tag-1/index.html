@@ -184,20 +184,20 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
  .lesson-result{grid-column:2}
 }
 
-.pace-grid{display:grid;gap:18px}
-.pace-steps{list-style:none;display:grid;gap:10px}
-.pace-steps li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;background:var(--card)}
-.pace-steps p{grid-column:1/-1}
-.pace-steps strong,.pace-min{color:#fff}
-.pace-steps li[aria-current="step"]{border-color:#fff;background:#222227}
-.pace-min{white-space:nowrap}
+.pace-grid{max-width:620px}
+
+
+
+
+
+
 .pace-clock{align-self:start}
 #pace-time{font:500 clamp(48px,9vw,80px)/1.2 var(--f-head);font-variant-numeric:tabular-nums;color:#fff}
 .pace-track{height:6px;margin:12px 0 16px;border-radius:9px;background:#343438;overflow:hidden}
 .pace-track span{display:block;width:0;height:100%;background:#fff;transition:width .8s linear}
 .pace-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .pace-actions .btn{padding:10px 14px;font-size:12px}
-@media(min-width:760px){.pace-grid{grid-template-columns:1fr 1fr}}
+
 
 .lesson-guide{display:grid;gap:20px;margin-bottom:20px}
 .lesson-guide .checklist{margin-top:0}
@@ -207,6 +207,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 .lesson-guide .checklist label:has(input:checked){color:var(--muted)}
 .lesson-panel[id],.checklist[id],.prompt-generator[id],.file-check li[id]{scroll-margin-top:82px}
 @media(min-width:760px){.lesson-guide{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}}
+.section-time{display:inline-block;margin-left:8px;padding:4px 8px;border:1px solid var(--line2);border-radius:999px;color:#eee;font:600 12px/1.15 var(--f-body);letter-spacing:0;text-transform:none;vertical-align:middle;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -228,7 +229,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
       <div class="fact"><b>15 Min.</b><span>Aufgabe nach dem Setup</span></div>
       <div class="fact"><b>Claude Code oder Codex</b><span>Du brauchst nur eines</span></div>
     </div>
-    <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a><a class="btn" href="#zeitplan">15-Minuten-Zeitplan</a></div>
+    <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a><a class="btn" href="#zeitplan">15-Minuten-Timer</a></div>
   </div>
 </header>
 <section class="stmt" aria-labelledby="goal"><div class="wrap goal">
@@ -243,15 +244,8 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
   <a href="#advanced"><span class="label">Level 02 · Advanced · Optional</span><strong>Terminal</strong><span>Für alle, die direkt mit einer CLI arbeiten möchten.</span></a>
 </div></nav>
 <section class="sec pace" id="zeitplan" aria-labelledby="pace-title"><div class="wrap">
-  <div class="sec-head"><span class="label">Zeitplan für Basic oder Advanced</span><h2 id="pace-title">In 15 Minuten<br><span class="chrome">zur Projektkarte.</span></h2><p>Starte den Timer, sobald dein Tool installiert ist und du angemeldet bist. Plane für die Ersteinrichtung zusätzlich etwa 5–15 Minuten ein. Wenn du das Setup-Video nutzt, kommen rund 1½ Minuten dazu.</p></div>
+  <div class="sec-head"><span class="label">Timer für Basic oder Advanced</span><h2 id="pace-title">In 15 Minuten<br><span class="chrome">zur Projektkarte.</span></h2><p>Starte den Timer, sobald dein Tool installiert ist und du angemeldet bist. Plane für die Ersteinrichtung zusätzlich etwa 5–15 Minuten ein. Wenn du das Setup-Video nutzt, kommen rund 1½ Minuten dazu.</p></div>
   <div class="pace-grid">
-    <ol class="pace-steps">
-      <li><strong>Aufgabe verstehen</strong><span class="pace-min">2 Min.</span><p>Lies die Aufgabe und schau dir die Beispielkarte an.</p></li>
-      <li><strong>Briefing eingeben</strong><span class="pace-min">3 Min.</span><p>Fülle den Prompt-Generator aus.</p></li>
-      <li><strong>Karte bauen</strong><span class="pace-min">5 Min.</span><p>Starte den Agenten im Projektordner und lass die HTML-Datei erstellen.</p></li>
-      <li><strong>Datei prüfen</strong><span class="pace-min">3 Min.</span><p>Finde die Datei und öffne sie im Browser.</p></li>
-      <li><strong>Ergebnis teilen</strong><span class="pace-min">2 Min.</span><p>Poste den Screenshot mit zwei Zeilen in der Gruppe.</p></li>
-    </ol>
     <div class="lesson-panel pace-clock" hidden>
       <p class="label">Dein Timer</p>
       <div id="pace-time" role="timer" aria-label="Verbleibende Zeit">15:00</div>
@@ -280,7 +274,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
       </fieldset>
   </section>
   <div class="lesson-layout">
-    <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>So arbeitet dein Agent im Workspace</h3><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
+    <section class="lesson-panel"><p class="label">Background &amp; Theorie <span class="section-time">Video · ca. 1½ Min.</span></p><h3>So arbeitet dein Agent im Workspace</h3><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
     <div class="tutorial-video">
     <h4 id="setup-video">Claude Code oder Codex einrichten</h4>
     <video controls playsinline preload="none" poster="../../../flow-dna/kurse/ki-basics/videos/L08.jpg" aria-labelledby="setup-video">
@@ -288,8 +282,8 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
     </video>
     <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung in Flow DNA</a></p>
     </div></section>
-    <section class="lesson-panel" id="aufgabe"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice" id="setup-basic"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte in der Desktop-App</h3>
+    <section class="lesson-panel" id="aufgabe"><p class="label">Deine Aufgabe <span class="section-time">2 Min.</span></p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
+    <section class="lesson-panel lesson-practice" id="setup-basic"><p class="label">Praktische Umsetzung <span class="section-time">8 Min.</span></p><h3>Baue die Karte in der Desktop-App</h3>
     <ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
  <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
  <li><b>Auftrag starten</b><span>Fülle den Prompt-Generator aus und füge den fertigen Prompt in der App ein.</span></li></ol>
@@ -300,7 +294,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
         <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
       </details>
       <div class="prompt-generator" id="generator-basic" data-generator hidden>
-        <h4>Prompt-Generator</h4>
+        <h4>Prompt-Generator <span class="section-time">3 von 8 Min.</span></h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
         <div class="generator-fields">
           <label>Projekt- oder Businessname<input type="text" data-project="name" maxlength="100" placeholder="Stadtgarten"></label>
@@ -324,7 +318,7 @@ Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result" id="datei-basic"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+    <section class="lesson-panel lesson-result" id="datei-basic"><p class="label">Dein Ergebnis <span class="section-time">3 Min.</span></p><h3>Finde und prüfe deine Datei</h3>
       <ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte.html</code> liegen.</li>
         <li id="pruefen-basic">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
@@ -352,10 +346,10 @@ Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den r
       </fieldset>
   </section>
   <div class="lesson-layout">
-    <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>Der Ordner bestimmt den Arbeitsbereich</h3><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
+    <section class="lesson-panel"><p class="label">Background &amp; Theorie <span class="section-time">Vorbereitung</span></p><h3>Der Ordner bestimmt den Arbeitsbereich</h3><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
     <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Terminal-Anleitung in Flow DNA</a></p></section>
-    <section class="lesson-panel"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice" id="setup-advanced"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte im Terminal</h3>
+    <section class="lesson-panel"><p class="label">Deine Aufgabe <span class="section-time">2 Min.</span></p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
+    <section class="lesson-panel lesson-practice" id="setup-advanced"><p class="label">Praktische Umsetzung <span class="section-time">8 Min.</span></p><h3>Baue die Karte im Terminal</h3>
     <ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
  <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
  <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und füge den fertigen Prompt aus dem Generator in die Agentensitzung ein.</span></li></ol>
@@ -366,7 +360,7 @@ Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den r
         <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
       </details>
       <div class="prompt-generator" id="generator-advanced" data-generator hidden>
-        <h4>Prompt-Generator</h4>
+        <h4>Prompt-Generator <span class="section-time">3 von 8 Min.</span></h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
         <div class="generator-fields">
           <label>Projekt- oder Businessname<input type="text" data-project="name" maxlength="100" placeholder="Stadtgarten"></label>
@@ -390,7 +384,7 @@ Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result" id="datei-advanced"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+    <section class="lesson-panel lesson-result" id="datei-advanced"><p class="label">Dein Ergebnis <span class="section-time">3 Min.</span></p><h3>Finde und prüfe deine Datei</h3>
       <ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte-terminal.html</code> liegen. Im Terminal kannst du den Inhalt des aktuellen Ordners mit <code>ls</code> oder unter Windows mit <code>dir</code> anzeigen.</li>
         <li id="pruefen-advanced">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
@@ -400,7 +394,7 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
   </div>
 </div></section>
 <section class="sec" id="teilen"><div class="wrap">
-  <div class="sec-head"><span class="label">Ergebnis in der Gruppe</span><h2>Zeig, was du<br><span class="chrome">gebaut hast.</span></h2></div>
+  <div class="sec-head"><span class="label">Ergebnis in der Gruppe <span class="section-time">2 Min.</span></span><h2>Zeig, was du<br><span class="chrome">gebaut hast.</span></h2></div>
   <div class="lesson-panel share">
     <p>Poste einen Screenshot deiner geöffneten Projektkarte in der Challenge-Gruppe. Schneide Adressleiste und Desktop weg, damit deine Idee im Mittelpunkt steht. Ergänze zwei kurze Zeilen:</p>
     <blockquote><p><strong>Mein Projekt</strong> · Stadtgarten, ein Pflanzplan für kleine Balkone.</p><p><strong>So habe ich es gebaut</strong> · Basic mit Codex. Als Nächstes sammle ich Pflanzen für Schatten.</p></blockquote>
@@ -461,7 +455,7 @@ const clockStatus = document.getElementById("pace-status");
 const clockToggle = document.getElementById("pace-toggle");
 const clockReset = document.getElementById("pace-reset");
 const clockBar = clock.querySelector(".pace-track span");
-const clockSteps = [...document.querySelectorAll(".pace-steps li")];
+const phaseNames = ["Aufgabe verstehen", "Briefing eingeben", "Karte bauen", "Datei prüfen", "Ergebnis teilen"];
 const phaseEnds = [120000,300000,600000,780000,900000];
 const totalTime = phaseEnds.at(-1);
 const idleMessage = clockStatus.textContent;
@@ -475,16 +469,12 @@ function renderClock() {
   clockTime.textContent = Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
   clockBar.style.width = 100 * (1 - remaining / totalTime) + "%";
   const active = deadline ? phaseEnds.findIndex(end => totalTime - remaining < end) : -1;
-  clockSteps.forEach((step, i) => {
-    if (i === active) step.setAttribute("aria-current", "step");
-    else step.removeAttribute("aria-current");
-  });
   if (!remaining) {
     clearInterval(ticker);
     deadline = 0;
   }
   const message = active >= 0
-    ? "Jetzt: " + clockSteps[active].querySelector("strong").textContent
+    ? "Jetzt: " + phaseNames[active]
     : remaining === totalTime ? idleMessage
     : remaining ? "Timer pausiert." : "15 Minuten sind um. Wenn deine Karte fertig ist, teile den Screenshot.";
   if (clockStatus.textContent !== message) clockStatus.textContent = message;
