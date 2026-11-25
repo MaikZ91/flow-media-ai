@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Stadtgarten – Beispiel-Projektkarte</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e8e8cb;color:#183426;font:16px/1.5 system-ui,sans-serif}
+main{display:grid;place-items:center;min-height:100svh;padding:clamp(12px,4vw,42px)}
+article{width:min(100%,760px);overflow:hidden;background:#f9f7df;border:1px solid #244331;border-radius:22px;box-shadow:0 12px 32px #354b3020}
+header{position:relative;isolation:isolate;overflow:hidden;min-height:205px;display:grid;align-content:center;padding:clamp(24px,6vw,56px);background:#143e31;color:#f8f6dc}
+header::before{position:absolute;inset:0;z-index:-2;content:"";background:repeating-linear-gradient(90deg,transparent 0 31px,#d9f0c41a 31px 32px),repeating-linear-gradient(0deg,transparent 0 31px,#d9f0c41a 31px 32px);mask-image:linear-gradient(90deg,transparent 15%,#000)}
+h1,h2,p{margin:0}
+h1{z-index:1;font:400 clamp(48px,10vw,96px)/.88 Georgia,serif;letter-spacing:-.07em}
+h1 em{display:block;color:#d8ed91}
+.plant{position:absolute;bottom:-14px;right:2%;width:47%;height:100%}
+.stem{position:absolute;left:53%;bottom:18%;width:3%;height:72%;border-radius:90%;background:#daeb9c;transform:rotate(17deg)}
+.leaf{position:absolute;width:46%;height:23%;border-radius:100% 0;background:linear-gradient(145deg,#deefac,#7bb987);box-shadow:inset -2px -2px 0 #fff5}
+.leaf:nth-child(2){top:16%;left:43%;transform:rotate(-24deg)}
+.leaf:nth-child(3){top:29%;left:13%;transform:scaleX(-1) rotate(-17deg)}
+.leaf:nth-child(4){top:47%;left:47%;transform:rotate(-10deg)}
+.leaf:nth-child(5){top:55%;left:10%;transform:scaleX(-1) rotate(6deg)}
+.pot{position:absolute;left:30%;bottom:0;width:49%;height:25%;background:#e59b76;clip-path:polygon(0 0,100% 0,86% 100%,14% 100%)}
+.brief{display:grid;gap:14px;padding:clamp(20px,4vw,32px)}
+.brief>p{max-width:47ch;font-size:clamp(16px,3vw,20px)}
+.next{padding:12px 14px;border-radius:12px;background:#e4ecc0}
+.next h2{margin-bottom:3px;font-size:.78rem;text-transform:uppercase;letter-spacing:.11em}
+@media(max-width:420px){header{min-height:180px}.plant{right:-3%;width:51%}}
+</style>
+</head>
+<body>
+<main><article aria-labelledby="project">
+  <header>
+    <h1 id="project">Stadt<em>garten.</em></h1>
+    <div class="plant" aria-hidden="true"><span class="stem"></span><span class="leaf"></span><span class="leaf"></span><span class="leaf"></span><span class="leaf"></span><span class="pot"></span></div>
+  </header>
+  <div class="brief">
+    <p>Ein Pflanzplan für Menschen, die auf einem kleinen Balkon Gemüse anbauen möchten.</p>
+    <section class="next"><h2>Nächster Schritt</h2><p>Drei Pflanzen für einen schattigen Balkon auswählen.</p></section>
+  </div>
+</article></main>
+</body>
+</html>
