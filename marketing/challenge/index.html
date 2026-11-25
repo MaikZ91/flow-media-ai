@@ -225,8 +225,8 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 
 <section class="stmt">
   <div class="wrap">
-    <p class="big rv">Keine trockene Theorie. Keine endlosen Tool-Listen. <b>Sondern praktische Umsetzung.</b></p>
-    <p class="sm rv d1">In sieben Tagen lernst du, KI nicht nur zu nutzen, sondern aktiv für deine eigenen Ideen, Projekte und dein Business einzusetzen. Jeden Tag ein Thema, eine Aufgabe und ein Ergebnis, das du behältst.</p>
+    <p class="big rv">Eine Challenge. Zwei Levels. <b>Ein konkretes Ergebnis.</b></p>
+    <p class="sm rv d1">In sieben Tagen lernst du, KI nicht nur zu nutzen, sondern aktiv für deine eigenen Ideen, Projekte und dein Business einzusetzen. Jeden Tag gibt es einen Basic-Einstieg und eine freiwillige Advanced-Vertiefung. Basic reicht für alle weiteren Tage.</p>
   </div>
 </section>
 
@@ -300,13 +300,13 @@ const PAKETE = [
     items: ["45 Minuten persönliches 1:1 KI-Sparring", "Individuelle Beratung zu deinem Projekt", "Gemeinsame Arbeit an deiner konkreten Idee", "Unterstützung bei der Auswahl geeigneter KI-Tools", "Konkrete nächste Schritte für die Umsetzung"], cta: "1:1 Intensive sichern" },
 ];
 const TAGE = [
-  ["Dein erster KI-Workspace", "Richte mit Claude Code oder Codex einen Projektordner ein und gib deinem Agenten einen klaren Auftrag.", "Ein Workspace mit Briefing und geprüftem Entwurf."],
-  ["Eigene KI-Skills und Assistenten entwickeln", "Du bringst der KI bei, wie du arbeitest: mit deinem Wissen, deinem Stil, deinen Abläufen.", "Dein erster eigener KI-Assistent."],
-  ["Content Creation mit KI", "Texte, Bilder und Videos für dein Business – schneller und trotzdem nach dir.", "Ein eigener Content-Workflow mit ersten fertigen Beiträgen."],
-  ["Workflows und Automatisierungen", "Wiederkehrende Aufgaben finden und Schritt für Schritt an KI und Automatisierung abgeben.", "Eine Automatisierung, die dir eine Aufgabe abnimmt."],
-  ["Eigene Apps und digitale Tools entwickeln", "Aus einer Idee ein nutzbares Tool bauen – ohne Programmierkenntnisse.", "Dein erster App-Prototyp."],
-  ["KI-Agenten entdecken", "Was Agenten heute schon selbstständig erledigen können – und wo du ihnen besser nicht vertraust.", "Ein Agent, der eine Aufgabe für dich erledigt."],
-  ["Build your own idea", "Alles zusammen: Du setzt dein eigenes KI-Projekt um – mit dem, was du in der Woche gelernt hast.", "Dein eigenes KI-Projekt, vorgestellt in der Gruppe."],
+  ["Get AI Ready","Dein KI-Workspace","Beyond the Desktop App","Ein einsatzbereiter KI-Arbeitsplatz."],
+  ["Eigene KI-Skills und Assistenten entwickeln","Einen Assistenten mit Rolle und Beispiel einrichten","Seine Anweisungen mit Testfällen prüfen","Dein erster eigener KI-Assistent."],
+  ["Content Creation mit KI","Einen Beitrag erstellen und überarbeiten","Den Ablauf für mehrere Formate wiederverwenden","Ein eigener Content-Workflow mit ersten fertigen Beiträgen."],
+  ["Workflows und Automatisierungen","Eine wiederkehrende Aufgabe in Schritte zerlegen","Einen Ablauf mit Auslöser und Prüfschritt umsetzen","Eine Automatisierung, die dir eine Aufgabe abnimmt."],
+  ["Eigene Apps und digitale Tools entwickeln","Einen einfachen Prototyp bauen","Den Prototyp mit Testfällen und Fehlerzuständen erweitern","Dein erster App-Prototyp."],
+  ["KI-Agenten entdecken","Eine mehrstufige Aufgabe an einen Agenten delegieren","Teilaufgaben mit klaren Übergaben aufteilen","Ein Agent, der eine Aufgabe für dich erledigt."],
+  ["Build your own idea","Ein eigenes KI-Projekt umsetzen und vorstellen","Das Projekt mit Feedback im Praxistest verbessern","Dein eigenes KI-Projekt, vorgestellt in der Gruppe."],
 ];
 const ABLAUF = [
   ["Paket wählen & per WhatsApp anmelden", "Tipp auf dein Paket, schick mir die vorbereitete WhatsApp – fertig."],
@@ -328,8 +328,8 @@ const FAQ = [
 const fmt = d => ["SO", "MO", "DI", "MI", "DO", "FR", "SA"][d.getDay()] + " " + String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0") + ".";
 const s0 = new Date(new Date(C.start).getTime() + 12 * 3600e3); // midday of day 1: date stays right in every time zone
 const fmtB = d => d.toLocaleDateString("de-DE", { timeZone: "Europe/Berlin", weekday: "short", day: "2-digit", month: "2-digit" }).replace(/\.,?\s*/, " ").toUpperCase();
-$("days").innerHTML = TAGE.map(([t, p, r], i) => { const d = new Date(s0); d.setDate(d.getDate() + i);
-  return `<article class="day rv${i % 2 ? " d1" : ""}${i === 6 ? " last" : ""}"><div class="top"><span class="n chrome">0${i + 1}</span><span class="dt">TAG ${i + 1} · ${fmtB(d)}</span></div><h3>${t}</h3><p>${p}</p><div class="res"><span>Ergebnis</span>${r}</div>${i === 0 ? '<a class="btn lesson-link" href="tag-1/">Tutorial für Tag 1</a>' : ""}</article>` }).join("");
+$("days").innerHTML = TAGE.map(([t, basic, advanced, r], i) => { const d = new Date(s0); d.setDate(d.getDate() + i);
+  return `<article class="day rv${i % 2 ? " d1" : ""}${i === 6 ? " last" : ""}"><div class="top"><span class="n chrome">0${i + 1}</span><span class="dt">TAG ${i + 1} · ${fmtB(d)}</span></div><h3>${t}</h3><p><strong>Basic</strong> · ${basic}</p><p><strong>Advanced</strong> · ${advanced}</p><div class="res"><span>Ergebnis</span>${r}</div>${i === 0 ? '<a class="btn lesson-link" href="tag-1/#basic">Basic</a> <a class="btn lesson-link" href="tag-1/#advanced">Advanced</a>' : ""}</article>` }).join("");
 // Render plans + comparison + form options
 $("plans").innerHTML = PAKETE.map((k, i) => `<article class="plan rv d${i}${k.hi ? " hi" : ""}">${k.hi ? '<span class="badge">Empfohlen</span>' : ""}<span class="nm">${k.name}</span><div class="pr"><b>${k.preis} €</b><small>einmalig</small></div><p class="tl">${k.tl}</p>${k.plus ? `<p class="plus">${k.plus}</p>` : '<p class="plus">Enthalten</p>'}<ul>${k.items.map(x => `<li>${x}</li>`).join("")}</ul><a class="btn${k.hi ? " pri" : ""}" href="#anmelden" data-pick="${k.id}">${k.cta} <span class="ar">→</span></a></article>`).join("");
 const ROWS = [["Komplette 7-Tage-Challenge", 1, 1, 1], ["Tägliche Aufgaben & Tutorials", 1, 1, 1], ["Vorlagen, Prompts & KI-Skills", 1, 1, 1], ["Challenge-Community & Gruppen-Support", 1, 1, 1], ["Live-Sessions mit Übungen & Fragerunden", 0, 1, 1], ["Persönliches Feedback in den Live-Sessions", 0, 1, 1], ["45 Min. 1:1-KI-Sparring zu deiner Idee", 0, 0, 1], ["Tool-Auswahl & nächste Schritte für dein Projekt", 0, 0, 1]];
