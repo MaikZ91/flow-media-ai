@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tag 1 – Dein KI-Workspace | 7 Days AI Challenge</title>
-<meta name="description" content="Richte deinen ersten KI-Workspace ein und erledige eine kleine Aufgabe mit Claude Code oder Codex.">
+<title>Day 1 – Get AI Ready | 7 Days AI Challenge</title>
+<meta name="description" content="Richte Claude Code oder Codex ein und starte deinen ersten Agentenauftrag in der Desktop-App oder im Terminal.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,7 +120,10 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 nav .btn{margin-left:auto}
 .hero h1{font-size:clamp(36px,12vw,132px)}
 .hero .lead{max-width:46ch}
-.sec[id]{scroll-margin-top:65px}
+.sec[id],.task[id]{scroll-margin-top:80px}
+.task{margin:36px 0 16px}
+.task h3{font-size:clamp(25px,5vw,38px);line-height:1.1}
+.task p{margin-top:10px}
 .lesson-grid{display:grid;gap:18px}
 .lesson-grid .day h3{margin-top:8px}
 .lesson-grid .btn{margin-top:20px;padding:12px 16px;font-size:12px}
@@ -149,23 +152,23 @@ nav .btn{margin-left:auto}
   <canvas id="lines" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="tag"><i aria-hidden="true"></i>7 Days AI Challenge · Tag 1</span>
-    <h1><span>Dein erster</span><span class="chrome">KI-Workspace.</span></h1>
-    <p class="lead">Richte einen Projektordner ein, gib deinem KI-Agenten einen klaren Auftrag und prüfe das Ergebnis direkt in deinem Workspace.</p>
+    <h1><span>Get AI</span><span class="chrome">Ready.</span></h1>
+    <p class="lead">Richte deinen KI-Workspace ein und erledige deinen ersten Agentenauftrag. Wähle die Desktop-App oder vertiefe den Einstieg im Terminal.</p>
     <div class="facts">
-      <div class="fact"><b>Ca. 25 Min.</b><span>Dauer</span></div>
+      
       <div class="fact"><b>Claude Code oder Codex</b><span>Du brauchst nur eines</span></div>
     </div>
-    <div class="cta"><a class="btn pri" href="#tutorial">Tutorial starten</a><a class="btn" href="#aufgabe">Zur Tagesaufgabe</a></div>
+    <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a></div>
   </div>
 </header>
 <section class="stmt"><div class="wrap">
-  <p class="big">Ein Workspace ist der Ort, <b>an dem dein Agent arbeitet.</b></p>
-  <p class="sm">In deinem Projektordner liegen das Briefing, Beispiele und Ergebnisse. Ein KI-Agent kann mit den freigegebenen Dateien arbeiten und dort einen Entwurf anlegen. Du legst fest, welche Dateien er nutzen darf und woran du ein gutes Ergebnis erkennst.</p>
+  <p class="big">Eine Challenge. Zwei Levels. <b>Ein konkretes Ergebnis.</b></p>
+  <p class="sm">Basic reicht für die weiteren Challenge-Tage. Advanced ist eine freiwillige Vertiefung. Wenn du schon mit Projektordnern arbeitest, kannst du direkt mit Advanced starten.</p>
 </div></section>
-<section class="sec" id="tutorial"><div class="wrap">
-  <div class="sec-head"><span class="label">Tutorial</span><h2>Richte deinen<br><span class="chrome">Workspace ein.</span></h2></div>
+<section class="sec" id="basic"><div class="wrap">
+  <div class="sec-head"><span class="label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Dein Ergebnis ist ein einsatzbereiter KI-Arbeitsplatz.</p></div>
   <ol class="steps">
-    <li><b>Wähle eine App</b><span>Nutze Claude Code oder Codex. Melde dich mit deinem Konto an und öffne die Ansicht für den Agenten.</span></li>
+    <li><b>Wähle eine App</b><span>Installiere die Codex-App oder Claude Desktop. Melde dich mit deinem Konto an und öffne Codex oder die Ansicht „Code“ in Claude.</span></li>
     <li><b>Öffne einen leeren Ordner</b><span>Erstelle einen Ordner namens <code>flow-workshop</code> und wähle ihn in der App als Projektordner aus.</span></li>
     <li><b>Lege dein Briefing ab</b><span>Erstelle im Ordner eine Datei namens <code>briefing.md</code>. Schreib hinein, was du anbietest, wen du erreichen möchtest und wie der Text klingen soll. Drei Sätze reichen. Ein fiktives Angebot funktioniert genauso.</span></li>
   </ol>
@@ -173,13 +176,12 @@ nav .btn{margin-left:auto}
     <article class="day"><h3>Claude Code</h3><p>Öffne die Claude-Desktop-App, wechsle zu „Code“ und wähle deinen Projektordner.</p><a class="btn" href="https://claude.com/download">Claude herunterladen</a></article>
     <article class="day"><h3>Codex</h3><p>Öffne Codex in der Desktop-App und wähle deinen Projektordner für eine neue Aufgabe aus.</p><a class="btn" href="https://chatgpt.com/download/">ChatGPT herunterladen</a></article>
   </div>
-</div></section>
-<section class="sec" id="aufgabe"><div class="wrap">
-  <div class="sec-head"><span class="label">Tagesaufgabe</span><h2>Dein erster<br><span class="chrome">Agentenauftrag.</span></h2><p>Gib deinem Agenten diesen Auftrag. Prüfe anschließend im Projektordner, ob der Entwurf zu deinem Briefing passt.</p></div>
+  <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Flow-DNA-Tutorial zur Desktop-Einrichtung</a></p>
+  <div class="task" id="aufgabe"><h3>Dein erster Agentenauftrag</h3><p>Gib deinem Agenten diesen Auftrag. Prüfe anschließend im Projektordner, ob der Entwurf zu deinem Briefing passt.</p></div>
   <div class="day exercise">
     <label for="prompt">Kopiervorlage für Claude Code oder Codex</label>
     <textarea class="prompt" id="prompt" readonly>Lies briefing.md in diesem Projektordner. Erstelle daraus entwurf.md mit einer Überschrift, einer kurzen Beschreibung meines Angebots und einem konkreten nächsten Schritt für meine Zielgruppe. Verwende nur die Angaben aus dem Briefing. Frag nach, falls wesentliche Informationen fehlen. Lass briefing.md unverändert und zeig mir am Ende, welche Datei du angelegt hast.</textarea>
-    <div class="copy-row"><button type="button" id="copy" class="btn pri" hidden>Prompt kopieren</button><span id="copy-status" role="status"></span></div>
+    <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     <div class="res"><span>Dein Ergebnis</span>Ein Workspace mit einem Briefing und einem geprüften Entwurf.</div>
     <div class="checklist">
       <label><input type="checkbox"><span>Mein Projektordner ist in der App geöffnet.</span></label>
@@ -187,7 +189,29 @@ nav .btn{margin-left:auto}
       <label><input type="checkbox"><span>Ich habe <code>entwurf.md</code> geöffnet und mit dem Briefing abgeglichen.</span></label>
     </div>
   </div>
-  <p class="source">Der Einstieg greift die Lektion zur Agenten-Einrichtung aus „KI Basics“ auf. <a href="../../../flow-dna/">Zu Flow DNA</a></p>
+</div></section>
+<section class="sec" id="advanced"><div class="wrap">
+  <div class="sec-head"><span class="label">Level 02 · Advanced · Optional</span><h2>Beyond the<br><span class="chrome">Desktop App.</span></h2><p>Am Ende kannst du direkt über das Terminal mit deinem KI-Agenten arbeiten.</p></div>
+  <ol class="steps">
+    <li><b>Installiere eine CLI</b><span>Wähle Codex CLI oder Claude Code und folge der Anleitung für dein Betriebssystem. Öffne danach ein Terminal.</span></li>
+    <li><b>Wechsle in deinen Projektordner</b><span>Öffne den Ordner <code>flow-workshop</code> aus Basic oder leg ihn neu an. Wechsle im Terminal mit <code>cd "PFAD/ZU/flow-workshop"</code> dorthin und ersetze den Beispielpfad durch deinen eigenen. Lege dort eine <code>briefing.md</code> mit Angebot, Zielgruppe und Ton an, falls sie noch fehlt.</span></li>
+    <li><b>Starte den Agenten</b><span>Führe im Projektordner <code>codex</code> oder <code>claude</code> aus. Melde dich an, falls die CLI dich dazu auffordert. Gib den Auftrag unten in die gestartete Sitzung ein und prüfe die erzeugte Datei.</span></li>
+  </ol>
+  <div class="lesson-grid">
+    <article class="day"><h3>Codex CLI</h3><a class="btn" href="https://developers.openai.com/codex/cli/">Offizielle Anleitung</a></article>
+    <article class="day"><h3>Claude Code</h3><a class="btn" href="https://code.claude.com/docs/en/quickstart">Offizielle Anleitung</a></article>
+  </div>
+  <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Flow-DNA-Tutorial zur Terminal-Einrichtung</a></p>
+  <div class="task"><h3>Dein erster Terminal-Auftrag</h3><p>Kopiere den Auftrag in die laufende Agentensitzung.</p></div>
+  <div class="day exercise">
+    <label for="terminal-prompt">Kopiervorlage für die Agentensitzung</label>
+    <textarea class="prompt" id="terminal-prompt" readonly>Lies briefing.md im aktuellen Projektordner. Erstelle terminal-entwurf.md mit einer Überschrift, einer kurzen Beschreibung des Angebots und einem nächsten Schritt für die Zielgruppe. Arbeite nur mit den Angaben aus dem Briefing und lass vorhandene Dateien unverändert. Sag mir am Ende, welche Datei du angelegt hast.</textarea>
+    <div class="copy-row"><button type="button" class="btn pri" data-copy="terminal-prompt" hidden>Prompt kopieren</button><span role="status"></span></div>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Die Agentensitzung läuft im richtigen Projektordner.</span></label>
+      <label><input type="checkbox"><span>Ich habe <code>terminal-entwurf.md</code> geöffnet und mit <code>briefing.md</code> abgeglichen.</span></label>
+    </div>
+  </div>
 </div></section>
 <section class="final"><div class="wrap">
   <h2>Dein Workspace <span class="chrome">steht.</span></h2>
@@ -197,19 +221,20 @@ nav .btn{margin-left:auto}
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
-const copyButton = document.getElementById("copy");
-const promptField = document.getElementById("prompt");
-const copyStatus = document.getElementById("copy-status");
-copyButton.hidden = false;
-copyButton.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(promptField.value);
-    copyStatus.textContent = "Prompt kopiert.";
-  } catch {
-    promptField.focus();
-    promptField.select();
-    copyStatus.textContent = "Prompt markiert. Du kannst ihn jetzt manuell kopieren.";
-  }
+document.querySelectorAll("[data-copy]").forEach(button => {
+  const field = document.getElementById(button.dataset.copy);
+  const status = button.parentElement.querySelector('[role="status"]');
+  button.hidden = false;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(field.value);
+      status.textContent = "Prompt kopiert.";
+    } catch {
+      field.focus();
+      field.select();
+      status.textContent = "Prompt markiert. Du kannst ihn jetzt manuell kopieren.";
+    }
+  });
 });
 
 const $ = id => document.getElementById(id);
