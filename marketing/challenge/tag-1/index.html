@@ -179,9 +179,6 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 .share blockquote p+p{margin-top:8px}
 @media(min-width:760px){
  .goal{grid-template-columns:1fr 1fr}
- .lesson-layout{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:start}
- .lesson-practice{grid-column:1}
- .lesson-result{grid-column:2}
 }
 
 .pace-grid{max-width:620px}
@@ -208,6 +205,18 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 .lesson-panel[id],.checklist[id],.prompt-generator[id],.file-check li[id]{scroll-margin-top:82px}
 @media(min-width:760px){.lesson-guide{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}}
 .section-time{display:inline-block;margin-left:8px;padding:4px 8px;border:1px solid var(--line2);border-radius:999px;color:#eee;font:600 12px/1.15 var(--f-body);letter-spacing:0;text-transform:none;vertical-align:middle;white-space:nowrap}
+.lesson-fold{padding:0;scroll-margin-top:82px}
+.lesson-fold > summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:clamp(8px,2vw,18px);padding:clamp(16px,4vw,28px);cursor:pointer;list-style:none}
+.lesson-fold > summary::-webkit-details-marker{display:none}
+.lesson-fold > summary::after{content:"";width:9px;height:9px;margin:0 4px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .18s ease}
+.lesson-fold[open] > summary::after{transform:rotate(225deg)}
+.lesson-fold[open] > summary{border-bottom:1px solid var(--line2)}
+.lesson-fold > summary:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:var(--r)}
+.fold-heading{display:grid;gap:7px}
+.fold-title{color:#fff;font:500 clamp(19px,4vw,28px)/1.14 var(--f-head)}
+.lesson-fold > summary .section-time{margin-left:0;white-space:normal;text-align:center;max-width:105px}
+.fold-body{padding:clamp(16px,4vw,28px)}
+.fold-body > a{display:inline-block;margin-top:14px}
 </style>
 </head>
 <body>
@@ -274,17 +283,24 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
       </fieldset>
   </section>
   <div class="lesson-layout">
-    <section class="lesson-panel"><p class="label">Background &amp; Theorie <span class="section-time">Video · ca. 1½ Min.</span></p><h3>So arbeitet dein Agent im Workspace</h3><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
+    <details class="lesson-panel lesson-fold">
+      <summary><span class="fold-heading"><span class="label">Background &amp; Theorie</span><span class="fold-title">So arbeitet dein Agent im Workspace</span></span><span class="section-time">Video · ca. 1½ Min.</span></summary>
+      <div class="fold-body"><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
     <div class="tutorial-video">
     <h4 id="setup-video">Claude Code oder Codex einrichten</h4>
     <video controls playsinline preload="none" poster="../../../flow-dna/kurse/ki-basics/videos/L08.jpg" aria-labelledby="setup-video">
       <source src="../../../flow-dna/kurse/ki-basics/videos/L08.mp4" type="video/mp4">
     </video>
     <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung in Flow DNA</a></p>
-    </div></section>
-    <section class="lesson-panel" id="aufgabe"><p class="label">Deine Aufgabe <span class="section-time">2 Min.</span></p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice" id="setup-basic"><p class="label">Praktische Umsetzung <span class="section-time">8 Min.</span></p><h3>Baue die Karte in der Desktop-App</h3>
-    <ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
+    </div></div>
+    </details>
+    <details class="lesson-panel lesson-fold" id="aufgabe">
+      <summary><span class="fold-heading"><span class="label">Deine Aufgabe</span><span class="fold-title">Gestalte deine Projektkarte</span></span><span class="section-time">2 Min.</span></summary>
+      <div class="fold-body"><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></div>
+    </details>
+    <details class="lesson-panel lesson-fold lesson-practice" id="setup-basic">
+      <summary><span class="fold-heading"><span class="label">Praktische Umsetzung</span><span class="fold-title">Baue die Karte in der Desktop-App</span></span><span class="section-time">8 Min.</span></summary>
+      <div class="fold-body"><ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
  <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
  <li><b>Auftrag starten</b><span>Fülle den Prompt-Generator aus und füge den fertigen Prompt in der App ein.</span></li></ol>
     <div class="exercise">
@@ -317,14 +333,16 @@ Nächster Schritt: [nächster Schritt]
 Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
-    </div></section>
-    <section class="lesson-panel lesson-result" id="datei-basic"><p class="label">Dein Ergebnis <span class="section-time">3 Min.</span></p><h3>Finde und prüfe deine Datei</h3>
-      <ol class="file-check">
+    </div></div>
+    </details>
+    <details class="lesson-panel lesson-fold lesson-result" id="datei-basic">
+      <summary><span class="fold-heading"><span class="label">Dein Ergebnis</span><span class="fold-title">Finde und prüfe deine Datei</span></span><span class="section-time">3 Min.</span></summary>
+      <div class="fold-body"><ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte.html</code> liegen.</li>
         <li id="pruefen-basic">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-basic">Zur Checkliste</a>
-</section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-basic">Zur Checkliste</a></div>
+    </details>
   </div>
 </div></section>
 <section class="sec level advanced" id="advanced"><div class="wrap">
@@ -346,11 +364,18 @@ Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den r
       </fieldset>
   </section>
   <div class="lesson-layout">
-    <section class="lesson-panel"><p class="label">Background &amp; Theorie <span class="section-time">Vorbereitung</span></p><h3>Der Ordner bestimmt den Arbeitsbereich</h3><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
-    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Terminal-Anleitung in Flow DNA</a></p></section>
-    <section class="lesson-panel"><p class="label">Deine Aufgabe <span class="section-time">2 Min.</span></p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice" id="setup-advanced"><p class="label">Praktische Umsetzung <span class="section-time">8 Min.</span></p><h3>Baue die Karte im Terminal</h3>
-    <ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
+    <details class="lesson-panel lesson-fold">
+      <summary><span class="fold-heading"><span class="label">Background &amp; Theorie</span><span class="fold-title">Der Ordner bestimmt den Arbeitsbereich</span></span><span class="section-time">Vorbereitung</span></summary>
+      <div class="fold-body"><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
+    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Terminal-Anleitung in Flow DNA</a></p></div>
+    </details>
+    <details class="lesson-panel lesson-fold">
+      <summary><span class="fold-heading"><span class="label">Deine Aufgabe</span><span class="fold-title">Gestalte deine Projektkarte</span></span><span class="section-time">2 Min.</span></summary>
+      <div class="fold-body"><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></div>
+    </details>
+    <details class="lesson-panel lesson-fold lesson-practice" id="setup-advanced">
+      <summary><span class="fold-heading"><span class="label">Praktische Umsetzung</span><span class="fold-title">Baue die Karte im Terminal</span></span><span class="section-time">8 Min.</span></summary>
+      <div class="fold-body"><ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
  <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
  <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und füge den fertigen Prompt aus dem Generator in die Agentensitzung ein.</span></li></ol>
     <div class="exercise">
@@ -383,14 +408,16 @@ Nächster Schritt: [nächster Schritt]
 Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
-    </div></section>
-    <section class="lesson-panel lesson-result" id="datei-advanced"><p class="label">Dein Ergebnis <span class="section-time">3 Min.</span></p><h3>Finde und prüfe deine Datei</h3>
-      <ol class="file-check">
+    </div></div>
+    </details>
+    <details class="lesson-panel lesson-fold lesson-result" id="datei-advanced">
+      <summary><span class="fold-heading"><span class="label">Dein Ergebnis</span><span class="fold-title">Finde und prüfe deine Datei</span></span><span class="section-time">3 Min.</span></summary>
+      <div class="fold-body"><ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte-terminal.html</code> liegen. Im Terminal kannst du den Inhalt des aktuellen Ordners mit <code>ls</code> oder unter Windows mit <code>dir</code> anzeigen.</li>
         <li id="pruefen-advanced">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-advanced">Zur Checkliste</a>
-</section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-advanced">Zur Checkliste</a></div>
+    </details>
   </div>
 </div></section>
 <section class="sec" id="teilen"><div class="wrap">
@@ -409,6 +436,22 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
+function revealLesson(target) {
+  const panel = document.getElementById(target.slice(1))?.closest(".lesson-fold");
+  if (panel) panel.open = true;
+}
+
+document.addEventListener("click", event => {
+  const href = event.target.closest('a[href^="#"]')?.getAttribute("href");
+  if (href && href.length > 1) revealLesson(href);
+});
+
+function revealCurrentLesson() {
+  if (location.hash) revealLesson(location.hash);
+}
+window.addEventListener("hashchange", revealCurrentLesson);
+revealCurrentLesson();
+
 const nextActions = [["Projektordner öffnen","Zum Workspace-Setup","setup"],["Briefing ausfüllen und Prompt ausführen","Zum Prompt-Generator","generator"],["HTML-Datei im Projektordner finden","Zum Ordner-Check","datei"],["Projektkarte im Browser prüfen","Zur Prüfung im Browser","pruefen"],["Screenshot in der Challenge-Gruppe teilen","Zur Anleitung fürs Teilen","teilen"]];
 document.querySelectorAll("[data-checklist]").forEach(list => {
   const key = "flow-challenge-day1-checklist-" + list.dataset.checklist;
