@@ -136,6 +136,10 @@ nav .btn{margin-left:auto}
 .checklist label{display:flex;align-items:baseline;gap:10px}
 .checklist input{accent-color:#fff;flex:none}
 .source{margin-top:24px}
+.tutorial-video{max-width:760px;margin-bottom:36px}
+.tutorial-video h3{font-size:clamp(24px,4vw,34px);line-height:1.1;margin-bottom:14px}
+.tutorial-video video{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line2);border-radius:var(--r);background:#000}
+.tutorial-video .source{margin-top:12px}
 @media(min-width:760px){.hero h1{font-size:clamp(65px,9vw,132px)}.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -167,6 +171,13 @@ nav .btn{margin-left:auto}
 </div></section>
 <section class="sec" id="basic"><div class="wrap">
   <div class="sec-head"><span class="label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Dein Ergebnis ist ein einsatzbereiter KI-Arbeitsplatz.</p></div>
+  <div class="tutorial-video">
+    <h3 id="setup-video">Claude Code oder Codex einrichten</h3>
+    <video controls playsinline preload="none" poster="../../../flow-dna/kurse/ki-basics/videos/L08.jpg" aria-labelledby="setup-video">
+      <source src="../../../flow-dna/kurse/ki-basics/videos/L08.mp4" type="video/mp4">
+    </video>
+    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung und Video in Flow DNA</a></p>
+  </div>
   <ol class="steps">
     <li><b>Wähle eine App</b><span>Installiere die Codex-App oder Claude Desktop. Melde dich mit deinem Konto an und öffne Codex oder die Ansicht „Code“ in Claude.</span></li>
     <li><b>Öffne einen leeren Ordner</b><span>Erstelle einen Ordner namens <code>flow-workshop</code> und wähle ihn in der App als Projektordner aus.</span></li>
@@ -176,7 +187,6 @@ nav .btn{margin-left:auto}
     <article class="day"><h3>Claude Code</h3><p>Öffne die Claude-Desktop-App, wechsle zu „Code“ und wähle deinen Projektordner.</p><a class="btn" href="https://claude.com/download">Claude herunterladen</a></article>
     <article class="day"><h3>Codex</h3><p>Öffne Codex in der Desktop-App und wähle deinen Projektordner für eine neue Aufgabe aus.</p><a class="btn" href="https://chatgpt.com/download/">ChatGPT herunterladen</a></article>
   </div>
-  <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Flow-DNA-Tutorial zur Desktop-Einrichtung</a></p>
   <div class="task" id="aufgabe"><h3>Dein erster Agentenauftrag</h3><p>Gib deinem Agenten diesen Auftrag. Prüfe anschließend im Projektordner, ob der Entwurf zu deinem Briefing passt.</p></div>
   <div class="day exercise">
     <label for="prompt">Kopiervorlage für Claude Code oder Codex</label>
