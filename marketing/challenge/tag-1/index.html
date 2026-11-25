@@ -120,13 +120,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 nav .btn{margin-left:auto}
 .hero h1{font-size:clamp(36px,12vw,132px)}
 .hero .lead{max-width:46ch}
-.sec[id],.task[id]{scroll-margin-top:80px}
-.task{margin:36px 0 16px}
-.task h3{font-size:clamp(25px,5vw,38px);line-height:1.1}
-.task p{margin-top:10px}
-.lesson-grid{display:grid;gap:18px}
-.lesson-grid .day h3{margin-top:8px}
-.lesson-grid .btn{margin-top:20px;padding:12px 16px;font-size:12px}
+.sec[id],.lesson-panel[id]{scroll-margin-top:80px}
 .steps span{font-size:1rem}
 .exercise{display:grid;gap:16px;max-width:760px}
 .prompt{padding:18px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);color:#fff;font:400 1rem/1.65 var(--f-body);white-space:pre-wrap;overflow-wrap:anywhere;width:100%;min-height:13rem;resize:vertical}
@@ -136,12 +130,46 @@ nav .btn{margin-left:auto}
 .checklist label{display:flex;align-items:baseline;gap:10px}
 .checklist input{accent-color:#fff;flex:none}
 .source{margin-top:24px}
-.tutorial-video{max-width:760px;margin-bottom:36px}
-.tutorial-video h3{font-size:clamp(24px,4vw,34px);line-height:1.1;margin-bottom:14px}
+.tutorial-video{margin-top:22px}
+.tutorial-video h4{font-size:clamp(24px,4vw,34px);line-height:1.1;margin-bottom:14px}
 .tutorial-video video{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line2);border-radius:var(--r);background:#000}
 .tutorial-video .source{margin-top:12px}
-@media(min-width:760px){.hero h1{font-size:clamp(65px,9vw,132px)}.lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:760px){.hero h1{font-size:clamp(65px,9vw,132px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.goal,.lesson-layout{display:grid;gap:18px}
+.goal{align-items:center;gap:34px}
+.goal h2{margin-top:16px}
+.example{margin:0}
+.example-card{padding:clamp(24px,5vw,46px);border:1px solid #a3a891;border-radius:var(--r);background:linear-gradient(145deg,#263126,#121713);color:#eaefe7}
+.example-card h3{margin:14px 0;font-size:clamp(38px,7vw,72px);color:#f2f7d6}
+.example-card .label,.example-card .example-next strong{color:#d9e5aa}
+.example-next{margin-top:22px;padding-top:16px;border-top:1px solid #a3a891}
+.example-next strong{display:block}
+.example figcaption{margin-top:10px;font-size:14px;color:var(--text)}
+nav.level-choice{position:static;border:0}
+nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));height:auto;gap:14px;padding-bottom:38px}
+.level-choice a{display:grid;gap:6px;padding:20px;border:1px solid var(--line2);border-radius:var(--r);background:var(--card);text-decoration:none}
+.level-choice a:hover,.level-choice a:focus-visible{border-color:#fff}
+.level-choice strong{font:500 26px var(--f-head);color:#fff}
+.level-choice a:last-child{background:#181a20}
+.level-label{color:#fff}
+.level.advanced{background:linear-gradient(145deg,#171a21,#09090b 72%)}
+.lesson-panel{min-width:0;padding:clamp(20px,4vw,34px);border:1px solid var(--line2);border-radius:var(--r);background:var(--card)}
+.lesson-panel h3{font-size:clamp(25px,4vw,36px);line-height:1.08;margin:10px 0 12px}
+.lesson-panel .steps{margin-top:22px}
+.lesson-panel .steps a,.lesson-panel > a{color:#fff}
+.lesson-panel > a{display:inline-block;margin-top:14px}
+.lesson-result{border-color:rgba(255,255,255,.4)}
+.share{max-width:760px}
+.share blockquote{margin:18px 0;padding:14px 18px;border-left:2px solid #fff;background:var(--bg2)}
+.share blockquote p+p{margin-top:8px}
+@media(min-width:760px){
+ .goal{grid-template-columns:1fr 1fr}
+ .lesson-layout{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:start}
+ .lesson-practice{grid-column:1}
+ .lesson-result{grid-column:2}
+}
 </style>
 </head>
 <body>
@@ -157,7 +185,7 @@ nav .btn{margin-left:auto}
   <div class="wrap">
     <span class="tag"><i aria-hidden="true"></i>7 Days AI Challenge · Tag 1</span>
     <h1><span>Get AI</span><span class="chrome">Ready.</span></h1>
-    <p class="lead">Richte deinen KI-Workspace ein und erledige deinen ersten Agentenauftrag. Wähle die Desktop-App oder vertiefe den Einstieg im Terminal.</p>
+    <p class="lead">Richte deinen KI-Workspace ein und baue eine Projektkarte, die du in der Challenge-Gruppe zeigen kannst.</p>
     <div class="facts">
       
       <div class="fact"><b>Claude Code oder Codex</b><span>Du brauchst nur eines</span></div>
@@ -165,66 +193,76 @@ nav .btn{margin-left:auto}
     <div class="cta"><a class="btn pri" href="#basic">Basic starten</a><a class="btn" href="#advanced">Advanced ansehen</a></div>
   </div>
 </header>
-<section class="stmt"><div class="wrap">
-  <p class="big">Eine Challenge. Zwei Levels. <b>Ein konkretes Ergebnis.</b></p>
-  <p class="sm">Basic reicht für die weiteren Challenge-Tage. Advanced ist eine freiwillige Vertiefung. Wenn du schon mit Projektordnern arbeitest, kannst du direkt mit Advanced starten.</p>
+<section class="stmt" aria-labelledby="goal"><div class="wrap goal">
+  <div><p class="label">Das baust du heute</p><h2 id="goal">Deine erste<br><span class="chrome">Projektkarte.</span></h2><p class="sm">Zeig der Gruppe, woran du arbeitest. Am Ende hast du eine kleine Website mit deiner Idee und einen Screenshot, den du teilen kannst.</p></div>
+  <figure class="example"><div class="example-card"><p class="label">Beispielprojekt</p><h3>Stadtgarten</h3><p>Ein Pflanzplan für Menschen, die auf einem kleinen Balkon Gemüse anbauen möchten.</p><p class="example-next"><strong>Nächster Schritt</strong> Drei Pflanzen für einen schattigen Balkon auswählen.</p></div><figcaption>So könnte deine Projektkarte aussehen.</figcaption></figure>
 </div></section>
-<section class="sec" id="basic"><div class="wrap">
-  <div class="sec-head"><span class="label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Dein Ergebnis ist ein einsatzbereiter KI-Arbeitsplatz.</p></div>
-  <div class="tutorial-video">
-    <h3 id="setup-video">Claude Code oder Codex einrichten</h3>
+<nav class="level-choice" aria-label="Schwierigkeitsstufe"><div class="wrap">
+  <a href="#basic"><span class="label">Level 01 · Basic</span><strong>Desktop-App</strong><span>Hier startest du mit Codex oder Claude Desktop.</span></a>
+  <a href="#advanced"><span class="label">Level 02 · Advanced · Optional</span><strong>Terminal</strong><span>Für alle, die direkt mit einer CLI arbeiten möchten.</span></a>
+</div></nav>
+<section class="sec level basic" id="basic"><div class="wrap">
+  <div class="sec-head"><span class="label level-label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Alles, was du für die weiteren Challenge-Tage brauchst.</p></div>
+  <div class="lesson-layout">
+    <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>So arbeitet dein Agent im Workspace</h3><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
+    <div class="tutorial-video">
+    <h4 id="setup-video">Claude Code oder Codex einrichten</h4>
     <video controls playsinline preload="none" poster="../../../flow-dna/kurse/ki-basics/videos/L08.jpg" aria-labelledby="setup-video">
       <source src="../../../flow-dna/kurse/ki-basics/videos/L08.mp4" type="video/mp4">
     </video>
-    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung und Video in Flow DNA</a></p>
-  </div>
-  <ol class="steps">
-    <li><b>Wähle eine App</b><span>Installiere die Codex-App oder Claude Desktop. Melde dich mit deinem Konto an und öffne Codex oder die Ansicht „Code“ in Claude.</span></li>
-    <li><b>Öffne einen leeren Ordner</b><span>Erstelle einen Ordner namens <code>flow-workshop</code> und wähle ihn in der App als Projektordner aus.</span></li>
-    <li><b>Lege dein Briefing ab</b><span>Erstelle im Ordner eine Datei namens <code>briefing.md</code>. Schreib hinein, was du anbietest, wen du erreichen möchtest und wie der Text klingen soll. Drei Sätze reichen. Ein fiktives Angebot funktioniert genauso.</span></li>
-  </ol>
-  <div class="lesson-grid">
-    <article class="day"><h3>Claude Code</h3><p>Öffne die Claude-Desktop-App, wechsle zu „Code“ und wähle deinen Projektordner.</p><a class="btn" href="https://claude.com/download">Claude herunterladen</a></article>
-    <article class="day"><h3>Codex</h3><p>Öffne Codex in der Desktop-App und wähle deinen Projektordner für eine neue Aufgabe aus.</p><a class="btn" href="https://chatgpt.com/download/">ChatGPT herunterladen</a></article>
-  </div>
-  <div class="task" id="aufgabe"><h3>Dein erster Agentenauftrag</h3><p>Gib deinem Agenten diesen Auftrag. Prüfe anschließend im Projektordner, ob der Entwurf zu deinem Briefing passt.</p></div>
-  <div class="day exercise">
-    <label for="prompt">Kopiervorlage für Claude Code oder Codex</label>
-    <textarea class="prompt" id="prompt" readonly>Lies briefing.md in diesem Projektordner. Erstelle daraus entwurf.md mit einer Überschrift, einer kurzen Beschreibung meines Angebots und einem konkreten nächsten Schritt für meine Zielgruppe. Verwende nur die Angaben aus dem Briefing. Frag nach, falls wesentliche Informationen fehlen. Lass briefing.md unverändert und zeig mir am Ende, welche Datei du angelegt hast.</textarea>
-    <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
-    <div class="res"><span>Dein Ergebnis</span>Ein Workspace mit einem Briefing und einem geprüften Entwurf.</div>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Mein Projektordner ist in der App geöffnet.</span></label>
-      <label><input type="checkbox"><span>Mein Briefing liegt als <code>briefing.md</code> im Ordner.</span></label>
-      <label><input type="checkbox"><span>Ich habe <code>entwurf.md</code> geöffnet und mit dem Briefing abgeglichen.</span></label>
-    </div>
+    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung in Flow DNA</a></p>
+    </div></section>
+    <section class="lesson-panel" id="aufgabe"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
+    <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte in der Desktop-App</h3>
+    <ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
+ <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
+ <li><b>Auftrag starten</b><span>Kopiere den Prompt, ersetze die drei Platzhalter und gib ihn in der App ein.</span></li></ol>
+    <div class="exercise">
+      <label for="prompt">Prompt für Claude Code oder Codex</label>
+      <textarea class="prompt" id="prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten.
+
+Projektname: [dein Projekt]
+Zielgruppe und Idee: [für wen und wobei hilft sie?]
+Nächster Schritt: [was machst du als Nächstes?]
+Lass vorhandene Dateien unverändert.</textarea>
+      <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
+    </div></section>
+    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Öffne deine Karte im Browser</h3><p>Öffne <code>projektkarte.html</code> per Doppelklick und prüfe, ob Projektname, Zielgruppe und nächster Schritt auf einen Blick verständlich sind. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
   </div>
 </div></section>
-<section class="sec" id="advanced"><div class="wrap">
-  <div class="sec-head"><span class="label">Level 02 · Advanced · Optional</span><h2>Beyond the<br><span class="chrome">Desktop App.</span></h2><p>Am Ende kannst du direkt über das Terminal mit deinem KI-Agenten arbeiten.</p></div>
-  <ol class="steps">
-    <li><b>Installiere eine CLI</b><span>Wähle Codex CLI oder Claude Code und folge der Anleitung für dein Betriebssystem. Öffne danach ein Terminal.</span></li>
-    <li><b>Wechsle in deinen Projektordner</b><span>Öffne den Ordner <code>flow-workshop</code> aus Basic oder leg ihn neu an. Wechsle im Terminal mit <code>cd "PFAD/ZU/flow-workshop"</code> dorthin und ersetze den Beispielpfad durch deinen eigenen. Lege dort eine <code>briefing.md</code> mit Angebot, Zielgruppe und Ton an, falls sie noch fehlt.</span></li>
-    <li><b>Starte den Agenten</b><span>Führe im Projektordner <code>codex</code> oder <code>claude</code> aus. Melde dich an, falls die CLI dich dazu auffordert. Gib den Auftrag unten in die gestartete Sitzung ein und prüfe die erzeugte Datei.</span></li>
-  </ol>
-  <div class="lesson-grid">
-    <article class="day"><h3>Codex CLI</h3><a class="btn" href="https://developers.openai.com/codex/cli/">Offizielle Anleitung</a></article>
-    <article class="day"><h3>Claude Code</h3><a class="btn" href="https://code.claude.com/docs/en/quickstart">Offizielle Anleitung</a></article>
+<section class="sec level advanced" id="advanced"><div class="wrap">
+  <div class="sec-head"><span class="label level-label">Level 02 · Advanced · Optional</span><h2>Beyond the<br><span class="chrome">Desktop App.</span></h2><p>Starte direkt hier, wenn du dich im Terminal wohlfühlst.</p></div>
+  <div class="lesson-layout">
+    <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>Der Ordner bestimmt den Arbeitsbereich</h3><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
+    <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Terminal-Anleitung in Flow DNA</a></p></section>
+    <section class="lesson-panel"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
+    <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte im Terminal</h3>
+    <ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
+ <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
+ <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und kopiere den Prompt in die Agentensitzung. Ersetze vor dem Absenden die drei Platzhalter.</span></li></ol>
+    <div class="exercise">
+      <label for="terminal-prompt">Prompt für deine Terminal-Sitzung</label>
+      <textarea class="prompt" id="terminal-prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte-terminal.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten.
+
+Projektname: [dein Projekt]
+Zielgruppe und Idee: [für wen und wobei hilft sie?]
+Nächster Schritt: [was machst du als Nächstes?]
+Zeig mir danach im Terminal den Pfad zur Datei. Lass vorhandene Dateien unverändert.</textarea>
+      <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
+    </div></section>
+    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Öffne deine Karte im Browser</h3><p>Öffne <code>projektkarte-terminal.html</code> per Doppelklick und prüfe, ob Projektname, Zielgruppe und nächster Schritt auf einen Blick verständlich sind. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
   </div>
-  <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Flow-DNA-Tutorial zur Terminal-Einrichtung</a></p>
-  <div class="task"><h3>Dein erster Terminal-Auftrag</h3><p>Kopiere den Auftrag in die laufende Agentensitzung.</p></div>
-  <div class="day exercise">
-    <label for="terminal-prompt">Kopiervorlage für die Agentensitzung</label>
-    <textarea class="prompt" id="terminal-prompt" readonly>Lies briefing.md im aktuellen Projektordner. Erstelle terminal-entwurf.md mit einer Überschrift, einer kurzen Beschreibung des Angebots und einem nächsten Schritt für die Zielgruppe. Arbeite nur mit den Angaben aus dem Briefing und lass vorhandene Dateien unverändert. Sag mir am Ende, welche Datei du angelegt hast.</textarea>
-    <div class="copy-row"><button type="button" class="btn pri" data-copy="terminal-prompt" hidden>Prompt kopieren</button><span role="status"></span></div>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Die Agentensitzung läuft im richtigen Projektordner.</span></label>
-      <label><input type="checkbox"><span>Ich habe <code>terminal-entwurf.md</code> geöffnet und mit <code>briefing.md</code> abgeglichen.</span></label>
-    </div>
+</div></section>
+<section class="sec" id="teilen"><div class="wrap">
+  <div class="sec-head"><span class="label">Ergebnis in der Gruppe</span><h2>Zeig, was du<br><span class="chrome">gebaut hast.</span></h2></div>
+  <div class="lesson-panel share">
+    <p>Poste einen Screenshot deiner geöffneten Projektkarte in der Challenge-Gruppe. Schneide Adressleiste und Desktop weg, damit deine Idee im Mittelpunkt steht. Ergänze zwei kurze Zeilen:</p>
+    <blockquote><p><strong>Mein Projekt</strong> · Stadtgarten, ein Pflanzplan für kleine Balkone.</p><p><strong>So habe ich es gebaut</strong> · Basic mit Codex. Als Nächstes sammle ich Pflanzen für Schatten.</p></blockquote>
+    <p>Ein Screenshot reicht. Wenn du beide Levels ausprobierst, teile die Version, die dein Projekt am besten zeigt.</p>
   </div>
 </div></section>
 <section class="final"><div class="wrap">
-  <h2>Dein Workspace <span class="chrome">steht.</span></h2>
+  <h2>Deine Projektkarte <span class="chrome">steht.</span></h2>
   <p>Am zweiten Tag nutzt du deinen Projektordner weiter und entwickelst daraus deinen ersten eigenen KI-Assistenten.</p>
   <a class="btn pri" href="../#tage">Zur Challenge-Übersicht</a>
 </div></section>
