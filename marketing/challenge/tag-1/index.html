@@ -123,7 +123,14 @@ nav .btn{margin-left:auto}
 .sec[id],.lesson-panel[id]{scroll-margin-top:80px}
 .steps span{font-size:1rem}
 .exercise{display:grid;gap:16px;max-width:760px}
-.prompt{padding:18px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);color:#fff;font:400 1rem/1.65 var(--f-body);white-space:pre-wrap;overflow-wrap:anywhere;width:100%;min-height:13rem;resize:vertical}
+.prompt-generator{padding:20px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2)}
+.prompt-generator h4{color:#fff;font:500 24px var(--f-head);margin:0 0 6px}
+.generator-fields{display:grid;gap:12px;margin:16px 0}
+.generator-fields label{display:grid;gap:6px;color:#fff;font-size:14px}
+.generator-fields input{min-width:0;width:100%;padding:10px 12px;border:1px solid var(--line2);border-radius:9px;background:var(--bg);color:#fff;font:inherit;font-size:16px}
+.generator-fields input:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.example-prompt{padding:10px 14px;font-size:12px}
+.prompt{padding:18px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);color:#fff;font:400 1rem/1.65 var(--f-body);white-space:pre-wrap;overflow-wrap:anywhere;width:100%;min-height:19rem;resize:vertical}
 .copy-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
 .copy-row button[hidden]{display:none}
 .checklist{display:grid;gap:10px}
@@ -216,14 +223,30 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
     <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte in der Desktop-App</h3>
     <ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
  <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
- <li><b>Auftrag starten</b><span>Kopiere den Prompt, ersetze die drei Platzhalter und gib ihn in der App ein.</span></li></ol>
+ <li><b>Auftrag starten</b><span>Fülle den Prompt-Generator aus und füge den fertigen Prompt in der App ein.</span></li></ol>
     <div class="exercise">
+      <div class="prompt-generator" data-generator hidden>
+        <h4>Prompt-Generator</h4>
+        <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
+        <div class="generator-fields">
+          <label>Projekt- oder Businessname<input type="text" data-project="name" maxlength="100" placeholder="Stadtgarten"></label>
+          <label>Was bietest du an oder was ist deine Idee?<input type="text" data-project="idea" maxlength="400" placeholder="Ein Pflanzplan für kleine Balkone."></label>
+          <label>Für wen ist das gedacht?<input type="text" data-project="audience" maxlength="400" placeholder="Menschen mit kleinem Balkon, die Gemüse anbauen möchten."></label>
+          <label>Was möchtest du erreichen?<input type="text" data-project="goal" maxlength="400" placeholder="Den Einstieg ins Gärtnern auf wenig Platz erleichtern."></label>
+          <label>Was ist dein nächster Schritt?<input type="text" data-project="next" maxlength="400" placeholder="Drei Pflanzen für einen schattigen Balkon auswählen."></label>
+          <label>Wie soll die Karte aussehen? (optional)<input type="text" data-project="style" maxlength="400" placeholder="Botanisch, mit dunklem Grün und Creme."></label>
+        </div>
+        <button type="button" class="btn example-prompt" data-project-example>Stadtgarten-Beispiel laden</button>
+      </div>
       <label for="prompt">Prompt für Claude Code oder Codex</label>
-      <textarea class="prompt" id="prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten.
+      <textarea class="prompt" id="prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten. Richte die Gestaltung am Ziel und am gewünschten Stil aus.
 
-Projektname: [dein Projekt]
-Zielgruppe und Idee: [für wen und wobei hilft sie?]
-Nächster Schritt: [was machst du als Nächstes?]
+Projektname: [Projektname]
+Angebot oder Idee: [Angebot oder Idee]
+Zielgruppe: [Zielgruppe]
+Ziel: [Ziel]
+Nächster Schritt: [nächster Schritt]
+Gewünschter Stil: [Stil optional]
 Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
@@ -239,14 +262,30 @@ Lass vorhandene Dateien unverändert.</textarea>
     <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte im Terminal</h3>
     <ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
  <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
- <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und kopiere den Prompt in die Agentensitzung. Ersetze vor dem Absenden die drei Platzhalter.</span></li></ol>
+ <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und füge den fertigen Prompt aus dem Generator in die Agentensitzung ein.</span></li></ol>
     <div class="exercise">
+      <div class="prompt-generator" data-generator hidden>
+        <h4>Prompt-Generator</h4>
+        <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
+        <div class="generator-fields">
+          <label>Projekt- oder Businessname<input type="text" data-project="name" maxlength="100" placeholder="Stadtgarten"></label>
+          <label>Was bietest du an oder was ist deine Idee?<input type="text" data-project="idea" maxlength="400" placeholder="Ein Pflanzplan für kleine Balkone."></label>
+          <label>Für wen ist das gedacht?<input type="text" data-project="audience" maxlength="400" placeholder="Menschen mit kleinem Balkon, die Gemüse anbauen möchten."></label>
+          <label>Was möchtest du erreichen?<input type="text" data-project="goal" maxlength="400" placeholder="Den Einstieg ins Gärtnern auf wenig Platz erleichtern."></label>
+          <label>Was ist dein nächster Schritt?<input type="text" data-project="next" maxlength="400" placeholder="Drei Pflanzen für einen schattigen Balkon auswählen."></label>
+          <label>Wie soll die Karte aussehen? (optional)<input type="text" data-project="style" maxlength="400" placeholder="Botanisch, mit dunklem Grün und Creme."></label>
+        </div>
+        <button type="button" class="btn example-prompt" data-project-example>Stadtgarten-Beispiel laden</button>
+      </div>
       <label for="terminal-prompt">Prompt für deine Terminal-Sitzung</label>
-      <textarea class="prompt" id="terminal-prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte-terminal.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten.
+      <textarea class="prompt" id="terminal-prompt" readonly>Baue in diesem Projektordner eine eigenständige HTML-Datei namens projektkarte-terminal.html. Gestalte eine Projektkarte mit großer Überschrift, einem Satz zur Zielgruppe und einem gut sichtbaren nächsten Schritt. Nutze CSS direkt in der Datei, einen klaren Farbkontrast und ein Layout, das auch auf dem Handy gut lesbar ist. Verzichte auf externe Abhängigkeiten. Richte die Gestaltung am Ziel und am gewünschten Stil aus.
 
-Projektname: [dein Projekt]
-Zielgruppe und Idee: [für wen und wobei hilft sie?]
-Nächster Schritt: [was machst du als Nächstes?]
+Projektname: [Projektname]
+Angebot oder Idee: [Angebot oder Idee]
+Zielgruppe: [Zielgruppe]
+Ziel: [Ziel]
+Nächster Schritt: [nächster Schritt]
+Gewünschter Stil: [Stil optional]
 Zeig mir danach im Terminal den Pfad zur Datei. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
@@ -269,6 +308,59 @@ Zeig mir danach im Terminal den Pfad zur Datei. Lass vorhandene Dateien unverän
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
+const projectExample = {
+  "name": "Stadtgarten",
+  "idea": "Ein Pflanzplan für kleine Balkone.",
+  "audience": "Menschen mit kleinem Balkon, die Gemüse anbauen möchten.",
+  "goal": "Den Einstieg ins Gärtnern auf wenig Platz erleichtern.",
+  "next": "Drei Pflanzen für einen schattigen Balkon auswählen.",
+  "style": "Botanisch, mit dunklem Grün und Creme."
+};
+const projectFields = [...document.querySelectorAll("[data-project]")];
+const projectPrompts = [...document.querySelectorAll(".exercise .prompt")].map(field => ({
+  field,
+  intro: field.value.split("\n\n")[0],
+  closing: field.value.split("\n").at(-1)
+}));
+const projectLabels = {
+  name: "Projektname",
+  idea: "Angebot oder Idee",
+  audience: "Zielgruppe",
+  goal: "Ziel",
+  next: "Nächster Schritt",
+  style: "Gewünschter Stil"
+};
+
+function updateProjectPrompts() {
+  const values = Object.fromEntries(projectFields.map(input => [input.dataset.project, input.value.trim()]));
+  const brief = Object.entries(projectLabels).flatMap(([key, label]) => {
+    const value = values[key];
+    if (key === "style" && !value) return [];
+    return [label + ": " + (value || "[" + label + "]")];
+  });
+  projectPrompts.forEach(({field, intro, closing}) => {
+    field.value = [intro, brief.join("\n"), closing].join("\n\n");
+  });
+}
+
+projectFields.forEach(input => input.addEventListener("input", () => {
+  projectFields.filter(peer => peer.dataset.project === input.dataset.project).forEach(peer => {
+    peer.value = input.value;
+  });
+  updateProjectPrompts();
+}));
+
+document.querySelectorAll("[data-project-example]").forEach(button => button.addEventListener("click", () => {
+  projectFields.forEach(input => {
+    input.value = projectExample[input.dataset.project];
+  });
+  updateProjectPrompts();
+}));
+
+document.querySelectorAll("[data-generator]").forEach(generator => { generator.hidden = false; });
+window.addEventListener("pageshow", updateProjectPrompts);
+updateProjectPrompts();
+
 document.querySelectorAll("[data-copy]").forEach(button => {
   const field = document.getElementById(button.dataset.copy);
   const status = button.parentElement.querySelector('[role="status"]');
