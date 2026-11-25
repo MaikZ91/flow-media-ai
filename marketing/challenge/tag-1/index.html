@@ -165,6 +165,11 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 .lesson-panel .steps a,.lesson-panel > a{color:#fff}
 .lesson-panel > a{display:inline-block;margin-top:14px}
 .lesson-result{border-color:rgba(255,255,255,.4)}
+.prompt-explainer{padding:14px 16px;border:1px solid var(--line2);border-radius:12px;background:var(--bg2)}
+.prompt-explainer summary{color:#fff;cursor:pointer;font-weight:600}
+.prompt-explainer p{margin-top:10px}
+.file-check{margin:12px 0;padding-left:1.4em}
+.file-check li+li{margin-top:8px}
 .share{max-width:760px}
 .share blockquote{margin:18px 0;padding:14px 18px;border-left:2px solid #fff;background:var(--bg2)}
 .share blockquote p+p{margin-top:8px}
@@ -225,6 +230,11 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
  <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
  <li><b>Auftrag starten</b><span>Fülle den Prompt-Generator aus und füge den fertigen Prompt in der App ein.</span></li></ol>
     <div class="exercise">
+      <details class="prompt-explainer">
+        <summary>Was macht der Prompt?</summary>
+        <p>Deine Angaben sind das Briefing. Der Agent macht daraus den Inhalt und das Design deiner Projektkarte. Er speichert beides in einer HTML-Datei und nennt dir zum Schluss den Speicherort.</p>
+        <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
+      </details>
       <div class="prompt-generator" data-generator hidden>
         <h4>Prompt-Generator</h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
@@ -247,10 +257,15 @@ Zielgruppe: [Zielgruppe]
 Ziel: [Ziel]
 Nächster Schritt: [nächster Schritt]
 Gewünschter Stil: [Stil optional]
-Lass vorhandene Dateien unverändert.</textarea>
+Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Öffne deine Karte im Browser</h3><p>Öffne <code>projektkarte.html</code> per Doppelklick und prüfe, ob Projektname, Zielgruppe und nächster Schritt auf einen Blick verständlich sind. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
+    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+      <ol class="file-check">
+        <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte.html</code> liegen.</li>
+        <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
+      </ol>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
   </div>
 </div></section>
 <section class="sec level advanced" id="advanced"><div class="wrap">
@@ -264,6 +279,11 @@ Lass vorhandene Dateien unverändert.</textarea>
  <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
  <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und füge den fertigen Prompt aus dem Generator in die Agentensitzung ein.</span></li></ol>
     <div class="exercise">
+      <details class="prompt-explainer">
+        <summary>Was macht der Prompt?</summary>
+        <p>Deine Angaben sind das Briefing. Der Agent macht daraus den Inhalt und das Design deiner Projektkarte. Er speichert beides in einer HTML-Datei und nennt dir zum Schluss den Speicherort.</p>
+        <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
+      </details>
       <div class="prompt-generator" data-generator hidden>
         <h4>Prompt-Generator</h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
@@ -286,10 +306,15 @@ Zielgruppe: [Zielgruppe]
 Ziel: [Ziel]
 Nächster Schritt: [nächster Schritt]
 Gewünschter Stil: [Stil optional]
-Zeig mir danach im Terminal den Pfad zur Datei. Lass vorhandene Dateien unverändert.</textarea>
+Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Öffne deine Karte im Browser</h3><p>Öffne <code>projektkarte-terminal.html</code> per Doppelklick und prüfe, ob Projektname, Zielgruppe und nächster Schritt auf einen Blick verständlich sind. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
+    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+      <ol class="file-check">
+        <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte-terminal.html</code> liegen. Im Terminal kannst du den Inhalt des aktuellen Ordners mit <code>ls</code> oder unter Windows mit <code>dir</code> anzeigen.</li>
+        <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
+      </ol>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
   </div>
 </div></section>
 <section class="sec" id="teilen"><div class="wrap">
