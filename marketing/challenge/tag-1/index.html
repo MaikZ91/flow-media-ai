@@ -198,6 +198,15 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 .pace-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .pace-actions .btn{padding:10px 14px;font-size:12px}
 @media(min-width:760px){.pace-grid{grid-template-columns:1fr 1fr}}
+
+.lesson-guide{display:grid;gap:20px;margin-bottom:20px}
+.lesson-guide .checklist{margin-top:0}
+.guide-next .btn{margin-top:8px}
+.guide-next [hidden]{display:none}
+.lesson-guide .checklist label:has(input[aria-current="step"]){color:#fff;font-weight:600}
+.lesson-guide .checklist label:has(input:checked){color:var(--muted)}
+.lesson-panel[id],.checklist[id],.prompt-generator[id],.file-check li[id]{scroll-margin-top:82px}
+@media(min-width:760px){.lesson-guide{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}}
 </style>
 </head>
 <body>
@@ -254,6 +263,22 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
 </div></section>
 <section class="sec level basic" id="basic"><div class="wrap">
   <div class="sec-head"><span class="label level-label">Level 01 · Basic</span><h2>Dein<br><span class="chrome">KI-Workspace.</span></h2><p>Alles, was du für die weiteren Challenge-Tage brauchst.</p></div>
+  <section class="lesson-guide lesson-panel" aria-label="Lernfortschritt">
+    <div class="guide-next" hidden>
+      <p class="label" data-next-label>Nächster Schritt</p>
+      <h3 data-next-title aria-live="polite">Projektordner öffnen</h3>
+      <a class="btn pri" data-next-link href="#setup-basic">Zum Workspace-Setup</a>
+    </div>
+      <fieldset class="checklist" id="checkliste-basic" data-checklist="basic">
+        <legend>Deine Checkliste</legend>
+        <p class="checklist-count" role="status" hidden></p>
+        <label><input type="checkbox" value="ordner"><span>Mein Projektordner ist in Codex oder Claude Desktop geöffnet.</span></label>
+        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
+        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte.html</code> im Projektordner gefunden.</span></label>
+        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
+        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
+      </fieldset>
+  </section>
   <div class="lesson-layout">
     <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>So arbeitet dein Agent im Workspace</h3><p>Ein Workspace ist dein Projektordner. Du gibst dem Agenten ein Briefing und Zugriff auf den Ordner. Der Agent legt die Datei dort ab. Im Browser prüfst du, ob das Ergebnis zu deiner Idee passt.</p>
     <div class="tutorial-video">
@@ -264,7 +289,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
     <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8">Textanleitung in Flow DNA</a></p>
     </div></section>
     <section class="lesson-panel" id="aufgabe"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte in der Desktop-App</h3>
+    <section class="lesson-panel lesson-practice" id="setup-basic"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte in der Desktop-App</h3>
     <ol class="steps"><li><b>App installieren</b><span>Wähle die <a href="https://chatgpt.com/download/">Codex-App</a> oder <a href="https://claude.com/download">Claude Desktop</a>. Melde dich an und öffne Codex oder den Bereich „Code“ in Claude.</span></li>
  <li><b>Projektordner öffnen</b><span>Erstelle einen leeren Ordner namens <code>flow-workshop</code> und wähle ihn in der App aus.</span></li>
  <li><b>Auftrag starten</b><span>Fülle den Prompt-Generator aus und füge den fertigen Prompt in der App ein.</span></li></ol>
@@ -274,7 +299,7 @@ nav.level-choice .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax
         <p>Deine Angaben sind das Briefing. Der Agent macht daraus den Inhalt und das Design deiner Projektkarte. Er speichert beides in einer HTML-Datei und nennt dir zum Schluss den Speicherort.</p>
         <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
       </details>
-      <div class="prompt-generator" data-generator hidden>
+      <div class="prompt-generator" id="generator-basic" data-generator hidden>
         <h4>Prompt-Generator</h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
         <div class="generator-fields">
@@ -299,30 +324,38 @@ Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+    <section class="lesson-panel lesson-result" id="datei-basic"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
       <ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte.html</code> liegen.</li>
-        <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
+        <li id="pruefen-basic">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a>
-      <fieldset class="checklist" id="checkliste-basic" data-checklist="basic">
-        <legend>Deine Checkliste</legend>
-        <p class="checklist-count" role="status" hidden></p>
-        <label><input type="checkbox" value="ordner"><span>Mein Projektordner ist in Codex oder Claude Desktop geöffnet.</span></label>
-        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
-        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte.html</code> im Projektordner gefunden.</span></label>
-        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
-        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
-      </fieldset></section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-basic">Zur Checkliste</a>
+</section>
   </div>
 </div></section>
 <section class="sec level advanced" id="advanced"><div class="wrap">
   <div class="sec-head"><span class="label level-label">Level 02 · Advanced · Optional</span><h2>Beyond the<br><span class="chrome">Desktop App.</span></h2><p>Starte direkt hier, wenn du dich im Terminal wohlfühlst.</p></div>
+  <section class="lesson-guide lesson-panel" aria-label="Lernfortschritt">
+    <div class="guide-next" hidden>
+      <p class="label" data-next-label>Nächster Schritt</p>
+      <h3 data-next-title aria-live="polite">Projektordner öffnen</h3>
+      <a class="btn pri" data-next-link href="#setup-advanced">Zum Workspace-Setup</a>
+    </div>
+      <fieldset class="checklist" id="checkliste-advanced" data-checklist="advanced">
+        <legend>Deine Checkliste</legend>
+        <p class="checklist-count" role="status" hidden></p>
+        <label><input type="checkbox" value="ordner"><span>Mein Agent läuft im Terminal im richtigen Projektordner.</span></label>
+        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
+        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte-terminal.html</code> im Projektordner gefunden.</span></label>
+        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
+        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
+      </fieldset>
+  </section>
   <div class="lesson-layout">
     <section class="lesson-panel"><p class="label">Background &amp; Theorie</p><h3>Der Ordner bestimmt den Arbeitsbereich</h3><p>Die CLI ist die Oberfläche für deinen Agenten im Terminal. Wenn du sie im Projektordner startest, kann der Agent dort Dateien lesen und anlegen, soweit du ihm Zugriff gibst.</p>
     <p class="source"><a href="../../../flow-dna/?kurs=ki-basics&amp;lektion=8#terminal">Terminal-Anleitung in Flow DNA</a></p></section>
     <section class="lesson-panel"><p class="label">Deine Aufgabe</p><h3>Gestalte deine Projektkarte</h3><p>Lass deinen Agenten eine kleine Website für eine echte oder fiktive Idee bauen. Sie zeigt den Projektnamen, für wen die Idee gedacht ist und was du als Nächstes vorhast.</p></section>
-    <section class="lesson-panel lesson-practice"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte im Terminal</h3>
+    <section class="lesson-panel lesson-practice" id="setup-advanced"><p class="label">Praktische Umsetzung</p><h3>Baue die Karte im Terminal</h3>
     <ol class="steps"><li><b>CLI installieren</b><span>Wähle <a href="https://developers.openai.com/codex/cli/">Codex CLI</a> oder <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> und folge der Anleitung für dein Betriebssystem.</span></li>
  <li><b>Projektordner öffnen</b><span>Lege <code>flow-workshop</code> an oder nutze deinen vorhandenen Ordner. Wechsle mit <code>cd "PFAD/ZU/flow-workshop"</code> hinein. Ersetze den Beispielpfad durch deinen eigenen.</span></li>
  <li><b>Agent starten</b><span>Starte <code>codex</code> oder <code>claude</code>, melde dich bei Bedarf an und füge den fertigen Prompt aus dem Generator in die Agentensitzung ein.</span></li></ol>
@@ -332,7 +365,7 @@ Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den r
         <p>Deine Angaben sind das Briefing. Der Agent macht daraus den Inhalt und das Design deiner Projektkarte. Er speichert beides in einer HTML-Datei und nennt dir zum Schluss den Speicherort.</p>
         <p><strong>HTML</strong> legt fest, welche Inhalte auf der Karte stehen. <strong>CSS</strong> bestimmt Farben, Schrift und Layout. Das CSS steckt in derselben Datei, deshalb reicht eine einzige Datei zum Öffnen im Browser.</p>
       </details>
-      <div class="prompt-generator" data-generator hidden>
+      <div class="prompt-generator" id="generator-advanced" data-generator hidden>
         <h4>Prompt-Generator</h4>
         <p>Beschreibe dein Projekt. Deine Angaben erscheinen direkt im Prompt darunter.</p>
         <div class="generator-fields">
@@ -357,21 +390,13 @@ Gewünschter Stil: [Stil optional]
 Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner liegt. Nenne mir den relativen Pfad und erkläre kurz, wo in der Datei der Inhalt (HTML) und das Design (CSS) stehen. Lass vorhandene Dateien unverändert.</textarea>
       <div class="copy-row"><button type="button" data-copy="terminal-prompt" class="btn pri" hidden>Prompt kopieren</button><span role="status"></span></div>
     </div></section>
-    <section class="lesson-panel lesson-result"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
+    <section class="lesson-panel lesson-result" id="datei-advanced"><p class="label">Dein Ergebnis</p><h3>Finde und prüfe deine Datei</h3>
       <ol class="file-check">
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte-terminal.html</code> liegen. Im Terminal kannst du den Inhalt des aktuellen Ordners mit <code>ls</code> oder unter Windows mit <code>dir</code> anzeigen.</li>
-        <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
+        <li id="pruefen-advanced">Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a>
-      <fieldset class="checklist" id="checkliste-advanced" data-checklist="advanced">
-        <legend>Deine Checkliste</legend>
-        <p class="checklist-count" role="status" hidden></p>
-        <label><input type="checkbox" value="ordner"><span>Mein Agent läuft im Terminal im richtigen Projektordner.</span></label>
-        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
-        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte-terminal.html</code> im Projektordner gefunden.</span></label>
-        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
-        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
-      </fieldset></section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a> · <a href="#checkliste-advanced">Zur Checkliste</a>
+</section>
   </div>
 </div></section>
 <section class="sec" id="teilen"><div class="wrap">
@@ -390,13 +415,32 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
+const nextActions = [["Projektordner öffnen","Zum Workspace-Setup","setup"],["Briefing ausfüllen und Prompt ausführen","Zum Prompt-Generator","generator"],["HTML-Datei im Projektordner finden","Zum Ordner-Check","datei"],["Projektkarte im Browser prüfen","Zur Prüfung im Browser","pruefen"],["Screenshot in der Challenge-Gruppe teilen","Zur Anleitung fürs Teilen","teilen"]];
 document.querySelectorAll("[data-checklist]").forEach(list => {
   const key = "flow-challenge-day1-checklist-" + list.dataset.checklist;
   const items = [...list.querySelectorAll('input[type="checkbox"]')];
   const count = list.querySelector(".checklist-count");
+  const guide = list.previousElementSibling;
+  const nextLabel = guide.querySelector("[data-next-label]");
+  const nextTitle = guide.querySelector("[data-next-title]");
+  const nextLink = guide.querySelector("[data-next-link]");
+  guide.hidden = false;
   function renderChecklist() {
     const checked = items.filter(item => item.checked);
     count.textContent = checked.length + " von " + items.length + " erledigt";
+    const nextIndex = items.findIndex(item => !item.checked);
+    items.forEach((item, i) => {
+      if (i === nextIndex) item.setAttribute("aria-current", "step");
+      else item.removeAttribute("aria-current");
+    });
+    const action = nextActions[nextIndex];
+    nextLabel.textContent = action ? "Schritt " + (nextIndex + 1) + " von " + items.length : "Checkliste abgeschlossen";
+    nextTitle.textContent = action ? action[0] : "Für heute bist du fertig.";
+    nextLink.hidden = !action;
+    if (action) {
+      nextLink.textContent = action[1];
+      nextLink.href = action[2] === "teilen" ? "#teilen" : "#" + action[2] + "-" + list.dataset.checklist;
+    }
     return checked.map(item => item.value);
   }
   try {
