@@ -133,7 +133,11 @@ nav .btn{margin-left:auto}
 .prompt{padding:18px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);color:#fff;font:400 1rem/1.65 var(--f-body);white-space:pre-wrap;overflow-wrap:anywhere;width:100%;min-height:19rem;resize:vertical}
 .copy-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
 .copy-row button[hidden]{display:none}
-.checklist{display:grid;gap:10px}
+.checklist{display:grid;gap:10px;min-width:0;margin-top:26px;padding:16px;border:1px solid var(--line2);border-radius:12px}
+.checklist legend{padding:0 6px;color:#fff;font-weight:600}
+.checklist-count{font-size:14px}
+.checklist label{cursor:pointer}
+.checklist input{width:17px;height:17px}
 .checklist label{display:flex;align-items:baseline;gap:10px}
 .checklist input{accent-color:#fff;flex:none}
 .source{margin-top:24px}
@@ -300,7 +304,16 @@ Prüfe zum Schluss, ob projektkarte.html im Projektordner liegt. Nenne mir den r
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte.html</code> liegen.</li>
         <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte.</p><a href="#teilen">So teilst du dein Ergebnis</a>
+      <fieldset class="checklist" id="checkliste-basic" data-checklist="basic">
+        <legend>Deine Checkliste</legend>
+        <p class="checklist-count" role="status" hidden></p>
+        <label><input type="checkbox" value="ordner"><span>Mein Projektordner ist in Codex oder Claude Desktop geöffnet.</span></label>
+        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
+        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte.html</code> im Projektordner gefunden.</span></label>
+        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
+        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
+      </fieldset></section>
   </div>
 </div></section>
 <section class="sec level advanced" id="advanced"><div class="wrap">
@@ -349,7 +362,16 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
         <li>Öffne <code>flow-workshop</code> im Finder oder Datei-Explorer. Dort sollte <code>projektkarte-terminal.html</code> liegen. Im Terminal kannst du den Inhalt des aktuellen Ordners mit <code>ls</code> oder unter Windows mit <code>dir</code> anzeigen.</li>
         <li>Öffne die Datei per Doppelklick im Browser. Stimmen Projektname, Zielgruppe und nächster Schritt mit deinem Briefing überein?</li>
       </ol>
-      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a></section>
+      <p>Falls die Datei fehlt, vergleiche den vom Agenten genannten Pfad mit deinem geöffneten Ordner. Mach einen Screenshot der Karte und schreib beim Teilen dazu, dass du sie im Terminal gebaut hast.</p><a href="#teilen">So teilst du dein Ergebnis</a>
+      <fieldset class="checklist" id="checkliste-advanced" data-checklist="advanced">
+        <legend>Deine Checkliste</legend>
+        <p class="checklist-count" role="status" hidden></p>
+        <label><input type="checkbox" value="ordner"><span>Mein Agent läuft im Terminal im richtigen Projektordner.</span></label>
+        <label><input type="checkbox" value="briefing"><span>Ich habe mein Briefing ausgefüllt und den Prompt an den Agenten gegeben.</span></label>
+        <label><input type="checkbox" value="datei"><span>Ich habe <code>projektkarte-terminal.html</code> im Projektordner gefunden.</span></label>
+        <label><input type="checkbox" value="geprüft"><span>Ich habe die Karte im Browser geöffnet und mit meinem Briefing verglichen.</span></label>
+        <label><input type="checkbox" value="geteilt"><span>Ich habe den Screenshot mit meiner kurzen Vorstellung in der Challenge-Gruppe geteilt.</span></label>
+      </fieldset></section>
   </div>
 </div></section>
 <section class="sec" id="teilen"><div class="wrap">
@@ -368,6 +390,27 @@ Prüfe zum Schluss im Terminal, ob projektkarte-terminal.html im Projektordner l
 </main>
 <footer><div class="wrap"><span>© 2026 Flow Media AI · We build your ideas.</span><span><a href="../../landing-page/impressum.html">Impressum</a> · <a href="../../landing-page/datenschutz.html">Datenschutz</a></span></div></footer>
 <script>
+document.querySelectorAll("[data-checklist]").forEach(list => {
+  const key = "flow-challenge-day1-checklist-" + list.dataset.checklist;
+  const items = [...list.querySelectorAll('input[type="checkbox"]')];
+  const count = list.querySelector(".checklist-count");
+  function renderChecklist() {
+    const checked = items.filter(item => item.checked);
+    count.textContent = checked.length + " von " + items.length + " erledigt";
+    return checked.map(item => item.value);
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || "[]");
+    if (Array.isArray(saved)) items.forEach(item => { item.checked = saved.includes(item.value); });
+  } catch {}
+  count.hidden = false;
+  renderChecklist();
+  list.addEventListener("change", () => {
+    const checked = renderChecklist();
+    try { localStorage.setItem(key, JSON.stringify(checked)); } catch {}
+  });
+});
+
 const clock = document.querySelector(".pace-clock");
 const clockTime = document.getElementById("pace-time");
 const clockStatus = document.getElementById("pace-status");
