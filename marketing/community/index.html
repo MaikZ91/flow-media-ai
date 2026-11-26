@@ -184,7 +184,30 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     @media (prefers-reduced-motion: reduce) { .join { transition: none; } }
     footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     footer div { display: flex; gap: 4px 16px; flex-wrap: wrap; }
+    .footer-details { align-items: center; }
     footer a { display: inline-flex; align-items: center; min-height: 40px; text-underline-offset: 3px; }
+    .network-toggle:not([hidden]) {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+    }
+    .network-toggle:hover { color: var(--text); border-color: var(--muted); }
+    .network-toggle span { width: 8px; height: 10px; border-inline: 2px solid currentColor; }
+    .network-toggle[data-paused] span {
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-inline-start: 8px solid currentColor;
+      border-inline-end: 0;
+    }
     @media (max-width: 690px) {
       .brandbar { min-height: 40px; gap: 5px 10px; }
       .brandbar img { width: 109px; max-height: 24px; }
@@ -233,10 +256,10 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       <div class="network">
         <canvas id="network-art" aria-hidden="true"></canvas>
         <ul class="network-roles" role="list" aria-label="Für diese Berufe und viele mehr">
-          <li>Fotograf:innen</li>
-          <li>Business-Coaches</li>
-          <li>Berater:innen</li>
-          <li>Designer:innen</li>
+          <li data-alternates="Fotograf:innen|Webdesigner:innen|Trainer:innen">Kreative</li>
+          <li data-alternates="Business-Coaches|Texter:innen|Berater:innen">Solo-Selbstständige</li>
+          <li data-alternates="Videograf:innen|IT-Profis|Physios">Gründer:innen</li>
+          <li data-alternates="Designer:innen|Entwickler:innen|Freelancer:innen">Anwält:innen</li>
         </ul>
         <a class="join" id="join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Kostenlos der WhatsApp-Gruppe beitreten">
           <strong>Beitreten</strong>
@@ -245,7 +268,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       </div>
     </main>
     <footer>
-      <a href="details.html">Termine &amp; Details</a>
+      <div class="footer-details">
+        <a href="details.html">Termine &amp; Details</a>
+        <button class="network-toggle" id="network-toggle" type="button" aria-label="Animation pausieren" title="Animation pausieren" hidden>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
       <div>
         <a href="../landing-page/impressum.html">Impressum</a>
         <a href="../landing-page/datenschutz.html">Datenschutz</a>
@@ -286,6 +314,9 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       if (!ctx) return;
 
       const still = matchMedia("(prefers-reduced-motion: reduce)");
+      const roleNodes = [...document.querySelectorAll(".network-roles li")];
+      const roleLabels = roleNodes.map(node => [node.textContent, ...node.dataset.alternates.split("|")]);
+      const toggle = document.getElementById("network-toggle");
       const full = Math.PI * 2;
       const tracks = [
         { radius: 0.31, tilt: -0.38, flatten: 0.69, rate: 0.25, count: 9 },
@@ -295,6 +326,11 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       let size = 0;
       let animation = 0;
       let lastFrame = -Infinity;
+      let lastTick = null;
+      let elapsed = 0;
+      let lastRoleChange = 0;
+      let roleGroup = 0;
+      let paused = false;
 
       function point(track, angle) {
         const x = track.radius * Math.cos(angle);
@@ -358,17 +394,33 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       }
 
       function frame(ms) {
-        if (ms - lastFrame >= 31 && size > 0) {
-          draw(ms / 1000);
-          lastFrame = ms;
+        if (lastTick !== null) elapsed += ms - lastTick;
+        lastTick = ms;
+        if (elapsed - lastFrame >= 31 && size > 0) {
+          draw(elapsed / 1000);
+          lastFrame = elapsed;
+        }
+        if (elapsed - lastRoleChange >= 4200) {
+          lastRoleChange = elapsed;
+          roleGroup = (roleGroup + 1) % roleLabels[0].length;
+          roleNodes.forEach((node, index) => {
+            node.textContent = roleLabels[index][roleGroup];
+            node.animate([{ opacity: 0.25 }, { opacity: 1 }], {
+              duration: 280,
+              delay: index * 60,
+              fill: "backwards"
+            });
+          });
         }
         animation = requestAnimationFrame(frame);
       }
 
       function syncMotion() {
         cancelAnimationFrame(animation);
-        if (still.matches || document.hidden) {
-          if (size > 0) draw(0);
+        lastTick = null;
+        toggle.hidden = still.matches;
+        if (still.matches || paused || document.hidden) {
+          roleNodes.forEach(node => node.getAnimations().forEach(effect => effect.finish()));
         } else {
           animation = requestAnimationFrame(frame);
         }
@@ -381,8 +433,16 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         canvas.width = Math.round(size * scale);
         canvas.height = Math.round(size * scale);
         ctx.setTransform(scale, 0, 0, scale, 0, 0);
-        draw(0);
+        draw(elapsed / 1000);
       }).observe(canvas);
+      toggle.addEventListener("click", () => {
+        paused = !paused;
+        const label = paused ? "Animation fortsetzen" : "Animation pausieren";
+        toggle.setAttribute("aria-label", label);
+        toggle.title = label;
+        toggle.toggleAttribute("data-paused", paused);
+        syncMotion();
+      });
       still.addEventListener("change", syncMotion);
       document.addEventListener("visibilitychange", syncMotion);
       syncMotion();
