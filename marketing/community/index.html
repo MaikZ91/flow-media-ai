@@ -6,7 +6,7 @@
   <title>Flow Business Community – kostenlos in WhatsApp beitreten</title>
   <meta name="description" content="Tausch dich mit Selbstständigen und Gründer:innen über KI und Business aus. Kostenlose WhatsApp-Community mit regelmäßigen KI-Workshops von Maik.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#0B0B0B">
+  <meta name="theme-color" content="#050505">
   <meta property="og:title" content="Flow Business Community">
   <meta property="og:description" content="Allein mit KI-Fragen? Tausch dich über KI und Business aus. Kostenlos in WhatsApp, mit regelmäßigen KI-Workshops von Maik.">
   <meta property="og:image" content="img/maik_front.jpg">
@@ -33,16 +33,21 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <style>
     :root {
       color-scheme: dark;
-      --background: #0b0b0b;
+      --background: #050505;
       --text: #fff;
-      --muted: #bababa;
-      --rule: #2a2a2a;
-      --blue: #2f5bff;
+      --muted: #bababe;
+      --rule: #ffffff20;
+      --silver: linear-gradient(100deg, #8d8d93, #f4f4f6 28%, #a9a9b0 50%, #fff 72%, #8d8d93);
+      --silver-button: linear-gradient(180deg, #fff, #cfcfd4);
       --gutter: clamp(16px, 5vw, 64px);
       font-family: Inter, system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; background: var(--background); color: var(--text); }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 80% 0%, #ffffff0d, transparent 53%), var(--background);
+      color: var(--text);
+    }
     a { color: inherit; }
     :focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
     .layout {
@@ -86,6 +91,15 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       text-transform: uppercase;
     }
     h1 span { display: block; }
+    @supports (background-clip: text) {
+      h1 span:last-child {
+        width: fit-content;
+        background: var(--silver);
+        background-clip: text;
+        color: transparent;
+      }
+    }
+    @media (forced-colors: active) { h1 span:last-child { color: CanvasText; } }
     .lead {
       max-width: 31em;
       margin: 20px 0;
@@ -111,7 +125,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       position: absolute;
       inset: 3%;
       pointer-events: none;
-      background: radial-gradient(circle, #12265a 0%, #0e1731 28%, #0d1019 51%, transparent 71%);
+      background: radial-gradient(circle, #ffffff1c 0%, #ffffff0b 42%, transparent 70%);
       border-radius: 50%;
     }
     .network::after {
@@ -119,9 +133,8 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       position: absolute;
       inset: 8%;
       pointer-events: none;
-      border: 1px solid #2c3e71;
+      border: 1px solid #ffffff20;
       border-radius: 50%;
-      box-shadow: 0 0 36px #2f5bff20, inset 0 0 18px #2f5bff18;
     }
     .network canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
     .network-roles {
@@ -139,10 +152,10 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       align-items: center;
       gap: 5px;
       padding: 4px 7px;
-      border: 1px solid #405a9c;
+      border: 1px solid #ffffff44;
       border-radius: 999px;
-      background: #111a30;
-      color: #edf1ff;
+      background: #151517;
+      color: #ededf0;
       font-size: clamp(10px, calc(5cqw - 1px), 14px);
       font-weight: 600;
       line-height: 1.2;
@@ -153,8 +166,8 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: #a3b8ff;
-      box-shadow: 0 0 7px #7795ff;
+      background: #fff;
+      box-shadow: 0 0 6px #ffffff75;
     }
     .network-roles li:nth-child(1) { inset-block-start: 7%; inset-inline-start: 2%; }
     .network-roles li:nth-child(2) { inset-block-start: 11%; inset-inline-end: 0; }
@@ -168,10 +181,10 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       gap: 4px;
       width: min(76%, 228px);
       padding: 10px;
-      border: 1px solid #6587ef;
+      border: 1px solid transparent;
       border-radius: 19px;
-      background: radial-gradient(ellipse at 50% 0, #203a89, #101a39 80%);
-      box-shadow: 0 0 0 5px #2f5bff24, 0 0 36px #2f5bff58;
+      background: linear-gradient(155deg, #19191b, #0b0b0c 72%) padding-box, var(--silver) border-box;
+      box-shadow: 0 20px 50px -22px #ffffff46;
     }
     .join-title {
       margin: 0;
@@ -187,18 +200,18 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       gap: 6px;
       min-height: 36px;
       padding: 3px 10px;
-      border: 1px solid #6383f2;
-      border-radius: 8px;
-      background: #2950c7;
-      color: #fff;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: var(--silver-button);
+      color: #050505;
       font-size: clamp(12px, 1.45vw, 15px);
       font-weight: 600;
       line-height: 1.2;
       text-decoration: none;
     }
-    .join-option:hover { background: #345bd7; }
+    .join-option:hover { background: #fff; }
     .join-option::after { content: "→"; }
-    .join-option:focus-visible { outline-offset: 0; }
+    .join-option:focus-visible { outline-offset: 1px; }
     footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     footer div { display: flex; gap: 4px 16px; flex-wrap: wrap; }
     .footer-details { align-items: center; }
@@ -420,7 +433,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
           ctx.beginPath();
           ctx.ellipse(size / 2, size / 2, track.radius * size,
             track.radius * track.flatten * size, track.tilt, 0, full);
-          ctx.strokeStyle = ring === 2 ? "#809dff67" : "#557df85e";
+          ctx.strokeStyle = ring === 2 ? "#eeeef270" : "#c9c9cf43";
           ctx.lineWidth = 1;
           ctx.stroke();
 
@@ -435,12 +448,12 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
             const b = nodes[j];
             const distance = Math.hypot(a.x - b.x, a.y - b.y);
             if (a.ring !== b.ring && distance < 0.19) {
-              line(a, b, `rgba(79, 117, 255, ${0.42 * (1 - distance / 0.19)})`, 1);
+              line(a, b, `rgba(226, 226, 231, ${0.32 * (1 - distance / 0.19)})`, 1);
             }
           }
           if (a.index % 4 === 0) {
-            const alpha = 0.19 + 0.15 * Math.sin(time * 1.6 + i);
-            line(a, { x: 0.5, y: 0.5 }, `rgba(77, 122, 255, ${alpha})`, 1);
+            const alpha = 0.14 + 0.09 * Math.sin(time * 1.6 + i);
+            line(a, { x: 0.5, y: 0.5 }, `rgba(224, 224, 229, ${alpha})`, 1);
           }
 
           const bright = a.index % 4 === 0;
@@ -448,9 +461,9 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
           const radius = bright ? 2.3 + pulse : 1 + pulse;
           ctx.beginPath();
           ctx.arc(a.x * size, a.y * size, radius, 0, full);
-          ctx.fillStyle = bright ? "#c5d3ff" : "#7397ff";
-          ctx.shadowColor = "#3769ff";
-          ctx.shadowBlur = bright ? 13 : 6;
+          ctx.fillStyle = bright ? "#fafafd" : "#a8a8ad";
+          ctx.shadowColor = "#ffffff70";
+          ctx.shadowBlur = bright ? 8 : 3;
           ctx.fill();
           ctx.shadowBlur = 0;
         });
