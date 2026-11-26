@@ -94,32 +94,58 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       line-height: 1.52;
     }
     .lead strong { color: var(--text); font-weight: 600; }
+    .note { margin: 16px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .host { display: flex; align-items: center; gap: 10px; margin: 20px 0 0; color: var(--muted); font-size: 12px; }
+    .host img { width: 36px; height: 36px; object-fit: cover; object-position: center 28%; filter: grayscale(1); }
+    .network {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      place-items: center;
+      width: min(100%, 480px, 66svh);
+      aspect-ratio: 1;
+      justify-self: center;
+    }
+    .network::before {
+      content: "";
+      position: absolute;
+      inset: 3%;
+      pointer-events: none;
+      background: radial-gradient(circle, #12265a 0%, #0e1731 28%, #0d1019 51%, transparent 71%);
+      border-radius: 50%;
+    }
+    .network::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      pointer-events: none;
+      border: 1px solid #2c3e71;
+      border-radius: 50%;
+      box-shadow: 0 0 36px #2f5bff20, inset 0 0 18px #2f5bff18;
+    }
+    .network canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
     .join {
-      display: inline-flex;
-      min-height: 54px;
-      padding: 12px 19px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      background: var(--blue);
+      justify-content: center;
+      text-align: center;
+      width: 42%;
+      aspect-ratio: 1;
+      padding: 8px;
+      border: 1px solid #7795ff;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 20%, #3d68f1, #2444b4 67%, #14245d);
+      box-shadow: 0 0 0 6px #2f5bff24, 0 0 36px #2f5bff60, inset 0 0 19px #87a3ff35;
       color: #fff;
       text-decoration: none;
-      font-size: clamp(14px, 1.45vw, 17px);
-      font-weight: 600;
-      line-height: 1.3;
+      transition: box-shadow 180ms ease, filter 180ms ease;
     }
-    .join:hover { filter: brightness(1.12); }
-    .note { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
-    figure { margin: 0; justify-self: end; width: min(100%, 400px); }
-    figure img {
-      display: block;
-      width: 100%;
-      height: clamp(250px, 56svh, 510px);
-      object-fit: cover;
-      object-position: center 37%;
-      filter: grayscale(1);
-    }
-    figcaption { margin-top: 9px; color: var(--muted); font-size: 12px; }
+    .join:hover, .join:focus-visible { box-shadow: 0 0 0 8px #2f5bff40, 0 0 54px #2f5bff90; filter: brightness(1.14); }
+    .join strong { font: 700 clamp(16px, 2.85vw, 34px)/1 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; }
+    .join span { margin-top: 7px; font-weight: 600; font-size: clamp(10px, 1.2vw, 15px); line-height: 1.1; }
+    @media (prefers-reduced-motion: reduce) { .join { transition: none; } }
     footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     footer div { display: flex; gap: 4px 16px; flex-wrap: wrap; }
     footer a { display: inline-flex; align-items: center; min-height: 40px; text-underline-offset: 3px; }
@@ -127,21 +153,29 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       .brandbar { min-height: 40px; gap: 5px 10px; }
       .brandbar img { width: 109px; max-height: 24px; }
       .region { font-size: 9px; letter-spacing: .05em; }
-      main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 18px; padding-block: 18px; }
+      main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 13px; padding-block: 14px; }
       h1 { font-size: clamp(37px, 10.8vw, 69px); }
       .eyebrow { margin-bottom: 9px; }
       .lead { margin-block: 13px; font-size: 15px; line-height: 1.4; }
-      .join { width: 100%; min-height: 49px; }
-      figure { display: flex; width: 100%; align-items: center; gap: 11px; }
-      figure img { width: 44px; height: 44px; object-position: center 32%; }
-      figcaption { margin: 0; }
+      .network { width: min(77vw, 40svh, 305px); }
+      .join { width: 48%; }
+      .join strong { font-size: clamp(16px, 4.7vw, 25px); }
+      .host, .note { margin-top: 9px; }
+      .host img { width: 25px; height: 25px; }
       footer { gap: 0 12px; font-size: 11px; }
       footer div { gap: 4px 11px; }
       footer a { min-height: 34px; }
     }
+    @media (max-height: 620px) and (max-width: 690px) {
+      .layout { padding-top: max(12px, env(safe-area-inset-top)); }
+      main { gap: 9px; padding-block: 9px; }
+      h1 { font-size: clamp(34px, 10vw, 54px); }
+      .lead { margin-block: 9px; }
+      .host img { width: 22px; height: 22px; }
+      .network { width: min(72vw, 34svh, 260px); }
+    }
     @media (max-height: 545px) and (max-width: 690px) {
-      main { gap: 10px; padding-block: 12px; }
-      figure img { width: 36px; height: 36px; }
+      .host { display: none; }
     }
   </style>
 </head>
@@ -149,22 +183,23 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <div class="layout">
     <header class="brandbar">
       <img src="img/logo_flow.png" width="132" height="28" alt="Flow Media AI">
-      <span class="region">Münster · Bielefeld · Online</span>
+      <span class="region">Online · WhatsApp</span>
     </header>
     <main aria-labelledby="title">
       <div>
         <p class="eyebrow">Flow Business Community</p>
         <h1 id="title"><span>Bring deine</span><span>KI-Idee mit.</span></h1>
         <p class="lead">Hol dir Feedback für deinen ersten Schritt. In der <strong>kostenlosen WhatsApp-Gruppe</strong> für Selbstständige, Gründerinnen und Gründer.</p>
-        <a class="join" id="join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw">
-          Kostenlos der WhatsApp-Gruppe beitreten <span aria-hidden="true">→</span>
-        </a>
         <p class="note">Du kannst erst mal mitlesen.</p>
+        <p class="host"><img src="img/maik_front.jpg" alt="" width="36" height="36"> Maik · Dein Gastgeber</p>
       </div>
-      <figure>
-        <img src="img/maik_front.jpg" width="720" height="1280" alt="Maik, Gründer von Flow Media AI">
-        <figcaption>Maik · Dein Gastgeber</figcaption>
-      </figure>
+      <div class="network">
+        <canvas id="network-art" aria-hidden="true"></canvas>
+        <a class="join" id="join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Kostenlos der WhatsApp-Gruppe beitreten">
+          <strong>Beitreten</strong>
+          <span>Kostenlos<br>in WhatsApp</span>
+        </a>
+      </div>
     </main>
     <footer>
       <a href="details.html">Termine &amp; Details</a>
@@ -178,6 +213,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     const params = new URLSearchParams(location.search);
     const attribution = {
       variante: "onepager",
+      layout: "network",
       quelle: params.get("utm_source") || "",
       utm_source: params.get("utm_source") || "",
       utm_medium: params.get("utm_medium") || "",
@@ -201,6 +237,113 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       capture("community_join_intent", { cta: "hero" }, { send_instantly: true });
       capture("community_join_click", { cta: "hero" }, { send_instantly: true });
     });
+    (() => {
+      const canvas = document.getElementById("network-art");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const still = matchMedia("(prefers-reduced-motion: reduce)");
+      const full = Math.PI * 2;
+      const tracks = [
+        { radius: 0.31, tilt: -0.38, flatten: 0.69, rate: 0.25, count: 9 },
+        { radius: 0.39, tilt: 0.65, flatten: 0.76, rate: -0.18, count: 12 },
+        { radius: 0.44, tilt: -0.94, flatten: 0.97, rate: 0.12, count: 15 }
+      ];
+      let size = 0;
+      let animation = 0;
+      let lastFrame = -Infinity;
+
+      function point(track, angle) {
+        const x = track.radius * Math.cos(angle);
+        const y = track.radius * track.flatten * Math.sin(angle);
+        return {
+          x: 0.5 + x * Math.cos(track.tilt) - y * Math.sin(track.tilt),
+          y: 0.5 + x * Math.sin(track.tilt) + y * Math.cos(track.tilt)
+        };
+      }
+
+      function line(a, b, color, width) {
+        ctx.beginPath();
+        ctx.moveTo(a.x * size, a.y * size);
+        ctx.lineTo(b.x * size, b.y * size);
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, size, size);
+        const nodes = [];
+        tracks.forEach((track, ring) => {
+          ctx.beginPath();
+          ctx.ellipse(size / 2, size / 2, track.radius * size,
+            track.radius * track.flatten * size, track.tilt, 0, full);
+          ctx.strokeStyle = ring === 2 ? "#809dff67" : "#557df85e";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          for (let index = 0; index < track.count; index += 1) {
+            const angle = (full * index) / track.count + ring * 0.68 + time * track.rate;
+            nodes.push({ ...point(track, angle), ring, index });
+          }
+        });
+
+        nodes.forEach((a, i) => {
+          for (let j = i + 1; j < nodes.length; j += 1) {
+            const b = nodes[j];
+            const distance = Math.hypot(a.x - b.x, a.y - b.y);
+            if (a.ring !== b.ring && distance < 0.19) {
+              line(a, b, `rgba(79, 117, 255, ${0.42 * (1 - distance / 0.19)})`, 1);
+            }
+          }
+          if (a.index % 4 === 0) {
+            const alpha = 0.19 + 0.15 * Math.sin(time * 1.6 + i);
+            line(a, { x: 0.5, y: 0.5 }, `rgba(77, 122, 255, ${alpha})`, 1);
+          }
+
+          const bright = a.index % 4 === 0;
+          const pulse = 0.75 + 0.25 * Math.sin(time * 1.9 + i * 1.7);
+          const radius = bright ? 2.3 + pulse : 1 + pulse;
+          ctx.beginPath();
+          ctx.arc(a.x * size, a.y * size, radius, 0, full);
+          ctx.fillStyle = bright ? "#c5d3ff" : "#7397ff";
+          ctx.shadowColor = "#3769ff";
+          ctx.shadowBlur = bright ? 13 : 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+      }
+
+      function frame(ms) {
+        if (ms - lastFrame >= 31 && size > 0) {
+          draw(ms / 1000);
+          lastFrame = ms;
+        }
+        animation = requestAnimationFrame(frame);
+      }
+
+      function syncMotion() {
+        cancelAnimationFrame(animation);
+        if (still.matches || document.hidden) {
+          if (size > 0) draw(0);
+        } else {
+          animation = requestAnimationFrame(frame);
+        }
+      }
+
+      new ResizeObserver(([entry]) => {
+        size = entry.contentRect.width;
+        if (size <= 0) return;
+        const scale = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = Math.round(size * scale);
+        canvas.height = Math.round(size * scale);
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+        draw(0);
+      }).observe(canvas);
+      still.addEventListener("change", syncMotion);
+      document.addEventListener("visibilitychange", syncMotion);
+      syncMotion();
+    })();
   </script>
 </body>
 </html>
