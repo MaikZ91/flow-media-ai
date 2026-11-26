@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Flow Business Community – kostenlos in WhatsApp beitreten</title>
-  <meta name="description" content="Hol dir Feedback für deine KI-Idee in der kostenlosen WhatsApp-Gruppe für Selbstständige, Gründerinnen und Gründer.">
+  <meta name="description" content="Tausch dich mit Selbstständigen und Gründer:innen über KI und Business aus. Kostenlose WhatsApp-Community mit regelmäßigen KI-Workshops von Maik.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0B0B0B">
   <meta property="og:title" content="Flow Business Community">
-  <meta property="og:description" content="Bring deine KI-Idee mit. Hol dir Feedback in der kostenlosen WhatsApp-Gruppe.">
+  <meta property="og:description" content="Allein mit KI-Fragen? Tausch dich über KI und Business aus. Kostenlos in WhatsApp, mit regelmäßigen KI-Workshops von Maik.">
   <meta property="og:image" content="img/maik_front.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,54 +94,169 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       line-height: 1.52;
     }
     .lead strong { color: var(--text); font-weight: 600; }
-    .join {
-      display: inline-flex;
-      min-height: 54px;
-      padding: 12px 19px;
+    .note { margin: 16px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .host { display: flex; align-items: center; gap: 10px; margin: 20px 0 0; color: var(--muted); font-size: 12px; }
+    .host img { width: 36px; height: 36px; object-fit: cover; object-position: center 28%; filter: grayscale(1); }
+    .network {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      place-items: center;
+      width: min(100%, 480px, 66svh);
+      aspect-ratio: 1;
+      justify-self: center;
+    }
+    .network::before {
+      content: "";
+      position: absolute;
+      inset: 3%;
+      pointer-events: none;
+      background: radial-gradient(circle, #12265a 0%, #0e1731 28%, #0d1019 51%, transparent 71%);
+      border-radius: 50%;
+    }
+    .network::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      pointer-events: none;
+      border: 1px solid #2c3e71;
+      border-radius: 50%;
+      box-shadow: 0 0 36px #2f5bff20, inset 0 0 18px #2f5bff18;
+    }
+    .network canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .network-roles {
+      position: absolute;
+      inset: 0;
+      container-type: inline-size;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      pointer-events: none;
+    }
+    .network-roles li {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 7px;
+      border: 1px solid #405a9c;
+      border-radius: 999px;
+      background: #111a30;
+      color: #edf1ff;
+      font-size: clamp(10px, calc(5cqw - 1px), 14px);
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .network-roles li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #a3b8ff;
+      box-shadow: 0 0 7px #7795ff;
+    }
+    .network-roles li:nth-child(1) { inset-block-start: 7%; inset-inline-start: 2%; }
+    .network-roles li:nth-child(2) { inset-block-start: 11%; inset-inline-end: 0; }
+    .network-roles li:nth-child(3) { inset-block-end: 10%; inset-inline-start: 1%; }
+    .network-roles li:nth-child(4) { inset-block-end: 6%; inset-inline-end: 2%; }
+    .network-roles[data-orbit] { inset-inline: -15px; }
+    .network-roles[data-orbit] li { inset: 0 auto auto 0; }
+    .join-panel {
+      z-index: 1;
+      display: grid;
+      gap: 4px;
+      width: min(76%, 228px);
+      padding: 10px;
+      border: 1px solid #6587ef;
+      border-radius: 19px;
+      background: radial-gradient(ellipse at 50% 0, #203a89, #101a39 80%);
+      box-shadow: 0 0 0 5px #2f5bff24, 0 0 36px #2f5bff58;
+    }
+    .join-title {
+      margin: 0;
+      padding-block: 3px 4px;
+      text-align: center;
+      font-size: clamp(12px, 1.45vw, 16px);
+      line-height: 1.2;
+    }
+    .join-option {
+      display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      background: var(--blue);
+      gap: 6px;
+      min-height: 36px;
+      padding: 3px 10px;
+      border: 1px solid #6383f2;
+      border-radius: 8px;
+      background: #2950c7;
       color: #fff;
-      text-decoration: none;
-      font-size: clamp(14px, 1.45vw, 17px);
+      font-size: clamp(12px, 1.45vw, 15px);
       font-weight: 600;
-      line-height: 1.3;
+      line-height: 1.2;
+      text-decoration: none;
     }
-    .join:hover { filter: brightness(1.12); }
-    .note { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
-    figure { margin: 0; justify-self: end; width: min(100%, 400px); }
-    figure img {
-      display: block;
-      width: 100%;
-      height: clamp(250px, 56svh, 510px);
-      object-fit: cover;
-      object-position: center 37%;
-      filter: grayscale(1);
-    }
-    figcaption { margin-top: 9px; color: var(--muted); font-size: 12px; }
+    .join-option:hover { background: #345bd7; }
+    .join-option::after { content: "→"; }
+    .join-option:focus-visible { outline-offset: 0; }
     footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     footer div { display: flex; gap: 4px 16px; flex-wrap: wrap; }
+    .footer-details { align-items: center; }
     footer a { display: inline-flex; align-items: center; min-height: 40px; text-underline-offset: 3px; }
+    .network-toggle:not([hidden]) {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+    }
+    .network-toggle:hover { color: var(--text); border-color: var(--muted); }
+    .network-toggle span { width: 8px; height: 10px; border-inline: 2px solid currentColor; }
+    .network-toggle[data-paused] span {
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-inline-start: 8px solid currentColor;
+      border-inline-end: 0;
+    }
     @media (max-width: 690px) {
       .brandbar { min-height: 40px; gap: 5px 10px; }
       .brandbar img { width: 109px; max-height: 24px; }
       .region { font-size: 9px; letter-spacing: .05em; }
-      main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 18px; padding-block: 18px; }
+      main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 13px; padding-block: 14px; }
       h1 { font-size: clamp(37px, 10.8vw, 69px); }
       .eyebrow { margin-bottom: 9px; }
       .lead { margin-block: 13px; font-size: 15px; line-height: 1.4; }
-      .join { width: 100%; min-height: 49px; }
-      figure { display: flex; width: 100%; align-items: center; gap: 11px; }
-      figure img { width: 44px; height: 44px; object-position: center 32%; }
-      figcaption { margin: 0; }
+      .network { width: min(77vw, 40svh, 305px); }
+      .network-roles[data-orbit] { inset-inline: -24px; }
+      .join-panel { width: min(78%, 216px); padding: 7px; }
+      .join-option { min-height: 33px; }
+      .host, .note { margin-top: 9px; }
+      .host img { width: 25px; height: 25px; }
       footer { gap: 0 12px; font-size: 11px; }
       footer div { gap: 4px 11px; }
       footer a { min-height: 34px; }
     }
+    @media (max-height: 620px) and (max-width: 690px) {
+      .layout { padding-top: max(12px, env(safe-area-inset-top)); }
+      main { gap: 9px; padding-block: 9px; }
+      h1 { font-size: clamp(34px, 10vw, 54px); }
+      .lead { margin-block: 9px; }
+      .host img { width: 22px; height: 22px; }
+      .network { width: min(72vw, 34svh, 260px); }
+      .network-roles { inset-inline: -14px; }
+      .join-panel { gap: 3px; }
+      .join-title { padding-block: 2px 3px; font-size: 11px; }
+      .join-option { min-height: 29px; }
+    }
     @media (max-height: 545px) and (max-width: 690px) {
-      main { gap: 10px; padding-block: 12px; }
-      figure img { width: 36px; height: 36px; }
+      .host { display: none; }
     }
   </style>
 </head>
@@ -154,20 +269,34 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     <main aria-labelledby="title">
       <div>
         <p class="eyebrow">Flow Business Community</p>
-        <h1 id="title"><span>Bring deine</span><span>KI-Idee mit.</span></h1>
-        <p class="lead">Hol dir Feedback für deinen ersten Schritt. In der <strong>kostenlosen WhatsApp-Gruppe</strong> für Selbstständige, Gründerinnen und Gründer.</p>
-        <a class="join" id="join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw">
-          Kostenlos der WhatsApp-Gruppe beitreten <span aria-hidden="true">→</span>
-        </a>
+        <h1 id="title"><span>Allein mit</span> <span>KI-Fragen?</span></h1>
+        <p class="lead">Tausch dich mit anderen Selbstständigen und Gründer:innen über <strong>KI und Business</strong> aus. Mit regelmäßigen KI-Workshops von Maik.</p>
         <p class="note">Du kannst erst mal mitlesen.</p>
+        <p class="host"><img src="img/maik_front.jpg" alt="" width="36" height="36"> Maik · Dein Gastgeber</p>
       </div>
-      <figure>
-        <img src="img/maik_front.jpg" width="720" height="1280" alt="Maik, Gründer von Flow Media AI">
-        <figcaption>Maik · Dein Gastgeber</figcaption>
-      </figure>
+      <div class="network">
+        <canvas id="network-art" aria-hidden="true"></canvas>
+        <ul class="network-roles" role="list" aria-label="Für diese Berufe und viele mehr">
+          <li data-alternates="Fotograf:innen|Webdesigner:innen|Trainer:innen">Kreative</li>
+          <li data-alternates="Business-Coaches|Texter:innen|Berater:innen">Solo-Selbstständige</li>
+          <li data-alternates="Videograf:innen|IT-Profis|Physios">Gründer:innen</li>
+          <li data-alternates="Designer:innen|Entwickler:innen|Freelancer:innen">Anwält:innen</li>
+        </ul>
+        <div class="join-panel" role="group" aria-labelledby="join-title">
+          <h2 class="join-title" id="join-title">Kostenlos beitreten</h2>
+          <a class="join-option" data-join-role="selbststaendig" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Selbstständig: kostenlos in WhatsApp beitreten">Selbstständig</a>
+          <a class="join-option" data-join-role="gruendung" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Gründer:in: kostenlos in WhatsApp beitreten">Gründer:in</a>
+          <a class="join-option" data-join-role="angestellt" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Angestellt: kostenlos in WhatsApp beitreten">Angestellt</a>
+        </div>
+      </div>
     </main>
     <footer>
-      <a href="details.html">Termine &amp; Details</a>
+      <div class="footer-details">
+        <a href="details.html">Termine &amp; Details</a>
+        <button class="network-toggle" id="network-toggle" type="button" aria-label="Animation pausieren" title="Animation pausieren" hidden>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
       <div>
         <a href="../landing-page/impressum.html">Impressum</a>
         <a href="../landing-page/datenschutz.html">Datenschutz</a>
@@ -178,6 +307,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     const params = new URLSearchParams(location.search);
     const attribution = {
       variante: "onepager",
+      layout: "network",
       quelle: params.get("utm_source") || "",
       utm_source: params.get("utm_source") || "",
       utm_medium: params.get("utm_medium") || "",
@@ -197,10 +327,188 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     } else {
       document.addEventListener("visibilitychange", recordVisible);
     }
-    document.getElementById("join").addEventListener("click", () => {
-      capture("community_join_intent", { cta: "hero" }, { send_instantly: true });
-      capture("community_join_click", { cta: "hero" }, { send_instantly: true });
+    document.querySelectorAll("[data-join-role]").forEach(option => {
+      option.addEventListener("click", () => {
+        const selection = { cta: "hero", join_role: option.dataset.joinRole };
+        capture("community_join_intent", selection, { send_instantly: true });
+        capture("community_join_click", selection, { send_instantly: true });
+      });
     });
+    (() => {
+      const canvas = document.getElementById("network-art");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const still = matchMedia("(prefers-reduced-motion: reduce)");
+      const roleList = document.querySelector(".network-roles");
+      const roleNodes = [...roleList.children];
+      const roleLabels = roleNodes.map(node => [node.textContent, ...node.dataset.alternates.split("|")]);
+      const joinPanel = document.querySelector(".join-panel");
+      const toggle = document.getElementById("network-toggle");
+      const full = Math.PI * 2;
+      const roleAngles = [-3, -1, 3, 1].map(quarter => quarter * Math.PI / 4);
+      const tracks = [
+        { radius: 0.31, tilt: -0.38, flatten: 0.69, rate: 0.25, count: 9 },
+        { radius: 0.39, tilt: 0.65, flatten: 0.76, rate: -0.18, count: 12 },
+        { radius: 0.44, tilt: -0.94, flatten: 0.97, rate: 0.12, count: 15 }
+      ];
+      let size = 0;
+      let animation = 0;
+      let lastFrame = -Infinity;
+      let lastTick = null;
+      let elapsed = 0;
+      let lastRoleChange = 0;
+      let roleGroup = 0;
+      let paused = false;
+      let orbitWidth = 0;
+      let orbitHeight = 0;
+      let panelWidth = 0;
+      let panelHeight = 0;
+      let roleSizes = [];
+
+      function placeRoles(time) {
+        const centerX = orbitWidth / 2;
+        const centerY = orbitHeight / 2;
+        roleNodes.forEach((node, index) => {
+          const angle = roleAngles[index] + time * full / 24;
+          const { width, height } = roleSizes[index];
+          const xDistance = Math.cos(angle) * orbitWidth * 0.46;
+          const sine = Math.sin(angle);
+          const yDistance = Math.sign(sine) * Math.abs(sine) ** 0.32 * orbitHeight * 0.49;
+          const x = Math.max(width / 2, Math.min(orbitWidth - width / 2, centerX + xDistance));
+          const y = Math.max(height / 2, Math.min(orbitHeight - height / 2, centerY + yDistance));
+          const clearance = Math.max(
+            Math.abs(x - centerX) - (panelWidth + width) / 2,
+            Math.abs(y - centerY) - (panelHeight + height) / 2
+          );
+          node.style.transform = `translate(${x - width / 2}px, ${y - height / 2}px)`;
+          node.style.opacity = Math.max(0, Math.min(1, (clearance - 2) / 7));
+        });
+      }
+
+      function measureRoles() {
+        orbitWidth = roleList.clientWidth;
+        orbitHeight = roleList.clientHeight;
+        panelWidth = joinPanel.offsetWidth;
+        panelHeight = joinPanel.offsetHeight;
+        roleSizes = roleNodes.map(node => ({ width: node.offsetWidth, height: node.offsetHeight }));
+        placeRoles(elapsed / 1000);
+      }
+
+      function point(track, angle) {
+        const x = track.radius * Math.cos(angle);
+        const y = track.radius * track.flatten * Math.sin(angle);
+        return {
+          x: 0.5 + x * Math.cos(track.tilt) - y * Math.sin(track.tilt),
+          y: 0.5 + x * Math.sin(track.tilt) + y * Math.cos(track.tilt)
+        };
+      }
+
+      function line(a, b, color, width) {
+        ctx.beginPath();
+        ctx.moveTo(a.x * size, a.y * size);
+        ctx.lineTo(b.x * size, b.y * size);
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, size, size);
+        const nodes = [];
+        tracks.forEach((track, ring) => {
+          ctx.beginPath();
+          ctx.ellipse(size / 2, size / 2, track.radius * size,
+            track.radius * track.flatten * size, track.tilt, 0, full);
+          ctx.strokeStyle = ring === 2 ? "#809dff67" : "#557df85e";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          for (let index = 0; index < track.count; index += 1) {
+            const angle = (full * index) / track.count + ring * 0.68 + time * track.rate;
+            nodes.push({ ...point(track, angle), ring, index });
+          }
+        });
+
+        nodes.forEach((a, i) => {
+          for (let j = i + 1; j < nodes.length; j += 1) {
+            const b = nodes[j];
+            const distance = Math.hypot(a.x - b.x, a.y - b.y);
+            if (a.ring !== b.ring && distance < 0.19) {
+              line(a, b, `rgba(79, 117, 255, ${0.42 * (1 - distance / 0.19)})`, 1);
+            }
+          }
+          if (a.index % 4 === 0) {
+            const alpha = 0.19 + 0.15 * Math.sin(time * 1.6 + i);
+            line(a, { x: 0.5, y: 0.5 }, `rgba(77, 122, 255, ${alpha})`, 1);
+          }
+
+          const bright = a.index % 4 === 0;
+          const pulse = 0.75 + 0.25 * Math.sin(time * 1.9 + i * 1.7);
+          const radius = bright ? 2.3 + pulse : 1 + pulse;
+          ctx.beginPath();
+          ctx.arc(a.x * size, a.y * size, radius, 0, full);
+          ctx.fillStyle = bright ? "#c5d3ff" : "#7397ff";
+          ctx.shadowColor = "#3769ff";
+          ctx.shadowBlur = bright ? 13 : 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+      }
+
+      function frame(ms) {
+        if (lastTick !== null) elapsed += ms - lastTick;
+        lastTick = ms;
+        if (elapsed - lastRoleChange >= 4200) {
+          lastRoleChange = elapsed;
+          roleGroup = (roleGroup + 1) % roleLabels[0].length;
+          roleNodes.forEach((node, index) => {
+            node.textContent = roleLabels[index][roleGroup];
+          });
+          measureRoles();
+        }
+        if (elapsed - lastFrame >= 31 && size > 0) {
+          draw(elapsed / 1000);
+          placeRoles(elapsed / 1000);
+          lastFrame = elapsed;
+        }
+        animation = requestAnimationFrame(frame);
+      }
+
+      function syncMotion() {
+        cancelAnimationFrame(animation);
+        lastTick = null;
+        toggle.hidden = still.matches;
+        if (!(still.matches || paused || document.hidden)) {
+          animation = requestAnimationFrame(frame);
+        }
+      }
+
+      new ResizeObserver(([entry]) => {
+        size = entry.contentRect.width;
+        if (size <= 0) return;
+        const scale = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = Math.round(size * scale);
+        canvas.height = Math.round(size * scale);
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+        draw(elapsed / 1000);
+      }).observe(canvas);
+      roleList.dataset.orbit = "";
+      measureRoles();
+      const roleObserver = new ResizeObserver(measureRoles);
+      [roleList, joinPanel, ...roleNodes].forEach(node => roleObserver.observe(node));
+      toggle.addEventListener("click", () => {
+        paused = !paused;
+        const label = paused ? "Animation fortsetzen" : "Animation pausieren";
+        toggle.setAttribute("aria-label", label);
+        toggle.title = label;
+        toggle.toggleAttribute("data-paused", paused);
+        syncMotion();
+      });
+      still.addEventListener("change", syncMotion);
+      document.addEventListener("visibilitychange", syncMotion);
+      syncMotion();
+    })();
   </script>
 </body>
 </html>
