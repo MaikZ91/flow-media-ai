@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Flow Business Community – kostenlos in WhatsApp beitreten</title>
-  <meta name="description" content="Hol dir Feedback für deine KI-Idee in der kostenlosen WhatsApp-Gruppe für Selbstständige, Gründerinnen und Gründer.">
+  <meta name="description" content="Tausch dich mit Selbstständigen und Gründer:innen über KI und Business aus. Kostenlose WhatsApp-Community mit regelmäßigen KI-Workshops von Maik.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0B0B0B">
   <meta property="og:title" content="Flow Business Community">
-  <meta property="og:description" content="Bring deine KI-Idee mit. Hol dir Feedback in der kostenlosen WhatsApp-Gruppe.">
+  <meta property="og:description" content="Allein mit KI-Fragen? Tausch dich über KI und Business aus. Kostenlos in WhatsApp, mit regelmäßigen KI-Workshops von Maik.">
   <meta property="og:image" content="img/maik_front.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,6 +124,42 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       box-shadow: 0 0 36px #2f5bff20, inset 0 0 18px #2f5bff18;
     }
     .network canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .network-roles {
+      position: absolute;
+      inset: 0;
+      container-type: inline-size;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      pointer-events: none;
+    }
+    .network-roles li {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 7px;
+      border: 1px solid #405a9c;
+      border-radius: 999px;
+      background: #111a30;
+      color: #edf1ff;
+      font-size: clamp(10px, calc(5cqw - 1px), 14px);
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .network-roles li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #a3b8ff;
+      box-shadow: 0 0 7px #7795ff;
+    }
+    .network-roles li:nth-child(1) { inset-block-start: 7%; inset-inline-start: 2%; }
+    .network-roles li:nth-child(2) { inset-block-start: 11%; inset-inline-end: 0; }
+    .network-roles li:nth-child(3) { inset-block-end: 10%; inset-inline-start: 1%; }
+    .network-roles li:nth-child(4) { inset-block-end: 6%; inset-inline-end: 2%; }
     .join {
       z-index: 1;
       display: flex;
@@ -173,6 +209,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       .lead { margin-block: 9px; }
       .host img { width: 22px; height: 22px; }
       .network { width: min(72vw, 34svh, 260px); }
+      .network-roles { inset-inline: -14px; }
     }
     @media (max-height: 545px) and (max-width: 690px) {
       .host { display: none; }
@@ -188,13 +225,19 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     <main aria-labelledby="title">
       <div>
         <p class="eyebrow">Flow Business Community</p>
-        <h1 id="title"><span>Bring deine</span><span>KI-Idee mit.</span></h1>
-        <p class="lead">Hol dir Feedback für deinen ersten Schritt. In der <strong>kostenlosen WhatsApp-Gruppe</strong> für Selbstständige, Gründerinnen und Gründer.</p>
+        <h1 id="title"><span>Allein mit</span> <span>KI-Fragen?</span></h1>
+        <p class="lead">Tausch dich mit anderen Selbstständigen und Gründer:innen über <strong>KI und Business</strong> aus. Mit regelmäßigen KI-Workshops von Maik.</p>
         <p class="note">Du kannst erst mal mitlesen.</p>
         <p class="host"><img src="img/maik_front.jpg" alt="" width="36" height="36"> Maik · Dein Gastgeber</p>
       </div>
       <div class="network">
         <canvas id="network-art" aria-hidden="true"></canvas>
+        <ul class="network-roles" role="list" aria-label="Für diese Berufe und viele mehr">
+          <li>Fotograf:innen</li>
+          <li>Business-Coaches</li>
+          <li>Berater:innen</li>
+          <li>Designer:innen</li>
+        </ul>
         <a class="join" id="join" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Kostenlos der WhatsApp-Gruppe beitreten">
           <strong>Beitreten</strong>
           <span>Kostenlos<br>in WhatsApp</span>
