@@ -1,0 +1,41 @@
+/* Meta Pixel for the community landing pages – loads ONLY after consent.
+   Reports "Lead" when someone taps a WhatsApp join link, so Meta can optimise ads for real joins.
+   Set PIXEL_ID once the pixel exists in Events Manager; empty = nothing loads, no banner. */
+(() => {
+  const PIXEL_ID = "";
+  if (!PIXEL_ID) return;
+  const KEY = "flow_meta_consent";
+  let ok = null; try { ok = localStorage.getItem(KEY) } catch {}
+  const ph = (e, p) => window.posthog?.capture(e, p);
+
+  function load() {
+    if (window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", PIXEL_ID);
+    fbq("track", "PageView");
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href*="chat.whatsapp.com"], a[href*="wa.me"]');
+    if (a && window.fbq) fbq("track", "Lead", { content_name: location.pathname.includes("stammtisch") ? "stammtisch" : "community" });
+  }, true);
+
+  if (ok === "ja") return load();
+  if (ok === "nein") return;
+
+  const bar = document.createElement("div");
+  bar.setAttribute("role", "dialog"); bar.setAttribute("aria-label", "Einwilligung Meta-Messung");
+  bar.innerHTML = `<p>Darf Meta messen, ob meine Anzeige dich hierher gebracht hat? Dafür setzt Meta ein Cookie. <a href="/flow-media-ai/marketing/landing-page/datenschutz.html#meta">Mehr dazu</a></p><div><button type="button" data-c="nein">Nein</button><button type="button" data-c="ja">Ja, okay</button></div>`;
+  const st = document.createElement("style");
+  st.textContent = `.fm-consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 14px;border:1px solid #ffffff30;border-radius:14px;background:#0B0B0Bf2;color:#fff;font:500 13px/1.4 Inter,system-ui,sans-serif;box-shadow:0 8px 30px #0008}
+.fm-consent p{margin:0;flex:1 1 220px}.fm-consent a{color:#bababe}.fm-consent div{display:flex;gap:8px}
+.fm-consent button{font:600 13px Inter,system-ui,sans-serif;padding:9px 14px;border-radius:999px;border:1px solid #ffffff55;background:transparent;color:#fff;cursor:pointer}
+.fm-consent button[data-c=ja]{background:#fff;color:#0B0B0B;border-color:#fff}`;
+  bar.className = "fm-consent";
+  bar.addEventListener("click", e => {
+    const b = e.target.closest("[data-c]"); if (!b) return;
+    try { localStorage.setItem(KEY, b.dataset.c) } catch {}
+    ph("meta_consent", { antwort: b.dataset.c });
+    bar.remove(); if (b.dataset.c === "ja") load();
+  });
+  document.head.appendChild(st); document.body.appendChild(bar);
+})();
