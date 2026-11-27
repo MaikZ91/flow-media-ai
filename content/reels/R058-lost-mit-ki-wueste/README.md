@@ -7,3 +7,6 @@ Gepostet 27.11.2026, 07:24 Uhr: https://www.instagram.com/reel/DgPBzYTpwSp/
 - Material: Wüsten-Szenen aus dem Reel vom 19.11. (KI-generiert, CapCut-Wasserzeichen weggeschnitten bzw. überdeckt), Foto `personal/arbeitsplatz/arbeitsplatz-buero-blazer.png`.
 - Musik: `frei/driving-ambition.mp3` ab 0:00, durchgehend (kein Abriss).
 - Bauen: `python3 build.py`
+
+## Variante R058-ki (27.11.)
+Szene 1 = Higgsfield-Clip (Seedance 2.5, 64 Credits): die Karte leuchtet auf, KI-Hologramme. Startbild aus dem Wüsten-Reel. Ton: Original-Wüstenton in Sek. 0–4, danach Musik. Noch nicht gepostet. Bauen: `python3 build_ki.py`
