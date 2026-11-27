@@ -1647,9 +1647,18 @@ function adsChart(daily) {
   const labels = daily.map((d, i) => { const dt = new Date(d[0] + "T12:00:00"); return i % 2 === 0 || i === n - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${dt.getDate()}.${dt.getMonth() + 1}.</text>` : "" }).join("");
   return `<div class="ads-leg"><span><i style="background:#1868db"></i>Ausgaben pro Tag (links, $)</span><span><i style="background:#e2a03f"></i>Link-Klicks pro Tag (rechts)</span></div><div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Werbeausgaben und Link-Klicks pro Tag">${grid}${bars}${line}${labels}</svg><div class="tip" hidden></div></div>`;
 }
+const adsSnap = { data: null, loading: false, error: "" };
+try { const c = JSON.parse(localStorage.getItem("flow-board-ads") || "null"); if (c && Array.isArray(c.ads)) adsSnap.data = c } catch {}
+async function loadAds() {
+  if (!WEB || adsSnap.loading) return;
+  adsSnap.loading = true; adsSnap.error = "";
+  try { const j = await api("ads"); if (j.status === "ok") { adsSnap.data = j; try { localStorage.setItem("flow-board-ads", JSON.stringify(j)) } catch {} } else if (!adsSnap.data) adsSnap.error = "Noch keine Werbedaten gespeichert." }
+  catch { if (!adsSnap.data) adsSnap.error = "Die Werbedaten konnten nicht geladen werden." }
+  adsSnap.loading = false; if (view === "ads" && !$("#layer").innerHTML) render();
+}
 function renderAds() {
-  const a = [...fin, ...crm].find(e => e.type === "ads" && Array.isArray(e.ads));
-  if (!a) return `<section class="panel stats"><h2 style="margin:0">Werbung</h2><p class="sub">Noch kein Schnappschuss. Sag Claude „Werbung aktualisieren“.</p></section>`;
+  const a = adsSnap.data;
+  if (!a) return `<section class="panel stats"><h2 style="margin:0">Werbung</h2><p class="sub">${adsSnap.loading || !adsSnap.error ? "Lade Werbedaten …" : esc(adsSnap.error)}</p></section>`;
   const usd = v => v == null || !isFinite(v) ? "–" : v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " $";
   const d7 = a.daily.slice(-7), sum = (arr, i) => arr.reduce((n, d) => n + (Number(d[i]) || 0), 0);
   const sp = sum(d7, 1), cl = sum(d7, 3), fo = sum(d7, 5), jo = sum(d7, 6), lp = sum(d7, 4);
@@ -1950,7 +1959,7 @@ document.addEventListener("click", e => {
   const bg = tgt.closest("[data-bg]"); if (bg) { if (!readOnly) saveMeta({ bg: bg.dataset.bg }); closeModal(); return }
   if (tgt.closest("[data-close-btn]") || tgt.matches("[data-close-modal]")) { closeModal(); return }
   if (tgt.closest("#layer")) return;
-  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); if (view === "crm" && !umf.loaded && !umf.loading) loadUmfrage(); return }
+  const v = tgt.closest("[data-view]"); if (v) { view = v.dataset.view; composerFor = null; try { localStorage.setItem("flow-board-view", view) } catch {} render(); if (view === "files") refreshUsage(); if (view === "stats" && !stats.data && !stats.loading) loadStats(); if (view === "ads") loadAds(); if (view === "crm" && !umf.loaded && !umf.loading) loadUmfrage(); return }
   if (tgt.closest("#btn-menu")) { openMenu(tgt.closest("#btn-menu")); return }
   if (tgt.closest("#btn-star")) { if (!readOnly) saveMeta({ starred: !meta.starred }); return }
   if (tgt.closest("#board-title") && !readOnly) {
@@ -2157,7 +2166,7 @@ function dropOn(z, id, clientY, opts = {}) {
 
 if (DEMO) $("#demo-pill").hidden = false;
 document.addEventListener("click", e => { if (e.target.id === "demo-reset") { seedDemo(); meta = { ...meta, name: "Beispiel-Board", bg: "flow" }; lsSave(); closeModal(); applyBackground(); render(); toast("Beispiel zurückgesetzt") } });
-try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin"].includes(v)) view = v } catch {}
+try { const v = localStorage.getItem("flow-board-view"); if (["board", "matrix", "cal", "files", "stats", "fin", "ads"].includes(v)) view = v } catch {}
 applyBackground(); render();
 
 function seedDemo() {
@@ -2270,7 +2279,7 @@ async function startBoard() {
     delete: async path => { await api("remove", { path }) },
     list: async () => { const a = files.filter(f => f.kind === "asset"); return { usage: { files: a.length, bytes: a.reduce((n, f) => n + (f.size || 0), 0), maxBytes: 1024 * 1048576, maxFiles: 10000 } } },
   };
-  render();
+  render(); if (view === "ads") loadAds();
   // live updates: other devices announce changes on a channel only key holders can name; polling as fallback
   rtChannel = sb.channel("fb-" + (await sha256hex(creds.key + "#rt")).slice(0, 32));
   rtChannel.on("broadcast", { event: "changed" }, () => scheduleReload()).subscribe();
