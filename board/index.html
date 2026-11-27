@@ -1667,7 +1667,7 @@ function renderAds() {
   const d7 = a.daily.slice(-7), sum = (arr, i) => arr.reduce((n, d) => n + (Number(d[i]) || 0), 0);
   const sp = sum(d7, 1), cl = sum(d7, 3), fo = sum(d7, 5), jo = sum(d7, 6), lp = sum(d7, 4);
   const act = a.ads.filter(x => x.status === "ACTIVE"), upd = new Date(a.updated);
-  const row = x => `<tr><td><span class="ads-st ${x.status === "ACTIVE" ? "" : "off"}">${x.status === "ACTIVE" ? "läuft" : "pausiert"}</span>${esc(x.name)}<span class="zg">${esc(x.ziel)} · ${esc(x.zg)}</span></td><td>${usd(x.spend)}</td><td>${fmtN(x.reach)}</td><td>${fmtN(x.res)}<span class="zg">${esc(x.resl)}</span></td><td>${usd(x.cpr)}</td><td>${Number(x.ctr).toLocaleString("de-DE")} %</td><td>${fmtN(x.follows)}</td><td>${x.follows ? usd(x.spend / x.follows) : "–"}</td></tr>`;
+  const row = x => `<tr><td><span class="ads-st ${x.status === "ACTIVE" ? "" : "off"}">${x.status === "ACTIVE" ? "läuft" : "pausiert"}</span>${esc(x.name)}<span class="zg">${esc(x.ziel)} · ${esc(x.zg)}</span></td><td>${usd(x.spend)}</td><td>${fmtN(x.reach)}</td><td>${fmtN(x.res)}<span class="zg">${esc(x.resl)}</span></td><td>${usd(x.cpr)}</td><td>${Number(x.ctr).toLocaleString("de-DE")} %</td><td>${fmtN(x.follows)}</td><td>${x.follows ? usd(x.spend / x.follows) : "–"}</td><td>${x.joins == null ? "–" : fmtN(x.joins)}</td><td>${x.joins ? usd(x.spend / x.joins) : "–"}</td></tr>`;
   return `<section class="panel stats">
     <div class="cal-head"><h2 style="margin:0">Werbung</h2><span class="sub" style="margin:0">Stand ${upd.toLocaleDateString("de-DE")}, ${upd.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })} Uhr · ${esc(a.account)}</span>
       <a class="mini" href="https://adsmanager.facebook.com/" target="_blank" rel="noopener">Werbeanzeigenmanager</a></div>
@@ -1691,10 +1691,10 @@ function renderAds() {
         <p class="sub" style="margin:6px 0 0">Wie viele wirklich beitreten, verrät WhatsApp keiner Schnittstelle. Trag ab und zu die Mitgliederzahl der Gruppe ein (WhatsApp → Gruppeninfo), dann siehst du hier den echten Zuwachs.</p></div>
       <div class="panel spanel wide"><div class="cal-head" style="margin:0"><h3 style="margin:0">${adsSnap.all ? "Alle Anzeigen (seit Start)" : "Laufende Anzeigen (seit Start)"}</h3>
         <span class="cal-mode" role="group" aria-label="Filter"><button type="button" data-ads-filter="active" aria-pressed="${!adsSnap.all}">Nur laufende</button><button type="button" data-ads-filter="all" aria-pressed="${!!adsSnap.all}">Alle (${a.ads.length})</button></span></div>
-        <div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th>CTR</th><th>Follower</th><th>pro Follower</th></tr></thead>
-        <tbody>${(() => { const list = [...a.ads].filter(x => adsSnap.all || x.status === "ACTIVE").sort((x, y) => (y.status === "ACTIVE") - (x.status === "ACTIVE") || y.spend - x.spend); return list.length ? list.map(row).join("") : `<tr><td colspan="8">Gerade läuft keine Anzeige.</td></tr>` })()}</tbody></table></div></div>
+        <div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th title="Klickrate auf die Anzeige">CTR</th><th>Follower</th><th>pro Follower</th><th title="Klicks auf „beitreten“ auf der Landingpage">WhatsApp-Klicks</th><th>pro WhatsApp-Klick</th></tr></thead>
+        <tbody>${(() => { const list = [...a.ads].filter(x => adsSnap.all || x.status === "ACTIVE").sort((x, y) => (y.status === "ACTIVE") - (x.status === "ACTIVE") || y.spend - x.spend); return list.length ? list.map(row).join("") : `<tr><td colspan="10">Gerade läuft keine Anzeige.</td></tr>` })()}</tbody></table></div></div>
     </div>
-    <p class="sub" style="margin:0">${esc(a.note || "")}</p></section>`;
+    <p class="sub" style="margin:0">${esc(a.note || "")} „–“ bei WhatsApp-Klicks: Die Anzeige führt nicht auf eine Seite oder ihr Link hatte noch keine Kennung.</p></section>`;
 }
 /* ---------- Kontakte (CRM): Leads aus Workshops, Community, Erstgesprächen + Antworten der Wunschkundenbefragung ---------- */
 let crm = [], crmCol = null;
