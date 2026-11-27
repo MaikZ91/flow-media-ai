@@ -11,10 +11,10 @@ WU = D / "../R041-wueste-ad/wueste_1080.mp4"
 KI = D / "ki_karte_higgsfield.mp4"
 FOTO = D / "../../personal/arbeitsplatz/arbeitsplatz-buero-blazer.png"
 MUSIK = D / "../../musik/frei/driving-ambition.mp3"
-STIMME = D / "pov_stimme.mp3"
+STIMME = D / "hook_stimme.mp3"  # ElevenLabs „Chloe“ über Higgsfield, Erzählerin (nicht Maik)
 
 TEXTS = [  # (Kicker, Headline, Untertitel, Position)
-    ("POV: Du gründest …", "Komplett <span>lost</span> mit KI.", "", "top"),
+    ("Für Gründer & Selbstständige", "Du gründest &amp; bist <span>lost</span> mit KI?", "", "top"),
     ("Bis du merkst:", "KI ist nur ein <span>Werkzeug.</span>", "", "top"),
     ("Hey, ich bin Maik 👋", "Fang mit <span>einer</span> Aufgabe an.", "Mit der, die dich jede Woche Zeit kostet.", "bottom"),
     ("Dein KI-Sparringspartner", "Wir lösen es <span>gemeinsam.</span>", "Folge mir für konkrete KI-Schritte.", "bottom"),
@@ -22,8 +22,8 @@ TEXTS = [  # (Kicker, Headline, Untertitel, Position)
 HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
 .sh{position:absolute;inset:0;background:__GRAD__}
-.c{position:absolute;left:70px;right:70px;__POS__}.k{font:700 50px Montserrat;letter-spacing:.02em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-h1{margin-top:14px;font:700 140px/.95 Oswald;text-transform:uppercase}h1 span{color:#2F5BFF}p{margin-top:28px;font:600 52px/1.3 Inter;color:rgba(255,255,255,.95)}
+.c{position:absolute;left:70px;right:70px;__POS__}.k{font:700 46px Montserrat;letter-spacing:.01em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+h1{margin-top:14px;font:700 __H1__px/.95 Oswald;text-transform:uppercase}h1 span{color:#2F5BFF}p{margin-top:28px;font:600 52px/1.3 Inter;color:rgba(255,255,255,.95)}
 .logo{position:absolute;left:70px;__LOGOPOS__;height:44px}
 </style></head><body><div class="sh"></div><img class="logo" src="logo_flow.png"><div class="c"><div class="k">__K__</div><h1>__H__</h1>__P__</div></body></html>"""
 GRAD_TOP = "linear-gradient(180deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.97) 5%,rgba(10,10,10,.6) 18%,rgba(10,10,10,0) 30%)"
@@ -40,7 +40,7 @@ def overlays():
             html = (HTML.replace("__GRAD__", GRAD_TOP if top else GRAD_BOT)
                     .replace("__POS__", "top:95px" if top else "bottom:300px")
                     .replace("__LOGOPOS__", "bottom:150px" if top else "top:110px")
-                    .replace("__K__", k).replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else ""))
+                    .replace("__H1__", "112" if i <= 1 else "140").replace("__K__", k).replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else ""))
             f = D / f"pov{i}.html"; f.write_text(html, encoding="utf-8")
             pg.goto(f.resolve().as_uri()); pg.wait_for_timeout(900)
             pg.screenshot(path=str(D / f"pov{i}.png"), omit_background=True); f.unlink()
@@ -59,7 +59,7 @@ def build():
         "[a1][a2][a3][a4]concat=n=4:v=1:a=0,fps=30,format=yuv420p[v];"
         # Wüstenton 0–3,5 s (leiser unter der Stimme), Stimme ab 0,1 s, Musik setzt beim Aufleuchten der Karte ein
         "[0:a]atrim=0.2:3.7,asetpts=PTS-STARTPTS,volume=0.5,afade=t=out:st=3.3:d=0.2[wa];"
-        "[8:a]adelay=100|100,volume=1.6[vo];"
+        "[8:a]adelay=150|150,volume=1.4[vo];"
         "[wa][vo]amix=inputs=2:duration=first:normalize=0[intro];"
         "[7:a]atrim=0:8.0,asetpts=PTS-STARTPTS,afade=t=in:d=0.08,afade=t=out:st=7.0:d=1.0[ma];"
         "[intro][ma]concat=n=2:v=0:a=1[a]"
