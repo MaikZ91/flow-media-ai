@@ -226,6 +226,20 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .kpi .kl { font-size: 12.5px; color: var(--muted); font-weight: 500 }
 .kpi b { font: 600 28px/1.15 var(--f-body); font-variant-numeric: tabular-nums }
 .kd { font-size: 12px; color: var(--faint) } .kd.up { color: #1f845a } .kd.down { color: var(--red) }
+.ads-tbl { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums }
+.ads-tbl th { text-align: right; font-weight: 600; color: var(--muted); font-size: 12px; padding: 6px 8px; border-bottom: 1px solid rgba(0,0,0,.12); white-space: nowrap }
+.ads-tbl td { text-align: right; padding: 7px 8px; border-bottom: 1px solid rgba(0,0,0,.07); white-space: nowrap; vertical-align: top }
+.ads-tbl th:first-child, .ads-tbl td:first-child { text-align: left; white-space: normal; min-width: 220px }
+.ads-tbl .zg { display: block; font-size: 11.5px; color: var(--faint) }
+.ads-st { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 99px; background: #e7f6ee; color: #1f845a; margin-right: 6px }
+.ads-st.off { background: rgba(0,0,0,.07); color: var(--muted) }
+.ads-scroll { overflow-x: auto }
+.ads-funnel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px }
+.ads-funnel div { border: 1px solid rgba(0,0,0,.08); border-radius: 8px; padding: 8px 10px }
+.ads-funnel b { display: block; font-size: 20px; font-variant-numeric: tabular-nums } .ads-funnel span { font-size: 12px; color: var(--muted) }
+.chart .m.sp { fill: #1868db } .chart .ln { fill: none; stroke: #e2a03f; stroke-width: 2 } .chart .dot { fill: #e2a03f; stroke: var(--card); stroke-width: 2 }
+.ads-leg { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted) } .ads-leg i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px }
+@media (max-width: 700px) { .ads-funnel { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
 .sgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
 .spanel { background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0 }
 .spanel.wide { grid-column: 1 / -1 }
@@ -489,6 +503,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0; 
   <button class="bbtn" data-view="cal" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="hide-sm">Kalender</span></button>
   <button class="bbtn" data-view="files" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="hide-sm">Dateien</span></button>
   <button class="bbtn" data-view="stats" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="hide-sm">Auswertung</span></button>
+  <button class="bbtn" data-view="ads" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 11v2a2 2 0 0 0 2 2h1l4 4V5L6 9H5a2 2 0 0 0-2 2zM14 8a5 5 0 0 1 0 8M17 5a9 9 0 0 1 0 14"/></svg><span class="hide-sm">Werbung</span></button>
   <button class="bbtn" data-view="crm" data-web-only hidden aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg><span class="hide-sm">Kontakte</span></button>
   <button class="bbtn" data-view="fin" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="hide-sm">Finanzen</span></button>
   </nav>
@@ -925,7 +940,7 @@ function render() {
   const same = main.dataset.shown === view;
   const scrolls = same ? [...main.querySelectorAll(KEEP_SCROLL)].map(c => c.scrollTop) : [];
   const fields = !same ? [] : [...main.querySelectorAll("form[data-fin-form] [name], form[data-inv-profile] [name]")].map(f => [fieldKey(f), f.type === "checkbox" ? f.checked : f.value]);
-  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "fin" ? renderFin() : view === "crm" && WEB && !DEMO ? renderCrm() : renderCal();
+  main.innerHTML = view === "board" ? renderBoard() : view === "matrix" ? renderMatrix() : view === "files" ? renderFiles() : view === "stats" ? renderStats() : view === "ads" ? renderAds() : view === "fin" ? renderFin() : view === "crm" && WEB && !DEMO ? renderCrm() : renderCal();
   main.dataset.shown = view;
   main.scrollLeft = sx;
   main.querySelectorAll(KEEP_SCROLL).forEach((c, i) => { if (scrolls[i]) c.scrollTop = scrolls[i] });
@@ -1620,6 +1635,46 @@ document.addEventListener("mouseover", e => {
 });
 document.addEventListener("mouseleave", e => { if (e.target.classList?.contains("chart")) e.target.querySelector(".tip").hidden = true }, true);
 
+/* ---------- Werbung: Meta-Ads-Schnappschuss (Zeile "ads-meta-maik", täglich von Claude aktualisiert) – lädt sofort mit dem Board ---------- */
+function adsChart(daily) {
+  const W = 1240, H = 230, padL = 44, padR = 36, padB = 24, padT = 10, n = daily.length || 1;
+  const maxS = Math.max(5, ...daily.map(d => d[1])), maxC = Math.max(4, ...daily.map(d => d[3]));
+  const bw = (W - padL - padR) / n, yS = v => padT + (H - padT - padB) * (1 - v / maxS), yC = v => padT + (H - padT - padB) * (1 - v / maxC);
+  const grid = [0, .25, .5, .75, 1].map(f => `<line x1="${padL}" x2="${W - padR}" y1="${yS(maxS * f)}" y2="${yS(maxS * f)}" class="gl"/><text x="${padL - 6}" y="${yS(maxS * f) + 4}" class="ax" text-anchor="end">${Math.round(maxS * f)} $</text><text x="${W - padR + 6}" y="${yC(maxC * f) + 4}" class="ax">${Math.round(maxC * f)}</text>`).join("");
+  const bars = daily.map((d, i) => { const dt = new Date(d[0] + "T12:00:00"), lab = `${dt.getDate()}.${dt.getMonth() + 1}.`;
+    return `<g class="bar" data-tip="${esc(`${DOW[(dt.getDay() + 6) % 7]} ${lab} · ${d[1].toLocaleString("de-DE", { minimumFractionDigits: 2 })} $ · ${fmtN(d[2])} Impressionen · ${fmtN(d[3])} Link-Klicks · ${fmtN(d[5])} Follower · ${fmtN(d[6] || 0)} WhatsApp-Klicks`)}"><rect class="hit" x="${padL + i * bw}" y="${padT}" width="${bw}" height="${H - padT - padB}"/><rect class="m sp" x="${padL + i * bw + 2}" y="${yS(d[1])}" width="${Math.max(bw - 4, 1)}" height="${yS(0) - yS(d[1])}" rx="4"/></g>` }).join("");
+  const line = `<polyline class="ln" points="${daily.map((d, i) => `${padL + i * bw + bw / 2},${yC(d[3])}`).join(" ")}"/>` + daily.map((d, i) => `<circle class="dot" cx="${padL + i * bw + bw / 2}" cy="${yC(d[3])}" r="4"/>`).join("");
+  const labels = daily.map((d, i) => { const dt = new Date(d[0] + "T12:00:00"); return i % 2 === 0 || i === n - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${dt.getDate()}.${dt.getMonth() + 1}.</text>` : "" }).join("");
+  return `<div class="ads-leg"><span><i style="background:#1868db"></i>Ausgaben pro Tag (links, $)</span><span><i style="background:#e2a03f"></i>Link-Klicks pro Tag (rechts)</span></div><div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Werbeausgaben und Link-Klicks pro Tag">${grid}${bars}${line}${labels}</svg><div class="tip" hidden></div></div>`;
+}
+function renderAds() {
+  const a = [...fin, ...crm].find(e => e.type === "ads" && Array.isArray(e.ads));
+  if (!a) return `<section class="panel stats"><h2 style="margin:0">Werbung</h2><p class="sub">Noch kein Schnappschuss. Sag Claude „Werbung aktualisieren“.</p></section>`;
+  const usd = v => v == null || !isFinite(v) ? "–" : v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " $";
+  const d7 = a.daily.slice(-7), sum = (arr, i) => arr.reduce((n, d) => n + (Number(d[i]) || 0), 0);
+  const sp = sum(d7, 1), cl = sum(d7, 3), fo = sum(d7, 5), jo = sum(d7, 6), lp = sum(d7, 4);
+  const act = a.ads.filter(x => x.status === "ACTIVE"), upd = new Date(a.updated);
+  const row = x => `<tr><td><span class="ads-st ${x.status === "ACTIVE" ? "" : "off"}">${x.status === "ACTIVE" ? "läuft" : "pausiert"}</span>${esc(x.name)}<span class="zg">${esc(x.ziel)} · ${esc(x.zg)}</span></td><td>${usd(x.spend)}</td><td>${fmtN(x.reach)}</td><td>${fmtN(x.res)}<span class="zg">${esc(x.resl)}</span></td><td>${usd(x.cpr)}</td><td>${Number(x.ctr).toLocaleString("de-DE")} %</td><td>${fmtN(x.follows)}</td><td>${x.follows ? usd(x.spend / x.follows) : "–"}</td></tr>`;
+  return `<section class="panel stats">
+    <div class="cal-head"><h2 style="margin:0">Werbung</h2><span class="sub" style="margin:0">Stand ${upd.toLocaleDateString("de-DE")}, ${upd.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })} Uhr · ${esc(a.account)}</span>
+      <a class="mini" href="https://adsmanager.facebook.com/" target="_blank" rel="noopener">Werbeanzeigenmanager</a></div>
+    <div class="kpis five">
+      <div class="kpi"><span class="kl">Ausgaben (7 Tage)</span><b>${usd(sp)}</b><span class="kd">seit Start ${usd(a.total.spend)}</span></div>
+      <div class="kpi"><span class="kl">Link-Klicks (7 Tage)</span><b>${fmtN(cl)}</b><span class="kd">${cl ? usd(sp / cl) + " pro Klick" : "–"}</span></div>
+      <div class="kpi"><span class="kl">Neue Follower (7 Tage)</span><b>${fmtN(fo)}</b><span class="kd">${fo ? usd(sp / fo) + " pro Follower" : "–"}</span></div>
+      <div class="kpi"><span class="kl">WhatsApp-Klicks (7 Tage)</span><b>${fmtN(jo)}</b><span class="kd">seit Start ${fmtN(a.total.joins)}${jo ? " · " + usd(sp / jo) + " pro Klick" : ""}</span></div>
+      <div class="kpi"><span class="kl">Laufende Anzeigen</span><b>${act.length}</b><span class="kd">${act.map(x => esc(x.name)).join(" · ") || "keine"}</span></div>
+    </div>
+    <div class="sgrid">
+      <div class="panel spanel wide"><h3>Ausgaben und Klicks pro Tag</h3>${adsChart(a.daily)}</div>
+      <div class="panel spanel wide"><h3>Vom Klick in die WhatsApp-Gruppe (letzte 7 Tage)</h3><div class="ads-funnel">
+        <div><b>${fmtN(sum(d7, 2))}</b><span>Impressionen</span></div><div><b>${fmtN(cl)}</b><span>Link-Klicks</span></div>
+        <div><b>${fmtN(lp)}</b><span>Seite geladen</span></div><div><b>${fmtN(jo)}</b><span>Klick auf „beitreten“${lp ? ` · ${(jo / lp * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div></div></div>
+      <div class="panel spanel wide"><h3>Alle Anzeigen (seit Start)</h3><div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th>CTR</th><th>Follower</th><th>pro Follower</th></tr></thead>
+        <tbody>${[...a.ads].sort((x, y) => (y.status === "ACTIVE") - (x.status === "ACTIVE") || y.spend - x.spend).map(row).join("")}</tbody></table></div></div>
+    </div>
+    <p class="sub" style="margin:0">${esc(a.note || "")}</p></section>`;
+}
 /* ---------- Kontakte (CRM): Leads aus Workshops, Community, Erstgesprächen + Antworten der Wunschkundenbefragung ---------- */
 let crm = [], crmCol = null;
 const CRM_STAGES = [["lead", "Lead"], ["gespraech", "Im Gespräch"], ["test", "Testkunde"], ["kunde", "Kunde"], ["ruhend", "Ruhend"]];
