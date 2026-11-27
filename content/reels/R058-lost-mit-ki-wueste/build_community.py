@@ -16,8 +16,7 @@ STIMME = D / "hook_stimme.mp3"  # ElevenLabs „Chloe“ über Higgsfield, Erzä
 TEXTS = [  # (Kicker, Headline, Untertitel, Position)
     ("Für Gründer & Selbstständige", "Du gründest &amp; bist <span>lost</span> mit KI?", "", "top"),
     ("Bis du merkst:", "KI ist nur ein <span>Werkzeug.</span>", "", "top"),
-    ("Hey, ich bin Maik 👋", "Fang mit <span>einer</span> Aufgabe an.", "Mit der, die dich jede Woche Zeit kostet.", "bottom"),
-    ("Flow Business Community", "Lös es nicht <span>allein.</span>", "Kostenlos in die WhatsApp-Community für Gründer &amp; Selbstständige. Link unten ↓", "bottom"),
+    ("Hey, ich bin Maik 👋", "Komm in die <span>Community.</span>", "Kostenlos in WhatsApp – mit Gründern &amp; Selbstständigen, die gerade an derselben Stelle stehen. Link unten ↓", "bottom"),
 ]
 HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
@@ -40,7 +39,7 @@ def overlays():
             html = (HTML.replace("__GRAD__", GRAD_TOP if top else GRAD_BOT)
                     .replace("__POS__", "top:95px" if top else "bottom:300px")
                     .replace("__LOGOPOS__", "bottom:150px" if top else "top:110px")
-                    .replace("__H1__", "112" if i <= 1 else ("130" if i == 3 else "140")).replace("__K__", k).replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else ""))
+                    .replace("__H1__", "112" if i <= 1 else "128").replace("__K__", k).replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else ""))
             f = D / f"pov{i}.html"; f.write_text(html, encoding="utf-8")
             pg.goto(f.resolve().as_uri()); pg.wait_for_timeout(900)
             pg.screenshot(path=str(D / f"pov{i}.png"), omit_background=True); f.unlink()
@@ -52,25 +51,22 @@ def build():
         "[0:v]trim=0.2:3.7,setpts=PTS-STARTPTS,fps=30,format=yuv420p[s1];"
         "[1:v]trim=2.6:3.6,setpts=PTS-STARTPTS,fps=30,format=yuv420p[s2];"
         "[2:v]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,"
-        "zoompan=z='1+0.0008*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=180:s=1080x1920:fps=30,format=yuv420p,split[f1][f2];"
-        "[f1]trim=0:3.2,setpts=PTS-STARTPTS[p1];[f2]trim=3.2:6.0,setpts=PTS-STARTPTS[p2];"
-        "[s1][3:v]overlay=0:0:shortest=1[a1];[s2][4:v]overlay=0:0:shortest=1[a2];"
-        "[p1][5:v]overlay=0:0:shortest=1[a3];[p2][6:v]overlay=0:0:shortest=1[a4];"
-        "[a1][a2][a3][a4]concat=n=4:v=1:a=0,fps=30,format=yuv420p[v];"
-        # Wüstenton 0–3,5 s (leiser unter der Stimme), Stimme ab 0,1 s, Musik setzt beim Aufleuchten der Karte ein
+        "zoompan=z='1+0.0008*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=135:s=1080x1920:fps=30,format=yuv420p,trim=0:4.5,setpts=PTS-STARTPTS[p1];"
+        "[s1][3:v]overlay=0:0:shortest=1[a1];[s2][4:v]overlay=0:0:shortest=1[a2];[p1][5:v]overlay=0:0:shortest=1[a3];"
+        "[a1][a2][a3]concat=n=3:v=1:a=0,fps=30,format=yuv420p[v];"
         "[0:a]atrim=0.2:3.7,asetpts=PTS-STARTPTS,volume=0.5,afade=t=out:st=3.3:d=0.2[wa];"
-        "[8:a]adelay=150|150,volume=1.4[vo];"
+        "[7:a]adelay=150|150,volume=1.4[vo];"
         "[wa][vo]amix=inputs=2:duration=first:normalize=0[intro];"
-        "[7:a]atrim=0:7.0,asetpts=PTS-STARTPTS,afade=t=in:d=0.08,afade=t=out:st=6.0:d=1.0[ma];"
+        "[6:a]atrim=0:5.5,asetpts=PTS-STARTPTS,afade=t=in:d=0.08,afade=t=out:st=4.6:d=0.9[ma];"
         "[intro][ma]concat=n=2:v=0:a=1[a]"
     )
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(WU), "-i", str(KI), "-loop", "1", "-i", str(FOTO),
-                    *sum([["-loop", "1", "-i", str(D / f"pov{i}.png")] for i in range(4)], []),
+                    *sum([["-loop", "1", "-i", str(D / f"pov{i}.png")] for i in range(3)], []),
                     "-i", str(MUSIK), "-i", str(STIMME), "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
                     "-movflags", "+faststart", str(D / "R058-community.mp4")], check=True)
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.8", "-i", str(D / "R058-community.mp4"), "-frames:v", "1", "-q:v", "3", str(D / "cover-community.jpg")], check=True)
-    for i in range(4): (D / f"pov{i}.png").unlink()
+    for i in range(3): (D / f"pov{i}.png").unlink()
 
 
 if __name__ == "__main__":
