@@ -234,7 +234,7 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .ads-st { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 99px; background: #e7f6ee; color: #1f845a; margin-right: 6px }
 .ads-st.off { background: rgba(0,0,0,.07); color: var(--muted) }
 .ads-scroll { overflow-x: auto }
-.ads-funnel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px }
+.ads-funnel { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px }
 .ads-funnel div { border: 1px solid rgba(0,0,0,.08); border-radius: 8px; padding: 8px 10px }
 .ads-funnel b { display: block; font-size: 20px; font-variant-numeric: tabular-nums } .ads-funnel span { font-size: 12px; color: var(--muted) }
 .chart .m.sp { fill: #1868db } .chart .ln { fill: none; stroke: #e2a03f; stroke-width: 2 } .chart .dot { fill: #e2a03f; stroke: var(--card); stroke-width: 2 }
@@ -1649,6 +1649,8 @@ function adsChart(daily) {
 }
 const adsSnap = { data: null, loading: false, error: "", all: false };
 try { adsSnap.all = localStorage.getItem("flow-board-ads-all") === "1" } catch {}
+document.addEventListener("submit", e => { const f = e.target.closest?.("[data-wa-form]"); if (!f) return; e.preventDefault(); const n = Number(f.n.value); if (!Number.isFinite(n) || n < 0 || f.n.value === "") return;
+  const d = ymd(new Date()); saveMeta({ waMembers: [...(meta.waMembers || []).filter(x => x.d !== d), { d, n }].slice(-120) }); toast("Mitgliederzahl gespeichert"); render() });
 document.addEventListener("click", e => { const b = e.target.closest?.("[data-ads-filter]"); if (!b) return; adsSnap.all = b.dataset.adsFilter === "all"; try { localStorage.setItem("flow-board-ads-all", adsSnap.all ? "1" : "0") } catch {} render() });
 try { const c = JSON.parse(localStorage.getItem("flow-board-ads") || "null"); if (c && Array.isArray(c.ads)) adsSnap.data = c } catch {}
 async function loadAds() {
@@ -1680,7 +1682,13 @@ function renderAds() {
       <div class="panel spanel wide"><h3>Ausgaben und Klicks pro Tag</h3>${adsChart(a.daily)}</div>
       <div class="panel spanel wide"><h3>Vom Klick in die WhatsApp-Gruppe (letzte 7 Tage)</h3><div class="ads-funnel">
         <div><b>${fmtN(sum(d7, 2))}</b><span>Impressionen</span></div><div><b>${fmtN(cl)}</b><span>Link-Klicks</span></div>
-        <div><b>${fmtN(lp)}</b><span>Seite geladen</span></div><div><b>${fmtN(jo)}</b><span>Klick auf „beitreten“${lp ? ` · ${(jo / lp * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div></div></div>
+        <div><b>${fmtN(lp)}</b><span>Seite geladen</span></div><div><b>${fmtN(jo)}</b><span>Klick auf „beitreten“${lp ? ` · ${(jo / lp * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div>
+        <div>${(() => { const w = (meta.waMembers || []).slice().sort((x, y) => x.d.localeCompare(y.d)); const last = w[w.length - 1];
+          const ref = new Date(); ref.setDate(ref.getDate() - 7); const base = [...w].reverse().find(x => x.d <= ymd(ref)) || w[0];
+          const diff = last && base && base !== last ? last.n - base.n : null;
+          return `<b>${last ? fmtN(last.n) : "–"}</b><span>Mitglieder in der Gruppe${diff != null ? ` · ${diff >= 0 ? "+" : ""}${diff} seit ${base.d.slice(8, 10)}.${base.d.slice(5, 7)}.` : ""}</span>
+          <form data-wa-form style="display:flex;gap:6px;margin-top:6px"><input name="n" type="number" min="0" inputmode="numeric" placeholder="heute zählen" style="width:100%;min-width:0" aria-label="Mitglieder heute"><button class="mini" type="submit">Speichern</button></form>` })()}</div></div>
+        <p class="sub" style="margin:6px 0 0">Wie viele wirklich beitreten, verrät WhatsApp keiner Schnittstelle. Trag ab und zu die Mitgliederzahl der Gruppe ein (WhatsApp → Gruppeninfo), dann siehst du hier den echten Zuwachs.</p></div>
       <div class="panel spanel wide"><div class="cal-head" style="margin:0"><h3 style="margin:0">${adsSnap.all ? "Alle Anzeigen (seit Start)" : "Laufende Anzeigen (seit Start)"}</h3>
         <span class="cal-mode" role="group" aria-label="Filter"><button type="button" data-ads-filter="active" aria-pressed="${!adsSnap.all}">Nur laufende</button><button type="button" data-ads-filter="all" aria-pressed="${!!adsSnap.all}">Alle (${a.ads.length})</button></span></div>
         <div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th>CTR</th><th>Follower</th><th>pro Follower</th></tr></thead>
