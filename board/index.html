@@ -1647,7 +1647,9 @@ function adsChart(daily) {
   const labels = daily.map((d, i) => { const dt = new Date(d[0] + "T12:00:00"); return i % 2 === 0 || i === n - 1 ? `<text x="${padL + i * bw + bw / 2}" y="${H - 6}" class="ax" text-anchor="middle">${dt.getDate()}.${dt.getMonth() + 1}.</text>` : "" }).join("");
   return `<div class="ads-leg"><span><i style="background:#1868db"></i>Ausgaben pro Tag (links, $)</span><span><i style="background:#e2a03f"></i>Link-Klicks pro Tag (rechts)</span></div><div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Werbeausgaben und Link-Klicks pro Tag">${grid}${bars}${line}${labels}</svg><div class="tip" hidden></div></div>`;
 }
-const adsSnap = { data: null, loading: false, error: "" };
+const adsSnap = { data: null, loading: false, error: "", all: false };
+try { adsSnap.all = localStorage.getItem("flow-board-ads-all") === "1" } catch {}
+document.addEventListener("click", e => { const b = e.target.closest?.("[data-ads-filter]"); if (!b) return; adsSnap.all = b.dataset.adsFilter === "all"; try { localStorage.setItem("flow-board-ads-all", adsSnap.all ? "1" : "0") } catch {} render() });
 try { const c = JSON.parse(localStorage.getItem("flow-board-ads") || "null"); if (c && Array.isArray(c.ads)) adsSnap.data = c } catch {}
 async function loadAds() {
   if (!WEB || adsSnap.loading) return;
@@ -1679,8 +1681,10 @@ function renderAds() {
       <div class="panel spanel wide"><h3>Vom Klick in die WhatsApp-Gruppe (letzte 7 Tage)</h3><div class="ads-funnel">
         <div><b>${fmtN(sum(d7, 2))}</b><span>Impressionen</span></div><div><b>${fmtN(cl)}</b><span>Link-Klicks</span></div>
         <div><b>${fmtN(lp)}</b><span>Seite geladen</span></div><div><b>${fmtN(jo)}</b><span>Klick auf „beitreten“${lp ? ` · ${(jo / lp * 100).toLocaleString("de-DE", { maximumFractionDigits: 1 })} %` : ""}</span></div></div></div>
-      <div class="panel spanel wide"><h3>Alle Anzeigen (seit Start)</h3><div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th>CTR</th><th>Follower</th><th>pro Follower</th></tr></thead>
-        <tbody>${[...a.ads].sort((x, y) => (y.status === "ACTIVE") - (x.status === "ACTIVE") || y.spend - x.spend).map(row).join("")}</tbody></table></div></div>
+      <div class="panel spanel wide"><div class="cal-head" style="margin:0"><h3 style="margin:0">${adsSnap.all ? "Alle Anzeigen (seit Start)" : "Laufende Anzeigen (seit Start)"}</h3>
+        <span class="cal-mode" role="group" aria-label="Filter"><button type="button" data-ads-filter="active" aria-pressed="${!adsSnap.all}">Nur laufende</button><button type="button" data-ads-filter="all" aria-pressed="${!!adsSnap.all}">Alle (${a.ads.length})</button></span></div>
+        <div class="ads-scroll"><table class="ads-tbl"><thead><tr><th>Anzeige</th><th>Ausgaben</th><th>Reichweite</th><th>Ergebnis</th><th>pro Ergebnis</th><th>CTR</th><th>Follower</th><th>pro Follower</th></tr></thead>
+        <tbody>${(() => { const list = [...a.ads].filter(x => adsSnap.all || x.status === "ACTIVE").sort((x, y) => (y.status === "ACTIVE") - (x.status === "ACTIVE") || y.spend - x.spend); return list.length ? list.map(row).join("") : `<tr><td colspan="8">Gerade läuft keine Anzeige.</td></tr>` })()}</tbody></table></div></div>
     </div>
     <p class="sub" style="margin:0">${esc(a.note || "")}</p></section>`;
 }
