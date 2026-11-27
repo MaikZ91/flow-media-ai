@@ -23,7 +23,7 @@ HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://f
 h1{margin-top:18px;font:700 150px/.95 Oswald;text-transform:uppercase}h1 span{color:#2F5BFF}p{margin-top:28px;font:500 46px/1.3 Inter;color:rgba(255,255,255,.92)}
 .logo{position:absolute;left:70px;__LOGOPOS__;height:44px}
 </style></head><body><div class="sh"></div><img class="logo" src="logo_flow.png"><div class="c"><div class="k">__K__</div><h1>__H__</h1>__P__</div></body></html>"""
-GRAD_TOP = "linear-gradient(180deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.75) 30%,rgba(10,10,10,0) 52%)"
+GRAD_TOP = "linear-gradient(180deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.97) 5%,rgba(10,10,10,.6) 16%,rgba(10,10,10,0) 26%)"
 GRAD_BOT = "linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,0) 25%,rgba(10,10,10,0) 45%,rgba(10,10,10,.85) 68%,#0A0A0A 100%)"
 
 
@@ -35,7 +35,7 @@ def overlays():
         for i, (k, h, p, pos) in enumerate(TEXTS):
             top = pos == "top"
             html = (HTML.replace("__GRAD__", GRAD_TOP if top else GRAD_BOT)
-                    .replace("__POS__", "top:150px" if top else "bottom:300px")
+                    .replace("__POS__", "top:95px" if top else "bottom:300px")
                     .replace("__LOGOPOS__", "bottom:150px" if top else "top:110px")
                     .replace("__K__", k).replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else ""))
             f = D / f"ov{i}.html"; f.write_text(html, encoding="utf-8")
