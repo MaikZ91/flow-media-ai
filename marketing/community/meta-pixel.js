@@ -24,11 +24,11 @@
 
   const bar = document.createElement("div");
   bar.setAttribute("role", "dialog"); bar.setAttribute("aria-label", "Einwilligung Meta-Messung");
-  bar.innerHTML = `<p>Darf Meta messen, ob meine Anzeige dich hierher gebracht hat? Dafür setzt Meta ein Cookie. <a href="/flow-media-ai/marketing/landing-page/datenschutz.html#meta">Mehr dazu</a></p><div><button type="button" data-c="nein">Nein</button><button type="button" data-c="ja">Ja, okay</button></div>`;
+  bar.innerHTML = `<p>Darf Meta messen, ob meine Anzeige dich hergebracht hat? (Cookie) <a href="/flow-media-ai/marketing/landing-page/datenschutz.html#meta">Mehr dazu</a></p><div><button type="button" data-c="nein">Nein</button><button type="button" data-c="ja">Ja, okay</button></div>`;
   const st = document.createElement("style");
-  st.textContent = `.fm-consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 14px;border:1px solid #ffffff30;border-radius:14px;background:#0B0B0Bf2;color:#fff;font:500 13px/1.4 Inter,system-ui,sans-serif;box-shadow:0 8px 30px #0008}
-.fm-consent p{margin:0;flex:1 1 220px}.fm-consent a{color:#bababe}.fm-consent div{display:flex;gap:8px}
-.fm-consent button{font:600 13px Inter,system-ui,sans-serif;padding:9px 14px;border-radius:999px;border:1px solid #ffffff55;background:transparent;color:#fff;cursor:pointer}
+  st.textContent = `.fm-consent{position:fixed;left:8px;right:8px;top:8px;z-index:9999;display:flex;gap:8px 10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 10px;border:1px solid #ffffff30;border-radius:14px;background:#0B0B0Bf2;color:#fff;font:500 12px/1.35 Inter,system-ui,sans-serif;box-shadow:0 8px 30px #0008}
+.fm-consent p{margin:0;flex:1 1 200px}.fm-consent a{color:#bababe}.fm-consent div{display:flex;gap:8px}
+.fm-consent button{font:600 13px Inter,system-ui,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid #ffffff55;background:transparent;color:#fff;cursor:pointer}
 .fm-consent button[data-c=ja]{background:#fff;color:#0B0B0B;border-color:#fff}`;
   bar.className = "fm-consent";
   bar.addEventListener("click", e => {
