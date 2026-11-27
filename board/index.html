@@ -210,10 +210,21 @@ span.enl { display: inline-block; color: #fff; border-radius: 4px; padding: 0 5p
 .igl .ok { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); background: transparent; cursor: pointer; font: inherit; font-size: 15px; color: inherit }
 .igl .ok.on { background: #2E8B57; border-color: #2E8B57; color: #fff }
 .crm-act { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 4px 0 }
+.igf { margin: 0 0 22px; border: 1px solid rgba(225,48,108,.45); border-radius: 16px; padding: 18px; display: grid; gap: 12px; background: linear-gradient(135deg, rgba(131,58,180,.08), rgba(253,29,29,.05) 55%, rgba(252,176,69,.07)) }
+.igf .top { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
+.igf .top h3 { margin: 0; font-size: 15px; flex: 1 }
+.igf .cnt { font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 999px; background: rgba(225,48,108,.12); color: #c1356b }
+.igf .cnt.full { background: rgba(46,139,87,.14); color: #2E8B57 }
+.igf .bar { height: 6px; border-radius: 3px; background: rgba(0,0,0,.08); overflow: hidden }
+.igf .bar i { display: block; height: 100%; background: linear-gradient(90deg, #833ab4, #e1306c, #fcb045) }
+.igf .lead b { font-size: 18px } .igf .lead a { color: inherit } .igf .lead span { display: block; opacity: .7; font-size: 13.5px; margin-top: 2px }
+.igf textarea { width: 100%; min-height: 230px; font: inherit; font-size: 14px; line-height: 1.45; padding: 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,.18); background: var(--card, #fff); color: inherit; resize: vertical }
+.igf .row { display: flex; gap: 8px; flex-wrap: wrap }
+.igf .hint { font-size: 12.5px; opacity: .65; margin: 0 }
 .crm-ig { grid-column: 1 / -1; display: grid; gap: 10px; padding: 14px; border-radius: 14px; background: linear-gradient(135deg, rgba(131,58,180,.12), rgba(253,29,29,.08) 55%, rgba(252,176,69,.1)); border: 1px solid rgba(225,48,108,.35) }
 .crm-ig .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center }
-.crm-ig .igbtn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 999px; border: 0; cursor: pointer; font: inherit; font-weight: 600; color: #fff; background: linear-gradient(45deg, #833ab4, #e1306c 55%, #fcb045); text-decoration: none }
-.crm-ig .igbtn.ghost { background: transparent; color: inherit; border: 1px solid currentColor; font-weight: 500 }
+.crm-ig .igbtn, .igf .igbtn, .igl .igbtn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 999px; border: 0; cursor: pointer; font: inherit; font-weight: 600; color: #fff; background: linear-gradient(45deg, #833ab4, #e1306c 55%, #fcb045); text-decoration: none }
+.crm-ig .igbtn.ghost, .igf .igbtn.ghost { background: transparent; color: inherit; border: 1px solid currentColor; font-weight: 500 }
 .crm-ig .h { font-weight: 600 }
 .crm-ig pre { margin: 0; white-space: pre-wrap; font: inherit; font-size: 13px; line-height: 1.45; max-height: 170px; overflow: auto; padding: 10px 12px; border-radius: 10px; background: rgba(0,0,0,.06) }
 .crm-src i.ig { background: linear-gradient(45deg, #833ab4, #e1306c, #fcb045); color: #fff }
@@ -1762,11 +1773,40 @@ let igJump = false;
 function markSent(c) { const day = new Date().toLocaleDateString("de-DE"); saveCrm({ ...c, dmAm: day, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." }) }
 // Back from Instagram: bring the next open lead into view
 document.addEventListener("visibilitychange", () => { if (!document.hidden && igJump && view === "crm") setTimeout(() => { const n = document.getElementById("ig-next"); if (n) n.scrollIntoView({ behavior: "smooth", block: "center" }); igJump = false }, 400) });
+// Work mode "Leads abarbeiten": one lead at a time, Maik sends every DM himself, daily cap 30
+const IG_CAP = 30, igF = { on: false, skip: new Set(), id: null };
+const todayDe = () => new Date().toLocaleDateString("de-DE");
+const igSentToday = () => crm.filter(c => c.dmAm === todayDe()).length;
+function igFocusNext() { return crm.filter(c => igHandle(c) && igDm(c) && (c.stage || "lead") === "lead" && !c.dmAm && !igF.skip.has(c.id)).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))[0] }
+function igFocus() {
+  const n = igSentToday(), pct = Math.min(100, n / IG_CAP * 100);
+  const head = `<div class="top"><h3>Leads abarbeiten</h3><span class="cnt ${n >= IG_CAP ? "full" : ""}">heute ${n}/${IG_CAP}</span><button type="button" class="mini" data-igf-close>Beenden</button></div><div class="bar"><i style="width:${pct}%"></i></div>`;
+  if (n >= IG_CAP) return `<div class="igf">${head}<p style="margin:0"><b>30 für heute geschafft.</b> Morgen weiter – so bleibt dein Konto sicher.</p></div>`;
+  const c = crm.find(x => x.id === igF.id && !x.dmAm) || igFocusNext();
+  if (!c) return `<div class="igf">${head}<p style="margin:0">Keine offenen Instagram-Leads mehr.</p></div>`;
+  igF.id = c.id; const h = igHandle(c);
+  return `<div class="igf">${head}
+    <div class="lead"><b><a href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener">${esc(c.name)}</a></b><span>@${esc(h)} · ${esc(c.kurz || "")}</span></div>
+    <textarea id="igf-text" aria-label="Nachricht">${esc(igDm(c))}</textarea>
+    <div class="row"><button type="button" class="igbtn" data-igf-open>1 · Kopieren &amp; Chat öffnen</button><button type="button" class="igbtn ghost" data-igf-done>2 · Gesendet → nächster</button><button type="button" class="igbtn ghost" data-igf-skip>Überspringen</button></div>
+    <p class="hint">Profil kurz ansehen, Lob im Text anpassen, im Chat einfügen und selbst auf Senden tippen. Erst dann „Gesendet“.</p></div>`;
+}
+document.addEventListener("click", e => {
+  if (view !== "crm") return; const t = e.target;
+  if (t.closest("[data-igf-start]")) { igF.on = true; igF.id = null; render(); return }
+  if (t.closest("[data-igf-close]")) { igF.on = false; render(); return }
+  const c = crm.find(x => x.id === igF.id); if (!c) return;
+  if (t.closest("[data-igf-open]")) { const ok = copyText($("#igf-text")?.value || igDm(c)); window.open("https://ig.me/m/" + encodeURIComponent(igHandle(c)), "_blank", "noopener"); toast(ok ? "Kopiert – im Chat einfügen und senden" : "Kopieren ging nicht – Text bitte markieren"); return }
+  if (t.closest("[data-igf-done]")) { const txt = $("#igf-text")?.value; const day = todayDe();
+    saveCrm({ ...c, dmAm: day, next: "Antwort abwarten (DM am " + day + " geschickt)", notes: (c.notes || "") + "\n\nDM per Instagram geschickt am " + day + "." + (txt && txt.trim() !== igDm(c) ? "\nGesendeter Text:\n" + txt.trim() : "") });
+    igF.id = null; return }
+  if (t.closest("[data-igf-skip]")) { igF.skip.add(c.id); igF.id = null; render(); return }
+});
 function igList() {
   const L = crm.filter(c => igHandle(c) && igDm(c) && (c.stage || "lead") === "lead").sort((a, b) => (a.dmAm ? 1 : 0) - (b.dmAm ? 1 : 0) || (b.createdAt || 0) - (a.createdAt || 0));
   if (!L.length) return "";
   const offen = L.filter(c => !c.dmAm).length, nextId = (L.find(c => !c.dmAm) || {}).id;
-  return `<div class="igl"><h3>Instagram-Leads <span>${offen} offen · ${L.length - offen} geschickt</span></h3><ul>${L.map(c => { const h = igHandle(c);
+  return `<div class="igl"><h3>Instagram-Leads <span>${offen} offen · ${L.length - offen} geschickt · heute ${igSentToday()}/${IG_CAP}</span>${readOnly || !offen ? "" : `<button type="button" class="igbtn" style="margin-left:auto" data-igf-start>▶ Leads abarbeiten</button>`}</h3><ul>${L.map(c => { const h = igHandle(c);
     return `<li class="${c.dmAm ? "done" : ""}${c.id === nextId ? " next" : ""}" ${c.id === nextId ? 'id="ig-next"' : ""}>${c.id === nextId ? '<span class="nx">Als Nächstes</span>' : ""}<span class="who"><a href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener">${esc(c.name)}</a></span><span class="st ${c.dmAm ? "s" : ""}">${c.dmAm ? "geschickt " + esc(String(c.dmAm).slice(0, 6)) : "offen"}</span><button type="button" class="go" data-crm-dm="${c.id}">DM</button>${readOnly ? "" : `<button type="button" class="ok ${c.dmAm ? "on" : ""}" data-crm-sent="${c.id}" title="Als gesendet markieren">✓</button>`}</li>` }).join("")}</ul></div>`;
 }
 function renderCrm() {
@@ -1781,7 +1821,7 @@ function renderCrm() {
   const umfBody = !WEB ? `<div class="note">Die Umfrage-Antworten gibt es in der Web-Version deines Boards.</div>` : umf.error ? `<div class="note">${esc(umf.error)} <button type="button" class="mini" data-umf-reload>Erneut laden</button></div>` : umf.loading && !umf.loaded ? `<p class="sub">Lade Antworten …</p>` : ans || `<p class="sub">Noch keine Antworten.</p>`;
   return `<section class="panel stats crm">
     <div class="cal-head"><h2 style="margin:0">Kontakte</h2><span class="sub">${crm.length} Kontakte · ${umf.rows.length} Umfrage-Antworten</span>${readOnly ? "" : `<button type="button" class="mini" data-crm-new>+ Kontakt</button>`}<a class="mini" href="https://maikz91.github.io/flow-media-ai/flow-dna/umfrage/" target="_blank" rel="noopener">Umfrage öffnen</a></div>
-    ${igList()}
+    ${igF.on && !readOnly ? igFocus() : igList()}
     <div class="crm-cols">${cols}</div>
     ${crmUi.open && crm.find(c => c.id === crmUi.open) ? `<div class="crm-edit">${crmCard(crm.find(c => c.id === crmUi.open), true)}</div>` : ""}
     <div class="cal-head" style="margin-top:22px"><h2 style="margin:0">Wunschkundenbefragung</h2><button type="button" class="mini" data-umf-reload>Aktualisieren</button></div>
