@@ -23,7 +23,7 @@ HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://f
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
 .sh{position:absolute;inset:0;background:__GRAD__}
 .c{position:absolute;left:70px;right:70px;__POS__}.k{font:700 46px Montserrat;letter-spacing:.01em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-h1{margin-top:14px;font:700 __H1__px/.95 Oswald;text-transform:uppercase}h1 span{color:#2F5BFF}p{margin-top:28px;font:600 52px/1.3 Inter;color:rgba(255,255,255,.95)}
+h1{margin-top:14px;font:700 __H1__px/1.18 Oswald;text-transform:uppercase}h1 span{color:#fff;background:#2F5BFF;padding:0 .12em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}p{margin-top:28px;font:600 52px/1.3 Inter;color:rgba(255,255,255,.95)}
 .logo{position:absolute;left:70px;__LOGOPOS__;height:44px}
 </style></head><body><div class="sh"></div><img class="logo" src="logo_flow.png"><div class="c"><div class="k">__K__</div><h1>__H__</h1>__P__</div></body></html>"""
 GRAD_TOP = "linear-gradient(180deg,rgba(10,10,10,1) 0%,rgba(10,10,10,.97) 5%,rgba(10,10,10,.6) 18%,rgba(10,10,10,0) 30%)"
