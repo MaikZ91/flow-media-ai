@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-26T16:59+00:00",
+ "stand": "2026-11-27T01:46+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,54 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "SAP: KI zuerst, 10.000 Mitarbeiter weniger",
+   "s": "Alle SAP-Abteilungen müssen melden, welche Stellen gestrichen werden können, berichtet Bloomberg. KI soll mindestens 10.000 überflüssig machen.",
+   "q": "heise",
+   "l": "https://www.heise.de/news/SAP-AI-First-10-000-Mitarbeiter-weniger-11539781.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "d": "2026-11-26T20:05:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.1
+  },
+  {
+   "t": "Nicht der Riemann-Beweis ist entscheidend, sondern dass ein KI-System existiert, das ihn liefern kann",
+   "s": "Scott Aaronson, Komplexitätstheoretiker und Ex-OpenAI-Mitarbeiter, sieht in den jüngsten KI-Mathematik-Durchbrüchen weit mehr als akademische Erfolge: von wirtschaftlichen Umwälzungen bis zu Risiken für die Menschheit. …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/nicht-der-riemann-beweis-ist-entscheidend-sondern-dass-ein-ki-system-existiert-das-ihn-liefern-kann/",
+   "d": "2026-11-26T19:11:46+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 12.9
+  },
+  {
+   "t": "„Glosslighting“ bei KI: Warum wir von „Halluzination“ sprechen – und nicht von Fehlern",
+   "s": "Wenn eine Künstliche Intelligenz Unwahrheiten behauptet, spricht man im Tech-Jargon nicht von Fehlern – sondern verharmlosend von „Halluzination“. Eine Studie hat die von der KI-Branche etablierten Begriffe untersucht …",
+   "q": "t3n",
+   "l": "https://t3n.de/news/glosslighting-ki-halluzination-fehlern-1775598",
+   "d": "2026-11-26T18:04:07+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.7
+  },
+  {
+   "t": "OpenAI hat sich verrechnet: GPT-6.2-Nutzer erreichen ihre Limits jetzt 40 Prozent schneller",
+   "s": "OpenAI hat einen Abrechnungsfehler bei GPT-6.2 eingeräumt: Astra- und Sol-Nutzer erreichen ihre Limits nun 40 bzw. 25 Prozent schneller als in der Vorwoche. Als Ausgleich gibt es einen Extra-Reset und für Business-User …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/openai-hat-sich-verrechnet-gpt-6-2-nutzer-erreichen-ihre-limits-jetzt-40-prozent-schneller/",
+   "d": "2026-11-26T17:20:56+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 2,
+   "r": 22.6
+  },
   {
    "t": "Chinas KI-Labore unter Druck: US-Maßnahmen bremsen Modellentwicklung",
    "s": "Wegen US-Chipauflagen und Maßnahmen gegen Destillation drohen Chinas KI-Entwicklern angeblich verspätete Modellstarts und längere Entwicklungszyklen.",
@@ -18,7 +66,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 12.0
+   "r": 10.5
   },
   {
    "t": "Autonome KI-Angriffe: BSI warnt vor Bedrohung durch AOF",
@@ -29,7 +77,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.8
+   "r": 6.4
   },
   {
    "t": "US-Chipregeln und Destillations-Blockaden zwingen Z.AI und Moonshot laut Insidern zur Verschiebung großer Sprachmodelle auf 2027",
@@ -42,7 +90,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 11.7
+   "r": 10.3
   },
   {
    "t": "Abrechnungsfehler: Was OpenAIs GPT-6.2-Korrektur für Abonnenten bedeutet",
@@ -54,8 +102,8 @@
    "tags": [
     "OpenAI"
    ],
-   "n": 1,
-   "r": 13.7
+   "n": 2,
+   "r": 22.2
   },
   {
    "t": "Software Testing: Wer jedes Problem der KI übergibt, verlernt das Denken",
@@ -66,7 +114,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 5.9
   },
   {
    "t": "Riemannsche Vermutung: Claude kürzt KI-Beweis um mehr als 99 Prozent",
@@ -80,7 +128,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 15.3
+   "r": 13.8
   },
   {
    "t": "US-Behörde genehmigt SpaceX eine Million Satelliten für KI-Rechenzentren im All",
@@ -91,7 +139,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.3
+   "r": 5.8
   },
   {
    "t": "Cloudera: Mehr infrastrukturelle Unabhängigkeit für Daten und KI",
@@ -102,7 +150,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.0
+   "r": 5.5
   },
   {
    "t": "SpaceX darf eine Million Satelliten für KI-Rechenzentren ins All schicken – Forscher schlagen Alarm",
@@ -113,7 +161,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.9
+   "r": 5.5
   },
   {
    "t": "Microsoft zeigt, wie Hacker aus China und Nordkorea fremde Netzwerke mit autonomen KI-Agenten in Minuten übernehmen",
@@ -128,7 +176,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 18.9
+   "r": 17.4
   },
   {
    "t": "Nvidia stoppt vorerst Lieferungen nach Malaysia, Singapur, Thailand und Indonesien",
@@ -142,7 +190,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 14.7
+   "r": 13.3
   },
   {
    "t": "Claude Ship: Wie Anthropic den Code-Review-Engpass löst und Produktivität steigert",
@@ -156,7 +204,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 16.7
+   "r": 15.2
   },
   {
    "t": "Black Friday: So baust du mit ChatGPT einen Preisalarm",
@@ -169,7 +217,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 12.5
+   "r": 11.0
   },
   {
    "t": "Jobsuche in der IT: Mit diesen Profilen positionierst du dich am besten im KI-Zeitalter",
@@ -180,7 +228,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.3
+   "r": 4.8
   },
   {
    "t": "Konkurrenz für Palantir: Berliner Firma A11 startet KI-Software als europäische Alternative",
@@ -193,7 +241,7 @@
     "Jobs & Arbeit"
    ],
    "n": 1,
-   "r": 8.2
+   "r": 6.8
   },
   {
    "t": "Klageschwemme mit KI: NRW-LSG möchte 15-Euro-Gebühr",
@@ -204,7 +252,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 6.2
+   "r": 4.7
   },
   {
    "t": "USA genehmigen 1 Million SpaceX-Satelliten für KI-Rechenzentren im Orbit",
@@ -215,7 +263,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.8
+   "r": 4.4
   },
   {
    "t": "US-Strategie gegen Chinas KI-Aufholjagd zeigt laut Bericht erste Wirkung",
@@ -229,7 +277,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 12.6
+   "r": 11.1
   },
   {
    "t": "Anthropic-CEO Amodei wehrt sich gegen Vorwurf der Machtübergabe an KI",
@@ -242,7 +290,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 10.5
+   "r": 9.0
   },
   {
    "t": "OpenAI will Firmendaten mit Private Inference vor sich selbst verstecken",
@@ -255,7 +303,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.2
+   "r": 8.8
   },
   {
    "t": "Amazon und Meta verhandeln über Zugang von KI-Shopping-Agent Muse zum Amazon-Onlineshop",
@@ -269,7 +317,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.9
+   "r": 10.4
   },
   {
    "t": "Klinik-KI als Open Source: Leipzig teilt AMPEL-Code",
@@ -282,7 +330,7 @@
     "Coding mit KI"
    ],
    "n": 1,
-   "r": 7.8
+   "r": 6.4
   },
   {
    "t": "Sinken nach den KI-Aktienkursen auch die RAM-Preise?",
@@ -295,7 +343,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 7.7
+   "r": 6.2
   },
   {
    "t": "Widersprüchliche Anweisungen: Wenn bei ChatGPT und Claude der Zufall entscheidet",
@@ -309,7 +357,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 25.5
+   "r": 24.1
   },
   {
    "t": "KI-Update kompakt: Nvidia, KI-Migrationsgesetz, Valiants Vermutung, Perplexity",
@@ -322,56 +370,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 7.5
-  },
-  {
-   "t": "KI-generierte Musik: Tidal will 27 Millionen Songs löschen",
-   "s": "Tidal zieht eine harte Grenze: Musik, die komplett aus einem KI-Werkzeug stammt, fliegt aus dem Katalog. Zuletzt waren 43 Prozent aller neu angelieferten Titel maschinell erzeugt.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ki-generierte-musik-tidal-will-27-millionen-songs-loeschen-1775228",
-   "d": "2026-11-25T13:30:16+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 3.4
-  },
-  {
-   "t": "Google-Deepmind-Entwicklungschef über mitforschende KI-Agenten bei Gemini und warum es nie einen AGI-Benchmark geben wird",
-   "s": "Google Deepmind setzt KI-Agenten ein, die eigenständig Experimente für kommende Gemini-Modelle durchführen. Forschungschef Koray Kavukcuoglu betont, von rekursiver Selbstverbesserung sei man noch entfernt – zur …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/google-deepmind-entwicklungschef-ueber-mitforschende-ki-agenten-bei-gemini-und-warum-es-nie-einen-agi-benchmark-geben-wird/",
-   "d": "2026-11-25T13:01:36+00:00",
-   "lang": "de",
-   "tags": [
-    "Google Gemini",
-    "KI-Agenten"
-   ],
-   "n": 1,
-   "r": 13.3
-  },
-  {
-   "t": "Cybervorfälle bei US-Behörden häufen sich: Finanzermittler und Geheimdienste betroffen",
-   "s": "Nach einem unbefugten Zugriff hat die US-Finanzermittlungsbehörde FinCEN vorsorglich Systeme vom Netz genommen. Wenige Stunden zuvor war bereits ein separater Einbruch bei CIA, NGA und ODNI bekannt geworden, bei dem …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/cybervorfaelle-bei-us-behoerden-haeufen-sich-finanzermittler-und-geheimdienste-betroffen/",
-   "d": "2026-11-25T12:30:44+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 3.3
-  },
-  {
-   "t": "Flut an KI-Spielen bringt Atari-Entwickler-Wettbewerb zum Stillstand",
-   "s": "Der Organisator sieht keine Möglichkeit mehr, menschliche Entwicklungsleistungen fair zu bewerten. Ähnliche Probleme kennen Open-Source-Projekte.",
-   "q": "heise",
-   "l": "https://www.heise.de/news/Zu-viel-KI-Retro-Wettbewerb-der-Atari-Homebrew-Szene-faellt-aus-11537667.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "d": "2026-11-25T11:46:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 7.1
+   "r": 6.0
   },
   {
    "t": "GPT-6 models demonstrate intrinsic protein-design capabilities",
@@ -535,7 +534,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.9
+   "r": 10.4
   },
   {
    "id": "D266Ju3JarI",
@@ -547,7 +546,7 @@
     "Google Gemini"
    ],
    "n": 1,
-   "r": 12.9
+   "r": 11.4
   },
   {
    "id": "C6DENY3rgqg",
@@ -557,7 +556,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 5.1
+   "r": 3.7
   },
   {
    "id": "A4UNP-axGHU",
@@ -567,7 +566,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 4.2
+   "r": 2.8
   },
   {
    "id": "kfGYU_-SuaE",
@@ -579,7 +578,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 10.0
+   "r": 8.5
   },
   {
    "id": "G93jsYoVyjE",
@@ -591,7 +590,7 @@
     "Robotik"
    ],
    "n": 1,
-   "r": 7.6
+   "r": 6.1
   },
   {
    "id": "hwKct_1ilEQ",
@@ -603,7 +602,7 @@
     "OpenAI"
    ],
    "n": 1,
-   "r": 9.5
+   "r": 8.0
   },
   {
    "id": "p_sZXuPyTPA",
@@ -613,7 +612,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.9
+   "r": 1.4
   },
   {
    "id": "hwWlEuI359w",
@@ -625,7 +624,7 @@
     "Claude / Anthropic"
    ],
    "n": 2,
-   "r": 18.8
+   "r": 17.4
   },
   {
    "id": "1u0hTd86_HU",
@@ -635,7 +634,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 0.8
+   "r": 0.0
   },
   {
    "id": "K8rdrWQRd20",
@@ -645,7 +644,7 @@
    "lang": "en",
    "tags": [],
    "n": 1,
-   "r": 0.1
+   "r": 0.0
   },
   {
    "id": "lSQpmfuFyVc",
@@ -992,19 +991,19 @@
    "quellen": 4
   },
   {
+   "name": "Nvidia & Chips",
+   "meldungen": 5,
+   "quellen": 3
+  },
+  {
    "name": "Coding mit KI",
-   "meldungen": 6,
+   "meldungen": 4,
    "quellen": 3
   },
   {
    "name": "KI-Agenten",
-   "meldungen": 5,
-   "quellen": 3
-  },
-  {
-   "name": "Nvidia & Chips",
-   "meldungen": 5,
-   "quellen": 3
+   "meldungen": 3,
+   "quellen": 2
   },
   {
    "name": "Jobs & Arbeit",
@@ -1012,13 +1011,13 @@
    "quellen": 2
   },
   {
-   "name": "Google Gemini",
-   "meldungen": 2,
-   "quellen": 2
-  },
-  {
    "name": "DeepSeek & China",
    "meldungen": 4,
+   "quellen": 1
+  },
+  {
+   "name": "Microsoft Copilot",
+   "meldungen": 1,
    "quellen": 1
   }
  ],
@@ -1061,13 +1060,11 @@
    "name": "UBTech Robotics",
    "sym": "9880.HK",
    "info": "Humanoide Roboter",
-   "preis": 53.6,
+   "preis": 54.7,
    "cur": "HKD",
-   "d1": -14.79,
-   "m1": -21.8,
+   "d1": 2.05,
+   "m1": -13.6,
    "spark": [
-    63.3,
-    69.1,
     65.3,
     63.45,
     64.45,
@@ -1087,9 +1084,11 @@
     57.9,
     60.25,
     62.9,
-    55.55
+    55.55,
+    53.6,
+    54.7
    ],
-   "t": "2026-11-26T08:08+00:00"
+   "t": "2026-11-27T01:31+00:00"
   },
   {
    "name": "Tesla",
