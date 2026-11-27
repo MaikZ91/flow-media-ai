@@ -4,7 +4,7 @@
 
 **Regeln:**
 - Ein Feed-Post pro Tag (Challenge-Slot ca. 16:00 Berlin), dazu eine Story.
-- Nächster Eintrag mit Status „offen“ zählt, nicht das Datum.
+- **Das Datum zählt (Maik, 27.11.):** Tag 1 = 23.11., also Tag N = 22.11. + N Tage (Tag 5 = 27.11., Tag 31 = 23.12.). Verpasste Tage werden nicht nachgeholt, sondern als „ausgelassen“ markiert.
 - Eigene Fotos und Clips zuerst (Ordner `content/personal`). Stock nur, wenn nichts Eigenes passt.
 - Kein Porträt-Einerlei: höchstens ein Porträt-Post pro Tag, Format wechseln.
 - Kein Reel nur mit Technik. Hook-Pflicht (Text, Bild, Ton).
@@ -15,8 +15,8 @@
 |---|---|---|---|---|---|
 | [1](#tag-1) | Founder Story | Einzelbild / Talking Head | Authentisch Bild von dir, Reise und Ausblick auf den Account erzählen | Ankündigung der 30-Tage-Challenge | ✓ 23.11. |
 | [2](#tag-2) | Behind the scenes | Story | — | Einblick in deinen Arbeitsplatz oder Arbeitsumfeld | ✓ 24.11. https://www.instagram.com/p/DgIKNe7Dy2v/ |
-| [3](#tag-3) | Founder Story | Karussell | Dich vorstellen: wer du bist, Fakten, was du magst, Ziele, Why, Danke + CTA | Frage-Sticker (als Text): „Was willst du noch über mich wissen?“ | offen |
-| [4](#tag-4) | Founder Story | Story | — | Beantwortete Fragen von gestern; ohne Antworten einen Alltags-Clip mit Musik | offen |
+| [3](#tag-3) | Founder Story | Karussell | Dich vorstellen: wer du bist, Fakten, was du magst, Ziele, Why, Danke + CTA | Frage-Sticker (als Text): „Was willst du noch über mich wissen?“ | ✓ 25.11. (Maik, Reel „Hey, ich bin Maik“) |
+| [4](#tag-4) | Founder Story | Story | — | Beantwortete Fragen von gestern; ohne Antworten einen Alltags-Clip mit Musik | 26.11. ausgelassen |
 | [5](#tag-5) | Demonstration / Proof | B-Roll-Reel | „Das hätte ich gerne früher gewusst“, Text-Overlay mit Learnings | Laptop filmen bei der Arbeit, Profil taggen (hier: kein Tag, nur Arbeit zeigen) | offen |
 | [6](#tag-6) | Behind the scenes | Story | — | Eine echte Routine zeigen, dazu Umfrage (als Text: A oder B) | offen |
 | [7](#tag-7) | Demonstration / Proof | B-Roll-Reel | Mini-Tutorial oder Tipps, die echte Teilprobleme lösen | Emoji-Frage: „Haben dir die Tipps geholfen?“ (als Text) | offen |
