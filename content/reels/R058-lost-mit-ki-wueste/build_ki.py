@@ -15,8 +15,8 @@ MUSIK = D / "../../musik/frei/driving-ambition.mp3"
 # (Szene, Kicker, Headline, Untertitel, Position)
 TEXTS = [
     ("Für Gründer & Selbstständige", "Lost mit <span>KI?</span>", "", "top"),
-    ("Mein Tipp", "Fang mit <span>einer</span> Aufgabe an.", "Mit der, die dich jede Woche Zeit kostet.", "bottom"),
-    ("Flow Media AI", "Wir lösen es <span>gemeinsam.</span>", "Folge mir für konkrete KI-Schritte.", "bottom"),
+    ("Hey, ich bin Maik 👋", "Fang mit <span>einer</span> Aufgabe an.", "Mit der, die dich jede Woche Zeit kostet.", "bottom"),
+    ("Dein KI-Sparringspartner", "Wir lösen es <span>gemeinsam.</span>", "Folge mir für konkrete KI-Schritte.", "bottom"),
 ]
 HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@600&family=Inter:wght@500&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
