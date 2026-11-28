@@ -2,7 +2,7 @@
 // Datensparsam: nur die Klick-Kennung aus dem Anzeigen-Link (fbclid → fbc) und der Browser-Typ (User-Agent).
 // Keine Cookies, keine IP-Adresse, keine Namen oder Telefonnummern. Ohne fbclid wird nichts gesendet.
 // Secret META_CAPI_TOKEN (Meta Events Manager → Pixel → Einstellungen → Conversions API → Zugriffsschlüssel generieren).
-const PIXEL_ID = "1135098089124774";
+const PIXEL_ID = "1548157737344373";
 const ALLOWED = ["https://maikz91.github.io"];
 const cors = (o: string | null) => ({
   "Access-Control-Allow-Origin": o && ALLOWED.includes(o) ? o : ALLOWED[0],
