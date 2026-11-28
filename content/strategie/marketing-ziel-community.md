@@ -45,6 +45,8 @@ DMs schreibt Maik selbst, nichts wird automatisch versendet.
 - Mit Pixel-Einwilligung (Fußzeile „Ja“) meldet stattdessen der Browser-Pixel.
 - Datensatz „Flow“ ist seit 28.11. mit dem Werbekonto 518708974888646 verbunden. Seit 28.11. läuft die neue Kampagne „Community · Leads (Beitritte) · R061“ (52567944032965, Ziel Leads, Optimierung auf das Lead-Event des Datensatzes Flow, 30 $/Tag, gleiche Zielgruppe und gleiches R061-Reel); die alte Landingpage-Aufrufe-Kampagne (52567837237365) ist pausiert. Anfangs wenige Leads → Meta lernt langsam; nach 5–7 Tagen auswerten.
 
+Tägliches Tracking (Follower, Seite, Anzeige, Richtwerte fürs Eingreifen): `ads-tracking.md`.
+
 ## Nächste Schritte
 
 Drehbuch mit vier Varianten (5–7 s) und Testplan: `drehbuch-2-community-reel.md`.
