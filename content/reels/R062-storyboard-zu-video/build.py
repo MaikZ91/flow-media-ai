@@ -2,9 +2,10 @@
 
 0–2,0 s    Hook: Szene aus dem fertigen Film + „Dieses Video kommt aus EINEM Bild.“
 2,0–3,6 s  Schritt 1: das Storyboard (6 Szenen in einem Bild), Zoom
-3,6–4,6 s  Schritt 2: Bild rein in MAGI-2 (Higgsfield)
-4,6–15,4 s 6× Storyboard-Bild (0,6 s) → passende Szene im Video (1,2 s)
-15,4–17,4 s Endkarte
+3,6–6,9 s  die 6 Storyboard-Bilder einzeln
+6,9–8,1 s  Schritt 2: Bild rein in MAGI-2
+8,1–23,2 s das ganze Video (15 s, Originalton)
+23,2–25,2 s Endkarte
 Material: ../R060-magi2/storyboard.png, ../R060-magi2/magi2_raw.mp4 (beides KI, Higgsfield).
 """
 import subprocess, pathlib
@@ -39,7 +40,7 @@ def html_pages():
 <div style="position:absolute;inset:-40px;background:url(panel{i}.jpg) center/cover;filter:blur(40px) brightness(.35)"></div>
 <div class="c" style="top:250px"><span class="tag w">Storyboard {i+1}/6</span><p style="margin-top:26px">{n}</p></div>
 <img src="panel{i}.jpg" style="position:absolute;left:70px;right:70px;width:940px;top:560px;max-height:1080px;object-fit:contain;border-radius:18px;border:3px solid #fff;box-shadow:0 30px 80px rgba(0,0,0,.7)"></body></html>'''
-    pages["v"] = HEAD + TOPGRAD + '<div class="c" style="top:250px"><span class="tag">→ Video</span></div></body></html>'
+    pages["v"] = HEAD + '<div class="c" style="top:250px"><span class="tag">Ergebnis · MAGI-2</span></div></body></html>'
     pages["end"] = HEAD.replace("html,body{background:transparent}","html,body{background:#0A0A0A}") + '''<img class="logo" src="logo_flow.png" style="top:250px"><div class="c" style="top:520px">
 <div class="k" style="color:#9A9A9A">So geht's</div><h1 style="font-size:116px">1 Bild. 1 Prompt. <span>15 s Film.</span></h1>
 <p>Mit Ton, im Reel-Format, 37,5 Credits.</p><p style="font:700 60px Oswald;text-transform:uppercase;margin-top:60px">Folg mir für mehr KI-Workflows</p></div></body></html>'''
@@ -77,16 +78,16 @@ def build():
         parts.append(out)
     vid(*HOOK, "o_hook.png", "q0.mp4")
     still("sb_full.jpg", 1.6, "q1.mp4", zoom="1.25-0.0045*on", ov="o_s1.png")
-    still("o_s2.png", 1.0, "q2.mp4")
-    for i, (a, b) in enumerate(SEG):
-        still(f"o_p{i}.png", 0.6, f"q3_{i}a.mp4", zoom="1+0.0012*on")
-        vid(a, b, "o_v.png", f"q3_{i}b.mp4")
-    still("o_end.png", 2.0, "q4.mp4", zoom="1+0.0004*on")
+    for i in range(6):
+        still(f"o_p{i}.png", 0.55, f"q2_{i}.mp4", zoom="1+0.0012*on")
+    still("o_s2.png", 1.2, "q3.mp4")
+    vid(0.0, 15.1, "o_v.png", "q4.mp4")   # das ganze Video
+    still("o_end.png", 2.0, "q5.mp4", zoom="1+0.0004*on")
     lst = D / "list.txt"; lst.write_text("".join(f"file '{p}'\n" for p in parts))
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(D / "_cat.mp4")], check=True)
     total = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(D / "_cat.mp4")]))
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(D / "_cat.mp4"), "-i", str(MUSIK), "-filter_complex",
-                    f"[0:a]volume=0.9[s];[1:a]atrim=0:{total},volume=0.5,afade=t=out:st={total-1}:d=1[m];[s][m]amix=inputs=2:normalize=0,alimiter=limit=0.95[a]",
+                    f"[0:a]volume=0.9[s];[1:a]atrim=0:{total},volume=0.35,afade=t=out:st={total-1}:d=1[m];[s][m]amix=inputs=2:normalize=0,alimiter=limit=0.95[a]",
                     "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(D / "R062.mp4")], check=True)
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.8", "-i", str(D / "R062.mp4"), "-frames:v", "1", "-q:v", "2", str(D / "cover.jpg")], check=True)
     for p in parts + ["_cat.mp4", "list.txt"]: (D / p).unlink()
