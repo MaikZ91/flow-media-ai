@@ -84,6 +84,26 @@ Teile: A = Überblick & Regeln · B = Themen & Formate (Themenpool: Skill `conte
 - Maiks Gesicht in diesen Clips ist eine KI-Version aus seinem eigenen Referenzfoto (freigegeben); keine fremden Personen oder Promi-Gesichter generieren.
 - **Stimme (30.10.2026):** vorerst **keine** – kostenlose TTS (Piper) klang abgehackt und unnatürlich (Maik), ElevenLabs will Maik nicht. Bertrand „spricht“ per Untertitel (gelbes Namensschild BERTRAND). Werkzeug `tools/bertrand-voice/say.py` bleibt für einen späteren Test liegen. Maik nie mit Computerstimme.
 
+## Higgsfield: KI-Clips und -Bilder (Maik, 28.11.2026)
+
+Für Ideen, Hooks, B-Roll und Stories nutzt der Creative Director **Higgsfield** (MCP-Tools `mcp__Higgsfield__*`) selbstständig, ohne Rückfrage. Er wählt dabei immer das günstigste Modell, das reicht.
+
+| Zweck | Modell | Kosten (Stand 28.11.2026) |
+|---|---|---|
+| **Video** (Reel-Szenen, B-Roll, Story-Clips, mit Ton) | **`magi_2`**, 9:16, 5–8 s, `generate_audio` an | 2,5 Credits/s (5 s = 12,5, 15 s = 37,5); Seedance 2.5 kostet für 15 s 240 |
+| Video aus Standbild (z. B. Maik-Szene weiterführen) | `magi_2` mit `start_image` | wie oben |
+| **Foto, realistisch / mit Text im Bild** | `gpt_image_2_6`, quality low, 1k | 0,75 Credits |
+| Foto, schnell & stilisiert (Moodboard, Hintergründe) | `z_image` | 0,15 Credits |
+| Storyboard (mehrere Szenen in einem Bild) | `gpt_image_2_6` | 0,75 Credits |
+
+Regeln:
+- **Echt bleibt echt:** KI-Clips illustrieren nur, was wirklich stimmt (z. B. Maiks echte Routine „kalt duschen“ als Clip, ohne Gesicht). Nie ein erfundenes Ergebnis, Kunde oder Erlebnis zeigen.
+- **Maiks Gesicht** nur aus seinen eigenen, freigegebenen Fotos/Szenen als Startbild (z. B. Wüsten-Reel), keine fremden Personen oder Promi-Gesichter.
+- **Kennzeichnen:** Caption bzw. Story-Text „KI-Clip“ / „mit KI erstellt“.
+- Pro Lauf höchstens ~40 Credits ohne Rückfrage; Guthaben mit `mcp__Higgsfield__balance` prüfen und unter 100 Credits Maik Bescheid geben.
+- Von 2 Varianten (`count: 2`) nur bei wichtigen Reels Gebrauch machen; Stories und B-Roll mit 1 Variante.
+- Clip ansehen (Frames ziehen), bevor er gepostet wird; Text im Flow-Look darüber (Oswald, blauer Kasten, Zeilenhöhe ≥ 1,3, damit die Kästen nicht überlappen).
+
 # Teil C – Virale Reels
 
 Instagram veröffentlicht keine Gewichte. Bestätigt (Adam Mosseri, Jan. 2025) sind drei Hauptsignale; Prozentzahlen sind Richtwerte aus Marketing-Blogs, keine offiziellen Werte.

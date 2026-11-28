@@ -77,6 +77,7 @@ Vorschläge, keine fertigen Texte. Umsetzung, Motiv und Wortlaut denkt sich der 
 ### Tag 6
 - Heute postest Du nur eine Story 
 - Teile eine Routine von Dir in Deiner Story, z.B. 10 Minuten meditieren, 1 Glas Wasser trinken, o.ä. (bleibe authentisch und teile nur, was Du auch wirklich machst ) und erstelle eine Umfrage dazu.
+- **Maiks echte Routine (28.11.): kalt duschen.** Clip mit Higgsfield MAGI-2 erlaubt (ohne Gesicht, als KI-Clip gekennzeichnet). Ein bereits angestoßener Clip liegt als Higgsfield-Job a03ec078-7d7b-4d78-b851-ba16ad01c0fc vor und darf genutzt werden.
 
 ### Tag 7
 - Wichtig: Achte darauf, dass die Tipps wirklich nützlich sind und nicht nur an der Oberfläche kratzen.
