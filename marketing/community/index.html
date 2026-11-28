@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Flow Business Community – kostenlos in WhatsApp beitreten</title>
-  <meta name="description" content="Tausch dich mit Selbstständigen und Gründer:innen über KI und Business aus. Kostenlose WhatsApp-Community mit regelmäßigen KI-Workshops von Maik.">
+  <meta name="description" content="Gründer und Selbstständige, die mit KI weiterkommen wollen: kostenlose WhatsApp-Community mit KI-Stammtisch, online oder vor Ort in Münster und Bielefeld.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#050505">
-  <meta property="og:title" content="Flow Business Community">
-  <meta property="og:description" content="Allein mit KI-Fragen? Tausch dich über KI und Business aus. Kostenlos in WhatsApp, mit regelmäßigen KI-Workshops von Maik.">
-  <meta property="og:image" content="img/maik_front.jpg">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta property="og:title" content="Lost mit KI? Komm in die Flow Business Community">
+  <meta property="og:description" content="Kostenlos in WhatsApp. Für Gründer und Selbstständige, die mit KI weiterkommen wollen.">
+  <meta property="og:image" content="img/hero_reel.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
   <script>
     if (["#termine", "#stimmen", "#fragen", "#manifest"].includes(location.hash)) {
       location.replace("details.html" + location.search + location.hash);
@@ -33,285 +33,125 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   <style>
     :root {
       color-scheme: dark;
-      --background: #050505;
+      --bg: #0A0A0A;
       --text: #fff;
-      --muted: #bababe;
-      --rule: #ffffff20;
-      --silver: linear-gradient(100deg, #8d8d93, #f4f4f6 28%, #a9a9b0 50%, #fff 72%, #8d8d93);
-      --silver-button: linear-gradient(180deg, #fff, #cfcfd4);
+      --muted: rgba(255,255,255,.78);
+      --rule: #ffffff26;
+      --blue: #2F5BFF;
       --gutter: clamp(16px, 5vw, 64px);
       font-family: Inter, system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: radial-gradient(ellipse at 80% 0%, #ffffff0d, transparent 53%), var(--background);
-      color: var(--text);
-    }
+    html, body { margin: 0; background: var(--bg); color: var(--text); }
     a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
+    :focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+    /* Hintergrund: Szene aus dem Reel (Wüste → KI-Hologramm → Camp) */
+    .scene { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #1a140c url(img/hero_reel.jpg) center/cover; }
+    .scene video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .scene::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.7) 22%, rgba(10,10,10,.25) 38%, rgba(10,10,10,.2) 50%, rgba(10,10,10,.85) 70%, #0A0A0A 100%);
+    }
+
     .layout {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      width: min(100%, 1260px);
-      min-height: 100vh;
-      min-height: 100dvh;
-      margin: 0 auto;
-      padding: max(16px, env(safe-area-inset-top)) var(--gutter)
-        max(10px, env(safe-area-inset-bottom));
+      position: relative; z-index: 1;
+      display: grid; grid-template-rows: auto 1fr auto;
+      width: min(100%, 1260px); min-height: 100vh; min-height: 100dvh; margin: 0 auto;
+      padding: max(16px, env(safe-area-inset-top)) var(--gutter) max(10px, env(safe-area-inset-bottom));
     }
-    .brandbar, footer {
-      display: flex;
-      align-items: center;
-      gap: 12px 24px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .brandbar { min-height: 48px; border-bottom: 1px solid var(--rule); }
-    .brandbar img { display: block; width: 132px; height: auto; max-height: 30px; object-fit: contain; }
-    .region, .eyebrow {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
-      gap: clamp(30px, 7vw, 98px);
-      align-items: center;
-      padding-block: clamp(22px, 5vh, 56px);
-    }
-    .eyebrow { margin: 0 0 14px; }
-    h1 {
-      margin: 0;
-      font: 700 clamp(48px, 6.4vw, 94px)/.98 Oswald, "Arial Narrow", sans-serif;
-      letter-spacing: -.02em;
-      text-transform: uppercase;
-    }
-    h1 span { display: block; }
-    @supports (background-clip: text) {
-      h1 span:last-child {
-        width: fit-content;
-        background: var(--silver);
-        background-clip: text;
-        color: transparent;
-      }
-    }
-    @media (forced-colors: active) { h1 span:last-child { color: CanvasText; } }
-    .lead {
-      max-width: 31em;
-      margin: 20px 0;
-      color: var(--muted);
-      font-size: clamp(16px, 1.6vw, 19px);
-      line-height: 1.52;
-    }
-    .lead strong { color: var(--text); font-weight: 600; }
-    .event { margin: 16px 0 0; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 12px; font-size: 13px; line-height: 1.45; color: var(--muted); }
-    .event b { display: block; color: var(--text); font-size: 14px; font-weight: 600; }
-    .note { margin: 16px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
-    .host { display: flex; align-items: center; gap: 10px; margin: 20px 0 0; color: var(--muted); font-size: 12px; }
-    .host img { width: 36px; height: 36px; object-fit: cover; object-position: center 28%; filter: grayscale(1); }
-    .network {
-      position: relative;
-      isolation: isolate;
-      display: grid;
-      place-items: center;
-      width: min(100%, 480px, 66svh);
-      aspect-ratio: 1;
-      justify-self: center;
-    }
-    .network::before {
-      content: "";
-      position: absolute;
-      inset: 3%;
-      pointer-events: none;
-      background: radial-gradient(circle, #ffffff1c 0%, #ffffff0b 42%, transparent 70%);
-      border-radius: 50%;
-    }
-    .network::after {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      pointer-events: none;
-      border: 1px solid #ffffff20;
-      border-radius: 50%;
-    }
-    .network canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .network-roles {
-      position: absolute;
-      inset: 0;
-      container-type: inline-size;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      pointer-events: none;
-    }
-    .network-roles li {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 7px;
-      border: 1px solid #ffffff44;
-      border-radius: 999px;
-      background: #151517;
-      color: #ededf0;
-      font-size: clamp(10px, calc(5cqw - 1px), 14px);
-      font-weight: 600;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-    .network-roles li::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 0 6px #ffffff75;
-    }
-    .network-roles li:nth-child(1) { inset-block-start: 7%; inset-inline-start: 2%; }
-    .network-roles li:nth-child(2) { inset-block-start: 11%; inset-inline-end: 0; }
-    .network-roles li:nth-child(3) { inset-block-end: 10%; inset-inline-start: 1%; }
-    .network-roles li:nth-child(4) { inset-block-end: 6%; inset-inline-end: 2%; }
-    .network-roles[data-orbit] { inset-inline: -15px; }
-    .network-roles[data-orbit] li { inset: 0 auto auto 0; }
-    .join-panel {
-      z-index: 1;
-      display: grid;
-      gap: 4px;
-      width: min(76%, 228px);
-      padding: 10px;
-      border: 1px solid transparent;
-      border-radius: 19px;
-      background: linear-gradient(155deg, #19191b, #0b0b0c 72%) padding-box, var(--silver) border-box;
-      box-shadow: 0 20px 50px -22px #ffffff46;
-    }
-    .join-title {
-      margin: 0;
-      padding-block: 3px 4px;
-      text-align: center;
-      font-size: clamp(12px, 1.45vw, 16px);
-      line-height: 1.2;
-    }
+    .brandbar, footer { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; }
+    .brandbar { min-height: 44px; }
+    .brandbar img { display: block; width: 118px; height: auto; max-height: 28px; object-fit: contain; }
+    .region { color: var(--muted); font: 700 11px Montserrat, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+
+    main { display: grid; gap: 18px; padding-block: 14px 8px; }
+    main > div:first-child { display: flex; flex-direction: column; min-height: 100%; }
+    @media (max-width: 899px) { .bottom { margin-top: auto; padding-top: 10vh; } }
+    .kicker { margin: 0; font: 700 clamp(14px, 1.6vw, 18px) Montserrat, sans-serif; letter-spacing: .04em; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
+    h1 { margin: 8px 0 0; white-space: nowrap; font: 700 clamp(56px, 7.4vw, 100px)/1.18 Oswald, "Arial Narrow", sans-serif; text-transform: uppercase; }
+    h1 span { background: var(--blue); padding: .02em .12em 0; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .sub { margin: 12px 0 0; max-width: 26em; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.45; text-shadow: 0 2px 12px rgba(0,0,0,.8); }
+    .sub strong { font-weight: 600; }
+
+    .bottom { display: grid; gap: 14px; align-self: end; margin-top: 22px; }
+    .event { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 14px; color: var(--muted); }
+    .event b { background: #fff; color: #0A0A0A; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
+    .join { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--rule); border-radius: 18px; background: rgba(10,10,10,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .join h2 { margin: 0 0 2px; font: 700 clamp(26px, 3vw, 34px)/1.1 Oswald, sans-serif; text-transform: uppercase; }
+    .join p { margin: 0 0 4px; color: var(--muted); font-size: 14px; }
+    .options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
     .join-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      min-height: 36px;
-      padding: 3px 10px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      background: var(--silver-button);
-      color: #050505;
-      font-size: clamp(12px, 1.45vw, 15px);
-      font-weight: 600;
-      line-height: 1.2;
-      text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; padding: 6px 10px;
+      border-radius: 999px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; text-align: center;
     }
-    .join-option:hover { background: #fff; }
     .join-option::after { content: "→"; }
-    .join-option:focus-visible { outline-offset: 1px; }
+    .join-option:hover { background: #4a70ff; }
+    .join-option.alt { background: #fff; color: #0A0A0A; }
+    .join-option.alt:hover { background: #e9e9ee; }
+    .note { margin: 0; color: var(--muted); font-size: 13px; }
+    .host { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--muted); font-size: 13px; }
+    .host img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 28%; }
+
     footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     footer div { display: flex; gap: 4px 16px; flex-wrap: wrap; }
-    .footer-details { align-items: center; }
     footer a { display: inline-flex; align-items: center; min-height: 40px; text-underline-offset: 3px; }
-    .network-toggle:not([hidden]) {
-      display: grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      padding: 0;
-      border: 1px solid var(--rule);
-      border-radius: 50%;
-      background: transparent;
-      color: var(--muted);
-      font: inherit;
-      cursor: pointer;
+    .ai { display: inline-flex; align-items: center; min-height: 40px; font-size: 11px; opacity: .8; }
+
+    /* Desktop: Szene als hochkantes Reel rechts, Text links */
+    @media (min-width: 900px) {
+      .scene { background: var(--bg); }
+      .scene video, .scene::after { display: none; }
+      main { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); grid-template-rows: auto; align-items: center; gap: clamp(30px, 6vw, 90px); }
+      .reel { display: block !important; position: relative; justify-self: center; width: min(100%, 380px, 46svh); aspect-ratio: 9/16; border-radius: 22px; overflow: hidden; border: 1px solid var(--rule); box-shadow: 0 30px 80px -30px rgba(47,91,255,.55); background: #1a140c url(img/hero_reel.jpg) center/cover; }
+      .reel video { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .reel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.35), transparent 30%); }
+      .bottom { align-self: auto; margin-top: 28px; }
     }
-    .network-toggle:hover { color: var(--text); border-color: var(--muted); }
-    .network-toggle span { width: 8px; height: 10px; border-inline: 2px solid currentColor; }
-    .network-toggle[data-paused] span {
-      width: 0;
-      height: 0;
-      border: 5px solid transparent;
-      border-inline-start: 8px solid currentColor;
-      border-inline-end: 0;
+    .reel { display: none; }
+    @media (max-width: 420px) {
+      .options { grid-template-columns: 1fr 1fr; }
+      .options .join-option:last-child { grid-column: 1 / -1; }
     }
-    @media (max-width: 690px) {
-      .brandbar { min-height: 40px; gap: 5px 10px; }
-      .brandbar img { width: 109px; max-height: 24px; }
-      .region { font-size: 9px; letter-spacing: .05em; }
-      main { grid-template-columns: minmax(0, 1fr); align-content: center; gap: 13px; padding-block: 14px; }
-      h1 { font-size: clamp(37px, 10.8vw, 69px); }
-      .eyebrow { margin-bottom: 9px; }
-      .lead { margin-block: 13px; font-size: 15px; line-height: 1.4; }
-      .network { width: min(77vw, 40svh, 305px); }
-      .network-roles[data-orbit] { inset-inline: -24px; }
-      .join-panel { width: min(78%, 216px); padding: 7px; }
-      .join-option { min-height: 33px; }
-      .host, .note { margin-top: 9px; }
-      .host img { width: 25px; height: 25px; }
-      footer { gap: 0 12px; font-size: 11px; }
-      footer div { gap: 4px 11px; }
-      footer a { min-height: 34px; }
-    }
-    @media (max-height: 620px) and (max-width: 690px) {
-      .layout { padding-top: max(12px, env(safe-area-inset-top)); }
-      main { gap: 9px; padding-block: 9px; }
-      h1 { font-size: clamp(34px, 10vw, 54px); }
-      .lead { margin-block: 9px; }
-      .host img { width: 22px; height: 22px; }
-      .network { width: min(72vw, 34svh, 260px); }
-      .network-roles { inset-inline: -14px; }
-      .join-panel { gap: 3px; }
-      .join-title { padding-block: 2px 3px; font-size: 11px; }
-      .join-option { min-height: 29px; }
-    }
-    @media (max-height: 545px) and (max-width: 690px) {
-      .host { display: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { .scene video, .reel video { display: none; } }
   </style>
 </head>
 <body>
+  <div class="scene" aria-hidden="true">
+    <video id="bg-video" src="img/hero_reel.mp4" poster="img/hero_reel.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
   <div class="layout">
     <header class="brandbar">
-      <img src="img/logo_flow.png" width="132" height="28" alt="Flow Media AI">
+      <img src="img/logo_flow.png" width="118" height="26" alt="Flow Media AI">
       <span class="region">Münster · Bielefeld · Online</span>
     </header>
     <main aria-labelledby="title">
       <div>
-        <p class="eyebrow">Flow Business Community</p>
-        <h1 id="title"><span>Allein mit</span> <span>KI-Fragen?</span></h1>
-        <p class="lead">Tausch dich mit anderen Selbstständigen und Gründer:innen über <strong>KI und Business</strong> aus. Mit regelmäßigen KI-Workshops von Maik.</p>
-        <p class="event"><b>Nächster KI-Stammtisch: Fr., 4.12., 19 Uhr</b>Hybrid: online oder vor Ort in Münster &amp; Bielefeld</p>
-        <p class="note">Kostenlos. Du kannst erst mal nur mitlesen.</p>
-        <p class="host"><img src="img/maik_front.jpg" alt="" width="36" height="36"> Maik · Dein Gastgeber</p>
-      </div>
-      <div class="network">
-        <canvas id="network-art" aria-hidden="true"></canvas>
-        <ul class="network-roles" role="list" aria-label="Für diese Berufe und viele mehr">
-          <li data-alternates="Fotograf:innen|Webdesigner:innen|Trainer:innen">Kreative</li>
-          <li data-alternates="Business-Coaches|Texter:innen|Berater:innen">Solo-Selbstständige</li>
-          <li data-alternates="Videograf:innen|IT-Profis|Physios">Gründer:innen</li>
-          <li data-alternates="Designer:innen|Entwickler:innen|Freelancer:innen">Anwält:innen</li>
-        </ul>
-        <div class="join-panel" role="group" aria-labelledby="join-title">
-          <h2 class="join-title" id="join-title">Kostenlos beitreten</h2>
-          <a class="join-option" data-join-role="selbststaendig" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Selbstständig: kostenlos in WhatsApp beitreten">Selbstständig</a>
-          <a class="join-option" data-join-role="gruendung" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Gründer:in: kostenlos in WhatsApp beitreten">Gründer:in</a>
-          <a class="join-option" data-join-role="angestellt" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Angestellt: kostenlos in WhatsApp beitreten">Angestellt</a>
+        <p class="kicker">Gründer &amp; Selbstständige</p>
+        <h1 id="title">Lost mit <span>KI?</span></h1>
+        <p class="sub">Jede Woche ein neues Tool. Keiner sagt dir, wo du anfangen sollst. <strong>Musst du nicht allein rausfinden.</strong></p>
+        <div class="bottom">
+          <p class="event"><b>KI-Stammtisch Fr., 4.12., 19 Uhr</b> online oder vor Ort in Münster &amp; Bielefeld</p>
+          <div class="join" role="group" aria-labelledby="join-title">
+            <h2 id="join-title">Komm in die Community.</h2>
+            <p>Austausch mit Gründern und Selbstständigen, die KI gerade für ihr Business ausprobieren. Kostenlos in WhatsApp, du kannst erst mal nur mitlesen. Ich bin:</p>
+            <div class="options">
+              <a class="join-option" data-join-role="gruendung" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Gründer:in: kostenlos in WhatsApp beitreten">Gründer:in</a>
+              <a class="join-option" data-join-role="selbststaendig" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Selbstständig: kostenlos in WhatsApp beitreten">Selbstständig</a>
+              <a class="join-option alt" data-join-role="angestellt" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Angestellt: kostenlos in WhatsApp beitreten">Angestellt</a>
+            </div>
+          </div>
+          <p class="host"><img src="img/maik_front.jpg" alt="" width="32" height="32"> Maik · Dein Gastgeber</p>
         </div>
+      </div>
+      <div class="reel" aria-hidden="true">
+        <video src="img/hero_reel.mp4" poster="img/hero_reel.jpg" autoplay muted loop playsinline preload="metadata"></video>
       </div>
     </main>
     <footer>
-      <div class="footer-details">
+      <div>
         <a href="details.html">Termine &amp; Details</a>
-        <button class="network-toggle" id="network-toggle" type="button" aria-label="Animation pausieren" title="Animation pausieren" hidden>
-          <span aria-hidden="true"></span>
-        </button>
+        <span class="ai">Szene mit KI erstellt</span>
       </div>
       <div>
         <a href="../landing-page/impressum.html">Impressum</a>
@@ -323,7 +163,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     const params = new URLSearchParams(location.search);
     const attribution = {
       variante: "onepager",
-      layout: "network",
+      layout: "reel",
       quelle: params.get("utm_source") || "",
       utm_source: params.get("utm_source") || "",
       utm_medium: params.get("utm_medium") || "",
@@ -350,181 +190,11 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         capture("community_join_click", selection, { send_instantly: true });
       });
     });
-    (() => {
-      const canvas = document.getElementById("network-art");
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
-      const still = matchMedia("(prefers-reduced-motion: reduce)");
-      const roleList = document.querySelector(".network-roles");
-      const roleNodes = [...roleList.children];
-      const roleLabels = roleNodes.map(node => [node.textContent, ...node.dataset.alternates.split("|")]);
-      const joinPanel = document.querySelector(".join-panel");
-      const toggle = document.getElementById("network-toggle");
-      const full = Math.PI * 2;
-      const roleAngles = [-3, -1, 3, 1].map(quarter => quarter * Math.PI / 4);
-      const tracks = [
-        { radius: 0.31, tilt: -0.38, flatten: 0.69, rate: 0.25, count: 9 },
-        { radius: 0.39, tilt: 0.65, flatten: 0.76, rate: -0.18, count: 12 },
-        { radius: 0.44, tilt: -0.94, flatten: 0.97, rate: 0.12, count: 15 }
-      ];
-      let size = 0;
-      let animation = 0;
-      let lastFrame = -Infinity;
-      let lastTick = null;
-      let elapsed = 0;
-      let lastRoleChange = 0;
-      let roleGroup = 0;
-      let paused = false;
-      let orbitWidth = 0;
-      let orbitHeight = 0;
-      let panelWidth = 0;
-      let panelHeight = 0;
-      let roleSizes = [];
-
-      function placeRoles(time) {
-        const centerX = orbitWidth / 2;
-        const centerY = orbitHeight / 2;
-        roleNodes.forEach((node, index) => {
-          const angle = roleAngles[index] + time * full / 24;
-          const { width, height } = roleSizes[index];
-          const xDistance = Math.cos(angle) * orbitWidth * 0.46;
-          const sine = Math.sin(angle);
-          const yDistance = Math.sign(sine) * Math.abs(sine) ** 0.32 * orbitHeight * 0.49;
-          const x = Math.max(width / 2, Math.min(orbitWidth - width / 2, centerX + xDistance));
-          const y = Math.max(height / 2, Math.min(orbitHeight - height / 2, centerY + yDistance));
-          const clearance = Math.max(
-            Math.abs(x - centerX) - (panelWidth + width) / 2,
-            Math.abs(y - centerY) - (panelHeight + height) / 2
-          );
-          node.style.transform = `translate(${x - width / 2}px, ${y - height / 2}px)`;
-          node.style.opacity = Math.max(0, Math.min(1, (clearance - 2) / 7));
-        });
-      }
-
-      function measureRoles() {
-        orbitWidth = roleList.clientWidth;
-        orbitHeight = roleList.clientHeight;
-        panelWidth = joinPanel.offsetWidth;
-        panelHeight = joinPanel.offsetHeight;
-        roleSizes = roleNodes.map(node => ({ width: node.offsetWidth, height: node.offsetHeight }));
-        placeRoles(elapsed / 1000);
-      }
-
-      function point(track, angle) {
-        const x = track.radius * Math.cos(angle);
-        const y = track.radius * track.flatten * Math.sin(angle);
-        return {
-          x: 0.5 + x * Math.cos(track.tilt) - y * Math.sin(track.tilt),
-          y: 0.5 + x * Math.sin(track.tilt) + y * Math.cos(track.tilt)
-        };
-      }
-
-      function line(a, b, color, width) {
-        ctx.beginPath();
-        ctx.moveTo(a.x * size, a.y * size);
-        ctx.lineTo(b.x * size, b.y * size);
-        ctx.lineWidth = width;
-        ctx.strokeStyle = color;
-        ctx.stroke();
-      }
-
-      function draw(time) {
-        ctx.clearRect(0, 0, size, size);
-        const nodes = [];
-        tracks.forEach((track, ring) => {
-          ctx.beginPath();
-          ctx.ellipse(size / 2, size / 2, track.radius * size,
-            track.radius * track.flatten * size, track.tilt, 0, full);
-          ctx.strokeStyle = ring === 2 ? "#eeeef270" : "#c9c9cf43";
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          for (let index = 0; index < track.count; index += 1) {
-            const angle = (full * index) / track.count + ring * 0.68 + time * track.rate;
-            nodes.push({ ...point(track, angle), ring, index });
-          }
-        });
-
-        nodes.forEach((a, i) => {
-          for (let j = i + 1; j < nodes.length; j += 1) {
-            const b = nodes[j];
-            const distance = Math.hypot(a.x - b.x, a.y - b.y);
-            if (a.ring !== b.ring && distance < 0.19) {
-              line(a, b, `rgba(226, 226, 231, ${0.32 * (1 - distance / 0.19)})`, 1);
-            }
-          }
-          if (a.index % 4 === 0) {
-            const alpha = 0.14 + 0.09 * Math.sin(time * 1.6 + i);
-            line(a, { x: 0.5, y: 0.5 }, `rgba(224, 224, 229, ${alpha})`, 1);
-          }
-
-          const bright = a.index % 4 === 0;
-          const pulse = 0.75 + 0.25 * Math.sin(time * 1.9 + i * 1.7);
-          const radius = bright ? 2.3 + pulse : 1 + pulse;
-          ctx.beginPath();
-          ctx.arc(a.x * size, a.y * size, radius, 0, full);
-          ctx.fillStyle = bright ? "#fafafd" : "#a8a8ad";
-          ctx.shadowColor = "#ffffff70";
-          ctx.shadowBlur = bright ? 8 : 3;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        });
-      }
-
-      function frame(ms) {
-        if (lastTick !== null) elapsed += ms - lastTick;
-        lastTick = ms;
-        if (elapsed - lastRoleChange >= 4200) {
-          lastRoleChange = elapsed;
-          roleGroup = (roleGroup + 1) % roleLabels[0].length;
-          roleNodes.forEach((node, index) => {
-            node.textContent = roleLabels[index][roleGroup];
-          });
-          measureRoles();
-        }
-        if (elapsed - lastFrame >= 31 && size > 0) {
-          draw(elapsed / 1000);
-          placeRoles(elapsed / 1000);
-          lastFrame = elapsed;
-        }
-        animation = requestAnimationFrame(frame);
-      }
-
-      function syncMotion() {
-        cancelAnimationFrame(animation);
-        lastTick = null;
-        toggle.hidden = still.matches;
-        if (!(still.matches || paused || document.hidden)) {
-          animation = requestAnimationFrame(frame);
-        }
-      }
-
-      new ResizeObserver(([entry]) => {
-        size = entry.contentRect.width;
-        if (size <= 0) return;
-        const scale = Math.min(devicePixelRatio || 1, 2);
-        canvas.width = Math.round(size * scale);
-        canvas.height = Math.round(size * scale);
-        ctx.setTransform(scale, 0, 0, scale, 0, 0);
-        draw(elapsed / 1000);
-      }).observe(canvas);
-      roleList.dataset.orbit = "";
-      measureRoles();
-      const roleObserver = new ResizeObserver(measureRoles);
-      [roleList, joinPanel, ...roleNodes].forEach(node => roleObserver.observe(node));
-      toggle.addEventListener("click", () => {
-        paused = !paused;
-        const label = paused ? "Animation fortsetzen" : "Animation pausieren";
-        toggle.setAttribute("aria-label", label);
-        toggle.title = label;
-        toggle.toggleAttribute("data-paused", paused);
-        syncMotion();
-      });
-      still.addEventListener("change", syncMotion);
-      document.addEventListener("visibilitychange", syncMotion);
-      syncMotion();
-    })();
+    // Hintergrundvideo nur auf dem Handy abspielen (Desktop nutzt das Reel rechts)
+    const bg = document.getElementById("bg-video");
+    const desktop = matchMedia("(min-width: 900px)");
+    const syncBg = () => { if (desktop.matches) { bg.pause(); bg.removeAttribute("autoplay"); } else { bg.play?.().catch(() => {}); } };
+    desktop.addEventListener("change", syncBg); syncBg();
   </script>
 <script src="meta-pixel.js" defer></script></body>
 </html>

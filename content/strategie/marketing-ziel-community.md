@@ -32,6 +32,12 @@ DMs schreibt Maik selbst, nichts wird automatisch versendet.
 - Ab 28.11.2026: „Community-Reel mit Tipp · Landingpage“ (`utm_content=reel_tipp`) ersetzt das Community-Reel ohne Tipp (`reel_landingpage`), 30 $/Tag.
 - Auswertung nach 2–3 Tagen: Kosten pro Seitenaufruf, Beitritte pro 100 Besucher, wer genau beitritt.
 
+## Stand 28.11.2026 (Abend)
+
+- Follower-Anzeigen sind aus. Es läuft **nur noch eine Anzeige**: R061 (Drehbuch Nr. 2, Variante B mit KI-Hologramm, Stimme Orion) → Community-Seite, `utm_content=reel_r061`, 30 $/Tag (Ad 52567934180765).
+- Community-Seite im Look des Reels umgebaut (Wüste/KI-Hologramm-Szene als Hintergrund bzw. Reel rechts, „Gründer & Selbstständige · LOST MIT KI?“, PostHog `layout=reel`).
+- R061 organisch gepostet: https://www.instagram.com/reel/DgSLONHg5CM/
+
 ## Nächste Schritte
 
 Drehbuch mit vier Varianten (5–7 s) und Testplan: `drehbuch-2-community-reel.md`.
