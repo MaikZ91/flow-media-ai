@@ -25,6 +25,7 @@ Grundlage für **FLOW MEDIA AI**, das Business von Maik. Hier entstehen Position
 - `auswertungen/` – Auswertungen (z. B. Blindspot-Analysen)
 - `.claude/skills/pruefer-agent/` – optional, nur wenn Maik ihn einschaltet: Prüfagent, Interview, Regeln aus Korrekturen, verteilte Recherche
 - `content/autopilot/challenge31.md` – Posting-Plan der 31-Tage-Challenge (ersetzt den Startplan)
+- **Oberstes Marketing-Ziel (Maik, 28.11.2026):** ein beworbenes Reel, das die Zielgruppe trifft und über die Community-Seite in die WhatsApp-Community führt. Messgröße sind echte Beitritte, nicht Follower. Follower-Anzeigen sind nur Übergang. Stand, Daten und nächste Tests: `content/strategie/marketing-ziel-community.md`.
 - `content/strategie/problem-zu-loesung.md` – Content- und Marketingstrategie „Vom Problem zur Lösung“ (11.11.2026): fünf Problem-Säulen, Formel Problem → Aha → Lösung → CTA, Hooks, Reels, Serien, CTAs. Gilt für jeden Post.
 - `content/learnings.md` – Ergebnisse und Erkenntnisse je Post
 - `content/musik/` – Musik für Reels: eigene MZ.9-Tracks (`eigene/`) und freie Musik (`frei/`), Katalog im README
