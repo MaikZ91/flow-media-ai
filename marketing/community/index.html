@@ -278,8 +278,22 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       option.querySelector("small").textContent = "✓ Check-in …";
       setTimeout(() => { location.href = option.href; }, 480);
     }
+    // Beitritt server-seitig an Meta melden (Conversions API): nur bei Besuch über eine Anzeige (fbclid im Link),
+    // ohne Cookie, ohne Browser-Speicher. Wer dem Pixel zugestimmt hat, wird stattdessen über den Pixel gemeldet.
+    const fbclid = params.get("fbclid");
+    const landed = Date.now();
+    function reportLead(role) {
+      if (!fbclid || window.fbq) return;
+      try {
+        fetch("https://ykleosfvtqcmqxqihnod.supabase.co/functions/v1/flow-meta-capi", {
+          method: "POST", keepalive: true, headers: { "content-type": "text/plain" },
+          body: JSON.stringify({ fbclid, landed, role, url: location.origin + location.pathname, event_id: "lead-" + landed })
+        }).catch(() => {});
+      } catch {}
+    }
     document.querySelectorAll("[data-join-role]").forEach(option => {
       option.addEventListener("click", event => {
+        reportLead(option.dataset.joinRole);
         const selection = { cta: "hero", join_role: option.dataset.joinRole };
         capture("community_join_intent", selection, { send_instantly: true });
         capture("community_join_click", selection, { send_instantly: true });
