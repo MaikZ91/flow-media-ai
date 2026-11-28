@@ -27,6 +27,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
   person_profiles: "identified_only",
   disable_session_recording: true,
   respect_dnt: true,
+  disable_surveys: true,
   loaded: ph => ph.register({ site: "flow-community", variante: "onepager" }),
 });
 </script>
@@ -39,8 +40,9 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       --rule: #ffffff26;
       --blue: #2F5BFF;
       --gutter: clamp(16px, 5vw, 64px);
-      font-family: Inter, system-ui, sans-serif;
+      font-family: Inter, "Inter Fallback", system-ui, sans-serif;
     }
+    @font-face { font-family: "Inter Fallback"; src: local("Arial"), local("Helvetica"), local("Roboto"); size-adjust: 107%; ascent-override: 90%; descent-override: 22%; line-gap-override: 0%; }
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; background: var(--bg); color: var(--text); }
     a { color: inherit; }
@@ -91,9 +93,9 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     .join::before, .join::after { content: ""; position: absolute; width: 12px; height: 12px; border: 2px solid #8fb0ff; pointer-events: none; }
     .join::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
     .join::after { bottom: 5px; right: 5px; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
-    .scan { position: absolute; left: 0; right: 0; top: -30%; height: 30%; pointer-events: none;
+    .scan { position: absolute; left: 0; right: 0; top: 0; height: 30%; transform: translateY(-100%); will-change: transform; pointer-events: none;
       background: linear-gradient(180deg, transparent, rgba(120,160,255,.16), transparent); animation: scan 3.6s linear infinite; }
-    @keyframes scan { to { top: 110%; } }
+    @keyframes scan { to { transform: translateY(380%); } }
     .term-head { display: flex; justify-content: space-between; align-items: center; gap: 8px;
       font: 600 11px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: #9db6ff; }
     .status { display: inline-flex; align-items: center; gap: 6px; color: #b9ffcf; }
@@ -156,11 +158,11 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
 </head>
 <body>
   <div class="scene" aria-hidden="true">
-    <video id="bg-video" src="img/hero_reel.mp4" poster="img/hero_reel.jpg" autoplay muted loop playsinline preload="metadata"></video>
+    <video id="bg-video" data-src="img/hero_reel.mp4" poster="img/hero_reel.jpg" muted loop playsinline preload="none"></video>
   </div>
   <div class="layout">
     <header class="brandbar">
-      <img src="img/logo_flow.png" width="118" height="26" alt="Flow Media AI">
+      <img src="img/logo_flow_sm.png" width="118" height="32" alt="Flow Media AI">
       <span class="region">Münster · Bielefeld · Online</span>
     </header>
     <main aria-labelledby="title">
@@ -187,11 +189,11 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
             </div>
             <p class="fine">Kostenlos beitreten · WhatsApp · nur mitlesen ist okay</p>
           </div>
-          <p class="host"><img src="img/maik_front.jpg" alt="" width="32" height="32"> Maik · Dein Gastgeber</p>
+          <p class="host"><img src="img/maik_avatar_96.jpg" alt="" width="32" height="32" loading="lazy" decoding="async"> Maik · Dein Gastgeber</p>
         </div>
       </div>
       <div class="reel" aria-hidden="true">
-        <video src="img/hero_reel.mp4" poster="img/hero_reel.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <video id="reel-video" data-src="img/hero_reel.mp4" poster="img/hero_reel.jpg" muted loop playsinline preload="none"></video>
       </div>
     </main>
     <footer>
@@ -252,11 +254,20 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         checkIn(option, event);
       });
     });
-    // Hintergrundvideo nur auf dem Handy abspielen (Desktop nutzt das Reel rechts)
-    const bg = document.getElementById("bg-video");
+    // Video nur in den sichtbaren Rahmen laden (Handy: Hintergrund, Desktop: Reel rechts); ohne Bewegung nur das Standbild
     const desktop = matchMedia("(min-width: 900px)");
-    const syncBg = () => { if (desktop.matches) { bg.pause(); bg.removeAttribute("autoplay"); } else { bg.play?.().catch(() => {}); } };
-    desktop.addEventListener("change", syncBg); syncBg();
+    const calmMotion = matchMedia("(prefers-reduced-motion: reduce)");
+    function syncVideo() {
+      const show = document.getElementById(desktop.matches ? "reel-video" : "bg-video");
+      const hide = document.getElementById(desktop.matches ? "bg-video" : "reel-video");
+      hide.pause();
+      if (calmMotion.matches) return;
+      if (!show.src) show.src = show.dataset.src;
+      show.play?.().catch(() => {});
+    }
+    const startVideo = () => setTimeout(syncVideo, 300);
+    document.readyState === "complete" ? startVideo() : addEventListener("load", startVideo, { once: true });
+    desktop.addEventListener("change", syncVideo);
   </script>
 <script src="meta-pixel.js" defer></script></body>
 </html>
