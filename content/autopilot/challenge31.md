@@ -18,7 +18,7 @@
 | [3](#tag-3) | Founder Story | Karussell | Dich vorstellen: wer du bist, Fakten, was du magst, Ziele, Why, Danke + CTA | Frage-Sticker (als Text): „Was willst du noch über mich wissen?“ | ✓ 25.11. (Maik, Reel „Hey, ich bin Maik“) |
 | [4](#tag-4) | Founder Story | Story | — | Beantwortete Fragen von gestern; ohne Antworten einen Alltags-Clip mit Musik | 26.11. ausgelassen |
 | [5](#tag-5) | Demonstration / Proof | B-Roll-Reel | „Das hätte ich gerne früher gewusst“, Text-Overlay mit Learnings | Laptop filmen bei der Arbeit, Profil taggen (hier: kein Tag, nur Arbeit zeigen) | ✓ 27.11. https://www.instagram.com/reel/DgP4SZyBE6U/ |
-| [6](#tag-6) | Behind the scenes | Story | — | Eine echte Routine zeigen, dazu Umfrage (als Text: A oder B) | offen |
+| [6](#tag-6) | Behind the scenes | Story | — | Eine echte Routine zeigen, dazu Umfrage (als Text: A oder B) | ✓ 28.11. Story kalt duschen (MAGI-2-Clip) https://www.instagram.com/stories/flow.media.ai/4040420844236529775 |
 | [7](#tag-7) | Demonstration / Proof | B-Roll-Reel | Mini-Tutorial oder Tipps, die echte Teilprobleme lösen | Emoji-Frage: „Haben dir die Tipps geholfen?“ (als Text) | offen |
 | [8](#tag-8) | Behind the scenes | Story | — | Sprechstory, max. 1 Minute: was du in Woche 1 gelernt hast | offen |
 | [9](#tag-9) | PAS | Talking-Head-Reel | Ein Problem der Zielgruppe aufgreifen, am Ende einen Lösungsimpuls | Foto aus dem Alltag, Frage nach dem größten Problem | offen |
