@@ -4,7 +4,8 @@ Bild: MAGI-2 (Higgsfield) aus einem Storyboard-Bild; Stimme: ElevenLabs „Chloe
 """
 import subprocess, pathlib
 D = pathlib.Path(__file__).parent
-SRC = D / "magi2_raw.mp4"; VO = D / "vo.mp3"
+import os
+SRC = D / "magi2_raw.mp4"; VO = D / os.environ.get("VO", "vo.mp3"); OUT = os.environ.get("OUT", "R060-spot.mp4")
 FOTO = D / "../../personal/arbeitsplatz/arbeitsplatz-buero-blazer.png"
 MUSIK = D / "../../musik/frei/driving-ambition.mp3"
 # (src_start, src_end, out_len, kicker, headline, sub, pos)
@@ -69,9 +70,9 @@ def build():
     for i in range(n + 1): cmd += ["-loop", "1", "-i", str(D / f"o{i}.png")]
     cmd += ["-i", str(VO), "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
             "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
-            "-movflags", "+faststart", str(D / "R060-spot.mp4")]
+            "-movflags", "+faststart", str(D / OUT)]
     subprocess.run(cmd, check=True)
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.9", "-i", str(D / "R060-spot.mp4"), "-frames:v", "1", "-q:v", "3", str(D / "cover-spot.jpg")], check=True)
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.9", "-i", str(D / OUT), "-frames:v", "1", "-q:v", "3", str(D / "cover-spot.jpg")], check=True)
     for i in range(n + 1): (D / f"o{i}.png").unlink()
 
 
