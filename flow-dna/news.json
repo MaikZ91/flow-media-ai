@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-28T07:57+00:00",
+ "stand": "2026-11-28T17:37+00:00",
  "quellen": [
   "The Decoder",
   "t3n",
@@ -7,6 +7,120 @@
   "OpenAI"
  ],
  "items": [
+  {
+   "t": "Wutausbruch wegen Kentucky Fried Chicken? Was passiert, wenn man sich im Chat mit Gemini absichtlich dumm stellt",
+   "s": "Die wiederholte Nachfrage nach frittiertem Hühnchen soll Googles Gemini dazu gebracht haben, einem Nutzer mit Folter zu drohen. Lässt sich der Bot wirklich so leicht zum Ausrasten bringen? Ein Selbstversuch.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/wutausbruch-wegen-kfc-1775132",
+   "d": "2026-11-28T17:00:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 13.9
+  },
+  {
+   "t": "Wenn KI die KI überwacht: Neue Studie deckt Lücken in gängigen Sicherheitstests auf",
+   "s": "Eine Studie des UK Safety Institutes stellt simulierte Sabotagetests für KI-Monitore grundlegend infrage. Ein früheres Überwachungssystem von OpenAI auf Basis von GPT-5.4 übersah bei Standard-Angriffen nur 0,2 bis 0,5 …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/wenn-ki-die-ki-ueberwacht-neue-studie-deckt-luecken-in-gaengigen-sicherheitstests-auf/",
+   "d": "2026-11-28T14:55:09+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 13.5
+  },
+  {
+   "t": "Terence Tao erwartet \"Big Math\", nennt aktuelle KI-Beweise aber \"Giftmüll\"",
+   "s": "Terence Tao skizziert im Hard-Fork-Podcast seine Vision von \"Big Math\": Statt Einzelkämpfertum sollen Mensch-KI-Teams tausende Probleme systematisch kartieren. Zugleich kritisiert er KI-Beweise großer Tech-Konzerne als …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/terence-tao-erwartet-big-math-nennt-aktuelle-ki-beweise-aber-giftmuell/",
+   "d": "2026-11-28T14:05:01+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.4
+  },
+  {
+   "t": "Britisches Parlament fordert von Anthropic ungeschwärzten METR-Sicherheitsbericht",
+   "s": "Das britische Parlament erhöht den Druck auf Anthropic: Ausschussvorsitzender Liam Byrne fordert bis zum 4. Dezember die ungeschwärzte Fassung des METR-Sicherheitsberichts zur KI‑Beschleunigung. METR hatte kritisiert, …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/britisches-parlament-fordert-von-anthropic-ungeschwaerzten-metr-sicherheitsbericht/",
+   "d": "2026-11-28T13:31:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 13.3
+  },
+  {
+   "t": "Sie schnuppert es: So will ein US-Startup einer KI das Riechen beibringen",
+   "s": "Das Geruchsmodell von Osmo wird bereits in der Parfümindustrie eingesetzt. Künftig soll sie auch für medizinische Diagnostik und das Erschnüffeln von Gefahren g",
+   "q": "t3n",
+   "l": "https://t3n.de/news/osmo-ki-riechen-1774212",
+   "d": "2026-11-28T12:55:00+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 7.2
+  },
+  {
+   "t": "Cleveres Timing: Warum Google seinen KI-Agenten für den Mac genau jetzt startet",
+   "s": "Google plant, seine KI auf Macs mit mehr Fertigkeiten auszustatten. Gemini kann künftig auch die Steuerung von macOS übernehmen. Warum das Unternehmen damit Apples Vorhaben zuvorkommt.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/google-gemini-mac-1774609",
+   "d": "2026-11-28T11:10:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini",
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 16.9
+  },
+  {
+   "t": "Robotik-Startup Embo sammelt 110 Millionen Dollar für Roboter-KI mit World Models ein",
+   "s": "Embo sammelt 110 Millionen Dollar Seed-Kapital ein, um mit World Models ein universelles Roboter-Gehirn zu bauen. Die KI lernt aus Internetvideos, wie die physische Welt funktioniert, und übt motorische Fähigkeiten in …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/robotik-startup-embo-sammelt-110-millionen-dollar-fuer-roboter-ki-mit-world-models-ein/",
+   "d": "2026-11-28T10:28:18+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 10.8
+  },
+  {
+   "t": "250.000 Seiten, die niemand ganz versteht: Anthropic-Mitarbeiter will mit Claude die Riemannsche Vermutung bewiesen haben",
+   "s": "Der „Heilige Gral“ der Mathematik könnte gefunden sein. Das Problem: Der Beweis wäre für Menschen mehr als 250.000 Seiten lang – und selbst ihr Urheber versteht ihn noch nicht ganz.",
+   "q": "t3n",
+   "l": "https://t3n.de/news/riemannsche-vermutung-claude-beweis-250000-seite-1774754",
+   "d": "2026-11-28T10:00:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 12.7
+  },
+  {
+   "t": "Humanity's First Exam: Selbst die besten KI-Modelle können bei einfachen Alltagsaufgaben patzen",
+   "s": "Google Deepmind testet mit \"Humanity’s First Exam\" die Zuverlässigkeit von 18 KI‑Modellen. Zwar lösen die Spitzenmodelle fast alle Aufgabenfamilien mindestens einmal, doch bei 16 geforderten Antworten in Folge patzen …",
+   "q": "The Decoder",
+   "l": "https://the-decoder.de/humanitys-first-exam-selbst-die-besten-ki-modelle-koennen-bei-einfachen-alltagsaufgaben-patzen/",
+   "d": "2026-11-28T09:21:30+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 12.6
+  },
   {
    "t": "Smart Swim 2 LT: Kann diese smarte Schwimmbrille KI-Coach meinen Freistil retten?",
    "s": "Eine Schwimmbrille für jederfrau oder -mann, die Bahnen zählt, Zeiten überwacht und gegen Aufpreis das Schwimmtraining managt: Das jedenfalls verspricht die Sma",
@@ -16,7 +130,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 7.9
+   "r": 6.3
   },
   {
    "t": "Developer-Häppchen: Twig sortiert sprachgerecht, Qt Creator steuert KI-Agenten",
@@ -29,31 +143,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 11.9
-  },
-  {
-   "t": "Rockstar verzichtet bei GTA 6 auf generative KI – und sendet damit ein Signal an andere Branchen",
-   "s": "Grand Theft Auto 6 ist ein gigantisches und ein bedeutendes Spiel. Aber wird es auch beeinflussen, wie Videospiele zukünftig aussehen? Das wahrscheinlich eher nicht – dafür dürften andere Branchen aber genau hinschauen.",
-   "q": "t3n",
-   "l": "https://t3n.de/news/gta-6-ohne-generative-ki-rockstar-1774449",
-   "d": "2026-11-28T05:15:00+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 7.6
-  },
-  {
-   "t": "Ghost Core: 19-Jähriger baut lokale KI ohne Bildschirm, gesteuert per Smartphone",
-   "s": "Während die etablierte Tech-Branche bei autonomen KI-Programmen auf Rechenzentren setzt, wählt ein neunzehnjähriger Entwickler den exakt entgegengesetzten Weg. Seine bildschirmlose Spezialhardware für den Heimeinsatz …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/ghost-core-lokaler-ki-computer-ohne-bildschirm-1767111",
-   "d": "2026-11-28T05:05:00+00:00",
-   "lang": "de",
-   "tags": [
-    "Coding mit KI"
-   ],
-   "n": 1,
-   "r": 11.5
+   "r": 10.3
   },
   {
    "t": "OpenAI verklagt Apple wegen Diebstahls von Geschäftsgeheimnissen und unfairer Wettbewerbspraktiken",
@@ -67,7 +157,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 15.9
+   "r": 14.3
   },
   {
    "t": "Verbotene Nvidia-Chips landeten trotz US-Exportsperre in chinesischem Rechenzentrum",
@@ -81,7 +171,7 @@
     "DeepSeek & China"
    ],
    "n": 1,
-   "r": 13.7
+   "r": 12.1
   },
   {
    "t": "c't 3003 baut Fernseher mit KI-Agent um: Tizen wird zu „Apple TV“",
@@ -95,7 +185,7 @@
     "KI-Agenten"
    ],
    "n": 2,
-   "r": 23.7
+   "r": 22.1
   },
   {
    "t": "Signal blockiert Screenshots: Widerstand gegen KI-Überwachung im Betriebssystem",
@@ -110,7 +200,7 @@
     "Apple"
    ],
    "n": 1,
-   "r": 19.5
+   "r": 17.9
   },
   {
    "t": "Drei Studien schärfen den Gegenentwurf von KI-Pionier Yann LeCun zu großen Sprachmodellen",
@@ -121,7 +211,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.3
+   "r": 3.7
   },
   {
    "t": "US-Luftwaffe: Hacker dringen laut Bericht in zentrale Cloud-Plattform Cloud One ein",
@@ -132,7 +222,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.2
+   "r": 3.6
   },
   {
    "t": "Codename Athena: OpenAI baut Datenmanagement-Plattform für genauere Business-Agenten",
@@ -147,7 +237,7 @@
     "Jobs & Arbeit"
    ],
    "n": 3,
-   "r": 37.2
+   "r": 35.6
   },
   {
    "t": "Europas IT-Ausgaben: Server werden teurer, mehr Geld fließt in KI-Agenten",
@@ -160,7 +250,7 @@
     "KI-Agenten"
    ],
    "n": 1,
-   "r": 9.2
+   "r": 7.6
   },
   {
    "t": "AI-Supply-Chain: Günstige Inferenzangebote greifen Secrets ab",
@@ -171,24 +261,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 5.1
-  },
-  {
-   "t": "Rockstars GTA 6 hat ein KI-Problem",
-   "s": "Wenige Tage nach dem 3,79-Milliarden-Dollar-Rekordstart von GTA 6 auf Konsolen arbeiten über 40 Projekte daran, eine geleakte Xbox-Fassung per Reverse Engineering auf den PC zu bringen. KI-Coding-Agenten wie Claude Code …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/rockstars-gta-6-hat-ein-ki-problem/",
-   "d": "2026-11-27T14:17:47+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "KI-Agenten",
-    "Coding mit KI",
-    "Jobs & Arbeit",
-    "KI-Blase & Geld"
-   ],
-   "n": 3,
-   "r": 43.1
+   "r": 3.4
   },
   {
    "t": "KI-Update kompakt: Anthropic Siren, AMPEL, Mathe-Beweise, Skizzenbuch",
@@ -201,7 +274,7 @@
     "Claude / Anthropic"
    ],
    "n": 1,
-   "r": 11.0
+   "r": 9.4
   },
   {
    "t": "Verbraucherzentrale mahnt OpenAI und Anthropic ab",
@@ -214,33 +287,8 @@
     "OpenAI",
     "Claude / Anthropic"
    ],
-   "n": 1,
-   "r": 16.7
-  },
-  {
-   "t": "KI-Umbau: SAP plant laut Bericht den Abbau von mindestens 10.000 Stellen",
-   "s": "SAP plant im Zuge seiner KI-Neuausrichtung den Abbau von Stellen. Der Artikel KI-Umbau: SAP plant laut Bericht den Abbau von mindestens 10.000 Stellen erschien zuerst auf The Decoder .",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/ki-umbau-sap-plant-laut-bericht-den-abbau-von-mindestens-10-000-stellen/",
-   "d": "2026-11-27T11:35:25+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 4.6
-  },
-  {
-   "t": "Bewusstseins-Debatte über Anthropics KI: Warum dieser Philosoph einem Trugschluss aufsitzt",
-   "s": "Es ist eigentlich ein Drahtseilakt, den Anthropic vollführt: Das KI-Unternehmen warnt Investoren vor Sprachmodellen mit Bewusstsein, treibt diese Entwicklung ab",
-   "q": "t3n",
-   "l": "https://t3n.de/news/bewusstseins-debatte-ueber-anthropics-ki-warum-dieser-philosoph-einem-trugschluss-aufsitzt-1775582",
-   "d": "2026-11-27T11:30:55+00:00",
-   "lang": "de",
-   "tags": [
-    "Claude / Anthropic",
-    "KI-Blase & Geld"
-   ],
    "n": 2,
-   "r": 22.6
+   "r": 25.1
   },
   {
    "t": "Post zum Freitag: GTA 6 – Wie KI die Spielregeln der Gaming-Branche verändert",
@@ -251,7 +299,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 4.2
+   "r": 2.6
   },
   {
    "t": "Bundesregierung will KI-Anbieter zur Kasse bitten",
@@ -262,18 +310,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 3.9
-  },
-  {
-   "t": "Wenn KI den schnellen Content liefert: Wie sich Marketingteams neu aufstellen müssen",
-   "s": "Ist KI erfolgreich im Unternehmen eingeführt, stehen Marketingabteilungen vor neuen Herausforderungen, weil damit der reine Content schnell und kostengünstig produzierbar wird. Das macht im Team eine Neuordnung mit …",
-   "q": "t3n",
-   "l": "https://t3n.de/news/wenn-ki-den-schnellen-content-liefert-wie-sich-marketingteams-neu-aufstellen-muessen-1775561",
-   "d": "2026-11-27T07:30:51+00:00",
-   "lang": "de",
-   "tags": [],
-   "n": 1,
-   "r": 3.9
+   "r": 2.3
   },
   {
    "t": "Freitag: SAPs massiver Stellenabbau wegen KI, FBI-Falle für Ransomware-Betrüger",
@@ -287,7 +324,7 @@
     "Regulierung & AI Act"
    ],
    "n": 1,
-   "r": 11.6
+   "r": 9.9
   },
   {
    "t": "Nvidia stoppt offenbar Lieferungen von KI-Servern an einige Länder Südostasiens",
@@ -300,7 +337,7 @@
     "Nvidia & Chips"
    ],
    "n": 1,
-   "r": 7.4
+   "r": 5.8
   },
   {
    "t": "SAP: KI zuerst, 10.000 Mitarbeiter weniger",
@@ -311,46 +348,7 @@
    "lang": "de",
    "tags": [],
    "n": 1,
-   "r": 2.0
-  },
-  {
-   "t": "Nicht der Riemann-Beweis ist entscheidend, sondern dass ein KI-System existiert, das ihn liefern kann",
-   "s": "Scott Aaronson, Komplexitätstheoretiker und Ex-OpenAI-Mitarbeiter, sieht in den jüngsten KI-Mathematik-Durchbrüchen weit mehr als akademische Erfolge: von wirtschaftlichen Umwälzungen bis zu Risiken für die Menschheit. …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/nicht-der-riemann-beweis-ist-entscheidend-sondern-dass-ein-ki-system-existiert-das-ihn-liefern-kann/",
-   "d": "2026-11-26T19:11:46+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 7.9
-  },
-  {
-   "t": "OpenAI hat sich verrechnet: GPT-6.2-Nutzer erreichen ihre Limits jetzt 40 Prozent schneller",
-   "s": "OpenAI hat einen Abrechnungsfehler bei GPT-6.2 eingeräumt: Astra- und Sol-Nutzer erreichen ihre Limits nun 40 bzw. 25 Prozent schneller als in der Vorwoche. Als Ausgleich gibt es einen Extra-Reset und für Business-User …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/openai-hat-sich-verrechnet-gpt-6-2-nutzer-erreichen-ihre-limits-jetzt-40-prozent-schneller/",
-   "d": "2026-11-26T17:20:56+00:00",
-   "lang": "de",
-   "tags": [
-    "OpenAI"
-   ],
-   "n": 1,
-   "r": 7.6
-  },
-  {
-   "t": "US-Chipregeln und Destillations-Blockaden zwingen Z.AI und Moonshot laut Insidern zur Verschiebung großer Sprachmodelle auf 2027",
-   "s": "Die chinesischen KI-Unternehmen Z.AI und Moonshot AI müssen ihre nächsten Flaggschiff-Modelle verschieben und suchen bei Trainingsdaten nach neuen Quellen. Der Artikel US-Chipregeln und Destillations-Blockaden zwingen …",
-   "q": "The Decoder",
-   "l": "https://the-decoder.de/us-chipregeln-und-destillations-blockaden-zwingen-z-ai-und-moonshot-laut-insidern-zur-verschiebung-grosser-sprachmodelle-auf-2027/",
-   "d": "2026-11-26T15:22:08+00:00",
-   "lang": "de",
-   "tags": [
-    "DeepSeek & China"
-   ],
-   "n": 1,
-   "r": 5.2
+   "r": 0.4
   },
   {
    "t": "GPT-6 models demonstrate intrinsic protein-design capabilities",
@@ -399,8 +397,8 @@
     "KI-Agenten",
     "Coding mit KI"
    ],
-   "n": 2,
-   "r": 18.0
+   "n": 1,
+   "r": 8.0
   },
   {
    "t": "Clay helps sales teams win with Codex and ChatGPT",
@@ -514,31 +512,488 @@
   "Google DeepMind",
   "Two Minute Papers"
  ],
- "videos": [],
+ "videos": [
+  {
+   "id": "eVwvXYo6Acc",
+   "t": "KI-Pionier: „Vielleicht SOLLTE die KI die Macht übernehmen!“ (Prof. Marcus Hutter)",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-28T10:15:26+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 6.8
+  },
+  {
+   "id": "fVqmbi5cNGU",
+   "t": "„ChatGPT wird nur eine ETAPPE sein!“ DAS kommt danach (Prof. Klaus Mainzer)",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-27T10:15:03+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 8.8
+  },
+  {
+   "id": "u6UYsl-KEoc",
+   "t": "DeepMind’s New AI Just Changed The AI Race",
+   "q": "Two Minute Papers",
+   "d": "2026-11-27T08:42:30+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 8.5
+  },
+  {
+   "id": "a-IkqL0b17w",
+   "t": "KI-Agenten machen jetzt ALLES am Computer! Der Mensch ist der Flaschenhals (Browser Use Interview)",
+   "q": "Everlast AI",
+   "d": "2026-11-26T16:15:24+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Agenten"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "D266Ju3JarI",
+   "t": "Google-Suche bricht EIN: Erstmals weniger als die Hälfte des Umsatzes!",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-26T10:15:36+00:00",
+   "lang": "de",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "C6DENY3rgqg",
+   "t": "You had us at Deployed",
+   "q": "OpenAI",
+   "d": "2026-11-25T23:50:43+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "A4UNP-axGHU",
+   "t": "How your dot can keep work moving while you’re away",
+   "q": "OpenAI",
+   "d": "2026-11-25T18:21:11+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "kfGYU_-SuaE",
+   "t": "School Day | Make a day do anything with ChatGPT (Official)",
+   "q": "OpenAI",
+   "d": "2026-11-25T16:45:33+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "G93jsYoVyjE",
+   "t": "Erstmals außerhalb Chinas: DIESER Humanoid startet JETZT in Deutschland! Wir waren dabei (DOBOT)",
+   "q": "Everlast Robotics",
+   "d": "2026-11-25T14:30:39+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "hwKct_1ilEQ",
+   "t": "Finances in ChatGPT: A Beginner’s Guide",
+   "q": "OpenAI",
+   "d": "2026-11-25T14:00:28+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "p_sZXuPyTPA",
+   "t": "Die KI-Steuer kommt: Deutschland will besteuern, was es noch gar NICHT gibt!",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-25T10:15:12+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "hwWlEuI359w",
+   "t": "Claude AI’s Biggest Math Breakthrough Has A Problem.",
+   "q": "Two Minute Papers",
+   "d": "2026-11-25T09:54:23+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 16.0
+  },
+  {
+   "id": "1u0hTd86_HU",
+   "t": "Experiment with SVG & 3D Design with the Codex Plugin",
+   "q": "OpenAI",
+   "d": "2026-11-24T21:32:42+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "K8rdrWQRd20",
+   "t": "How AI is finding the hidden rules of the human brain",
+   "q": "Google DeepMind",
+   "d": "2026-11-24T17:51:08+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "lSQpmfuFyVc",
+   "t": "KI entwirft jetzt ihre eigenen Chips und es ist das Ende der Elektronik",
+   "q": "Everlast AI",
+   "d": "2026-11-24T16:15:19+00:00",
+   "lang": "de",
+   "tags": [
+    "Nvidia & Chips"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "09zUU_GJzIQ",
+   "t": "Lächerliche 30 Millionen Euro: DAS ist Deutschlands Plan für die KI-Weltspitze!",
+   "q": "Everlast AI Clips",
+   "d": "2026-11-24T10:15:32+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "HGBUNfRnxbo",
+   "t": "Grundausbildung: KI",
+   "q": "Everlast AI",
+   "d": "2026-11-23T16:15:15+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "1jPdehG3Hms",
+   "t": "Claude AI Solved The Secret Of Black Holes",
+   "q": "Two Minute Papers",
+   "d": "2026-11-23T07:37:52+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 16.0
+  },
+  {
+   "id": "CrrQ7sra_U4",
+   "t": "Schau das BEVOR du KI Videos generierst! 5 Dinge die du vorher ändern solltest",
+   "q": "Cinetiq",
+   "d": "2026-11-22T10:00:19+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "kqa9fPVYNxg",
+   "t": "Damit habe ich nicht gerechnet: Gemini \"Neon\" SCHLÄGT GPT-6.2! + Anthropic Rekord-IPO | KI-NEWS",
+   "q": "Everlast AI",
+   "d": "2026-11-22T09:42:23+00:00",
+   "lang": "de",
+   "tags": [
+    "OpenAI",
+    "Claude / Anthropic",
+    "Google Gemini"
+   ],
+   "n": 2,
+   "r": 28.0
+  },
+  {
+   "id": "sof3vW4mHTs",
+   "t": "The making of Anthropic",
+   "q": "Anthropic",
+   "d": "2026-11-19T21:03:23+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "FORdPIWOH5k",
+   "t": "Is Gemini our path to AGI?",
+   "q": "Google DeepMind",
+   "d": "2026-11-19T19:58:06+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "dvcxM2aHKGY",
+   "t": "Der Vater der KI: Was KI bald kann, wird keiner glauben! DAS passiert nach AGI (Jürgen Schmidhuber)",
+   "q": "Everlast AI",
+   "d": "2026-11-19T16:15:30+00:00",
+   "lang": "de",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "JDsFHmq9hlA",
+   "t": "What we make of this moment, will make this moment.",
+   "q": "Anthropic",
+   "d": "2026-11-19T15:02:49+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "Cy7Wz6Z4TWU",
+   "t": "DeepMind Just Released The Best Thing AI Ever Did",
+   "q": "Two Minute Papers",
+   "d": "2026-11-19T09:26:19+00:00",
+   "lang": "en",
+   "tags": [
+    "Google Gemini"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "pVc6KkjeCfU",
+   "t": "Behind the scenes with Genie 4",
+   "q": "Google DeepMind",
+   "d": "2026-11-18T18:12:24+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "EDp4IoAUsXY",
+   "t": "Introducing the new Project Genie, powered by Genie 4",
+   "q": "Google DeepMind",
+   "d": "2026-11-18T18:12:21+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "k6VBIp19p0A",
+   "t": "China hat es wieder getan: Über 300 Roboter arbeiten JETZT im Freizeitpark! (Agibot Reportage)",
+   "q": "Everlast Robotics",
+   "d": "2026-11-18T16:15:33+00:00",
+   "lang": "de",
+   "tags": [
+    "DeepSeek & China",
+    "Robotik",
+    "Jobs & Arbeit"
+   ],
+   "n": 1,
+   "r": 10.0
+  },
+  {
+   "id": "gl2U4fGTr6g",
+   "t": "OpenAI's New Breakthrough Is... Utter Chaos",
+   "q": "Two Minute Papers",
+   "d": "2026-11-17T12:46:24+00:00",
+   "lang": "en",
+   "tags": [
+    "OpenAI"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "aSntd-uCWc8",
+   "t": "DURCHBRUCH bei Live-Avataren, Fable 5.2 & Seedream 5.5 schlagen alles | KI-Video-News",
+   "q": "Cinetiq",
+   "d": "2026-11-15T09:45:26+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "uND6iY2qp_c",
+   "t": "AlphaGenome 2: Teaching AI to read the entire human genome",
+   "q": "Google DeepMind",
+   "d": "2026-11-11T18:00:31+00:00",
+   "lang": "en",
+   "tags": [],
+   "n": 1,
+   "r": 0.0
+  },
+  {
+   "id": "QzIFL1a1y1Y",
+   "t": "Es geht los: Chinas Humanoide Roboter kommen JETZT nach Deutschland! Ich war vor Ort (UBTech)",
+   "q": "Everlast Robotics",
+   "d": "2026-11-11T16:15:08+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "6wWnbZu4oxI",
+   "t": "Motion Graphics OHNE After Effects: Claude baut alles KOMPLETT alleine!",
+   "q": "Cinetiq",
+   "d": "2026-11-08T10:00:37+00:00",
+   "lang": "de",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "LWLTLHiDtlw",
+   "t": "„DAS ist unsere letzte Chance!“ Deutschlands größtes Roboter-Projekt startet JETZT in München",
+   "q": "Everlast Robotics",
+   "d": "2026-11-04T16:15:00+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "lytWc30v4Jo",
+   "t": "6x GÜNSTIGER als Seedance 2.5? Kling 4.0: Alles, was du wissen musst (16 Praxistests)",
+   "q": "Cinetiq",
+   "d": "2026-11-01T10:15:22+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "PAFZUpDMY64",
+   "t": "Ich bin in Chinas Zukunftsstadt: Hier sind Roboter schon ÜBERALL! | VLOG",
+   "q": "Everlast Robotics",
+   "d": "2026-10-28T14:15:06+00:00",
+   "lang": "de",
+   "tags": [
+    "Robotik"
+   ],
+   "n": 1,
+   "r": 4.0
+  },
+  {
+   "id": "--9ZTpDQfNw",
+   "t": "Kling 4.0 kann jetzt deutsche SYNCHRO! OpenSource Voice-Tool greift ElevenLabs an (KI-Video-News)",
+   "q": "Cinetiq",
+   "d": "2026-10-25T13:00:27+00:00",
+   "lang": "de",
+   "tags": [
+    "KI-Video & Bild"
+   ],
+   "n": 1,
+   "r": 2.0
+  },
+  {
+   "id": "DdCEmlAydcw",
+   "t": "Inside Anthropic's molecular biology lab",
+   "q": "Anthropic",
+   "d": "2026-09-23T18:01:32+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 1,
+   "r": 6.0
+  },
+  {
+   "id": "uVS88gnaxcg",
+   "t": "Meet Claude Fable 5.1",
+   "q": "Anthropic",
+   "d": "2026-09-01T19:21:24+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 16.0
+  },
+  {
+   "id": "ROF2Nv_KjOM",
+   "t": "Introducing Claude Fable 5.1",
+   "q": "Anthropic",
+   "d": "2026-09-01T18:02:31+00:00",
+   "lang": "en",
+   "tags": [
+    "Claude / Anthropic"
+   ],
+   "n": 2,
+   "r": 16.0
+  }
+ ],
  "themen": [
+  {
+   "name": "Google Gemini",
+   "meldungen": 6,
+   "quellen": 5
+  },
+  {
+   "name": "KI-Agenten",
+   "meldungen": 6,
+   "quellen": 4
+  },
+  {
+   "name": "OpenAI",
+   "meldungen": 5,
+   "quellen": 3
+  },
   {
    "name": "Claude / Anthropic",
    "meldungen": 4,
    "quellen": 3
   },
   {
-   "name": "KI-Agenten",
-   "meldungen": 5,
-   "quellen": 2
-  },
-  {
-   "name": "OpenAI",
-   "meldungen": 5,
-   "quellen": 2
-  },
-  {
    "name": "Apple",
    "meldungen": 3,
-   "quellen": 2
-  },
-  {
-   "name": "Coding mit KI",
-   "meldungen": 2,
    "quellen": 2
   },
   {
@@ -547,13 +1002,13 @@
    "quellen": 2
   },
   {
-   "name": "KI-Blase & Geld",
-   "meldungen": 2,
-   "quellen": 2
+   "name": "Robotik",
+   "meldungen": 1,
+   "quellen": 1
   },
   {
    "name": "DeepSeek & China",
-   "meldungen": 2,
+   "meldungen": 1,
    "quellen": 1
   }
  ],
