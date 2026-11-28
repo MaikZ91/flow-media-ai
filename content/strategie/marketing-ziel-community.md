@@ -38,6 +38,13 @@ DMs schreibt Maik selbst, nichts wird automatisch versendet.
 - Community-Seite im Look des Reels umgebaut (Wüste/KI-Hologramm-Szene als Hintergrund bzw. Reel rechts, „Gründer & Selbstständige · LOST MIT KI?“, PostHog `layout=reel`).
 - R061 organisch gepostet: https://www.instagram.com/reel/DgSLONHg5CM/
 
+## Meta-Messung (Stand 28.11.2026)
+
+- Pixel/Datensatz im Business-Portfolio „Flow Media AI“: **„Flow“, ID 1012935401238191** (der alte Pixel 1135098089124774 hängt nur am Werbekonto und wird nicht mehr genutzt).
+- Beitritte über eine Anzeige (fbclid im Link) meldet die Supabase-Funktion `flow-meta-capi` server-seitig als **Lead** (ohne Cookie; Datenschutz Abschnitt 6b). Token: Systemnutzer „Flow“, Supabase-Secret. Test am 28.11.: events_received 1.
+- Mit Pixel-Einwilligung (Fußzeile „Ja“) meldet stattdessen der Browser-Pixel.
+- Offen: Datensatz „Flow“ mit dem Werbekonto 518708974888646 verbinden, danach Anzeige auf Optimierung „Leads“ umstellen, sobald genug Beitritte ankommen.
+
 ## Nächste Schritte
 
 Drehbuch mit vier Varianten (5–7 s) und Testplan: `drehbuch-2-community-reel.md`.
