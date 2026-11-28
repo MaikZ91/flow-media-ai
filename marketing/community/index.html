@@ -166,6 +166,10 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     footer { flex-wrap: nowrap; justify-content: flex-start; gap: 14px; border-top: 1px solid var(--rule); font-size: 11px; white-space: nowrap; overflow: hidden; }
     footer a, footer .ai { min-height: 34px; display: inline-flex; align-items: center; }
     footer .ai { margin-right: auto; }
+    #consent-slot { margin-left: auto; }
+    @media (max-width: 899px) { footer .ai { margin-right: 0; } }
+    @media (max-width: 440px) { .fm-pending footer a[href="details.html"] { display: none; } }
+    @media (max-width: 360px) { footer { gap: 9px; } .fm-pending footer { font-size: 10px; } }
     @media (max-width: 899px) {
       .brandbar { min-height: 34px; }
       main { grid-template-columns: minmax(0, 1fr); }
@@ -238,6 +242,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       <span class="ai">Szene mit KI erstellt</span>
       <a href="../landing-page/impressum.html">Impressum</a>
       <a href="../landing-page/datenschutz.html">Datenschutz</a>
+      <span id="consent-slot"></span>
     </footer>
   </div>
   <script>
