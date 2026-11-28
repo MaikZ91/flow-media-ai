@@ -65,7 +65,8 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     .brandbar, footer { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; }
     .brandbar { min-height: 44px; }
     .brandbar img { display: block; width: 118px; height: auto; max-height: 28px; object-fit: contain; }
-    .region { color: var(--muted); font: 700 11px Montserrat, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .brandbar { flex-wrap: nowrap; }
+    .region { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font: 600 11px/14px Inter, "Inter Fallback", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 
     main { display: grid; gap: 18px; padding-block: 14px 8px; }
     main > div:first-child { display: flex; flex-direction: column; min-height: 100%; }
