@@ -10,13 +10,13 @@ FOTO = D / "../../personal/arbeitsplatz/arbeitsplatz-buero-blazer.png"
 MUSIK = D / "../../musik/frei/driving-ambition.mp3"
 # (src_start, src_end, out_len, kicker, headline, sub, pos)
 SC = [
-    (0.0, 2.5, 2.6, "Für Gründer &amp; Selbstständige", "Lost mit <span>KI?</span>", "", "top"),
-    (2.5, 4.5, 2.0, "", "Jede Woche ein <span>neues Tool.</span>", "", "top"),
-    (5.0, 7.5, 2.8, "", "Keiner zeigt dir <span>den Weg.</span>", "", "top"),
-    (7.5, 10.3, 2.8, "", "Aus deiner Idee wird <span>etwas Echtes.</span>", "", "top"),
-    (12.5, 14.9, 2.4, "", "Du musst es nicht <span>allein</span> rausfinden.", "", "top"),
+    (0.0, 2.5, float(os.environ.get("L1",2.6)), "Für Gründer &amp; Selbstständige", "Lost mit <span>KI?</span>", "", "top"),
+    (2.5, 4.5, float(os.environ.get("L2",2.0)), "", "Jede Woche ein <span>neues Tool.</span>", "", "top"),
+    (5.0, 7.5, float(os.environ.get("L3",2.8)), "", "Keiner zeigt dir <span>den Weg.</span>", "", "top"),
+    (7.5, 10.3, float(os.environ.get("L4",2.8)), "", "Aus deiner Idee wird <span>etwas Echtes.</span>", "", "top"),
+    (12.5, 14.9, float(os.environ.get("L5",2.4)), "", "Du musst es nicht <span>allein</span> rausfinden.", "", "top"),
 ]
-END = (5.4, "Hey, ich bin Maik 👋 · Flow Media AI", "Komm in die <span>Community.</span>",
+END = (float(os.environ.get("L6",5.4)), "Hey, ich bin Maik 👋 · Flow Media AI", "Komm in die <span>Community.</span>",
        "Kostenlos in WhatsApp. Stammtisch hybrid – online, Münster &amp; Bielefeld. Link unten ↓")
 HTML = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@500;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
