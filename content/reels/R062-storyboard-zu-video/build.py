@@ -18,7 +18,7 @@ F = 2688 / 1200  # Faktor Vorschau → Original
 BOX = [(5,5,385,388),(390,5,675,388),(5,392,337,773),(342,392,675,773),(5,777,337,1195),(342,777,675,1195)]
 NAMES = ["Wüste, alte Karte", "Karte wird digital", "Neon-Stadt", "Skizze wird Auto", "Cello & Klangwellen", "Galaxie im Auge"]
 SEG = [(0.5,1.7),(3.2,4.4),(5.4,6.6),(8.3,9.5),(11.0,12.2),(13.3,14.5)]
-HOOK = (5.2, 7.2)
+HOOK = (5.2, 7.9)
 
 HEAD = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@500;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
@@ -32,7 +32,10 @@ TOPGRAD = '<div style="position:absolute;inset:0;background:linear-gradient(180d
 
 def html_pages():
     pages = {}
-    pages["hook"] = HEAD + TOPGRAD + '<img class="logo" src="logo_flow.png" style="top:170px"><div class="c" style="top:260px"><div class="k">MAGI-2 · Higgsfield</div><h1>Dieses Video kommt aus <span>einem Bild.</span></h1></div></body></html>'
+    pages["hook"] = HEAD + TOPGRAD + '''<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0) 60%,rgba(10,10,10,.85) 82%,#0A0A0A 100%)"></div>
+<img class="logo" src="logo_flow.png" style="top:170px"><div class="c" style="top:260px"><div class="k">Neues KI-Videomodell</div><h1 style="font-size:150px"><span>MAGI-2</span><br>ist 6× günstiger.</h1></div>
+<div class="c" style="bottom:330px"><p style="font:700 64px/1.2 Oswald;text-transform:uppercase">15 s Film mit Ton:<br><span style="background:#fff;color:#0A0A0A;padding:0 .15em;border-radius:6px">37,5</span> statt 240 Credits</p>
+<p style="font:500 30px Inter;color:rgba(255,255,255,.7);margin-top:18px">Vergleich: Seedance 2.5, 15 s, 1080p · Higgsfield, Stand 28.11.2026</p></div></body></html>'''
     pages["s1"] = HEAD + TOPGRAD + '<img class="logo" src="logo_flow.png" style="top:170px"><div class="c" style="top:260px"><div class="k">Schritt 1</div><h1 style="font-size:112px">Ein <span>Storyboard.</span></h1><p>6 Szenen in einem Bild.</p></div></body></html>'
     pages["s2"] = HEAD.replace("html,body{background:transparent}","html,body{background:#0A0A0A}") + '<img class="logo" src="logo_flow.png" style="top:250px"><div class="c" style="top:560px"><div class="k" style="color:#9A9A9A">Schritt 2</div><h1 style="font-size:120px">Bild rein in <span>MAGI-2.</span></h1><p>Dazu ein Prompt: Folge dem Storyboard Szene für Szene, nahtlose Übergänge, 15 Sekunden, mit Ton.</p></div></body></html>'
     for i, n in enumerate(NAMES):
@@ -43,7 +46,7 @@ def html_pages():
     pages["v"] = HEAD + '<div class="c" style="top:250px"><span class="tag">Ergebnis · MAGI-2</span></div></body></html>'
     pages["end"] = HEAD.replace("html,body{background:transparent}","html,body{background:#0A0A0A}") + '''<img class="logo" src="logo_flow.png" style="top:250px"><div class="c" style="top:520px">
 <div class="k" style="color:#9A9A9A">So geht's</div><h1 style="font-size:116px">1 Bild. 1 Prompt. <span>15 s Film.</span></h1>
-<p>Mit Ton, im Reel-Format, 37,5 Credits.</p><p style="font:700 60px Oswald;text-transform:uppercase;margin-top:60px">Folg mir für mehr KI-Workflows</p></div></body></html>'''
+<p>Mit Ton, im Reel-Format. 37,5 Credits statt 240.</p><p style="font:700 60px Oswald;text-transform:uppercase;margin-top:60px">Folg mir für mehr KI-Workflows</p></div></body></html>'''
     return pages
 
 def render():
