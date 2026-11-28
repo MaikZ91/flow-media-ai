@@ -43,7 +43,7 @@ DMs schreibt Maik selbst, nichts wird automatisch versendet.
 - Pixel/Datensatz im Business-Portfolio „Flow Media AI“: **„Flow“, ID 1012935401238191** (der alte Pixel 1135098089124774 hängt nur am Werbekonto und wird nicht mehr genutzt).
 - Beitritte über eine Anzeige (fbclid im Link) meldet die Supabase-Funktion `flow-meta-capi` server-seitig als **Lead** (ohne Cookie; Datenschutz Abschnitt 6b). Token: Systemnutzer „Flow“, Supabase-Secret. Test am 28.11.: events_received 1.
 - Mit Pixel-Einwilligung (Fußzeile „Ja“) meldet stattdessen der Browser-Pixel.
-- Datensatz „Flow“ ist seit 28.11. mit dem Werbekonto 518708974888646 verbunden. Nächster Schritt: Anzeige auf Optimierung „Leads“ umstellen, sobald die ersten echten Leads ankommen.
+- Datensatz „Flow“ ist seit 28.11. mit dem Werbekonto 518708974888646 verbunden. Seit 28.11. läuft die neue Kampagne „Community · Leads (Beitritte) · R061“ (52567944032965, Ziel Leads, Optimierung auf das Lead-Event des Datensatzes Flow, 30 $/Tag, gleiche Zielgruppe und gleiches R061-Reel); die alte Landingpage-Aufrufe-Kampagne (52567837237365) ist pausiert. Anfangs wenige Leads → Meta lernt langsam; nach 5–7 Tagen auswerten.
 
 ## Nächste Schritte
 

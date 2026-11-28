@@ -18,3 +18,4 @@ Neueste oben. Zahlen nach 24 h / 72 h nachtragen (Views · Reach · Saves · Sha
 - 28.11.2026 · Tausch Landingpage: „Community-Reel mit Tipp“ (52567924793165, reel_tipp) aktiv, altes „Community-Reel · Landingpage“ (52567837291965) pausiert. Laufend: Follower R058-v2 30 $ + Landingpage Tipp 30 $.
 - 28.11.2026 · R061 (Community-Reel, MAGI-2, Stimme Orion) gepostet (DgSLONHg5CM), erste Fassung (DgSJdOPua_8) gelöscht. Follower-Anzeige R058-v2 pausiert. Landingpage: R061-Anzeige (52567934180765, reel_r061) aktiv, Tipp-Version pausiert. Community-Seite im Reel-Look neu (layout=reel).
 - 28.11.2026 · R062 „Vom Storyboard zum Video“ (MAGI-2-Workflow) gepostet: https://www.instagram.com/reel/DgSQ8VABqcL/ – ersetzt das versehentlich gelöschte MAGI-2-Reel (DgQyF9MuVYg).
+- 28.11.2026 · Umstellung auf Leads: neue Kampagne 52567944032965 (OUTCOME_LEADS, Lead-Event Datensatz Flow 1012935401238191, 30 $/Tag, R061), alte LPV-Kampagne 52567837237365 pausiert.
