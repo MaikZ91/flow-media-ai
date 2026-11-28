@@ -14,7 +14,8 @@ SC = [
     (2.5, 4.5, float(os.environ.get("L2",2.0)), "", "Jede Woche ein <span>neues Tool.</span>", "", "top"),
     (5.0, 7.5, float(os.environ.get("L3",2.8)), "", "Keiner zeigt dir <span>den Weg.</span>", "", "top"),
     (7.5, 10.3, float(os.environ.get("L4",2.8)), "", "Aus deiner Idee wird <span>etwas Echtes.</span>", "", "top"),
-    (12.5, 14.9, float(os.environ.get("L5",2.4)), "", "Du musst es nicht <span>allein</span> rausfinden.", "", "top"),
+    (10.1, 12.7, float(os.environ.get("L5",2.4)), "", "Du musst es nicht <span>allein</span> rausfinden.", "", "bottom"),
+    (13.0, 14.9, float(os.environ.get("L5b",1.0)), "", "", "", "none"),
 ]
 END = (float(os.environ.get("L6",5.4)), "Hey, ich bin Maik 👋 · Flow Media AI", "Komm in die <span>Community.</span>",
        "Kostenlos in WhatsApp. Stammtisch hybrid – online, Münster &amp; Bielefeld. Link unten ↓")
@@ -38,10 +39,10 @@ def overlays():
         b = pw.chromium.launch(executable_path="/opt/pw-browsers/chromium"); pg = b.new_page(viewport={"width": 1080, "height": 1920})
         for i, (k, h, p, pos, cred, size) in enumerate(items):
             top = pos == "top"
-            html = (HTML.replace("__GRAD__", GT if top else GB).replace("__POS__", "top:110px" if top else "bottom:290px")
+            html = (HTML.replace("__GRAD__", "none" if pos == "none" else (GT if top else GB)).replace("__POS__", "top:110px" if top else "bottom:290px")
                     .replace("__LOGOPOS__", "bottom:150px" if top else "top:110px").replace("__CREDPOS__", "top:118px")
                     .replace("__H1__", str(size)).replace("__K__", f'<div class="k">{k}</div>' if k else "")
-                    .replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else "").replace("__CRED__", cred))
+                    .replace("<h1>__H__</h1>", f"<h1>{h}</h1>" if h else "").replace("__H__", h).replace("__P__", f"<p>{p}</p>" if p else "").replace("__CRED__", cred))
             f = D / f"o{i}.html"; f.write_text(html, encoding="utf-8")
             pg.goto(f.resolve().as_uri()); pg.wait_for_timeout(900)
             pg.screenshot(path=str(D / f"o{i}.png"), omit_background=True); f.unlink()
