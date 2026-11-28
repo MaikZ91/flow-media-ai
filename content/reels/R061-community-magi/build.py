@@ -14,7 +14,7 @@ T1, T2, T3 = 2.4, 3.7, 2.2
 HEAD = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@500;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
 .k{font:700 46px Montserrat;text-transform:uppercase;letter-spacing:.02em;text-shadow:0 2px 14px rgba(0,0,0,.7)}
-h1{font:700 150px/1.1 Oswald;text-transform:uppercase;margin-top:14px}h1 span{background:#2F5BFF;padding:0 .12em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+h1{font:700 150px/1.32 Oswald;text-transform:uppercase;margin-top:14px}h1 span{background:#2F5BFF;padding:.02em .12em 0;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 p{font:600 50px/1.3 Inter;margin-top:26px}.c{position:absolute;left:70px;right:70px}
 .logo{position:absolute;left:70px;height:44px}
 </style></head><body>"""
