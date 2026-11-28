@@ -1,15 +1,15 @@
 """R061 · Community-Reel nach Drehbuch Nr. 2, Variante B („Wüste kurz“), ~7,5 s.
 
-0–2,4 s   MAGI-2-Clip: Maik (KI-Version aus dem Wüsten-Reel) ratlos mit Karte   → Hook oben
-2,4–5,4 s MAGI-2-Clip: er dreht sich um, Gruppe am Lagerfeuer winkt ihn heran   → Lösung unten
-5,4–7,6 s Endkarte im Flow-Look: Community + Stammtisch + Link unten (Schnitt zurück in die Wüste = Loop)
+0–3,0 s   MAGI-2-Clip: Maik ratlos mit Karte, die Karte wird zum blauen KI-Hologramm → Hook oben
+3,0–6,1 s MAGI-2-Clip: futuristisches Camp (Hologramm-Feuer, KI-Screens), er geht hin → Lösung oben
+6,1–8,7 s Endkarte im Flow-Look: Community + Stammtisch + Link unten (Schnitt zurück in die Wüste = Loop)
 Ton: MAGI-Umgebungston (Wind, Feuer) + freie Musik mit Einsatz auf Frame 0.
 """
 import subprocess, pathlib, sys
 D = pathlib.Path(__file__).parent
 CLIP = D / (sys.argv[1] if len(sys.argv) > 1 else "magi_raw.mp4")
 MUSIK = D / "../../musik/frei/driving-ambition.mp3"
-T1, T2, T3 = 2.4, 3.7, 2.6
+T1, T2, T3 = 3.0, 3.1, 2.6
 import os
 VO = os.environ.get("VO")            # z. B. stimmen/orion.mp3
 SEG = os.environ.get("SEG", "")      # "a1,b1;a2,b2;a3,b3" = drei Sätze im VO (Sekunden)

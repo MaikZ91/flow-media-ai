@@ -7,3 +7,5 @@
 - 6,1–8,3 s: Endkarte · Kostenlos in WhatsApp · KI-Stammtisch Fr. 19 Uhr · online oder vor Ort in Münster & Bielefeld · Link unten
 
 Material: Startbild aus `../R041-wueste-ad/wueste_1080.mp4` (CapCut-Rand abgeschnitten) → Higgsfield MAGI-2, 6 s, 9:16, mit Umgebungston (Job 6fe40f9e, 15 Credits; zweite Variante 06f447cb verworfen). Musik: `musik/frei/driving-ambition.mp3`. Bauen: `python3 build.py`.
+
+**Version 2 (28.11.):** Karte verwandelt sich in ein blaues KI-Hologramm, Camp futuristisch (Hologramm-Feuer, KI-Screens). MAGI-2-Job a810c585 (`magi_raw.mp4`), Alternative 022d880f (`magi_raw_v2b.mp4`), Version 1 in `magi_raw_v1.mp4`. 8,7 s, Stimm-Varianten `R061-<stimme>.mp4`.
