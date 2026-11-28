@@ -1,0 +1,17 @@
+Dieses Video kommt aus einem einzigen Bild. 🎬
+
+So bin ich vorgegangen:
+
+1️⃣ Storyboard: 6 Szenen in einem Bild – Wüste, Karte wird digital, Neon-Stadt, Skizze wird Auto, Cello, Galaxie im Auge.
+2️⃣ Das Bild in MAGI-2 (über Higgsfield) gegeben, mit einem Prompt: Folge dem Storyboard Szene für Szene, nahtlose Übergänge, 15 Sekunden.
+3️⃣ Raus kam ein fertiger 15-Sekunden-Film im Reel-Format – inklusive Ton.
+
+Kosten: 37,5 Credits. Kein Schnittprogramm für den Film selbst.
+
+Der Trick ist das Storyboard: Wenn die Szenen vorher klar sind, weiß das Modell, wohin die Reise geht.
+
+Speicher dir das für dein nächstes Video-Projekt. Und schick's jemandem, der gerade mit KI-Videos experimentiert 👇
+
+Storyboard und Video mit KI erstellt (Higgsfield).
+
+#KI #KIVideo #Higgsfield #Storyboard #FlowMediaAI
