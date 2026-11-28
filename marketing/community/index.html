@@ -77,18 +77,52 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     .bottom { display: grid; gap: 14px; align-self: end; margin-top: 22px; }
     .event { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 14px; color: var(--muted); }
     .event b { background: #fff; color: #0A0A0A; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
-    .join { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--rule); border-radius: 18px; background: rgba(10,10,10,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    .join h2 { margin: 0 0 2px; font: 700 clamp(26px, 3vw, 34px)/1.1 Oswald, sans-serif; text-transform: uppercase; }
-    .join p { margin: 0 0 4px; color: var(--muted); font-size: 14px; }
-    .options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-    .join-option {
-      display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; padding: 6px 10px;
-      border-radius: 999px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; text-align: center;
+    /* Check-in-Terminal im Look des KI-Hologramms aus dem Reel */
+    .join {
+      position: relative; overflow: hidden; display: grid; gap: 10px; padding: 16px;
+      border: 1px solid rgba(98,140,255,.55); border-radius: 16px;
+      background:
+        linear-gradient(rgba(98,140,255,.07) 1px, transparent 1px) 0 0/100% 14px,
+        linear-gradient(90deg, rgba(98,140,255,.06) 1px, transparent 1px) 0 0/14px 100%,
+        linear-gradient(160deg, rgba(14,24,60,.88), rgba(6,10,24,.9));
+      box-shadow: 0 0 0 1px rgba(47,91,255,.18) inset, 0 0 34px -6px rgba(47,91,255,.65), 0 24px 60px -30px rgba(0,0,0,.9);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
-    .join-option::after { content: "→"; }
-    .join-option:hover { background: #4a70ff; }
-    .join-option.alt { background: #fff; color: #0A0A0A; }
-    .join-option.alt:hover { background: #e9e9ee; }
+    .join::before, .join::after { content: ""; position: absolute; width: 18px; height: 18px; border: 2px solid #8fb0ff; pointer-events: none; }
+    .join::before { top: 7px; left: 7px; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
+    .join::after { bottom: 7px; right: 7px; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
+    .scan { position: absolute; left: 0; right: 0; top: -30%; height: 30%; pointer-events: none;
+      background: linear-gradient(180deg, transparent, rgba(120,160,255,.16), transparent); animation: scan 3.6s linear infinite; }
+    @keyframes scan { to { top: 110%; } }
+    .term-head { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      font: 600 11px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: #9db6ff; }
+    .status { display: inline-flex; align-items: center; gap: 6px; color: #b9ffcf; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3dff8b; box-shadow: 0 0 8px #3dff8b; animation: blink 1.4s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: .35; } }
+    .join h2 { margin: 2px 0 0; font: 700 clamp(26px, 3vw, 34px)/1.1 Oswald, sans-serif; text-transform: uppercase; }
+    .join p { margin: 0; color: rgba(225,233,255,.82); font-size: 14px; line-height: 1.4; }
+    .prompt { font: 600 12px ui-monospace, Menlo, monospace; color: #9db6ff; letter-spacing: .06em; }
+    .prompt::after { content: "_"; animation: blink 1s steps(1) infinite; }
+    .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .join-option {
+      position: relative; overflow: hidden; display: grid; gap: 2px; align-content: center; min-height: 58px; padding: 9px 12px;
+      border: 1px solid rgba(98,140,255,.6); border-radius: 10px; background: rgba(47,91,255,.16);
+      color: #fff; text-decoration: none; transition: background .15s, border-color .15s, box-shadow .15s;
+    }
+    .join-option small { font: 600 10px ui-monospace, Menlo, monospace; letter-spacing: .12em; color: #9db6ff; text-transform: uppercase; }
+    .join-option b { font: 700 18px/1.1 Oswald, sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+    .join-option::after { content: "→"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #9db6ff; }
+    .join-option:hover, .join-option:focus-visible { background: rgba(47,91,255,.42); border-color: #8fb0ff; box-shadow: 0 0 18px -4px rgba(47,91,255,.9); }
+    .join-option.primary { background: var(--blue); border-color: #6f93ff; }
+    .join-option.primary small { color: #dbe4ff; }
+    .join-option.primary::after { color: #fff; }
+    .join-option.contact { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.35); }
+    @media (max-width: 480px) { .join-option { padding-right: 26px; } .join-option b { font-size: 16px; } .join-option small { font-size: 9px; letter-spacing: .06em; white-space: nowrap; } .join-option::after { right: 9px; } }
+    @media (max-width: 400px) { .join-option::after { display: none; } .join-option { padding-right: 10px; } }
+    @media (max-width: 899px) and (max-height: 720px) { .join > p { display: none; } }
+    .join-option .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: #3dff8b; box-shadow: 0 0 10px #3dff8b; }
+    .join-option.checking .bar { width: 100%; transition: width .45s ease-out; }
+    .join-option.checking small { color: #b9ffcf; }
     .note { margin: 0; color: var(--muted); font-size: 13px; }
     .host { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--muted); font-size: 13px; }
     .host img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: center 28%; }
@@ -109,11 +143,7 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
       .bottom { align-self: auto; margin-top: 28px; }
     }
     .reel { display: none; }
-    @media (max-width: 420px) {
-      .options { grid-template-columns: 1fr 1fr; }
-      .options .join-option:last-child { grid-column: 1 / -1; }
-    }
-    @media (prefers-reduced-motion: reduce) { .scene video, .reel video { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .scene video, .reel video { display: none; } .scan, .status::before, .prompt::after { animation: none; } }
   </style>
 </head>
 <body>
@@ -133,12 +163,16 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
         <div class="bottom">
           <p class="event"><b>KI-Stammtisch Fr., 4.12., 19 Uhr</b> online oder vor Ort in Münster &amp; Bielefeld</p>
           <div class="join" role="group" aria-labelledby="join-title">
+            <div class="scan" aria-hidden="true"></div>
+            <div class="term-head"><span>Flow · Check-in</span><span class="status">Online</span></div>
             <h2 id="join-title">Komm in die Community.</h2>
-            <p>Austausch mit Gründern und Selbstständigen, die KI gerade für ihr Business ausprobieren. Kostenlos in WhatsApp, du kannst erst mal nur mitlesen. Ich bin:</p>
+            <p>Austausch mit Gründern und Selbstständigen, die KI gerade für ihr Business ausprobieren. Kostenlos in WhatsApp, erst mal nur mitlesen ist okay.</p>
+            <div class="prompt" aria-hidden="true">&gt; Wähle dein Profil</div>
             <div class="options">
-              <a class="join-option" data-join-role="gruendung" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Gründer:in: kostenlos in WhatsApp beitreten">Gründer:in</a>
-              <a class="join-option" data-join-role="selbststaendig" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Selbstständig: kostenlos in WhatsApp beitreten">Selbstständig</a>
-              <a class="join-option alt" data-join-role="angestellt" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Angestellt: kostenlos in WhatsApp beitreten">Angestellt</a>
+              <a class="join-option primary" data-join-role="gruendung" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Gründer:in: kostenlos in WhatsApp beitreten"><small>01 · Einchecken</small><b>Gründer:in</b><span class="bar"></span></a>
+              <a class="join-option primary" data-join-role="selbststaendig" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Selbstständig: kostenlos in WhatsApp beitreten"><small>02 · Einchecken</small><b>Selbstständig</b><span class="bar"></span></a>
+              <a class="join-option" data-join-role="angestellt" href="https://chat.whatsapp.com/ISZDY5m97kS1OEJp5jflPw" aria-label="Angestellt: kostenlos in WhatsApp beitreten"><small>03 · Einchecken</small><b>Angestellt</b><span class="bar"></span></a>
+              <a class="join-option contact" data-contact href="https://wa.me/4917645961547?text=Hi%20Maik%2C%20ich%20hab%20eine%20Frage%20zur%20Flow%20Business%20Community." aria-label="Kontakt: Maik direkt auf WhatsApp schreiben"><small>04 · Direkt</small><b>Kontakt</b><span class="bar"></span></a>
             </div>
           </div>
           <p class="host"><img src="img/maik_front.jpg" alt="" width="32" height="32"> Maik · Dein Gastgeber</p>
@@ -183,11 +217,27 @@ posthog.init("phc_ktsJAdQbuZh9PbsdX7RxZdTWZjEgkZLHAyB7kzb9eG6t", {
     } else {
       document.addEventListener("visibilitychange", recordVisible);
     }
+    // Check-in: kurzer Ladebalken, dann weiter zu WhatsApp (ohne Bewegung sofort)
+    const calm = matchMedia("(prefers-reduced-motion: reduce)");
+    function checkIn(option, event) {
+      if (calm.matches || event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
+      event.preventDefault();
+      option.classList.add("checking");
+      option.querySelector("small").textContent = "✓ Check-in …";
+      setTimeout(() => { location.href = option.href; }, 480);
+    }
     document.querySelectorAll("[data-join-role]").forEach(option => {
-      option.addEventListener("click", () => {
+      option.addEventListener("click", event => {
         const selection = { cta: "hero", join_role: option.dataset.joinRole };
         capture("community_join_intent", selection, { send_instantly: true });
         capture("community_join_click", selection, { send_instantly: true });
+        checkIn(option, event);
+      });
+    });
+    document.querySelectorAll("[data-contact]").forEach(option => {
+      option.addEventListener("click", event => {
+        capture("community_contact_click", { cta: "hero" }, { send_instantly: true });
+        checkIn(option, event);
       });
     });
     // Hintergrundvideo nur auf dem Handy abspielen (Desktop nutzt das Reel rechts)
