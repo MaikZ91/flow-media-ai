@@ -34,6 +34,8 @@ DMs schreibt Maik selbst, nichts wird automatisch versendet.
 
 ## Nächste Schritte
 
+Drehbuch mit vier Varianten (5–7 s) und Testplan: `drehbuch-2-community-reel.md`.
+
 1. Tipp-Version auswerten.
 2. Neues Reel nach dem stärksten Muster bauen: Hook wie im Original R058 (starkes Bild + Frage, bei der die Zielgruppe nickt), dann ein echtes Problem aus den fünf Säulen (`problem-zu-loesung.md`) und als Lösung die Community, mit klarem Grund zum Beitreten (kostenlos, Stammtisch, Austausch mit Gründern).
 3. Pro Runde immer nur eine Sache ändern (Hook, Mitte oder Schluss), damit klar ist, was wirkt.
