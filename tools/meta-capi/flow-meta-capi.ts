@@ -2,7 +2,7 @@
 // Datensparsam: nur die Klick-Kennung aus dem Anzeigen-Link (fbclid → fbc) und der Browser-Typ (User-Agent).
 // Keine Cookies, keine IP-Adresse, keine Namen oder Telefonnummern. Ohne fbclid wird nichts gesendet.
 // Secret META_CAPI_TOKEN (Meta Events Manager → Pixel → Einstellungen → Conversions API → Zugriffsschlüssel generieren).
-const PIXEL_ID = "1548157737344373";
+const PIXEL_ID = "1012935401238191";
 const ALLOWED = ["https://maikz91.github.io"];
 const cors = (o: string | null) => ({
   "Access-Control-Allow-Origin": o && ALLOWED.includes(o) ? o : ALLOWED[0],
@@ -14,7 +14,7 @@ Deno.serve(async (req) => {
   const origin = req.headers.get("origin");
   if (req.method === "OPTIONS") return new Response(null, { headers: cors(origin) });
   if (req.method !== "POST") return new Response("method", { status: 405, headers: cors(origin) });
-  const token = Deno.env.get("META_CAPI_TOKEN");
+  const token = Deno.env.get("META_CAPI_TOKEN") || Deno.env.get("Pixel") || Deno.env.get("PIXEL") || Deno.env.get("pixel") || Deno.env.get("Pexel") || Deno.env.get("PEXEL");
   let body: Record<string, unknown> = {};
   try { body = JSON.parse(await req.text() || "{}"); } catch { /* leer */ }
   const fbclid = String(body.fbclid || "").slice(0, 500);
