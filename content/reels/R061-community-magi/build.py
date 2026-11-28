@@ -9,7 +9,11 @@ import subprocess, pathlib, sys
 D = pathlib.Path(__file__).parent
 CLIP = D / (sys.argv[1] if len(sys.argv) > 1 else "magi_raw.mp4")
 MUSIK = D / "../../musik/frei/driving-ambition.mp3"
-T1, T2, T3 = 2.4, 3.7, 2.2
+T1, T2, T3 = 2.4, 3.7, 2.6
+import os
+VO = os.environ.get("VO")            # z. B. stimmen/orion.mp3
+SEG = os.environ.get("SEG", "")      # "a1,b1;a2,b2;a3,b3" = drei Sätze im VO (Sekunden)
+OUT = os.environ.get("OUT", "R061.mp4")
 
 HEAD = """<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@700&family=Inter:wght@500;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent}body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#fff;font-family:Inter,sans-serif}
@@ -51,14 +55,24 @@ def build():
           f"[3:v]loop=-1:1,trim=0:{T3},setpts=PTS-STARTPTS,fps=30,format=yuv420p,"
           f"zoompan=z='1+0.0005*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps=30[w3];"
           f"[w1][w2][w3]concat=n=3:v=1:a=0,format=yuv420p[v];"
-          f"[0:a]atrim={s}:{s+T1+T2},asetpts=PTS-STARTPTS,volume=0.55,apad,atrim=0:{total}[amb];"
-          f"[4:a]atrim=0:{total},volume=0.8,afade=t=out:st={total-0.8}:d=0.8[mus];"
-          f"[amb][mus]amix=inputs=2:normalize=0[aud]")
+          f"[0:a]atrim={s}:{s+T1+T2},asetpts=PTS-STARTPTS,volume={0.3 if VO else 0.55},apad,atrim=0:{total}[amb];"
+          f"[4:a]atrim=0:{total},volume={0.32 if VO else 0.8},afade=t=out:st={total-0.8}:d=0.8[mus];")
+    inputs = []
+    if VO:
+        starts = [0.1, T1 + 0.15, T1 + T2 + 0.1]
+        segs = [tuple(map(float, x.split(","))) for x in SEG.split(";")]
+        for i, ((a, b), st) in enumerate(zip(segs, starts)):
+            fc += (f"[5:a]atrim={a}:{b},asetpts=PTS-STARTPTS,afade=t=in:d=0.03,afade=t=out:st={b-a-0.05}:d=0.05,"
+                   f"adelay={int(st*1000)}|{int(st*1000)},volume=1.6[vo{i}];")
+        fc += "[amb][mus][vo0][vo1][vo2]amix=inputs=5:normalize=0,alimiter=limit=0.95[aud]"
+        inputs = ["-i", str(D / VO)]
+    else:
+        fc += "[amb][mus]amix=inputs=2:normalize=0[aud]"
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(CLIP), "-i", str(D/"o1.png"), "-i", str(D/"o2.png"), "-i", str(D/"o3.png"),
-                    "-i", str(MUSIK), "-filter_complex", fc, "-map", "[v]", "-map", "[aud]", "-t", str(total),
+                    "-i", str(MUSIK), *inputs, "-filter_complex", fc, "-map", "[v]", "-map", "[aud]", "-t", str(total),
                     "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
-                    "-movflags", "+faststart", str(D / "R061.mp4")], check=True)
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.6", "-i", str(D / "R061.mp4"), "-frames:v", "1", "-q:v", "2", str(D / "cover.jpg")], check=True)
+                    "-movflags", "+faststart", str(D / OUT)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "0.6", "-i", str(D / OUT), "-frames:v", "1", "-q:v", "2", str(D / "cover.jpg")], check=True)
 
 
 if __name__ == "__main__":
